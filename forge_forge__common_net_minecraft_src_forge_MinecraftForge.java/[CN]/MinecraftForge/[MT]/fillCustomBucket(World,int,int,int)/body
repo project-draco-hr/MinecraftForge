@@ -1,0 +1,9 @@
+{
+  for (  IBucketHandler handler : bucketHandlers) {
+    ItemStack stack=handler.fillCustomBucket(w,i,j,k);
+    if (stack != null) {
+      return stack;
+    }
+  }
+  return null;
+}
