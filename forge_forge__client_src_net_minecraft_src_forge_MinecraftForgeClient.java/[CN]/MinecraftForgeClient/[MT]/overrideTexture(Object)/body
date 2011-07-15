@@ -1,0 +1,5 @@
+{
+  if (o instanceof ITextureProvider) {
+    GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture(((ITextureProvider)(o)).getTextureFile()));
+  }
+}

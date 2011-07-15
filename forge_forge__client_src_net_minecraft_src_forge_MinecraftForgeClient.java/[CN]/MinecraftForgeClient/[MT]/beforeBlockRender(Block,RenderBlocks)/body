@@ -1,0 +1,9 @@
+{
+  if (block instanceof ITextureProvider && renderblocks.overrideBlockTexture == -1) {
+    Tessellator tessellator=Tessellator.instance;
+    tessellator.draw();
+    tessellator.startDrawingQuads();
+    tessellator.setNormal(0.0F,-1F,0.0F);
+    GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture(((ITextureProvider)(block)).getTextureFile()));
+  }
+}

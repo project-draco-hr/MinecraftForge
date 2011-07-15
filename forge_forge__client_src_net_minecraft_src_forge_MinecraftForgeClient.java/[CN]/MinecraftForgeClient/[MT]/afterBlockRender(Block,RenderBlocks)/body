@@ -1,0 +1,8 @@
+{
+  if (block instanceof ITextureProvider && renderblocks.overrideBlockTexture == -1) {
+    Tessellator tessellator=Tessellator.instance;
+    tessellator.draw();
+    tessellator.startDrawingQuads();
+    GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
+  }
+}
