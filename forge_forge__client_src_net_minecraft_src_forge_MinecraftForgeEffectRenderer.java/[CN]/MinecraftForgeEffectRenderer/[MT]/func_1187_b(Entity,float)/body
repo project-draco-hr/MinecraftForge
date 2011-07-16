@@ -1,0 +1,11 @@
+{
+  byte byte0=3;
+  if (fxLayers[byte0].size() == 0) {
+    return;
+  }
+  Tessellator tessellator=Tessellator.instance;
+  for (int i=0; i < fxLayers[byte0].size(); i++) {
+    EntityFX entityfx=(EntityFX)fxLayers[byte0].get(i);
+    entityfx.renderParticle(tessellator,f,0.0F,0.0F,0.0F,0.0F,0.0F);
+  }
+}

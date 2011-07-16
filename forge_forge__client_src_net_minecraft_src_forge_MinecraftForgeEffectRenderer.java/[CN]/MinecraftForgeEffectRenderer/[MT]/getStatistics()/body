@@ -1,0 +1,3 @@
+{
+  return (new StringBuilder()).append("").append(fxLayers[0].size() + fxLayers[1].size() + fxLayers[2].size()).toString();
+}

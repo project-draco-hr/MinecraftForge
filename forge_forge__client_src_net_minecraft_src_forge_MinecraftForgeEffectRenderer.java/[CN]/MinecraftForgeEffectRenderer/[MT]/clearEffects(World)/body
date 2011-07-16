@@ -1,0 +1,11 @@
+{
+  worldObj=world;
+  for (int i=0; i < 4; i++) {
+    fxLayers[i].clear();
+  }
+  for (int x=0; x < effectList.size(); x++) {
+    BlockTextureParticles entry=(BlockTextureParticles)effectList.get(x);
+    entry.effects.clear();
+  }
+  effectList.clear();
+}

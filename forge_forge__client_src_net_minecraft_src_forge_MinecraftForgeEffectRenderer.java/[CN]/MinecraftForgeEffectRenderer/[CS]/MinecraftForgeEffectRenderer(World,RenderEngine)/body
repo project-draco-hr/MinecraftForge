@@ -1,0 +1,14 @@
+{
+  super(world,renderengine);
+  System.out.println("Init");
+  effectList=new ArrayList();
+  fxLayers=new List[4];
+  rand=new Random();
+  if (world != null) {
+    worldObj=world;
+  }
+  renderer=renderengine;
+  for (int i=0; i < 4; i++) {
+    fxLayers[i]=new ArrayList();
+  }
+}

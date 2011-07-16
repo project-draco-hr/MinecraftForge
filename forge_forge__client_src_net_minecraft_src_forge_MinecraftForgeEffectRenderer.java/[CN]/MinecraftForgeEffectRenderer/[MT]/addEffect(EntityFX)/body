@@ -1,0 +1,7 @@
+{
+  int i=entityfx.getFXLayer();
+  if (fxLayers[i].size() >= 4000) {
+    fxLayers[i].remove(0);
+  }
+  fxLayers[i].add(entityfx);
+}
