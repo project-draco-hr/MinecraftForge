@@ -1,0 +1,33 @@
+{
+  if (configBlocks == null) {
+    configBlocks=new boolean[Block.blocksList.length];
+    for (int i=0; i < configBlocks.length; ++i) {
+      configBlocks[i]=false;
+    }
+  }
+  if (blockProperties.containsKey(key)) {
+    Property property=getOrCreateIntProperty(key,PropertyKind.Block,defaultId);
+    configBlocks[Integer.parseInt(property.value)]=true;
+    return property;
+  }
+ else {
+    Property property=new Property();
+    blockProperties.put(key,property);
+    property.name=key;
+    if (Block.blocksList[defaultId] == null && !configBlocks[defaultId]) {
+      property.value=Integer.toString(defaultId);
+      configBlocks[defaultId]=true;
+      return property;
+    }
+ else {
+      for (int j=Block.blocksList.length - 1; j >= 0; --j) {
+        if (Block.blocksList[j] == null && !configBlocks[j]) {
+          property.value=Integer.toString(j);
+          configBlocks[j]=true;
+          return property;
+        }
+      }
+      throw new RuntimeException("No more block ids available for " + key);
+    }
+  }
+}

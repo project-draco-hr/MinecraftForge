@@ -1,0 +1,40 @@
+{
+  try {
+    if (file.getParentFile() != null) {
+      file.getParentFile().mkdirs();
+    }
+    if (!file.exists() && !file.createNewFile()) {
+      return;
+    }
+    if (file.canWrite()) {
+      FileOutputStream fileoutputstream=new FileOutputStream(file);
+      BufferedWriter buffer=new BufferedWriter(new OutputStreamWriter(fileoutputstream,"8859_1"));
+      buffer.write("# Configuration file\r\n");
+      buffer.write("# Generated on " + DateFormat.getInstance().format(new Date()) + "\r\n");
+      buffer.write("\r\n");
+      buffer.write("###########\r\n");
+      buffer.write("# General #\r\n");
+      buffer.write("###########\r\n\r\n");
+      buffer.write("general {\r\n");
+      writeProperties(buffer,generalProperties.values());
+      buffer.write("}\r\n\r\n");
+      buffer.write("#########\r\n");
+      buffer.write("# Block #\r\n");
+      buffer.write("#########\r\n\r\n");
+      buffer.write("block {\r\n");
+      writeProperties(buffer,blockProperties.values());
+      buffer.write("}\r\n\r\n");
+      buffer.write("########\r\n");
+      buffer.write("# Item #\r\n");
+      buffer.write("########\r\n\r\n");
+      buffer.write("item {\r\n");
+      writeProperties(buffer,itemProperties.values());
+      buffer.write("}\r\n\r\n");
+      buffer.close();
+      fileoutputstream.close();
+    }
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+}

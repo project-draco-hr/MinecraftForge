@@ -1,0 +1,75 @@
+{
+  try {
+    if (file.getParentFile() != null) {
+      file.getParentFile().mkdirs();
+    }
+    if (!file.exists() && !file.createNewFile()) {
+      return;
+    }
+    if (file.canRead()) {
+      FileInputStream fileinputstream=new FileInputStream(file);
+      BufferedReader buffer=new BufferedReader(new InputStreamReader(fileinputstream,"8859_1"));
+      String line;
+      TreeMap<String,Property> currentMap=null;
+      while (true) {
+        line=buffer.readLine();
+        if (line == null) {
+          break;
+        }
+        int nameStart=-1, nameEnd=-1;
+        boolean skip=false;
+        for (int i=0; i < line.length() && !skip; ++i) {
+          if (Character.isLetterOrDigit(line.charAt(i)) || line.charAt(i) == '.') {
+            if (nameStart == -1) {
+              nameStart=i;
+            }
+            nameEnd=i;
+          }
+ else           if (Character.isWhitespace(line.charAt(i))) {
+          }
+ else {
+switch (line.charAt(i)) {
+case '#':
+              skip=true;
+            continue;
+case '{':
+          String scopeName=line.substring(nameStart,nameEnd + 1);
+        if (scopeName.equals("general")) {
+          currentMap=generalProperties;
+        }
+ else         if (scopeName.equals("block")) {
+          currentMap=blockProperties;
+        }
+ else         if (scopeName.equals("item")) {
+          currentMap=itemProperties;
+        }
+ else {
+          throw new RuntimeException("unknown section " + scopeName);
+        }
+      break;
+case '}':
+    currentMap=null;
+  break;
+case '=':
+String propertyName=line.substring(nameStart,nameEnd + 1);
+if (currentMap == null) {
+throw new RuntimeException("property " + propertyName + " has no scope");
+}
+Property prop=new Property();
+prop.name=propertyName;
+prop.value=line.substring(i + 1);
+i=line.length();
+currentMap.put(propertyName,prop);
+break;
+default :
+throw new RuntimeException("unknown character " + line.charAt(i));
+}
+}
+}
+}
+}
+}
+ catch (IOException e) {
+e.printStackTrace();
+}
+}

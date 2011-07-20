@@ -1,0 +1,9 @@
+{
+  for (  Property property : props) {
+    if (property.comment != null) {
+      buffer.write("   # " + property.comment + "\r\n");
+    }
+    buffer.write("   " + property.name + "="+ property.value);
+    buffer.write("\r\n");
+  }
+}
