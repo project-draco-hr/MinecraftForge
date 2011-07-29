@@ -1,0 +1,8 @@
+{
+  for (  IHarvestHandler handler : harvestHandlers) {
+    if (handler.canHarvestBlock(item,block)) {
+      return true;
+    }
+  }
+  return false;
+}
