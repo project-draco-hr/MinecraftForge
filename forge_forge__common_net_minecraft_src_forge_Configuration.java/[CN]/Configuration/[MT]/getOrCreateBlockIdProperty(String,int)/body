@@ -6,7 +6,7 @@
     }
   }
   if (blockProperties.containsKey(key)) {
-    Property property=getOrCreateIntProperty(key,PropertyKind.Block,defaultId);
+    Property property=getOrCreateIntProperty(key,Configuration.BLOCK_PROPERTY,defaultId);
     configBlocks[Integer.parseInt(property.value)]=true;
     return property;
   }

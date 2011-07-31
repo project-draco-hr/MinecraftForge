@@ -1,5 +1,0 @@
-{
-  for (  IBiomePopulator populator : biomePopulators) {
-    populator.populate(world,biomegenbase,x,z);
-  }
-}

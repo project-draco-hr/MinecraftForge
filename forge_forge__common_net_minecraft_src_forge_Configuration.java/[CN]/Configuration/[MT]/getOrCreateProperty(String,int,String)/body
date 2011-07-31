@@ -1,13 +1,13 @@
 {
   TreeMap<String,Property> source=null;
 switch (kind) {
-case General:
+case GENERAL_PROPERTY:
     source=generalProperties;
   break;
-case Block:
+case BLOCK_PROPERTY:
 source=blockProperties;
 break;
-case Item:
+case ITEM_PROPERTY:
 source=itemProperties;
 break;
 }
