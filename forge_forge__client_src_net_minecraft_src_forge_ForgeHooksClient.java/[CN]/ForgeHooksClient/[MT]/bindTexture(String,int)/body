@@ -1,0 +1,16 @@
+{
+  int n;
+  if (!textures.containsKey(name)) {
+    n=ModLoader.getMinecraftInstance().renderEngine.getTexture(name);
+    textures.put(name,n);
+  }
+ else {
+    n=(Integer)textures.get(name);
+  }
+  if (!inWorld) {
+    Tessellator.instance=Tessellator.firstInstance;
+    GL11.glBindTexture(3553,n);
+    return;
+  }
+  bindTessellator(n,sub);
+}

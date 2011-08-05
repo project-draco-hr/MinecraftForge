@@ -1,0 +1,10 @@
+{
+  inWorld=false;
+  for (  List l : renderTextureList) {
+    GL11.glBindTexture(GL11.GL_TEXTURE_2D,(Integer)l.toArray()[0]);
+    Tessellator t=(Tessellator)tessellators.get(l);
+    t.draw();
+  }
+  GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
+  Tessellator.instance=Tessellator.firstInstance;
+}

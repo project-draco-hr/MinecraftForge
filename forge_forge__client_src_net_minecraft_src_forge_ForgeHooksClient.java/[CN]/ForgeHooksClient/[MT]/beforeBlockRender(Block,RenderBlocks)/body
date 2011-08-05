@@ -1,0 +1,6 @@
+{
+  if (block instanceof ITextureProvider && renderblocks.overrideBlockTexture == -1) {
+    ITextureProvider itp=(ITextureProvider)block;
+    bindTexture(itp.getTextureFile(),0);
+  }
+}
