@@ -1,0 +1,3 @@
+{
+  ModLoader.getMinecraftInstance().renderEngine.getTexture(texture);
+}
