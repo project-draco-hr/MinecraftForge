@@ -1,0 +1,4 @@
+{
+  ForgeHooks.initTools();
+  ForgeHooks.toolClasses.put(tool.shiftedIndex,Arrays.asList(tclass,hlevel));
+}

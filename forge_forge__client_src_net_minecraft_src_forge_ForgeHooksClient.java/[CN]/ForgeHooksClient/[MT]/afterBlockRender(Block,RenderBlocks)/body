@@ -1,5 +1,5 @@
 {
   if (block instanceof ITextureProvider && renderblocks.overrideBlockTexture == -1) {
-    Tessellator.instance=Tessellator.firstInstance;
+    unbindTexture();
   }
 }

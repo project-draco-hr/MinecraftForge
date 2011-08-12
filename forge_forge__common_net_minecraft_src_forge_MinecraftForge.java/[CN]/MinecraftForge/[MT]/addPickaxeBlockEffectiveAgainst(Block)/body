@@ -1,7 +1,3 @@
 {
-  ((ItemTool)Item.pickaxeWood).addBlockEffectiveAgainst(block);
-  ((ItemTool)Item.pickaxeStone).addBlockEffectiveAgainst(block);
-  ((ItemTool)Item.pickaxeSteel).addBlockEffectiveAgainst(block);
-  ((ItemTool)Item.pickaxeGold).addBlockEffectiveAgainst(block);
-  ((ItemTool)Item.pickaxeDiamond).addBlockEffectiveAgainst(block);
+  setBlockHarvestLevel(block,"pickaxe",0);
 }
