@@ -1,0 +1,10 @@
+{
+  float bh=bl.getHardness(md);
+  if (bh < 0.0F)   return 0.0F;
+  if (!canHarvestBlock(bl,player,md)) {
+    return 1.0F / bh / 100F;
+  }
+ else {
+    return player.getCurrentPlayerStrVsBlock(bl,md) / bh / 30F;
+  }
+}

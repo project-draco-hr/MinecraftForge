@@ -1,0 +1,14 @@
+{
+  if (bl.blockMaterial.getIsHarvestable())   return true;
+  ItemStack itemstack=player.inventory.getCurrentItem();
+  if (itemstack == null)   return false;
+  List tc=(List)toolClasses.get(itemstack.itemID);
+  if (tc == null)   return itemstack.canHarvestBlock(bl);
+  Object[] ta=tc.toArray();
+  String cls=(String)ta[0];
+  int hvl=(Integer)ta[1];
+  Integer bhl=(Integer)toolHarvestLevels.get(Arrays.asList(bl.blockID,md,cls));
+  if (bhl == null)   return itemstack.canHarvestBlock(bl);
+  if (bhl > hvl)   return false;
+  return itemstack.canHarvestBlock(bl);
+}
