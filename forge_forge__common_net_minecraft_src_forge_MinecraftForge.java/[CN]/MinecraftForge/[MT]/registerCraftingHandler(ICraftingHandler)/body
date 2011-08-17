@@ -1,0 +1,3 @@
+{
+  ForgeHooks.craftingHandlers.add(handler);
+}
