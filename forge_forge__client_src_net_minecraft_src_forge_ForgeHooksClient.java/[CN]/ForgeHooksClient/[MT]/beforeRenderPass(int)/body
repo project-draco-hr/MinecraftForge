@@ -1,4 +1,5 @@
 {
+  renderPass=pass;
   Tessellator.instance=Tessellator.firstInstance;
   Tessellator.renderingWorldRenderer=true;
   GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));

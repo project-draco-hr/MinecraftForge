@@ -1,4 +1,5 @@
 {
+  renderPass=-1;
   inWorld=false;
   for (  List l : renderTextureList) {
     Integer[] tn=(Integer[])l.toArray();
