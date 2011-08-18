@@ -1,0 +1,7 @@
+{
+  for (  ISleepHandler handler : sleepHandlers) {
+    EnumStatus status=handler.sleepInBedAt(player,i,j,k);
+    if (status != null)     return status;
+  }
+  return null;
+}

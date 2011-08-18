@@ -1,0 +1,5 @@
+{
+  for (  IDestroyToolHandler handler : destroyToolHandlers) {
+    handler.onDestroyCurrentItem(player);
+  }
+}
