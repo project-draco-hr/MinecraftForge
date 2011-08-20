@@ -1,0 +1,6 @@
+RenderGlobal renderglobal
+EntityPlayer player
+MovingObjectPosition mop
+int i
+ItemStack itemstack
+float f

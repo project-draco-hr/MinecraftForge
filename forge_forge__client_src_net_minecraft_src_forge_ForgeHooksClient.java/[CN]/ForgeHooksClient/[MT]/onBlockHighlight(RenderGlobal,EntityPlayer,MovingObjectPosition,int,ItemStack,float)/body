@@ -1,0 +1,6 @@
+{
+  for (  IHighlightHandler handler : highlightHandlers) {
+    if (handler.onBlockHighlight(renderglobal,player,mop,i,itemstack,f))     return true;
+  }
+  return false;
+}
