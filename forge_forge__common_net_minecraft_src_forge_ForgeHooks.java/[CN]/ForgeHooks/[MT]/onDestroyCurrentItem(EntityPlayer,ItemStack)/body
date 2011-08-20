@@ -1,5 +1,5 @@
 {
   for (  IDestroyToolHandler handler : destroyToolHandlers) {
-    handler.onDestroyCurrentItem(player);
+    handler.onDestroyCurrentItem(player,orig);
   }
 }
