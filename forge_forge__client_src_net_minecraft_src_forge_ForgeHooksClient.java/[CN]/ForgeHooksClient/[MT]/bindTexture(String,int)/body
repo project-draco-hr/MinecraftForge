@@ -8,6 +8,11 @@
     n=(Integer)textures.get(name);
   }
   if (!inWorld) {
+    if (Tessellator.instance.isDrawing) {
+      int mode=Tessellator.instance.drawMode;
+      Tessellator.instance.draw();
+      Tessellator.instance.startDrawing(mode);
+    }
     GL11.glBindTexture(3553,n);
     return;
   }

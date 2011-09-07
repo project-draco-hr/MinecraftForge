@@ -3,6 +3,11 @@
     Tessellator.instance=defaultTessellator;
   }
  else {
+    if (Tessellator.instance.isDrawing) {
+      int mode=Tessellator.instance.drawMode;
+      Tessellator.instance.draw();
+      Tessellator.instance.startDrawing(mode);
+    }
     GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
     return;
   }
