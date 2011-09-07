@@ -8,7 +8,6 @@
     n=(Integer)textures.get(name);
   }
   if (!inWorld) {
-    Tessellator.instance=Tessellator.firstInstance;
     GL11.glBindTexture(3553,n);
     return;
   }

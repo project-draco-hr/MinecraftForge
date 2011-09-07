@@ -8,6 +8,5 @@
     t.draw();
   }
   GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
-  Tessellator.instance=Tessellator.firstInstance;
   Tessellator.renderingWorldRenderer=false;
 }

@@ -1,6 +1,8 @@
 {
-  Tessellator.instance=Tessellator.firstInstance;
-  if (!inWorld) {
+  if (inWorld) {
+    Tessellator.instance=defaultTessellator;
+  }
+ else {
     GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
     return;
   }

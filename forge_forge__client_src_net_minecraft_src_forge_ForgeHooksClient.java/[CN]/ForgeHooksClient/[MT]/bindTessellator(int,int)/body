@@ -12,7 +12,7 @@
     renderTextureTest.add(key);
     renderTextureList.add(key);
     t.startDrawingQuads();
-    t.setTranslationD(Tessellator.firstInstance.xOffset,Tessellator.firstInstance.yOffset,Tessellator.firstInstance.zOffset);
+    t.setTranslationD(defaultTessellator.xOffset,defaultTessellator.yOffset,defaultTessellator.zOffset);
   }
   Tessellator.instance=t;
 }
