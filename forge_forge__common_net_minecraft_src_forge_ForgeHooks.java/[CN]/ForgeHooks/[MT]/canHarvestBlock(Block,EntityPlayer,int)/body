@@ -10,5 +10,5 @@
   Integer bhl=(Integer)toolHarvestLevels.get(Arrays.asList(bl.blockID,md,cls));
   if (bhl == null)   return itemstack.canHarvestBlock(bl);
   if (bhl > hvl)   return false;
-  return itemstack.canHarvestBlock(bl);
+  return true;
 }

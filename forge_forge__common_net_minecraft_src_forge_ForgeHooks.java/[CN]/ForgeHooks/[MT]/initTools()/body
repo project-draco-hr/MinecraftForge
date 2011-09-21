@@ -29,7 +29,7 @@
   MinecraftForge.setBlockHarvestLevel(Block.oreRedstoneGlowing,"pickaxe",2);
   MinecraftForge.removeBlockEffectiveness(Block.oreRedstone,"pickaxe");
   MinecraftForge.removeBlockEffectiveness(Block.oreRedstoneGlowing,"pickaxe");
-  Block[] pickeff={Block.cobblestone,Block.stairDouble,Block.stairSingle,Block.stone,Block.sandStone,Block.cobblestoneMossy,Block.oreIron,Block.blockSteel,Block.oreCoal,Block.blockGold,Block.oreGold,Block.oreDiamond,Block.blockDiamond,Block.ice,Block.netherrack,Block.oreLapis,Block.blockLapis};
+  Block[] pickeff={Block.cobblestone,Block.stairDouble,Block.stairSingle,Block.stone,Block.sandStone,Block.cobblestoneMossy,Block.oreCoal,Block.ice,Block.netherrack,Block.oreLapis,Block.blockLapis};
   for (  Block bl : pickeff) {
     MinecraftForge.setBlockHarvestLevel(bl,"pickaxe",0);
   }
