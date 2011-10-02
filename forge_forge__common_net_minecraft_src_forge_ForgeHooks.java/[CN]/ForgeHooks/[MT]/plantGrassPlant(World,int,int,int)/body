@@ -1,0 +1,6 @@
+{
+  int n=world.rand.nextInt(plantGrassWeight);
+  ProbableItem pi=getRandomItem(plantGrassList,n);
+  if (pi == null)   return;
+  world.setBlockAndMetadataWithNotify(i,j,k,pi.itemid,pi.meta);
+}

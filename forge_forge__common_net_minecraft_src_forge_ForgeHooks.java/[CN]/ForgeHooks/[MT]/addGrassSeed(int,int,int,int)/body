@@ -1,0 +1,4 @@
+{
+  seedGrassList.add(new ProbableItem(item,md,qty,seedGrassWeight,seedGrassWeight + prop));
+  seedGrassWeight+=prop;
+}

@@ -1,0 +1,7 @@
+{
+  wstart=st;
+  wend=e;
+  itemid=item;
+  meta=md;
+  qty=q;
+}

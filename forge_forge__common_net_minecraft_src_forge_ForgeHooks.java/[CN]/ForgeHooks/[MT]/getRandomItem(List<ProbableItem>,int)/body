@@ -1,0 +1,14 @@
+{
+  int n=Collections.binarySearch(list,prop,new Comparator(){
+    public int compare(    Object o1,    Object o2){
+      ProbableItem pi=(ProbableItem)o1;
+      Integer i1=(Integer)o2;
+      if (i1 < pi.wstart)       return 1;
+      if (i1 >= pi.wend)       return -1;
+      return 0;
+    }
+  }
+);
+  if (n < 0)   return null;
+  return list.get(n);
+}

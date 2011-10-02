@@ -1,3 +1,0 @@
-{
-  setBlockHarvestLevel(block,"pickaxe",0);
-}

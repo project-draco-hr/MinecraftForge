@@ -1,0 +1,3 @@
+{
+  ForgeHooks.addPlantGrass(item,md,prop);
+}

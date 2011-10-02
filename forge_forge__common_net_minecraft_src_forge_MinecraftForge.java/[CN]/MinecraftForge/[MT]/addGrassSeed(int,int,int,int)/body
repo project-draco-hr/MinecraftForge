@@ -1,0 +1,3 @@
+{
+  ForgeHooks.addGrassSeed(item,md,qty,prop);
+}
