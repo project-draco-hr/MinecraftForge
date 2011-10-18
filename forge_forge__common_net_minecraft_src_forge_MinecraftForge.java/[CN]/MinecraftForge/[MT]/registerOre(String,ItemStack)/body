@@ -1,0 +1,11 @@
+{
+  List<ItemStack> orelist=oreDict.get(oreClass);
+  if (orelist == null) {
+    orelist=new ArrayList<ItemStack>();
+    oreDict.put(oreClass,orelist);
+  }
+  orelist.add(ore);
+  for (  IOreHandler ioh : oreHandlers) {
+    ioh.registerOre(oreClass,ore);
+  }
+}

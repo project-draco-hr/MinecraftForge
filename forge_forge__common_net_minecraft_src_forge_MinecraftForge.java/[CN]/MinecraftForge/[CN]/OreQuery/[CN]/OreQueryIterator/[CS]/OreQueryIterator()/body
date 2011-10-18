@@ -1,0 +1,19 @@
+{
+  itering=new LinkedList();
+  output=new LinkedList();
+  for (int i=0; i < proto.length; i++) {
+    if (proto[i] instanceof Collection) {
+      Iterator it=((Collection)proto[i]).iterator();
+      if (!it.hasNext()) {
+        output=null;
+        break;
+      }
+      itering.addLast(it);
+      output.addLast(it.next());
+    }
+ else {
+      itering.addLast(proto[i]);
+      output.addLast(proto[i]);
+    }
+  }
+}
