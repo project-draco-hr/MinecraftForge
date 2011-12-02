@@ -1,0 +1,3 @@
+{
+  ForgeHooks.hoeHandlers.add(handler);
+}
