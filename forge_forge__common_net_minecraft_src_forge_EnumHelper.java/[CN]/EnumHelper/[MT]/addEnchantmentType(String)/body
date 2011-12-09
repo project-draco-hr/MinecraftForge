@@ -1,0 +1,6 @@
+{
+  if (!isSetup) {
+    setup();
+  }
+  return addEnum(decompiled[6],EnumEnchantmentType.class,name,new Class[]{},new Object[]{});
+}

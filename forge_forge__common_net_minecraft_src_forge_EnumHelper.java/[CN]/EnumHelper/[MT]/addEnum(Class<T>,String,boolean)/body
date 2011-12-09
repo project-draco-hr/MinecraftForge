@@ -1,0 +1,3 @@
+{
+  return addEnum(decompiled,enumType,enumName,new Class<?>[]{},new Object[]{});
+}

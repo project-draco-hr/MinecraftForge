@@ -1,0 +1,9 @@
+{
+  for (  Field field : Class.class.getDeclaredFields()) {
+    if (field.getName().contains(fieldName)) {
+      field.setAccessible(true);
+      setFailsafeFieldValue(field,enumClass,null);
+      break;
+    }
+  }
+}

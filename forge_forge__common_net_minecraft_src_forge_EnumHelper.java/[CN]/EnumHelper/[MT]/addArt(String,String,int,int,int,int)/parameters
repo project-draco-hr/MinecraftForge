@@ -1,0 +1,6 @@
+String name
+String tile
+int sizeX
+int sizeY
+int offsetX
+int offsetY

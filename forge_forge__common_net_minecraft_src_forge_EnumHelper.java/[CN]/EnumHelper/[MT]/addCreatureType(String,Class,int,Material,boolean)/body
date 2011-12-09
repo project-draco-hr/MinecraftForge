@@ -1,0 +1,6 @@
+{
+  if (!isSetup) {
+    setup();
+  }
+  return addEnum(decompiled[4],EnumCreatureType.class,name,new Class[]{Class.class,int.class,Material.class,boolean.class},new Object[]{typeClass,maxNumber,material,peaceful});
+}

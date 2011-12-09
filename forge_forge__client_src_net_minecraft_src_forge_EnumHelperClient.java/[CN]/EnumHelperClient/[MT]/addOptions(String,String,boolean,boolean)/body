@@ -1,0 +1,6 @@
+{
+  if (!isSetup) {
+    setup();
+  }
+  return addEnum(decompiled[1],EnumOptions.class,name,new Class[]{String.class,boolean.class,boolean.class},new Object[]{langName,isSlider,isToggle});
+}

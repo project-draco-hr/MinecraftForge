@@ -1,0 +1,17 @@
+{
+  for (int x=0; x < ctrs.length; x++) {
+    try {
+      Class<?>[] enumHeaders=new Class[ctrs[x].length + 3];
+      enumHeaders[0]=String.class;
+      enumHeaders[1]=int.class;
+      enumHeaders[2]=String.class;
+      enumHeaders[3]=int.class;
+      for (int y=1; y < ctrs[x].length; y++)       enumHeaders[3 + y]=ctrs[x][y];
+      ctrs[x][0].getDeclaredConstructor(enumHeaders);
+      decompiled[x]=true;
+    }
+ catch (    Exception e) {
+    }
+  }
+  isSetup=true;
+}

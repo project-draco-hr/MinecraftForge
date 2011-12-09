@@ -1,0 +1,6 @@
+{
+  if (!isSetup) {
+    setup();
+  }
+  return addEnum(decompiled[11],EnumToolMaterial.class,name,new Class[]{int.class,int.class,float.class,int.class,int.class},new Object[]{harvestLevel,maxUses,efficiency,damage,enchantability});
+}

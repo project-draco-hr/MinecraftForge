@@ -1,0 +1,6 @@
+{
+  if (!isSetup) {
+    setup();
+  }
+  return addEnum(decompiled[2],EnumOS2.class,name,new Class[]{},new Object[]{});
+}

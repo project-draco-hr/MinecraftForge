@@ -1,0 +1,6 @@
+{
+  if (!isSetup) {
+    setup();
+  }
+  return addEnum(decompiled[3],EnumRarity.class,name,new Class[]{int.class,String.class},new Object[]{color,displayName});
+}

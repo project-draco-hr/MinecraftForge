@@ -1,0 +1,6 @@
+{
+  if (!isSetup) {
+    setup();
+  }
+  return addEnum(decompiled[0],EnumAction.class,name,new Class[]{},new Object[]{});
+}

@@ -1,0 +1,4 @@
+{
+  blankField(enumClass,"enumConstantDirectory");
+  blankField(enumClass,"enumConstants");
+}

@@ -1,0 +1,4 @@
+String name
+int durability
+int[] reductionAmounts
+int enchantability
