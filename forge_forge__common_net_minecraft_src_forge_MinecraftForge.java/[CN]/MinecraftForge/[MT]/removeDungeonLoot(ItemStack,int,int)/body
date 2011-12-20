@@ -1,0 +1,21 @@
+{
+  float rarity=0;
+  ArrayList<ObjectPair<Float,DungeonLoot>> lootTmp=(ArrayList<ObjectPair<Float,DungeonLoot>>)dungeonLoot.clone();
+  if (minCount < 0) {
+    for (    ObjectPair<Float,DungeonLoot> loot : lootTmp) {
+      if (loot.getValue2().equals(item)) {
+        dungeonLoot.remove(loot);
+        rarity+=loot.getValue1();
+      }
+    }
+  }
+ else {
+    for (    ObjectPair<Float,DungeonLoot> loot : lootTmp) {
+      if (loot.getValue2().equals(item,minCount,maxCount)) {
+        dungeonLoot.remove(loot);
+        rarity+=loot.getValue1();
+      }
+    }
+  }
+  return rarity;
+}

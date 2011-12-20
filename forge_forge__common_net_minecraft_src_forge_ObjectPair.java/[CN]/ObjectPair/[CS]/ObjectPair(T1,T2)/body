@@ -1,0 +1,4 @@
+{
+  this.object1=obj1;
+  this.object2=obj2;
+}

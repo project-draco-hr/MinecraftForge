@@ -1,0 +1,3 @@
+{
+  return removeDungeonLoot(item,-1,0);
+}

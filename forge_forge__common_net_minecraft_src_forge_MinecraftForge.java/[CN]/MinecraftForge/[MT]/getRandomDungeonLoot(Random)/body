@@ -1,0 +1,14 @@
+{
+  float maxRarity=0f;
+  for (  ObjectPair<Float,DungeonLoot> loot : dungeonLoot) {
+    maxRarity+=loot.getValue1();
+  }
+  float targetRarity=rand.nextFloat() * maxRarity;
+  for (  ObjectPair<Float,DungeonLoot> loot : dungeonLoot) {
+    if (targetRarity < loot.getValue1()) {
+      return loot.getValue2().generateStack(rand);
+    }
+    targetRarity-=loot.getValue1();
+  }
+  return null;
+}

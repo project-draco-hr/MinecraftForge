@@ -1,0 +1,13 @@
+{
+  if (rarity <= 0) {
+    throw new IllegalArgumentException("Rarity must be greater then zero");
+  }
+  for (  ObjectPair<Float,String> mob : dungeonMobs) {
+    if (name.equals(mob.getValue2())) {
+      mob.setValue1(mob.getValue1() + rarity);
+      return mob.getValue1();
+    }
+  }
+  dungeonMobs.add(new ObjectPair<Float,String>(rarity,name));
+  return rarity;
+}

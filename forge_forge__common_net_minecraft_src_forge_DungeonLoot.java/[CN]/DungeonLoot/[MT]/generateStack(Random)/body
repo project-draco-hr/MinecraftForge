@@ -1,0 +1,5 @@
+{
+  ItemStack ret=this.item.copy();
+  ret.stackSize=minCount + (rand.nextInt(maxCount - minCount + 1));
+  return ret;
+}

@@ -1,0 +1,3 @@
+{
+  addDungeonLoot(item,rarity,1,1);
+}
