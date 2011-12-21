@@ -1,11 +1,9 @@
 {
-  int n;
-  if (!textures.containsKey(name)) {
+  Integer n;
+  n=textures.get(name);
+  if (n == null) {
     n=ModLoader.getMinecraftInstance().renderEngine.getTexture(name);
     textures.put(name,n);
-  }
- else {
-    n=(Integer)textures.get(name);
   }
   if (!inWorld) {
     if (Tessellator.instance.isDrawing) {

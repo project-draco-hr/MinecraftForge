@@ -1,0 +1,4 @@
+{
+  if (sub == key.sub)   return tex - key.tex;
+  return sub - key.sub;
+}

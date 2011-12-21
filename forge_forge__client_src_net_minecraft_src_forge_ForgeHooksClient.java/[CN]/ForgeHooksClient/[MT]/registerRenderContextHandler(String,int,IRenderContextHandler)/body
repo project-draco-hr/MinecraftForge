@@ -1,0 +1,9 @@
+{
+  Integer n;
+  n=textures.get(tex);
+  if (n == null) {
+    n=ModLoader.getMinecraftInstance().renderEngine.getTexture(tex);
+    textures.put(tex,n);
+  }
+  renderHandlers.put(new TesKey(n,sub),handler);
+}

@@ -1,12 +1,21 @@
 {
   renderPass=-1;
   inWorld=false;
-  for (  List l : renderTextureList) {
-    Integer[] tn=(Integer[])l.toArray();
-    GL11.glBindTexture(GL11.GL_TEXTURE_2D,tn[0]);
-    Tessellator t=(Tessellator)tessellators.get(l);
-    t.draw();
+  for (  TesKey tk : renderTextures) {
+    IRenderContextHandler irch=renderHandlers.get(tk);
+    GL11.glBindTexture(GL11.GL_TEXTURE_2D,tk.tex);
+    Tessellator t=tessellators.get(tk);
+    if (irch == null) {
+      t.draw();
+    }
+ else {
+      Tessellator.instance=t;
+      irch.beforeRenderContext();
+      t.draw();
+      irch.afterRenderContext();
+    }
   }
   GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
   Tessellator.renderingWorldRenderer=false;
+  Tessellator.instance=defaultTessellator;
 }

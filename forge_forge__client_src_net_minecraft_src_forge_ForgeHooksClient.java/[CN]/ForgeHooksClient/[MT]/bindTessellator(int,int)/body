@@ -1,16 +1,13 @@
 {
-  List key=Arrays.asList(tex,sub);
+  TesKey key=new TesKey(tex,sub);
   Tessellator t;
-  if (!tessellators.containsKey(key)) {
+  t=tessellators.get(key);
+  if (t == null) {
     t=new Tessellator();
     tessellators.put(key,t);
   }
- else {
-    t=(Tessellator)tessellators.get(key);
-  }
-  if (inWorld && !renderTextureTest.contains(key)) {
-    renderTextureTest.add(key);
-    renderTextureList.add(key);
+  if (inWorld && !renderTextures.contains(key)) {
+    renderTextures.add(key);
     t.startDrawingQuads();
     t.setTranslationD(defaultTessellator.xOffset,defaultTessellator.yOffset,defaultTessellator.zOffset);
   }

@@ -1,0 +1,3 @@
+{
+  ForgeHooksClient.registerRenderContextHandler(tex,sub,handler);
+}

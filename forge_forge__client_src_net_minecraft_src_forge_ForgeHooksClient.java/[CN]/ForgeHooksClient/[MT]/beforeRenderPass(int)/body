@@ -3,7 +3,6 @@
   defaultTessellator=Tessellator.instance;
   Tessellator.renderingWorldRenderer=true;
   GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
-  renderTextureTest.clear();
-  renderTextureList.clear();
+  renderTextures.clear();
   inWorld=true;
 }
