@@ -6,12 +6,20 @@
     textures.put(name,n);
   }
   if (!inWorld) {
+    if (unbindContext != null) {
+      unbindContext.afterRenderContext();
+      unbindContext=null;
+    }
     if (Tessellator.instance.isDrawing) {
       int mode=Tessellator.instance.drawMode;
       Tessellator.instance.draw();
       Tessellator.instance.startDrawing(mode);
     }
     GL11.glBindTexture(3553,n);
+    unbindContext=renderHandlers.get(new TesKey(n,sub));
+    if (unbindContext != null) {
+      unbindContext.beforeRenderContext();
+    }
     return;
   }
   bindTessellator(n,sub);
