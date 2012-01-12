@@ -1,0 +1,3 @@
+{
+  ForgeHooks.minecartHandlers.add(handler);
+}

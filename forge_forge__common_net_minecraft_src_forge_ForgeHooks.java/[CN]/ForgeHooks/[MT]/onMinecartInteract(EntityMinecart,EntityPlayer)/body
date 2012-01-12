@@ -1,0 +1,8 @@
+{
+  boolean canceled=true;
+  for (  IMinecartHandler handler : minecartHandlers) {
+    boolean tmp=handler.onMinecartInteract(minecart,player,canceled);
+    canceled=canceled && tmp;
+  }
+  return canceled;
+}

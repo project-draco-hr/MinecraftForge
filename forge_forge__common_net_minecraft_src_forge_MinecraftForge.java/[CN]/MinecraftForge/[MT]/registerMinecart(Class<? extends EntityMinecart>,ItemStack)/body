@@ -1,0 +1,3 @@
+{
+  registerMinecart(cart,0,item);
+}

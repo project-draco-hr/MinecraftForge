@@ -1,0 +1,7 @@
+{
+  MinecartKey k=minecartForItem.get(item);
+  if (k != null) {
+    return k.type;
+  }
+  return -1;
+}

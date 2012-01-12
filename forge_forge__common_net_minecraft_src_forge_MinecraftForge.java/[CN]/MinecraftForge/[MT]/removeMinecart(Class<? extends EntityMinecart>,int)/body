@@ -1,0 +1,7 @@
+{
+  MinecartKey k=new MinecartKey(minecart,type);
+  ItemStack item=itemForMinecart.remove(k);
+  if (item != null) {
+    minecartForItem.remove(item);
+  }
+}

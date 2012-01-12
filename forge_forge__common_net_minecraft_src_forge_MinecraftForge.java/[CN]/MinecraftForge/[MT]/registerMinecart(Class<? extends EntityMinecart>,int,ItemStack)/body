@@ -1,0 +1,5 @@
+{
+  MinecartKey k=new MinecartKey(minecart,type);
+  itemForMinecart.put(k,item);
+  minecartForItem.put(item,k);
+}
