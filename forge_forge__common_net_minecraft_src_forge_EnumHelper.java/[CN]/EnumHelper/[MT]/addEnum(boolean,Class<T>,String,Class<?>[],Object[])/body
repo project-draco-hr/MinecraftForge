@@ -14,7 +14,7 @@
       }
     }
  else {
-      if ((field.getModifiers() & flags) == flags && field.getType().getName().equals(valueType)) {
+      if ((field.getModifiers() & flags) == flags && field.getType().getName().replace('.','/').equals(valueType)) {
         valuesField=field;
         break;
       }
