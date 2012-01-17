@@ -1,0 +1,6 @@
+{
+  super(mc,controls.width,controls.height,16,(controls.height - 32) + 4,25);
+  this.controls=controls;
+  this.options=options;
+  this.mc=mc;
+}

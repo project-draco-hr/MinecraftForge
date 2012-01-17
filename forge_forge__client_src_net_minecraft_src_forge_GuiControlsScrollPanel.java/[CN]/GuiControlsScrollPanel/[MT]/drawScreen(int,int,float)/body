@@ -1,0 +1,13 @@
+{
+  mouseX=mX;
+  mouseY=mY;
+  if (selected != -1 && !Mouse.isButtonDown(0) && Mouse.getDWheel() == 0) {
+    if (Mouse.next() && Mouse.getEventButtonState()) {
+      System.out.println(Mouse.getEventButton());
+      options.setKeyBinding(selected,-100 + Mouse.getEventButton());
+      selected=-1;
+      KeyBinding.resetKeyBindingArrayAndHash();
+    }
+  }
+  super.drawScreen(mX,mY,f);
+}
