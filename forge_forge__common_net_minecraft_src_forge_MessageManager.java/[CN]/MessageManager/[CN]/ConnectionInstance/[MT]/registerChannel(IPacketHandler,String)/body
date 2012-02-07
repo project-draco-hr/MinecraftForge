@@ -1,0 +1,22 @@
+{
+  ArrayList<IPacketHandler> handlers=channelToHandlers.get(channel);
+  ArrayList<String> channels=handlerToChannels.get(handler);
+  if (handlers == null) {
+    handlers=new ArrayList<IPacketHandler>();
+    channelToHandlers.put(channel,handlers);
+  }
+  if (channels == null) {
+    channels=new ArrayList<String>();
+    handlerToChannels.put(handler,channels);
+  }
+  boolean ret=false;
+  if (!channels.contains(channel)) {
+    channels.add(channel);
+    ret=true;
+  }
+  if (!handlers.contains(handler)) {
+    handlers.add(handler);
+    ret=true;
+  }
+  return ret;
+}

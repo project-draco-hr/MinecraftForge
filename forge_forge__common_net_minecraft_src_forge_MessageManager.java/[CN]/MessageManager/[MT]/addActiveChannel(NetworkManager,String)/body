@@ -1,0 +1,4 @@
+{
+  ConnectionInstance con=getConnection(manager);
+  con.addActiveChannel(channel);
+}

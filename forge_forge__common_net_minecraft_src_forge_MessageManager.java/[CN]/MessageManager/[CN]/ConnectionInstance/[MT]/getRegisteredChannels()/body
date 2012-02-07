@@ -1,0 +1,8 @@
+{
+  int x=0;
+  String[] ret=new String[channelToHandlers.size()];
+  for (  String value : channelToHandlers.keySet()) {
+    ret[x++]=value;
+  }
+  return ret;
+}

@@ -1,0 +1,7 @@
+{
+  if (connections.containsKey(manager)) {
+    ConnectionInstance con=getConnection(manager);
+    return con.getChannelHandlers(channel);
+  }
+  return new IPacketHandler[0];
+}

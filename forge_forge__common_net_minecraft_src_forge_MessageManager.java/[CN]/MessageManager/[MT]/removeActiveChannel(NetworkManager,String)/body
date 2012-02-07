@@ -1,0 +1,6 @@
+{
+  if (connections.containsKey(manager)) {
+    ConnectionInstance con=getConnection(manager);
+    con.removeActiveChannel(channel);
+  }
+}

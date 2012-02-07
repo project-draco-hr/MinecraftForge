@@ -1,0 +1,20 @@
+{
+  boolean ret=false;
+  ArrayList<IPacketHandler> handlers=channelToHandlers.get(channel);
+  ArrayList<String> channels=handlerToChannels.get(handler);
+  if (handlers != null && handlers.contains(handler)) {
+    ret=true;
+    handlers.remove(handler);
+    if (handlers.size() == 0) {
+      channelToHandlers.remove(channel);
+    }
+  }
+  if (channels != null && channels.contains(channel)) {
+    ret=true;
+    channels.remove(channel);
+    if (handlers.size() == 0) {
+      handlerToChannels.remove(handler);
+    }
+  }
+  return ret;
+}

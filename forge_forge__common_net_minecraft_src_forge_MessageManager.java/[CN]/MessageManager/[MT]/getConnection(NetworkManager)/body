@@ -1,0 +1,8 @@
+{
+  ConnectionInstance ret=connections.get(manager);
+  if (ret == null) {
+    ret=new ConnectionInstance(manager);
+    connections.put(manager,ret);
+  }
+  return ret;
+}

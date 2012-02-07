@@ -1,0 +1,9 @@
+{
+  if (connections.containsKey(manager)) {
+    ConnectionInstance con=getConnection(manager);
+    String[] ret=con.unregisterAll();
+    connections.remove(manager);
+    return ret;
+  }
+  return new String[0];
+}

@@ -1,0 +1,7 @@
+{
+  ArrayList<IPacketHandler> handlers=channelToHandlers.get(channel);
+  if (handlers != null) {
+    return handlers.toArray(new IPacketHandler[0]);
+  }
+  return new IPacketHandler[0];
+}

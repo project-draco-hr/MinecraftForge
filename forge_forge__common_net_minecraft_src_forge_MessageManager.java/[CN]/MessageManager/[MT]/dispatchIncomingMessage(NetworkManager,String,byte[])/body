@@ -1,0 +1,13 @@
+{
+  if (channel.equals("Forge")) {
+  }
+  if (connections.contains(manager)) {
+    ConnectionInstance con=getConnection(manager);
+    IPacketHandler[] handlers=con.getChannelHandlers(channel);
+    byte[] tmpData=new byte[data.length];
+    for (    IPacketHandler handler : handlers) {
+      System.arraycopy(data,0,tmpData,0,data.length);
+      handler.onPacketData(manager,channel,tmpData);
+    }
+  }
+}

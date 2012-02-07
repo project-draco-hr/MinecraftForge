@@ -1,0 +1,3 @@
+NetworkManager manager
+IPacketHandler handler
+String channel
