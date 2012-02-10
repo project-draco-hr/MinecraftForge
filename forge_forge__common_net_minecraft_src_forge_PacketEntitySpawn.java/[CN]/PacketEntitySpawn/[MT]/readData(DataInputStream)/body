@@ -1,0 +1,14 @@
+{
+  modID=data.readInt();
+  entityID=data.readInt();
+  typeID=data.readByte();
+  posX=data.readInt();
+  posY=data.readInt();
+  posZ=data.readInt();
+  throwerID=data.readInt();
+  if (throwerID != 0) {
+    speedX=data.readShort();
+    speedY=data.readShort();
+    speedX=data.readShort();
+  }
+}

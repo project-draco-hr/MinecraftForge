@@ -1,0 +1,3 @@
+NetworkManager network
+String channel
+byte[] bytes

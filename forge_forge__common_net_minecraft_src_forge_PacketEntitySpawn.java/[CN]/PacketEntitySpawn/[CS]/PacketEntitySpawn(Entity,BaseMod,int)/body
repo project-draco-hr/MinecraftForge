@@ -1,0 +1,25 @@
+{
+  entityID=ent.entityId;
+  posX=MathHelper.floor_double(ent.posX * 32D);
+  posY=MathHelper.floor_double(ent.posY * 32D);
+  posZ=MathHelper.floor_double(ent.posZ * 32D);
+  typeID=type;
+  modID=mod.toString().hashCode();
+  if (ent instanceof IThrowableEntity) {
+    Entity owner=((IThrowableEntity)ent).getThrower();
+    throwerID=(owner == null ? ent.entityId : owner.entityId);
+    double maxVel=3.9D;
+    double mX=ent.motionX;
+    double mY=ent.motionY;
+    double mZ=ent.motionZ;
+    if (mX < -maxVel)     mX=-maxVel;
+    if (mY < -maxVel)     mY=-maxVel;
+    if (mZ < -maxVel)     mZ=-maxVel;
+    if (mX > maxVel)     mX=maxVel;
+    if (mY > maxVel)     mY=maxVel;
+    if (mZ > maxVel)     mZ=maxVel;
+    speedX=(int)(mX * 8000D);
+    speedY=(int)(mY * 8000D);
+    speedZ=(int)(mZ * 8000D);
+  }
+}

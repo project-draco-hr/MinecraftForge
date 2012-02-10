@@ -1,0 +1,7 @@
+{
+  if (hasInit) {
+    return;
+  }
+  hasInit=true;
+  ForgeHooks.setPacketHandler(new PacketHandlerServer());
+}

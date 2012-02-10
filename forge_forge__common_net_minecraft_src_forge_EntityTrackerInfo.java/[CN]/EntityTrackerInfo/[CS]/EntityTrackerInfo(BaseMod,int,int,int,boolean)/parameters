@@ -1,0 +1,5 @@
+BaseMod mod
+int ID
+int range
+int updateFrequancy
+boolean sendVelocityInfo

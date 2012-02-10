@@ -1,0 +1,9 @@
+{
+  for (  Map.Entry<Class,EntityTrackerInfo> entry : ForgeHooks.entityTrackerMap.entrySet()) {
+    EntityTrackerInfo info=entry.getValue();
+    if (type == info.ID && modID == info.Mod.toString().hashCode()) {
+      return entry.getKey();
+    }
+  }
+  return null;
+}

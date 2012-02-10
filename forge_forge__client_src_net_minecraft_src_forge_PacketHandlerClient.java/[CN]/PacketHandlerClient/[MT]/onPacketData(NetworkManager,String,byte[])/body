@@ -1,0 +1,17 @@
+{
+  DataInputStream data=new DataInputStream(new ByteArrayInputStream(bytes));
+  try {
+    int packetID=data.read();
+switch (packetID) {
+case ForgeHooks.FORGE_PACKET_SPAWN:
+      PacketEntitySpawn pkt=new PacketEntitySpawn();
+    pkt.readData(data);
+  onEntitySpawnPacket(pkt,data,ModLoader.getMinecraftInstance().theWorld);
+break;
+}
+}
+ catch (IOException e) {
+ModLoader.getLogger().log(Level.SEVERE,"Exception in PacketHandlerClient.onPacketData",e);
+e.printStackTrace();
+}
+}

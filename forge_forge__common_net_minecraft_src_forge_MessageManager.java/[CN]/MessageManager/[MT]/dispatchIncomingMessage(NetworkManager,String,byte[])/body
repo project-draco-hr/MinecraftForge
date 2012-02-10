@@ -1,5 +1,10 @@
 {
   if (channel.equals("Forge")) {
+    if (ForgeHooks.getPacketHandler() != null) {
+      byte[] tmpData=new byte[data.length];
+      System.arraycopy(data,0,tmpData,0,data.length);
+      ForgeHooks.getPacketHandler().onPacketData(manager,channel,tmpData);
+    }
   }
   if (connections.contains(manager)) {
     ConnectionInstance con=getConnection(manager);

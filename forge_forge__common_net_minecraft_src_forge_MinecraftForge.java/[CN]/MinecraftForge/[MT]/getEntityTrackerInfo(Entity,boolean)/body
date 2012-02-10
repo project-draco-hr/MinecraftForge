@@ -1,0 +1,10 @@
+{
+  for (  Map.Entry<Class,EntityTrackerInfo> entry : ForgeHooks.entityTrackerMap.entrySet()) {
+    if (entry.getKey().isInstance(entity)) {
+      if (!checkSupers || entry.getKey() == entry.getClass()) {
+        return entry.getValue();
+      }
+    }
+  }
+  return null;
+}
