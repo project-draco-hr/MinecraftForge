@@ -1,4 +1,0 @@
-{
-  this.damageRemove=damageRemove;
-  this.allowRegularComputation=allowRegularCompuation;
-}
