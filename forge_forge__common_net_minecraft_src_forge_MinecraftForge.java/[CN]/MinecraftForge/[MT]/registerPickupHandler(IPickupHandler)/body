@@ -1,0 +1,3 @@
+{
+  ForgeHooks.pickupHandlers.add(handler);
+}

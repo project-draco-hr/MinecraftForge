@@ -1,0 +1,10 @@
+{
+  boolean cont=true;
+  for (  IPickupHandler handler : pickupHandlers) {
+    cont=cont && handler.onItemPickup(player,item);
+    if (!cont || item.item.stackSize <= 0) {
+      return false;
+    }
+  }
+  return cont;
+}
