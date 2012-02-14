@@ -1,0 +1,3 @@
+{
+  return String.format("%d, %d, %f, %d",Priority,AbsorbMax,AbsorbRatio,(AbsorbRatio == 0 ? 0 : (int)(AbsorbMax * 100.0D / AbsorbRatio)));
+}

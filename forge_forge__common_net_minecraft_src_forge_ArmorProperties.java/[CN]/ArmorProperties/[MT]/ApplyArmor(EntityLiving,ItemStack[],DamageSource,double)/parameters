@@ -1,0 +1,4 @@
+EntityLiving entity
+ItemStack[] inventory
+DamageSource source
+double damage
