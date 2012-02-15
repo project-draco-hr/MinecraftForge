@@ -1,5 +1,5 @@
 {
-  if (bl.blockMaterial.getIsHarvestable())   return true;
+  if (bl.blockMaterial.isHarvestable())   return true;
   ItemStack itemstack=player.inventory.getCurrentItem();
   if (itemstack == null)   return false;
   List tc=(List)toolClasses.get(itemstack.itemID);
