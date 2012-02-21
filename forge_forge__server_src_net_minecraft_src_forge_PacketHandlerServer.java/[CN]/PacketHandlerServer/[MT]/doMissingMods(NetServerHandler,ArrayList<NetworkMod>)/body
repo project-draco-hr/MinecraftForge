@@ -1,0 +1,10 @@
+{
+  PacketMissingMods pkt=new PacketMissingMods(true);
+  pkt.Mods=new String[list.size()];
+  int x=0;
+  for (  NetworkMod mod : list) {
+    pkt.Mods[x++]=mod.toString();
+  }
+  net.sendPacket(pkt.getPacket());
+  disconnectUser(net);
+}
