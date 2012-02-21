@@ -1,0 +1,9 @@
+{
+  PacketModList pkt=new PacketModList(false);
+  pkt.Mods=new String[ModLoader.getLoadedMods().size()];
+  int x=0;
+  for (  BaseMod mod : (List<BaseMod>)ModLoader.getLoadedMods()) {
+    pkt.Mods[x++]=mod.toString();
+  }
+  net.addToSendQueue(pkt.getPacket());
+}

@@ -1,0 +1,17 @@
+{
+  ForgeHooks.networkMods.clear();
+  NetworkMod[] mods=MinecraftForge.getNetworkMods();
+  for (  NetworkMod mod : mods) {
+    for (    Entry<Integer,String> entry : pkt.Mods.entrySet()) {
+      if (mod.toString().equals(entry.getValue())) {
+        ForgeHooks.networkMods.put(entry.getKey(),mod);
+      }
+    }
+  }
+  ArrayList<NetworkMod> missing=new ArrayList<NetworkMod>();
+  for (  NetworkMod mod : mods) {
+    if (MinecraftForge.getModID(mod) == -1 && mod.serverSideRequired()) {
+      missing.add(mod);
+    }
+  }
+}

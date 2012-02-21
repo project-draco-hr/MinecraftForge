@@ -1,0 +1,6 @@
+{
+  Length=data.readInt();
+  for (int x=0; x < Length; x++) {
+    Mods.put(data.readInt(),data.readUTF());
+  }
+}

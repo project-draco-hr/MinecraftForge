@@ -1,12 +1,32 @@
 {
   DataInputStream data=new DataInputStream(new ByteArrayInputStream(bytes));
   try {
+    ForgePacket pkt=null;
+    NetClientHandler net=(NetClientHandler)network.getNetHandler();
     int packetID=data.read();
 switch (packetID) {
-case ForgeHooks.FORGE_PACKET_SPAWN:
-      PacketEntitySpawn pkt=new PacketEntitySpawn();
+case ForgePacket.SPAWN:
+      pkt=new PacketEntitySpawn();
     pkt.readData(data);
-  onEntitySpawnPacket(pkt,data,ModLoader.getMinecraftInstance().theWorld);
+  onEntitySpawnPacket((PacketEntitySpawn)pkt,data,ModLoader.getMinecraftInstance().theWorld);
+break;
+case ForgePacket.MODLIST:
+onModListCheck(net);
+break;
+case ForgePacket.MOD_MISSING:
+pkt=new PacketMissingMods(false);
+pkt.readData(data);
+onMissingMods((PacketMissingMods)pkt,net);
+break;
+case ForgePacket.MOD_IDS:
+pkt=new PacketModIDs();
+pkt.readData(data);
+onModIDs((PacketModIDs)pkt);
+break;
+case ForgePacket.OPEN_GUI:
+pkt=new PacketOpenGUI();
+pkt.readData(data);
+onOpenGui((PacketOpenGUI)pkt);
 break;
 }
 }

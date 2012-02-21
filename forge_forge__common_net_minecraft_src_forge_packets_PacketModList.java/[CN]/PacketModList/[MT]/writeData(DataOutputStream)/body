@@ -1,0 +1,8 @@
+{
+  if (!isServer) {
+    data.writeInt(Mods.length);
+    for (    String mod : Mods) {
+      data.writeUTF(mod);
+    }
+  }
+}

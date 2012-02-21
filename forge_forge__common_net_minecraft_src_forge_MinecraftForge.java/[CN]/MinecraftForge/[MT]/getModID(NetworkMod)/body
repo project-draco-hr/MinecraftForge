@@ -1,0 +1,8 @@
+{
+  for (  Entry<Integer,NetworkMod> entry : ForgeHooks.networkMods.entrySet()) {
+    if (entry.getValue() == mod) {
+      return entry.getKey();
+    }
+  }
+  return -1;
+}
