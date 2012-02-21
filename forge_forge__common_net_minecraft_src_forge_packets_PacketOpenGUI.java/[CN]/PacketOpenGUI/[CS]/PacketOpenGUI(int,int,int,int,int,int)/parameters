@@ -1,0 +1,6 @@
+int window
+int mod
+int id
+int x
+int y
+int z

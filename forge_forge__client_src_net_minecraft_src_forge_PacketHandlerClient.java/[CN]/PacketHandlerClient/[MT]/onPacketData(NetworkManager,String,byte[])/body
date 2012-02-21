@@ -23,6 +23,11 @@ pkt=new PacketModIDs();
 pkt.readData(data);
 onModIDs((PacketModIDs)pkt);
 break;
+case ForgePacket.OPEN_GUI:
+pkt=new PacketOpenGUI();
+pkt.readData(data);
+onOpenGui((PacketOpenGUI)pkt);
+break;
 }
 }
  catch (IOException e) {
