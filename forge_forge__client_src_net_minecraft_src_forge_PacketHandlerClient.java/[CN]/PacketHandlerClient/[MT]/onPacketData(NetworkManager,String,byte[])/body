@@ -1,12 +1,14 @@
 {
   DataInputStream data=new DataInputStream(new ByteArrayInputStream(bytes));
   try {
+    ForgePacket pkt=null;
+    NetClientHandler net=(NetClientHandler)network.getNetHandler();
     int packetID=data.read();
 switch (packetID) {
-case ForgeHooks.FORGE_PACKET_SPAWN:
-      PacketEntitySpawn pkt=new PacketEntitySpawn();
+case ForgePacket.SPAWN:
+      pkt=new PacketEntitySpawn();
     pkt.readData(data);
-  onEntitySpawnPacket(pkt,data,ModLoader.getMinecraftInstance().theWorld);
+  onEntitySpawnPacket((PacketEntitySpawn)pkt,data,ModLoader.getMinecraftInstance().theWorld);
 break;
 }
 }

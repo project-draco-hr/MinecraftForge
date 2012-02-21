@@ -1,8 +1,3 @@
 {
-  for (  BaseMod mod : (List<BaseMod>)ModLoader.getLoadedMods()) {
-    if (mod.toString().hashCode() == id) {
-      return mod;
-    }
-  }
-  return null;
+  return ForgeHooks.networkMods.get(id);
 }

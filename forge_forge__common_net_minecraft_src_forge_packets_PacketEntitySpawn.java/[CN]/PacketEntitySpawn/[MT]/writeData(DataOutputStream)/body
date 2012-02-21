@@ -1,0 +1,17 @@
+{
+  data.writeInt(modID);
+  data.writeInt(entityID);
+  data.writeByte(typeID);
+  data.writeInt(posX);
+  data.writeInt(posY);
+  data.writeInt(posZ);
+  data.writeInt(throwerID);
+  if (throwerID != 0) {
+    data.writeShort(speedX);
+    data.writeShort(speedY);
+    data.writeShort(speedZ);
+  }
+  if (handler != null) {
+    handler.writeSpawnData(data);
+  }
+}

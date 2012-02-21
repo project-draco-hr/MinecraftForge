@@ -1,0 +1,11 @@
+{
+  if (isServer) {
+    Length=data.readInt();
+    if (Length >= 0) {
+      Mods=new String[Length];
+      for (int x=0; x < Length; x++) {
+        Mods[x]=data.readUTF();
+      }
+    }
+  }
+}
