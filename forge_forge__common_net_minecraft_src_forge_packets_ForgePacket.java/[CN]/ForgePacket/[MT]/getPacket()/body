@@ -12,5 +12,6 @@
   pkt.channel="Forge";
   pkt.data=bytes.toByteArray();
   pkt.length=pkt.data.length;
+  pkt.isChunkDataPacket=true;
   return pkt;
 }
