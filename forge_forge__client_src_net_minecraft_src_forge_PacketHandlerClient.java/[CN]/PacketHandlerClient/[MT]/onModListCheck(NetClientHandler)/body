@@ -1,4 +1,7 @@
 {
+  if (DEBUG) {
+    System.out.println("S->C: " + (new PacketModList(false)).toString(true));
+  }
   PacketModList pkt=new PacketModList(false);
   pkt.Mods=new String[ModLoader.getLoadedMods().size()];
   int x=0;
@@ -6,4 +9,7 @@
     pkt.Mods[x++]=mod.toString();
   }
   net.addToSendQueue(pkt.getPacket());
+  if (DEBUG) {
+    System.out.println("C->S: " + pkt.toString(true));
+  }
 }

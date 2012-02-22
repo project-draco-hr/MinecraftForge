@@ -1,4 +1,7 @@
 {
+  if (DEBUG) {
+    System.out.println("C->S: " + pkt.toString(true));
+  }
   if (pkt.Length < 0) {
     net.kickPlayer("Invalid mod list response, Size: " + pkt.Length);
     return;

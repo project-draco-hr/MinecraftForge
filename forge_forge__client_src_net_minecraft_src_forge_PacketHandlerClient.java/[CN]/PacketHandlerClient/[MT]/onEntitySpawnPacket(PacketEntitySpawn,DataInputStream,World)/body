@@ -1,4 +1,7 @@
 {
+  if (DEBUG) {
+    System.out.println("S->C: " + packet.toString(true));
+  }
   Class cls=MinecraftForge.getEntityClass(packet.modID,packet.typeID);
   if (cls == null) {
     System.out.println("Could not find entity info for " + Integer.toHexString(packet.modID) + " : "+ packet.typeID);

@@ -1,4 +1,7 @@
 {
+  if (DEBUG) {
+    System.out.println("S->C: " + pkt.toString(true));
+  }
   ForgeHooks.networkMods.clear();
   NetworkMod[] mods=MinecraftForge.getNetworkMods();
   for (  NetworkMod mod : mods) {

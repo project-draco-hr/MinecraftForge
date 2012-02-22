@@ -1,4 +1,7 @@
 {
+  if (DEBUG) {
+    System.out.println("S->C: " + pkt.toString(true));
+  }
   NetworkMod mod=MinecraftForge.getModByID(pkt.ModID);
   if (mod != null) {
     EntityPlayerSP player=(EntityPlayerSP)ModLoader.getMinecraftInstance().thePlayer;

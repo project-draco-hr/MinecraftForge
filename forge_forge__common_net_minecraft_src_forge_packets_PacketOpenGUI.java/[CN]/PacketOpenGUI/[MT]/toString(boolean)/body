@@ -1,0 +1,16 @@
+{
+  if (full) {
+    StringBuilder ret=new StringBuilder();
+    ret.append(toString() + '\n');
+    ret.append("    Window: " + WindowID + '\n');
+    ret.append("    Mod:    " + ModID + '\n');
+    ret.append("    Gui:    " + GuiID + '\n');
+    ret.append("    X:      " + X + '\n');
+    ret.append("    Y:      " + Y + '\n');
+    ret.append("    Z:      " + Z + '\n');
+    return ret.toString();
+  }
+ else {
+    return toString();
+  }
+}

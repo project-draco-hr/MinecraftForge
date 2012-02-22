@@ -5,6 +5,9 @@
   for (  NetworkMod mod : list) {
     pkt.Mods[x++]=mod.toString();
   }
+  if (DEBUG) {
+    System.out.println("S->C: " + pkt.toString(true));
+  }
   net.sendPacket(pkt.getPacket());
   disconnectUser(net);
 }
