@@ -1,0 +1,8 @@
+{
+  for (  IArrowLooseHandler handler : arrowLooseHandlers) {
+    if (handler.onArrowLoose(itemstack,world,player,heldTime)) {
+      return true;
+    }
+  }
+  return false;
+}
