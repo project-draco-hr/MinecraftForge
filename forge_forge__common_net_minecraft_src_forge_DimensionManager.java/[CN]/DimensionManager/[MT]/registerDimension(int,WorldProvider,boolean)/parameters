@@ -1,0 +1,3 @@
+int id
+WorldProvider provider
+boolean keepLoaded

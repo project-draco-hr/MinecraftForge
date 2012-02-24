@@ -1,0 +1,8 @@
+{
+  if (hasInit) {
+    return;
+  }
+  registerDimension(0,new WorldProviderSurface(),true);
+  registerDimension(-1,new WorldProviderHell(),true);
+  registerDimension(1,new WorldProviderEnd(),false);
+}
