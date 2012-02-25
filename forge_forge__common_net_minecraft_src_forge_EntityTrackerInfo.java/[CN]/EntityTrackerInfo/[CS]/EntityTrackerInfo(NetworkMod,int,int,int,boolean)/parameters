@@ -1,5 +1,5 @@
 NetworkMod mod
 int ID
 int range
-int updateFrequancy
+int updateFrequency
 boolean sendVelocityInfo
