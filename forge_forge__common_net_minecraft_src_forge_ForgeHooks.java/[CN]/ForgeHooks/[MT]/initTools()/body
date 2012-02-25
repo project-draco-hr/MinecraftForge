@@ -33,15 +33,15 @@
   MinecraftForge.removeBlockEffectiveness(Block.obsidian,"pickaxe");
   MinecraftForge.removeBlockEffectiveness(Block.oreRedstoneGlowing,"pickaxe");
   Block[] pickeff={Block.cobblestone,Block.stairDouble,Block.stairSingle,Block.stone,Block.sandStone,Block.cobblestoneMossy,Block.oreCoal,Block.ice,Block.netherrack,Block.oreLapis,Block.blockLapis};
-  for (  Block bl : pickeff) {
-    MinecraftForge.setBlockHarvestLevel(bl,"pickaxe",0);
+  for (  Block block : pickeff) {
+    MinecraftForge.setBlockHarvestLevel(block,"pickaxe",0);
   }
   Block[] spadeEff={Block.grass,Block.dirt,Block.sand,Block.gravel,Block.snow,Block.blockSnow,Block.blockClay,Block.tilledField,Block.slowSand,Block.mycelium};
-  for (  Block bl : spadeEff) {
-    MinecraftForge.setBlockHarvestLevel(bl,"shovel",0);
+  for (  Block block : spadeEff) {
+    MinecraftForge.setBlockHarvestLevel(block,"shovel",0);
   }
   Block[] axeEff={Block.planks,Block.bookShelf,Block.wood,Block.chest,Block.stairDouble,Block.stairSingle,Block.pumpkin,Block.pumpkinLantern};
-  for (  Block bl : axeEff) {
-    MinecraftForge.setBlockHarvestLevel(bl,"axe",0);
+  for (  Block block : axeEff) {
+    MinecraftForge.setBlockHarvestLevel(block,"axe",0);
   }
 }

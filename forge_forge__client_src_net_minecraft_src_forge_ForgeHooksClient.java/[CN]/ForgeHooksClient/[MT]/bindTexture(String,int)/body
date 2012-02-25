@@ -1,9 +1,8 @@
 {
-  Integer n;
-  n=textures.get(name);
-  if (n == null) {
-    n=ModLoader.getMinecraftInstance().renderEngine.getTexture(name);
-    textures.put(name,n);
+  Integer texID=textures.get(texture);
+  if (texID == null) {
+    texID=ModLoader.getMinecraftInstance().renderEngine.getTexture(texture);
+    textures.put(texture,texID);
   }
   if (!inWorld) {
     if (unbindContext != null) {
@@ -15,12 +14,12 @@
       Tessellator.instance.draw();
       Tessellator.instance.startDrawing(mode);
     }
-    GL11.glBindTexture(3553,n);
-    unbindContext=renderHandlers.get(new TesKey(n,sub));
+    GL11.glBindTexture(GL11.GL_TEXTURE_2D,texID);
+    unbindContext=renderHandlers.get(new TesKey(texID,subID));
     if (unbindContext != null) {
       unbindContext.beforeRenderContext();
     }
     return;
   }
-  bindTessellator(n,sub);
+  bindTessellator(texID,subID);
 }

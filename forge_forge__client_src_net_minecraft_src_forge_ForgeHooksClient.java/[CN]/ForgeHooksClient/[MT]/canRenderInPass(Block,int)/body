@@ -1,8 +1,9 @@
 {
   if (block instanceof IMultipassRender) {
-    IMultipassRender impr=(IMultipassRender)block;
-    return impr.canRenderInPass(pass);
+    return ((IMultipassRender)block).canRenderInPass(pass);
   }
-  if (pass == block.getRenderBlockPass())   return true;
+  if (pass == block.getRenderBlockPass()) {
+    return true;
+  }
   return false;
 }

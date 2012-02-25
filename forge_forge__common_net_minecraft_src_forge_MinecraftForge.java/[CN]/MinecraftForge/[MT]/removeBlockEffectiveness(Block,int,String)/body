@@ -1,5 +1,5 @@
 {
   ForgeHooks.initTools();
-  List key=Arrays.asList(bl.blockID,md,tclass);
+  List key=Arrays.asList(block.blockID,metadata,toolClass);
   ForgeHooks.toolEffectiveness.remove(key);
 }

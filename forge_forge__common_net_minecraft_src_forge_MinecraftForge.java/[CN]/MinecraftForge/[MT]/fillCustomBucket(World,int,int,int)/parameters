@@ -1,4 +1,4 @@
-World w
-int i
-int j
-int k
+World world
+int X
+int Y
+int Z

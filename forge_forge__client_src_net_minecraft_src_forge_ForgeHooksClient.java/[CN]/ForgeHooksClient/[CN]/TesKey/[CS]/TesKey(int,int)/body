@@ -1,4 +1,4 @@
 {
-  tex=t;
-  sub=s;
+  tex=textureID;
+  sub=subID;
 }

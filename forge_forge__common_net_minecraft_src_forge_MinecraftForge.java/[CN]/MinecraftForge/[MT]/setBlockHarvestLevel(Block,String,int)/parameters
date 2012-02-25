@@ -1,3 +1,3 @@
-Block bl
-String tclass
-int hlevel
+Block block
+String toolClass
+int harvestLevel

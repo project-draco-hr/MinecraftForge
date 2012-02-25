@@ -1,13 +1,13 @@
 {
-  MinecartKey k=null;
-  for (  ItemStack key : minecartForItem.keySet()) {
-    if (key.isItemEqual(item)) {
-      k=minecartForItem.get(k);
+  MinecartKey key=null;
+  for (  ItemStack tmpKey : minecartForItem.keySet()) {
+    if (tmpKey.isItemEqual(item)) {
+      key=minecartForItem.get(key);
       break;
     }
   }
-  if (k != null) {
-    return k.type;
+  if (key != null) {
+    return key.type;
   }
   return -1;
 }

@@ -1,4 +1,4 @@
 {
-  minecart=c;
-  type=t;
+  minecart=cls;
+  type=typtID;
 }

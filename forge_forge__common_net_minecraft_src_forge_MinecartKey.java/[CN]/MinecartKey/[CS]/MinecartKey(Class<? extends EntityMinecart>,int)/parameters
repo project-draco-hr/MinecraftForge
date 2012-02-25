@@ -1,2 +1,2 @@
-Class<? extends EntityMinecart> c
-int t
+Class<? extends EntityMinecart> cls
+int typtID

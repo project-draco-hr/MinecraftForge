@@ -1,6 +1,8 @@
 {
-  int n=world.rand.nextInt(seedGrassWeight);
-  ProbableItem pi=getRandomItem(seedGrassList,n);
-  if (pi == null)   return null;
-  return new ItemStack(pi.itemid,pi.qty,pi.meta);
+  int index=world.rand.nextInt(seedGrassWeight);
+  ProbableItem item=getRandomItem(seedGrassList,index);
+  if (item == null) {
+    return null;
+  }
+  return new ItemStack(item.ItemID,item.Quantity,item.Metadata);
 }

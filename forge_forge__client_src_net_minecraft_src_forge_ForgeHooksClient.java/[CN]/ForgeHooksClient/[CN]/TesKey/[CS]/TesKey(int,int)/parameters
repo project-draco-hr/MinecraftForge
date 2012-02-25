@@ -1,2 +1,2 @@
-int t
-int s
+int textureID
+int subID

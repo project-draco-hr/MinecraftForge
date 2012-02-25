@@ -1,6 +1,8 @@
 {
   for (  IBonemealHandler handler : bonemealHandlers) {
-    if (handler.onUseBonemeal(world,bid,i,j,k))     return true;
+    if (handler.onUseBonemeal(world,blockID,x,y,z)) {
+      return true;
+    }
   }
   return false;
 }

@@ -7,7 +7,9 @@
   boolean pChange=false;
   boolean pFinished=false;
   if (DEBUG) {
-    for (    ArmorProperties prop : armor)     System.out.println(prop);
+    for (    ArmorProperties prop : armor) {
+      System.out.println(prop);
+    }
     System.out.println("========================");
   }
   for (int x=0; x < armor.length; x++) {
@@ -78,6 +80,8 @@
     }
   }
   if (DEBUG) {
-    for (    ArmorProperties prop : armor)     System.out.println(prop);
+    for (    ArmorProperties prop : armor) {
+      System.out.println(prop);
+    }
   }
 }

@@ -1,6 +1,6 @@
 ItemStack hoe
 EntityPlayer player
 World world
-int i
-int j
-int k
+int x
+int y
+int z

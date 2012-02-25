@@ -1,3 +1,3 @@
 {
-  ForgeHooks.addGrassSeed(item,md,qty,prop);
+  ForgeHooks.addGrassSeed(itemID,metadata,quantity,probability);
 }

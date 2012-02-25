@@ -1,9 +1,8 @@
 {
-  Integer n;
-  n=textures.get(tex);
-  if (n == null) {
-    n=ModLoader.getMinecraftInstance().renderEngine.getTexture(tex);
-    textures.put(tex,n);
+  Integer texID=textures.get(texture);
+  if (texID == null) {
+    texID=ModLoader.getMinecraftInstance().renderEngine.getTexture(texture);
+    textures.put(texture,texID);
   }
-  renderHandlers.put(new TesKey(n,sub),handler);
+  renderHandlers.put(new TesKey(texID,subID),handler);
 }

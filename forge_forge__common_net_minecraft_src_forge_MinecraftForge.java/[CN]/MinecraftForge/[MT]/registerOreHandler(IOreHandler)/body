@@ -1,9 +1,9 @@
 {
   oreHandlers.add(handler);
   for (  String key : oreDict.keySet()) {
-    List<ItemStack> val=oreDict.get(key);
-    for (    ItemStack ist : val) {
-      handler.registerOre(key,ist);
+    List<ItemStack> ores=oreDict.get(key);
+    for (    ItemStack stack : ores) {
+      handler.registerOre(key,stack);
     }
   }
 }

@@ -1,2 +1,2 @@
-int tex
-int sub
+int texture
+int subID

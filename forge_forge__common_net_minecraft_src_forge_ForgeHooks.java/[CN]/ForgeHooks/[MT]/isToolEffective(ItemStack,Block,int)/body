@@ -1,9 +1,7 @@
 {
-  List tc=(List)toolClasses.get(ist.itemID);
-  if (tc == null) {
+  List toolClass=(List)toolClasses.get(stack.itemID);
+  if (toolClass == null) {
     return false;
   }
-  Object[] ta=tc.toArray();
-  String cls=(String)ta[0];
-  return toolEffectiveness.contains(Arrays.asList(bl.blockID,md,cls));
+  return toolEffectiveness.contains(Arrays.asList(block.blockID,metadata,(String)toolClass.get(0)));
 }

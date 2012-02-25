@@ -1,15 +1,14 @@
 {
-  TesKey key=new TesKey(tex,sub);
-  Tessellator t;
-  t=tessellators.get(key);
-  if (t == null) {
-    t=new Tessellator();
-    tessellators.put(key,t);
+  TesKey key=new TesKey(texture,subID);
+  Tessellator tess=tessellators.get(key);
+  if (tess == null) {
+    tess=new Tessellator();
+    tessellators.put(key,tess);
   }
   if (inWorld && !renderTextures.contains(key)) {
     renderTextures.add(key);
-    t.startDrawingQuads();
-    t.setTranslationD(defaultTessellator.xOffset,defaultTessellator.yOffset,defaultTessellator.zOffset);
+    tess.startDrawingQuads();
+    tess.setTranslationD(defaultTessellator.xOffset,defaultTessellator.yOffset,defaultTessellator.zOffset);
   }
-  Tessellator.instance=t;
+  Tessellator.instance=tess;
 }

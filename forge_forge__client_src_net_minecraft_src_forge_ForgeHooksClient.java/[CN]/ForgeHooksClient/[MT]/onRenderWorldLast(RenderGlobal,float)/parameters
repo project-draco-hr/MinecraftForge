@@ -1,2 +1,2 @@
-RenderGlobal rg
-float f
+RenderGlobal render
+float partialTicks

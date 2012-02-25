@@ -1,6 +1,6 @@
-RenderGlobal renderglobal
+RenderGlobal render
 EntityPlayer player
-MovingObjectPosition mop
+MovingObjectPosition target
 int i
 ItemStack itemstack
-float f
+float partialTicks

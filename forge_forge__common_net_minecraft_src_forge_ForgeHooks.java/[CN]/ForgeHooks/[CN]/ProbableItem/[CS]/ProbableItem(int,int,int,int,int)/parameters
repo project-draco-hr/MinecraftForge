@@ -1,5 +1,5 @@
 int item
-int md
-int q
-int st
-int e
+int metadata
+int quantity
+int start
+int end

@@ -1,6 +1,6 @@
 {
-  if (item instanceof ITextureProvider) {
-    return ((ITextureProvider)item).getTextureFile();
+  if (obj instanceof ITextureProvider) {
+    return ((ITextureProvider)obj).getTextureFile();
   }
  else {
     return def;

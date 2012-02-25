@@ -1,21 +1,21 @@
 {
   renderPass=-1;
   inWorld=false;
-  for (  TesKey tk : renderTextures) {
-    IRenderContextHandler irch=renderHandlers.get(tk);
-    GL11.glBindTexture(GL11.GL_TEXTURE_2D,tk.tex);
-    Tessellator t=tessellators.get(tk);
-    if (irch == null) {
-      t.draw();
+  for (  TesKey info : renderTextures) {
+    IRenderContextHandler handler=renderHandlers.get(info);
+    GL11.glBindTexture(GL11.GL_TEXTURE_2D,info.tex);
+    Tessellator tess=tessellators.get(info);
+    if (handler == null) {
+      tess.draw();
     }
  else {
-      Tessellator.instance=t;
-      irch.beforeRenderContext();
-      t.draw();
-      irch.afterRenderContext();
+      Tessellator.instance=tess;
+      handler.beforeRenderContext();
+      tess.draw();
+      handler.afterRenderContext();
     }
   }
-  GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
+  GL11.glBindTexture(GL11.GL_TEXTURE_2D,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
   Tessellator.renderingWorldRenderer=false;
   Tessellator.instance=defaultTessellator;
 }

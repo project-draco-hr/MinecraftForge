@@ -1,4 +1,4 @@
-int item
-int md
-int qty
-int prop
+int itemID
+int metadata
+int quantity
+int probability

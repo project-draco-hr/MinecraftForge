@@ -1,5 +1,5 @@
-RenderBlocks rb
-Block bl
-int i
-int j
-int k
+RenderBlocks render
+Block block
+int X
+int Y
+int Z

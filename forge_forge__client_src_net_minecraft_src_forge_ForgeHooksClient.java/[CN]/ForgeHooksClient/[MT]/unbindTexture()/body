@@ -12,7 +12,7 @@
       }
       Tessellator.instance.startDrawing(mode);
     }
-    GL11.glBindTexture(3553,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
+    GL11.glBindTexture(GL11.GL_TEXTURE_2D,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
     return;
   }
 }

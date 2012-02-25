@@ -7,8 +7,8 @@
       return;
     }
     if (file.canWrite()) {
-      FileOutputStream fileoutputstream=new FileOutputStream(file);
-      BufferedWriter buffer=new BufferedWriter(new OutputStreamWriter(fileoutputstream,"8859_1"));
+      FileOutputStream fos=new FileOutputStream(file);
+      BufferedWriter buffer=new BufferedWriter(new OutputStreamWriter(fos,"8859_1"));
       buffer.write("# Configuration file\r\n");
       buffer.write("# Generated on " + DateFormat.getInstance().format(new Date()) + "\r\n");
       buffer.write("\r\n");
@@ -31,7 +31,7 @@
       writeProperties(buffer,itemProperties.values());
       buffer.write("}\r\n\r\n");
       buffer.close();
-      fileoutputstream.close();
+      fos.close();
     }
   }
  catch (  IOException e) {
