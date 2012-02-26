@@ -2,6 +2,6 @@
   Mod=mod;
   this.ID=ID;
   Range=range;
-  UpdateFrequancy=updateFrequancy;
+  UpdateFrequancy=updateFrequency;
   SendVelocityInfo=sendVelocityInfo;
 }
