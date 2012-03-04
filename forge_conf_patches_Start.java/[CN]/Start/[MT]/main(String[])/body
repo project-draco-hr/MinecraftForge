@@ -1,6 +1,6 @@
 {
   try {
-    Field f=Minecraft.class.getDeclaredField("minecraftDir");
+    Field f=Minecraft.class.getDeclaredField("field_6275_Z");
     Field.setAccessible(new Field[]{f},true);
     f.set(null,new File("."));
   }
