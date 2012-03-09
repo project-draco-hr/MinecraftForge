@@ -1,0 +1,3 @@
+{
+  ForgeHooks.chunkLoadHandlers.add(handler);
+}

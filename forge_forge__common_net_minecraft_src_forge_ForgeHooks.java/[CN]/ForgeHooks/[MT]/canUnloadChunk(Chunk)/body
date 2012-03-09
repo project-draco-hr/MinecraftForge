@@ -1,0 +1,8 @@
+{
+  for (  IChunkLoadHandler loader : chunkLoadHandlers) {
+    if (!loader.canUnloadChunk(chunk)) {
+      return false;
+    }
+  }
+  return true;
+}

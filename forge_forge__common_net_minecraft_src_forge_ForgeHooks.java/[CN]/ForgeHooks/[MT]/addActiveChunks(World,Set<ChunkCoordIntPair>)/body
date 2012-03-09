@@ -1,0 +1,5 @@
+{
+  for (  IChunkLoadHandler loader : chunkLoadHandlers) {
+    loader.addActiveChunks(world,chunkList);
+  }
+}
