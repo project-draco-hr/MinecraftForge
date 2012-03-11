@@ -1,6 +1,6 @@
 {
   if (configBlocks == null) {
-    configBlocks=new boolean[Block.blocksList.length];
+    configBlocks=new boolean[256];
     for (int i=0; i < configBlocks.length; ++i) {
       configBlocks[i]=false;
     }
@@ -20,7 +20,7 @@
       return property;
     }
  else {
-      for (int j=Block.blocksList.length - 1; j >= 0; --j) {
+      for (int j=256 - 1; j >= 0; --j) {
         if (Block.blocksList[j] == null && !configBlocks[j]) {
           property.value=Integer.toString(j);
           configBlocks[j]=true;
