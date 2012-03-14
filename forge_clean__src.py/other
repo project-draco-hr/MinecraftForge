@@ -13,7 +13,7 @@ if (__name__ == '__main__'):
                 ret = match.group('full').rstrip('0')
                 if (ret[(-1)] == '.'):
                     ret += '0'
-                return ret
+                return (ret + match.group('type'))
             buf = trailing.sub(strip_zeros_match, buf)
             with open(tmp_file, 'w') as fh:
                 fh.write(buf)
