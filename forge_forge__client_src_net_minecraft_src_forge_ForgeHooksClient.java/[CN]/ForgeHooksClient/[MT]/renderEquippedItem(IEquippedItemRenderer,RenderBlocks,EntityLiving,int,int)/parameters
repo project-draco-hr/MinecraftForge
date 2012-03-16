@@ -1,0 +1,5 @@
+IEquippedItemRenderer customRenderer
+RenderBlocks renderBlocks
+EntityLiving entity
+int itemID
+int metadata
