@@ -1,0 +1,4 @@
+{
+  customEntityItemRenderers[itemID]=renderer;
+  applyEntityItemRotation[itemID]=applyRotationEffect;
+}

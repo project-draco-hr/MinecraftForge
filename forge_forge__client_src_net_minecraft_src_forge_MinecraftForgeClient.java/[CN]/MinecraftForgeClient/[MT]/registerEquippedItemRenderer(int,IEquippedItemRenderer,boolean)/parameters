@@ -1,0 +1,3 @@
+int itemID
+IEquippedItemRenderer renderer
+boolean renderAsBlock

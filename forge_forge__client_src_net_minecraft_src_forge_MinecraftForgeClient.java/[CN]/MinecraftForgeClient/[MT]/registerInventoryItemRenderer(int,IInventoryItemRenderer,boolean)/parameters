@@ -1,0 +1,3 @@
+int itemID
+IInventoryItemRenderer renderer
+boolean renderIn3d
