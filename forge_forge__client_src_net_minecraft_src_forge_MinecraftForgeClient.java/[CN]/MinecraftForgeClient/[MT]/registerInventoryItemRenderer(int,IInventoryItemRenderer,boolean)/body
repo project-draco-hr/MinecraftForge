@@ -1,4 +1,4 @@
 {
   customInventoryItemRenderers[itemID]=renderer;
-  render3dInventoryItem[itemID]=renderIn3d;
+  renderInInventoryAsBlock[itemID]=renderAsBlock;
 }

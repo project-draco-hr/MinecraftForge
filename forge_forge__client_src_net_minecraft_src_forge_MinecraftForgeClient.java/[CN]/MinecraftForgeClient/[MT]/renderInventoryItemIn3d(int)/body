@@ -1,3 +1,0 @@
-{
-  return render3dInventoryItem[itemID];
-}
