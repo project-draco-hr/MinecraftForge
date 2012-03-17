@@ -1,4 +1,3 @@
 IItemRenderer customRenderer
 RenderBlocks renderBlocks
-int itemID
-int metadata
+EntityItem item

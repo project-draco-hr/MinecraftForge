@@ -1,0 +1,3 @@
+{
+  customRenderer.renderEntityItem(renderBlocks,item);
+}
