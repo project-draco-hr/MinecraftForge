@@ -1,4 +1,5 @@
 {
   customEntityItemRenderers[itemID]=renderer;
   applyEntityItemRotation[itemID]=applyRotationEffect;
+  applyEntityItemBobbing[itemID]=applyBobbingEffect;
 }
