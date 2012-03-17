@@ -1,4 +1,0 @@
-int itemID
-IEntityItemRenderer renderer
-boolean applyRotationEffect
-boolean applyBobbingEffect

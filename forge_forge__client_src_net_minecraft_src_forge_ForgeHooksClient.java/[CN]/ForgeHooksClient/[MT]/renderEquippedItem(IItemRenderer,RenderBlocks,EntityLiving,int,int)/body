@@ -1,5 +1,5 @@
 {
-  if (MinecraftForgeClient.renderEquippedItemAsBlock(itemID)) {
+  if (customRenderer.renderEquippedItemAsBlock()) {
     customRenderer.renderEquippedItem(renderBlocks,entity,itemID,metadata);
   }
  else {

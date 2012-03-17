@@ -1,4 +1,0 @@
-{
-  customInventoryItemRenderers[itemID]=renderer;
-  renderInInventoryAsBlock[itemID]=renderAsBlock;
-}

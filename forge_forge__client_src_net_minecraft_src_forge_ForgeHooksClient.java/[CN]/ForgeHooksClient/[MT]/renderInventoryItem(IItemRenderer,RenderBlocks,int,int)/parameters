@@ -1,4 +1,4 @@
-IInventoryItemRenderer customRenderer
+IItemRenderer customRenderer
 RenderBlocks renderBlocks
 int itemID
 int metadata

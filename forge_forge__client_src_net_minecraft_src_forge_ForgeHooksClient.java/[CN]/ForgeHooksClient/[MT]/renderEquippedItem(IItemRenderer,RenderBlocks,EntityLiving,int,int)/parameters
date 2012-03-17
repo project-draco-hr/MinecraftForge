@@ -1,4 +1,4 @@
-IEquippedItemRenderer customRenderer
+IItemRenderer customRenderer
 RenderBlocks renderBlocks
 EntityLiving entity
 int itemID

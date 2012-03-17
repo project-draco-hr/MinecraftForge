@@ -1,4 +1,0 @@
-{
-  customEquippedItemRenderers[itemID]=renderer;
-  renderEquippedAsBlock[itemID]=renderAsBlock;
-}

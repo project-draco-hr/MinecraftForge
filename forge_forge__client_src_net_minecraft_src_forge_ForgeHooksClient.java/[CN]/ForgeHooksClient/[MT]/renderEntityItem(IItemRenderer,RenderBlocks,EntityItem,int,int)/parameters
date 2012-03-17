@@ -1,4 +1,4 @@
-IEntityItemRenderer customRenderer
+IItemRenderer customRenderer
 RenderBlocks renderBlocks
 EntityItem item
 int itemID
