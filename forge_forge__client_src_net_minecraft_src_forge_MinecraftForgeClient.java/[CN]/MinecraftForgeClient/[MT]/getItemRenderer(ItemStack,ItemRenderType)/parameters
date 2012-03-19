@@ -1,2 +1,2 @@
-int itemID
+ItemStack item
 ItemRenderType type

@@ -1,0 +1,7 @@
+{
+  IItemRenderer renderer=customItemRenderers[item.itemID];
+  if (renderer != null && renderer.handleRenderType(item,type)) {
+    return customItemRenderers[item.itemID];
+  }
+  return null;
+}

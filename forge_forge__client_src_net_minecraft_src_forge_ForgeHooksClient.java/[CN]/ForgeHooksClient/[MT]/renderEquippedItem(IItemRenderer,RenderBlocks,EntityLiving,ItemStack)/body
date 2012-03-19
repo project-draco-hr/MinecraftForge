@@ -1,5 +1,5 @@
 {
-  if (customRenderer.renderEquippedItemAsBlock(item.itemID)) {
+  if (customRenderer.renderEquippedItemAsBlock(item)) {
     GL11.glPushMatrix();
     GL11.glTranslatef(-0.5F,-0.5F,-0.5F);
     customRenderer.renderEquippedItem(renderBlocks,entity,item);
