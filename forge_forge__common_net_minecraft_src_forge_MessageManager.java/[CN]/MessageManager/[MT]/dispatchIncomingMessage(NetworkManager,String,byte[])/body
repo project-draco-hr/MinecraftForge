@@ -6,7 +6,7 @@
       ForgeHooks.getPacketHandler().onPacketData(manager,channel,tmpData);
     }
   }
-  if (connections.contains(manager)) {
+  if (connections.containsKey(manager)) {
     ConnectionInstance con=getConnection(manager);
     IPacketHandler[] handlers=con.getChannelHandlers(channel);
     byte[] tmpData=new byte[data.length];
