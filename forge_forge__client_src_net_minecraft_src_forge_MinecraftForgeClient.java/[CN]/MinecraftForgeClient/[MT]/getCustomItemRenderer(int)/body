@@ -1,0 +1,4 @@
+{
+  MinecraftForgeClient.checkMinecraftVersion("Minecraft Minecraft 1.2.3","Deprecated call to MC 1.2.3 MinecraftForgeClient.getCustomItemRenderer on: %version%");
+  return customItemRenderersOld[itemID];
+}

@@ -1,0 +1,5 @@
+ICustomItemRenderer customRenderer
+RenderBlocks renderBlocks
+int itemID
+int metadata
+float brightness
