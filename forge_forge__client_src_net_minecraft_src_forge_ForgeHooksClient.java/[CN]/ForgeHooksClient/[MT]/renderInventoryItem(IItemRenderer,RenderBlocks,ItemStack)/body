@@ -1,0 +1,3 @@
+{
+  customRenderer.renderInventoryItem(renderBlocks,item);
+}
