@@ -8,4 +8,10 @@
       }
     }
   }
+ else {
+    Length=data.readInt();
+    for (int x=0; x < Length; x++) {
+      ModIDs.put(data.readInt(),data.readUTF());
+    }
+  }
 }

@@ -1,11 +1,11 @@
 {
   if (DEBUG) {
-    System.out.println("S->C: " + pkt.toString(true));
+    System.out.println("S->C: " + packet.toString(true));
   }
   ForgeHooks.networkMods.clear();
   NetworkMod[] mods=MinecraftForge.getNetworkMods();
   for (  NetworkMod mod : mods) {
-    for (    Entry<Integer,String> entry : pkt.Mods.entrySet()) {
+    for (    Entry<Integer,String> entry : packet.ModIDs.entrySet()) {
       if (mod.toString().equals(entry.getValue())) {
         ForgeHooks.networkMods.put(entry.getKey(),mod);
       }
@@ -16,5 +16,15 @@
     if (MinecraftForge.getModID(mod) == -1 && mod.serverSideRequired()) {
       missing.add(mod);
     }
+  }
+  PacketModList pkt=new PacketModList(false);
+  pkt.Mods=new String[ModLoader.getLoadedMods().size()];
+  int x=0;
+  for (  BaseMod mod : (List<BaseMod>)ModLoader.getLoadedMods()) {
+    pkt.Mods[x++]=mod.toString();
+  }
+  net.addToSendQueue(pkt.getPacket());
+  if (DEBUG) {
+    System.out.println("C->S: " + pkt.toString(true));
   }
 }

@@ -32,7 +32,4 @@
   if (missing.size() > 0) {
     doMissingMods(net,missing);
   }
- else {
-    sendModIDs(net,serverMods);
-  }
 }

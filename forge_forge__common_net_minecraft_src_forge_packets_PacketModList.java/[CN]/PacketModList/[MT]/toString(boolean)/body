@@ -7,6 +7,11 @@
         ret.append("    " + mod + '\n');
       }
     }
+ else     if (ModIDs.size() != 0) {
+      for (      Entry<Integer,String> mod : ModIDs.entrySet()) {
+        ret.append(String.format("    %03d ",mod.getKey()) + mod.getValue() + '\n');
+      }
+    }
     return ret.toString();
   }
  else {

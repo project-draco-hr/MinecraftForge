@@ -1,7 +1,0 @@
-{
-  data.writeInt(Mods.size());
-  for (  Entry<Integer,String> entry : Mods.entrySet()) {
-    data.writeInt(entry.getKey());
-    data.writeUTF(entry.getValue());
-  }
-}

@@ -5,4 +5,11 @@
       data.writeUTF(mod);
     }
   }
+ else {
+    data.writeInt(ModIDs.size());
+    for (    Entry<Integer,String> entry : ModIDs.entrySet()) {
+      data.writeInt(entry.getKey());
+      data.writeUTF(entry.getValue());
+    }
+  }
 }
