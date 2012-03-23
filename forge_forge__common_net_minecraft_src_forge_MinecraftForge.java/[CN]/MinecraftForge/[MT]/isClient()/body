@@ -1,0 +1,12 @@
+{
+  if (isClient == -1) {
+    try {
+      Class.forName("net.minecraft.client.Minecraft",false,MinecraftForge.class.getClassLoader());
+      isClient=1;
+    }
+ catch (    ClassNotFoundException e) {
+      isClient=0;
+    }
+  }
+  return isClient == 1;
+}
