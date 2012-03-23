@@ -20,7 +20,7 @@
       return property;
     }
  else {
-      for (int j=256 - 1; j >= 0; --j) {
+      for (int j=configBlocks.length - 1; j >= 0; --j) {
         if (Block.blocksList[j] == null && !configBlocks[j]) {
           property.value=Integer.toString(j);
           configBlocks[j]=true;
