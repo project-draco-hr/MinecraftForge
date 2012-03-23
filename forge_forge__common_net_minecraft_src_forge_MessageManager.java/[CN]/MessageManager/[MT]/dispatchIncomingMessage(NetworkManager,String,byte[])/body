@@ -1,4 +1,7 @@
 {
+  if (data == null) {
+    data=new byte[0];
+  }
   if (channel.equals("Forge")) {
     if (ForgeHooks.getPacketHandler() != null) {
       byte[] tmpData=new byte[data.length];
