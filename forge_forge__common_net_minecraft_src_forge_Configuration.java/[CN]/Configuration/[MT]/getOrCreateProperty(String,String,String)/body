@@ -2,7 +2,8 @@
   category=category.toLowerCase();
   Map<String,Property> source=categories.get(category);
   if (source == null) {
-    throw new RuntimeException("unknown section " + category);
+    source=new TreeMap<String,Property>();
+    categories.put(category,source);
   }
   if (source.containsKey(key)) {
     return source.get(key);

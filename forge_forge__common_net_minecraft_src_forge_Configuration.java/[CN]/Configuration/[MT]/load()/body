@@ -36,7 +36,8 @@ case '{':
           String scopeName=line.substring(nameStart,nameEnd + 1);
         currentMap=categories.get(scopeName);
       if (currentMap == null) {
-        throw new RuntimeException("unknown section " + scopeName);
+        currentMap=new TreeMap<String,Property>();
+        categories.put(scopeName,currentMap);
       }
     break;
 case '}':
