@@ -1,27 +1,3 @@
 {
-  TreeMap<String,Property> source=null;
-switch (kind) {
-case GENERAL_PROPERTY:
-    source=generalProperties;
-  break;
-case BLOCK_PROPERTY:
-source=blockProperties;
-break;
-case ITEM_PROPERTY:
-source=itemProperties;
-break;
-}
-if (source.containsKey(key)) {
-return source.get(key);
-}
- else if (defaultValue != null) {
-Property property=new Property();
-source.put(key,property);
-property.name=key;
-property.value=defaultValue;
-return property;
-}
- else {
-return null;
-}
+  return getOrCreateProperty(key,getCategoryFromIndex(kind),defaultValue);
 }

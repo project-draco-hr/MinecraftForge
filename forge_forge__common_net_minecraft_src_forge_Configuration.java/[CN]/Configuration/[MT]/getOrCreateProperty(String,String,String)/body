@@ -1,0 +1,20 @@
+{
+  category=category.toLowerCase();
+  Map<String,Property> source=categories.get(category);
+  if (source == null) {
+    throw new RuntimeException("unknown section " + category);
+  }
+  if (source.containsKey(key)) {
+    return source.get(key);
+  }
+ else   if (defaultValue != null) {
+    Property property=new Property();
+    source.put(key,property);
+    property.name=key;
+    property.value=defaultValue;
+    return property;
+  }
+ else {
+    return null;
+  }
+}

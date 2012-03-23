@@ -1,0 +1,3 @@
+{
+  categories.put(category.toLowerCase(),new TreeMap<String,Property>());
+}
