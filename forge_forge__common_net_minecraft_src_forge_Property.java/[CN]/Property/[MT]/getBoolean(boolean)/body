@@ -1,0 +1,8 @@
+{
+  if (isBooleanValue()) {
+    return Boolean.parseBoolean(value);
+  }
+ else {
+    return _default;
+  }
+}
