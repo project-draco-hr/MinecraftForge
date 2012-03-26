@@ -1,0 +1,10 @@
+{
+  Property prop=getOrCreateProperty(key,category,Boolean.toString(defaultValue));
+  if ("true".equals(prop.value.toLowerCase()) || "false".equals(prop.value.toLowerCase())) {
+    return prop;
+  }
+ else {
+    prop.value=Boolean.toString(defaultValue);
+    return prop;
+  }
+}

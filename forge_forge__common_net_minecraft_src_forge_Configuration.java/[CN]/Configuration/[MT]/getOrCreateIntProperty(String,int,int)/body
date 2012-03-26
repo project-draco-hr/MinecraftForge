@@ -1,11 +1,3 @@
 {
-  Property prop=getOrCreateProperty(key,kind,Integer.toString(defaultValue));
-  try {
-    Integer.parseInt(prop.value);
-    return prop;
-  }
- catch (  NumberFormatException e) {
-    prop.value=Integer.toString(defaultValue);
-    return prop;
-  }
+  return getOrCreateIntProperty(key,getCategoryFromIndex(kind),defaultValue);
 }

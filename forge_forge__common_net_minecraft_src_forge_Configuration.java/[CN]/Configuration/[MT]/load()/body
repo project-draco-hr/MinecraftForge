@@ -10,7 +10,7 @@
       FileInputStream fileinputstream=new FileInputStream(file);
       BufferedReader buffer=new BufferedReader(new InputStreamReader(fileinputstream,"8859_1"));
       String line;
-      TreeMap<String,Property> currentMap=null;
+      Map<String,Property> currentMap=null;
       while (true) {
         line=buffer.readLine();
         if (line == null) {
@@ -34,22 +34,15 @@ case '#':
             continue;
 case '{':
           String scopeName=line.substring(nameStart,nameEnd + 1);
-        if (scopeName.equals("general")) {
-          currentMap=generalProperties;
-        }
- else         if (scopeName.equals("block")) {
-          currentMap=blockProperties;
-        }
- else         if (scopeName.equals("item")) {
-          currentMap=itemProperties;
-        }
- else {
-          throw new RuntimeException("unknown section " + scopeName);
-        }
-      break;
+        currentMap=categories.get(scopeName);
+      if (currentMap == null) {
+        currentMap=new TreeMap<String,Property>();
+        categories.put(scopeName,currentMap);
+      }
+    break;
 case '}':
-    currentMap=null;
-  break;
+  currentMap=null;
+break;
 case '=':
 String propertyName=line.substring(nameStart,nameEnd + 1);
 if (currentMap == null) {

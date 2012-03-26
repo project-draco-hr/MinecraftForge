@@ -1,3 +1,6 @@
 {
   this.file=file;
+  categories.put(CATEGORY_GENERAL,generalProperties);
+  categories.put(CATEGORY_BLOCK,generalProperties);
+  categories.put(CATEGORY_ITEM,itemProperties);
 }

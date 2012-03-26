@@ -12,24 +12,14 @@
       buffer.write("# Configuration file\r\n");
       buffer.write("# Generated on " + DateFormat.getInstance().format(new Date()) + "\r\n");
       buffer.write("\r\n");
-      buffer.write("###########\r\n");
-      buffer.write("# General #\r\n");
-      buffer.write("###########\r\n\r\n");
-      buffer.write("general {\r\n");
-      writeProperties(buffer,generalProperties.values());
-      buffer.write("}\r\n\r\n");
-      buffer.write("#########\r\n");
-      buffer.write("# Block #\r\n");
-      buffer.write("#########\r\n\r\n");
-      buffer.write("block {\r\n");
-      writeProperties(buffer,blockProperties.values());
-      buffer.write("}\r\n\r\n");
-      buffer.write("########\r\n");
-      buffer.write("# Item #\r\n");
-      buffer.write("########\r\n\r\n");
-      buffer.write("item {\r\n");
-      writeProperties(buffer,itemProperties.values());
-      buffer.write("}\r\n\r\n");
+      for (      Map.Entry<String,Map<String,Property>> category : categories.entrySet()) {
+        buffer.write("####################\r\n");
+        buffer.write("# " + category.getKey() + " \r\n");
+        buffer.write("####################\r\n\r\n");
+        buffer.write(category.getKey() + " {\r\n");
+        writeProperties(buffer,category.getValue().values());
+        buffer.write("}\r\n\r\n");
+      }
       buffer.close();
       fos.close();
     }

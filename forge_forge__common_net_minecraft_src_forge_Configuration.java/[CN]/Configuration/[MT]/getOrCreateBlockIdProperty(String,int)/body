@@ -5,8 +5,9 @@
       configBlocks[i]=false;
     }
   }
+  Map<String,Property> blockProperties=categories.get(CATEGORY_BLOCK);
   if (blockProperties.containsKey(key)) {
-    Property property=getOrCreateIntProperty(key,Configuration.BLOCK_PROPERTY,defaultId);
+    Property property=getOrCreateIntProperty(key,Configuration.CATEGORY_BLOCK,defaultId);
     configBlocks[Integer.parseInt(property.value)]=true;
     return property;
   }
