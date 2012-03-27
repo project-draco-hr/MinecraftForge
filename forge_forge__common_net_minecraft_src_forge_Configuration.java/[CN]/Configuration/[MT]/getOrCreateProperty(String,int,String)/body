@@ -1,3 +1,0 @@
-{
-  return getOrCreateProperty(key,getCategoryFromIndex(kind),defaultValue);
-}

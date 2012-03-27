@@ -1,3 +1,0 @@
-{
-  return getOrCreateBooleanProperty(key,getCategoryFromIndex(kind),defaultValue);
-}
