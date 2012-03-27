@@ -1,5 +1,5 @@
 {
   for (  IConnectionHandler handler : connectionHandlers) {
-    handler.OnDisconnect(network,message,args);
+    handler.onDisconnect(network,message,args);
   }
 }
