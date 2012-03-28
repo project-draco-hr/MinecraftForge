@@ -1,0 +1,4 @@
+{
+  URL url=modFile.toURI().toURL();
+  super.addURL(url);
+}

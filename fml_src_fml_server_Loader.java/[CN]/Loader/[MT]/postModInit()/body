@@ -1,0 +1,8 @@
+{
+  state=State.POSTINIT;
+  for (  ModContainer mod : mods) {
+    if (mod.wantsPostInit()) {
+      mod.postInit();
+    }
+  }
+}

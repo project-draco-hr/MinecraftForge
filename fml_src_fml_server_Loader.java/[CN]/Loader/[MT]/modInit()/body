@@ -1,0 +1,6 @@
+{
+  state=State.INIT;
+  for (  ModContainer mod : mods) {
+    mod.init();
+  }
+}

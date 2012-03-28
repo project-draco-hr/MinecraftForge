@@ -1,0 +1,19 @@
+{
+  extendClassLoader(modFile);
+  try {
+    ZipFile jar=new ZipFile(modFile);
+    for (    ZipEntry ze : Collections.list(jar.entries())) {
+      Matcher match=modClass.matcher(ze.getName());
+      if (match.find()) {
+        String pkg=match.group(1).replace('/','.');
+        String clazzName=pkg + match.group(2);
+        loadModClass(modFile,ze.getName(),clazzName);
+      }
+    }
+  }
+ catch (  Exception e) {
+    LOG.warning(String.format("Zip file %s failed to read properly",modFile.getName()));
+    LOG.throwing("fml.server.Loader","attemptFileLoad",e);
+    state=State.ERRORED;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  state=State.NOINIT;
+  load();
+  preModInit();
+  modInit();
+  postModInit();
+  state=State.UP;
+}

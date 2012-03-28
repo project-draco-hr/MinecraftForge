@@ -1,0 +1,15 @@
+{
+  extendClassLoader(modDir);
+  File[] content=modDir.listFiles(new FilenameFilter(){
+    @Override public boolean accept(    File dir,    String name){
+      return modClass.matcher(name).find();
+    }
+  }
+);
+  for (  File modClassFile : content) {
+    LOG.fine(String.format("Found a mod class %s in directory %s. Attempting to load it",modClassFile.getName(),modDir.getName()));
+    String clazzName=modClass.matcher(modClassFile.getName()).group(2);
+    loadModClass(modDir,modClassFile.getName(),clazzName);
+    LOG.fine(String.format("Successfully loaded mod class %s",modClassFile.getName()));
+  }
+}

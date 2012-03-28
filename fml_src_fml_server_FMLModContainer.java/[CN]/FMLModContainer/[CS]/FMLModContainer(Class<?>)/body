@@ -1,0 +1,9 @@
+{
+  modDescriptor=clazz.getAnnotation(Mod.class);
+  try {
+    modInstance=clazz.newInstance();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

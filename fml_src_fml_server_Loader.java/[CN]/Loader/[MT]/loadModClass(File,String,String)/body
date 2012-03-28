@@ -1,0 +1,17 @@
+{
+  try {
+    Class<?> clazz=Class.forName(clazzName,true,modClassLoader);
+    if (clazz.isAnnotationPresent(Mod.class)) {
+      mods.add(FMLModContainer.buildFor(clazz));
+    }
+ else     if (clazz.isAssignableFrom(BaseMod.class)) {
+    }
+ else {
+    }
+  }
+ catch (  ClassNotFoundException e) {
+    LOG.warning(String.format("Failed to load mod class %s in %s",classFileName,classSource.getName()));
+    LOG.throwing("fml.server.Loader","attemptDirLoad",e);
+    state=State.ERRORED;
+  }
+}

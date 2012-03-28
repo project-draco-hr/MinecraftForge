@@ -1,0 +1,8 @@
+{
+  state=State.PREINIT;
+  for (  ModContainer mod : mods) {
+    if (mod.wantsPreInit()) {
+      mod.preInit();
+    }
+  }
+}
