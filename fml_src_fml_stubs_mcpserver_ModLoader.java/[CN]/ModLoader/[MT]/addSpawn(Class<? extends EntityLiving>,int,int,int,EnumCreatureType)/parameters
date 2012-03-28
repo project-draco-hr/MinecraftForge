@@ -1,0 +1,5 @@
+Class<? extends EntityLiving> entityClass
+int weightedProb
+int min
+int max
+EnumCreatureType spawnList
