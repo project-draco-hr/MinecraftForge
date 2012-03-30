@@ -1,0 +1,3 @@
+{
+  Block.blocksList[block.blockID]=block;
+}

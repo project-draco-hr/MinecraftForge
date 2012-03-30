@@ -2,6 +2,7 @@
   state=State.POSTINIT;
   for (  ModContainer mod : mods) {
     if (mod.wantsPostInit()) {
+      LOG.finer(String.format("Post-initializing %s",mod.getName()));
       mod.postInit();
     }
   }

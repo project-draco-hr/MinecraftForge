@@ -2,7 +2,9 @@
   state=State.PREINIT;
   for (  ModContainer mod : mods) {
     if (mod.wantsPreInit()) {
+      LOG.finer(String.format("Pre-initializing %s",mod.getName()));
       mod.preInit();
+      namedMods.put(mod.getName(),mod);
     }
   }
 }

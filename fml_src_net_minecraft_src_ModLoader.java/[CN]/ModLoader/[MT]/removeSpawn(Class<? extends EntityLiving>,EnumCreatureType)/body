@@ -1,0 +1,3 @@
+{
+  CommonRegistry.removeSpawn(entityClass,spawnList);
+}

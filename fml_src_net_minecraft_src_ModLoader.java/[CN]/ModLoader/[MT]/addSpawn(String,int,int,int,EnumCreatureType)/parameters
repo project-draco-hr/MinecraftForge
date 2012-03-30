@@ -1,0 +1,5 @@
+String entityName
+int weightedProb
+int min
+int max
+EnumCreatureType spawnList

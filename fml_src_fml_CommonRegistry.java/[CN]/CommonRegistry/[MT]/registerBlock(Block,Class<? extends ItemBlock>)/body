@@ -1,0 +1,9 @@
+{
+  registerBlock(block);
+  try {
+    ItemBlock bl=itemclass.getConstructor(int.class).newInstance(block.blockID);
+    Item.itemsList[bl.shiftedIndex - 256]=bl;
+  }
+ catch (  Exception e) {
+  }
+}

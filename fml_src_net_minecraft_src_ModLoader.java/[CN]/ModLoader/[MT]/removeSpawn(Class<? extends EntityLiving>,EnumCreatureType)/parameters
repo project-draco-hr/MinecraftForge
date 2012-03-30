@@ -1,0 +1,2 @@
+Class<? extends EntityLiving> entityClass
+EnumCreatureType spawnList

@@ -4,10 +4,12 @@
     ZipFile jar=new ZipFile(modFile);
     for (    ZipEntry ze : Collections.list(jar.entries())) {
       Matcher match=modClass.matcher(ze.getName());
-      if (match.find()) {
+      if (match.matches()) {
         String pkg=match.group(1).replace('/','.');
         String clazzName=pkg + match.group(2);
+        LOG.fine(String.format("Found a mod class %s in file %s. Attempting to load it",clazzName,modFile.getName()));
         loadModClass(modFile,ze.getName(),clazzName);
+        LOG.fine(String.format("Mod class %s loaded successfully",clazzName,modFile.getName()));
       }
     }
   }

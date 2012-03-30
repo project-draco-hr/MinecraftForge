@@ -1,3 +1,14 @@
 {
+  LOG.setLevel(Level.ALL);
+  FileHandler fileHandler;
+  try {
+    fileHandler=new FileHandler("ForgeModLoader-%g.log",0,3);
+    System.setProperty("java.util.logging.SimpleFormatter.format","%1$tc %2$s%n%4$s: %5$s%6$s%n");
+    fileHandler.setFormatter(new SimpleFormatter());
+    fileHandler.setLevel(Level.ALL);
+    LOG.addHandler(fileHandler);
+  }
+ catch (  Exception e) {
+  }
   instance=new Loader();
 }

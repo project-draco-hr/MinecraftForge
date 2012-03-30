@@ -1,8 +1,11 @@
 {
+  mods=new ArrayList<ModContainer>();
   state=State.NOINIT;
   load();
+  sortModList();
   preModInit();
   modInit();
   postModInit();
   state=State.UP;
+  mods=Collections.unmodifiableList(mods);
 }

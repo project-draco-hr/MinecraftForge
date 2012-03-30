@@ -1,0 +1,7 @@
+World world
+double x
+double y
+double z
+int xVel
+int zVel
+ItemStack item
