@@ -7,18 +7,18 @@
       mods.add(FMLModContainer.buildFor(clazz));
     }
  else     if (BaseMod.class.isAssignableFrom(clazz)) {
-      LOG.fine(String.format("ModLoader BaseMod class found: %s. Loading",clazzName));
+      log.fine(String.format("ModLoader BaseMod class found: %s. Loading",clazzName));
       @SuppressWarnings("unchecked") Class<? extends BaseMod> bmClazz=(Class<? extends BaseMod>)clazz;
       ModContainer mc=new ModLoaderModContainer(bmClazz);
       mods.add(mc);
-      LOG.fine(String.format("ModLoader BaseMod class loaded: %s.",clazzName));
+      log.fine(String.format("ModLoader BaseMod class loaded: %s.",clazzName));
     }
  else {
     }
   }
  catch (  Exception e) {
-    LOG.warning(String.format("Failed to load mod class %s in %s",classFileName,classSource.getName()));
-    LOG.throwing("fml.server.Loader","attemptLoad",e);
+    log.warning(String.format("Failed to load mod class %s in %s",classFileName,classSource.getName()));
+    log.throwing("fml.server.Loader","attemptLoad",e);
     state=State.ERRORED;
   }
 }

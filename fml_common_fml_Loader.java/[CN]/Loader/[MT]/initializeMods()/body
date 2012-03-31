@@ -2,5 +2,5 @@
   modInit();
   postModInit();
   state=State.UP;
-  LOG.info("Forge Mod Loader load complete");
+  log.info("Forge Mod Loader load complete");
 }

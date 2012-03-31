@@ -1,2 +1,3 @@
 {
+  CommonRegistry.addSpawn(entityName,weightedProb,min,max,spawnList);
 }
