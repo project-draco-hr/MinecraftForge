@@ -1,6 +1,7 @@
 {
   state=State.NOINIT;
   mods=new ArrayList<ModContainer>();
+  namedMods=new HashMap<String,ModContainer>();
   load();
   sortModList();
   mods=Collections.unmodifiableList(mods);
