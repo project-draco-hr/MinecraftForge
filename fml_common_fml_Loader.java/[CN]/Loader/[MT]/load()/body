@@ -5,12 +5,12 @@
     canonicalModsPath=modsDir.getCanonicalPath();
   }
  catch (  IOException ioe) {
-    log.severe(String.format("Failed to resolve mods directory mods %s.",modsDir.getAbsolutePath()));
+    log.severe(String.format("Failed to resolve mods directory mods %s",modsDir.getAbsolutePath()));
     log.throwing("fml.server.Loader","initialize",ioe);
     throw new LoaderException(ioe);
   }
   if (!modsDir.exists()) {
-    log.fine(String.format("No mod directory found, creating one: %s.",canonicalModsPath));
+    log.fine(String.format("No mod directory found, creating one: %s",canonicalModsPath));
     try {
       modsDir.mkdir();
     }
@@ -20,43 +20,43 @@
     }
   }
   if (!modsDir.isDirectory()) {
-    log.severe(String.format("Attempting to load mods from %s, which is not a directory.",canonicalModsPath));
+    log.severe(String.format("Attempting to load mods from %s, which is not a directory",canonicalModsPath));
     LoaderException loaderException=new LoaderException();
     log.throwing("fml.server.Loader","initialize",loaderException);
     throw loaderException;
   }
-  log.info(String.format("Loading mods from %s.",canonicalModsPath));
+  log.info(String.format("Loading mods from %s",canonicalModsPath));
   File[] modList=modsDir.listFiles();
   Arrays.sort(modList);
   state=State.LOADING;
   for (  File modFile : modList) {
     if (modFile.isDirectory()) {
-      log.info(String.format("Found directory %s. Attempting load.",modFile.getName()));
+      log.fine(String.format("Found a directory %s, attempting to load it",modFile.getName()));
       boolean modFound=attemptDirLoad(modFile);
       if (modFound) {
-        log.info(String.format("Directory %s loaded successfully.",modFile.getName()));
+        log.fine(String.format("Directory %s loaded successfully",modFile.getName()));
       }
  else {
-        log.info(String.format("Directory %s contained no mods.",modFile.getName()));
+        log.info(String.format("Directory %s contained no mods",modFile.getName()));
       }
     }
  else {
       Matcher matcher=zipJar.matcher(modFile.getName());
       if (matcher.matches()) {
-        log.info(String.format("Found zip or jar file %s. Attempting load.",matcher.group(0)));
+        log.fine(String.format("Found a zip or jar file %s, attempting to load it",matcher.group(0)));
         boolean modFound=attemptFileLoad(modFile);
         if (modFound) {
-          log.info(String.format("File %s loaded successfully.",matcher.group(0)));
+          log.fine(String.format("File %s loaded successfully",matcher.group(0)));
         }
  else {
-          log.info(String.format("File %s contained no mods.",matcher.group(0)));
+          log.info(String.format("File %s contained no mods",matcher.group(0)));
         }
       }
     }
   }
   if (state == State.ERRORED) {
-    log.severe("A problem has occured during mod loading. Giving up now.");
+    log.severe("A problem has occured during mod loading, giving up now");
     throw new RuntimeException("Giving up please");
   }
-  log.fine(String.format("Forge Mod Loader has loaded %d mods.",mods.size()));
+  log.info(String.format("Forge Mod Loader has loaded %d mods",mods.size()));
 }

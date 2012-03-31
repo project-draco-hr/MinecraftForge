@@ -10,5 +10,5 @@
   }
  catch (  Exception e) {
   }
-  log.info(String.format("Forge Mod Loader version %d.%d.%d.%d for Minecraft %s loading.",major,minor,rev,build,mcversion));
+  log.info(String.format("Forge Mod Loader version %d.%d.%d.%d for Minecraft %s loading",major,minor,rev,build,mcversion));
 }

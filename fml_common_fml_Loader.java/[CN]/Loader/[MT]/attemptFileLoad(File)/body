@@ -8,7 +8,7 @@
       if (match.matches()) {
         String pkg=match.group(1).replace('/','.');
         String clazzName=pkg + match.group(2);
-        log.fine(String.format("Found a mod class %s in file %s. Attempting to load it",clazzName,modFile.getName()));
+        log.fine(String.format("Found a mod class %s in file %s, attempting to load it",clazzName,modFile.getName()));
         loadModClass(modFile,ze.getName(),clazzName);
         log.fine(String.format("Mod class %s loaded successfully",clazzName,modFile.getName()));
         foundAModClass=true;

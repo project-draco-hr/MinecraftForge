@@ -1,11 +1,11 @@
 {
   state=State.POSTINIT;
-  log.fine("Beginning mod post-initialization.");
+  log.fine("Beginning mod post-initialization");
   for (  ModContainer mod : mods) {
     if (mod.wantsPostInit()) {
-      log.finer(String.format("Post-initializing %s.",mod.getName()));
+      log.finer(String.format("Post-initializing %s",mod.getName()));
       mod.postInit();
     }
   }
-  log.fine("Mod post-initialization complete.");
+  log.fine("Mod post-initialization complete");
 }
