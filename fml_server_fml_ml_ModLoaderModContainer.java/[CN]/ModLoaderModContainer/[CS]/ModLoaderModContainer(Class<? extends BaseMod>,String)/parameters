@@ -1,1 +1,2 @@
 Class<? extends BaseMod> modClazz
+String modSource

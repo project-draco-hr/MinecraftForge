@@ -2,5 +2,5 @@
   modInit();
   postModInit();
   state=State.UP;
-  log.info("Forge Mod Loader load complete");
+  log.info(String.format("Forge Mod Loader load complete. %d mods loaded.",mods.size()));
 }

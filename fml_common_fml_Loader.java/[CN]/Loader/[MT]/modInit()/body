@@ -1,7 +1,9 @@
 {
   state=State.INIT;
+  log.fine("Beginning mod initialization.");
   for (  ModContainer mod : mods) {
-    log.finer(String.format("Initializing %s",mod.getName()));
+    log.finer(String.format("Initializing %s.",mod.getName()));
     mod.init();
   }
+  log.fine("Mod initialization complete.");
 }

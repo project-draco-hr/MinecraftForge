@@ -9,7 +9,7 @@
  else     if (BaseMod.class.isAssignableFrom(clazz)) {
       log.fine(String.format("ModLoader BaseMod class found: %s. Loading",clazzName));
       @SuppressWarnings("unchecked") Class<? extends BaseMod> bmClazz=(Class<? extends BaseMod>)clazz;
-      ModContainer mc=new ModLoaderModContainer(bmClazz);
+      ModContainer mc=new ModLoaderModContainer(bmClazz,classSource.getCanonicalPath());
       mods.add(mc);
       log.fine(String.format("ModLoader BaseMod class loaded: %s.",clazzName));
     }

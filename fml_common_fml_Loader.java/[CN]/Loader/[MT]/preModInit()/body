@@ -1,10 +1,12 @@
 {
   state=State.PREINIT;
+  log.fine("Beginning mod pre-initialization.");
   for (  ModContainer mod : mods) {
     if (mod.wantsPreInit()) {
-      log.finer(String.format("Pre-initializing %s",mod.getName()));
+      log.finer(String.format("Pre-initializing %s.",mod.getSource()));
       mod.preInit();
       namedMods.put(mod.getName(),mod);
     }
   }
+  log.fine("Mod pre-initialization complete.");
 }

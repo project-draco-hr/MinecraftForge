@@ -4,6 +4,7 @@
   try {
     fileHandler=new FileHandler("ForgeModLoader-%g.log",0,3);
     fileHandler.setLevel(Level.ALL);
+    fileHandler.setFormatter(FMLHandler.getMinecraftLogger().getHandlers()[0].getFormatter());
     Loader.log.addHandler(fileHandler);
   }
  catch (  Exception e) {
