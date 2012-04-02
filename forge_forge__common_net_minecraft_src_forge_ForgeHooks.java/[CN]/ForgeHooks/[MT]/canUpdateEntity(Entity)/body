@@ -1,0 +1,8 @@
+{
+  for (  IChunkLoadHandler loader : chunkLoadHandlers) {
+    if (loader.canUpdateEntity(entity)) {
+      return true;
+    }
+  }
+  return false;
+}
