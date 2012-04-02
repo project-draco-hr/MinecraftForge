@@ -1,0 +1,8 @@
+{
+  for (  IChatHandler handler : chatHandlers) {
+    if (handler.onChatCommand(player,isOp,command)) {
+      return true;
+    }
+  }
+  return false;
+}

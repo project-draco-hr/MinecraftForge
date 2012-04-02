@@ -1,0 +1,9 @@
+{
+  for (  IChatHandler handler : chatHandlers) {
+    message=handler.onClientChatRecv(message);
+    if (message == null) {
+      return null;
+    }
+  }
+  return message;
+}

@@ -1,0 +1,8 @@
+{
+  for (  IChatHandler handler : chatHandlers) {
+    if (handler.onServerCommand(listener,username,command)) {
+      return true;
+    }
+  }
+  return false;
+}

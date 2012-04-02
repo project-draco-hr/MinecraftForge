@@ -1,0 +1,9 @@
+{
+  for (  IChatHandler handler : chatHandlers) {
+    message=handler.onServerCommandSay(listener,username,message);
+    if (message == null) {
+      return null;
+    }
+  }
+  return message;
+}
