@@ -1,3 +1,3 @@
 {
-  FurnaceRecipes.smelting().addSmelting(input,output);
+  CommonRegistry.addSmelting(input,output);
 }

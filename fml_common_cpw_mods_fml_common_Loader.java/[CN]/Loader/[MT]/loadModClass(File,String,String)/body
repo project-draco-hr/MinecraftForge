@@ -1,0 +1,21 @@
+{
+  try {
+    Class<?> clazz=Class.forName(clazzName,false,modClassLoader);
+    if (clazz.isAnnotationPresent(Mod.class)) {
+      mods.add(FMLModContainer.buildFor(clazz));
+    }
+ else     if (FMLHandler.INSTANCE.isModLoaderMod(clazz)) {
+      log.fine(String.format("ModLoader BaseMod class %s found, loading",clazzName));
+      ModContainer mc=FMLHandler.INSTANCE.loadBaseModMod(clazz,classSource.getCanonicalPath());
+      mods.add(mc);
+      log.fine(String.format("ModLoader BaseMod class %s loaded",clazzName));
+    }
+ else {
+    }
+  }
+ catch (  Exception e) {
+    log.warning(String.format("Failed to load mod class %s in %s",classFileName,classSource.getAbsoluteFile()));
+    log.throwing("fml.server.Loader","attemptLoad",e);
+    state=State.ERRORED;
+  }
+}

@@ -1,2 +1,3 @@
 {
+  FMLHandler.INSTANCE.raiseException(e,message,true);
 }

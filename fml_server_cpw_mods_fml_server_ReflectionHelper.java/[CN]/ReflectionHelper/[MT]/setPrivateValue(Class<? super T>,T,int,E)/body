@@ -1,0 +1,12 @@
+{
+  try {
+    Field f=classToAccess.getDeclaredFields()[fieldIndex];
+    f.setAccessible(true);
+    f.set(instance,value);
+  }
+ catch (  Exception e) {
+    FMLHandler.getFMLLogger().severe(String.format("There was a problem setting field %d from %s",fieldIndex,classToAccess.getName()));
+    FMLHandler.getFMLLogger().throwing("ReflectionHelper","getPrivateValue",e);
+    throw new RuntimeException(e);
+  }
+}

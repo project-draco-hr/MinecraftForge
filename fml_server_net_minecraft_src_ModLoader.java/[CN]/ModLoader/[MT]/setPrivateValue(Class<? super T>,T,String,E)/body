@@ -1,2 +1,3 @@
 {
+  ReflectionHelper.setPrivateValue(instanceclass,instance,field,value);
 }
