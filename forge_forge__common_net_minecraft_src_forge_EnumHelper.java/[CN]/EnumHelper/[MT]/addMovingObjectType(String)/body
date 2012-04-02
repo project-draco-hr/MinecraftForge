@@ -2,5 +2,5 @@
   if (!isSetup) {
     setup();
   }
-  return addEnum(decompiled[8],EnumMovingObjectType.class,name,new Class[]{},new Object[]{});
+  return addEnum(decompiledFlags[8],EnumMovingObjectType.class,name,new Class[]{},new Object[]{});
 }

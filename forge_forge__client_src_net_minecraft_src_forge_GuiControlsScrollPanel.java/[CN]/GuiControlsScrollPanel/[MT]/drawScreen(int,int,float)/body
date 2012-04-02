@@ -1,6 +1,6 @@
 {
-  mouseX=mX;
-  mouseY=mY;
+  _mouseX=mX;
+  _mouseY=mY;
   if (selected != -1 && !Mouse.isButtonDown(0) && Mouse.getDWheel() == 0) {
     if (Mouse.next() && Mouse.getEventButtonState()) {
       System.out.println(Mouse.getEventButton());

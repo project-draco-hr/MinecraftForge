@@ -13,7 +13,7 @@
         enumHeaders[3 + y]=ctrs[x][y];
       }
       ctrs[x][0].getDeclaredConstructor(enumHeaders);
-      decompiled[x]=true;
+      decompiledFlags[x]=true;
     }
  catch (    Exception e) {
     }

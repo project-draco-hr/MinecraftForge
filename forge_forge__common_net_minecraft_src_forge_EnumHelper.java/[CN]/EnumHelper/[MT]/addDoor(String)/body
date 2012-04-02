@@ -2,5 +2,5 @@
   if (!isSetup) {
     setup();
   }
-  return addEnum(decompiled[5],EnumDoor.class,name,new Class[]{},new Object[]{});
+  return addEnum(decompiledFlags[5],EnumDoor.class,name,new Class[]{},new Object[]{});
 }

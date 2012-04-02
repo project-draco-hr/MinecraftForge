@@ -2,5 +2,5 @@
   if (!isSetup) {
     setup();
   }
-  return addEnum(decompiled[1],EnumArmorMaterial.class,name,new Class[]{int.class,int[].class,int.class},new Object[]{durability,reductionAmounts,enchantability});
+  return addEnum(decompiledFlags[1],EnumArmorMaterial.class,name,new Class[]{int.class,int[].class,int.class},new Object[]{durability,reductionAmounts,enchantability});
 }

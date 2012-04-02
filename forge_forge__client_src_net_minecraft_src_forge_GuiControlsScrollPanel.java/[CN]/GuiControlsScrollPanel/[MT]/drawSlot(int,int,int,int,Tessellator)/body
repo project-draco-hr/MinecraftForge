@@ -2,7 +2,7 @@
   int width=70;
   int height=20;
   xPosition-=20;
-  boolean flag=mouseX >= xPosition && mouseY >= yPosition && mouseX < xPosition + width && mouseY < yPosition + height;
+  boolean flag=_mouseX >= xPosition && _mouseY >= yPosition && _mouseX < xPosition + width && _mouseY < yPosition + height;
   int k=(flag ? 2 : 1);
   GL11.glBindTexture(3553,mc.renderEngine.getTexture("/gui/gui.png"));
   GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);

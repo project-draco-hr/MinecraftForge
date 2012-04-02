@@ -2,5 +2,5 @@
   if (!isSetup) {
     setup();
   }
-  return addEnum(decompiled[2],EnumArt.class,name,new Class[]{String.class,int.class,int.class,int.class,int.class},new Object[]{tile,sizeX,sizeY,offsetX,offsetY});
+  return addEnum(decompiledFlags[2],EnumArt.class,name,new Class[]{String.class,int.class,int.class,int.class,int.class},new Object[]{tile,sizeX,sizeY,offsetX,offsetY});
 }

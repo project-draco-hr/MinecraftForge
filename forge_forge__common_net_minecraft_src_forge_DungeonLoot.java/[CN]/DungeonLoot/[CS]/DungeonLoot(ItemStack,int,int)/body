@@ -1,5 +1,5 @@
 {
-  this.item=item;
+  this.itemStack=item;
   minCount=min;
   maxCount=max;
 }
