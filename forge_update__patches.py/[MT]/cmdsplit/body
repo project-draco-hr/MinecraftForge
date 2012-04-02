@@ -1,0 +1,4 @@
+def cmdsplit(args):
+    if (os.sep == '\\'):
+        args = args.replace('\\', '\\\\')
+    return shlex.split(args)
