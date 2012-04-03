@@ -1,0 +1,10 @@
+{
+  DirectedGraph<T> rGraph=reverse(graph);
+  List<T> sortedResult=new ArrayList<T>();
+  Set<T> visitedNodes=new HashSet<T>();
+  Set<T> expandedNodes=new HashSet<T>();
+  for (  T node : rGraph) {
+    explore(node,rGraph,sortedResult,visitedNodes,expandedNodes);
+  }
+  return sortedResult;
+}

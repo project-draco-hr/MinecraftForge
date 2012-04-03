@@ -1,0 +1,6 @@
+{
+  if (!graph.containsKey(from)) {
+    throw new NoSuchElementException("Missing node from graph");
+  }
+  return Collections.unmodifiableSet(graph.get(from));
+}

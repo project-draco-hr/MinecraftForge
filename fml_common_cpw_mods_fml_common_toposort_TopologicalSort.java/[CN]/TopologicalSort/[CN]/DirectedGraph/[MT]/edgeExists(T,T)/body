@@ -1,0 +1,6 @@
+{
+  if (!(graph.containsKey(from) && graph.containsKey(to))) {
+    throw new NoSuchElementException("Missing nodes from graph");
+  }
+  return graph.get(from).contains(to);
+}

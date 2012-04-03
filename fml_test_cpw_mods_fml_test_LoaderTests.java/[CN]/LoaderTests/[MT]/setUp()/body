@@ -1,0 +1,18 @@
+{
+  mc1=new ModLoaderModContainer(Mod1.class,"Test1");
+  mc1.preInit();
+  mc2=new ModLoaderModContainer(Mod2.class,"Test2");
+  mc2.preInit();
+  mc3=new ModLoaderModContainer(Mod3.class,"Test3");
+  mc3.preInit();
+  mc4=new ModLoaderModContainer(Mod4.class,"Test4");
+  mc4.preInit();
+  mc5=new ModLoaderModContainer(Mod5.class,"Test5");
+  mc5.preInit();
+  mc6=new ModLoaderModContainer(Mod5.class,"Test6");
+  mc6.preInit();
+  mc7=new ModLoaderModContainer(Mod5.class,"Test7");
+  mc7.preInit();
+  mc8=new ModLoaderModContainer(Mod5.class,"Test8");
+  mc8.preInit();
+}

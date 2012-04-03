@@ -1,4 +1,7 @@
 {
+  if (clazz == null) {
+    return;
+  }
   modDescriptor=clazz.getAnnotation(Mod.class);
   try {
     modInstance=clazz.newInstance();

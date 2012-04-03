@@ -1,0 +1,15 @@
+{
+  if (visitedNodes.contains(node)) {
+    if (expandedNodes.contains(node)) {
+      return;
+    }
+    System.out.printf("%s: %s\n%s\n%s\n",node,sortedResult,visitedNodes,expandedNodes);
+    throw new IllegalArgumentException("There was a cycle detected in the input graph, sorting is not possible");
+  }
+  visitedNodes.add(node);
+  for (  T inbound : graph.edgesFrom(node)) {
+    explore(inbound,graph,sortedResult,visitedNodes,expandedNodes);
+  }
+  sortedResult.add(node);
+  expandedNodes.add(node);
+}

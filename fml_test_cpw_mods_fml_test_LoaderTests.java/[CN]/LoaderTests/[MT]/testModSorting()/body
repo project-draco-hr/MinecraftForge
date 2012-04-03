@@ -1,0 +1,15 @@
+{
+  HashMap<String,ModContainer> modList=new HashMap<String,ModContainer>();
+  modList.put("Mod1",mc1);
+  modList.put("Mod2",mc2);
+  modList.put("Mod3",mc3);
+  modList.put("Mod4",mc4);
+  modList.put("Mod5",mc5);
+  modList.put("Mod6",mc6);
+  modList.put("Mod7",mc7);
+  modList.put("Mod8",mc8);
+  ModSorter ms=new ModSorter(Collections.list(Collections.enumeration(modList.values())),modList);
+  List<ModContainer> mods=ms.sort();
+  assertEquals("Eight mods",8,mods.size());
+  System.out.printf("%s\n",mods);
+}

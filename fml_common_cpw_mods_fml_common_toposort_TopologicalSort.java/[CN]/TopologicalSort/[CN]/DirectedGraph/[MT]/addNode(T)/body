@@ -1,0 +1,7 @@
+{
+  if (graph.containsKey(node)) {
+    return false;
+  }
+  graph.put(node,new HashSet<T>());
+  return true;
+}
