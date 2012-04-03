@@ -1,0 +1,6 @@
+{
+  ModContainer mod=FMLHooks.instance().getModForChannel(packet.field_44005_a);
+  if (mod != null) {
+    mod.getNetworkHandler().onPacket250Packet(packet,player);
+  }
+}

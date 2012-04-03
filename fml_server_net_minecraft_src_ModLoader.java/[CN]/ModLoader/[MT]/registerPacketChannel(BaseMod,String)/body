@@ -1,2 +1,3 @@
 {
+  FMLHooks.instance().registerChannel(ModLoaderModContainer.findContainerFor(mod),channel);
 }

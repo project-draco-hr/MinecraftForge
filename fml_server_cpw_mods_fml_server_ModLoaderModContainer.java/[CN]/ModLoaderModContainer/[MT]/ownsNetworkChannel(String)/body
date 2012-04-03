@@ -1,0 +1,3 @@
+{
+  return FMLHooks.instance().getChannelListFor(this).contains(channel);
+}

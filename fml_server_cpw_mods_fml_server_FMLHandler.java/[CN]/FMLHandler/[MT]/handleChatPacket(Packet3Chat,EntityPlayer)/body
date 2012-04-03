@@ -1,0 +1,8 @@
+{
+  for (  ModContainer mod : Loader.getModList()) {
+    if (mod.wantsNetworkPackets() && mod.getNetworkHandler().onChat(chat,player)) {
+      return true;
+    }
+  }
+  return false;
+}

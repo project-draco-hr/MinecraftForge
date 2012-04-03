@@ -1,0 +1,12 @@
+{
+  if (modChannels.containsKey(channelName)) {
+    Loader.log.severe(String.format("Mod %s tried to register network channel %s, already registered to %s",container,channelName,modChannels.get(channelName)));
+    throw new LoaderException();
+  }
+  Set<String> list=channelList.get(container);
+  if (list == null) {
+    list=new HashSet<String>();
+    channelList.put(container,list);
+  }
+  list.add(channelName);
+}

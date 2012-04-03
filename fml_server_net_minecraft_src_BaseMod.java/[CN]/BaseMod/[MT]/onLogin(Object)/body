@@ -1,0 +1,3 @@
+{
+  onClientLogin((Packet1Login)data[0],(NetworkManager)data[1]);
+}
