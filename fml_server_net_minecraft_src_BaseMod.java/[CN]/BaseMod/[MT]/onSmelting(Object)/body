@@ -1,0 +1,3 @@
+{
+  takenFromFurnace((EntityPlayer)smeltingParameters[0],(ItemStack)smeltingParameters[1]);
+}

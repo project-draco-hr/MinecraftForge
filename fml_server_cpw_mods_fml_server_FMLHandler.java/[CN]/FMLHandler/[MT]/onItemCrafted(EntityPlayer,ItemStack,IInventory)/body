@@ -1,0 +1,7 @@
+{
+  for (  ModContainer mod : Loader.getModList()) {
+    if (mod.wantsCraftingNotification()) {
+      mod.getCraftingHandler().onCrafting(player,craftedItem,craftingGrid);
+    }
+  }
+}

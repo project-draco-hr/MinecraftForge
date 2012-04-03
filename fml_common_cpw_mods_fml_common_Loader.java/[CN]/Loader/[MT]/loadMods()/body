@@ -3,7 +3,7 @@
   mods=new ArrayList<ModContainer>();
   namedMods=new HashMap<String,ModContainer>();
   load();
+  preModInit();
   sortModList();
   mods=Collections.unmodifiableList(mods);
-  preModInit();
 }

@@ -1,0 +1,4 @@
+{
+  getFMLLogger().throwing("FMLHandler","raiseException",exception);
+  throw new RuntimeException(exception);
+}

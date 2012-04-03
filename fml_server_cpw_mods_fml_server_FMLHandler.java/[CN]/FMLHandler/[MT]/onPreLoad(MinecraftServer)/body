@@ -1,0 +1,4 @@
+{
+  server=minecraftServer;
+  Loader.instance().loadMods();
+}

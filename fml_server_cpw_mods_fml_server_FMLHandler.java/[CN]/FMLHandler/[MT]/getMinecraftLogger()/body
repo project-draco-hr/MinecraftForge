@@ -1,0 +1,3 @@
+{
+  return MinecraftServer.field_6038_a;
+}

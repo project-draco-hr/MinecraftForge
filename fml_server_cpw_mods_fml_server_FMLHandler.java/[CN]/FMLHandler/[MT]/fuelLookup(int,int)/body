@@ -1,0 +1,7 @@
+{
+  int fv=0;
+  for (  ModContainer mod : Loader.getModList()) {
+    fv=Math.max(fv,mod.lookupFuelValue(itemId,itemDamage));
+  }
+  return fv;
+}

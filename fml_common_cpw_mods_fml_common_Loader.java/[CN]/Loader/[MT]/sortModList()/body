@@ -1,2 +1,10 @@
 {
+  for (  ModContainer mod : mods) {
+    if (!namedMods.keySet().containsAll(mod.getDependencies())) {
+      log.severe(String.format("The mod %s requires mods %s to be available, one or more are not",mod.getName(),mod.getDependencies()));
+      LoaderException le=new LoaderException();
+      log.throwing("Loader","sortModList",le);
+      throw new LoaderException();
+    }
+  }
 }

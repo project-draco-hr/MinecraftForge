@@ -1,5 +1,5 @@
 {
   if (isTicking) {
-    isTicking=mod.onTickInGame(FMLHandler.INSTANCE.getServer());
+    isTicking=mod.onTickInGame(FMLHandler.instance().getServer());
   }
 }

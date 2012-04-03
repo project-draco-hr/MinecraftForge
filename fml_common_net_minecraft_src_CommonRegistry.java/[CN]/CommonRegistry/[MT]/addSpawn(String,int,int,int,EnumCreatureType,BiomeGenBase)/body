@@ -1,2 +1,6 @@
 {
+  Class<? extends Entity> entityClazz=EntityList.getEntityToClassMapping().get(entityName);
+  if (EntityLiving.class.isAssignableFrom(entityClazz)) {
+    addSpawn((Class<? extends EntityLiving>)entityClazz,weightedProb,min,max,spawnList,biomes);
+  }
 }

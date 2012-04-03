@@ -1,0 +1,14 @@
+{
+  if (defaultOverworldBiomes == null) {
+    ArrayList<BiomeGenBase> biomes=new ArrayList<BiomeGenBase>(20);
+    for (int i=0; i < 23; i++) {
+      if ("Sky".equals(BiomeGenBase.field_35521_a[i].field_6163_m) || "Hell".equals(BiomeGenBase.field_35521_a[i].field_6163_m)) {
+        continue;
+      }
+      biomes.add(BiomeGenBase.field_35521_a[i]);
+    }
+    defaultOverworldBiomes=new BiomeGenBase[biomes.size()];
+    biomes.toArray(defaultOverworldBiomes);
+  }
+  return defaultOverworldBiomes;
+}
