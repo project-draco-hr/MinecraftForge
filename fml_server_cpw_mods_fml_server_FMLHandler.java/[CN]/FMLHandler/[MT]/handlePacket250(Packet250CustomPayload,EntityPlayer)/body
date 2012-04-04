@@ -1,4 +1,8 @@
 {
+  if ("REGISTER".equals(packet.field_44005_a) || "UNREGISTER".equals(packet.field_44005_a)) {
+    handleClientRegistration(packet,player);
+    return;
+  }
   ModContainer mod=FMLHooks.instance().getModForChannel(packet.field_44005_a);
   if (mod != null) {
     mod.getNetworkHandler().onPacket250Packet(packet,player);

@@ -1,0 +1,8 @@
+{
+  Set<String> active=activeChannels.get(player);
+  if (active == null) {
+    active=new HashSet<String>();
+    activeChannels.put(player,active);
+  }
+  active.remove(channel);
+}

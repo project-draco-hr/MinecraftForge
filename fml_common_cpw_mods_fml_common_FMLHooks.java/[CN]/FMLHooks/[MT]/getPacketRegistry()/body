@@ -1,0 +1,14 @@
+{
+  StringBuffer sb=new StringBuffer();
+  for (  String chan : modChannels.keySet()) {
+    sb.append(chan).append("\0");
+  }
+  try {
+    return sb.toString().getBytes("UTF8");
+  }
+ catch (  UnsupportedEncodingException e) {
+    Loader.log.warning("Error building registration list");
+    Loader.log.throwing("FMLHooks","getPacketRegistry",e);
+    return new byte[0];
+  }
+}
