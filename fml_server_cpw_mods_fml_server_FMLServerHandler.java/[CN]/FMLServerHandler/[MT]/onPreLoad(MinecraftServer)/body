@@ -1,4 +1,6 @@
 {
   server=minecraftServer;
+  FMLCommonHandler.instance().registerSidedDelegate(this);
+  CommonRegistry.registerRegistry(new ServerRegistry());
   Loader.instance().loadMods();
 }

@@ -1,0 +1,6 @@
+{
+  if (instance != null) {
+    throw new RuntimeException("Illegal attempt to replace FML registry");
+  }
+  instance=registry;
+}
