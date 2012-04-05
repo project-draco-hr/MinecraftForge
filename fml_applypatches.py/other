@@ -1,5 +1,5 @@
 import sys
-import os
+import os, os.path, shutil
 import commands
 import fnmatch
 import re
