@@ -13,10 +13,10 @@
   try {
     log.fine("Sorting mods into an ordered list");
     mods=sorter.sort();
-    log.fine(String.format("Mod list sorted %s",mods));
+    log.fine(String.format("Sorted mod list %s",mods));
   }
  catch (  IllegalArgumentException iae) {
-    log.severe("A dependency cycle was detected in the input mod set so they cannot load them in order");
+    log.severe("A dependency cycle was detected in the input mod set so they cannot be loaded in order");
     log.throwing("Loader","sortModList",iae);
     throw new LoaderException(iae);
   }

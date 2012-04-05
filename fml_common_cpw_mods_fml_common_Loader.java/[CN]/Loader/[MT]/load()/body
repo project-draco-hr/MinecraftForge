@@ -1,5 +1,5 @@
 {
-  File minecraftDir=new File(".");
+  File minecraftDir=FMLCommonHandler.instance().getMinecraftRootDirectory();
   File modsDir=new File(minecraftDir,"mods");
   File configDir=new File(minecraftDir,"config");
   String canonicalModsPath;
