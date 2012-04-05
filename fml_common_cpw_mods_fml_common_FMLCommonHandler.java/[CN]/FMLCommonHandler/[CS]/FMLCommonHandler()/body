@@ -1,0 +1,15 @@
+{
+  try {
+    Class.forName("net.minecraft.client.Minecraft");
+    sidedDelegate=(IFMLSidedHandler)Class.forName("cpw.mods.fml.client.FMLClientHandler").newInstance();
+  }
+ catch (  Exception ex) {
+    try {
+      sidedDelegate=(IFMLSidedHandler)Class.forName("cpw.mods.fml.server.FMLServerHandler").newInstance();
+    }
+ catch (    Exception ex2) {
+      Loader.log.severe("A severe installation issue has occured with FML, we cannot continue");
+      throw new LoaderException(ex2);
+    }
+  }
+}

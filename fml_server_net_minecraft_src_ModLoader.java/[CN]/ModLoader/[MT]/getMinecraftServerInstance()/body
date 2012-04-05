@@ -1,3 +1,3 @@
 {
-  return FMLHandler.instance().getServer();
+  return FMLServerHandler.instance().getServer();
 }

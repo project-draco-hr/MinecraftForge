@@ -1,3 +1,3 @@
 {
-  return FMLHandler.getFMLLogger();
+  return FMLCommonHandler.instance().getFMLLogger();
 }

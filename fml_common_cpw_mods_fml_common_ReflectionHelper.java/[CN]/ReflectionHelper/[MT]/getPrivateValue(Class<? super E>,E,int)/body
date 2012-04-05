@@ -5,8 +5,8 @@
     return (T)f.get(instance);
   }
  catch (  Exception e) {
-    FMLHandler.getFMLLogger().severe(String.format("There was a problem getting field %d from %s",fieldIndex,classToAccess.getName()));
-    FMLHandler.getFMLLogger().throwing("ReflectionHelper","getPrivateValue",e);
+    FMLCommonHandler.instance().getFMLLogger().severe(String.format("There was a problem getting field %d from %s",fieldIndex,classToAccess.getName()));
+    FMLCommonHandler.instance().getFMLLogger().throwing("ReflectionHelper","getPrivateValue",e);
     throw new RuntimeException(e);
   }
 }

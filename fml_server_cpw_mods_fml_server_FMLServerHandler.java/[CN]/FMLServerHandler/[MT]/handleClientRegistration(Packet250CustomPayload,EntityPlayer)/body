@@ -1,14 +1,14 @@
 {
   try {
     for (    String channel : new String(packet.field_44004_c,"UTF8").split("\0")) {
-      if (FMLHooks.instance().getModForChannel(channel) == null) {
+      if (FMLCommonHandler.instance().getModForChannel(channel) == null) {
         continue;
       }
       if ("REGISTER".equals(packet.field_44005_a)) {
-        FMLHooks.instance().activateChannel(player,channel);
+        FMLCommonHandler.instance().activateChannel(player,channel);
       }
  else {
-        FMLHooks.instance().deactivateChannel(player,channel);
+        FMLCommonHandler.instance().deactivateChannel(player,channel);
       }
     }
   }

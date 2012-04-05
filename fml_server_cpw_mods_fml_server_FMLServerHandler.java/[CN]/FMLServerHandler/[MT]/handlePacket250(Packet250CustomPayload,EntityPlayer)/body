@@ -3,7 +3,7 @@
     handleClientRegistration(packet,player);
     return;
   }
-  ModContainer mod=FMLHooks.instance().getModForChannel(packet.field_44005_a);
+  ModContainer mod=FMLCommonHandler.instance().getModForChannel(packet.field_44005_a);
   if (mod != null) {
     mod.getNetworkHandler().onPacket250Packet(packet,player);
   }

@@ -1,3 +1,3 @@
 {
-  CommonRegistry.removeSpawn(entityName,spawnList,FMLHandler.instance().getDefaultOverworldBiomes());
+  CommonRegistry.removeSpawn(entityName,spawnList,FMLServerHandler.instance().getDefaultOverworldBiomes());
 }

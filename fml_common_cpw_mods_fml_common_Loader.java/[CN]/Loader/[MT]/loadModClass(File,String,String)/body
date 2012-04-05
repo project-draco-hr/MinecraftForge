@@ -4,9 +4,9 @@
     if (clazz.isAnnotationPresent(Mod.class)) {
       mods.add(FMLModContainer.buildFor(clazz));
     }
- else     if (FMLHandler.instance().isModLoaderMod(clazz)) {
+ else     if (FMLCommonHandler.instance().isModLoaderMod(clazz)) {
       log.fine(String.format("ModLoader BaseMod class %s found, loading",clazzName));
-      ModContainer mc=FMLHandler.instance().loadBaseModMod(clazz,classSource.getCanonicalPath());
+      ModContainer mc=FMLCommonHandler.instance().loadBaseModMod(clazz,classSource.getCanonicalPath());
       mods.add(mc);
       log.fine(String.format("ModLoader BaseMod class %s loaded",clazzName));
     }
