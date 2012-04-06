@@ -63,7 +63,7 @@
       }
  else       if (minecraftSources[i].isDirectory()) {
         log.fine(String.format("Found a minecraft related directory at %s, loading",minecraftSources[i].getAbsolutePath()));
-        attemptDirLoad(minecraftSources[i]);
+        attemptDirLoad(minecraftSources[i],"");
       }
     }
   }
@@ -74,7 +74,7 @@
   for (  File modFile : modList) {
     if (modFile.isDirectory()) {
       log.fine(String.format("Found a directory %s, attempting to load it",modFile.getName()));
-      boolean modFound=attemptDirLoad(modFile);
+      boolean modFound=attemptDirLoad(modFile,"");
       if (modFound) {
         log.fine(String.format("Directory %s loaded successfully",modFile.getName()));
       }
