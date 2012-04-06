@@ -1,3 +1,9 @@
 {
   MinecraftForge.getDungeonLootTries();
+  int x=0;
+  for (  BaseMod mod : ModLoader.getLoadedMods()) {
+    if (mod instanceof NetworkMod) {
+      ForgeHooks.networkMods.put(x++,(NetworkMod)mod);
+    }
+  }
 }
