@@ -1,7 +1,4 @@
 {
-  if (modClassLoader == null) {
-    modClassLoader=new ModClassLoader();
-  }
   try {
     modClassLoader.addFile(file);
   }
