@@ -1,0 +1,19 @@
+def setup_fml():
+    print 'Setting up Forge ModLoader'
+    fml = glob.glob(os.path.join(forge_dir, 'fml-src-*.zip'))
+    if (not (len(fml) == 1)):
+        if (len(fml) == 0):
+            print 'Missing FML source zip, should be named fml-src-*.zip inside your forge folder, obtain it from the repo'
+        else:
+            print 'To many FML source zips found, we should only have one. Check the Forge Git for the latest FML version supported'
+        sys.exit(1)
+    fml_dir = os.path.join(forge_dir, 'fml')
+    if os.path.isdir(fml_dir):
+        shutil.rmtree(fml_dir)
+    print ('Extracting Forge ModLoader: %s' % os.path.basename(fml[0]))
+    zf = zipfile.ZipFile(fml[0])
+    zf.extractall(forge_dir)
+    zf.close()
+    print 'Applying Forge ModLoader patches'
+    apply_patches(os.path.join(fml_dir, 'patches'), src_dir)
+    copytree(os.path.join(fml_dir, 'src'), src_dir)

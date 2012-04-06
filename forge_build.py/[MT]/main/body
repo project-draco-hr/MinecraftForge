@@ -1,0 +1,8 @@
+def main():
+    build_num = 0
+    if (len(sys.argv) > 1):
+        try:
+            build_num = int(sys.argv[1])
+        except:
+            pass
+    sys.exit(build(build_num))

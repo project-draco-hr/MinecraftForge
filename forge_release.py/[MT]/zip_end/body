@@ -1,0 +1,6 @@
+def zip_end():
+    global zip, zip_name, zip_base
+    zip.close()
+    print ('=================================== %s Finished =================================' % zip_name)
+    zip_name = None
+    zip_base = None

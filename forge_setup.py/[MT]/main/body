@@ -1,0 +1,38 @@
+def main():
+    print '=================================== Setup Start ================================='
+    skipDecompile = ((len(sys.argv) > 1) and (sys.argv[1] == '-skipdecompile'))
+    if (not skipDecompile):
+        if (not download_ff(mcp_dir)):
+            sys.exit(1)
+        if os.path.isdir(src_dir):
+            shutil.rmtree(src_dir)
+        try:
+            os.chdir(mcp_dir)
+            decompile(None, False, False, True, True, False, True, False, False, False, False)
+            reset_logger()
+            os.chdir(forge_dir)
+        except SystemExit as e:
+            print ('Decompile Exception: %d ' % e.code)
+            raise e
+    if (not os.path.isdir(src_dir)):
+        print ('Something went wrong, src folder not found at: %s' % src_dir)
+        sys.exit(1)
+    setup_fml()
+    os.chdir(mcp_dir)
+    updatenames(None, True)
+    reset_logger()
+    updatemd5(None, True)
+    reset_logger()
+    os.chdir(forge_dir)
+    base_dir = os.path.join(mcp_dir, 'src_base')
+    work_dir = os.path.join(mcp_dir, 'src_work')
+    if os.path.isdir(base_dir):
+        shutil.rmtree(base_dir)
+    if os.path.isdir(work_dir):
+        shutil.rmtree(work_dir)
+    print 'Setting up source directories'
+    shutil.copytree(src_dir, base_dir)
+    shutil.copytree(src_dir, work_dir)
+    print 'Applying forge patches'
+    apply_patches(os.path.join(forge_dir, 'patches'), work_dir)
+    print '=================================== Setup Finished ================================='

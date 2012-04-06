@@ -1,0 +1,7 @@
+def zip_create(path, key, zip_name):
+    zip = zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED)
+    if os.path.isdir(path):
+        zip_folder(path, key, zip)
+    else:
+        zip.write(path, key)
+    zip.close()

@@ -1,0 +1,10 @@
+def zip_folder(path, key, zip):
+    files = os.listdir(path)
+    for file in files:
+        file_path = os.path.join(path, file)
+        file_key = os.path.join(key, file)
+        if os.path.isdir(file_path):
+            zip_folder(file_path, file_key, zip)
+        else:
+            print file_key
+            zip.write(file_path, file_key)

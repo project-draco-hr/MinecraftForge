@@ -1,0 +1,15 @@
+def load_version(build=0):
+    info = {'major': (-1), 'minor': (-1), 'revision': (-1), 'build': (-1), }
+    hook_file = os.path.join(forge_dir, 'forge_common/net/minecraft/src/forge/ForgeHooks.java'.replace('/', os.sep))
+    with open(hook_file, 'r') as fh:
+        buf = fh.read()
+
+    def proc(match):
+        try:
+            info[match.group(2)] = int(match.group(3))
+        except:
+            pass
+        return match.group(0)
+    buf = version_reg.sub(proc, buf)
+    info['build'] = build
+    return info

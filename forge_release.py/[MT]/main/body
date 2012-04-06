@@ -1,0 +1,58 @@
+def main():
+    global version_str
+    build_num = 0
+    if (len(sys.argv) > 1):
+        try:
+            build_num = int(sys.argv[1])
+        except:
+            pass
+    ret = 0
+    ret = build(build_num)
+    if (ret != 0):
+        sys.exit(ret)
+    print '=================================== Release Start ================================='
+    error_level = 0
+    try:
+        os.chdir(mcp_dir)
+        reobfuscate(None, False, True, True)
+        reset_logger()
+        os.chdir(forge_dir)
+    except SystemExit as e:
+        print ('Reobfusicate Exception: %d ' % e.code)
+        error_level = e.code
+    out_folder = os.path.join(forge_dir, ('forge-%s' % version_str))
+    if os.path.isdir(out_folder):
+        shutil.rmtree(out_folder)
+    os.makedirs(out_folder)
+    extract_fml_obfed()
+    version = load_version(build_num)
+    version_str = ('%d.%d.%d.%d' % (version['major'], version['minor'], version['revision'], version['build']))
+    zip_start(('minecraftforge-client-%s.zip' % version_str))
+    zip_folder(client_dir, '', zip)
+    zip_add('minecraftforge_credits.txt')
+    zip_add('license.txt')
+    zip_end()
+    zip_start(('minecraftforge-server-%s.zip' % version_str))
+    zip_folder(server_dir, '', zip)
+    zip_add('minecraftforge_credits.txt')
+    zip_add('license.txt')
+    zip_end()
+    zip_start(('minecraftforge-src-%s.zip' % version_str), 'forge')
+    zip_add('forge_client/src', 'src/minecraft')
+    zip_add('forge_server/src', 'src/minecraft_server')
+    zip_add('forge_common', 'src/minecraft')
+    zip_add('forge_common', 'src/minecraft_server')
+    zip_add('patches', 'patches')
+    zip_add('fml', 'fml')
+    zip_add('conf', 'conf')
+    zip_add('minecraftforge_credits.txt')
+    zip_add('install/install.cmd')
+    zip_add('install/install.sh')
+    zip_add('install/README.txt')
+    zip_add('install/install.py')
+    zip_add('forge.py')
+    zip_add('minecraftforge_credits.txt')
+    zip_add('license.txt')
+    zip_end()
+    print ('=================================== Release Finished %d =================================' % error_level)
+    sys.exit(error_level)
