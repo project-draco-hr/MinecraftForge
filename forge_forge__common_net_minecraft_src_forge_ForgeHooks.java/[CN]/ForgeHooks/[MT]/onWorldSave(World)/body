@@ -1,0 +1,5 @@
+{
+  for (  ISaveEventHandler handler : saveHandlers) {
+    handler.onWorldSave(world);
+  }
+}
