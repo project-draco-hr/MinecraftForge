@@ -32,4 +32,7 @@
   if (missing.size() > 0) {
     doMissingMods(net,missing);
   }
+ else {
+    finishLogin(net);
+  }
 }
