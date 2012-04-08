@@ -1,9 +1,4 @@
 {
-  for (  ModContainer mod : Loader.getModList()) {
-    if (mod.wantsNetworkPackets()) {
-      mod.getNetworkHandler().onLogin(loginPacket,networkManager,player);
-    }
-  }
   Packet250CustomPayload packet=new Packet250CustomPayload();
   packet.field_44005_a="REGISTER";
   packet.field_44004_c=FMLCommonHandler.instance().getPacketRegistry();
