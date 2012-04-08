@@ -14,4 +14,5 @@
     net.sendPacket(new Packet41EntityEffect(player.entityId,(PotionEffect)efx));
   }
   player.func_20057_k();
+  FMLServerHandler.instance().announceLogin(player);
 }
