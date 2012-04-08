@@ -1,7 +1,7 @@
 {
   for (  ModContainer mod : Loader.getModList()) {
     if (mod.wantsNetworkPackets()) {
-      mod.getNetworkHandler().onLogin(loginPacket,networkManager);
+      mod.getNetworkHandler().onLogin(loginPacket,networkManager,player);
     }
   }
   Packet250CustomPayload packet=new Packet250CustomPayload();
