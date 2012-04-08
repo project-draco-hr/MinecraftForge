@@ -7,4 +7,5 @@
     channelList.put(container,list);
   }
   list.add(channelName);
+  modChannels.put(channelName,container);
 }
