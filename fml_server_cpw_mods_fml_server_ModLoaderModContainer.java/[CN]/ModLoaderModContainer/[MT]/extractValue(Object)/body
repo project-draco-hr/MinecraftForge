@@ -2,7 +2,7 @@
   if (String.class.isInstance(value)) {
     return (String)value;
   }
- else   if (Number.class.isInstance(value)) {
+ else   if (Number.class.isInstance(value) || Boolean.class.isInstance(value)) {
     return String.valueOf(value);
   }
  else {

@@ -2,27 +2,27 @@
   if (type.isAssignableFrom(String.class)) {
     return (String)val;
   }
- else   if (type.isAssignableFrom(Boolean.TYPE)) {
+ else   if (type.isAssignableFrom(Boolean.TYPE) || type.isAssignableFrom(Boolean.class)) {
     return Boolean.parseBoolean(val);
   }
  else   if (Number.class.isAssignableFrom(type)) {
     Number n=null;
-    if (type.isAssignableFrom(Double.TYPE)) {
+    if (Double.class.isAssignableFrom(type)) {
       n=Double.parseDouble(val);
     }
- else     if (type.isAssignableFrom(Float.TYPE)) {
+    if (Float.class.isAssignableFrom(type)) {
       n=Float.parseFloat(val);
     }
- else     if (type.isAssignableFrom(Long.TYPE)) {
+    if (Long.class.isAssignableFrom(type)) {
       n=Long.parseLong(val);
     }
- else     if (type.isAssignableFrom(Integer.TYPE)) {
+    if (Integer.class.isAssignableFrom(type)) {
       n=Integer.parseInt(val);
     }
- else     if (type.isAssignableFrom(Short.TYPE)) {
+    if (Short.class.isAssignableFrom(type)) {
       n=Short.parseShort(val);
     }
- else     if (type.isAssignableFrom(Byte.TYPE)) {
+    if (Byte.class.isAssignableFrom(type)) {
       n=Byte.parseByte(val);
     }
  else {

@@ -1,7 +1,7 @@
 {
   for (  ModContainer mod : Loader.getModList()) {
     if (mod.wantsPlayerTracking()) {
-      mod.getPlayerTracker().onPlayerLogin(player);
+      mod.getPlayerTracker().onPlayerChangedDimension(player);
     }
   }
 }
