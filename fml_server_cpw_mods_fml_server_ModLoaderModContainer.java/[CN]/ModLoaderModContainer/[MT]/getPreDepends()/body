@@ -2,5 +2,5 @@
   if (dependencies == null) {
     computeDependencies();
   }
-  return postDependencies;
+  return preDependencies;
 }
