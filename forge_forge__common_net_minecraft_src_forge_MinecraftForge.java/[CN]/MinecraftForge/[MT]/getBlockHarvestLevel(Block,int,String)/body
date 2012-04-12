@@ -1,0 +1,9 @@
+{
+  ForgeHooks.initTools();
+  List key=Arrays.asList(block.blockID,metadata,toolClass);
+  Integer harvestLevel=(Integer)ForgeHooks.toolHarvestLevels.get(key);
+  if (harvestLevel == null) {
+    return -1;
+  }
+  return harvestLevel;
+}
