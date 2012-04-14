@@ -22,7 +22,9 @@
       }
  else {
         modGraph.addEdge(before,mod);
-        modGraph.addEdge(nameLookup.get(dep),mod);
+        if (nameLookup.containsKey(dep)) {
+          modGraph.addEdge(nameLookup.get(dep),mod);
+        }
       }
     }
     for (    String dep : mod.getPostDepends()) {
@@ -34,7 +36,9 @@
       }
  else {
         modGraph.addEdge(mod,after);
-        modGraph.addEdge(mod,nameLookup.get(dep));
+        if (nameLookup.containsKey(dep)) {
+          modGraph.addEdge(mod,nameLookup.get(dep));
+        }
       }
     }
     if (!preDepAdded) {
