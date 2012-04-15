@@ -1,0 +1,25 @@
+{
+  dependencies=new ArrayList<String>();
+  preDependencies=new ArrayList<String>();
+  postDependencies=new ArrayList<String>();
+  if (mod.getPriorities() == null || mod.getPriorities().length() == 0) {
+    return;
+  }
+  StringTokenizer st=new StringTokenizer(mod.getPriorities(),";");
+  for (; st.hasMoreTokens(); ) {
+    String dep=st.nextToken();
+    String[] depparts=dep.split(":");
+    if (depparts.length < 2) {
+      throw new LoaderException();
+    }
+    if ("required-before".equals(depparts[0]) || "required-after".equals(depparts[0])) {
+      dependencies.add(depparts[1]);
+    }
+    if ("required-before".equals(depparts[0]) || "before".equals(depparts[0])) {
+      postDependencies.add(depparts[1]);
+    }
+    if ("required-after".equals(depparts[0]) || "after".equals(depparts[0])) {
+      preDependencies.add(depparts[1]);
+    }
+  }
+}

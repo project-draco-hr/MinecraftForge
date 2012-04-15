@@ -1,0 +1,5 @@
+Class<? extends Entity> entityClass
+String entityName
+int id
+int backgroundEggColour
+int foregroundEggColour

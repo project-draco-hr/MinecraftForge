@@ -1,0 +1,4 @@
+Random random
+int chunkX
+int chunkZ
+Object additionalData

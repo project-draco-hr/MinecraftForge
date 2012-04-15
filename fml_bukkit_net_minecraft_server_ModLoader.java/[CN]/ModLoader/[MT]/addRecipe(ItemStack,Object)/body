@@ -1,0 +1,3 @@
+{
+  CommonRegistry.addRecipe(output,params);
+}

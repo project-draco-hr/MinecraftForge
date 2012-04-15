@@ -1,0 +1,3 @@
+{
+  CommonRegistry.addSmelting(input,output);
+}

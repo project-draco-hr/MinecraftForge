@@ -1,0 +1,3 @@
+{
+  FMLBukkitHandler.instance().raiseException(e,message,true);
+}

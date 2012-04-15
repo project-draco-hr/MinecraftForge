@@ -1,0 +1,7 @@
+{
+  for (  ModContainer mod : Loader.getModList()) {
+    if (mod.wantsPlayerTracking()) {
+      mod.getPlayerTracker().onPlayerLogout(player);
+    }
+  }
+}

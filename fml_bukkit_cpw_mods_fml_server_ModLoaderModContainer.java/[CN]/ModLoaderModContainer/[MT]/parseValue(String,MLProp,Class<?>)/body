@@ -1,0 +1,39 @@
+{
+  if (type.isAssignableFrom(String.class)) {
+    return (String)val;
+  }
+ else   if (type.isAssignableFrom(Boolean.TYPE) || type.isAssignableFrom(Boolean.class)) {
+    return Boolean.parseBoolean(val);
+  }
+ else   if (Number.class.isAssignableFrom(type)) {
+    Number n=null;
+    if (Double.class.isAssignableFrom(type)) {
+      n=Double.parseDouble(val);
+    }
+    if (Float.class.isAssignableFrom(type)) {
+      n=Float.parseFloat(val);
+    }
+    if (Long.class.isAssignableFrom(type)) {
+      n=Long.parseLong(val);
+    }
+    if (Integer.class.isAssignableFrom(type)) {
+      n=Integer.parseInt(val);
+    }
+    if (Short.class.isAssignableFrom(type)) {
+      n=Short.parseShort(val);
+    }
+    if (Byte.class.isAssignableFrom(type)) {
+      n=Byte.parseByte(val);
+    }
+ else {
+      throw new IllegalArgumentException("MLProp declared on non-standard type");
+    }
+    if (n.doubleValue() < property.min() || n.doubleValue() > property.max()) {
+      return null;
+    }
+ else {
+      return n;
+    }
+  }
+  return null;
+}

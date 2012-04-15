@@ -1,0 +1,3 @@
+{
+  CommonRegistry.registerTileEntity(tileEntityClass,id);
+}

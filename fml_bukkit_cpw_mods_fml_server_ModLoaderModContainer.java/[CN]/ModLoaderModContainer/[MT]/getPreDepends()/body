@@ -1,0 +1,6 @@
+{
+  if (dependencies == null) {
+    computeDependencies();
+  }
+  return preDependencies;
+}

@@ -1,0 +1,7 @@
+{
+  for (  ModContainer mod : Loader.getModList()) {
+    if (mod.wantsPickupNotification()) {
+      mod.getPickupNotifier().notifyPickup(entityItem,entityPlayer);
+    }
+  }
+}
