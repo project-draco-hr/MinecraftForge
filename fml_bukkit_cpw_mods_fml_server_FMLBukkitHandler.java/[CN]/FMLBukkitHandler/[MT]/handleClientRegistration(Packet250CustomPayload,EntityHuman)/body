@@ -1,0 +1,21 @@
+{
+  if (packet.data == null) {
+    return;
+  }
+  try {
+    for (    String channel : new String(packet.data,"UTF8").split("\0")) {
+      if (FMLCommonHandler.instance().getModForChannel(channel) == null) {
+        continue;
+      }
+      if ("REGISTER".equals(packet.tag)) {
+        FMLCommonHandler.instance().activateChannel(player,channel);
+      }
+ else {
+        FMLCommonHandler.instance().deactivateChannel(player,channel);
+      }
+    }
+  }
+ catch (  UnsupportedEncodingException e) {
+    getMinecraftLogger().warning("Received invalid registration packet");
+  }
+}

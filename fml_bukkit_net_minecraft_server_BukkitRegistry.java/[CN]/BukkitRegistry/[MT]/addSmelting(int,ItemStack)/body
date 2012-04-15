@@ -1,0 +1,3 @@
+{
+  FurnaceRecipes.getInstance().registerRecipe(input,output);
+}

@@ -1,0 +1,15 @@
+{
+  BiomeBase[] realBiomes=(BiomeBase[])biomes;
+  for (  BiomeBase biome : realBiomes) {
+    @SuppressWarnings("unchecked") List<BiomeMeta> spawns=biome.getMobs(typeOfCreature);
+    for (    BiomeMeta entry : spawns) {
+      if (entry.a == entityClass) {
+        entry.d=weightedProb;
+        entry.b=min;
+        entry.c=max;
+        break;
+      }
+    }
+    spawns.add(new BiomeMeta(entityClass,weightedProb,min,max));
+  }
+}

@@ -1,0 +1,3 @@
+EntityHuman player
+ItemStack craftedItem
+IInventory craftingGrid

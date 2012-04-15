@@ -1,0 +1,8 @@
+{
+  for (  ModContainer mod : Loader.getModList()) {
+    if (mod.wantsToDispense() && mod.getDispenseHandler().dispense(x,y,z,xVelocity,zVelocity,world,item)) {
+      return true;
+    }
+  }
+  return false;
+}
