@@ -5,6 +5,10 @@
   data.writeInt(posX);
   data.writeInt(posY);
   data.writeInt(posZ);
+  data.writeByte(yaw);
+  data.writeByte(pitch);
+  data.writeByte(yawHead);
+  ((DataWatcher)metadata).writeWatchableObjects(data);
   data.writeInt(throwerID);
   if (throwerID != 0) {
     data.writeShort(speedX);

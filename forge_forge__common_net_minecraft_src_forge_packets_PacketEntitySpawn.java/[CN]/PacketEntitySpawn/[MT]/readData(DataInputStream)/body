@@ -5,6 +5,10 @@
   posX=data.readInt();
   posY=data.readInt();
   posZ=data.readInt();
+  yaw=data.readByte();
+  pitch=data.readByte();
+  yawHead=data.readByte();
+  metadata=DataWatcher.readWatchableObjects(data);
   throwerID=data.readInt();
   if (throwerID != 0) {
     speedX=data.readShort();

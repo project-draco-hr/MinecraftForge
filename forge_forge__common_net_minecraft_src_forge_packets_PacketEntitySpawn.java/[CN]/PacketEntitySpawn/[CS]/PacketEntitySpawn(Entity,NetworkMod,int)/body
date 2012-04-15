@@ -5,6 +5,10 @@
   posZ=MathHelper.floor_double(ent.posZ * 32D);
   typeID=type;
   modID=MinecraftForge.getModID(mod);
+  yaw=(byte)(ent.rotationYaw * 256.0F / 360.0F);
+  pitch=(byte)(ent.rotationPitch * 256.0F / 360.0F);
+  yawHead=(byte)(ent instanceof EntityLiving ? ((EntityLiving)ent).rotationYawHead * 256.0F / 360.0F : 0);
+  metadata=ent.getDataWatcher();
   if (ent instanceof IThrowableEntity) {
     Entity owner=((IThrowableEntity)ent).getThrower();
     throwerID=(owner == null ? ent.entityId : owner.entityId);
