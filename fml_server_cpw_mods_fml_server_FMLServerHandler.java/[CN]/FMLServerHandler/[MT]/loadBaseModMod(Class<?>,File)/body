@@ -1,4 +1,4 @@
 {
   @SuppressWarnings("unchecked") Class<? extends BaseMod> bmClazz=(Class<? extends BaseMod>)clazz;
-  return new ModLoaderModContainer(bmClazz,canonicalPath);
+  return new ModLoaderModContainer(bmClazz,canonicalFile);
 }
