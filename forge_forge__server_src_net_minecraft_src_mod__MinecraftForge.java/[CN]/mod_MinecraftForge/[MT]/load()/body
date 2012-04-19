@@ -10,4 +10,5 @@
     }
   }
   ((Set)ModLoader.getPrivateValue(Packet.class,null,3)).add(131);
+  ((Set)ModLoader.getPrivateValue(Packet.class,null,3)).add(132);
 }

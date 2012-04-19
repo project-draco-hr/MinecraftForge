@@ -1,0 +1,8 @@
+NetworkManager net
+int x
+short y
+int z
+byte action
+int par1
+int par2
+int par3
