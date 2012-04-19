@@ -1,0 +1,9 @@
+{
+  NetworkMod mod=MinecraftForge.getModByID(pkt.itemID);
+  if (mod == null) {
+    ModLoader.getLogger().log(Level.WARNING,String.format("Received Unknown MapData packet %d:%d",pkt.itemID,pkt.uniqueID));
+    return false;
+  }
+  mod.onPacketData(net,pkt.uniqueID,pkt.itemData);
+  return true;
+}

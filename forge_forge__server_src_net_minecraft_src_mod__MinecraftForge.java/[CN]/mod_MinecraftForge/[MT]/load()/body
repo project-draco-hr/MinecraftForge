@@ -3,7 +3,11 @@
   int x=0;
   for (  BaseMod mod : ModLoader.getLoadedMods()) {
     if (mod instanceof NetworkMod) {
+      if (x == Item.map.shiftedIndex) {
+        x++;
+      }
       ForgeHooks.networkMods.put(x++,(NetworkMod)mod);
     }
   }
+  ((Set)ModLoader.getPrivateValue(Packet.class,null,3)).add(131);
 }

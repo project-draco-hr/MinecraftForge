@@ -1,0 +1,4 @@
+NetworkManager net
+NetworkMod mod
+short id
+byte[] data
