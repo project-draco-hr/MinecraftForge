@@ -1,0 +1,3 @@
+{
+  ForgeHooks.getPacketHandler().sendPacket(net,packet);
+}

@@ -1,0 +1,4 @@
+{
+  NetClientHandler net=(NetClientHandler)network.getNetHandler();
+  net.addToSendQueue(packet);
+}
