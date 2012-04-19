@@ -8,6 +8,7 @@ def extract_fml_obfed():
     client = zipfile.ZipFile(os.path.join(mcp_dir, 'temp', 'client_reobf.jar'))
     server = zipfile.ZipFile(os.path.join(mcp_dir, 'temp', 'server_reobf.jar'))
     print 'Extracting Reobfed Forge ModLoader classes'
+    lines.append('minecraft/net/minecraft/client/MinecraftApplet.class')
     for line in lines:
         line = line.replace('\n', '').replace('\r', '').replace('/', os.sep)
         print line
