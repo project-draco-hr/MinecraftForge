@@ -1,0 +1,6 @@
+int type
+World world
+double x
+double y
+double z
+Entity thrower
