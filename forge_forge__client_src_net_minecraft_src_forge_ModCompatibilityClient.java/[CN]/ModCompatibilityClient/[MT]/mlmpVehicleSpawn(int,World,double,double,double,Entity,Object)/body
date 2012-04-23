@@ -1,11 +1,11 @@
 {
   Class mlmp=getClass("ModLoaderMp");
-  if (mlmp == null) {
-    return null;
+  if (!isMLMPInstalled() || mlmp == null) {
+    return currentEntity;
   }
   Object entry=mlmp.getDeclaredMethod("handleNetClientHandlerEntities",int.class).invoke(null,type);
   if (entry == null) {
-    return null;
+    return currentEntity;
   }
   Class entityClass=(Class)entry.getClass().getDeclaredField("entityClass").get(entry);
   Object ret=(Entity)entityClass.getConstructor(World.class,Double.TYPE,Double.TYPE,Double.TYPE).newInstance(world,x,y,z);

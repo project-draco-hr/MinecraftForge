@@ -1,0 +1,6 @@
+{
+  if (isMLMPInstalled == -1) {
+    isMLMPInstalled=(getClass("ModLoaderMp") != null ? 1 : 0);
+  }
+  return isMLMPInstalled == 1;
+}

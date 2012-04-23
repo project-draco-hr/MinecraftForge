@@ -1,6 +1,6 @@
 {
   Class mlmp=getClass("ModLoaderMp");
-  if (mlmp == null) {
+  if (!isMLMPInstalled() || mlmp == null) {
     return;
   }
   try {
