@@ -1,0 +1,11 @@
+{
+  File folder=Minecraft.getAppDir(path);
+  try {
+    audioModWalkFolder(folder,folder,pool);
+  }
+ catch (  IOException ex) {
+    ModLoader.getLogger().fine("Loading Mod audio failed for folder: " + path);
+    ModLoader.getLogger().fine(ex.toString());
+    ex.printStackTrace();
+  }
+}

@@ -1,0 +1,13 @@
+{
+  if (!isAudioModInstalled()) {
+    return;
+  }
+  audioModSoundPoolCave=new SoundPool();
+  audioModLoadModAudio("minecraft/resources/mod/sound",mngr.getSoundsPool());
+  audioModLoadModAudio("minecraft/resources/mod/streaming",mngr.getStreamingPool());
+  audioModLoadModAudio("minecraft/resources/mod/music",mngr.getMusicPool());
+  audioModLoadModAudio("minecraft/resources/mod/cavemusic",audioModSoundPoolCave);
+  if (mngr.MUSIC_INTERVAL == 12000) {
+    mngr.MUSIC_INTERVAL=6000;
+  }
+}

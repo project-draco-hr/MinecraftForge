@@ -1,0 +1,6 @@
+{
+  if (isAudioModInstalled == -1) {
+    isAudioModInstalled=(getClass("paulscode.sound.codecs.CodecIBXM") != null ? 1 : 0);
+  }
+  return isAudioModInstalled == 1;
+}

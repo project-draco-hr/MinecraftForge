@@ -1,0 +1,9 @@
+{
+  for (  ISoundHandler handler : soundHandlers) {
+    entry=handler.onPlaySoundEffect(soundManager,entry,soundName,volume,pitch);
+    if (entry == null) {
+      return null;
+    }
+  }
+  return entry;
+}

@@ -1,0 +1,5 @@
+{
+  for (  ISoundHandler handler : soundHandlers) {
+    handler.onSetupAudio(soundManager);
+  }
+}
