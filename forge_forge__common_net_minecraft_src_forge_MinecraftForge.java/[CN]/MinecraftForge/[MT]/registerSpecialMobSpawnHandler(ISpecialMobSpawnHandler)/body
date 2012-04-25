@@ -1,0 +1,3 @@
+{
+  ForgeHooks.specialMobSpawnHandlers.add(handler);
+}
