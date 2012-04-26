@@ -1,9 +1,11 @@
 {
   File configDir=Loader.instance().getConfigDir();
-  File modConfig=new File(configDir,String.format("%s.cfg",modClazz.getSimpleName()));
+  String modConfigName=modClazz.getSimpleName();
+  File modConfig=new File(configDir,String.format("%s.cfg",modConfigName));
   Properties props=new Properties();
   if (modConfig.exists()) {
     try {
+      Loader.log.fine(String.format("Reading existing configuration file for %s : %s",modConfigName,modConfig.getName()));
       FileReader configReader=new FileReader(modConfig);
       props.load(configReader);
       configReader.close();
@@ -31,8 +33,10 @@
       try {
         defaultValue=f.get(null);
         propertyValue=props.getProperty(propertyName,extractValue(defaultValue));
-        Object currentValue=parseValue(propertyValue,property,f.getType());
+        Object currentValue=parseValue(propertyValue,property,f.getType(),propertyName,modConfigName);
+        Loader.log.finest(String.format("Configuration for %s.%s found values default: %s, configured: %s, interpreted: %s",modConfigName,propertyName,defaultValue,propertyValue,currentValue));
         if (currentValue != null && !currentValue.equals(defaultValue)) {
+          Loader.log.finest(String.format("Configuration for %s.%s value set to: %s",modConfigName,propertyName,currentValue));
           f.set(null,currentValue);
         }
       }
@@ -56,6 +60,7 @@
         if (propertyValue != null) {
           props.setProperty(propertyName,extractValue(propertyValue));
         }
+        comments.append("\n");
       }
     }
   }
@@ -64,6 +69,7 @@
       FileWriter configWriter=new FileWriter(modConfig);
       props.store(configWriter,comments.toString());
       configWriter.close();
+      Loader.log.fine(String.format("Configuration for %s written to %s",modConfigName,modConfig.getName()));
     }
  catch (    IOException e) {
       Loader.log.warning(String.format("Error trying to write the config file %s",modConfig.getName()));
