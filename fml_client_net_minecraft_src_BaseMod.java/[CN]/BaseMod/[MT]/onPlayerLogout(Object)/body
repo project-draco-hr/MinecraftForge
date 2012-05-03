@@ -1,0 +1,3 @@
+{
+  onClientLogout((EntityPlayer)player);
+}

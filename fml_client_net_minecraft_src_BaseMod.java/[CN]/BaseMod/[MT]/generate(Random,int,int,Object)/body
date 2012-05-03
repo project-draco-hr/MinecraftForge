@@ -1,0 +1,10 @@
+{
+  World w=(World)additionalData[0];
+  IChunkProvider cp=(IChunkProvider)additionalData[1];
+  if (cp instanceof ChunkProviderGenerate) {
+    generateSurface(w,random,chunkX << 4,chunkZ << 4);
+  }
+ else   if (cp instanceof ChunkProviderHell) {
+    generateNether(w,random,chunkX << 4,chunkZ << 4);
+  }
+}

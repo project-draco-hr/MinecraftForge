@@ -1,0 +1,3 @@
+{
+  registerBlock(block,ItemBlock.class);
+}

@@ -1,0 +1,3 @@
+{
+  EntityList.addNewEntityListMapping(entityClass,entityName,id);
+}
