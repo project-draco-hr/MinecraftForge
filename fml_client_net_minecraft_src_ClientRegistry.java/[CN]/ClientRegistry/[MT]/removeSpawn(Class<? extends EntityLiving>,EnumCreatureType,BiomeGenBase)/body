@@ -1,0 +1,10 @@
+{
+  for (  BiomeGenBase biome : biomes) {
+    @SuppressWarnings("unchecked") List<SpawnListEntry> spawns=biome.func_25063_a(typeOfCreature);
+    for (    SpawnListEntry entry : Collections.unmodifiableList(spawns)) {
+      if (entry.field_25212_a == entityClass) {
+        spawns.remove(entry);
+      }
+    }
+  }
+}

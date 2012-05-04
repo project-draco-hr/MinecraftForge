@@ -1,0 +1,7 @@
+{
+  client=minecraft;
+  FMLCommonHandler.instance().registerSidedDelegate(this);
+  CommonRegistry.registerRegistry(new ClientRegistry());
+  Loader.instance().loadMods();
+  preInitializationComplete=true;
+}
