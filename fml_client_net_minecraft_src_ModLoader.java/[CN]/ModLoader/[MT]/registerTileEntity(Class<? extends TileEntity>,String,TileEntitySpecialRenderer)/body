@@ -1,0 +1,3 @@
+{
+  ClientRegistry.instance().registerTileEntity(tileEntityClass,id,renderer);
+}

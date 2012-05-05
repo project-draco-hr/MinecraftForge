@@ -1,0 +1,4 @@
+{
+  registerTileEntity(tileEntityClass,id);
+  TileEntityRenderer.setTileEntityRenderer(tileEntityClass,specialRenderer);
+}
