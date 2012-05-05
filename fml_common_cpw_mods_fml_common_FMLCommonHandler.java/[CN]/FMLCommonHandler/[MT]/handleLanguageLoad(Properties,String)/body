@@ -1,0 +1,7 @@
+{
+  Properties langPack=modLanguageData.get(lang);
+  if (langPack == null) {
+    return;
+  }
+  languagePack.putAll(langPack);
+}
