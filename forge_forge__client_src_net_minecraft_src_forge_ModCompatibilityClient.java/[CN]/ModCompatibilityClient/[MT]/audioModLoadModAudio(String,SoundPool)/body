@@ -1,5 +1,5 @@
 {
-  File folder=Minecraft.getAppDir(path);
+  File folder=new File(Minecraft.getMinecraftDir(),path);
   try {
     audioModWalkFolder(folder,folder,pool);
   }
