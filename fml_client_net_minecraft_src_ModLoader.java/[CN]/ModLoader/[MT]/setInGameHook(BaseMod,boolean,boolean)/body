@@ -1,4 +1,5 @@
 {
   ModLoaderModContainer mlmc=(ModLoaderModContainer)ModLoaderModContainer.findContainerFor(mod);
   mlmc.setTicking(enable);
+  mlmc.setClockTicks(useClock);
 }
