@@ -1,0 +1,40 @@
+{
+  super(icon);
+  RenderEngine re=ModLoader.getMinecraftInstance().field_6315_n;
+  targetTex=target;
+  field_1129_e=size;
+  field_1128_f=re.func_1070_a(target);
+  tickRate=tickCount;
+  ticks=tickCount;
+  func_782_a(re);
+  int sWidth=image.getWidth();
+  int sHeight=image.getHeight();
+  int tWidth=GL11.glGetTexLevelParameteri(GL_TEXTURE_2D,0,GL_TEXTURE_WIDTH) / 16;
+  int tHeight=GL11.glGetTexLevelParameteri(GL_TEXTURE_2D,0,GL_TEXTURE_HEIGHT) / 16;
+  int frames=(int)Math.floor((double)(sHeight / sWidth));
+  if (frames < 1) {
+    throw new IllegalArgumentException(String.format("Attempted to create a TextureAnimation with no complete frames: %dx%d",sWidth,sHeight));
+  }
+ else {
+    images=new byte[frames][];
+    if (sWidth != tWidth) {
+      BufferedImage b=new BufferedImage(tWidth,tHeight * frames,6);
+      Graphics2D g=b.createGraphics();
+      g.drawImage(image,0,0,tWidth,tHeight * frames,0,0,sWidth,sHeight,(ImageObserver)null);
+      g.dispose();
+      image=b;
+    }
+    for (int frame=0; frame < frames; frame++) {
+      int[] pixels=new int[tWidth * tHeight];
+      image.getRGB(0,tHeight * frame,tWidth,tHeight,pixels,0,tWidth);
+      images[frame]=new byte[tWidth * tHeight * 4];
+      for (int i=0; i < pixels.length; i++) {
+        int i4=i * 4;
+        images[frame][i4 + 0]=(byte)(pixels[i] >> 16 & 255);
+        images[frame][i4 + 1]=(byte)(pixels[i] >> 8 & 255);
+        images[frame][i4 + 2]=(byte)(pixels[i] >> 0 & 255);
+        images[frame][i4 + 3]=(byte)(pixels[i] >> 24 & 255);
+      }
+    }
+  }
+}

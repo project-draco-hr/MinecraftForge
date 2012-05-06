@@ -1,0 +1,4 @@
+int icon
+int target
+BufferedImage image
+int tickCount

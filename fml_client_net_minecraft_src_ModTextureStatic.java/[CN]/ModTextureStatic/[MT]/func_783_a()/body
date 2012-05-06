@@ -1,0 +1,5 @@
+{
+  if (oldanaglyph != field_1131_c) {
+    update();
+  }
+}

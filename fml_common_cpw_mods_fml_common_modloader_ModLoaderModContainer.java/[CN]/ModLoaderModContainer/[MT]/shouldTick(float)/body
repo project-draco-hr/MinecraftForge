@@ -1,2 +1,9 @@
 {
+  if (isTicking && (!clockTicks || clock != lastClock)) {
+    return true;
+  }
+  if (guiTicks && (!guiClockTicks || clock != lastClock)) {
+    return true;
+  }
+  return false;
 }

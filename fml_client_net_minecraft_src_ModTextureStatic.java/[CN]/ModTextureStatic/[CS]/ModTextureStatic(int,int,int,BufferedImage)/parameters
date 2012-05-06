@@ -1,0 +1,4 @@
+int icon
+int size
+int target
+BufferedImage image

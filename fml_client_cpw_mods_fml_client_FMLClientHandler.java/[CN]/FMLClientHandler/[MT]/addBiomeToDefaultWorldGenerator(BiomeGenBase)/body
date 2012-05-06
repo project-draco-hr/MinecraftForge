@@ -1,2 +1,3 @@
 {
+  WorldType.field_48635_b.addNewBiome(biome);
 }

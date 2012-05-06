@@ -1,0 +1,17 @@
+{
+  for (int idx=0; idx < pixels.length; idx++) {
+    int i=idx * 4;
+    int a=pixels[idx] >> 24 & 255;
+    int r=pixels[idx] >> 16 & 255;
+    int g=pixels[idx] >> 8 & 255;
+    int b=pixels[idx] >> 0 & 255;
+    if (field_1131_c) {
+      r=g=b=(r + g + b) / 3;
+    }
+    field_1127_a[i + 0]=(byte)r;
+    field_1127_a[i + 1]=(byte)g;
+    field_1127_a[i + 2]=(byte)b;
+    field_1127_a[i + 3]=(byte)a;
+  }
+  oldanaglyph=field_1131_c;
+}

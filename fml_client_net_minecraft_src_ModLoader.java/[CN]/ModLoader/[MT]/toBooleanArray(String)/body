@@ -1,0 +1,7 @@
+{
+  boolean[] ret=new boolean[data.length()];
+  for (int x=0; x < data.length(); x++) {
+    ret[x]=data.charAt(x) == '1';
+  }
+  return ret;
+}

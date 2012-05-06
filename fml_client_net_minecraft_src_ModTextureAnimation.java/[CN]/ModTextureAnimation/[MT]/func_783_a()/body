@@ -1,0 +1,9 @@
+{
+  if (++ticks >= tickRate) {
+    if (++index >= images.length) {
+      index=0;
+    }
+    field_1127_a=images[index];
+    ticks=0;
+  }
+}

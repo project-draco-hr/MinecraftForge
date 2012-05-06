@@ -1,3 +1,7 @@
 {
-  return onTickInGame((Minecraft)minecraftInstance);
+  Minecraft mc=(Minecraft)minecraftInstance;
+  if (mc.field_6324_e != null) {
+    return onTickInGame(mc);
+  }
+  return true;
 }

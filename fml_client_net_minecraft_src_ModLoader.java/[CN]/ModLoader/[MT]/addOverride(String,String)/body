@@ -1,3 +1,5 @@
 {
-  return 0;
+  int idx=getUniqueSpriteIndex(fileToOverride);
+  addOverride(fileToOverride,fileToAdd,idx);
+  return idx;
 }

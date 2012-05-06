@@ -1,0 +1,25 @@
+{
+  super(icon);
+  RenderEngine re=ModLoader.getMinecraftInstance().field_6315_n;
+  targetTex=target;
+  field_1129_e=size;
+  field_1128_f=re.func_1070_a(target);
+  func_782_a(re);
+  int sWidth=image.getWidth();
+  int sHeight=image.getHeight();
+  int tWidth=GL11.glGetTexLevelParameteri(GL_TEXTURE_2D,0,GL_TEXTURE_WIDTH) / 16;
+  int tHeight=GL11.glGetTexLevelParameteri(GL_TEXTURE_2D,0,GL_TEXTURE_HEIGHT) / 16;
+  pixels=new int[tWidth * tHeight];
+  field_1127_a=new byte[tWidth * tHeight * 4];
+  if (tWidth == sWidth && tHeight == sHeight) {
+    image.getRGB(0,0,sWidth,sHeight,pixels,0,sWidth);
+  }
+ else {
+    BufferedImage tmp=new BufferedImage(tWidth,tHeight,6);
+    Graphics2D gfx=tmp.createGraphics();
+    gfx.drawImage(image,0,0,tWidth,tHeight,0,0,sWidth,sHeight,(ImageObserver)null);
+    tmp.getRGB(0,0,tWidth,tHeight,pixels,0,tWidth);
+    gfx.dispose();
+  }
+  update();
+}
