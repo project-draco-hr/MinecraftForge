@@ -1,0 +1,5 @@
+{
+  for (  ModContainer mod : Loader.getModList()) {
+    mod.tickStart(ModContainer.TickType.WORLD,0.0);
+  }
+}

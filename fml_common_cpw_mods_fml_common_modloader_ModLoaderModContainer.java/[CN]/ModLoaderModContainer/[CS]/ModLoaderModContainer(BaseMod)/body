@@ -1,0 +1,4 @@
+{
+  this.mod=instance;
+  this.ticks=EnumSet.noneOf(TickType.class);
+}

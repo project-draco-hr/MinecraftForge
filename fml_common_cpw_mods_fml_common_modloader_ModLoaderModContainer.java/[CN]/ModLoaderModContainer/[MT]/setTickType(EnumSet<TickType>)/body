@@ -1,0 +1,3 @@
+{
+  this.ticks=EnumSet.copyOf(type);
+}

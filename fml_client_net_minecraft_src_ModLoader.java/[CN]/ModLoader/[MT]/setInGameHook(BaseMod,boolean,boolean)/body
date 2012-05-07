@@ -1,5 +1,3 @@
 {
-  ModLoaderModContainer mlmc=(ModLoaderModContainer)ModLoaderModContainer.findContainerFor(mod);
-  mlmc.setTicking(enable);
-  mlmc.setClockTicks(useClock);
+  ModLoaderHelper.updateStandardTicks(mod,enable,useClock);
 }

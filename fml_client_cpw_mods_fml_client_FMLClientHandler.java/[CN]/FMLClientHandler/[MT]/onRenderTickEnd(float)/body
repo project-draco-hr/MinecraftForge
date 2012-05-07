@@ -1,0 +1,5 @@
+{
+  for (  ModContainer mod : Loader.getModList()) {
+    mod.tickEnd(TickType.RENDER,partialTickTime);
+  }
+}

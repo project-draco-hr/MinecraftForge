@@ -1,5 +1,0 @@
-{
-  for (  ModContainer mod : Loader.getModList()) {
-    mod.tickEnd();
-  }
-}

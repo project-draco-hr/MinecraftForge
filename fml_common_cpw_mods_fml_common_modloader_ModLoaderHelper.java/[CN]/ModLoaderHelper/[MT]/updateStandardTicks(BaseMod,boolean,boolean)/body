@@ -1,0 +1,23 @@
+{
+  ModLoaderModContainer mlmc=(ModLoaderModContainer)ModLoaderModContainer.findContainerFor(mod);
+  if (mlmc == null) {
+    mlmc=tickers.get(mod);
+    if (mlmc == null) {
+      mlmc=new ModLoaderModContainer(mod);
+      tickers.put(mod,mlmc);
+    }
+  }
+  EnumSet<TickType> ticks=mlmc.getTickTypes();
+  if (enable && !useClock && FMLCommonHandler.instance().isClient()) {
+    ticks.add(TickType.RENDER);
+  }
+ else {
+    ticks.remove(TickType.RENDER);
+  }
+  if (enable && (useClock || FMLCommonHandler.instance().isServer())) {
+    ticks.add(TickType.WORLD);
+  }
+ else {
+    ticks.remove(TickType.WORLD);
+  }
+}

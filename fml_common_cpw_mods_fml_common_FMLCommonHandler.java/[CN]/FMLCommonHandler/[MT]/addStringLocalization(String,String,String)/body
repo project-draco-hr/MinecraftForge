@@ -5,7 +5,7 @@
     modLanguageData.put(lang,langPack);
   }
   langPack.put(key,value);
-  if (StringTranslate.func_20162_a().func_44024_c().equals(lang)) {
+  if (sidedDelegate.getCurrentLanguage().equals(lang)) {
     handleLanguageLoad(langPack,lang);
   }
 }

@@ -1,7 +1,0 @@
-{
-  Minecraft mc=(Minecraft)minecraftInstance;
-  if (mc.field_40007_r != null) {
-    return onTickInGUI(clock,mc,mc.field_6313_p);
-  }
-  return true;
-}
