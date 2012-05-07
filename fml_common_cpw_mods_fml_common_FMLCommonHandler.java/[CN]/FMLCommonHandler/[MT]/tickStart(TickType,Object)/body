@@ -1,0 +1,8 @@
+{
+  for (  ModContainer mod : Loader.getModList()) {
+    mod.tickStart(type,data);
+  }
+  for (  ModContainer mod : extraTickers) {
+    mod.tickStart(type,data);
+  }
+}

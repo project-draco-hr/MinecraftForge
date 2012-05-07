@@ -1,0 +1,3 @@
+{
+  extraTickers.add(ticker);
+}

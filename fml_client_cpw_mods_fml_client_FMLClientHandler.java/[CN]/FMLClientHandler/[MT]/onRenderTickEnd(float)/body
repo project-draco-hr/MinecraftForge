@@ -1,5 +1,3 @@
 {
-  for (  ModContainer mod : Loader.getModList()) {
-    mod.tickEnd(TickType.RENDER,partialTickTime);
-  }
+  FMLCommonHandler.instance().tickEnd(TickType.RENDER,partialTickTime);
 }
