@@ -1,0 +1,4 @@
+{
+  this.keyBinding=keyHandler;
+  this.shouldRepeat=allowRepeat;
+}

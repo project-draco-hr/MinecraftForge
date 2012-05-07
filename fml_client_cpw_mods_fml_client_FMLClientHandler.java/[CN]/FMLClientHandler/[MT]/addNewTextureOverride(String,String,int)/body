@@ -1,0 +1,11 @@
+{
+  if (!overrideInfo.containsKey(textureToOverride)) {
+    overrideInfo.put(textureToOverride,new ArrayList<OverrideInfo>());
+  }
+  ArrayList<OverrideInfo> list=overrideInfo.get(textureToOverride);
+  OverrideInfo info=new OverrideInfo();
+  info.index=location;
+  info.override=overridingTexturePath;
+  info.texture=textureToOverride;
+  list.add(info);
+}

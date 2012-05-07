@@ -1,0 +1,3 @@
+String textureToOverride
+String overridingTexturePath
+int location

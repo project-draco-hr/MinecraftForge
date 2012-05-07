@@ -1,0 +1,9 @@
+{
+  List<IKeyHandler> allKeys=FMLCommonHandler.instance().gatherKeyBindings();
+  KeyBinding[] keys=new KeyBinding[allKeys.size()];
+  int i=0;
+  for (  IKeyHandler key : allKeys) {
+    keys[i++]=(KeyBinding)key.getKeyBinding();
+  }
+  return keys;
+}

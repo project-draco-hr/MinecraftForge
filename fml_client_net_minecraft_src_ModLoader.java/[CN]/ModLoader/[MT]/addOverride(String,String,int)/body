@@ -1,11 +1,3 @@
 {
-  if (!overrideInfo.containsKey(path)) {
-    overrideInfo.put(path,new ArrayList<OverrideInfo>());
-  }
-  ArrayList<OverrideInfo> list=overrideInfo.get(path);
-  OverrideInfo info=new OverrideInfo();
-  info.index=index;
-  info.override=overlayPath;
-  info.texture=path;
-  list.add(info);
+  FMLClientHandler.instance().addNewTextureOverride(path,overlayPath,index);
 }

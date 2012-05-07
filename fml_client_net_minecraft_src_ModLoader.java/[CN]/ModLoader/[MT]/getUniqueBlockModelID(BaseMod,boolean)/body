@@ -1,3 +1,3 @@
 {
-  return 0;
+  return FMLClientHandler.instance().obtainBlockModelIdFor(mod,inventoryRenderer);
 }

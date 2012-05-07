@@ -1,0 +1,5 @@
+{
+  if (client.field_22009_h == player && gui != null) {
+    client.func_6272_a(gui);
+  }
+}

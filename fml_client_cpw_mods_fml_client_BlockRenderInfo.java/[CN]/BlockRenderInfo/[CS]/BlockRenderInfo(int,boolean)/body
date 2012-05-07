@@ -1,0 +1,4 @@
+{
+  this.renderId=renderId;
+  this.forInventory=forInventory;
+}
