@@ -1,9 +1,0 @@
-{
-  for (int x=0; x < slots.length; x++) {
-    if (slots[x]) {
-      slots[x]=false;
-      return x;
-    }
-  }
-  return -1;
-}

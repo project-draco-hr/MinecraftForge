@@ -1,5 +1,5 @@
 {
-  int idx=getUniqueSpriteIndex(fileToOverride);
+  int idx=SpriteHelper.getUniqueSpriteIndex(fileToOverride);
   addOverride(fileToOverride,fileToAdd,idx);
   return idx;
 }
