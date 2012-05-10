@@ -1,0 +1,15 @@
+def main():
+    print 'Obtaining version information from git'
+    cmd = 'git describe --long'
+    try:
+        process = subprocess.Popen(cmdsplit(cmd), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=(-1))
+        (vers, _) = process.communicate()
+    except OSError:
+        print 'Git not found'
+        vers = 'v1.0-0-deadbeef'
+    (major, minor, rev, githash) = re.match('v(\\d+).(\\d+)-(\\d+)-(.*)', vers).groups()
+    with open('fmlversion.properties', 'w') as f:
+        f.write(('%s=%s\n' % ('fmlbuild.major.number', major)))
+        f.write(('%s=%s\n' % ('fmlbuild.minor.number', minor)))
+        f.write(('%s=%s\n' % ('fmlbuild.revision.number', rev)))
+        f.write(('%s=%s\n' % ('fmlbuild.githash', githash)))
