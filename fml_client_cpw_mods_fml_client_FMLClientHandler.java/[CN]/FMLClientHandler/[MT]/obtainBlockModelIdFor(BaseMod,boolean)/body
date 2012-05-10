@@ -2,5 +2,6 @@
   ModLoaderModContainer mlmc=ModLoaderHelper.registerRenderHelper(mod);
   int renderId=nextRenderId++;
   mlmc.addRenderHandler(new BlockRenderInfo(renderId,inventoryRenderer));
+  blockModelIds.put(renderId,mlmc);
   return renderId;
 }
