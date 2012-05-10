@@ -2,6 +2,12 @@
   if (graph.containsKey(node)) {
     return false;
   }
-  graph.put(node,new HashSet<T>());
+  orderedNodes.add(node);
+  graph.put(node,new TreeSet<T>(new Comparator<T>(){
+    public int compare(    T o1,    T o2){
+      return orderedNodes.indexOf(o1) - orderedNodes.indexOf(o2);
+    }
+  }
+));
   return true;
 }
