@@ -11,12 +11,29 @@
   }
   Loader.log.setLevel(Level.ALL);
   try {
-    FileHandler fileHandler=new FileHandler("ForgeModLoader-%g.log",0,3);
+    File logPath=new File(FMLCommonHandler.instance().getMinecraftRootDirectory().getCanonicalPath(),"ForgeModLoader-%g.log");
+    FileHandler fileHandler=new FileHandler(logPath.getPath(),0,3);
     fileHandler.setFormatter(new FMLLogFormatter());
     fileHandler.setLevel(Level.ALL);
     Loader.log.addHandler(fileHandler);
   }
  catch (  Exception e) {
+  }
+  InputStream stream=Loader.class.getClassLoader().getResourceAsStream("fmlversion.properties");
+  Properties properties=new Properties();
+  if (stream != null) {
+    try {
+      properties.load(stream);
+      major=properties.getProperty("fmlbuild.major.number");
+      minor=properties.getProperty("fmlbuild.minor.number");
+      rev=properties.getProperty("fmlbuild.revision.number");
+      build=properties.getProperty("fmlbuild.build.number");
+      mcversion=properties.getProperty("fmlbuild.mcversion");
+    }
+ catch (    IOException ex) {
+      Loader.log.log(Level.SEVERE,"Could not get FML version information - corrupted installation detected!",ex);
+      throw new LoaderException(ex);
+    }
   }
   log.info(String.format("Forge Mod Loader version %s.%s.%s.%s for Minecraft %s loading",major,minor,rev,build,mcversion));
 }

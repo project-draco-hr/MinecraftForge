@@ -1,6 +1,9 @@
 {
   modInit();
   postModInit();
+  for (  ModContainer mod : getModList()) {
+    mod.nextState();
+  }
   state=State.UP;
   log.info(String.format("Forge Mod Loader load complete, %d mods loaded",mods.size()));
 }

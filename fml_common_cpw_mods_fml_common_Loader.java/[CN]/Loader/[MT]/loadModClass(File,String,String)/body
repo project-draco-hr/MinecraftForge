@@ -1,16 +1,22 @@
 {
   try {
     Class<?> clazz=Class.forName(clazzName,false,modClassLoader);
+    ModContainer mod=null;
     if (clazz.isAnnotationPresent(Mod.class)) {
-      mods.add(FMLModContainer.buildFor(clazz));
+      log.fine(String.format("FML mod class %s found, loading",clazzName));
+      mod=FMLModContainer.buildFor(clazz);
+      log.fine(String.format("FML mod class %s loaded",clazzName));
     }
  else     if (FMLCommonHandler.instance().isModLoaderMod(clazz)) {
       log.fine(String.format("ModLoader BaseMod class %s found, loading",clazzName));
-      ModContainer mc=FMLCommonHandler.instance().loadBaseModMod(clazz,classSource.getCanonicalFile());
-      mods.add(mc);
+      mod=FMLCommonHandler.instance().loadBaseModMod(clazz,classSource.getCanonicalFile());
       log.fine(String.format("ModLoader BaseMod class %s loaded",clazzName));
     }
  else {
+    }
+    if (mod != null) {
+      mods.add(mod);
+      mod.nextState();
     }
   }
  catch (  Exception e) {

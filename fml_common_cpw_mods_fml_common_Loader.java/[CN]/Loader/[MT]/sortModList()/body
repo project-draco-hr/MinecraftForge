@@ -15,7 +15,7 @@
     mods=sorter.sort();
     log.fine("Sorted mod list:");
     for (    ModContainer mod : mods) {
-      log.fine(String.format("    %s: %s",mod.getName(),mod.getSource().getName()));
+      log.fine(String.format("\t%s: %s (%s)",mod.getName(),mod.getSource().getName(),mod.getSortingRules()));
     }
   }
  catch (  IllegalArgumentException iae) {
