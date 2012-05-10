@@ -1,3 +1,6 @@
 {
+  if (keyHandlers == null) {
+    keyHandlers=new ArrayList<IKeyHandler>();
+  }
   keyHandlers.add(handler);
 }

@@ -1,3 +1,6 @@
 {
+  if (keyHandlers == null) {
+    return Collections.emptyList();
+  }
   return keyHandlers;
 }

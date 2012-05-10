@@ -1,3 +1,6 @@
 {
+  if (blockRenderInfos == null) {
+    blockRenderInfos=new ArrayList<IBlockRenderInfo>();
+  }
   blockRenderInfos.add(handler);
 }
