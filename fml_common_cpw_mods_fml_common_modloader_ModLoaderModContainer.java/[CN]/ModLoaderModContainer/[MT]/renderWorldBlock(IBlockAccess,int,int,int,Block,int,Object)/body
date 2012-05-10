@@ -1,3 +1,0 @@
-{
-  return mod.onRenderWorldBlock(world,x,y,z,block,modelID,renderer);
-}

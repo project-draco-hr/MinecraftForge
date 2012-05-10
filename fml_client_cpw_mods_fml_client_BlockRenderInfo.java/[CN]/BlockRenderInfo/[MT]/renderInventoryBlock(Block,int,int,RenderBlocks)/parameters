@@ -1,4 +1,4 @@
 Block block
 int metadata
 int modelID
-Object renderer
+RenderBlocks renderer

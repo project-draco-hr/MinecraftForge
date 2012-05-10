@@ -3,5 +3,5 @@ int x
 int y
 int z
 Block block
-int modelID
-Object renderer
+int modelId
+RenderBlocks renderer

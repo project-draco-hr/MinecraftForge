@@ -1,3 +1,7 @@
 {
+  BlockRenderInfo bri=blockModelIds.get(modelId);
+  if (bri != null) {
+    return bri.shouldRender3DInInventory();
+  }
   return false;
 }

@@ -1,0 +1,3 @@
+{
+  return ((BaseMod)modContainer.getMod()).renderWorldBlock(renderer,world,x,y,z,block,modelId);
+}

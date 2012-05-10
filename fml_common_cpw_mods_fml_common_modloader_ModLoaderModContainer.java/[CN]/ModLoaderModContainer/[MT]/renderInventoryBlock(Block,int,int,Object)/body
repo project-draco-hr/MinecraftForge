@@ -1,3 +1,0 @@
-{
-  mod.onRenderInventoryBlock(renderer,block,metadata,modelID);
-}

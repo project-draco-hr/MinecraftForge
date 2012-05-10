@@ -1,3 +1,0 @@
-{
-  renderInvBlock((RenderBlocks)renderer,block,metadata,modelID);
-}
