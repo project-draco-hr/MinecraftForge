@@ -6,6 +6,6 @@
   }
   langPack.put(key,value);
   if (sidedDelegate.getCurrentLanguage().equals(lang)) {
-    handleLanguageLoad(langPack,lang);
+    handleLanguageLoad(sidedDelegate.getCurrentLanguageTable(),lang);
   }
 }

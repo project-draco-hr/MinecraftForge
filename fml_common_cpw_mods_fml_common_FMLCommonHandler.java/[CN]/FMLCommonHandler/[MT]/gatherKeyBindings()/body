@@ -3,7 +3,7 @@
   for (  ModContainer mod : Loader.getModList()) {
     allKeys.addAll(mod.getKeys());
   }
-  for (  ModContainer mod : extraTickers) {
+  for (  ModContainer mod : auxilliaryContainers) {
     allKeys.addAll(mod.getKeys());
   }
   return allKeys;

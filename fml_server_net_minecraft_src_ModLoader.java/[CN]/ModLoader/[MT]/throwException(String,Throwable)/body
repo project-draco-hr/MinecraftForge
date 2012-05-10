@@ -1,3 +1,3 @@
 {
-  FMLServerHandler.instance().raiseException(e,message,true);
+  FMLCommonHandler.instance().raiseException(e,message,true);
 }

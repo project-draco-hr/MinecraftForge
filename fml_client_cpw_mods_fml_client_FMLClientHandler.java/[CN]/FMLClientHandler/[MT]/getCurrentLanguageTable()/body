@@ -1,0 +1,3 @@
+{
+  return StringTranslate.func_20162_a().getTranslationTable();
+}

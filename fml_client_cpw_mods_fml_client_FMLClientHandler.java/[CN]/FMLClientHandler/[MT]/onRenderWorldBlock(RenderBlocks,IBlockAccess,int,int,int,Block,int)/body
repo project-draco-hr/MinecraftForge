@@ -1,7 +1,0 @@
-{
-  ModLoaderModContainer mod=blockModelIds.get(modelID);
-  if (mod == null) {
-    return false;
-  }
-  return ((BaseMod)mod.getMod()).renderWorldBlock(renderer,world,x,y,z,block,modelID);
-}

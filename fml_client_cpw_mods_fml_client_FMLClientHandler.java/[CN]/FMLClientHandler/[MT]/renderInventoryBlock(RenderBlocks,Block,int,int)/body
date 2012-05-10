@@ -1,0 +1,6 @@
+{
+  ModContainer mod=blockModelIds.get(modelID);
+  if (mod != null) {
+    mod.renderInventoryBlock(block,metadata,modelID,renderer);
+  }
+}

@@ -1,0 +1,5 @@
+{
+  this.keyBinding=keyHandler;
+  this.shouldRepeat=allowRepeat;
+  this.modContainer=modContainer;
+}

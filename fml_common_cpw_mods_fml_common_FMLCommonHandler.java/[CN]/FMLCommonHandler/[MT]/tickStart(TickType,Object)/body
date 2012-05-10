@@ -2,7 +2,7 @@
   for (  ModContainer mod : Loader.getModList()) {
     mod.tickStart(type,data);
   }
-  for (  ModContainer mod : extraTickers) {
+  for (  ModContainer mod : auxilliaryContainers) {
     mod.tickStart(type,data);
   }
 }

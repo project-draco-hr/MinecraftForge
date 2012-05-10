@@ -4,6 +4,7 @@
   int i=0;
   for (  IKeyHandler key : allKeys) {
     keys[i++]=(KeyBinding)key.getKeyBinding();
+    keyBindings.put((KeyBinding)key.getKeyBinding(),key.getOwningContainer());
   }
   return keys;
 }
