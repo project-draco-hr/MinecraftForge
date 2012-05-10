@@ -1,0 +1,6 @@
+{
+  ModLoaderModContainer mod=blockModelIds.get(modelID);
+  if (mod != null) {
+    ((BaseMod)mod.getMod()).renderInvBlock(renderer,block,metadata,modelID);
+  }
+}
