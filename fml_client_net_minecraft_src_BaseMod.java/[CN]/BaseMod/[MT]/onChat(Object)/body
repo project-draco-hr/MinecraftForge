@@ -1,3 +1,4 @@
 {
-  return onChatMessageReceived((EntityPlayer)data[1],(Packet3Chat)data[0]);
+  receiveChatPacket(((Packet3Chat)data[0]).field_517_a);
+  return true;
 }

@@ -1,0 +1,12 @@
+{
+  Packet250CustomPayload packet=new Packet250CustomPayload();
+  packet.field_44012_a="REGISTER";
+  packet.field_44011_c=FMLCommonHandler.instance().getPacketRegistry();
+  packet.field_44010_b=packet.field_44011_c.length;
+  if (packet.field_44010_b > 0) {
+    networkManager.func_972_a(packet);
+  }
+  for (  ModContainer mod : Loader.getModList()) {
+    mod.getNetworkHandler().onServerLogin(handler);
+  }
+}
