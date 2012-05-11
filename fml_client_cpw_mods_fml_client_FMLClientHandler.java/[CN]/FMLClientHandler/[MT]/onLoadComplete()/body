@@ -1,4 +1,5 @@
 {
   Loader.instance().initializeMods();
   client.field_6304_y.loadModKeySettings(harvestKeyBindings());
+  onTexturePackChange(fallbackTexturePack);
 }

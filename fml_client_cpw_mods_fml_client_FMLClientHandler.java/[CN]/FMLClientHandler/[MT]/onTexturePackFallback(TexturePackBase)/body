@@ -1,0 +1,8 @@
+{
+  if (client == null) {
+    this.fallbackTexturePack=fallback;
+  }
+ else {
+    onTexturePackChange(fallback);
+  }
+}

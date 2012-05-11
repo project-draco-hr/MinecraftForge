@@ -1,0 +1,14 @@
+{
+  for (  String fileToOverride : overrideInfo.keySet()) {
+    for (    OverrideInfo override : overrideInfo.get(fileToOverride)) {
+      try {
+        BufferedImage image=loadImageFromTexturePack(renderer,override.override);
+        ModTextureStatic mts=new ModTextureStatic(override.index,1,override.texture,image);
+        renderer.func_1066_a(mts);
+      }
+ catch (      IOException e) {
+        FMLCommonHandler.instance().getFMLLogger().throwing("FMLClientHandler","registerTextureOverrides",e);
+      }
+    }
+  }
+}
