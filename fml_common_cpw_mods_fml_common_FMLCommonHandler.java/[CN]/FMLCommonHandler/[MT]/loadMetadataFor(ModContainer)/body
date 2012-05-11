@@ -1,0 +1,18 @@
+{
+  if (mod.getSourceType() == SourceType.JAR) {
+    try {
+      ZipFile jar=new ZipFile(mod.getSource());
+      ZipEntry infoFile=jar.getEntry("/modinfo.json");
+      if (infoFile != null) {
+        InputStream input=jar.getInputStream(infoFile);
+        ModMetadata data=sidedDelegate.readMetadataFrom(input,mod);
+        mod.setMetadata(data);
+      }
+    }
+ catch (    Exception e) {
+    }
+  }
+ else {
+    getFMLLogger().fine(String.format("Unable to load metadata for mod %s as it is not a jar/zip packaged file",mod.getName()));
+  }
+}

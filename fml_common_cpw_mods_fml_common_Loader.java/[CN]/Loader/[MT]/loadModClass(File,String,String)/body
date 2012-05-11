@@ -15,6 +15,7 @@
  else {
     }
     if (mod != null) {
+      FMLCommonHandler.instance().loadMetadataFor(mod);
       mods.add(mod);
       mod.nextState();
     }

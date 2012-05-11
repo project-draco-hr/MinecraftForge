@@ -1,0 +1,7 @@
+{
+  JsonNode root=new JdomParser().func_27366_a(new InputStreamReader(input));
+  ModMetadata meta=new ModMetadata(mod);
+  meta.name=root.func_27213_a("name");
+  meta.description=root.func_27213_a("description");
+  return meta;
+}

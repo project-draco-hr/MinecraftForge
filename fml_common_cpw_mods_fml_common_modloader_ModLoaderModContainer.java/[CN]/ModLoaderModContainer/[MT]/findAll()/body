@@ -1,7 +1,7 @@
 {
   ArrayList<BaseMod> modList=new ArrayList<BaseMod>();
   for (  ModContainer mc : Loader.getModList()) {
-    if (mc instanceof ModLoaderModContainer) {
+    if (mc instanceof ModLoaderModContainer && mc.getModState().ordinal() > ModState.LOADED.ordinal()) {
       modList.add(((ModLoaderModContainer)mc).mod);
     }
   }
