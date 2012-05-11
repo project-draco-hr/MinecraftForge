@@ -1,0 +1,20 @@
+{
+  ArrayList<String> brandings=new ArrayList<String>();
+  brandings.add(mcVersion);
+  brandings.add(Loader.instance().getFMLVersionString());
+  try {
+    brandings.add((String)Class.forName("forge.MinecraftForge").getMethod("getVersionString").invoke(null));
+  }
+ catch (  Exception ex) {
+  }
+  try {
+    Properties props=new Properties();
+    props.load(FMLCommonHandler.class.getClassLoader().getResourceAsStream("fmlbranding.properties"));
+    brandings.add(props.getProperty("fmlbranding"));
+  }
+ catch (  Exception ex) {
+  }
+  brandings.add(String.format("%d mod%s loaded",Loader.getModList().size(),Loader.getModList().size() > 1 ? "s" : ""));
+  Collections.reverse(brandings);
+  return brandings.toArray(new String[brandings.size()]);
+}

@@ -1,0 +1,3 @@
+{
+  return String.format("FML v%s.%s.%s.%s",major,minor,rev,build);
+}
