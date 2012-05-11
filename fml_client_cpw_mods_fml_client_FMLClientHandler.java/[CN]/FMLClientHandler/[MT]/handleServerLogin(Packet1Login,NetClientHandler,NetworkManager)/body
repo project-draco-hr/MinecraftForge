@@ -1,4 +1,5 @@
 {
+  this.networkClient=handler;
   Packet250CustomPayload packet=new Packet250CustomPayload();
   packet.field_44012_a="REGISTER";
   packet.field_44011_c=FMLCommonHandler.instance().getPacketRegistry();
