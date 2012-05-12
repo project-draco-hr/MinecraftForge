@@ -1,6 +1,8 @@
 {
-  FMLCommonHandler.instance().worldTickStart();
-  if (client.field_6313_p != null && client.field_6324_e != null) {
-    FMLCommonHandler.instance().tickStart(TickType.WORLDGUI,0.0f,client.field_6313_p);
+  if (client.field_6324_e != null) {
+    FMLCommonHandler.instance().worldTickStart();
+    if (client.field_6313_p != null) {
+      FMLCommonHandler.instance().tickStart(TickType.WORLDGUI,0.0f,client.field_6313_p);
+    }
   }
 }
