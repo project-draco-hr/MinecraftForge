@@ -1,7 +1,0 @@
-{
-  Minecraft mc=(Minecraft)minecraftInstance;
-  if (mc.field_6324_e != null) {
-    return onTickInGame((Float)data[0],mc);
-  }
-  return true;
-}

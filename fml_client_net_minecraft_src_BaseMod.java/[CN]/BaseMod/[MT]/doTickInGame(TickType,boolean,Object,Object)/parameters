@@ -1,2 +1,4 @@
+TickType tick
+boolean tickEnd
 Object minecraftInstance
 Object data

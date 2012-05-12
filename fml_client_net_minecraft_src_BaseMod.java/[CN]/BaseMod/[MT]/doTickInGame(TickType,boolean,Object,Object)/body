@@ -1,0 +1,10 @@
+{
+  Minecraft mc=(Minecraft)minecraftInstance;
+  if ((tickEnd && tick == TickType.WORLD) || (!tickEnd && tick == TickType.RENDER)) {
+    return onTickInGame((Float)data[0],mc);
+  }
+ else   if (((tickEnd && tick == TickType.WORLDGUI) || (!tickEnd && tick == TickType.GUI))) {
+    return onTickInGUI((Float)data[0],mc,(GuiScreen)data[1]);
+  }
+  return true;
+}
