@@ -1,5 +1,5 @@
 {
-  this.modList.func_22243_a(p_571_1_,p_571_2_,p_571_3_);
+  this.modList.drawScreen(p_571_1_,p_571_2_,p_571_3_);
   this.func_548_a(this.field_6451_g,"Mod List",this.field_951_c / 2,16,16777215);
   super.func_571_a(p_571_1_,p_571_2_,p_571_3_);
 }

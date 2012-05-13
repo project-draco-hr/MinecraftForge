@@ -1,0 +1,10 @@
+{
+  this.client=client;
+  this.listWidth=width;
+  this.listHeight=height;
+  this.top=top;
+  this.bottom=bottom;
+  this.slotHeight=entryHeight;
+  this.left=left;
+  this.right=width;
+}

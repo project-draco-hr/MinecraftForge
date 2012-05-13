@@ -1,0 +1,14 @@
+{
+  if (button.field_937_g) {
+    if (button.field_938_f == this.scrollUpActionId) {
+      this.scrollDistance-=(float)(this.slotHeight * 2 / 3);
+      this.initialMouseClickY=-2.0F;
+      this.applyScrollLimits();
+    }
+ else     if (button.field_938_f == this.scrollDownActionId) {
+      this.scrollDistance+=(float)(this.slotHeight * 2 / 3);
+      this.initialMouseClickY=-2.0F;
+      this.applyScrollLimits();
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return this.getSize() * 3 * (this.parent.getFontRenderer().field_41063_b + 1);
+}

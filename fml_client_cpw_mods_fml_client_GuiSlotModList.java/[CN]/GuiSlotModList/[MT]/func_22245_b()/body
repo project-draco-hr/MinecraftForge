@@ -1,3 +1,0 @@
-{
-  return this.func_22249_a() * 3 * (this.parent.getFontRenderer().field_41063_b + 1);
-}
