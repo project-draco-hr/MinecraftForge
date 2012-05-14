@@ -1,5 +1,6 @@
 {
   client=minecraft;
+  ReflectionHelper.detectObfuscation(World.class);
   FMLCommonHandler.instance().registerSidedDelegate(this);
   CommonRegistry.registerRegistry(new ClientRegistry());
   Loader.instance().loadMods();

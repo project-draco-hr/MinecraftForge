@@ -5,8 +5,10 @@
     f.set(instance,value);
   }
  catch (  Exception e) {
-    FMLCommonHandler.instance().getFMLLogger().severe(String.format("There was a problem setting field %s from %s",fieldName,classToAccess.getName()));
-    FMLCommonHandler.instance().getFMLLogger().throwing("ReflectionHelper","getPrivateValue",e);
+    if ((fieldName.length() > 3 && !obfuscation) || (fieldName.length() <= 3 && obfuscation)) {
+      FMLCommonHandler.instance().getFMLLogger().severe(String.format("There was a problem setting field %s from %s",fieldName,classToAccess.getName()));
+      FMLCommonHandler.instance().getFMLLogger().throwing("ReflectionHelper","getPrivateValue",e);
+    }
     throw new RuntimeException(e);
   }
 }
