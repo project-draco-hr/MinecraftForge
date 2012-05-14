@@ -1,0 +1,3 @@
+{
+  registerAnimation(FMLClientHandler.instance().getClient());
+}

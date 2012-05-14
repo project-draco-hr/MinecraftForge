@@ -1,0 +1,9 @@
+{
+  try {
+    OverrideInfo inf=(OverrideInfo)obj;
+    return index == inf.index && imageIndex == inf.imageIndex;
+  }
+ catch (  Exception e) {
+    return false;
+  }
+}

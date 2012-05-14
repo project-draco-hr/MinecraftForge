@@ -1,0 +1,13 @@
+{
+  if (animationCallbackMod == null) {
+    return;
+  }
+  OverrideInfo info=new OverrideInfo();
+  info.index=anim.field_1126_b;
+  info.imageIndex=anim.field_1128_f;
+  info.textureFX=anim;
+  if (animationSet.contains(info)) {
+    animationSet.remove(info);
+  }
+  animationSet.add(info);
+}

@@ -1,4 +1,10 @@
 {
+  for (  ModContainer mod : Loader.getModList()) {
+    registerAnimatedTexturesFor(mod);
+  }
+  for (  OverrideInfo animationOverride : animationSet) {
+    renderer.func_1066_a(animationOverride.textureFX);
+  }
   for (  String fileToOverride : overrideInfo.keySet()) {
     for (    OverrideInfo override : overrideInfo.get(fileToOverride)) {
       try {
