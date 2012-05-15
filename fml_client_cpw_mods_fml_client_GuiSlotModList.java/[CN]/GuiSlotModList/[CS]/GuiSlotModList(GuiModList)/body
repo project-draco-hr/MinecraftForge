@@ -1,4 +1,0 @@
-{
-  super(parent.getMinecraftInstance(),120,parent.field_950_d,32,parent.field_950_d - 65 + 4,10,18);
-  this.parent=parent;
-}

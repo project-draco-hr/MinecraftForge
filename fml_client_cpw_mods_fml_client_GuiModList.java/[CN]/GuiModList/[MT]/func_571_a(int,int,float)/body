@@ -1,14 +1,21 @@
 {
   this.modList.drawScreen(p_571_1_,p_571_2_,p_571_3_);
-  this.func_548_a(this.field_6451_g,"Mod List",this.field_951_c / 2,16,16777215);
+  this.func_548_a(this.field_6451_g,"Mod List",this.field_951_c / 2,16,0xFFFFFF);
+  int detailCentre=this.listWidth / 2 + this.field_951_c / 2;
   if (selectedMod != null) {
-    this.func_548_a(this.field_6451_g,selectedMod.getName(),this.field_951_c / 2 + 60,28,16777215);
-    this.func_548_a(this.field_6451_g,String.format("Version %s",selectedMod.getVersion()),this.field_951_c / 2 + 60,38,16777215);
     if (selectedMod.getMetadata() != null) {
-      this.func_548_a(this.field_6451_g,selectedMod.getMetadata().description,this.field_951_c / 2 + 60,48,0xFFFFFF);
+      this.func_548_a(this.field_6451_g,selectedMod.getMetadata().name,detailCentre,35,0xFFFFFF);
+      this.func_548_a(this.field_6451_g,String.format("Version: %s",selectedMod.getMetadata().version),detailCentre,45,0xFFFFFF);
+      this.func_548_a(this.field_6451_g,String.format("Credits: %s",selectedMod.getMetadata().credits),detailCentre,55,0xFFFFFF);
+      this.func_548_a(this.field_6451_g,String.format("Authors: %s",selectedMod.getMetadata().authorList),detailCentre,65,0xFFFFFF);
+      this.func_548_a(this.field_6451_g,String.format("URL: %s Updates: %s",selectedMod.getMetadata().url,selectedMod.getMetadata().updateUrl),detailCentre,75,0xFFFFFF);
+      this.getFontRenderer().func_27278_a(selectedMod.getMetadata().description,this.listWidth + 15,100,this.field_951_c - this.listWidth - 30,0xDDDDDD);
     }
  else {
-      this.func_548_a(this.field_6451_g,"No mod information found",this.field_951_c / 2 + 60,48,0xDDDDDD);
+      this.func_548_a(this.field_6451_g,selectedMod.getName(),detailCentre,35,0xFFFFFF);
+      this.func_548_a(this.field_6451_g,String.format("Version: %s",selectedMod.getVersion()),detailCentre,45,0xFFFFFF);
+      this.func_548_a(this.field_6451_g,"No mod information found",detailCentre,55,0xDDDDDD);
+      this.func_548_a(this.field_6451_g,"Ask your mod author to provide a mod .info file",detailCentre,65,0xDDDDDD);
     }
   }
   super.func_571_a(p_571_1_,p_571_2_,p_571_3_);

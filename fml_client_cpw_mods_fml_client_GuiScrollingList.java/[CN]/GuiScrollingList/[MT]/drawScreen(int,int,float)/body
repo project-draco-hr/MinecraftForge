@@ -3,7 +3,7 @@
   this.mouseY=mouseY;
   this.drawBackground();
   int listLength=this.getSize();
-  int scrollBarXStart=this.listWidth - 6;
+  int scrollBarXStart=this.left + this.listWidth - 6;
   int scrollBarXEnd=scrollBarXStart + 6;
   int boxLeft=this.left;
   int boxRight=scrollBarXStart - 1;

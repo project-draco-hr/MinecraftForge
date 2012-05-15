@@ -1,6 +1,10 @@
 {
+  for (  ModContainer mod : Loader.getModList()) {
+    listWidth=Math.max(listWidth,getFontRenderer().func_871_a(mod.getName()) + 10);
+    listWidth=Math.max(listWidth,getFontRenderer().func_871_a(mod.getVersion()) + 10);
+  }
   StringTranslate translations=StringTranslate.func_20162_a();
   this.field_949_e.add(new GuiSmallButton(6,this.field_951_c / 2 - 75,this.field_950_d - 38,translations.func_20163_a("gui.done")));
-  this.modList=new GuiSlotModList(this);
+  this.modList=new GuiSlotModList(this,listWidth);
   this.modList.registerScrollButtons(this.field_949_e,7,8);
 }

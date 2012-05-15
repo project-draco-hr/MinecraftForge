@@ -1,5 +1,5 @@
 {
   ModContainer mc=Loader.getModList().get(listIndex);
-  ModMetadata meta=mc.getMetadata();
-  this.parent.func_547_b(this.parent.getFontRenderer(),mc.getName(),this.left + 3,var3 + 3,16777215);
+  this.parent.getFontRenderer().func_873_b(mc.getName(),this.left + 3,var3 + 2,0xFFFFFF);
+  this.parent.getFontRenderer().func_873_b(mc.getVersion(),this.left + 3,var3 + 12,0xCCCCCC);
 }

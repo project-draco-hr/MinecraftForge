@@ -6,5 +6,5 @@
   this.bottom=bottom;
   this.slotHeight=entryHeight;
   this.left=left;
-  this.right=width;
+  this.right=width + this.left;
 }
