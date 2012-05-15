@@ -1,3 +1,5 @@
 {
   this.mainMenu=mainMenu;
+  this.mods=new ArrayList<ModContainer>(Loader.getModList());
+  mods.add(new FMLModLoaderContainer());
 }

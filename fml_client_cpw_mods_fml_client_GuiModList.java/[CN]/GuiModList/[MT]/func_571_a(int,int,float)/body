@@ -8,7 +8,8 @@
       this.func_548_a(this.field_6451_g,String.format("Version: %s",selectedMod.getMetadata().version),detailCentre,45,0xFFFFFF);
       this.func_548_a(this.field_6451_g,String.format("Credits: %s",selectedMod.getMetadata().credits),detailCentre,55,0xFFFFFF);
       this.func_548_a(this.field_6451_g,String.format("Authors: %s",selectedMod.getMetadata().authorList),detailCentre,65,0xFFFFFF);
-      this.func_548_a(this.field_6451_g,String.format("URL: %s Updates: %s",selectedMod.getMetadata().url,selectedMod.getMetadata().updateUrl),detailCentre,75,0xFFFFFF);
+      this.func_548_a(this.field_6451_g,String.format("URL: %s",selectedMod.getMetadata().url),detailCentre,75,0xFFFFFF);
+      this.func_548_a(this.field_6451_g,String.format("Updates: %s",selectedMod.getMetadata().updateUrl),detailCentre,85,0xFFFFFF);
       this.getFontRenderer().func_27278_a(selectedMod.getMetadata().description,this.listWidth + 15,100,this.field_951_c - this.listWidth - 30,0xDDDDDD);
     }
  else {
