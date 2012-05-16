@@ -3,6 +3,6 @@
     this.fallbackTexturePack=fallback;
   }
  else {
-    onTexturePackChange(fallback);
+    postTexturePackChange(fallback);
   }
 }

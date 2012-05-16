@@ -1,3 +1,0 @@
-{
-  FMLClientHandler.instance().registerTextureOverrides(client.field_6315_n);
-}

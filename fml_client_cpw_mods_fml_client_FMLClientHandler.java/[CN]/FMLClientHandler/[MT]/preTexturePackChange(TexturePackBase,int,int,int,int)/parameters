@@ -1,0 +1,5 @@
+TexturePackBase var1
+int tileSize
+int tileSizeSquare
+int tileSizeMask
+int tileSizeSquareMask
