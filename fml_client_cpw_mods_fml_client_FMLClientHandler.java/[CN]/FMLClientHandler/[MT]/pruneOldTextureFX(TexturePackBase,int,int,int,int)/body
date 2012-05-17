@@ -6,7 +6,4 @@
       li.remove();
     }
   }
-  TileSize.int_numPixels=tileSizeSquare;
-  TileSize.int_size=tileSize;
-  TileSize.int_sizeMinus1=tileSizeMask;
 }
