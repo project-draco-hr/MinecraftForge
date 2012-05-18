@@ -8,4 +8,5 @@
   info.override=overridingTexturePath;
   info.texture=textureToOverride;
   list.add(info);
+  FMLCommonHandler.instance().getFMLLogger().log(Level.FINE,String.format("Overriding %s @ %d with %s. %d slots remaining",textureToOverride,location,overridingTexturePath,SpriteHelper.freeSlotCount(textureToOverride)));
 }
