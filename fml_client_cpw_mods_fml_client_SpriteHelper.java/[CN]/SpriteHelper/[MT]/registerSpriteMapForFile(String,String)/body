@@ -1,0 +1,10 @@
+{
+  if (spriteInfo.size() == 0) {
+    initMCSpriteMaps();
+  }
+  if (spriteInfo.containsKey(file)) {
+    FMLCommonHandler.instance().getFMLLogger().severe(String.format("Duplicate attempt to register a sprite file %s for overriding",file));
+    FMLCommonHandler.instance().raiseException(new LoaderException(),"Sprite override alert",true);
+  }
+  spriteInfo.put(file,toBitSet(spriteMap));
+}
