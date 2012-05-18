@@ -1,0 +1,3 @@
+{
+  return String.format("ModTextureStatic %s @ %d",targetTex,field_1126_b);
+}

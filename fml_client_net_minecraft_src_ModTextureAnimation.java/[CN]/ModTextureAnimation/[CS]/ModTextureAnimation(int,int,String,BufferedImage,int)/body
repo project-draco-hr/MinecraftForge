@@ -9,14 +9,19 @@
   func_782_a(re);
   int sWidth=image.getWidth();
   int sHeight=image.getHeight();
-  int tWidth=GL11.glGetTexLevelParameteri(GL_TEXTURE_2D,0,GL_TEXTURE_WIDTH) / 16;
-  int tHeight=GL11.glGetTexLevelParameteri(GL_TEXTURE_2D,0,GL_TEXTURE_HEIGHT) / 16;
+  int tWidth=GL11.glGetTexLevelParameteri(GL_TEXTURE_2D,0,GL_TEXTURE_WIDTH) >> 4;
+  int tHeight=GL11.glGetTexLevelParameteri(GL_TEXTURE_2D,0,GL_TEXTURE_HEIGHT) >> 4;
   int frames=(int)Math.floor((double)(sHeight / sWidth));
   if (frames < 1) {
     throw new IllegalArgumentException(String.format("Attempted to create a TextureAnimation with no complete frames: %dx%d",sWidth,sHeight));
   }
  else {
     images=new byte[frames][];
+    if (tWidth != TextureFX.iconTileSize || tHeight != TextureFX.iconTileSize) {
+      FMLCommonHandler.instance().getFMLLogger().warning(String.format("Animation Override %s is not applied - there is a mismatch between the underlying texture (%s) size %d,%d and the current texture tile size %d",target,tWidth,tHeight,TextureFX.iconTileSize));
+      errored=true;
+      return;
+    }
     if (sWidth != tWidth) {
       BufferedImage b=new BufferedImage(tWidth,tHeight * frames,6);
       Graphics2D g=b.createGraphics();

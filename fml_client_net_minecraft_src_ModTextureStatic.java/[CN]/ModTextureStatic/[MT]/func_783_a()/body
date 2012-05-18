@@ -1,5 +1,7 @@
 {
+  field_1129_e=0;
   if (oldanaglyph != field_1131_c) {
     update();
+    field_1129_e=storedSize;
   }
 }

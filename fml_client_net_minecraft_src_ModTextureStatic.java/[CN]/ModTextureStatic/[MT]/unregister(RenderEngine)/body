@@ -1,8 +1,0 @@
-{
-  if (this.getClass() == ModTextureStatic.class) {
-    return super.unregister(engine);
-  }
- else {
-    return false;
-  }
-}
