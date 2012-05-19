@@ -15,7 +15,7 @@
     errored=true;
     return;
   }
-  pixels=new int[TextureFX.iconTileSize];
+  pixels=new int[TextureFX.tileSizeSquare];
   if (tWidth == sWidth && tHeight == sHeight) {
     image.getRGB(0,0,sWidth,sHeight,pixels,0,sWidth);
   }
