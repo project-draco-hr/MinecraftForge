@@ -1,0 +1,3 @@
+{
+  field_1127_a=new byte[tileSizeSquare << 2];
+}

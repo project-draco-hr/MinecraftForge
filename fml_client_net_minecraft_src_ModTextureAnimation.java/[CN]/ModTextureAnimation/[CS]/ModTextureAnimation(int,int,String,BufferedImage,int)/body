@@ -17,8 +17,8 @@
   }
  else {
     images=new byte[frames][];
-    if (tWidth != TextureFX.iconTileSize || tHeight != TextureFX.iconTileSize) {
-      FMLCommonHandler.instance().getFMLLogger().warning(String.format("Animation Override %s is not applied - there is a mismatch between the underlying texture (%s) size %d,%d and the current texture tile size %d",target,tWidth,tHeight,TextureFX.iconTileSize));
+    if (tWidth != tileSizeBase || tHeight != tileSizeBase) {
+      log.warning(String.format("Animation Override %s is not applied - there is a mismatch between the underlying texture (%s) size %d,%d and the current texture tile size %d",target,tWidth,tHeight,tileSizeBase));
       errored=true;
       return;
     }

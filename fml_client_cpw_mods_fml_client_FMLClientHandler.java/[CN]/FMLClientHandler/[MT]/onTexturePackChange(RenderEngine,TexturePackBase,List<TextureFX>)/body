@@ -1,0 +1,9 @@
+{
+  FMLClientHandler.instance().pruneOldTextureFX(texturepack,effects);
+  for (  TextureFX tex : effects) {
+    if (tex instanceof ITextureFX) {
+      ((ITextureFX)tex).onTexturePackChanged(engine,texturepack,getTextureDimensions(tex));
+    }
+  }
+  FMLClientHandler.instance().loadTextures(texturepack);
+}

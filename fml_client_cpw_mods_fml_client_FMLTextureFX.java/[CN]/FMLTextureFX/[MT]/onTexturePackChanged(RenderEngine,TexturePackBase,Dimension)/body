@@ -1,0 +1,3 @@
+{
+  onTextureDimensionsUpdate(dimensions.width,dimensions.height);
+}

@@ -1,0 +1,3 @@
+{
+  return textureDims.get(id);
+}
