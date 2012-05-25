@@ -1,0 +1,6 @@
+{
+  if (client.field_6324_e != null) {
+    FMLCommonHandler.instance().tickStart(TickType.WORLDLOADTICK);
+    FMLCommonHandler.instance().tickStart(TickType.GUILOADTICK);
+  }
+}

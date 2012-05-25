@@ -13,4 +13,7 @@
  else {
     ticks.remove(TickType.WORLD);
   }
+  if (enable) {
+    ticks.add(TickType.WORLDLOADTICK);
+  }
 }

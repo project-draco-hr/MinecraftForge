@@ -1,8 +1,6 @@
 {
   if (client.field_6324_e != null) {
     FMLCommonHandler.instance().tickEnd(TickType.RENDER,partialTickTime);
-    if (client.field_6324_e != null) {
-      FMLCommonHandler.instance().tickEnd(TickType.GUI,partialTickTime,client.field_6313_p);
-    }
+    FMLCommonHandler.instance().tickEnd(TickType.GUI,partialTickTime,client.field_6313_p);
   }
 }
