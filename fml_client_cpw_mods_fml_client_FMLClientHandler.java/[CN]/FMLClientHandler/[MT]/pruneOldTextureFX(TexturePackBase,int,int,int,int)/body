@@ -1,9 +1,0 @@
-{
-  ListIterator<TextureFX> li=addedTextureFX.listIterator();
-  while (li.hasNext()) {
-    TextureFX tex=li.next();
-    if (tex.unregister(client.field_6315_n)) {
-      li.remove();
-    }
-  }
-}

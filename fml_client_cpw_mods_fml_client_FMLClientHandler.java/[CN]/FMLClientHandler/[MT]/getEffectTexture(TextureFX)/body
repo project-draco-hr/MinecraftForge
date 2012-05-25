@@ -1,0 +1,12 @@
+{
+  Integer id=effectTextures.get(effect);
+  if (id != null) {
+    return id;
+  }
+  int old=GL11.glGetInteger(GL_TEXTURE_BINDING_2D);
+  effect.func_782_a(client.field_6315_n);
+  id=GL11.glGetInteger(GL_TEXTURE_BINDING_2D);
+  GL11.glBindTexture(GL_TEXTURE_2D,old);
+  effectTextures.put(effect,id);
+  return id;
+}
