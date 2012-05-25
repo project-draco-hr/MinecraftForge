@@ -1,7 +1,9 @@
 {
-  field_1129_e=0;
   if (oldanaglyph != field_1131_c) {
     update();
-    field_1129_e=storedSize;
+  }
+  field_1129_e=(needApply == 0 ? 0 : storedSize);
+  if (needApply > 0) {
+    needApply--;
   }
 }
