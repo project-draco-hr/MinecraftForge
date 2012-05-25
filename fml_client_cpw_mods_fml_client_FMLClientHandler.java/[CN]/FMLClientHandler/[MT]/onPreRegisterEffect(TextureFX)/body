@@ -1,6 +1,0 @@
-{
-  Dimension dim=getTextureDimensions(effect);
-  if (effect instanceof ITextureFX) {
-    ((ITextureFX)effect).onTextureDimensionsUpdate(dim.width,dim.height);
-  }
-}

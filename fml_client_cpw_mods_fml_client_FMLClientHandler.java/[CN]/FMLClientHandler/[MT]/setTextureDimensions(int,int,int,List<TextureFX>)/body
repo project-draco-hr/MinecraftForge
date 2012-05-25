@@ -1,9 +1,0 @@
-{
-  Dimension dim=new Dimension(width,height);
-  textureDims.put(id,dim);
-  for (  TextureFX tex : effects) {
-    if (getEffectTexture(tex) == id && tex instanceof ITextureFX) {
-      ((ITextureFX)tex).onTextureDimensionsUpdate(width,height);
-    }
-  }
-}
