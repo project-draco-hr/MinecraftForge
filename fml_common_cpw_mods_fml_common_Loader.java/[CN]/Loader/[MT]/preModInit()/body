@@ -9,5 +9,10 @@
     }
     mod.nextState();
   }
+  for (  ModContainer mod : mods) {
+    if (mod.getMetadata() != null) {
+      mod.getMetadata().associate(namedMods);
+    }
+  }
   log.fine("Mod pre-initialization complete");
 }

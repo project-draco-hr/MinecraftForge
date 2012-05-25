@@ -1,0 +1,9 @@
+{
+  if (parent != null && parent.length() > 0) {
+    ModContainer mc=mods.get(parent);
+    if (mc != null && mc.getMetadata() != null) {
+      mc.getMetadata().childMods.add(mod);
+      parentMod=mc;
+    }
+  }
+}

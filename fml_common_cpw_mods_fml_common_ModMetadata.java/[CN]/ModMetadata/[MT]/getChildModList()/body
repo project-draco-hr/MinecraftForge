@@ -1,0 +1,10 @@
+{
+  StringBuilder sb=new StringBuilder();
+  for (int i=0; i < childMods.size(); i++) {
+    sb.append(childMods.get(i).getMetadata().name);
+    if (i < childMods.size() - 1) {
+      sb.append(", ");
+    }
+  }
+  return sb.toString();
+}

@@ -3,9 +3,8 @@
     Class<?> clazz=Class.forName(clazzName,false,modClassLoader);
     ModContainer mod=null;
     if (clazz.isAnnotationPresent(Mod.class)) {
-      log.fine(String.format("FML mod class %s found, loading",clazzName));
-      mod=FMLModContainer.buildFor(clazz);
-      log.fine(String.format("FML mod class %s loaded",clazzName));
+      log.severe("Currently, the FML mod type is disabled");
+      throw new LoaderException();
     }
  else     if (FMLCommonHandler.instance().isModLoaderMod(clazz)) {
       log.fine(String.format("ModLoader BaseMod class %s found, loading",clazzName));
@@ -15,6 +14,7 @@
  else {
     }
     if (mod != null) {
+      mod.setSourceType(sourceType);
       FMLCommonHandler.instance().loadMetadataFor(mod);
       mods.add(mod);
       mod.nextState();

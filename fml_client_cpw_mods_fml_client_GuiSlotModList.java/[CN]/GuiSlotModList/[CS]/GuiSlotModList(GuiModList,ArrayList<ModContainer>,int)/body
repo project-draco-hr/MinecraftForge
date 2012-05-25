@@ -1,5 +1,5 @@
 {
-  super(parent.getMinecraftInstance(),listWidth,parent.field_950_d,32,parent.field_950_d - 65 + 4,10,25);
+  super(parent.getMinecraftInstance(),listWidth,parent.field_950_d,32,parent.field_950_d - 65 + 4,10,35);
   this.parent=parent;
   this.mods=mods;
 }

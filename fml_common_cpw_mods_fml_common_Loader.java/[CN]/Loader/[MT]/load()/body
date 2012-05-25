@@ -53,17 +53,17 @@
   File[] minecraftSources=modClassLoader.getParentSources();
   if (minecraftSources.length == 1 && minecraftSources[0].isFile()) {
     log.fine(String.format("Minecraft is a file at %s, loading",minecraftSources[0].getAbsolutePath()));
-    attemptFileLoad(minecraftSources[0]);
+    attemptFileLoad(minecraftSources[0],SourceType.CLASSPATH);
   }
  else {
     for (int i=0; i < minecraftSources.length; i++) {
       if (minecraftSources[i].isFile()) {
         log.fine(String.format("Found a minecraft related file at %s, loading",minecraftSources[i].getAbsolutePath()));
-        attemptFileLoad(minecraftSources[i]);
+        attemptFileLoad(minecraftSources[i],SourceType.CLASSPATH);
       }
  else       if (minecraftSources[i].isDirectory()) {
         log.fine(String.format("Found a minecraft related directory at %s, loading",minecraftSources[i].getAbsolutePath()));
-        attemptDirLoad(minecraftSources[i],"");
+        attemptDirLoad(minecraftSources[i],"",SourceType.CLASSPATH);
       }
     }
   }
@@ -74,7 +74,7 @@
   for (  File modFile : modList) {
     if (modFile.isDirectory()) {
       log.fine(String.format("Found a directory %s, attempting to load it",modFile.getName()));
-      boolean modFound=attemptDirLoad(modFile,"");
+      boolean modFound=attemptDirLoad(modFile,"",SourceType.DIR);
       if (modFound) {
         log.fine(String.format("Directory %s loaded successfully",modFile.getName()));
       }
@@ -86,7 +86,7 @@
       Matcher matcher=zipJar.matcher(modFile.getName());
       if (matcher.matches()) {
         log.fine(String.format("Found a zip or jar file %s, attempting to load it",matcher.group(0)));
-        boolean modFound=attemptFileLoad(modFile);
+        boolean modFound=attemptFileLoad(modFile,SourceType.JAR);
         if (modFound) {
           log.fine(String.format("File %s loaded successfully",matcher.group(0)));
         }

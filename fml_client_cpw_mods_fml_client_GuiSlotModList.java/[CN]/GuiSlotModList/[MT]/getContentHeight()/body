@@ -1,3 +1,3 @@
 {
-  return (1 + this.getSize()) * 25;
+  return (this.getSize()) * 35 + 1;
 }

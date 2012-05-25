@@ -7,9 +7,14 @@
       this.func_548_a(this.field_6451_g,selectedMod.getMetadata().name,detailCentre,35,0xFFFFFF);
       this.func_548_a(this.field_6451_g,String.format("Version: %s",selectedMod.getMetadata().version),detailCentre,45,0xFFFFFF);
       this.func_548_a(this.field_6451_g,String.format("Credits: %s",selectedMod.getMetadata().credits),detailCentre,55,0xFFFFFF);
-      this.func_548_a(this.field_6451_g,String.format("Authors: %s",selectedMod.getMetadata().authorList),detailCentre,65,0xFFFFFF);
+      this.func_548_a(this.field_6451_g,String.format("Authors: %s",selectedMod.getMetadata().getAuthorList()),detailCentre,65,0xFFFFFF);
       this.func_548_a(this.field_6451_g,String.format("URL: %s",selectedMod.getMetadata().url),detailCentre,75,0xFFFFFF);
-      this.func_548_a(this.field_6451_g,String.format("Updates: %s",selectedMod.getMetadata().updateUrl),detailCentre,85,0xFFFFFF);
+      if (selectedMod.getMetadata().childMods.isEmpty()) {
+        this.func_548_a(this.field_6451_g,"No child mods for this mod",detailCentre,85,0xFFFFFF);
+      }
+ else {
+        this.func_548_a(this.field_6451_g,String.format("Child mods: %s",selectedMod.getMetadata().getChildModList()),detailCentre,85,0xFFFFFF);
+      }
       this.getFontRenderer().func_27278_a(selectedMod.getMetadata().description,this.listWidth + 15,100,this.field_951_c - this.listWidth - 30,0xDDDDDD);
     }
  else {

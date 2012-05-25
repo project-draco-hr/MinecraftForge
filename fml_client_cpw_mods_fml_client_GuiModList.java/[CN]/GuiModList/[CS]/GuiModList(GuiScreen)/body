@@ -1,5 +1,11 @@
 {
   this.mainMenu=mainMenu;
-  this.mods=new ArrayList<ModContainer>(Loader.getModList());
+  this.mods=new ArrayList<ModContainer>();
   mods.add(new FMLModLoaderContainer());
+  for (  ModContainer mod : Loader.getModList()) {
+    if (mod.getMetadata() != null && mod.getMetadata().parentMod != null) {
+      continue;
+    }
+    mods.add(mod);
+  }
 }

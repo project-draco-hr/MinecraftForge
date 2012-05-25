@@ -8,8 +8,13 @@
         ModMetadata data=sidedDelegate.readMetadataFrom(input,mod);
         mod.setMetadata(data);
       }
+ else {
+        getFMLLogger().fine(String.format("Failed to find mcmod.info file in %s for %s",mod.getSource().getName(),mod.getName()));
+      }
     }
  catch (    Exception e) {
+      getFMLLogger().fine(String.format("Failed to find mcmod.info file in %s for %s",mod.getSource().getName(),mod.getName()));
+      getFMLLogger().throwing("FMLCommonHandler","loadMetadataFor",e);
     }
   }
  else {
@@ -24,6 +29,8 @@
       }
     }
  catch (    Exception e) {
+      getFMLLogger().fine(String.format("Failed to find %s.info file in %s for %s",mod.getName(),mod.getSource().getName(),mod.getName()));
+      getFMLLogger().throwing("FMLCommonHandler","loadMetadataFor",e);
     }
   }
 }
