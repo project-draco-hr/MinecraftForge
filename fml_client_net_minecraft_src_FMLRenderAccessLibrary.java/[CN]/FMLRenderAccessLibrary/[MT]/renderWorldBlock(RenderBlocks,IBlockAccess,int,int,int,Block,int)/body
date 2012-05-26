@@ -1,0 +1,3 @@
+{
+  return FMLClientHandler.instance().renderWorldBlock(renderer,world,x,y,z,block,modelId);
+}

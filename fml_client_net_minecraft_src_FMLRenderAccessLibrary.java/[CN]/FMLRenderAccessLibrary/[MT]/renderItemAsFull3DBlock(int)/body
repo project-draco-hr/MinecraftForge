@@ -1,0 +1,3 @@
+{
+  return FMLClientHandler.instance().renderItemAsFull3DBlock(modelId);
+}

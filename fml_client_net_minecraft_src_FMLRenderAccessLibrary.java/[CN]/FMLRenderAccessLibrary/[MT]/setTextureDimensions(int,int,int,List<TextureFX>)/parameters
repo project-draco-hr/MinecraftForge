@@ -1,0 +1,4 @@
+int textureId
+int width
+int height
+List<TextureFX> textureFXList
