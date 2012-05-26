@@ -1,0 +1,17 @@
+{
+  super.setup();
+  int sWidth=overrideData.getWidth();
+  int sHeight=overrideData.getHeight();
+  pixels=new int[tileSizeSquare];
+  if (tileSizeBase == sWidth && tileSizeBase == sHeight) {
+    overrideData.getRGB(0,0,sWidth,sHeight,pixels,0,sWidth);
+  }
+ else {
+    BufferedImage tmp=new BufferedImage(tileSizeBase,tileSizeBase,6);
+    Graphics2D gfx=tmp.createGraphics();
+    gfx.drawImage(overrideData,0,0,tileSizeBase,tileSizeBase,0,0,sWidth,sHeight,(ImageObserver)null);
+    tmp.getRGB(0,0,tileSizeBase,tileSizeBase,pixels,0,tileSizeBase);
+    gfx.dispose();
+  }
+  update();
+}

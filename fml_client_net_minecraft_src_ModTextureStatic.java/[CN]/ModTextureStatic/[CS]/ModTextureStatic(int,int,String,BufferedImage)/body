@@ -5,26 +5,5 @@
   storedSize=size;
   field_1129_e=size;
   field_1128_f=re.func_1070_a(target);
-  func_782_a(re);
-  int sWidth=image.getWidth();
-  int sHeight=image.getHeight();
-  int tWidth=GL11.glGetTexLevelParameteri(GL_TEXTURE_2D,0,GL_TEXTURE_WIDTH) >> 4;
-  int tHeight=GL11.glGetTexLevelParameteri(GL_TEXTURE_2D,0,GL_TEXTURE_HEIGHT) >> 4;
-  if (tWidth != tileSizeBase || tHeight != tileSizeBase) {
-    log.warning(String.format("Override is not applied - there is a mismatch between the underlying texture (%s) size %d,%d and the current texture tile size %d",target,tWidth,tHeight,tileSizeBase));
-    errored=true;
-    return;
-  }
-  pixels=new int[tileSizeSquare];
-  if (tWidth == sWidth && tHeight == sHeight) {
-    image.getRGB(0,0,sWidth,sHeight,pixels,0,sWidth);
-  }
- else {
-    BufferedImage tmp=new BufferedImage(tWidth,tHeight,6);
-    Graphics2D gfx=tmp.createGraphics();
-    gfx.drawImage(image,0,0,tWidth,tHeight,0,0,sWidth,sHeight,(ImageObserver)null);
-    tmp.getRGB(0,0,tWidth,tHeight,pixels,0,tWidth);
-    gfx.dispose();
-  }
-  update();
+  overrideData=image;
 }

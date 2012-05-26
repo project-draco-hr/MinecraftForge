@@ -1,4 +1,5 @@
 {
+  needApply=2;
   for (int idx=0; idx < pixels.length; idx++) {
     int i=idx * 4;
     int a=pixels[idx] >> 24 & 255;
