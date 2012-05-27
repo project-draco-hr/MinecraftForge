@@ -1,0 +1,5 @@
+{
+  pkt.serverMode=ForgePacket.FORGE_ID;
+  pkt.field_48170_e=ForgeHooks.buildVersion;
+  return pkt;
+}
