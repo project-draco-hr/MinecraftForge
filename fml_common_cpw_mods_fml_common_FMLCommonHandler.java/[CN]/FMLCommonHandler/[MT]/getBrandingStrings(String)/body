@@ -6,6 +6,11 @@
     brandings.add((String)Class.forName("forge.MinecraftForge").getMethod("getVersionString").invoke(null));
   }
  catch (  Exception ex) {
+    try {
+      brandings.add((String)Class.forName("net.minecraft.src.forge.MinecraftForge").getMethod("getVersionString").invoke(null));
+    }
+ catch (    Exception ex2) {
+    }
   }
   try {
     Properties props=new Properties();
