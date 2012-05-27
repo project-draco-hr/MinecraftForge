@@ -10,6 +10,6 @@ def zip_add_perm(file, perm, key=None):
         print key
         with open(file, 'r') as fh:
             data = fh.read()
-        info = zipfile.ZipInfo(name)
-        info.external_attr = (perm << 16L)
+        info = zipfile.ZipInfo(key)
+        info.external_attr = (511 << 16L)
         zip.writestr(info, data)
