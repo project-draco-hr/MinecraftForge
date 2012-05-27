@@ -17,6 +17,7 @@ def main():
     if (not os.path.isdir(src_dir)):
         print ('Something went wrong, src folder not found at: %s' % src_dir)
         sys.exit(1)
+    cleanup_source(src_dir)
     setup_fml()
     os.chdir(mcp_dir)
     updatenames(None, True)

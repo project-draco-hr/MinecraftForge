@@ -9,3 +9,4 @@ sys.path.append(mcp_dir)
 from runtime.pylibs.normlines import normaliselines
 from runtime.commands import cmdsplit
 version_reg = re.compile('(([a-z]+)Version[\\s]+=[\\s]+)(\\d+);')
+count = 0
