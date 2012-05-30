@@ -1,0 +1,4 @@
+{
+  this.field_6451_g.func_873_b(line,offset,shifty,0xd7edea);
+  return shifty + 10;
+}
