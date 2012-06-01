@@ -1,3 +1,3 @@
 {
-  CommonRegistry.registerBlock(block);
+  FMLRegistry.registerBlock(block);
 }

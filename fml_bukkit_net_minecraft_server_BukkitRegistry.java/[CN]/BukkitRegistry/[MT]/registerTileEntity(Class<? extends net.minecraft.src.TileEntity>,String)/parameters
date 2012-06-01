@@ -1,0 +1,2 @@
+Class<? extends net.minecraft.src.TileEntity> tileEntityClass
+String id

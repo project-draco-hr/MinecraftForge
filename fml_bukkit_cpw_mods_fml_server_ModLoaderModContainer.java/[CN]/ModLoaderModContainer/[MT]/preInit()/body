@@ -1,9 +1,0 @@
-{
-  try {
-    configureMod();
-    mod=modClazz.newInstance();
-  }
- catch (  Exception e) {
-    throw new LoaderException(e);
-  }
-}

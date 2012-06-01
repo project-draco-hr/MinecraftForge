@@ -1,4 +1,0 @@
-{
-  this.modClazz=modClazz;
-  this.modSource=modSource;
-}

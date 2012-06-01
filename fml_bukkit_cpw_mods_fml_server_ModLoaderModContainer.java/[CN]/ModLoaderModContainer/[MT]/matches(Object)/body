@@ -1,3 +1,0 @@
-{
-  return modClazz.isInstance(mod);
-}

@@ -1,8 +1,0 @@
-{
-  for (  ModContainer mc : Loader.getModList()) {
-    if (mc.matches(mod)) {
-      return mc;
-    }
-  }
-  return null;
-}

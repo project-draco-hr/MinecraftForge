@@ -1,0 +1,3 @@
+String entityName
+net.minecraft.src.EnumCreatureType spawnList
+BiomeGenBase biomes

@@ -1,3 +1,3 @@
 {
-  CommonRegistry.removeSpawn(entityClass,spawnList,FMLBukkitHandler.instance().getDefaultOverworldBiomes());
+  FMLRegistry.removeSpawn(entityClass,spawnList,FMLBukkitHandler.instance().getDefaultOverworldBiomes());
 }
