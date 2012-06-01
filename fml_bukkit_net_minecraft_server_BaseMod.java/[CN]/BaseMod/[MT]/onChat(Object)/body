@@ -1,0 +1,3 @@
+{
+  return onChatMessageReceived((EntityHuman)data[1],(Packet3Chat)data[0]);
+}

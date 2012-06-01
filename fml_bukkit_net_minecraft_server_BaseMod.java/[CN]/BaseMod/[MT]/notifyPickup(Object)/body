@@ -1,0 +1,5 @@
+{
+  EntityItem item=(EntityItem)pickupData[0];
+  EntityHuman player=(EntityHuman)pickupData[1];
+  onItemPickup(player,item.itemStack);
+}

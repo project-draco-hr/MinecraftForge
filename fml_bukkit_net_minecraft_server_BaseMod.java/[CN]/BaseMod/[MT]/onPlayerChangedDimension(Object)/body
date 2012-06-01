@@ -1,0 +1,3 @@
+{
+  onClientDimensionChanged((EntityHuman)player);
+}

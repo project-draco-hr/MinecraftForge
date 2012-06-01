@@ -1,0 +1,3 @@
+{
+  FMLRegistry.registerTileEntity(tileEntityClass,id);
+}

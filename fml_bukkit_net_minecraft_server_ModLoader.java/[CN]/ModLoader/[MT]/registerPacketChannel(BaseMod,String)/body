@@ -1,0 +1,3 @@
+{
+  FMLCommonHandler.instance().registerChannel(ModLoaderModContainer.findContainerFor(mod),channel);
+}

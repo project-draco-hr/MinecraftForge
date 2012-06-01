@@ -1,0 +1,3 @@
+{
+  FMLRegistry.addRecipe(output,params);
+}

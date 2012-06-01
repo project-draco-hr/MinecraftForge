@@ -1,0 +1,3 @@
+{
+  FMLRegistry.addSmelting(input,output);
+}

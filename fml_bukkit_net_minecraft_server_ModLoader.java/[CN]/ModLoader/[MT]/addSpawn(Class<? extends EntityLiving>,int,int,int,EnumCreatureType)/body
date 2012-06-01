@@ -1,0 +1,3 @@
+{
+  FMLRegistry.addSpawn(entityClass,weightedProb,min,max,spawnList,FMLBukkitHandler.instance().getDefaultOverworldBiomes());
+}

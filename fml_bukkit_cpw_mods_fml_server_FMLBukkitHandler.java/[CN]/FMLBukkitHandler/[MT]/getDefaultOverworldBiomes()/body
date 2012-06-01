@@ -1,0 +1,14 @@
+{
+  if (defaultOverworldBiomes == null) {
+    ArrayList<BiomeBase> biomes=new ArrayList<BiomeBase>(20);
+    for (int i=0; i < 23; i++) {
+      if ("Sky".equals(BiomeBase.biomes[i].y) || "Hell".equals(BiomeBase.biomes[i].y)) {
+        continue;
+      }
+      biomes.add(BiomeBase.biomes[i]);
+    }
+    defaultOverworldBiomes=new BiomeBase[biomes.size()];
+    biomes.toArray(defaultOverworldBiomes);
+  }
+  return defaultOverworldBiomes;
+}

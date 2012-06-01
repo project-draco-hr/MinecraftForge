@@ -1,0 +1,6 @@
+{
+  Class<? extends Entity> entityClazz=EntityTypes.getEntityToClassMapping().get(entityName);
+  if (EntityLiving.class.isAssignableFrom(entityClazz)) {
+    removeSpawn((Class<? extends net.minecraft.src.EntityLiving>)entityClazz,spawnList,biomes);
+  }
+}

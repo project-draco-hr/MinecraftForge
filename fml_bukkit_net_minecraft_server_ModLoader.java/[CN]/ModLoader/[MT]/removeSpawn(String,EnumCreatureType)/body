@@ -1,0 +1,3 @@
+{
+  FMLRegistry.removeSpawn(entityName,spawnList,FMLBukkitHandler.instance().getDefaultOverworldBiomes());
+}

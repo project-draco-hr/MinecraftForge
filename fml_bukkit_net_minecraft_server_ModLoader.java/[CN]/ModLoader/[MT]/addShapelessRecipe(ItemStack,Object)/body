@@ -1,0 +1,3 @@
+{
+  FMLRegistry.addShapelessRecipe(output,params);
+}
