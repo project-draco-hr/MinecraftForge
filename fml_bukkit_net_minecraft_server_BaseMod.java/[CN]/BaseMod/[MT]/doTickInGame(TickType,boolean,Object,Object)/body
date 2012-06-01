@@ -3,6 +3,6 @@
     return onTickInGame((MinecraftServer)minecraftInstance);
   }
  else {
-    return false;
+    return true;
   }
 }
