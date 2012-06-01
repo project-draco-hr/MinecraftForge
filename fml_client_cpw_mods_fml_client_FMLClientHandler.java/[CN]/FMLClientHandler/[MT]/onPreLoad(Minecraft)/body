@@ -4,4 +4,12 @@
   FMLCommonHandler.instance().registerSidedDelegate(this);
   FMLRegistry.registerRegistry(new ClientRegistry());
   Loader.instance().loadMods();
+  try {
+    Class<?> optifineConfig=Class.forName("Config",false,Loader.instance().getModClassLoader());
+    optifineContainer=new OptifineModContainer(optifineConfig);
+    ModMetadata optifineMetadata=readMetadataFrom(Loader.instance().getModClassLoader().getResourceAsStream("optifinemod.info"),optifineContainer);
+    optifineContainer.setMetadata(optifineMetadata);
+  }
+ catch (  Exception e) {
+  }
 }
