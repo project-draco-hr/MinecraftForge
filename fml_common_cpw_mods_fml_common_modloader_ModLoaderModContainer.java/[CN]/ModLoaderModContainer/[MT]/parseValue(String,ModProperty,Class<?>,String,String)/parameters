@@ -1,5 +1,5 @@
 String val
-MLProp property
+ModProperty property
 Class<?> type
 String propertyName
 String modConfigName

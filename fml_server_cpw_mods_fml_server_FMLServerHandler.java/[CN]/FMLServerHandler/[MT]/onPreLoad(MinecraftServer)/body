@@ -9,6 +9,6 @@
   server=minecraftServer;
   ReflectionHelper.detectObfuscation(World.class);
   FMLCommonHandler.instance().registerSidedDelegate(this);
-  CommonRegistry.registerRegistry(new ServerRegistry());
+  FMLRegistry.registerRegistry(new ServerRegistry());
   Loader.instance().loadMods();
 }

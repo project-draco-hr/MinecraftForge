@@ -1,3 +1,3 @@
 {
-  CommonRegistry.instance().registerTileEntity(tileEntityClass,id);
+  FMLRegistry.instance().registerTileEntity(tileEntityClass,id);
 }

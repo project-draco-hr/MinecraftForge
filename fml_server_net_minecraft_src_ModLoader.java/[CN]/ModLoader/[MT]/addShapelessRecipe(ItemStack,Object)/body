@@ -1,3 +1,3 @@
 {
-  CommonRegistry.addShapelessRecipe(output,params);
+  FMLRegistry.addShapelessRecipe(output,params);
 }

@@ -1,3 +1,3 @@
 {
-  CommonRegistry.addSpawn(entityName,weightedProb,min,max,spawnList,FMLClientHandler.instance().getDefaultOverworldBiomes());
+  FMLRegistry.addSpawn(entityName,weightedProb,min,max,spawnList,FMLClientHandler.instance().getDefaultOverworldBiomes());
 }
