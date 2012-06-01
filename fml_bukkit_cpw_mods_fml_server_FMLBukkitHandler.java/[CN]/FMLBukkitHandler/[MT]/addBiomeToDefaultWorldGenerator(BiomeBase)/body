@@ -1,0 +1,3 @@
+{
+  WorldType.NORMAL.addNewBiome(biome);
+}

@@ -1,0 +1,8 @@
+{
+  if (tick == TickType.WORLD && tickEnd) {
+    return onTickInGame((MinecraftServer)minecraftInstance);
+  }
+ else {
+    return false;
+  }
+}

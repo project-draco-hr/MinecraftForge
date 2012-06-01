@@ -1,2 +1,3 @@
 {
+  FMLRegistry.addBiome(biome);
 }
