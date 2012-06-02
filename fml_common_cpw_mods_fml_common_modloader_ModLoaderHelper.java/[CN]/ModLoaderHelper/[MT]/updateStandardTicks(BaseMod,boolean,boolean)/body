@@ -1,13 +1,13 @@
 {
   ModLoaderModContainer mlmc=findOrBuildModContainer(mod);
   EnumSet<TickType> ticks=mlmc.getTickTypes();
-  if (enable && !useClock && FMLCommonHandler.instance().isClient()) {
+  if (enable && !useClock && FMLCommonHandler.instance().getSide().isClient()) {
     ticks.add(TickType.RENDER);
   }
  else {
     ticks.remove(TickType.RENDER);
   }
-  if (enable && (useClock || FMLCommonHandler.instance().isServer())) {
+  if (enable && (useClock || FMLCommonHandler.instance().getSide().isServer())) {
     ticks.add(TickType.WORLD);
   }
  else {

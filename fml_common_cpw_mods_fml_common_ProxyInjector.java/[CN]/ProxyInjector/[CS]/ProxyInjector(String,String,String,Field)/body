@@ -1,0 +1,6 @@
+{
+  this.clientName=clientName;
+  this.serverName=serverName;
+  this.bukkitName=bukkitName;
+  this.target=target;
+}

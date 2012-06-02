@@ -1,0 +1,12 @@
+{
+  if (type == Side.CLIENT) {
+    return !this.clientName.isEmpty();
+  }
+ else   if (type == Side.SERVER) {
+    return !this.serverName.isEmpty();
+  }
+ else   if (type == Side.BUKKIT) {
+    return !this.bukkitName.isEmpty();
+  }
+  return false;
+}

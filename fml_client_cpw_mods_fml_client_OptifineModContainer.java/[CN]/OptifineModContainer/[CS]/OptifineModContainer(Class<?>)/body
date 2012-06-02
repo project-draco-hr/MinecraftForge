@@ -1,4 +1,5 @@
 {
+  super("Optifine");
   try {
     optifineVersion=(String)optifineConfig.getField("VERSION").get(null);
   }

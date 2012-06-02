@@ -1,0 +1,4 @@
+String clientName
+String serverName
+String bukkitName
+Field target

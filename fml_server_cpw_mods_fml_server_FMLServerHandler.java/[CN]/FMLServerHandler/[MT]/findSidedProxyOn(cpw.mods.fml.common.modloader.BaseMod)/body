@@ -1,0 +1,9 @@
+{
+  for (  Field f : mod.getClass().getDeclaredFields()) {
+    if (f.isAnnotationPresent(SidedProxy.class)) {
+      SidedProxy sp=f.getAnnotation(SidedProxy.class);
+      return new ProxyInjector(sp.clientSide(),sp.serverSide(),sp.bukkitSide(),f);
+    }
+  }
+  return null;
+}
