@@ -1,0 +1,8 @@
+{
+  if (optifineContainer != null) {
+    return Arrays.asList(String.format("Optifine %s",optifineContainer.getVersion()));
+  }
+ else {
+    return Collections.emptyList();
+  }
+}

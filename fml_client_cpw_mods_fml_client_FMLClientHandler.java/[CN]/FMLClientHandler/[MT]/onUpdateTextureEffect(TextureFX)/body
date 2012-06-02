@@ -7,7 +7,9 @@
   String name=effect.getClass().getSimpleName();
   Profiler.func_40663_a(name);
   try {
-    effect.func_783_a();
+    if (optifineContainer == null) {
+      effect.func_783_a();
+    }
   }
  catch (  Exception e) {
     log.warning(String.format("Texture FX %s has failed to animate. Likely caused by a texture pack change that they did not respond correctly to",name));

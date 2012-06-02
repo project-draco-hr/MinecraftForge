@@ -3,13 +3,15 @@
   ReflectionHelper.detectObfuscation(World.class);
   FMLCommonHandler.instance().registerSidedDelegate(this);
   FMLRegistry.registerRegistry(new ClientRegistry());
-  Loader.instance().loadMods();
   try {
     Class<?> optifineConfig=Class.forName("Config",false,Loader.instance().getModClassLoader());
     optifineContainer=new OptifineModContainer(optifineConfig);
     ModMetadata optifineMetadata=readMetadataFrom(Loader.instance().getModClassLoader().getResourceAsStream("optifinemod.info"),optifineContainer);
     optifineContainer.setMetadata(optifineMetadata);
+    FMLCommonHandler.instance().getFMLLogger().info(String.format("Forge Mod Loader has detected optifine %s, enabling compatibility features",optifineContainer.getVersion()));
   }
  catch (  Exception e) {
+    optifineContainer=null;
   }
+  Loader.instance().loadMods();
 }

@@ -12,6 +12,7 @@
  catch (    Exception ex2) {
     }
   }
+  brandings.addAll(sidedDelegate.getAdditionalBrandingInformation());
   try {
     Properties props=new Properties();
     props.load(FMLCommonHandler.class.getClassLoader().getResourceAsStream("fmlbranding.properties"));

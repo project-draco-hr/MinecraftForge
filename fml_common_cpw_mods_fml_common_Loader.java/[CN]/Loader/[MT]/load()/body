@@ -48,7 +48,6 @@
     throw loaderException;
   }
   state=State.LOADING;
-  modClassLoader=new ModClassLoader();
   log.fine("Attempting to load mods contained in the minecraft jar file and associated classes");
   File[] minecraftSources=modClassLoader.getParentSources();
   if (minecraftSources.length == 1 && minecraftSources[0].isFile()) {
