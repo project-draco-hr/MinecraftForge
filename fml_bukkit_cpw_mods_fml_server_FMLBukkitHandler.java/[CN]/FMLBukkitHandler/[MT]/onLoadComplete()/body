@@ -1,3 +1,8 @@
 {
   Loader.instance().initializeMods();
+  for (  Item i : Item.byId) {
+    if (i != null && Material.getMaterial(i.id).name().startsWith("X")) {
+      Material.setMaterialName(i.id,i.l());
+    }
+  }
 }
