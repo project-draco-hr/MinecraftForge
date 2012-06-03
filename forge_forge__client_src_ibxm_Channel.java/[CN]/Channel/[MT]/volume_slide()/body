@@ -1,0 +1,20 @@
+{
+  int up, down;
+  up=(volume_slide_param & 0xF0) >> 4;
+  down=volume_slide_param & 0x0F;
+  if (down == 0x0F && up > 0) {
+    if (effect_tick == 0) {
+      set_volume(volume + up);
+    }
+  }
+ else   if (up == 0x0F && down > 0) {
+    if (effect_tick == 0) {
+      set_volume(volume - down);
+    }
+  }
+ else {
+    if (effect_tick > 0 || fast_volume_slides) {
+      set_volume(volume + up - down);
+    }
+  }
+}

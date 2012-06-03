@@ -1,0 +1,5 @@
+{
+  if (bpm > 31 && bpm < 256) {
+    tick_length_samples=(sampling_rate * 5) / (bpm * 2);
+  }
+}

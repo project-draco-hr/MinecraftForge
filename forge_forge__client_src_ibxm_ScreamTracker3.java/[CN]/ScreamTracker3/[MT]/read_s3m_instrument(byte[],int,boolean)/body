@@ -1,0 +1,63 @@
+{
+  int instrument_offset;
+  int sample_data_offset, sample_data_length;
+  int loop_start, loop_length, c2_rate, sample_idx, amplitude;
+  boolean sixteen_bit;
+  Instrument instrument;
+  Sample sample;
+  short[] sample_data;
+  instrument_offset=get_instrument_offset(s3m_file,instrument_idx);
+  instrument=new Instrument();
+  instrument.name=ascii_text(s3m_file,instrument_offset + 48,28);
+  sample=new Sample();
+  if (s3m_file[instrument_offset] == 1) {
+    sample_data_length=get_sample_data_length(s3m_file,instrument_offset);
+    loop_start=unsigned_short_le(s3m_file,instrument_offset + 20);
+    loop_length=unsigned_short_le(s3m_file,instrument_offset + 24) - loop_start;
+    sample.volume=s3m_file[instrument_offset + 28] & 0xFF;
+    if (s3m_file[instrument_offset + 30] != 0) {
+      throw new IllegalArgumentException("ScreamTracker3: Packed samples not supported!");
+    }
+    if ((s3m_file[instrument_offset + 31] & 0x01) == 0) {
+      loop_length=0;
+    }
+    if ((s3m_file[instrument_offset + 31] & 0x02) != 0) {
+      throw new IllegalArgumentException("ScreamTracker3: Stereo samples not supported!");
+    }
+    sixteen_bit=(s3m_file[instrument_offset + 31] & 0x04) != 0;
+    c2_rate=unsigned_short_le(s3m_file,instrument_offset + 32);
+    sample.transpose=LogTable.log_2(c2_rate) - LogTable.log_2(8363);
+    sample_data_offset=get_sample_data_offset(s3m_file,instrument_offset);
+    if (sixteen_bit) {
+      if (signed_samples) {
+        throw new IllegalArgumentException("ScreamTracker3: Signed 16-bit samples not supported!");
+      }
+      sample_data_length>>=1;
+      sample_data=new short[sample_data_length];
+      for (sample_idx=0; sample_idx < sample_data_length; sample_idx++) {
+        amplitude=s3m_file[sample_data_offset + sample_idx * 2] & 0xFF;
+        amplitude|=(s3m_file[sample_data_offset + sample_idx * 2 + 1] & 0xFF) << 8;
+        sample_data[sample_idx]=(short)(amplitude - 32768);
+      }
+    }
+ else {
+      sample_data=new short[sample_data_length];
+      if (signed_samples) {
+        for (sample_idx=0; sample_idx < sample_data_length; sample_idx++) {
+          amplitude=s3m_file[sample_data_offset + sample_idx] << 8;
+          sample_data[sample_idx]=(short)amplitude;
+        }
+      }
+ else {
+        for (sample_idx=0; sample_idx < sample_data_length; sample_idx++) {
+          amplitude=(s3m_file[sample_data_offset + sample_idx] & 0xFF) << 8;
+          sample_data[sample_idx]=(short)(amplitude - 32768);
+        }
+      }
+    }
+    sample.set_sample_data(sample_data,loop_start,loop_length,false);
+  }
+  instrument.set_num_samples(1);
+  instrument.set_sample(0,sample);
+  return instrument;
+}

@@ -1,0 +1,4 @@
+int key
+int instrument_idx
+int volume_column
+int effect

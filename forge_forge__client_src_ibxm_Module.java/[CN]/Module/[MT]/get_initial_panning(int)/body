@@ -1,0 +1,8 @@
+{
+  int panning;
+  panning=128;
+  if (channel >= 0 && channel < initial_panning.length) {
+    panning=initial_panning[channel];
+  }
+  return panning;
+}

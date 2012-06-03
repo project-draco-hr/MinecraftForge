@@ -1,0 +1,76 @@
+{
+  int num_pattern_orders, num_instruments, num_patterns, num_channels;
+  int flags, tracker_version, master_volume, panning, channel_config, sequence_length;
+  int instrument_idx, pattern_idx, channel_idx, order_idx, panning_offset;
+  boolean signed_samples, stereo_mode, default_panning;
+  int[] channel_map, sequence;
+  byte[] s3m_file;
+  Module module;
+  Instrument instrument;
+  s3m_file=read_s3m_file(header_96_bytes,data_input);
+  module=new Module();
+  module.song_title=ascii_text(s3m_file,0,28);
+  num_pattern_orders=get_num_pattern_orders(s3m_file);
+  num_instruments=get_num_instruments(s3m_file);
+  num_patterns=get_num_patterns(s3m_file);
+  flags=unsigned_short_le(s3m_file,38);
+  tracker_version=unsigned_short_le(s3m_file,40);
+  if ((flags & 0x40) == 0x40 || tracker_version == 0x1300) {
+    module.fast_volume_slides=true;
+  }
+  signed_samples=false;
+  if (unsigned_short_le(s3m_file,42) == 0x01) {
+    signed_samples=true;
+  }
+  module.global_volume=s3m_file[48] & 0xFF;
+  module.default_speed=s3m_file[49] & 0xFF;
+  module.default_tempo=s3m_file[50] & 0xFF;
+  master_volume=s3m_file[51] & 0x7F;
+  module.channel_gain=(master_volume << IBXM.FP_SHIFT) >> 7;
+  stereo_mode=(s3m_file[51] & 0x80) == 0x80;
+  default_panning=(s3m_file[53] & 0xFF) == 0xFC;
+  channel_map=new int[32];
+  num_channels=0;
+  for (channel_idx=0; channel_idx < 32; channel_idx++) {
+    channel_config=s3m_file[64 + channel_idx] & 0xFF;
+    channel_map[channel_idx]=-1;
+    if (channel_config < 16) {
+      channel_map[channel_idx]=num_channels;
+      num_channels+=1;
+    }
+  }
+  module.set_num_channels(num_channels);
+  panning_offset=96 + num_pattern_orders + num_instruments * 2 + num_patterns * 2;
+  for (channel_idx=0; channel_idx < 32; channel_idx++) {
+    if (channel_map[channel_idx] < 0)     continue;
+    panning=7;
+    if (stereo_mode) {
+      panning=12;
+      if ((s3m_file[64 + channel_idx] & 0xFF) < 8) {
+        panning=3;
+      }
+    }
+    if (default_panning) {
+      flags=s3m_file[panning_offset + channel_idx] & 0xFF;
+      if ((flags & 0x20) == 0x20) {
+        panning=flags & 0xF;
+      }
+    }
+    module.set_initial_panning(channel_map[channel_idx],panning * 17);
+  }
+  sequence=read_s3m_sequence(s3m_file);
+  module.set_sequence_length(sequence.length);
+  for (order_idx=0; order_idx < sequence.length; order_idx++) {
+    module.set_sequence(order_idx,sequence[order_idx]);
+  }
+  module.set_num_instruments(num_instruments);
+  for (instrument_idx=0; instrument_idx < num_instruments; instrument_idx++) {
+    instrument=read_s3m_instrument(s3m_file,instrument_idx,signed_samples);
+    module.set_instrument(instrument_idx + 1,instrument);
+  }
+  module.set_num_patterns(num_patterns);
+  for (pattern_idx=0; pattern_idx < num_patterns; pattern_idx++) {
+    module.set_pattern(pattern_idx,read_s3m_pattern(s3m_file,pattern_idx,channel_map));
+  }
+  return module;
+}

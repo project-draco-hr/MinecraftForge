@@ -1,0 +1,8 @@
+{
+  module=mod;
+  global_volume=global_vol;
+  linear_periods=module.linear_periods;
+  fast_volume_slides=module.fast_volume_slides;
+  current_note=new int[5];
+  log_2_sampling_rate=LogTable.log_2(sampling_rate);
+}

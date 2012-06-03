@@ -1,0 +1,46 @@
+{
+  int envelope_volume, tremolo_volume, amplitude;
+  int envelope_panning, mixer_panning, panning_range;
+  Envelope envelope;
+  envelope_volume=0;
+  if (instrument.volume_envelope_active) {
+    envelope=instrument.get_volume_envelope();
+    envelope_volume=envelope.calculate_ampl(volume_envelope_tick);
+  }
+ else {
+    if (key_on) {
+      envelope_volume=64;
+    }
+  }
+  tremolo_volume=volume + tremolo_add;
+  if (tremolo_volume < 0) {
+    tremolo_volume=0;
+  }
+  if (tremolo_volume > 64) {
+    tremolo_volume=64;
+  }
+  amplitude=tremolo_volume << IBXM.FP_SHIFT - 6;
+  amplitude=amplitude * envelope_volume >> 6;
+  amplitude=amplitude * fade_out_volume >> 15;
+  amplitude=amplitude * global_volume[0] >> 6;
+  amplitude=amplitude * module.channel_gain >> IBXM.FP_SHIFT;
+  silent=sample.has_finished(sample_idx);
+  if (amplitude <= 0) {
+    silent=true;
+  }
+ else {
+    envelope_panning=32;
+    if (instrument.panning_envelope_active) {
+      envelope=instrument.get_panning_envelope();
+      envelope_panning=envelope.calculate_ampl(panning_envelope_tick);
+    }
+    mixer_panning=(panning & 0xFF) << IBXM.FP_SHIFT - 8;
+    panning_range=IBXM.FP_ONE - mixer_panning;
+    if (panning_range > mixer_panning) {
+      panning_range=mixer_panning;
+    }
+    mixer_panning=mixer_panning + (panning_range * (envelope_panning - 32) >> 5);
+    left_gain=amplitude * (IBXM.FP_ONE - mixer_panning) >> IBXM.FP_SHIFT;
+    right_gain=amplitude * mixer_panning >> IBXM.FP_SHIFT;
+  }
+}

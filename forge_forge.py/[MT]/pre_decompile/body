@@ -1,0 +1,8 @@
+def pre_decompile():
+    bin_dir = os.path.join(mcp_dir, 'jars', 'bin')
+    back_jar = os.path.join(bin_dir, 'minecraft.jar.backup')
+    src_jar = os.path.join(bin_dir, 'minecraft.jar')
+    if os.path.isfile(back_jar):
+        if os.path.isfile(src_jar):
+            os.remove(src_jar)
+        shutil.move(back_jar, src_jar)

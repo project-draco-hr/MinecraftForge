@@ -1,0 +1,4 @@
+{
+  num_rows=1;
+  set_pattern_data(new byte[0]);
+}

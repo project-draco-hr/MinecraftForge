@@ -1,0 +1,9 @@
+{
+  if (pan < 0) {
+    pan=0;
+  }
+  if (pan > 255) {
+    pan=255;
+  }
+  panning=pan;
+}

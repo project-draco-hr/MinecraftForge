@@ -1,0 +1,5 @@
+{
+  int num_instruments;
+  num_instruments=unsigned_short_le(s3m_file,34);
+  return num_instruments;
+}

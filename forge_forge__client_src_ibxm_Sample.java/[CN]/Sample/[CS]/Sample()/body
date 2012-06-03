@@ -1,0 +1,4 @@
+{
+  name="";
+  set_sample_data(new short[0],0,0,false);
+}

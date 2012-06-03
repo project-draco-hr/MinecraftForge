@@ -1,0 +1,11 @@
+{
+  int song_duration;
+  set_sequence_index(0,0);
+  next_tick();
+  song_duration=tick_length_samples;
+  while (!next_tick()) {
+    song_duration+=tick_length_samples;
+  }
+  set_sequence_index(0,0);
+  return song_duration;
+}

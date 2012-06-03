@@ -1,0 +1,3 @@
+byte[] sample_headers
+int sample_idx
+DataInput data_input

@@ -1,0 +1,5 @@
+{
+  if (param != 0) {
+    retrig_param=param;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  int value;
+  value=buffer[offset] & 0xFF;
+  value=value | ((buffer[offset + 1] & 0xFF) << 8);
+  value=value | ((buffer[offset + 2] & 0xFF) << 16);
+  value=value | ((buffer[offset + 3] & 0x7F) << 24);
+  return value;
+}

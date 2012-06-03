@@ -1,0 +1,35 @@
+{
+  int amplitude;
+  amplitude=0;
+switch (wform & 0x3) {
+case 0:
+    if ((phase & 0x20) == 0) {
+      amplitude=sine_table[phase & 0x1F];
+    }
+ else {
+      amplitude=-sine_table[phase & 0x1F];
+    }
+  break;
+case 1:
+if ((phase & 0x20) == 0) {
+  amplitude=(phase & 0x1F) << 3;
+}
+ else {
+  amplitude=((phase & 0x1F) << 3) - 255;
+}
+break;
+case 2:
+if ((phase & 0x20) == 0) {
+amplitude=255;
+}
+ else {
+amplitude=-255;
+}
+break;
+case 3:
+amplitude=(random_seed >> 15) - 255;
+random_seed=(random_seed * 65 + 17) & 0xFFFFFF;
+break;
+}
+return amplitude;
+}

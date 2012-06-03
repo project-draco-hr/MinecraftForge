@@ -1,0 +1,17 @@
+{
+  int new_period;
+  if (porta_period < period) {
+    new_period=period - (portamento_param << 2);
+    if (new_period < porta_period) {
+      new_period=porta_period;
+    }
+    set_period(new_period);
+  }
+  if (porta_period > period) {
+    new_period=period + (portamento_param << 2);
+    if (new_period > porta_period) {
+      new_period=porta_period;
+    }
+    set_period(new_period);
+  }
+}

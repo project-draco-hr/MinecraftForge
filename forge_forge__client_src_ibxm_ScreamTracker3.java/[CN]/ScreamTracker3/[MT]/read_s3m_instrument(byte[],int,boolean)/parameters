@@ -1,0 +1,3 @@
+byte[] s3m_file
+int instrument_idx
+boolean signed_samples

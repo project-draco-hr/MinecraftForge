@@ -1,0 +1,5 @@
+{
+  int y;
+  y=eval_table(exp_2_table,x & IBXM.FP_MASK) << IBXM.FP_SHIFT;
+  return y >> IBXM.FP_SHIFT - (x >> IBXM.FP_SHIFT);
+}

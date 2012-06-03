@@ -1,0 +1,7 @@
+{
+  if (data != null) {
+    pattern_data=data;
+  }
+  data_offset=0;
+  note_index=0;
+}

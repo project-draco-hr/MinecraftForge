@@ -1,0 +1,21 @@
+{
+  int pattern_header_length, packing_type, num_rows, pattern_data_length;
+  byte[] structure_header, pattern_header, pattern_data;
+  Pattern pattern;
+  structure_header=new byte[4];
+  data_input.readFully(structure_header);
+  pattern_header_length=int_le(structure_header,0);
+  pattern_header=new byte[pattern_header_length];
+  data_input.readFully(pattern_header,4,pattern_header_length - 4);
+  packing_type=pattern_header[4];
+  if (packing_type != 0) {
+    throw new IllegalArgumentException("Pattern packing type " + packing_type + " is not supported!");
+  }
+  pattern=new Pattern();
+  pattern.num_rows=unsigned_short_le(pattern_header,5);
+  pattern_data_length=unsigned_short_le(pattern_header,7);
+  pattern_data=new byte[pattern_data_length];
+  data_input.readFully(pattern_data);
+  pattern.set_pattern_data(pattern_data);
+  return pattern;
+}

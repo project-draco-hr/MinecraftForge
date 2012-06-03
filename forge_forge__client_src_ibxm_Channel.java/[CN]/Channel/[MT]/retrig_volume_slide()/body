@@ -1,0 +1,52 @@
+{
+  int retrig_volume, retrig_tick;
+  retrig_volume=(retrig_param & 0xF0) >> 4;
+  retrig_tick=retrig_param & 0x0F;
+  if (retrig_tick > 0 && (trigger_tick % retrig_tick) == 0) {
+    set_sample_index(0);
+switch (retrig_volume) {
+case 0x01:
+      set_volume(volume - 1);
+    break;
+case 0x02:
+  set_volume(volume - 2);
+break;
+case 0x03:
+set_volume(volume - 4);
+break;
+case 0x04:
+set_volume(volume - 8);
+break;
+case 0x05:
+set_volume(volume - 16);
+break;
+case 0x06:
+set_volume(volume - volume / 3);
+break;
+case 0x07:
+set_volume(volume / 2);
+break;
+case 0x09:
+set_volume(volume + 1);
+break;
+case 0x0A:
+set_volume(volume + 2);
+break;
+case 0x0B:
+set_volume(volume + 4);
+break;
+case 0x0C:
+set_volume(volume + 8);
+break;
+case 0x0D:
+set_volume(volume + 16);
+break;
+case 0x0E:
+set_volume(volume + volume / 2);
+break;
+case 0x0F:
+set_volume(volume * 2);
+break;
+}
+}
+}

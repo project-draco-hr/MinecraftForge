@@ -1,0 +1,5 @@
+{
+  if (speed > 0) {
+    vibrato_speed=speed;
+  }
+}

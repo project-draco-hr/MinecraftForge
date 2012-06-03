@@ -1,0 +1,19 @@
+{
+  int vibrato_period, log_2_freq;
+  vibrato_period=period + vibrato_add;
+  if (vibrato_period < 32) {
+    vibrato_period=32;
+  }
+  if (vibrato_period > 32768) {
+    vibrato_period=32768;
+  }
+  if (linear_periods) {
+    log_2_freq=LOG_2_8363 + (4608 - vibrato_period << IBXM.FP_SHIFT) / 768;
+  }
+ else {
+    log_2_freq=module.pal ? LOG_2_8287 : LOG_2_8363;
+    log_2_freq=log_2_freq + LOG_2_1712 - LogTable.log_2(vibrato_period);
+  }
+  log_2_freq+=(key_add << IBXM.FP_SHIFT) / 12;
+  step=LogTable.raise_2(log_2_freq - log_2_sampling_rate);
+}

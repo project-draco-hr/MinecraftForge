@@ -1,0 +1,6 @@
+{
+  if (m != null)   module=m;
+  stop();
+  ibxm.set_module(module);
+  song_duration=ibxm.calculate_song_duration();
+}

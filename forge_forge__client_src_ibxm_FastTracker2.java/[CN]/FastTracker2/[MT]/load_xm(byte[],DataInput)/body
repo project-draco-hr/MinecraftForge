@@ -1,0 +1,59 @@
+{
+  int xm_version, song_header_length, sequence_length;
+  int num_channels, num_patterns, num_instruments, xm_flags, idx;
+  byte[] structure_header, song_header;
+  boolean delta_env;
+  String tracker_name;
+  Instrument instrument;
+  Module module;
+  if (!is_xm(header_60_bytes)) {
+    throw new IllegalArgumentException("Not an XM file!");
+  }
+  xm_version=unsigned_short_le(header_60_bytes,58);
+  if (xm_version != 0x0104) {
+    throw new IllegalArgumentException("Sorry, XM version " + xm_version + " is not supported!");
+  }
+  module=new Module();
+  module.song_title=ascii_text(header_60_bytes,17,20);
+  tracker_name=ascii_text(header_60_bytes,38,20);
+  delta_env=tracker_name.startsWith("DigiBooster Pro");
+  structure_header=new byte[4];
+  data_input.readFully(structure_header);
+  song_header_length=int_le(structure_header,0);
+  song_header=new byte[song_header_length];
+  data_input.readFully(song_header,4,song_header_length - 4);
+  sequence_length=unsigned_short_le(song_header,4);
+  module.restart_sequence_index=unsigned_short_le(song_header,6);
+  num_channels=unsigned_short_le(song_header,8);
+  num_patterns=unsigned_short_le(song_header,10);
+  num_instruments=unsigned_short_le(song_header,12);
+  xm_flags=unsigned_short_le(song_header,14);
+  module.linear_periods=(xm_flags & 0x1) == 0x1;
+  module.global_volume=64;
+  module.channel_gain=IBXM.FP_ONE * 3 / 8;
+  module.default_speed=unsigned_short_le(song_header,16);
+  module.default_tempo=unsigned_short_le(song_header,18);
+  module.set_num_channels(num_channels);
+  for (idx=0; idx < num_channels; idx++) {
+    module.set_initial_panning(idx,128);
+  }
+  module.set_sequence_length(sequence_length);
+  for (idx=0; idx < sequence_length; idx++) {
+    module.set_sequence(idx,song_header[20 + idx] & 0xFF);
+  }
+  module.set_num_patterns(num_patterns);
+  for (idx=0; idx < num_patterns; idx++) {
+    module.set_pattern(idx,read_xm_pattern(data_input,num_channels));
+  }
+  module.set_num_instruments(num_instruments);
+  for (idx=1; idx <= num_instruments; idx++) {
+    try {
+      instrument=read_xm_instrument(data_input,delta_env);
+      module.set_instrument(idx,instrument);
+    }
+ catch (    EOFException e) {
+      System.out.println("Instrument " + idx + " is missing!");
+    }
+  }
+  return module;
+}

@@ -1,0 +1,7 @@
+{
+  if (num_samples < 1) {
+    num_samples=1;
+  }
+  samples=new Sample[num_samples];
+  set_sample(0,null);
+}

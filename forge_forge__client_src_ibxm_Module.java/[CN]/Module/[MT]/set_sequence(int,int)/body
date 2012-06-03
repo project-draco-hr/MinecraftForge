@@ -1,0 +1,5 @@
+{
+  if (sequence_index >= 0 && sequence_index < sequence.length) {
+    sequence[sequence_index]=pattern_index;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  if (num_channels < 1) {
+    num_channels=1;
+  }
+  initial_panning=new int[num_channels];
+}

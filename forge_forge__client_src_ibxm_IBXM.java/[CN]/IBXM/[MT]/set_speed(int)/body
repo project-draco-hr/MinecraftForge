@@ -1,0 +1,5 @@
+{
+  if (speed > 0 && speed < 256) {
+    ticks_per_row=speed;
+  }
+}

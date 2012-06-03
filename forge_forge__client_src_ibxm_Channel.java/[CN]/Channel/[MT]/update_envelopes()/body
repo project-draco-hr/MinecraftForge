@@ -1,0 +1,17 @@
+{
+  Envelope envelope;
+  if (instrument.volume_envelope_active) {
+    if (!key_on) {
+      fade_out_volume-=instrument.volume_fade_out & 0xFFFF;
+      if (fade_out_volume < 0) {
+        fade_out_volume=0;
+      }
+    }
+    envelope=instrument.get_volume_envelope();
+    volume_envelope_tick=envelope.next_tick(volume_envelope_tick,key_on);
+  }
+  if (instrument.panning_envelope_active) {
+    envelope=instrument.get_panning_envelope();
+    panning_envelope_tick=envelope.next_tick(panning_envelope_tick,key_on);
+  }
+}

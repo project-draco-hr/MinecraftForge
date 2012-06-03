@@ -1,0 +1,5 @@
+{
+  int num_pattern_orders;
+  num_pattern_orders=unsigned_short_le(s3m_file,32);
+  return num_pattern_orders;
+}

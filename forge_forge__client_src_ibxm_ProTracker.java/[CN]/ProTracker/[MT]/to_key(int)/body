@@ -1,0 +1,18 @@
+{
+  int oct, key;
+  if (period < 32) {
+    key=0;
+  }
+ else {
+    oct=LogTable.log_2(7256) - LogTable.log_2(period);
+    if (oct < 0) {
+      key=0;
+    }
+ else {
+      key=oct * 12;
+      key=key >> (IBXM.FP_SHIFT - 1);
+      key=(key >> 1) + (key & 1);
+    }
+  }
+  return (byte)key;
+}

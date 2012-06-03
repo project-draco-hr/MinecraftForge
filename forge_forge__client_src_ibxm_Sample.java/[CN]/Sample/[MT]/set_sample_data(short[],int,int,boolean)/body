@@ -1,0 +1,53 @@
+{
+  int offset;
+  short sample;
+  if (loop_start < 0) {
+    loop_start=0;
+  }
+  if (loop_start >= data.length) {
+    loop_start=data.length - 1;
+  }
+  if (loop_start + loop_length > data.length) {
+    loop_length=data.length - loop_start;
+  }
+  if (loop_length <= 1) {
+    sample_data=new short[OVERLAP + data.length + OVERLAP * 3];
+    System.arraycopy(data,0,sample_data,OVERLAP,data.length);
+    offset=0;
+    while (offset < OVERLAP) {
+      sample=sample_data[OVERLAP + data.length - 1];
+      sample=(short)(sample * (OVERLAP - offset) / OVERLAP);
+      sample_data[OVERLAP + data.length + offset]=sample;
+      offset+=1;
+    }
+    loop_start=OVERLAP + data.length + OVERLAP;
+    loop_length=1;
+  }
+ else {
+    if (ping_pong) {
+      sample_data=new short[OVERLAP + loop_start + loop_length * 2 + OVERLAP * 2];
+      System.arraycopy(data,0,sample_data,OVERLAP,loop_start + loop_length);
+      offset=0;
+      while (offset < loop_length) {
+        sample=data[loop_start + loop_length - offset - 1];
+        sample_data[OVERLAP + loop_start + loop_length+ offset]=sample;
+        offset+=1;
+      }
+      loop_start=loop_start + OVERLAP;
+      loop_length=loop_length * 2;
+    }
+ else {
+      sample_data=new short[OVERLAP + loop_start + loop_length+ OVERLAP * 2];
+      System.arraycopy(data,0,sample_data,OVERLAP,loop_start + loop_length);
+      loop_start=loop_start + OVERLAP;
+    }
+    offset=0;
+    while (offset < OVERLAP * 2) {
+      sample=sample_data[loop_start + offset];
+      sample_data[loop_start + loop_length + offset]=sample;
+      offset+=1;
+    }
+  }
+  this.loop_start=loop_start;
+  this.loop_length=loop_length;
+}

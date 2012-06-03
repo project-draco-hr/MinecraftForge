@@ -1,0 +1,18 @@
+{
+  int idx, point, delta_t, delta_a, ampl;
+  ampl=ampls[ticks.length - 1];
+  if (tick < ticks[ticks.length - 1]) {
+    point=0;
+    for (idx=1; idx < ticks.length; idx++) {
+      if (ticks[idx] <= tick) {
+        point=idx;
+      }
+    }
+    delta_t=ticks[point + 1] - ticks[point];
+    delta_a=ampls[point + 1] - ampls[point];
+    ampl=(delta_a << IBXM.FP_SHIFT) / delta_t;
+    ampl=ampl * (tick - ticks[point]) >> IBXM.FP_SHIFT;
+    ampl=ampl + ampls[point];
+  }
+  return ampl;
+}

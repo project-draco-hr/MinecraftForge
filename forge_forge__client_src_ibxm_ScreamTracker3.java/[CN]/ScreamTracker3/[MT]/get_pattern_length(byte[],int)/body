@@ -1,0 +1,5 @@
+{
+  int pattern_length;
+  pattern_length=unsigned_short_le(s3m_file,pattern_offset);
+  return pattern_length;
+}

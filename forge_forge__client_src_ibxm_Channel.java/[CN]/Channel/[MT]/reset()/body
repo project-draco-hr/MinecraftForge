@@ -1,0 +1,14 @@
+{
+  tremolo_speed=0;
+  tremolo_depth=0;
+  tremolo_wave=0;
+  vibrato_speed=0;
+  vibrato_depth=0;
+  vibrato_wave=0;
+  volume_slide_param=0;
+  portamento_param=0;
+  retrig_param=0;
+  random_seed=0xABC123;
+  instrument=module.get_instrument(0);
+  row(48,256,0,0,0);
+}

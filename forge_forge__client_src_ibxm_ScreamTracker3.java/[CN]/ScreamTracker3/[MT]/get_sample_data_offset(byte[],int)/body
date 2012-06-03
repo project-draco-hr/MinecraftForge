@@ -1,0 +1,9 @@
+{
+  int sample_data_offset;
+  sample_data_offset=0;
+  if (s3m_file[instrument_offset] == 1) {
+    sample_data_offset=(s3m_file[instrument_offset + 13] & 0xFF) << 20;
+    sample_data_offset|=unsigned_short_le(s3m_file,instrument_offset + 14) << 4;
+  }
+  return sample_data_offset;
+}

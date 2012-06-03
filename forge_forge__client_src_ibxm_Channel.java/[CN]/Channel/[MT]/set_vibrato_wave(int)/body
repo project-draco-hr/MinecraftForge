@@ -1,0 +1,6 @@
+{
+  if (wave < 0 || wave > 7) {
+    wave=0;
+  }
+  vibrato_wave=wave;
+}

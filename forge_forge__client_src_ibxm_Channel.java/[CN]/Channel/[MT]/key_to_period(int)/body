@@ -1,0 +1,14 @@
+{
+  int octave, log_2_period, period_out;
+  octave=(key << IBXM.FP_SHIFT) / 12 + sample.transpose;
+  if (linear_periods) {
+    period_out=7744 - (octave * 768 >> IBXM.FP_SHIFT);
+  }
+ else {
+    log_2_period=LOG_2_29024 - octave;
+    period_out=LogTable.raise_2(log_2_period);
+    period_out=period_out >> (IBXM.FP_SHIFT - 1);
+    period_out=(period_out >> 1) + (period_out & 1);
+  }
+  return period_out;
+}

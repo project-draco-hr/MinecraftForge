@@ -1,0 +1,5 @@
+{
+  if (param != 0) {
+    portamento_param=param;
+  }
+}

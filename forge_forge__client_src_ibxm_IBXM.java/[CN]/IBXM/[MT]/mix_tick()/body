@@ -1,0 +1,14 @@
+{
+  int channel_idx, mix_idx, mix_len;
+  mix_idx=0;
+  mix_len=tick_length_samples + volume_ramp_length << 1;
+  while (mix_idx < mix_len) {
+    mixing_buffer[mix_idx]=0;
+    mix_idx+=1;
+  }
+  for (channel_idx=0; channel_idx < channels.length; channel_idx++) {
+    mix_len=tick_length_samples + volume_ramp_length;
+    channels[channel_idx].resample(mixing_buffer,0,mix_len,resampling_quality);
+  }
+  volume_ramp();
+}

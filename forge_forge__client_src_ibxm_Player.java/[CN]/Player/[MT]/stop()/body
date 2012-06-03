@@ -1,0 +1,10 @@
+{
+  running=false;
+  if (play_thread != null) {
+    try {
+      play_thread.join();
+    }
+ catch (    InterruptedException ie) {
+    }
+  }
+}

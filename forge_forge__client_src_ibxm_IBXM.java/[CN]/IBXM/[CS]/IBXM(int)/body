@@ -1,0 +1,13 @@
+{
+  if (sample_rate < 8000) {
+    sample_rate=8000;
+  }
+  sampling_rate=sample_rate;
+  volume_ramp_length=sampling_rate >> 10;
+  volume_ramp_buffer=new int[volume_ramp_length * 2];
+  mixing_buffer=new int[sampling_rate / 6];
+  global_volume=new int[1];
+  note=new int[5];
+  set_module(new Module());
+  set_resampling_quality(1);
+}

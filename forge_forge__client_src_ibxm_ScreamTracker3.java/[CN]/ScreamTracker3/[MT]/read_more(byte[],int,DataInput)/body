@@ -1,0 +1,15 @@
+{
+  byte[] new_data;
+  new_data=old_data;
+  if (new_length > old_data.length) {
+    new_data=new byte[new_length];
+    System.arraycopy(old_data,0,new_data,0,old_data.length);
+    try {
+      data_input.readFully(new_data,old_data.length,new_data.length - old_data.length);
+    }
+ catch (    EOFException e) {
+      System.out.println("ScreamTracker3: Module has been truncated!");
+    }
+  }
+  return new_data;
+}

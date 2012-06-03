@@ -1,0 +1,5 @@
+{
+  int num_patterns;
+  num_patterns=unsigned_short_le(s3m_file,36);
+  return num_patterns;
+}

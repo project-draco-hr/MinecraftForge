@@ -1,0 +1,20 @@
+{
+  int idx, chr;
+  byte[] string_buffer;
+  String string;
+  string_buffer=new byte[length];
+  for (idx=0; idx < length; idx++) {
+    chr=buffer[offset + idx];
+    if (chr < 32) {
+      chr=32;
+    }
+    string_buffer[idx]=(byte)chr;
+  }
+  try {
+    string=new String(string_buffer,0,length,"ISO-8859-1");
+  }
+ catch (  UnsupportedEncodingException e) {
+    string="";
+  }
+  return string;
+}

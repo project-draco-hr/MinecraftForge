@@ -1,0 +1,19 @@
+{
+  int channel_idx;
+  global_volume[0]=64;
+  for (channel_idx=0; channel_idx < channels.length; channel_idx++) {
+    channels[channel_idx].reset();
+    channels[channel_idx].set_panning(module.get_initial_panning(channel_idx));
+  }
+  set_global_volume(module.global_volume);
+  set_speed(6);
+  set_speed(module.default_speed);
+  set_tempo(125);
+  set_tempo(module.default_tempo);
+  pattern_loop_count=-1;
+  next_sequence_index=sequence_index;
+  next_row=row;
+  tick_counter=0;
+  current_tick_samples=tick_length_samples;
+  clear_vol_ramp_buffer();
+}

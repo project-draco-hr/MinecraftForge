@@ -1,0 +1,8 @@
+{
+  boolean finished;
+  finished=false;
+  if (loop_length <= 1 && sample_idx > loop_start) {
+    finished=true;
+  }
+  return finished;
+}

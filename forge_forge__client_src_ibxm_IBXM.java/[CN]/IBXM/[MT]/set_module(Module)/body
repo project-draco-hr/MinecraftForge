@@ -1,0 +1,9 @@
+{
+  int channel_idx;
+  module=m;
+  channels=new Channel[module.get_num_channels()];
+  for (channel_idx=0; channel_idx < channels.length; channel_idx++) {
+    channels[channel_idx]=new Channel(module,sampling_rate,global_volume);
+  }
+  set_sequence_index(0,0);
+}

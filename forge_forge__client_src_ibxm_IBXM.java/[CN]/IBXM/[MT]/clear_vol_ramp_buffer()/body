@@ -1,0 +1,9 @@
+{
+  int ramp_idx, ramp_end;
+  ramp_idx=0;
+  ramp_end=volume_ramp_length * 2 - 1;
+  while (ramp_idx <= ramp_end) {
+    volume_ramp_buffer[ramp_idx]=0;
+    ramp_idx+=1;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  Pattern pattern;
+  pattern=default_pattern;
+  if (sequence_index >= 0 && sequence_index < sequence.length) {
+    pattern=get_pattern(sequence[sequence_index]);
+  }
+  return pattern;
+}

@@ -1,0 +1,25 @@
+{
+  if (running)   return;
+  try {
+    output_line.open();
+    output_line.start();
+    play_position=0;
+    running=true;
+    while (running) {
+      int frames=song_duration - play_position;
+      if (frames > 1024)       frames=1024;
+      ibxm.get_audio(output_buffer,frames);
+      output_line.write(output_buffer,0,frames * 4);
+      play_position+=frames;
+      if (play_position >= song_duration) {
+        play_position=0;
+        if (!loop)         running=false;
+      }
+    }
+    output_line.drain();
+    output_line.close();
+  }
+ catch (  LineUnavailableException lue) {
+    lue.printStackTrace();
+  }
+}

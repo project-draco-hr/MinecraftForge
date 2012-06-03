@@ -1,0 +1,6 @@
+{
+  if (num_instruments < 0) {
+    num_instruments=0;
+  }
+  instruments=new Instrument[num_instruments];
+}

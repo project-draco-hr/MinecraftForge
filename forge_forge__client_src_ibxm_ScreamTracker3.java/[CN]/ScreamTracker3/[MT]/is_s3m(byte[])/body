@@ -1,0 +1,5 @@
+{
+  String s3m_identifier;
+  s3m_identifier=ascii_text(header_96_bytes,44,4);
+  return s3m_identifier.equals("SCRM");
+}

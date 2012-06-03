@@ -1,0 +1,9 @@
+{
+  song_title=IBXM.VERSION;
+  set_num_channels(1);
+  set_sequence_length(1);
+  set_num_patterns(0);
+  set_num_instruments(0);
+  default_pattern=new Pattern();
+  default_instrument=new Instrument();
+}

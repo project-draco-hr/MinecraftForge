@@ -1,0 +1,39 @@
+{
+  int header_offset, sample_data_length;
+  int loop_start, loop_length, sample_idx, fine_tune;
+  Instrument instrument;
+  Sample sample;
+  byte[] raw_sample_data;
+  short[] sample_data;
+  header_offset=(idx - 1) * 30 + 20;
+  instrument=new Instrument();
+  instrument.name=ascii_text(mod_header,header_offset,22);
+  sample=new Sample();
+  sample_data_length=unsigned_short_be(mod_header,header_offset + 22) << 1;
+  fine_tune=mod_header[header_offset + 24] & 0x0F;
+  if (fine_tune > 7) {
+    fine_tune-=16;
+  }
+  sample.transpose=(fine_tune << IBXM.FP_SHIFT) / 96;
+  sample.volume=mod_header[header_offset + 25] & 0x7F;
+  loop_start=unsigned_short_be(mod_header,header_offset + 26) << 1;
+  loop_length=unsigned_short_be(mod_header,header_offset + 28) << 1;
+  if (loop_length < 4) {
+    loop_length=0;
+  }
+  raw_sample_data=new byte[sample_data_length];
+  sample_data=new short[sample_data_length];
+  try {
+    data_input.readFully(raw_sample_data);
+  }
+ catch (  EOFException e) {
+    System.out.println("ProTracker: Instrument " + idx + " has samples missing.");
+  }
+  for (sample_idx=0; sample_idx < raw_sample_data.length; sample_idx++) {
+    sample_data[sample_idx]=(short)(raw_sample_data[sample_idx] << 8);
+  }
+  sample.set_sample_data(sample_data,loop_start,loop_length,false);
+  instrument.set_num_samples(1);
+  instrument.set_sample(0,sample);
+  return instrument;
+}

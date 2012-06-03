@@ -1,0 +1,35 @@
+{
+  int loop_end, offset, end, max_sample_idx;
+  sample_idx+=OVERLAP;
+  loop_end=loop_start + loop_length - 1;
+  offset=frame_offset << 1;
+  end=(frame_offset + frames - 1) << 1;
+  while (frames > 0) {
+    if (sample_idx > loop_end) {
+      if (loop_length <= 1) {
+        break;
+      }
+      sample_idx=loop_start + (sample_idx - loop_start) % loop_length;
+    }
+    max_sample_idx=sample_idx + ((sample_frac + (frames - 1) * step) >> IBXM.FP_SHIFT);
+    if (max_sample_idx > loop_end) {
+      while (sample_idx <= loop_end) {
+        mix_buffer[offset++]+=sample_data[sample_idx] * left_gain >> IBXM.FP_SHIFT;
+        mix_buffer[offset++]+=sample_data[sample_idx] * right_gain >> IBXM.FP_SHIFT;
+        sample_frac+=step;
+        sample_idx+=sample_frac >> IBXM.FP_SHIFT;
+        sample_frac&=IBXM.FP_MASK;
+      }
+    }
+ else {
+      while (offset <= end) {
+        mix_buffer[offset++]+=sample_data[sample_idx] * left_gain >> IBXM.FP_SHIFT;
+        mix_buffer[offset++]+=sample_data[sample_idx] * right_gain >> IBXM.FP_SHIFT;
+        sample_frac+=step;
+        sample_idx+=sample_frac >> IBXM.FP_SHIFT;
+        sample_frac&=IBXM.FP_MASK;
+      }
+    }
+    frames=(end - offset + 2) >> 1;
+  }
+}

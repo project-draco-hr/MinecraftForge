@@ -1,0 +1,20 @@
+{
+  int ramp_idx, next_idx, ramp_end;
+  int volume_ramp_delta, volume, sample;
+  sample=0;
+  volume_ramp_delta=FP_ONE / volume_ramp_length;
+  volume=0;
+  ramp_idx=0;
+  next_idx=2 * tick_length_samples;
+  ramp_end=volume_ramp_length * 2 - 1;
+  while (ramp_idx <= ramp_end) {
+    sample=volume_ramp_buffer[ramp_idx] * (FP_ONE - volume) >> FP_SHIFT;
+    mixing_buffer[ramp_idx]=sample + (mixing_buffer[ramp_idx] * volume >> FP_SHIFT);
+    volume_ramp_buffer[ramp_idx]=mixing_buffer[next_idx + ramp_idx];
+    sample=volume_ramp_buffer[ramp_idx + 1] * (FP_ONE - volume) >> FP_SHIFT;
+    mixing_buffer[ramp_idx + 1]=sample + (mixing_buffer[ramp_idx + 1] * volume >> FP_SHIFT);
+    volume_ramp_buffer[ramp_idx + 1]=mixing_buffer[next_idx + ramp_idx + 1];
+    volume+=volume_ramp_delta;
+    ramp_idx+=2;
+  }
+}

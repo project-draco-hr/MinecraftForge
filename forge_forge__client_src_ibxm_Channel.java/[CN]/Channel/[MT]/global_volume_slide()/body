@@ -1,0 +1,6 @@
+{
+  int up, down;
+  up=(volume_slide_param & 0xF0) >> 4;
+  down=volume_slide_param & 0x0F;
+  set_global_volume(global_volume[0] + up - down);
+}

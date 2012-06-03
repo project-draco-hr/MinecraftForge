@@ -1,0 +1,6 @@
+{
+  int value;
+  value=(buf[offset] & 0xFF) << 8;
+  value=value | (buf[offset + 1] & 0xFF);
+  return value;
+}

@@ -11,6 +11,6 @@ from runtime.updatenames import updatenames
 from runtime.updatemd5 import updatemd5
 from runtime.cleanup import cleanup
 from runtime.updatemcp import updatemcp
-from forge import apply_patches, copytree, reset_logger, download_ff, cleanup_source
+from forge import apply_patches, copytree, reset_logger, download_ff, cleanup_source, pre_decompile, post_decompile
 if (__name__ == '__main__'):
     main()

@@ -1,0 +1,4 @@
+int point
+int tick
+int ampl
+boolean delta

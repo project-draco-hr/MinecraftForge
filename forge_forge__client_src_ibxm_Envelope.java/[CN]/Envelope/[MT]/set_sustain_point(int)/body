@@ -1,0 +1,9 @@
+{
+  if (point < 0) {
+    point=0;
+  }
+  if (point >= ticks.length) {
+    point=ticks.length - 1;
+  }
+  sustain_tick=ticks[point];
+}

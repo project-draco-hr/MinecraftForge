@@ -1,0 +1,6 @@
+{
+  ibxm=new IBXM(48000);
+  set_loop(true);
+  output_line=AudioSystem.getSourceDataLine(new AudioFormat(48000,16,2,true,true));
+  output_buffer=new byte[1024 * 4];
+}

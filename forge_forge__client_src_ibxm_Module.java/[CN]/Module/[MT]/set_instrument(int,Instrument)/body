@@ -1,0 +1,5 @@
+{
+  if (instrument_index > 0 && instrument_index <= instruments.length) {
+    instruments[instrument_index - 1]=instrument;
+  }
+}

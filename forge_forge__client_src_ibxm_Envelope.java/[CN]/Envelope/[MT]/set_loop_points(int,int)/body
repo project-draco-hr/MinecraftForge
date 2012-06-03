@@ -1,0 +1,13 @@
+{
+  if (start < 0) {
+    start=0;
+  }
+  if (start >= ticks.length) {
+    start=ticks.length - 1;
+  }
+  if (end < start || end >= ticks.length) {
+    end=start;
+  }
+  loop_start_tick=ticks[start];
+  loop_end_tick=ticks[end];
+}

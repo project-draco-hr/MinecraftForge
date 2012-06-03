@@ -1,0 +1,7 @@
+{
+  name="";
+  set_volume_envelope(new Envelope());
+  set_panning_envelope(new Envelope());
+  key_to_sample=new int[96];
+  set_num_samples(1);
+}

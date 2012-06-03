@@ -1,0 +1,22 @@
+{
+  if (point >= 0 && point < ticks.length) {
+    if (point == 0) {
+      tick=0;
+    }
+    if (point > 0) {
+      if (delta)       tick+=ticks[point - 1];
+      if (tick <= ticks[point - 1]) {
+        System.out.println("Envelope: Point not valid (" + tick + " <= "+ ticks[point - 1]+ ")");
+        tick=ticks[point - 1] + 1;
+      }
+    }
+    ticks[point]=tick;
+    ampls[point]=ampl;
+    point+=1;
+    while (point < ticks.length) {
+      ticks[point]=ticks[point - 1] + 1;
+      ampls[point]=0;
+      point+=1;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  if (volume < 0) {
+    volume=0;
+  }
+  if (volume > 64) {
+    volume=64;
+  }
+  global_volume[0]=volume;
+}

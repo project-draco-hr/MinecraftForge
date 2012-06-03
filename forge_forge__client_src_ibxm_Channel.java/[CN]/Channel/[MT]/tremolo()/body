@@ -1,0 +1,5 @@
+{
+  int tremolo_phase;
+  tremolo_phase=tremolo_tick * tremolo_speed;
+  tremolo_add+=waveform(tremolo_phase,tremolo_wave) * tremolo_depth >> 6;
+}

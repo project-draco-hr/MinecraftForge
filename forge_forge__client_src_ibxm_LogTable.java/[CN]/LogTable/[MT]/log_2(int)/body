@@ -1,0 +1,13 @@
+{
+  int shift;
+  shift=IBXM.FP_SHIFT;
+  while (x < IBXM.FP_ONE) {
+    x<<=1;
+    shift--;
+  }
+  while (x >= (IBXM.FP_ONE << 1)) {
+    x>>=1;
+    shift++;
+  }
+  return (IBXM.FP_ONE * shift) + eval_table(log_2_table,x - IBXM.FP_ONE);
+}

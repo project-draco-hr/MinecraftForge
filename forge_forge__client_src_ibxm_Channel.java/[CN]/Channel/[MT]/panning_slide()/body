@@ -1,0 +1,6 @@
+{
+  int left, right;
+  left=(volume_slide_param & 0xF0) >> 4;
+  right=volume_slide_param & 0x0F;
+  set_panning(panning - left + right);
+}

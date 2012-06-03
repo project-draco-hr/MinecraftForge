@@ -14,10 +14,12 @@ def main():
     if (not download_ff(mcp_dir)):
         sys.exit(1)
     try:
+        pre_decompile()
         os.chdir(mcp_dir)
         decompile(None, False, False, True, True, False, True, False, False, False, False)
         reset_logger()
         os.chdir(forge_dir)
+        post_decompile()
     except SystemExit as e:
         print ('Decompile Exception: %d ' % e.code)
         raise e

@@ -1,0 +1,9 @@
+{
+  int point;
+  if (num_points <= 0) {
+    num_points=1;
+  }
+  ticks=new int[num_points];
+  ampls=new int[num_points];
+  set_point(0,0,0,false);
+}

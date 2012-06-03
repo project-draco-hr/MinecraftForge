@@ -1,0 +1,27 @@
+{
+  if (endOfStream(GET,XXX))   return null;
+  if (module == null) {
+    errorMessage("Module null in method 'read'");
+    return null;
+  }
+  if (myAudioFormat == null) {
+    errorMessage("Audio Format null in method 'read'");
+    return null;
+  }
+  int bufferFrameSize=(int)SoundSystemConfig.getStreamingBufferSize() / 4;
+  int frames=songDuration - playPosition;
+  if (frames > bufferFrameSize)   frames=bufferFrameSize;
+  if (frames <= 0) {
+    endOfStream(SET,true);
+    return null;
+  }
+  byte[] outputBuffer=new byte[frames * 4];
+  ibxm.get_audio(outputBuffer,frames);
+  playPosition+=frames;
+  if (playPosition >= songDuration) {
+    endOfStream(SET,true);
+  }
+  if (reverseBytes)   reverseBytes(outputBuffer,0,frames * 4);
+  SoundBuffer buffer=new SoundBuffer(outputBuffer,myAudioFormat);
+  return buffer;
+}

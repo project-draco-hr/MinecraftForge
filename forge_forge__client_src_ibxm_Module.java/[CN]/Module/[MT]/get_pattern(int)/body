@@ -1,0 +1,11 @@
+{
+  Pattern pattern;
+  pattern=null;
+  if (pattern_index >= 0 && pattern_index < patterns.length) {
+    pattern=patterns[pattern_index];
+  }
+  if (pattern == null) {
+    pattern=default_pattern;
+  }
+  return pattern;
+}

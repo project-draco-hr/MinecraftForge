@@ -1,0 +1,21 @@
+{
+  int num_channels;
+switch ((module_header[1082] << 8) | module_header[1083]) {
+case 0x4b2e:
+case 0x4b21:
+case 0x542e:
+case 0x5434:
+    num_channels=4;
+  break;
+case 0x484e:
+num_channels=module_header[1080] - 48;
+break;
+case 0x4348:
+num_channels=((module_header[1080] - 48) * 10) + (module_header[1081] - 48);
+break;
+default :
+num_channels=0;
+break;
+}
+return num_channels;
+}

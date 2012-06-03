@@ -1,0 +1,52 @@
+{
+  int s3m_file_length;
+  int num_pattern_orders, num_instruments, num_patterns;
+  int instrument_idx, pattern_idx;
+  int instrument_offset, sample_data_offset, pattern_offset;
+  byte[] s3m_file;
+  if (!is_s3m(header_96_bytes)) {
+    throw new IllegalArgumentException("ScreamTracker3: Not an S3M file!");
+  }
+  s3m_file=header_96_bytes;
+  s3m_file_length=header_96_bytes.length;
+  num_pattern_orders=get_num_pattern_orders(s3m_file);
+  num_instruments=get_num_instruments(s3m_file);
+  num_patterns=get_num_patterns(s3m_file);
+  s3m_file_length+=num_pattern_orders;
+  s3m_file_length+=num_instruments * 2;
+  s3m_file_length+=num_patterns * 2;
+  s3m_file=read_more(s3m_file,s3m_file_length,data_input);
+  for (instrument_idx=0; instrument_idx < num_instruments; instrument_idx++) {
+    instrument_offset=get_instrument_offset(s3m_file,instrument_idx);
+    instrument_offset+=80;
+    if (instrument_offset > s3m_file_length) {
+      s3m_file_length=instrument_offset;
+    }
+  }
+  for (pattern_idx=0; pattern_idx < num_patterns; pattern_idx++) {
+    pattern_offset=get_pattern_offset(s3m_file,pattern_idx);
+    pattern_offset+=2;
+    if (pattern_offset > s3m_file_length) {
+      s3m_file_length=pattern_offset;
+    }
+  }
+  s3m_file=read_more(s3m_file,s3m_file_length,data_input);
+  for (instrument_idx=0; instrument_idx < num_instruments; instrument_idx++) {
+    instrument_offset=get_instrument_offset(s3m_file,instrument_idx);
+    sample_data_offset=get_sample_data_offset(s3m_file,instrument_offset);
+    sample_data_offset+=get_sample_data_length(s3m_file,instrument_offset);
+    if (sample_data_offset > s3m_file_length) {
+      s3m_file_length=sample_data_offset;
+    }
+  }
+  for (pattern_idx=0; pattern_idx < num_patterns; pattern_idx++) {
+    pattern_offset=get_pattern_offset(s3m_file,pattern_idx);
+    pattern_offset+=get_pattern_length(s3m_file,pattern_offset);
+    pattern_offset+=2;
+    if (pattern_offset > s3m_file_length) {
+      s3m_file_length=pattern_offset;
+    }
+  }
+  s3m_file=read_more(s3m_file,s3m_file_length,data_input);
+  return s3m_file;
+}

@@ -1,6 +1,6 @@
 {
   Minecraft mc=ModLoader.getMinecraftInstance();
-  if (isAudioModInstalled() && mc != null && mc.theWorld != null && audioModSoundPoolCave != null) {
+  if (mc != null && mc.theWorld != null && audioModSoundPoolCave != null) {
     Entity ent=mc.renderViewEntity;
     int x=MathHelper.func_40346_b(ent.posX);
     int y=MathHelper.func_40346_b(ent.posY);

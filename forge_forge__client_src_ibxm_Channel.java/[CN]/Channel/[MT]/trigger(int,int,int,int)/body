@@ -1,0 +1,34 @@
+{
+  if (instrument_idx > 0) {
+    instrument=module.get_instrument(instrument_idx);
+    sample=instrument.get_sample_from_key(key);
+    set_volume(sample.volume);
+    if (sample.set_panning) {
+      set_panning(sample.panning);
+    }
+    set_envelope_tick(0);
+    fade_out_volume=32768;
+    key_on=true;
+  }
+  if (key > 0) {
+    if (key < 97) {
+      porta_period=key_to_period(key);
+      if (effect != 0x03 && effect != 0x05) {
+        if ((volume_column & 0xF0) != 0xF0) {
+          trigger_tick=0;
+          if (vibrato_wave < 4) {
+            vibrato_tick=0;
+          }
+          if (tremolo_wave < 4) {
+            tremolo_tick=0;
+          }
+          set_period(porta_period);
+          set_sample_index(0);
+        }
+      }
+    }
+ else {
+      key_on=false;
+    }
+  }
+}

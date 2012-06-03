@@ -1,0 +1,5 @@
+{
+  sample_frac+=step * samples;
+  sample_idx+=sample_frac >> IBXM.FP_SHIFT;
+  sample_frac&=IBXM.FP_MASK;
+}

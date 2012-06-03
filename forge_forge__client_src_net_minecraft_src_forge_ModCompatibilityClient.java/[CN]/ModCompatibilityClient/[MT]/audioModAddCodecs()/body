@@ -1,8 +1,5 @@
 {
-  Class codec=getClass("paulscode.sound.codecs.CodecIBXM");
-  if (isAudioModInstalled() && codec != null) {
-    SoundSystemConfig.setCodec("xm",codec);
-    SoundSystemConfig.setCodec("s3m",codec);
-    SoundSystemConfig.setCodec("mod",codec);
-  }
+  SoundSystemConfig.setCodec("xm",CodecIBXM.class);
+  SoundSystemConfig.setCodec("s3m",CodecIBXM.class);
+  SoundSystemConfig.setCodec("mod",CodecIBXM.class);
 }

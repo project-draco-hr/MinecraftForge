@@ -1,0 +1,54 @@
+{
+  int offset, end, loop_end, table_idx, a1, a2, amplitude;
+  loop_end=loop_start + loop_length - 1;
+  offset=frame_offset << 1;
+  end=(frame_offset + frames - 1) << 1;
+  while (offset <= end) {
+    if (sample_idx > loop_end) {
+      if (loop_length <= 1) {
+        break;
+      }
+      sample_idx=loop_start + (sample_idx - loop_start) % loop_length;
+    }
+    table_idx=(sample_frac >> INTERP_SHIFT) << POINT_SHIFT;
+    a1=sinc_table[table_idx + 0] * sample_data[sample_idx + 0] >> 15;
+    a1+=sinc_table[table_idx + 1] * sample_data[sample_idx + 1] >> 15;
+    a1+=sinc_table[table_idx + 2] * sample_data[sample_idx + 2] >> 15;
+    a1+=sinc_table[table_idx + 3] * sample_data[sample_idx + 3] >> 15;
+    a1+=sinc_table[table_idx + 4] * sample_data[sample_idx + 4] >> 15;
+    a1+=sinc_table[table_idx + 5] * sample_data[sample_idx + 5] >> 15;
+    a1+=sinc_table[table_idx + 6] * sample_data[sample_idx + 6] >> 15;
+    a1+=sinc_table[table_idx + 7] * sample_data[sample_idx + 7] >> 15;
+    a1+=sinc_table[table_idx + 8] * sample_data[sample_idx + 8] >> 15;
+    a1+=sinc_table[table_idx + 9] * sample_data[sample_idx + 9] >> 15;
+    a1+=sinc_table[table_idx + 10] * sample_data[sample_idx + 10] >> 15;
+    a1+=sinc_table[table_idx + 11] * sample_data[sample_idx + 11] >> 15;
+    a1+=sinc_table[table_idx + 12] * sample_data[sample_idx + 12] >> 15;
+    a1+=sinc_table[table_idx + 13] * sample_data[sample_idx + 13] >> 15;
+    a1+=sinc_table[table_idx + 14] * sample_data[sample_idx + 14] >> 15;
+    a1+=sinc_table[table_idx + 15] * sample_data[sample_idx + 15] >> 15;
+    a2=sinc_table[table_idx + 16] * sample_data[sample_idx + 0] >> 15;
+    a2+=sinc_table[table_idx + 17] * sample_data[sample_idx + 1] >> 15;
+    a2+=sinc_table[table_idx + 18] * sample_data[sample_idx + 2] >> 15;
+    a2+=sinc_table[table_idx + 19] * sample_data[sample_idx + 3] >> 15;
+    a2+=sinc_table[table_idx + 20] * sample_data[sample_idx + 4] >> 15;
+    a2+=sinc_table[table_idx + 21] * sample_data[sample_idx + 5] >> 15;
+    a2+=sinc_table[table_idx + 22] * sample_data[sample_idx + 6] >> 15;
+    a2+=sinc_table[table_idx + 23] * sample_data[sample_idx + 7] >> 15;
+    a2+=sinc_table[table_idx + 24] * sample_data[sample_idx + 8] >> 15;
+    a2+=sinc_table[table_idx + 25] * sample_data[sample_idx + 9] >> 15;
+    a2+=sinc_table[table_idx + 26] * sample_data[sample_idx + 10] >> 15;
+    a2+=sinc_table[table_idx + 27] * sample_data[sample_idx + 11] >> 15;
+    a2+=sinc_table[table_idx + 28] * sample_data[sample_idx + 12] >> 15;
+    a2+=sinc_table[table_idx + 29] * sample_data[sample_idx + 13] >> 15;
+    a2+=sinc_table[table_idx + 30] * sample_data[sample_idx + 14] >> 15;
+    a2+=sinc_table[table_idx + 31] * sample_data[sample_idx + 15] >> 15;
+    amplitude=a1 + ((a2 - a1) * (sample_frac & INTERP_BITMASK) >> INTERP_SHIFT);
+    mix_buffer[offset]+=amplitude * left_gain >> IBXM.FP_SHIFT;
+    mix_buffer[offset + 1]+=amplitude * right_gain >> IBXM.FP_SHIFT;
+    offset+=2;
+    sample_frac+=step;
+    sample_idx+=sample_frac >> IBXM.FP_SHIFT;
+    sample_frac&=IBXM.FP_MASK;
+  }
+}

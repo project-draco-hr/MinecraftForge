@@ -1,0 +1,29 @@
+{
+  int num_pattern_orders, sequence_length;
+  int sequence_idx, order_idx, pattern_order;
+  int[] sequence;
+  num_pattern_orders=get_num_pattern_orders(s3m_file);
+  sequence_length=0;
+  for (order_idx=0; order_idx < num_pattern_orders; order_idx++) {
+    pattern_order=s3m_file[96 + order_idx] & 0xFF;
+    if (pattern_order == 255) {
+      break;
+    }
+ else     if (pattern_order < 254) {
+      sequence_length+=1;
+    }
+  }
+  sequence=new int[sequence_length];
+  sequence_idx=0;
+  for (order_idx=0; order_idx < num_pattern_orders; order_idx++) {
+    pattern_order=s3m_file[96 + order_idx] & 0xFF;
+    if (pattern_order == 255) {
+      break;
+    }
+ else     if (pattern_order < 254) {
+      sequence[sequence_idx]=pattern_order;
+      sequence_idx+=1;
+    }
+  }
+  return sequence;
+}

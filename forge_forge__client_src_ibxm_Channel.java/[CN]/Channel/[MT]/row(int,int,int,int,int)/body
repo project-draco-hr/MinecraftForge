@@ -1,0 +1,211 @@
+{
+  effect=effect & 0xFF;
+  if (effect >= 0x30) {
+    effect=0;
+  }
+  if (effect == 0x00 && effect_param != 0) {
+    effect=0x40;
+  }
+  if (effect == 0x0E) {
+    effect=0x30 + ((effect_param & 0xF0) >> 4);
+    effect_param=effect_param & 0x0F;
+  }
+  if (effect == 0x21) {
+    effect=0x40 + ((effect_param & 0xF0) >> 4);
+    effect_param=effect_param & 0x0F;
+  }
+  current_note[0]=key;
+  current_note[1]=inst_idx;
+  current_note[2]=volume_column;
+  current_note[3]=effect;
+  current_note[4]=effect_param;
+  effect_tick=0;
+  trigger_tick+=1;
+  update_envelopes();
+  key_add=0;
+  vibrato_add=0;
+  tremolo_add=0;
+  if (!(effect == 0x3D && effect_param > 0)) {
+    trigger(key,inst_idx,volume_column,effect);
+switch (volume_column & 0xF0) {
+case 0x00:
+      break;
+case 0x60:
+    break;
+case 0x70:
+  break;
+case 0x80:
+set_volume(volume - (volume_column & 0x0F));
+break;
+case 0x90:
+set_volume(volume + (volume_column & 0x0F));
+break;
+case 0xA0:
+set_vibrato_speed(volume_column & 0x0F);
+break;
+case 0xB0:
+set_vibrato_depth(volume_column & 0x0F);
+vibrato();
+break;
+case 0xC0:
+set_panning((volume_column & 0x0F) << 4);
+break;
+case 0xD0:
+break;
+case 0xE0:
+break;
+case 0xF0:
+set_portamento_param(volume_column & 0x0F);
+break;
+default :
+set_volume(volume_column - 0x10);
+break;
+}
+}
+if (instrument.vibrato_depth > 0) {
+auto_vibrato();
+}
+switch (effect) {
+case 0x01:
+set_portamento_param(effect_param);
+portamento_up();
+break;
+case 0x02:
+set_portamento_param(effect_param);
+portamento_down();
+break;
+case 0x03:
+set_portamento_param(effect_param);
+break;
+case 0x04:
+set_vibrato_speed((effect_param & 0xF0) >> 4);
+set_vibrato_depth(effect_param & 0x0F);
+vibrato();
+break;
+case 0x05:
+set_volume_slide_param(effect_param);
+volume_slide();
+break;
+case 0x06:
+set_volume_slide_param(effect_param);
+vibrato();
+volume_slide();
+break;
+case 0x07:
+set_tremolo_speed((effect_param & 0xF0) >> 4);
+set_tremolo_depth(effect_param & 0x0F);
+tremolo();
+break;
+case 0x08:
+set_panning(effect_param);
+break;
+case 0x09:
+set_sample_index(effect_param << 8);
+break;
+case 0x0A:
+set_volume_slide_param(effect_param);
+volume_slide();
+break;
+case 0x0B:
+break;
+case 0x0C:
+set_volume(effect_param);
+break;
+case 0x0D:
+break;
+case 0x0E:
+break;
+case 0x0F:
+break;
+case 0x10:
+set_global_volume(effect_param);
+break;
+case 0x11:
+set_volume_slide_param(effect_param);
+break;
+case 0x14:
+if (effect_param == 0) {
+key_on=false;
+}
+break;
+case 0x15:
+set_envelope_tick(effect_param);
+break;
+case 0x19:
+set_volume_slide_param(effect_param);
+break;
+case 0x1B:
+set_retrig_param(effect_param);
+retrig_volume_slide();
+break;
+case 0x1D:
+set_retrig_param(effect_param);
+tremor();
+break;
+case 0x24:
+set_vibrato_speed((effect_param & 0xF0) >> 4);
+set_vibrato_depth(effect_param & 0x0F);
+fine_vibrato();
+break;
+case 0x25:
+break;
+case 0x30:
+break;
+case 0x31:
+set_portamento_param(0xF0 | effect_param);
+portamento_up();
+break;
+case 0x32:
+set_portamento_param(0xF0 | effect_param);
+portamento_down();
+break;
+case 0x33:
+break;
+case 0x34:
+set_vibrato_wave(effect_param);
+break;
+case 0x35:
+break;
+case 0x36:
+break;
+case 0x37:
+set_tremolo_wave(effect_param);
+break;
+case 0x38:
+break;
+case 0x39:
+set_retrig_param(effect_param);
+break;
+case 0x3A:
+set_volume_slide_param((effect_param << 4) | 0x0F);
+volume_slide();
+break;
+case 0x3B:
+set_volume_slide_param(0xF0 | effect_param);
+volume_slide();
+break;
+case 0x3C:
+if (effect_param == 0) {
+set_volume(0);
+}
+break;
+case 0x3D:
+break;
+case 0x3E:
+break;
+case 0x3F:
+break;
+case 0x40:
+break;
+case 0x41:
+set_portamento_param(0xE0 | effect_param);
+portamento_up();
+break;
+case 0x42:
+set_portamento_param(0xE0 | effect_param);
+portamento_down();
+break;
+}
+calculate_amplitude();
+calculate_frequency();
+}

@@ -1,0 +1,9 @@
+{
+  int on_ticks, cycle_length, cycle_index;
+  on_ticks=((retrig_param & 0xF0) >> 4) + 1;
+  cycle_length=on_ticks + (retrig_param & 0x0F) + 1;
+  cycle_index=trigger_tick % cycle_length;
+  if (cycle_index >= on_ticks) {
+    tremolo_add=-64;
+  }
+}

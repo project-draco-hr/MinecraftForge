@@ -1,0 +1,32 @@
+{
+  int output_idx, mix_idx, mix_end, count, amplitude;
+  output_idx=0;
+  while (frames > 0) {
+    count=tick_length_samples - current_tick_samples;
+    if (count > frames) {
+      count=frames;
+    }
+    mix_idx=current_tick_samples << 1;
+    mix_end=mix_idx + (count << 1) - 1;
+    while (mix_idx <= mix_end) {
+      amplitude=mixing_buffer[mix_idx];
+      if (amplitude > 32767) {
+        amplitude=32767;
+      }
+      if (amplitude < -32768) {
+        amplitude=-32768;
+      }
+      output_buffer[output_idx]=(byte)(amplitude >> 8);
+      output_buffer[output_idx + 1]=(byte)(amplitude & 0xFF);
+      output_idx+=2;
+      mix_idx+=1;
+    }
+    current_tick_samples=mix_idx >> 1;
+    frames-=count;
+    if (frames > 0) {
+      next_tick();
+      mix_tick();
+      current_tick_samples=0;
+    }
+  }
+}

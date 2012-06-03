@@ -1,0 +1,4 @@
+{
+  volume_envelope_tick=tick;
+  panning_envelope_tick=tick;
+}

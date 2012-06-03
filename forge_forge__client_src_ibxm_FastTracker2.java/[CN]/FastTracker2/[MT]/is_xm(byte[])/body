@@ -1,0 +1,5 @@
+{
+  String xm_identifier;
+  xm_identifier=ascii_text(header_60_bytes,0,17);
+  return xm_identifier.equals("Extended Module: ");
+}

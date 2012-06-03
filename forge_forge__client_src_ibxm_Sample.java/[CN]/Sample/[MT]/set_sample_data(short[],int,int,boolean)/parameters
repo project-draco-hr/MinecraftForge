@@ -1,0 +1,4 @@
+short[] data
+int loop_start
+int loop_length
+boolean ping_pong

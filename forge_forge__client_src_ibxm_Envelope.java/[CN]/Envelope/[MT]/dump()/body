@@ -1,0 +1,9 @@
+{
+  int idx, tick;
+  for (idx=0; idx < ticks.length; idx++) {
+    System.out.println(ticks[idx] + ", " + ampls[idx]);
+  }
+  for (tick=0; tick < 222; tick++) {
+    System.out.print(calculate_ampl(tick) + ", ");
+  }
+}

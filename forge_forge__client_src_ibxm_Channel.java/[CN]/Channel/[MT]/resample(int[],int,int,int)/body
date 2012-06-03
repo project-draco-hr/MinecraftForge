@@ -1,0 +1,15 @@
+{
+  if (!silent) {
+switch (quality) {
+default :
+      sample.resample_nearest(sample_idx,sample_frac,step,left_gain,right_gain,mixing_buffer,frame_offset,frames);
+    break;
+case 1:
+  sample.resample_linear(sample_idx,sample_frac,step,left_gain,right_gain,mixing_buffer,frame_offset,frames);
+break;
+case 2:
+sample.resample_sinc(sample_idx,sample_frac,step,left_gain,right_gain,mixing_buffer,frame_offset,frames);
+break;
+}
+}
+}

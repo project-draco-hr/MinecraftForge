@@ -1,0 +1,5 @@
+{
+  if (speed > 0) {
+    tremolo_speed=speed;
+  }
+}

@@ -1,0 +1,64 @@
+{
+  int header_offset, sample_length, loop_start, loop_length;
+  int flags, in_idx, out_idx, sam, last_sam;
+  int fine_tune, relative_note;
+  boolean sixteen_bit, ping_pong;
+  byte[] raw_sample_data;
+  short[] decoded_sample_data;
+  Sample sample;
+  header_offset=sample_idx * 40;
+  sample=new Sample();
+  sample_length=int_le(sample_headers,header_offset);
+  loop_start=int_le(sample_headers,header_offset + 4);
+  loop_length=int_le(sample_headers,header_offset + 8);
+  sample.volume=sample_headers[header_offset + 12] & 0xFF;
+  fine_tune=sample_headers[header_offset + 13];
+  fine_tune=(fine_tune << IBXM.FP_SHIFT) / 1536;
+  sample.set_panning=true;
+  flags=sample_headers[header_offset + 14] & 0xFF;
+  if ((flags & 0x03) == 0) {
+    loop_length=0;
+  }
+  ping_pong=(flags & 0x02) == 0x02;
+  sixteen_bit=(flags & 0x10) == 0x10;
+  sample.panning=sample_headers[header_offset + 15] & 0xFF;
+  relative_note=sample_headers[header_offset + 16];
+  relative_note=(relative_note << IBXM.FP_SHIFT) / 12;
+  sample.transpose=relative_note + fine_tune;
+  sample.name=ascii_text(sample_headers,header_offset + 18,22);
+  raw_sample_data=new byte[sample_length];
+  try {
+    data_input.readFully(raw_sample_data);
+  }
+ catch (  EOFException e) {
+    System.out.println("Sample has been truncated!");
+  }
+  in_idx=0;
+  out_idx=0;
+  sam=0;
+  last_sam=0;
+  if (sixteen_bit) {
+    decoded_sample_data=new short[sample_length >> 1];
+    while (in_idx < raw_sample_data.length) {
+      sam=raw_sample_data[in_idx] & 0xFF;
+      sam=sam | ((raw_sample_data[in_idx + 1] & 0xFF) << 8);
+      last_sam=last_sam + sam;
+      decoded_sample_data[out_idx]=(short)last_sam;
+      in_idx+=2;
+      out_idx+=1;
+    }
+    sample.set_sample_data(decoded_sample_data,loop_start >> 1,loop_length >> 1,ping_pong);
+  }
+ else {
+    decoded_sample_data=new short[sample_length];
+    while (in_idx < raw_sample_data.length) {
+      sam=raw_sample_data[in_idx] & 0xFF;
+      last_sam=last_sam + sam;
+      decoded_sample_data[out_idx]=(short)(last_sam << 8);
+      in_idx+=1;
+      out_idx+=1;
+    }
+    sample.set_sample_data(decoded_sample_data,loop_start,loop_length,ping_pong);
+  }
+  return sample;
+}

@@ -1,0 +1,4 @@
+int[] mixing_buffer
+int frame_offset
+int frames
+int quality

@@ -1,0 +1,7 @@
+{
+  int pattern_offset, pointer_offset;
+  pointer_offset=96 + get_num_pattern_orders(s3m_file);
+  pointer_offset+=get_num_instruments(s3m_file) * 2;
+  pattern_offset=unsigned_short_le(s3m_file,pointer_offset + pattern_idx * 2) << 4;
+  return pattern_offset;
+}

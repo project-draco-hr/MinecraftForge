@@ -1,0 +1,5 @@
+{
+  int vibrato_phase;
+  vibrato_phase=vibrato_tick * vibrato_speed;
+  vibrato_add+=waveform(vibrato_phase,vibrato_wave) * vibrato_depth >> 5;
+}

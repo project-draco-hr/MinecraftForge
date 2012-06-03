@@ -1,0 +1,5 @@
+{
+  if (depth > 0) {
+    tremolo_depth=depth;
+  }
+}

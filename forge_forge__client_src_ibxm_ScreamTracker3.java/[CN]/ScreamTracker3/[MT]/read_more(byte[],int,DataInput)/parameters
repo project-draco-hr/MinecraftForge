@@ -1,0 +1,3 @@
+byte[] old_data
+int new_length
+DataInput data_input

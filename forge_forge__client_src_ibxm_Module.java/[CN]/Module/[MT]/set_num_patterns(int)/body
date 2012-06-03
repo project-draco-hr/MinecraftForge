@@ -1,0 +1,6 @@
+{
+  if (num_patterns < 0) {
+    num_patterns=0;
+  }
+  patterns=new Pattern[num_patterns];
+}

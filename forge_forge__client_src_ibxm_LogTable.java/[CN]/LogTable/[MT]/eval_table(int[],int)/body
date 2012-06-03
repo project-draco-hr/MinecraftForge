@@ -1,0 +1,9 @@
+{
+  int table_idx, table_frac, c, m, y;
+  table_idx=x >> INTERP_SHIFT;
+  table_frac=x & INTERP_MASK;
+  c=table[table_idx];
+  m=table[table_idx + 1] - c;
+  y=(m * table_frac >> INTERP_SHIFT) + c;
+  return y >> 15 - IBXM.FP_SHIFT;
+}

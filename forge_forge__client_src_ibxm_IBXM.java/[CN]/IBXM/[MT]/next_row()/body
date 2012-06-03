@@ -1,0 +1,104 @@
+{
+  int channel_idx, effect, effect_param;
+  boolean song_end;
+  Pattern pattern;
+  song_end=false;
+  if (next_sequence_index < 0) {
+    next_sequence_index=0;
+    next_row=0;
+  }
+  if (next_sequence_index >= module.get_sequence_length()) {
+    song_end=true;
+    next_sequence_index=module.restart_sequence_index;
+    if (next_sequence_index < 0) {
+      next_sequence_index=0;
+    }
+    if (next_sequence_index >= module.get_sequence_length()) {
+      next_sequence_index=0;
+    }
+    next_row=0;
+  }
+  if (next_sequence_index < current_sequence_index) {
+    song_end=true;
+  }
+  if (next_sequence_index == current_sequence_index) {
+    if (next_row <= current_row) {
+      if (pattern_loop_count < 0) {
+        song_end=true;
+      }
+    }
+  }
+  current_sequence_index=next_sequence_index;
+  pattern=module.get_pattern_from_sequence(current_sequence_index);
+  if (next_row < 0 || next_row >= pattern.num_rows) {
+    next_row=0;
+  }
+  current_row=next_row;
+  next_row=current_row + 1;
+  if (next_row >= pattern.num_rows) {
+    next_sequence_index=current_sequence_index + 1;
+    next_row=0;
+  }
+  for (channel_idx=0; channel_idx < channels.length; channel_idx++) {
+    pattern.get_note(note,current_row * channels.length + channel_idx);
+    effect=note[3];
+    effect_param=note[4];
+    channels[channel_idx].row(note[0],note[1],note[2],effect,effect_param);
+switch (effect) {
+case 0x0B:
+      if (pattern_loop_count < 0) {
+        next_sequence_index=effect_param;
+        next_row=0;
+      }
+    break;
+case 0x0D:
+  if (pattern_loop_count < 0) {
+    next_sequence_index=current_sequence_index + 1;
+    next_row=(effect_param >> 4) * 10 + (effect_param & 0x0F);
+  }
+break;
+case 0x0E:
+switch (effect_param & 0xF0) {
+case 0x60:
+if ((effect_param & 0x0F) == 0) {
+  channels[channel_idx].pattern_loop_row=current_row;
+}
+if (channels[channel_idx].pattern_loop_row < current_row) {
+if (pattern_loop_count < 0) {
+  pattern_loop_count=effect_param & 0x0F;
+  pattern_loop_channel=channel_idx;
+}
+if (pattern_loop_channel == channel_idx) {
+  if (pattern_loop_count == 0) {
+    channels[channel_idx].pattern_loop_row=current_row + 1;
+  }
+ else {
+    next_row=channels[channel_idx].pattern_loop_row;
+    next_sequence_index=current_sequence_index;
+  }
+  pattern_loop_count-=1;
+}
+}
+break;
+case 0xE0:
+tick_counter+=ticks_per_row * (effect_param & 0x0F);
+break;
+}
+break;
+case 0x0F:
+if (effect_param < 32) {
+set_speed(effect_param);
+tick_counter=ticks_per_row;
+}
+ else {
+set_tempo(effect_param);
+}
+break;
+case 0x25:
+set_speed(effect_param);
+tick_counter=ticks_per_row;
+break;
+}
+}
+return song_end;
+}

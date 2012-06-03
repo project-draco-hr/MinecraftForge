@@ -1,0 +1,11 @@
+{
+  int num_patterns, order_entry, pattern_idx;
+  num_patterns=0;
+  for (pattern_idx=0; pattern_idx < 128; pattern_idx++) {
+    order_entry=module_header[952 + pattern_idx] & 0x7F;
+    if (order_entry >= num_patterns) {
+      num_patterns=order_entry + 1;
+    }
+  }
+  return num_patterns;
+}

@@ -1,0 +1,11 @@
+{
+  Instrument instrument;
+  instrument=null;
+  if (instrument_index > 0 && instrument_index <= instruments.length) {
+    instrument=instruments[instrument_index - 1];
+  }
+  if (instrument == null) {
+    instrument=default_instrument;
+  }
+  return instrument;
+}

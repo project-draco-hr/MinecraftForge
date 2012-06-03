@@ -1,0 +1,13 @@
+{
+  int sample_data_length;
+  boolean sixteen_bit;
+  sample_data_length=0;
+  if (s3m_file[instrument_offset] == 1) {
+    sample_data_length=unsigned_short_le(s3m_file,instrument_offset + 16);
+    sixteen_bit=(s3m_file[instrument_offset + 31] & 0x04) != 0;
+    if (sixteen_bit) {
+      sample_data_length<<=1;
+    }
+  }
+  return sample_data_length;
+}

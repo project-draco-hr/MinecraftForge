@@ -1,0 +1,10 @@
+{
+  tick=tick + 1;
+  if (looped && tick >= loop_end_tick) {
+    tick=loop_start_tick;
+  }
+  if (sustain && key_on && tick >= sustain_tick) {
+    tick=sustain_tick;
+  }
+  return tick;
+}

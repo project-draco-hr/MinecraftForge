@@ -1,0 +1,6 @@
+{
+  if (sequence_length < 0) {
+    sequence_length=0;
+  }
+  sequence=new int[sequence_length];
+}

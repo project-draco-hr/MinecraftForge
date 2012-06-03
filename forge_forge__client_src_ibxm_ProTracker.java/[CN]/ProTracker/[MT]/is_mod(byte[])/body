@@ -1,0 +1,8 @@
+{
+  boolean is_mod;
+  is_mod=false;
+  if (calculate_num_channels(header_1084_bytes) > 0) {
+    is_mod=true;
+  }
+  return is_mod;
+}

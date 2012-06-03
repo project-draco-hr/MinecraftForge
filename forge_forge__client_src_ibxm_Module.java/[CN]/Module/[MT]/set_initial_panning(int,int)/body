@@ -1,0 +1,5 @@
+{
+  if (channel >= 0 && channel < initial_panning.length) {
+    initial_panning[channel]=panning;
+  }
+}

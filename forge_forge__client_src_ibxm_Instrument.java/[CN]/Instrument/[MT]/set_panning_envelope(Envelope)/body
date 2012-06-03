@@ -1,0 +1,5 @@
+{
+  if (envelope != null) {
+    panning_envelope=envelope;
+  }
+}

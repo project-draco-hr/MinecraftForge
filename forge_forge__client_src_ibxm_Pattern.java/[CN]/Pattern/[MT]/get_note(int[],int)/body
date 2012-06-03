@@ -1,0 +1,10 @@
+{
+  if (index < note_index) {
+    note_index=0;
+    data_offset=0;
+  }
+  while (note_index <= index) {
+    data_offset=next_note(data_offset,note);
+    note_index+=1;
+  }
+}

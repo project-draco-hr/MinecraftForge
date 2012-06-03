@@ -1,0 +1,5 @@
+{
+  if (envelope != null) {
+    volume_envelope=envelope;
+  }
+}

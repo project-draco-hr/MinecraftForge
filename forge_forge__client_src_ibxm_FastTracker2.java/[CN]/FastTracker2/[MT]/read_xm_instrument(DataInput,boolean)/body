@@ -1,0 +1,62 @@
+{
+  int instrument_header_length, num_samples, idx;
+  int env_tick, env_ampl, env_num_points, flags;
+  byte[] structure_header, instrument_header, sample_headers;
+  Instrument instrument;
+  Envelope envelope;
+  structure_header=new byte[4];
+  data_input.readFully(structure_header);
+  instrument_header_length=int_le(structure_header,0);
+  instrument_header=new byte[instrument_header_length];
+  data_input.readFully(instrument_header,4,instrument_header_length - 4);
+  instrument=new Instrument();
+  instrument.name=ascii_text(instrument_header,4,22);
+  num_samples=unsigned_short_le(instrument_header,27);
+  if (num_samples > 0) {
+    instrument.set_num_samples(num_samples);
+    for (idx=0; idx < 96; idx++) {
+      instrument.set_key_to_sample(idx + 1,instrument_header[33 + idx] & 0xFF);
+    }
+    envelope=new Envelope();
+    env_num_points=instrument_header[225] & 0xFF;
+    envelope.set_num_points(env_num_points);
+    for (idx=0; idx < env_num_points; idx++) {
+      env_tick=unsigned_short_le(instrument_header,129 + idx * 4);
+      env_ampl=unsigned_short_le(instrument_header,131 + idx * 4);
+      envelope.set_point(idx,env_tick,env_ampl,delta_env);
+    }
+    envelope.set_sustain_point(instrument_header[227] & 0xFF);
+    envelope.set_loop_points(instrument_header[228] & 0xFF,instrument_header[229] & 0xFF);
+    flags=instrument_header[233] & 0xFF;
+    instrument.volume_envelope_active=(flags & 0x1) == 0x1;
+    envelope.sustain=(flags & 0x2) == 0x2;
+    envelope.looped=(flags & 0x4) == 0x4;
+    instrument.set_volume_envelope(envelope);
+    envelope=new Envelope();
+    env_num_points=instrument_header[226] & 0xFF;
+    envelope.set_num_points(env_num_points);
+    for (idx=0; idx < env_num_points; idx++) {
+      env_tick=unsigned_short_le(instrument_header,177 + idx * 4);
+      env_ampl=unsigned_short_le(instrument_header,179 + idx * 4);
+      envelope.set_point(idx,env_tick,env_ampl,delta_env);
+    }
+    envelope.set_sustain_point(instrument_header[230] & 0xFF);
+    envelope.set_loop_points(instrument_header[231] & 0xFF,instrument_header[232] & 0xFF);
+    flags=instrument_header[234] & 0xFF;
+    instrument.panning_envelope_active=(flags & 0x1) == 0x1;
+    envelope.sustain=(flags & 0x2) == 0x2;
+    envelope.looped=(flags & 0x4) == 0x4;
+    instrument.set_panning_envelope(envelope);
+    instrument.vibrato_type=instrument_header[235] & 0xFF;
+    instrument.vibrato_sweep=instrument_header[236] & 0xFF;
+    instrument.vibrato_depth=instrument_header[237] & 0xFF;
+    instrument.vibrato_rate=instrument_header[238] & 0xFF;
+    instrument.volume_fade_out=unsigned_short_le(instrument_header,239);
+    sample_headers=new byte[num_samples * 40];
+    data_input.readFully(sample_headers);
+    for (idx=0; idx < num_samples; idx++) {
+      instrument.set_sample(idx,read_xm_sample(sample_headers,idx,data_input));
+    }
+  }
+  return instrument;
+}

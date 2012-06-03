@@ -1,7 +1,4 @@
 {
-  if (!isAudioModInstalled()) {
-    return;
-  }
   audioModSoundPoolCave=new SoundPool();
   audioModLoadModAudio("resources/mod/sound",mngr.getSoundsPool());
   audioModLoadModAudio("resources/mod/streaming",mngr.getStreamingPool());

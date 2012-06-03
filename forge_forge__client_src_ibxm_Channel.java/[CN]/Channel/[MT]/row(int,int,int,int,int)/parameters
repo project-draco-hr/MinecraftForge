@@ -1,0 +1,5 @@
+int key
+int inst_idx
+int volume_column
+int effect
+int effect_param

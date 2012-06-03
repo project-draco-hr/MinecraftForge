@@ -1,0 +1,10 @@
+{
+  int sweep, depth, rate;
+  sweep=instrument.vibrato_sweep & 0xFF;
+  depth=instrument.vibrato_depth & 0x0F;
+  rate=instrument.vibrato_rate & 0x3F;
+  if (trigger_tick < sweep) {
+    depth=depth * trigger_tick / sweep;
+  }
+  vibrato_add+=waveform(trigger_tick * rate,0) * depth >> 9;
+}

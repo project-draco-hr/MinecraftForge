@@ -1,0 +1,6 @@
+{
+  int instrument_offset, pointer_offset;
+  pointer_offset=96 + get_num_pattern_orders(s3m_file);
+  instrument_offset=unsigned_short_le(s3m_file,pointer_offset + instrument_idx * 2) << 4;
+  return instrument_offset;
+}

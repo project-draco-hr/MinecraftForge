@@ -1,0 +1,48 @@
+{
+  int input_idx, output_idx;
+  int period, instrument, effect, effect_param;
+  Pattern pattern;
+  byte[] input_pattern_data, output_pattern_data;
+  pattern=new Pattern();
+  pattern.num_rows=64;
+  input_pattern_data=new byte[64 * num_channels * 4];
+  output_pattern_data=new byte[64 * num_channels * 5];
+  data_input.readFully(input_pattern_data);
+  input_idx=0;
+  output_idx=0;
+  while (input_idx < input_pattern_data.length) {
+    period=(input_pattern_data[input_idx] & 0x0F) << 8;
+    period=period | (input_pattern_data[input_idx + 1] & 0xFF);
+    output_pattern_data[output_idx]=to_key(period);
+    instrument=input_pattern_data[input_idx] & 0x10;
+    instrument=instrument | ((input_pattern_data[input_idx + 2] & 0xF0) >> 4);
+    output_pattern_data[output_idx + 1]=(byte)instrument;
+    effect=input_pattern_data[input_idx + 2] & 0x0F;
+    effect_param=input_pattern_data[input_idx + 3] & 0xFF;
+    if (effect == 0x01 && effect_param == 0) {
+      effect=0;
+    }
+    if (effect == 0x02 && effect_param == 0) {
+      effect=0;
+    }
+    if (effect == 0x08 && num_channels == 4) {
+      effect=0;
+      effect_param=0;
+    }
+    if (effect == 0x0A && effect_param == 0) {
+      effect=0;
+    }
+    if (effect == 0x05 && effect_param == 0) {
+      effect=0x03;
+    }
+    if (effect == 0x06 && effect_param == 0) {
+      effect=0x04;
+    }
+    output_pattern_data[output_idx + 3]=(byte)effect;
+    output_pattern_data[output_idx + 4]=(byte)effect_param;
+    input_idx+=4;
+    output_idx+=5;
+  }
+  pattern.set_pattern_data(output_pattern_data);
+  return pattern;
+}
