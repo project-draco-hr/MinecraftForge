@@ -6,5 +6,6 @@
     keys[i++]=(KeyBinding)key.getKeyBinding();
     keyBindings.put((KeyBinding)key.getKeyBinding(),key.getOwningContainer());
   }
+  keyHandlers=allKeys;
   return keys;
 }
