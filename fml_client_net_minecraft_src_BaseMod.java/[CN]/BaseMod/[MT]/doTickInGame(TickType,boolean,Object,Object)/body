@@ -1,12 +1,13 @@
 {
   Minecraft mc=(Minecraft)minecraftInstance;
-  if ((tickEnd && tick == TickType.WORLD) || (tickEnd && tick == TickType.RENDER)) {
+  boolean hasWorld=mc.field_6324_e != null;
+  if (((tickEnd && tick == TickType.WORLD) || (tickEnd && tick == TickType.RENDER)) && hasWorld) {
     return onTickInGame((Float)data[0],mc);
   }
  else   if (((tickEnd && tick == TickType.WORLDGUI) || (tickEnd && tick == TickType.GUI))) {
     return onTickInGUI((Float)data[0],mc,(GuiScreen)data[1]);
   }
- else   if (tick == TickType.WORLDLOADTICK) {
+ else   if (tick == TickType.WORLDLOADTICK && hasWorld) {
     return onTickInGame(0.0f,mc);
   }
  else   if (tick == TickType.GUILOADTICK) {
