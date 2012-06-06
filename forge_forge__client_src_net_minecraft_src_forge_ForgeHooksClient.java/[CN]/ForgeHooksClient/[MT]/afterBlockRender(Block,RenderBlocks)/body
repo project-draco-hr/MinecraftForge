@@ -1,5 +1,5 @@
 {
-  if (block instanceof ITextureProvider && render.overrideBlockTexture == -1) {
+  if (!block.isDefaultTexture && render.overrideBlockTexture == -1) {
     unbindTexture();
   }
 }
