@@ -3,6 +3,7 @@
   Tessellator tess=tessellators.get(key);
   if (tess == null) {
     tess=new Tessellator();
+    tess.textureID=texture;
     tessellators.put(key,tess);
   }
   if (inWorld && !renderTextures.contains(key)) {
