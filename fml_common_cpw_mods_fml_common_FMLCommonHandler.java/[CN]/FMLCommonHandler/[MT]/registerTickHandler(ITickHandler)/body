@@ -1,0 +1,3 @@
+{
+  tickHandlers.add(handler);
+}

@@ -1,3 +1,0 @@
-{
-  tickEnd(ModContainer.TickType.WORLD,0.0f);
-}

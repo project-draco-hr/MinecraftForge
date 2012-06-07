@@ -1,0 +1,3 @@
+{
+  tickStart(TickType.WORLD,0.0f,world);
+}

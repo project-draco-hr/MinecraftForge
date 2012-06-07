@@ -11,6 +11,13 @@
     mod.tickEnd(type,data);
     sidedDelegate.profileEnd();
   }
+  for (  ITickHandler ticker : tickHandlers) {
+    if (ticker.ticks().contains(type)) {
+      sidedDelegate.profileStart(ticker.getClass().getSimpleName());
+      ticker.tickEnd(type,data);
+      sidedDelegate.profileEnd();
+    }
+  }
   sidedDelegate.profileEnd();
   sidedDelegate.profileEnd();
 }
