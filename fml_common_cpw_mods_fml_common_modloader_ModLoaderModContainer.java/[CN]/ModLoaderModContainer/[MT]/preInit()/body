@@ -5,6 +5,7 @@
     configureMod();
     mod=modClazz.newInstance();
     this.tickHandler.setMod(mod);
+    FMLCommonHandler.instance().registerTickHandler(this.tickHandler);
   }
  catch (  Exception e) {
     throw new LoaderException(e);
