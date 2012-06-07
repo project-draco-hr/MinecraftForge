@@ -9,10 +9,10 @@
     ticks.remove(TickType.RENDER);
   }
   if (enable && (useClock || FMLCommonHandler.instance().getSide().isServer())) {
-    ticks.add(TickType.WORLD);
+    ticks.add(TickType.GAME);
   }
  else {
-    ticks.remove(TickType.WORLD);
+    ticks.remove(TickType.GAME);
   }
   if (enable) {
     ticks.add(TickType.WORLDLOAD);
