@@ -1,4 +1,3 @@
 {
-  FMLCommonHandler.instance().tickStart(TickType.RENDER,partialTickTime);
-  FMLCommonHandler.instance().tickStart(TickType.GUI,partialTickTime,client.field_6313_p);
+  FMLCommonHandler.instance().tickStart(EnumSet.of(TickType.RENDER,TickType.GUI),partialTickTime,client.field_6313_p);
 }

@@ -1,0 +1,2 @@
+EnumSet<TickType> types
+Object tickData

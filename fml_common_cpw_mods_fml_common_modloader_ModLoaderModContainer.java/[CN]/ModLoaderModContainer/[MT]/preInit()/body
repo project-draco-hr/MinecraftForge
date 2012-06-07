@@ -1,7 +1,10 @@
 {
   try {
+    EnumSet<TickType> ticks=EnumSet.noneOf(TickType.class);
+    this.tickHandler=new BaseModTicker(ticks);
     configureMod();
     mod=modClazz.newInstance();
+    this.tickHandler.setMod(mod);
   }
  catch (  Exception e) {
     throw new LoaderException(e);

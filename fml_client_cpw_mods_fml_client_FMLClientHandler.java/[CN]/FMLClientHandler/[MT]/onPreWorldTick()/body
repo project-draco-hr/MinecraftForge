@@ -1,6 +1,5 @@
 {
   if (client.field_6324_e != null) {
-    FMLCommonHandler.instance().worldTickStart(client.field_6324_e);
-    FMLCommonHandler.instance().tickStart(TickType.WORLDGUI,0.0f,client.field_6313_p);
+    FMLCommonHandler.instance().tickStart(EnumSet.of(TickType.WORLD,TickType.GAME,TickType.WORLDGUI),0.0f,client.field_6324_e,client.field_6313_p);
   }
 }

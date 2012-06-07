@@ -1,9 +1,0 @@
-{
-  if (ticks.contains(tick)) {
-    boolean keepTicking=mod.doTickInGame(tick,true,FMLCommonHandler.instance().getMinecraftInstance(),data);
-    if (!keepTicking) {
-      ticks.remove(tick);
-      ticks.removeAll(tick.partnerTicks());
-    }
-  }
-}

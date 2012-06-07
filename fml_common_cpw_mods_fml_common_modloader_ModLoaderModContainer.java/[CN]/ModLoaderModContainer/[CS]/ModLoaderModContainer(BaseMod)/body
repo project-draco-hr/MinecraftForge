@@ -1,5 +1,5 @@
 {
   FMLCommonHandler.instance().addAuxilliaryModContainer(this);
   this.mod=instance;
-  this.ticks=EnumSet.noneOf(TickType.class);
+  this.tickHandler=new BaseModTicker(instance);
 }

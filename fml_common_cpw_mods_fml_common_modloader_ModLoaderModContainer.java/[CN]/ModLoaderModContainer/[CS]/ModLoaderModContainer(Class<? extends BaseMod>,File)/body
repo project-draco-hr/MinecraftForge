@@ -1,6 +1,5 @@
 {
   this.modClazz=modClazz;
   this.modSource=modSource;
-  this.ticks=EnumSet.noneOf(TickType.class);
   nextState();
 }

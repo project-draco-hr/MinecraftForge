@@ -4,7 +4,6 @@
       loadTextures(fallbackTexturePack);
       firstTick=false;
     }
-    FMLCommonHandler.instance().tickStart(TickType.WORLDLOADTICK);
-    FMLCommonHandler.instance().tickStart(TickType.GUILOADTICK);
+    FMLCommonHandler.instance().tickStart(EnumSet.of(TickType.WORLDLOAD,TickType.GUILOAD));
   }
 }
