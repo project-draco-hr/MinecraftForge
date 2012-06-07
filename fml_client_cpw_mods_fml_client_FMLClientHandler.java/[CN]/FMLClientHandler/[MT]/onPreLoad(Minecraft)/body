@@ -1,7 +1,7 @@
 {
   client=minecraft;
   ReflectionHelper.detectObfuscation(World.class);
-  FMLCommonHandler.instance().registerSidedDelegate(this);
+  FMLCommonHandler.instance().beginLoading(this);
   FMLRegistry.registerRegistry(new ClientRegistry());
   try {
     Class<?> optifineConfig=Class.forName("Config",false,Loader.instance().getModClassLoader());

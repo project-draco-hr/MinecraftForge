@@ -2,15 +2,9 @@
   ArrayList<String> brandings=new ArrayList<String>();
   brandings.add(mcVersion);
   brandings.add(Loader.instance().getFMLVersionString());
-  try {
-    brandings.add((String)Class.forName("forge.MinecraftForge").getMethod("getVersionString").invoke(null));
-  }
- catch (  Exception ex) {
-    try {
-      brandings.add((String)Class.forName("net.minecraft.src.forge.MinecraftForge").getMethod("getVersionString").invoke(null));
-    }
- catch (    Exception ex2) {
-    }
+  String forgeVersion=(String)callForgeMethod("getVersionString");
+  if (forgeVersion != null) {
+    brandings.add(forgeVersion);
   }
   brandings.addAll(sidedDelegate.getAdditionalBrandingInformation());
   try {
