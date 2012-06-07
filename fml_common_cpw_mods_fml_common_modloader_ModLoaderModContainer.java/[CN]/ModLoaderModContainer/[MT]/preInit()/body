@@ -6,6 +6,7 @@
     mod=modClazz.newInstance();
     this.tickHandler.setMod(mod);
     FMLCommonHandler.instance().registerTickHandler(this.tickHandler);
+    FMLCommonHandler.instance().registerWorldGenerator(this.mod);
   }
  catch (  Exception e) {
     throw new LoaderException(e);

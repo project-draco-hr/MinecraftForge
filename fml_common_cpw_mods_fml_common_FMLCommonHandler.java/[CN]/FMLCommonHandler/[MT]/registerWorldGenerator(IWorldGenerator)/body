@@ -1,0 +1,3 @@
+{
+  worldGenerators.add(generator);
+}
