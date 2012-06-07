@@ -1,0 +1,3 @@
+{
+  FMLCommonHandler.instance().tickEnd(EnumSet.of(TickType.WORLD),world);
+}
