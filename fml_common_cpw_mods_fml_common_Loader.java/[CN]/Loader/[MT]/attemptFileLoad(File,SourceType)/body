@@ -16,9 +16,10 @@
     }
   }
  catch (  Exception e) {
-    log.warning(String.format("Zip file %s failed to read properly",modFile.getName()));
+    log.severe(String.format("Zip file %s failed to read properly",modFile.getName()));
     log.throwing("fml.server.Loader","attemptFileLoad",e);
     state=State.ERRORED;
+    capturedError=e;
   }
   return foundAModClass;
 }

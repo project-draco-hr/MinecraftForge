@@ -96,8 +96,8 @@
     }
   }
   if (state == State.ERRORED) {
-    log.severe("A problem has occured during mod loading, giving up now");
-    throw new RuntimeException("Giving up please");
+    log.severe("A problem has occured during mod loading. Likely a corrupt jar is located in your mods directory");
+    throw new LoaderException(capturedError);
   }
   log.info(String.format("Forge Mod Loader has loaded %d mods",mods.size()));
 }
