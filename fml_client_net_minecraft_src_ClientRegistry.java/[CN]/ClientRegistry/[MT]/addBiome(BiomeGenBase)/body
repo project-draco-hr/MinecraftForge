@@ -1,2 +1,3 @@
 {
+  FMLClientHandler.instance().addBiomeToDefaultWorldGenerator(biome);
 }

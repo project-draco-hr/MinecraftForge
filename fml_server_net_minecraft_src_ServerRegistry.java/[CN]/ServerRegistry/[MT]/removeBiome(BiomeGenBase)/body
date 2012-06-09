@@ -1,0 +1,3 @@
+{
+  FMLServerHandler.instance().removeBiomeFromDefaultWorldGenerator(biome);
+}
