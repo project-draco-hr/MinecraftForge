@@ -1,0 +1,3 @@
+{
+  registerOre(getOreName(id),id,ore);
+}

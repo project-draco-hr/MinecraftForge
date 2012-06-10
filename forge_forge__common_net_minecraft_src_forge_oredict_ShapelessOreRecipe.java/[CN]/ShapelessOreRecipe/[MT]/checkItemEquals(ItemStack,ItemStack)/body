@@ -1,0 +1,3 @@
+{
+  return (target.itemID == input.itemID && (target.getItemDamage() == -1 || target.getItemDamage() == input.getItemDamage()));
+}

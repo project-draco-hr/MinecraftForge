@@ -1,0 +1,31 @@
+{
+  ArrayList required=new ArrayList(input);
+  for (int x=0; x < var1.getSizeInventory(); x++) {
+    ItemStack slot=var1.getStackInSlot(x);
+    if (slot != null) {
+      boolean inRecipe=false;
+      Iterator req=required.iterator();
+      while (req.hasNext()) {
+        boolean match=false;
+        Object next=req.next();
+        if (next instanceof ItemStack) {
+          match=checkItemEquals((ItemStack)next,slot);
+        }
+ else         if (next instanceof ArrayList) {
+          for (          ItemStack item : (ArrayList<ItemStack>)next) {
+            match=match || checkItemEquals(item,slot);
+          }
+        }
+        if (match) {
+          inRecipe=true;
+          required.remove(next);
+          break;
+        }
+      }
+      if (!inRecipe) {
+        return false;
+      }
+    }
+  }
+  return required.isEmpty();
+}

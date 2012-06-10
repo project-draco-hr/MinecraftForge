@@ -1,0 +1,3 @@
+{
+  registerOre(name,new ItemStack(ore));
+}

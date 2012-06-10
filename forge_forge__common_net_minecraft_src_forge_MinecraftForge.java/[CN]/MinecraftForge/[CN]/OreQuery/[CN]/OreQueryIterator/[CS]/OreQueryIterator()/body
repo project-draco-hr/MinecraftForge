@@ -1,9 +1,7 @@
 {
-  itering=new LinkedList();
-  output=new LinkedList();
-  for (int i=0; i < proto.length; i++) {
-    if (proto[i] instanceof Collection) {
-      Iterator it=((Collection)proto[i]).iterator();
+  for (  Object input : proto) {
+    if (input instanceof Collection) {
+      Iterator it=((Collection)input).iterator();
       if (!it.hasNext()) {
         output=null;
         break;
@@ -12,8 +10,8 @@
       output.addLast(it.next());
     }
  else {
-      itering.addLast(proto[i]);
-      output.addLast(proto[i]);
+      itering.addLast(input);
+      output.addLast(input);
     }
   }
 }

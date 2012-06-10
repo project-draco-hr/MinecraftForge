@@ -1,0 +1,9 @@
+{
+  oreHandlers.add(handler);
+  for (  Map.Entry<String,Integer> entry : oreIDs.entrySet()) {
+    List<ItemStack> ores=getOres(entry.getValue());
+    for (    ItemStack stack : ores) {
+      handler.registerOre(entry.getKey(),stack);
+    }
+  }
+}

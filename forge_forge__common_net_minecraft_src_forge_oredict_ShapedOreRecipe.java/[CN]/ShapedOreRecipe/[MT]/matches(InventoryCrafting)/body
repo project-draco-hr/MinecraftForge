@@ -1,0 +1,13 @@
+{
+  for (int x=0; x <= MAX_CRAFT_GRID_WIDTH - width; x++) {
+    for (int y=0; y <= MAX_CRAFT_GRID_HEIGHT - height; ++y) {
+      if (checkMatch(inv,x,y,true)) {
+        return true;
+      }
+      if (mirriored && checkMatch(inv,x,y,false)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

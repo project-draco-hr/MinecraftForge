@@ -1,0 +1,4 @@
+InventoryCrafting inv
+int startX
+int startY
+boolean mirrior

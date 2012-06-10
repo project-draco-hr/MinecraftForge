@@ -1,0 +1,6 @@
+{
+  if (input == null && target != null || input != null && target == null) {
+    return false;
+  }
+  return (target.itemID == input.itemID && (target.getItemDamage() == -1 || target.getItemDamage() == input.getItemDamage()));
+}

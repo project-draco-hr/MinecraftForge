@@ -1,0 +1,3 @@
+{
+  return getOres(getOreID(name));
+}
