@@ -3,7 +3,17 @@
   Tessellator tess=tessellators.get(key);
   if (tess == null) {
     tess=new Tessellator();
-    tess.textureID=texture;
+    if (!textureIDChecked && textureID == null) {
+      textureIDChecked=true;
+      try {
+        textureID=Tessellator.class.getField("textureID");
+      }
+ catch (      NoSuchFieldException ex) {
+      }
+    }
+    if (textureID != null) {
+      tess.textureID=texture;
+    }
     tessellators.put(key,tess);
   }
   if (inWorld && !renderTextures.contains(key)) {
