@@ -1,0 +1,4 @@
+byte[] data
+ByteBuffer buf
+int target
+int length

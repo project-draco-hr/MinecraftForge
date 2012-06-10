@@ -20,14 +20,14 @@
     return false;
   }
   Profiler.func_40662_b();
-  Dimension dim=getTextureDimensions(effect);
-  int target=((dim.width >> 4) * (dim.height >> 4)) << 2;
-  if (effect.field_1127_a.length != target) {
-    log.warning(String.format("Detected a texture FX sizing discrepancy in %s (%d, %d)",name,effect.field_1127_a.length,target));
-    if (ifx != null) {
+  if (ifx != null) {
+    Dimension dim=getTextureDimensions(effect);
+    int target=((dim.width >> 4) * (dim.height >> 4)) << 2;
+    if (effect.field_1127_a.length != target) {
+      log.warning(String.format("Detected a texture FX sizing discrepancy in %s (%d, %d)",name,effect.field_1127_a.length,target));
       ifx.setErrored(true);
+      return false;
     }
-    return false;
   }
   return true;
 }
