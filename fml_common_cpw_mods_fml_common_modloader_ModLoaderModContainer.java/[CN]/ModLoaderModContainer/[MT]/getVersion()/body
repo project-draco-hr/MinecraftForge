@@ -1,3 +1,6 @@
 {
-  return mod != null ? mod.getVersion() : "Not available";
+  if (mod == null || mod.getVersion() == null) {
+    return "Not available";
+  }
+  return mod.getVersion();
 }
