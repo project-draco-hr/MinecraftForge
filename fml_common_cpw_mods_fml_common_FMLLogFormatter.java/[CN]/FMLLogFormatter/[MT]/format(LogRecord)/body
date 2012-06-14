@@ -24,7 +24,7 @@
     msg.append(" [" + lvl.getLocalizedName() + "] ");
   }
   msg.append(record.getMessage());
-  msg.append('\n');
+  msg.append(System.lineSeparator());
   Throwable thr=record.getThrown();
   if (thr != null) {
     StringWriter thrDump=new StringWriter();
