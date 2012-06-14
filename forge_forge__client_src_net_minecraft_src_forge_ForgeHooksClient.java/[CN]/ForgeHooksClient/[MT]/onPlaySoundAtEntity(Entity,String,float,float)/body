@@ -1,0 +1,10 @@
+{
+  MinecraftForgeClient.checkMinecraftVersion("Minecraft Minecraft 1.2.5","Interface check in onPlaySoundAtEntity, remove it Mods should be updated");
+  for (  ISoundHandler handler : soundHandlers2) {
+    soundName=handler.onPlaySoundAtEntity(entity,soundName,volume,pitch);
+    if (soundName == null) {
+      return null;
+    }
+  }
+  return null;
+}
