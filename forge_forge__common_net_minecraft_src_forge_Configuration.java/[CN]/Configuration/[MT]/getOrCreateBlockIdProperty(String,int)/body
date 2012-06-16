@@ -1,6 +1,6 @@
 {
   if (configBlocks == null) {
-    configBlocks=new boolean[256];
+    configBlocks=new boolean[Block.blocksList.length];
     for (int i=0; i < configBlocks.length; ++i) {
       configBlocks[i]=false;
     }
