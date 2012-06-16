@@ -14,4 +14,10 @@
       ModIDs.put(data.readInt(),data.readUTF());
     }
   }
+  try {
+    has4096=data.readBoolean();
+  }
+ catch (  EOFException e) {
+    has4096=false;
+  }
 }

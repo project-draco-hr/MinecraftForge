@@ -12,4 +12,5 @@
       data.writeUTF(entry.getValue());
     }
   }
+  data.writeBoolean(true);
 }
