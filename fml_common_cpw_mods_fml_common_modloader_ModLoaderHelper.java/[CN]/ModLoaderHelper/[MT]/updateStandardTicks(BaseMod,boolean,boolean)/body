@@ -14,7 +14,4 @@
  else {
     ticks.remove(TickType.GAME);
   }
-  if (enable) {
-    ticks.add(TickType.WORLDLOAD);
-  }
 }
