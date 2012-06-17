@@ -1,4 +1,11 @@
 {
+  if (end && types.contains(TickType.GAME) && ticks.contains(TickType.GAME)) {
+    clockTickTrigger=true;
+  }
+  if (end && clockTickTrigger && (types.contains(TickType.RENDER) || FMLCommonHandler.instance().getSide().isServer())) {
+    types.add(TickType.GAME);
+    types.remove(TickType.RENDER);
+  }
   for (  TickType type : types) {
     if (!ticks.contains(type)) {
       continue;
