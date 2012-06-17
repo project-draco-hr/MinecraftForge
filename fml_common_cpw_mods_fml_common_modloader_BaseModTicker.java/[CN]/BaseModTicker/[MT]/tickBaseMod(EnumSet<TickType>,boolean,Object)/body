@@ -5,6 +5,7 @@
   if (end && clockTickTrigger && (types.contains(TickType.RENDER) || FMLCommonHandler.instance().getSide().isServer())) {
     types.add(TickType.GAME);
     types.remove(TickType.RENDER);
+    clockTickTrigger=false;
   }
   for (  TickType type : types) {
     if (!ticks.contains(type)) {
