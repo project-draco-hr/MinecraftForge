@@ -1,4 +1,4 @@
 {
   this.mod=mod;
-  this.ticks=EnumSet.noneOf(TickType.class);
+  this.ticks=EnumSet.of(TickType.WORLDLOAD);
 }
