@@ -1,3 +1,6 @@
 {
+  if (EntityLiving.class.getPackage() != null) {
+    throw new RuntimeException("Still using deprecated method/interface MinecraftForge.registerSpecialModSpawnHandler()");
+  }
   ForgeHooks.specialMobSpawnHandlers.add(handler);
 }

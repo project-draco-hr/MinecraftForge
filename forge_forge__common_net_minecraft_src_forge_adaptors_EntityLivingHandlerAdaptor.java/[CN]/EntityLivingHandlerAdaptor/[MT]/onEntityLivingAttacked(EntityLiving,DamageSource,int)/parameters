@@ -1,0 +1,3 @@
+EntityLiving entity
+DamageSource attack
+int damage

@@ -1,0 +1,3 @@
+{
+  ForgeHooks.entityLivingHandlers.add(handler);
+}

@@ -1,0 +1,9 @@
+{
+  for (  IEntityLivingHandler handler : entityLivingHandlers) {
+    damage=handler.onEntityLivingHurt(entity,source,damage);
+    if (damage == 0) {
+      return 0;
+    }
+  }
+  return damage;
+}

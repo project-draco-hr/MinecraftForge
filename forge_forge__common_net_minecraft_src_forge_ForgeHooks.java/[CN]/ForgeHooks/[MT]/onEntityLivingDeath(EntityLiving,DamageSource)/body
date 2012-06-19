@@ -1,0 +1,8 @@
+{
+  for (  IEntityLivingHandler handler : entityLivingHandlers) {
+    if (handler.onEntityLivingDeath(entity,killer)) {
+      return true;
+    }
+  }
+  return false;
+}
