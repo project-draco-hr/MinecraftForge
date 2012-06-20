@@ -28,6 +28,7 @@ def main():
     if os.path.isdir(out_folder):
         shutil.rmtree(out_folder)
     os.makedirs(out_folder)
+    update_info('forge_common/mod_MinecraftForge.info', version_str)
     zip_start(('minecraftforge-client-%s.zip' % version_str))
     zip_folder(client_dir, '', zip)
     zip_add('forge_common/mod_MinecraftForge.info', 'mod_MinecraftForge.info')
@@ -71,5 +72,6 @@ def main():
     zip_add('Paulscode SoundSystem CodecIBXM License.txt')
     zip_end()
     inject_version(os.path.join(forge_dir, 'forge_common', 'net', 'minecraft', 'src', 'forge', 'ForgeHooks.java'), 0)
+    shutil.move(os.path.join(forge_dir, 'file.backup'), os.path.join(forge_dir, 'forge_common/mod_MinecraftForge.info'.replace('/', os.sep)))
     print ('=================================== Release Finished %d =================================' % error_level)
     sys.exit(error_level)
