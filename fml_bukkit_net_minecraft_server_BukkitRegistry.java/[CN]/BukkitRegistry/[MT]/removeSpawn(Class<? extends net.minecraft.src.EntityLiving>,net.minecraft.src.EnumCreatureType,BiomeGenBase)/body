@@ -2,9 +2,11 @@
   BiomeBase[] biomes=(BiomeBase[])biomesO;
   for (  BiomeBase biome : biomes) {
     @SuppressWarnings("unchecked") List<BiomeMeta> spawns=((BiomeBase)biome).getMobs((EnumCreatureType)typeOfCreature);
-    for (    BiomeMeta entry : Collections.unmodifiableList(spawns)) {
+    Iterator<BiomeMeta> entries=spawns.iterator();
+    while (entries.hasNext()) {
+      BiomeMeta entry=entries.next();
       if (entry.a == entityClass) {
-        spawns.remove(entry);
+        entries.remove();
       }
     }
   }
