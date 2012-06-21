@@ -1,0 +1,7 @@
+{
+  long now=System.currentTimeMillis();
+  long del=now - ts;
+  ts=now;
+  System.out.printf("%d %d %d %d MLTICK\n",del,ts,tsg,now);
+  return true;
+}

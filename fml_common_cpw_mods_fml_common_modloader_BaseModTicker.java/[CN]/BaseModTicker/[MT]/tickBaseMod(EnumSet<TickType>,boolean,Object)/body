@@ -1,20 +1,14 @@
 {
-  if (end && (types.contains(TickType.GAME) && ticks.contains(TickType.GAME)) || (types.contains(TickType.WORLDLOAD) && ticks.contains(TickType.WORLDLOAD))) {
-    clockTickTrigger=true;
+  if (FMLCommonHandler.instance().getSide().isServer() || ticks.contains(TickType.RENDER)) {
+    sendTick(types,end,tickData);
   }
-  if (end && clockTickTrigger && types.contains(TickType.RENDER)) {
-    types.add(TickType.GAME);
-    types.remove(TickType.RENDER);
-    clockTickTrigger=false;
-  }
-  for (  TickType type : types) {
-    if (!ticks.contains(type)) {
-      continue;
+ else {
+    if (end && ticks.contains(TickType.GAME) && (types.contains(TickType.GAME) || types.contains(TickType.WORLDLOAD))) {
+      clockTickTrigger=true;
     }
-    boolean keepTicking=mod.doTickInGame(type,end,FMLCommonHandler.instance().getMinecraftInstance(),tickData);
-    if (!keepTicking) {
-      ticks.remove(type);
-      ticks.removeAll(type.partnerTicks());
+    if (end && clockTickTrigger && types.contains(TickType.RENDER)) {
+      clockTickTrigger=false;
+      sendTick(EnumSet.of(TickType.GAME),end,tickData);
     }
   }
 }

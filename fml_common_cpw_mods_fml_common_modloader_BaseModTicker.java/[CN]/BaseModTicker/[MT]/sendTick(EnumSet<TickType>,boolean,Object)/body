@@ -1,0 +1,12 @@
+{
+  for (  TickType type : types) {
+    if (!ticks.contains(type)) {
+      continue;
+    }
+    boolean keepTicking=mod.doTickInGame(type,end,FMLCommonHandler.instance().getMinecraftInstance(),tickData);
+    if (!keepTicking) {
+      ticks.remove(type);
+      ticks.removeAll(type.partnerTicks());
+    }
+  }
+}

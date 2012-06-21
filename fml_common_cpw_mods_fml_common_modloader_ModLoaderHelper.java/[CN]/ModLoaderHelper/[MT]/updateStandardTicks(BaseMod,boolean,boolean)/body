@@ -2,7 +2,7 @@
   ModLoaderModContainer mlmc=findOrBuildModContainer(mod);
   BaseModTicker ticker=mlmc.getTickHandler();
   EnumSet<TickType> ticks=ticker.ticks();
-  if (enable) {
+  if (enable && !useClock) {
     ticks.add(TickType.RENDER);
   }
  else {

@@ -1,9 +1,6 @@
 {
-  System.out.println("byte : " + byteptest);
-  System.out.println("short : " + shortptest);
-  System.out.println("int : " + intptest);
-  System.out.println("long : " + longptest);
-  System.out.println("float : " + floatptest);
-  System.out.println("double : " + doubleptest);
-  System.out.println("bool : " + booleanptest);
+  ModLoader.setInGameHook(this,true,true);
+  FMLCommonHandler.instance().registerTickHandler(this);
+  ts=System.currentTimeMillis();
+  tsg=ts;
 }
