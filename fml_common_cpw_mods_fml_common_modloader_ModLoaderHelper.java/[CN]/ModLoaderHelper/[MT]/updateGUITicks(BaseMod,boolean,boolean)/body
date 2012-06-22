@@ -1,7 +1,7 @@
 {
   ModLoaderModContainer mlmc=findOrBuildModContainer(mod);
   EnumSet<TickType> ticks=mlmc.getTickHandler().ticks();
-  if (enable && !useClock && FMLCommonHandler.instance().getSide().isClient()) {
+  if (enable && !useClock) {
     ticks.add(TickType.GUI);
   }
  else {
