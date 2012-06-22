@@ -1,5 +1,6 @@
 {
   ModLoader.setInGameHook(this,true,true);
+  ModLoader.setInGUIHook(this,true,false);
   FMLCommonHandler.instance().registerTickHandler(this);
   ts=System.currentTimeMillis();
   tsg=ts;
