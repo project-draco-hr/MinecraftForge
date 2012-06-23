@@ -1,7 +1,10 @@
 {
   int index=world.rand.nextInt(plantGrassWeight);
   ProbableItem item=getRandomItem(plantGrassList,index);
-  if (item == null) {
+  if (item == null || Block.blocksList[item.ItemID] == null) {
+    return;
+  }
+  if (mod_MinecraftForge.DISABLE_DARK_ROOMS && !Block.blocksList[item.ItemID].canBlockStay(world,x,y,z)) {
     return;
   }
   world.setBlockAndMetadataWithNotify(x,y,z,item.ItemID,item.Metadata);
