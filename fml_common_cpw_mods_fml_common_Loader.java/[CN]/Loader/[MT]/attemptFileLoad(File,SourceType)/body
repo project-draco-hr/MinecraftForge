@@ -1,8 +1,9 @@
 {
   extendClassLoader(modFile);
   boolean foundAModClass=false;
+  ZipFile jar=null;
   try {
-    ZipFile jar=new ZipFile(modFile);
+    jar=new ZipFile(modFile);
     for (    ZipEntry ze : Collections.list(jar.entries())) {
       Matcher match=modClass.matcher(ze.getName());
       if (match.matches()) {
@@ -20,6 +21,15 @@
     log.throwing("fml.server.Loader","attemptFileLoad",e);
     state=State.ERRORED;
     capturedError=e;
+  }
+ finally {
+    if (jar != null) {
+      try {
+        jar.close();
+      }
+ catch (      Exception e) {
+      }
+    }
   }
   return foundAModClass;
 }

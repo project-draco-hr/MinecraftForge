@@ -1,8 +1,3 @@
 {
-  for (  ModContainer mc : Loader.getModList()) {
-    if (mc.matches(mod)) {
-      return mc;
-    }
-  }
-  return null;
+  return FMLCommonHandler.instance().findContainerFor(mod);
 }

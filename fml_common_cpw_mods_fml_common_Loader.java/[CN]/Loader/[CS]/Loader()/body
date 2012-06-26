@@ -24,11 +24,11 @@
   if (stream != null) {
     try {
       properties.load(stream);
-      major=properties.getProperty("fmlbuild.major.number");
-      minor=properties.getProperty("fmlbuild.minor.number");
-      rev=properties.getProperty("fmlbuild.revision.number");
-      build=properties.getProperty("fmlbuild.build.number");
-      mcversion=properties.getProperty("fmlbuild.mcversion");
+      major=properties.getProperty("fmlbuild.major.number","none");
+      minor=properties.getProperty("fmlbuild.minor.number","none");
+      rev=properties.getProperty("fmlbuild.revision.number","none");
+      build=properties.getProperty("fmlbuild.build.number","none");
+      mcversion=properties.getProperty("fmlbuild.mcversion","none");
     }
  catch (    IOException ex) {
       Loader.log.log(Level.SEVERE,"Could not get FML version information - corrupted installation detected!",ex);
