@@ -1,0 +1,8 @@
+{
+  if (lastInstance == null) {
+    lastInstance=new FMLBukkitProfiler();
+    FMLBukkitHandler.instance().profiler=lastInstance;
+    endTime=System.currentTimeMillis() + seconds;
+  }
+  return endTime - System.currentTimeMillis();
+}

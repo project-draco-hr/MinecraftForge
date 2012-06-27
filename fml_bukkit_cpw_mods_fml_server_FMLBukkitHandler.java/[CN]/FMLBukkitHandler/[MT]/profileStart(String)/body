@@ -1,2 +1,5 @@
 {
+  if (profiler != null) {
+    profiler.start(profileLabel);
+  }
 }
