@@ -1,0 +1,5 @@
+{
+  final List<Entry<E>> entryList=Lists.newArrayList(ms.entrySet());
+  Collections.sort(entryList,ascending ? EntryComp.ASCENDING : EntryComp.DESCENDING);
+  return entryList;
+}
