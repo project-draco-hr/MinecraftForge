@@ -1,6 +1,11 @@
 {
   sidedDelegate.profileStart("modTickEnd$" + ticks);
-  for (  ITickHandler ticker : tickHandlers) {
+  for (int i=0; i < tickHandlers.size(); i++) {
+    if (!tickHandlers.peek().scheduledNow()) {
+      break;
+    }
+    TickQueueElement tickQueueElement=tickHandlers.poll();
+    IScheduledTickHandler ticker=tickQueueElement.ticker;
     EnumSet<TickType> ticksToRun=EnumSet.copyOf(ticker.ticks());
     ticksToRun.removeAll(EnumSet.complementOf(ticks));
     if (!ticksToRun.isEmpty()) {
@@ -8,6 +13,8 @@
       ticker.tickEnd(ticksToRun,data);
       sidedDelegate.profileEnd();
     }
+    tickQueueElement.update();
+    tickHandlers.offer(tickQueueElement);
   }
   sidedDelegate.profileEnd();
 }

@@ -1,7 +1,8 @@
 {
   if (mod.getSourceType() == SourceType.JAR) {
+    ZipFile jar=null;
     try {
-      ZipFile jar=new ZipFile(mod.getSource());
+      jar=new ZipFile(mod.getSource());
       ZipEntry infoFile=jar.getEntry("mcmod.info");
       if (infoFile != null) {
         InputStream input=jar.getInputStream(infoFile);
@@ -15,6 +16,15 @@
  catch (    Exception e) {
       getFMLLogger().fine(String.format("Failed to find mcmod.info file in %s for %s",mod.getSource().getName(),mod.getName()));
       getFMLLogger().throwing("FMLCommonHandler","loadMetadataFor",e);
+    }
+ finally {
+      if (jar != null) {
+        try {
+          jar.close();
+        }
+ catch (        IOException e) {
+        }
+      }
     }
   }
  else {

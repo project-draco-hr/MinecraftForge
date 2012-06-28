@@ -1,0 +1,3 @@
+{
+  wrapped.tickStart(type,tickData);
+}

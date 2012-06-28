@@ -1,0 +1,3 @@
+{
+  tickHandlers.add(new TickQueueElement(handler));
+}
