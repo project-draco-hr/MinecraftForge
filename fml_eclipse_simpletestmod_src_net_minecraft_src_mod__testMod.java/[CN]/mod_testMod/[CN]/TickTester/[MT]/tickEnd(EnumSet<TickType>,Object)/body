@@ -2,5 +2,5 @@
   long now=System.currentTimeMillis();
   long del=now - tsg;
   tsg=now;
-  System.out.printf("%d %d %d %d GAMETICK\n",del,ts,tsg,now);
+  System.out.printf("End GAMETICK [%d] %d\n",interval,del);
 }

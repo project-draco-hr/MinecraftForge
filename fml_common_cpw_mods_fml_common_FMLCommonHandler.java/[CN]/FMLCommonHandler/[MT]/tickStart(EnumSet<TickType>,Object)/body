@@ -1,10 +1,9 @@
 {
+  if (scheduledTicks.size() == 0) {
+    return;
+  }
   sidedDelegate.profileStart("modTickStart$" + ticks);
-  for (int i=0; i < tickHandlers.size(); i++) {
-    if (!tickHandlers.peek().scheduledNow()) {
-      break;
-    }
-    IScheduledTickHandler ticker=tickHandlers.peek().ticker;
+  for (  IScheduledTickHandler ticker : scheduledTicks) {
     EnumSet<TickType> ticksToRun=EnumSet.copyOf(ticker.ticks());
     ticksToRun.removeAll(EnumSet.complementOf(ticks));
     if (!ticksToRun.isEmpty()) {

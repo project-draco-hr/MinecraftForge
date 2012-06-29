@@ -1,0 +1,5 @@
+{
+  long now=System.currentTimeMillis();
+  long del=now - tsg;
+  System.out.printf("Begin GAMETICK [%d] %d\n",interval,del);
+}
