@@ -1,6 +1,6 @@
 {
   Minecraft mc=(Minecraft)minecraftInstance;
-  boolean hasWorld=mc.field_6324_e != null;
+  boolean hasWorld=true;
   if (tickEnd && (tick == TickType.RENDER || tick == TickType.GAME) && hasWorld) {
     return onTickInGame((Float)data[0],mc);
   }

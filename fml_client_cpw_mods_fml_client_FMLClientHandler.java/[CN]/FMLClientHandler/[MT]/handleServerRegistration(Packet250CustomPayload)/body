@@ -7,12 +7,6 @@
       if (FMLCommonHandler.instance().getModForChannel(channel) == null) {
         continue;
       }
-      if ("REGISTER".equals(packet.field_44012_a)) {
-        FMLCommonHandler.instance().activateChannel(client.field_6322_g,channel);
-      }
- else {
-        FMLCommonHandler.instance().deactivateChannel(client.field_6322_g,channel);
-      }
     }
   }
  catch (  UnsupportedEncodingException e) {

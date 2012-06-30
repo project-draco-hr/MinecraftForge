@@ -1,9 +1,7 @@
 {
-  if (client.field_6324_e != null) {
-    if (firstTick) {
-      loadTextures(fallbackTexturePack);
-      firstTick=false;
-    }
-    FMLCommonHandler.instance().tickStart(EnumSet.of(TickType.WORLDLOAD,TickType.GUILOAD));
+  if (firstTick) {
+    loadTextures(fallbackTexturePack);
+    firstTick=false;
   }
+  FMLCommonHandler.instance().tickStart(EnumSet.of(TickType.WORLDLOAD,TickType.GUILOAD));
 }
