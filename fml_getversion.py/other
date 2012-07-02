@@ -4,5 +4,11 @@ import commands
 import fnmatch
 import re
 import subprocess, shlex
+mcp_home = sys.argv[1]
+mcp_dir = os.path.abspath(mcp_home)
+print mcp_dir
+sys.path.append(mcp_dir)
+from runtime.commands import Commands
+Commands._version_config = os.path.join(mcp_dir, Commands._version_config)
 if (__name__ == '__main__'):
     main()
