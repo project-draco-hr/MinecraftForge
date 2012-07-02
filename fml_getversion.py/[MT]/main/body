@@ -8,9 +8,13 @@ def main():
         print 'Git not found'
         vers = 'v1.0-0-deadbeef'
     (major, minor, rev, githash) = re.match('v(\\d+).(\\d+)-(\\d+)-(.*)', vers).groups()
+    (mcpversion, mcclientversion, mcserverversion) = re.match('[.\\w]+ \\(data: ([.\\w]+), client: ([.\\w.]+), server: ([.\\w.]+)\\)', Commands.fullversion()).groups()
     with open('fmlversion.properties', 'w') as f:
         f.write(('%s=%s\n' % ('fmlbuild.major.number', major)))
         f.write(('%s=%s\n' % ('fmlbuild.minor.number', minor)))
         f.write(('%s=%s\n' % ('fmlbuild.revision.number', rev)))
         f.write(('%s=%s\n' % ('fmlbuild.githash', githash)))
-        f.write(('%s=%s\n' % ('fmlbuild.mcversion', '1.2.5')))
+        f.write(('%s=%s\n' % ('fmlbuild.mcpversion', mcpversion)))
+        f.write(('%s=%s\n' % ('fmlbuild.mcclientversion', mcclientversion)))
+        f.write(('%s=%s\n' % ('fmlbuild.mcserverversion', mcserverversion)))
+    print ('Version information: FML %s.%s.%s using MCP %s for c:%s, s:%s' % (major, minor, rev, mcpversion, mcclientversion, mcserverversion))
