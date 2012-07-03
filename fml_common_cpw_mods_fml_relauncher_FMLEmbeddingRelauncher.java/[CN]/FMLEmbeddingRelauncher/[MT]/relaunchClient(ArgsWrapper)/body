@@ -1,0 +1,15 @@
+{
+  try {
+    Class<?> original=Class.forName("net.minecraft.client.Minecraft",false,getClass().getClassLoader());
+    Field origDir=original.getDeclaredField("field_6275_Z");
+    origDir.setAccessible(true);
+    Class client=Class.forName("net.minecraft.client.Minecraft",false,clientLoader);
+    Field homeDir=client.getDeclaredField("field_6275_Z");
+    homeDir.setAccessible(true);
+    homeDir.set(null,origDir.get(null));
+    client.getMethod("fmlReentry",ArgsWrapper.class).invoke(null,wrap);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+}

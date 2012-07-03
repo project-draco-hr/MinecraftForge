@@ -1,0 +1,5 @@
+{
+  URLClassLoader ucl=(URLClassLoader)getClass().getClassLoader();
+  clientLoader=new RelaunchClassLoader(ucl.getURLs());
+  serverLoader=new RelaunchClassLoader(ucl.getURLs());
+}

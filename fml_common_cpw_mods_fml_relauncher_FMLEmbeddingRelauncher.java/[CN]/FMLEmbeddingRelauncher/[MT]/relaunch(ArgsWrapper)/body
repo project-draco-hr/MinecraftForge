@@ -1,0 +1,4 @@
+{
+  INSTANCE=new FMLEmbeddingRelauncher();
+  INSTANCE.relaunchClient(wrap);
+}
