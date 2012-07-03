@@ -1,3 +1,0 @@
-{
-  return "required-before:Mod2;after:Mod3;required-after:Mod1";
-}
