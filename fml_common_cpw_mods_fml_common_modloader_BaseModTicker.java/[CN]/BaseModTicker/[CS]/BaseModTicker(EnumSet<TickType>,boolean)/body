@@ -1,0 +1,4 @@
+{
+  this.ticks=ticks;
+  this.sendGuiTicks=guiTicker;
+}

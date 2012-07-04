@@ -20,5 +20,11 @@
     }
     FMLCommonHandler.instance().getFMLLogger().info(String.format("Forge Mod Loader has detected optifine %s, enabling compatibility features",optifineContainer.getVersion()));
   }
-  Loader.instance().loadMods();
+  try {
+    Loader.instance().loadMods();
+  }
+ catch (  LoaderException le) {
+    haltGame("There was a severe problem during mod loading that has caused the game to fail",le);
+    return;
+  }
 }

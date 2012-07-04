@@ -1,5 +1,6 @@
 {
   FMLCommonHandler.instance().addAuxilliaryModContainer(this);
   this.mod=instance;
-  this.tickHandler=new BaseModTicker(instance);
+  this.gameTickHandler=new BaseModTicker(instance,false);
+  this.guiTickHandler=new BaseModTicker(instance,true);
 }

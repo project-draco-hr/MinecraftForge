@@ -1,1 +1,2 @@
 EnumSet<TickType> ticks
+boolean guiTicker

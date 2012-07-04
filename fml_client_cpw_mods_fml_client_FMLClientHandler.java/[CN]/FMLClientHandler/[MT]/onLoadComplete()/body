@@ -1,5 +1,11 @@
 {
-  Loader.instance().initializeMods();
+  try {
+    Loader.instance().initializeMods();
+  }
+ catch (  LoaderException le) {
+    haltGame("There was a severe problem during mod loading that has caused the game to fail",le);
+    return;
+  }
   for (  ModContainer mod : Loader.getModList()) {
     mod.gatherRenderers(RenderManager.field_1233_a.getRendererList());
     for (    Render r : RenderManager.field_1233_a.getRendererList().values()) {

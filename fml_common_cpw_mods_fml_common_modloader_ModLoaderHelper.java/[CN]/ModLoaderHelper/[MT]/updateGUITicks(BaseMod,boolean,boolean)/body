@@ -1,16 +1,16 @@
 {
   ModLoaderModContainer mlmc=findOrBuildModContainer(mod);
-  EnumSet<TickType> ticks=mlmc.getTickHandler().ticks();
+  EnumSet<TickType> ticks=mlmc.getGUITickHandler().ticks();
   if (enable && !useClock) {
-    ticks.add(TickType.GUI);
+    ticks.add(TickType.RENDER);
   }
  else {
-    ticks.remove(TickType.GUI);
+    ticks.remove(TickType.RENDER);
   }
-  if (enable && (useClock || FMLCommonHandler.instance().getSide().isServer())) {
-    ticks.add(TickType.WORLDGUI);
+  if (enable && useClock) {
+    ticks.add(TickType.GAME);
   }
  else {
-    ticks.remove(TickType.WORLDGUI);
+    ticks.remove(TickType.GAME);
   }
 }
