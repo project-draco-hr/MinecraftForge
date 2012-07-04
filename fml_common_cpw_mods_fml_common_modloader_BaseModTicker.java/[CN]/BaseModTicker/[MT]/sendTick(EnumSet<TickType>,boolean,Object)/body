@@ -5,10 +5,10 @@
     }
     boolean keepTicking=true;
     if (sendGuiTicks) {
-      mod.doTickInGUI(type,end,FMLCommonHandler.instance().getMinecraftInstance(),tickData);
+      keepTicking=mod.doTickInGUI(type,end,FMLCommonHandler.instance().getMinecraftInstance(),tickData);
     }
  else {
-      mod.doTickInGame(type,end,FMLCommonHandler.instance().getMinecraftInstance(),tickData);
+      keepTicking=mod.doTickInGame(type,end,FMLCommonHandler.instance().getMinecraftInstance(),tickData);
     }
     if (!keepTicking) {
       ticks.remove(type);
