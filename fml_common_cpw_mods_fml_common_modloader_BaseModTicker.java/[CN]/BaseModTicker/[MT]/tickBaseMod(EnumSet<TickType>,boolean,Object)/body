@@ -1,7 +1,7 @@
 {
   if (FMLCommonHandler.instance().getSide().isClient() && (ticks.contains(TickType.GAME) || ticks.contains(TickType.WORLDGUI))) {
     EnumSet cTypes=EnumSet.copyOf(types);
-    if (end && (types.contains(TickType.GAME) || types.contains(TickType.WORLDLOAD) || types.contains(TickType.WORLDGUI))) {
+    if ((end && (types.contains(TickType.GAME) || types.contains(TickType.WORLDGUI))) || types.contains(TickType.WORLDLOAD)) {
       clockTickTrigger=true;
       cTypes.remove(TickType.GAME);
       cTypes.remove(TickType.WORLDLOAD);
