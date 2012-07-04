@@ -3,14 +3,19 @@
   EnumSet<TickType> ticks=mlmc.getGUITickHandler().ticks();
   if (enable && !useClock) {
     ticks.add(TickType.RENDER);
+    ticks.add(TickType.GUILOAD);
   }
  else {
     ticks.remove(TickType.RENDER);
   }
   if (enable && useClock) {
     ticks.add(TickType.GAME);
+    ticks.add(TickType.GUILOAD);
+    ticks.add(TickType.WORLDLOAD);
   }
  else {
     ticks.remove(TickType.GAME);
+    ticks.remove(TickType.GUILOAD);
+    ticks.remove(TickType.WORLDLOAD);
   }
 }
