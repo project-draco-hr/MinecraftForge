@@ -1,0 +1,36 @@
+{
+  File libDir=new File(mcDir,"lib");
+  try {
+    libDir=libDir.getCanonicalFile();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(String.format("Unable to canonicalize the lib dir at %s",mcDir.getName()),e);
+  }
+  if (!libDir.exists()) {
+    libDir.mkdir();
+  }
+ else   if (libDir.exists() && !libDir.isDirectory()) {
+    throw new RuntimeException(String.format("Found a lib file in %s that's not a directory",mcDir.getName()));
+  }
+  for (int i=0; i < libraries.length; i++) {
+    String libName=libraries[i];
+    String checksum=checksums[i];
+    File libFile=new File(libDir,libName);
+    if (!libFile.exists()) {
+      downloadFile(libFile);
+    }
+    if (libFile.exists() && !libFile.isFile()) {
+      throw new RuntimeException(String.format("Found a file %s that is not a normal file",libName));
+    }
+    String fileChecksum=generateChecksum(libFile);
+    if (!checksum.equals(fileChecksum)) {
+      throw new RuntimeException(String.format("The file %s has an invalid checksum %s (expecting %s)",libName,fileChecksum,checksum));
+    }
+    try {
+      actualClassLoader.addURL(libFile.toURI().toURL());
+    }
+ catch (    MalformedURLException e) {
+      e.printStackTrace();
+    }
+  }
+}

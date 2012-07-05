@@ -1,15 +1,18 @@
 {
+  Class<? super Object> mcMaster=ReflectionHelper.getClass(getClass().getClassLoader(),"net.minecraft.client.Minecraft");
+  Method setupHome=ReflectionHelper.findMethod(mcMaster,null,new String[]{"func_6240_b","getMinecraftDir","b"});
   try {
-    Class<?> original=Class.forName("net.minecraft.client.Minecraft",false,getClass().getClassLoader());
-    Field origDir=original.getDeclaredField("field_6275_Z");
-    origDir.setAccessible(true);
-    Class client=Class.forName("net.minecraft.client.Minecraft",false,clientLoader);
-    Field homeDir=client.getDeclaredField("field_6275_Z");
-    homeDir.setAccessible(true);
-    homeDir.set(null,origDir.get(null));
-    client.getMethod("fmlReentry",ArgsWrapper.class).invoke(null,wrap);
+    setupHome.invoke(null);
   }
  catch (  Exception e) {
-    e.printStackTrace();
+  }
+  File minecraftHome=ReflectionHelper.getPrivateValue(mcMaster,null,"field_6275_Z","ap","minecraftDir");
+  RelaunchLibraryManager.handleLaunch(minecraftHome,clientLoader);
+  Class<? super Object> client=ReflectionHelper.getClass(clientLoader,"net.minecraft.client.Minecraft");
+  ReflectionHelper.setPrivateValue(client,null,minecraftHome,"field_6275_Z","ap","minecraftDir");
+  try {
+    ReflectionHelper.findMethod(client,null,new String[]{"fmlReentry"},ArgsWrapper.class).invoke(null,wrap);
+  }
+ catch (  Exception e) {
   }
 }

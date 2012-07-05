@@ -1,0 +1,14 @@
+{
+  Exception failed=null;
+  for (  String fieldName : fieldNames) {
+    try {
+      Field f=clazz.getDeclaredField(fieldName);
+      f.setAccessible(true);
+      return f;
+    }
+ catch (    Exception e) {
+      failed=e;
+    }
+  }
+  throw new UnableToFindFieldException(fieldNames,failed);
+}

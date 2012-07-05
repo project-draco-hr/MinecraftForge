@@ -1,0 +1,18 @@
+{
+  try {
+    URL libDownload=new URL(String.format("http://cloud.github.com/downloads/cpw/FML/%s",libFile.getName()));
+    System.out.printf("Downloading %s..",libDownload.toString());
+    InputStream urlConn=libDownload.openStream();
+    ReadableByteChannel urlChannel=Channels.newChannel(urlConn);
+    FileOutputStream libFileStream=new FileOutputStream(libFile);
+    FileChannel libFileChannel=libFileStream.getChannel();
+    libFileChannel.transferFrom(urlChannel,0,1 << 24);
+    libFileChannel.close();
+    libFileStream.close();
+    urlChannel.close();
+    urlConn.close();
+    System.out.println("download successful");
+  }
+ catch (  Exception e) {
+  }
+}

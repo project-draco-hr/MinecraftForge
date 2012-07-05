@@ -1,12 +1,9 @@
 {
   try {
-    Field f=classToAccess.getDeclaredFields()[fieldIndex];
-    f.setAccessible(true);
-    return (T)f.get(instance);
+    return cpw.mods.fml.relauncher.ReflectionHelper.getPrivateValue(classToAccess,instance,fieldIndex);
   }
- catch (  Exception e) {
-    FMLCommonHandler.instance().getFMLLogger().severe(String.format("There was a problem getting field %d from %s",fieldIndex,classToAccess.getName()));
-    FMLCommonHandler.instance().getFMLLogger().throwing("ReflectionHelper","getPrivateValue",e);
-    throw new RuntimeException(e);
+ catch (  UnableToAccessFieldException e) {
+    FMLCommonHandler.instance().getFMLLogger().log(Level.SEVERE,String.format("There was a problem getting field index %d from %s",fieldIndex,classToAccess.getName()),e);
+    throw e;
   }
 }
