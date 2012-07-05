@@ -1,17 +1,15 @@
 {
-  if (FMLCommonHandler.instance().getSide().isClient() && (ticks.contains(TickType.GAME) || ticks.contains(TickType.WORLDGUI))) {
+  if (FMLCommonHandler.instance().getSide().isClient() && (ticks.contains(TickType.GAME) || ticks.contains(TickType.WORLDLOAD)) || ticks.contains(TickType.RENDER)) {
     EnumSet cTypes=EnumSet.copyOf(types);
-    if (end && (types.contains(TickType.GAME) || types.contains(TickType.WORLDLOAD) || types.contains(TickType.WORLDGUI))) {
+    if ((end && types.contains(TickType.GAME)) || types.contains(TickType.WORLDLOAD)) {
       clockTickTrigger=true;
       cTypes.remove(TickType.GAME);
       cTypes.remove(TickType.WORLDLOAD);
-      cTypes.remove(TickType.WORLDGUI);
     }
     if (end && clockTickTrigger && types.contains(TickType.RENDER)) {
       clockTickTrigger=false;
       cTypes.remove(TickType.RENDER);
-      if (ticks.contains(TickType.GAME))       cTypes.add(TickType.GAME);
-      if (ticks.contains(TickType.WORLDGUI))       cTypes.add(TickType.WORLDGUI);
+      cTypes.add(TickType.GAME);
     }
     sendTick(cTypes,end,tickData);
   }

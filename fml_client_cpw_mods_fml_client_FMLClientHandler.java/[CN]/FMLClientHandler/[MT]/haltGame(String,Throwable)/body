@@ -1,0 +1,3 @@
+{
+  client.func_28003_b(new UnexpectedThrowable(message,t));
+}

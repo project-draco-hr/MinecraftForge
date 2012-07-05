@@ -1,0 +1,3 @@
+{
+  Minecraft.fmlReentry(user,sessionToken);
+}

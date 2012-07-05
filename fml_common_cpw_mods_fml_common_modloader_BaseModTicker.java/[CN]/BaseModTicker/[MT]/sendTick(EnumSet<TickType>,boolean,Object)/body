@@ -3,7 +3,13 @@
     if (!ticks.contains(type)) {
       continue;
     }
-    boolean keepTicking=mod.doTickInGame(type,end,FMLCommonHandler.instance().getMinecraftInstance(),tickData);
+    boolean keepTicking=true;
+    if (sendGuiTicks) {
+      keepTicking=mod.doTickInGUI(type,end,FMLCommonHandler.instance().getMinecraftInstance(),tickData);
+    }
+ else {
+      keepTicking=mod.doTickInGame(type,end,FMLCommonHandler.instance().getMinecraftInstance(),tickData);
+    }
     if (!keepTicking) {
       ticks.remove(type);
       ticks.removeAll(type.partnerTicks());
