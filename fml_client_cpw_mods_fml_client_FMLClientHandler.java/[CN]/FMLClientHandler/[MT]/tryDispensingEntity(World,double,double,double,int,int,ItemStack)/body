@@ -1,0 +1,8 @@
+{
+  for (  ModContainer mod : Loader.getModList()) {
+    if (mod.wantsToDispense() && mod.getDispenseHandler().dispense(x,y,z,p_56784_7_,p_56784_8_,world,item)) {
+      return true;
+    }
+  }
+  return false;
+}
