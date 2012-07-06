@@ -1,6 +1,6 @@
 double x
 double y
 double z
-byte xVelocity
-byte zVelocity
+int xVelocity
+int zVelocity
 Object data
