@@ -1,3 +1,0 @@
-{
-  super(new URL[0],ModClassLoader.class.getClassLoader());
-}

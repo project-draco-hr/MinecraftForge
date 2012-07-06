@@ -33,4 +33,10 @@
       e.printStackTrace();
     }
   }
+  try {
+    Class<?> loaderClazz=Class.forName("cpw.mods.fml.common.Loader",true,actualClassLoader);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
 }
