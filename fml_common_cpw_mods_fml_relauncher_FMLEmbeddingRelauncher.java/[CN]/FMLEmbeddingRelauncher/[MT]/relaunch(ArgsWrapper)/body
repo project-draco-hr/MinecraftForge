@@ -1,4 +1,3 @@
 {
-  INSTANCE=new FMLEmbeddingRelauncher();
-  INSTANCE.relaunchClient(wrap);
+  instance().relaunchClient(wrap);
 }

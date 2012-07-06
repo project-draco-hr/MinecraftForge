@@ -1,4 +1,3 @@
 {
   super.addURL(url);
-  System.out.println(Arrays.toString(getURLs()));
 }

@@ -1,4 +1,3 @@
 {
   super(sources);
-  System.out.println(Arrays.toString(sources));
 }

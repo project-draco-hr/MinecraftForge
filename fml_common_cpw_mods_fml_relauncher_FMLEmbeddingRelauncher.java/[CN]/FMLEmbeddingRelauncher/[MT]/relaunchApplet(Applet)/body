@@ -1,0 +1,31 @@
+{
+  appletClass=ReflectionHelper.getClass(clientLoader,"net.minecraft.client.MinecraftApplet");
+  if (minecraftApplet.getClass().getClassLoader() == clientLoader) {
+    try {
+      newApplet=minecraftApplet;
+      ReflectionHelper.findMethod(appletClass,newApplet,new String[]{"fmlInitReentry"}).invoke(newApplet);
+      return;
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+  setupHome();
+  Class<? super Object> parentAppletClass=ReflectionHelper.getClass(getClass().getClassLoader(),"java.applet.Applet");
+  try {
+    newApplet=appletClass.newInstance();
+    Object appletContainer=ReflectionHelper.getPrivateValue(ReflectionHelper.getClass(getClass().getClassLoader(),"java.awt.Component"),minecraftApplet,"parent");
+    Class<? super Object> launcherClass=ReflectionHelper.getClass(getClass().getClassLoader(),"net.minecraft.Launcher");
+    if (launcherClass.isInstance(appletContainer)) {
+      ReflectionHelper.findMethod(ReflectionHelper.getClass(getClass().getClassLoader(),"java.awt.Container"),minecraftApplet,new String[]{"removeAll"}).invoke(appletContainer);
+      ReflectionHelper.findMethod(launcherClass,appletContainer,new String[]{"replace"},parentAppletClass).invoke(appletContainer,newApplet);
+    }
+ else {
+      System.out.printf("Found unknown applet parent %s, unable to inject!\n",launcherClass);
+      throw new RuntimeException();
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

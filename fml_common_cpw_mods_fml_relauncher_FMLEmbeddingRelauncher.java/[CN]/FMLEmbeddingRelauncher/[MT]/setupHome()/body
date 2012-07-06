@@ -1,0 +1,12 @@
+{
+  Class<? super Object> mcMaster=ReflectionHelper.getClass(getClass().getClassLoader(),"net.minecraft.client.Minecraft");
+  Method setupHome=ReflectionHelper.findMethod(mcMaster,null,new String[]{"func_6240_b","getMinecraftDir","b"});
+  try {
+    setupHome.invoke(null);
+  }
+ catch (  Exception e) {
+  }
+  File minecraftHome=ReflectionHelper.getPrivateValue(mcMaster,null,"field_6275_Z","ap","minecraftDir");
+  RelaunchLibraryManager.handleLaunch(minecraftHome,clientLoader);
+  return minecraftHome;
+}

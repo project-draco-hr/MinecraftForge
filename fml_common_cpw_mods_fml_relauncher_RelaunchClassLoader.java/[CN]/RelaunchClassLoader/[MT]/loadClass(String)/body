@@ -1,11 +1,11 @@
 {
   if (name.startsWith("cpw.mods.fml.relauncher")) {
-    return super.loadClass(name);
+    return getClass().getClassLoader().loadClass(name);
   }
   try {
     return findClass(name);
   }
  catch (  ClassNotFoundException cnfe) {
-    return super.loadClass(name);
+    return getClass().getClassLoader().loadClass(name);
   }
 }
