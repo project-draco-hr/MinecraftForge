@@ -25,6 +25,11 @@ pkt=new PacketOpenGUI();
 pkt.readData(data);
 onOpenGui((PacketOpenGUI)pkt);
 break;
+case ForgePacket.TRACK:
+pkt=new PacketEntityTrack();
+pkt.readData(data);
+onEntityTrackPacket((PacketEntityTrack)pkt,ModLoader.getMinecraftInstance().theWorld);
+break;
 }
 }
  catch (IOException e) {

@@ -1,0 +1,6 @@
+{
+  this.entityId=entityId;
+  this.serverPosX=serverPosX;
+  this.serverPosY=serverPosY;
+  this.serverPosZ=serverPosZ;
+}
