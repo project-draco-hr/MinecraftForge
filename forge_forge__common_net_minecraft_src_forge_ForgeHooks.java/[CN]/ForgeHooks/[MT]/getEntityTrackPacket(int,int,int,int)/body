@@ -1,4 +1,0 @@
-{
-  PacketEntityTrack pkt=new PacketEntityTrack(entityId,serverPosX,serverPosY,serverPosZ);
-  return pkt.getPacket();
-}
