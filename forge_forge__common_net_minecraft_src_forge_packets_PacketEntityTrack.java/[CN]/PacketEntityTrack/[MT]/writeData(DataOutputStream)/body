@@ -1,0 +1,6 @@
+{
+  data.writeInt(entityId);
+  data.writeInt(serverPosX);
+  data.writeInt(serverPosY);
+  data.writeInt(serverPosZ);
+}
