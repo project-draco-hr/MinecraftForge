@@ -7,7 +7,7 @@
     }
   }
  catch (  Exception e) {
-    if (MinecraftForgeClient.class.getPackage().getName().equals("net.minecraft.src.forge")) {
+    if (World.class.getName().contains("World")) {
       e.printStackTrace();
     }
   }
