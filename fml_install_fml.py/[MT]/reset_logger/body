@@ -1,0 +1,4 @@
+def reset_logger():
+    log = logging.getLogger()
+    while (len(log.handlers) > 0):
+        log.removeHandler(log.handlers[0])

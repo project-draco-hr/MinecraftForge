@@ -1,0 +1,5 @@
+def main():
+    print '================ Forge ModLoader Setup Start ==================='
+    setup_fml(fml_dir, mcp_dir)
+    finish_setup_fml(fml_dir, mcp_dir)
+    print '================  Forge ModLoader Setup End  ==================='

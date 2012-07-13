@@ -1,0 +1,13 @@
+def finish_setup_fml(fml_dir, mcp_dir):
+    sys.path.append(mcp_dir)
+    from runtime.updatenames import updatenames
+    from runtime.updatemd5 import updatemd5
+    from runtime.updatemcp import updatemcp
+    os.chdir(mcp_dir)
+    updatemcp(None, True)
+    reset_logger()
+    updatenames(None, True)
+    reset_logger()
+    updatemd5(None, True)
+    reset_logger()
+    os.chdir(fml_dir)
