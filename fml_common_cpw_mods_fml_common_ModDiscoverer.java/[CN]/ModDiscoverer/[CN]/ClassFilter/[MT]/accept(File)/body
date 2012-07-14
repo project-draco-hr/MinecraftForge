@@ -1,0 +1,3 @@
+{
+  return (file.isFile() && modClass.matcher(file.getName()).find()) || file.isDirectory();
+}

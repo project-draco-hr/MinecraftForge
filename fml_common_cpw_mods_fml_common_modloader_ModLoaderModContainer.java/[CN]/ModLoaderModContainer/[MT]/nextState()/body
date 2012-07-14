@@ -1,9 +1,9 @@
 {
   if (state == null) {
-    state=ModState.UNLOADED;
+    state=LoaderState.ModState.UNLOADED;
     return;
   }
-  if (state.ordinal() + 1 < ModState.values().length) {
-    state=ModState.values()[state.ordinal() + 1];
+  if (state.ordinal() + 1 < LoaderState.ModState.values().length) {
+    state=LoaderState.ModState.values()[state.ordinal() + 1];
   }
 }

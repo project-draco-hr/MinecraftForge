@@ -1,0 +1,34 @@
+{
+  ZipFile jar=null;
+  try {
+    jar=new ZipFile(modFile);
+    ZipEntry modInfo=jar.getEntry("mcmod.info");
+    if (modInfo != null) {
+    }
+    for (    ZipEntry ze : Collections.list(jar.entries())) {
+      Matcher match=classFile.matcher(ze.getName());
+      if (match.matches()) {
+        AnnotationFinder finder=new AnnotationFinder(jar.getInputStream(ze));
+      }
+      match=modClass.matcher(ze.getName());
+      if (match.matches()) {
+        String pkg=match.group(1).replace('/','.');
+        String clazzName=pkg + match.group(2);
+        log.fine(String.format("Candidate mod %s found in mod file %s",clazzName,modFile.getName()));
+        candidates.add(new ModCandidate(modFile,modFile,clazzName,sourceType));
+      }
+    }
+  }
+ catch (  Exception e) {
+    log.warning(String.format("Zip file %s failed to read properly, it will be ignored",modFile.getName()));
+  }
+ finally {
+    if (jar != null) {
+      try {
+        jar.close();
+      }
+ catch (      Exception e) {
+      }
+    }
+  }
+}

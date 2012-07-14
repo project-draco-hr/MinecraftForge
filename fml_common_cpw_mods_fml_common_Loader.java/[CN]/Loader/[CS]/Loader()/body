@@ -1,24 +1,5 @@
 {
-  FMLLogFormatter formatter=new FMLLogFormatter();
-  if (FMLCommonHandler.instance().getMinecraftLogger() != null) {
-    Loader.log.setParent(FMLCommonHandler.instance().getMinecraftLogger());
-  }
- else {
-    ConsoleHandler ch=new ConsoleHandler();
-    Loader.log.setUseParentHandlers(false);
-    Loader.log.addHandler(ch);
-    ch.setFormatter(formatter);
-  }
-  Loader.log.setLevel(Level.ALL);
-  try {
-    File logPath=new File(FMLCommonHandler.instance().getMinecraftRootDirectory().getCanonicalPath(),"ForgeModLoader-%g.log");
-    FileHandler fileHandler=new FileHandler(logPath.getPath(),0,3);
-    fileHandler.setFormatter(new FMLLogFormatter());
-    fileHandler.setLevel(Level.ALL);
-    Loader.log.addHandler(fileHandler);
-  }
- catch (  Exception e) {
-  }
+  configureLogging();
   InputStream stream=Loader.class.getClassLoader().getResourceAsStream("fmlversion.properties");
   Properties properties=new Properties();
   if (stream != null) {

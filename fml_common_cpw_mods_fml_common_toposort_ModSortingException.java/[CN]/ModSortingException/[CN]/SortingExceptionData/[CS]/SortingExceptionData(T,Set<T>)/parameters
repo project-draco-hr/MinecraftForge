@@ -1,0 +1,2 @@
+T node
+Set<T> visitedNodes

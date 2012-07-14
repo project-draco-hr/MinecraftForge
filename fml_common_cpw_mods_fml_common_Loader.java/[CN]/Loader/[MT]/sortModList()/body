@@ -1,26 +1,32 @@
 {
   log.fine("Verifying mod dependencies are satisfied");
-  for (  ModContainer mod : mods) {
-    if (!namedMods.keySet().containsAll(mod.getDependencies())) {
-      log.severe(String.format("The mod %s requires mods %s to be available, one or more are not",mod.getName(),mod.getDependencies()));
-      LoaderException le=new LoaderException();
-      log.throwing("Loader","sortModList",le);
-      throw new LoaderException();
+  try {
+    for (    ModContainer mod : mods) {
+      if (!namedMods.keySet().containsAll(mod.getDependencies())) {
+        log.severe(String.format("The mod %s requires mods %s to be available, one or more are not",mod.getName(),mod.getDependencies()));
+        LoaderException le=new LoaderException();
+        log.throwing("Loader","sortModList",le);
+        throw new LoaderException();
+      }
+    }
+    log.fine("All dependencies are satisfied");
+    ModSorter sorter=new ModSorter(mods,namedMods);
+    try {
+      log.fine("Sorting mods into an ordered list");
+      mods=sorter.sort();
+    }
+ catch (    ModSortingException sortException) {
+      log.severe("A dependency cycle was detected in the input mod set so an ordering cannot be determined");
+      log.severe(String.format("The visited mod list is %s",sortException.getExceptionData().getVisitedNodes()));
+      log.severe(String.format("The first mod in the cycle is %s",sortException.getExceptionData().getFirstBadNode()));
+      log.throwing("Loader","sortModList",sortException);
+      throw new LoaderException(sortException);
     }
   }
-  log.fine("All dependencies are satisfied");
-  ModSorter sorter=new ModSorter(mods,namedMods);
-  try {
-    log.fine("Sorting mods into an ordered list");
-    mods=sorter.sort();
-    log.fine("Sorted mod list:");
+  finally {
+    log.fine("Mod sorting data:");
     for (    ModContainer mod : mods) {
       log.fine(String.format("\t%s: %s (%s)",mod.getName(),mod.getSource().getName(),mod.getSortingRules()));
     }
-  }
- catch (  IllegalArgumentException iae) {
-    log.severe("A dependency cycle was detected in the input mod set so they cannot be loaded in order");
-    log.throwing("Loader","sortModList",iae);
-    throw new LoaderException(iae);
   }
 }

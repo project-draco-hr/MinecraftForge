@@ -1,5 +1,6 @@
 {
   try {
+    ModHandler handler=modClassLoader.obtainClassHandlerFor(clazzName);
     Class<?> clazz=Class.forName(clazzName,false,modClassLoader);
     ModContainer mod=null;
     if (clazz.isAnnotationPresent(Mod.class)) {

@@ -1,0 +1,4 @@
+{
+  System.out.printf("ClassVisit.visitAttribute %s\n",arg0);
+  super.visitAttribute(arg0);
+}

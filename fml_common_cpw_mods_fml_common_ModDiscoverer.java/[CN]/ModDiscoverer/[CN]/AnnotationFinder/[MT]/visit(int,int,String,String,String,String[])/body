@@ -1,0 +1,4 @@
+{
+  System.out.printf("ClassVisit.visit %d %d %s %s %s %s\n",arg0,arg1,arg2,arg3,arg4,Arrays.asList(arg5));
+  super.visit(arg0,arg1,arg2,arg3,arg4,arg5);
+}

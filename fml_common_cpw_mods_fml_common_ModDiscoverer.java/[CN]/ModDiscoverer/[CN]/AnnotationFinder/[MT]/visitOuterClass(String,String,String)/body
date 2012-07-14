@@ -1,0 +1,4 @@
+{
+  System.out.printf("ClassVisit.visitOuterClass %s %s %s\n",arg0,arg1,arg2);
+  super.visitOuterClass(arg0,arg1,arg2);
+}

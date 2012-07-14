@@ -47,7 +47,7 @@
     log.throwing("fml.server.Loader","initialize",loaderException);
     throw loaderException;
   }
-  state=State.LOADING;
+  state=LoaderState.LOADING;
   log.fine("Attempting to load mods contained in the minecraft jar file and associated classes");
   File[] minecraftSources=modClassLoader.getParentSources();
   if (minecraftSources.length == 1 && minecraftSources[0].isFile()) {
@@ -82,7 +82,7 @@
       }
     }
  else {
-      Matcher matcher=zipJar.matcher(modFile.getName());
+      Matcher matcher=ModDiscoverer.zipJar.matcher(modFile.getName());
       if (matcher.matches()) {
         log.fine(String.format("Found a zip or jar file %s, attempting to load it",matcher.group(0)));
         boolean modFound=attemptFileLoad(modFile,SourceType.JAR);
@@ -95,9 +95,9 @@
       }
     }
   }
-  if (state == State.ERRORED) {
+  if (state == LoaderState.ERRORED) {
     log.severe("A problem has occured during mod loading. Likely a corrupt jar is located in your mods directory");
     throw new LoaderException(capturedError);
   }
-  log.info(String.format("Forge Mod Loader has loaded %d mods",mods.size()));
+  log.info(String.format("Forge Mod Loader has identified %d mod%s to load",mods.size(),mods.size() != 0 ? "s" : ""));
 }

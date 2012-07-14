@@ -1,0 +1,3 @@
+String string
+T node
+Set<T> visitedNodes
