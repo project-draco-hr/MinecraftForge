@@ -1,0 +1,9 @@
+{
+  if (type.contains(TickType.GUILOAD) || type.contains(TickType.GAME)) {
+    armed=true;
+  }
+  if (type.contains(TickType.RENDER) && armed) {
+    onRenderEndTick();
+    armed=false;
+  }
+}
