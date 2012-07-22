@@ -1,0 +1,20 @@
+{
+  for (  String st : excludedPackages) {
+    if (name.startsWith(st)) {
+      return parent.loadClass(name);
+    }
+  }
+  if (cachedClasses.containsKey(name)) {
+    return cachedClasses.get(name);
+  }
+  try {
+    byte[] basicClass=readFully(findResource(name.replace('.','/').concat(".class")).openStream());
+    byte[] transformedClass=runTransformers(name,basicClass);
+    Class<?> cl=defineClass(name,transformedClass,0,transformedClass.length);
+    cachedClasses.put(name,cl);
+    return cl;
+  }
+ catch (  Throwable e) {
+    throw new ClassNotFoundException(name,e);
+  }
+}

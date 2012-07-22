@@ -1,0 +1,13 @@
+{
+  try {
+    ByteArrayOutputStream bos=new ByteArrayOutputStream(stream.available());
+    int r;
+    while ((r=stream.read()) != -1) {
+      bos.write(r);
+    }
+    return bos.toByteArray();
+  }
+ catch (  Throwable t) {
+    return new byte[0];
+  }
+}

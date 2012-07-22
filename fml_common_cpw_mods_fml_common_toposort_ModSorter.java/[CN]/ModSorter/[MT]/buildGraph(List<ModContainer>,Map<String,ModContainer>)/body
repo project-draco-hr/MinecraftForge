@@ -13,7 +13,7 @@
   for (  ModContainer mod : modList) {
     boolean preDepAdded=false;
     boolean postDepAdded=false;
-    for (    String dep : mod.getPreDepends()) {
+    for (    String dep : mod.getDependencies()) {
       preDepAdded=true;
       if (dep.equals("*")) {
         modGraph.addEdge(mod,afterAll);
@@ -27,7 +27,7 @@
         }
       }
     }
-    for (    String dep : mod.getPostDepends()) {
+    for (    String dep : mod.getDependants()) {
       postDepAdded=true;
       if (dep.equals("*")) {
         modGraph.addEdge(beforeAll,mod);

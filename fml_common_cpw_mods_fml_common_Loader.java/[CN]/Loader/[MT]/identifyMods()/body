@@ -1,0 +1,11 @@
+{
+  ModDiscoverer discoverer=new ModDiscoverer();
+  log.fine("Attempting to load mods contained in the minecraft jar file and associated classes");
+  discoverer.findClasspathMods(modClassLoader);
+  log.fine("Minecraft jar mods loaded successfully");
+  log.info(String.format("Searching %s for mods",canonicalModsDir.getAbsolutePath()));
+  discoverer.findModDirMods(canonicalModsDir);
+  mods=discoverer.identifyMods();
+  namedMods=Maps.uniqueIndex(mods,new ModIdFunction());
+  log.info(String.format("Forge Mod Loader has identified %d mod%s to load",mods.size(),mods.size() != 0 ? "s" : ""));
+}

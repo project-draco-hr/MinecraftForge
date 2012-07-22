@@ -1,0 +1,6 @@
+{
+  if (discoverer.isBaseMod() && name.equals("getPriorities") && desc.equals(Type.getMethodDescriptor(Type.getType(String.class)))) {
+    return new ModMethodVisitor(name,discoverer);
+  }
+  return null;
+}

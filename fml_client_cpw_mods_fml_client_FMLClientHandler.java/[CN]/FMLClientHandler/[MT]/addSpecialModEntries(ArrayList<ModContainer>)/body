@@ -1,5 +1,5 @@
 {
-  mods.add(new FMLModLoaderContainer());
+  mods.add(new FMLDummyContainer());
   if (optifineContainer != null) {
     mods.add(optifineContainer);
   }

@@ -1,0 +1,15 @@
+{
+  InputStreamReader reader=new InputStreamReader(inputStream);
+  try {
+    JsonRootNode root=parser.parse(reader);
+    if (root.hasElements()) {
+      return parse10ModInfo(root);
+    }
+ else {
+      return parseModInfo(root);
+    }
+  }
+ catch (  Exception e) {
+    throw Throwables.propagate(e);
+  }
+}

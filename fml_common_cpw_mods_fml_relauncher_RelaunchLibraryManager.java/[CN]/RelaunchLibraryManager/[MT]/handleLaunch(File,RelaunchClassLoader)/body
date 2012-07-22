@@ -33,6 +33,8 @@
       e.printStackTrace();
     }
   }
+  actualClassLoader.registerTransformer("cpw.mods.fml.common.asm.ASMTransformer");
+  actualClassLoader.registerTransformer("net.minecraftforge.asm.ASMTransformer");
   try {
     Class<?> loaderClazz=Class.forName("cpw.mods.fml.common.Loader",true,actualClassLoader);
   }

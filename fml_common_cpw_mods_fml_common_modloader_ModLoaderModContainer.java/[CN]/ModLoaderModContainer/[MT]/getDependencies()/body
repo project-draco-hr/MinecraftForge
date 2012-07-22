@@ -1,6 +1,3 @@
 {
-  if (dependencies == null) {
-    computeDependencies();
-  }
   return dependencies;
 }

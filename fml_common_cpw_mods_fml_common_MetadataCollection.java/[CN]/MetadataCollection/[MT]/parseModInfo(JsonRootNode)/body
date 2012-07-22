@@ -1,0 +1,6 @@
+{
+  MetadataCollection mc=new MetadataCollection();
+  mc.metadataVersion=Integer.parseInt(root.getNumberValue("modinfoversion"));
+  mc.parseModMetadataList(root.getNode("modlist"));
+  return mc;
+}

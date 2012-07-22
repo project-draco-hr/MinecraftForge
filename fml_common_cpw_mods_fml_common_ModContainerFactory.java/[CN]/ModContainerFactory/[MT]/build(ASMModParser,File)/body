@@ -1,0 +1,11 @@
+{
+  if (modParser.getASMSuperType().equals(Type.getType("BaseMod"))) {
+    return new ModLoaderModContainer(modParser.getASMType().getClassName(),modSource);
+  }
+  for (  ModAnnotation ann : modParser.getAnnotations()) {
+    if (ann.getASMType().equals(Type.getType(Mod.class))) {
+      return new FMLModContainer(modParser.getASMType().getClassName(),modSource,ann.getValues());
+    }
+  }
+  return null;
+}

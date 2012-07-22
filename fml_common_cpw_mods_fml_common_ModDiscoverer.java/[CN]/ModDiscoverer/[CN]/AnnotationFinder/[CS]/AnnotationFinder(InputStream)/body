@@ -1,5 +1,0 @@
-{
-  super(Opcodes.ASM4);
-  ClassReader reader=new ClassReader(stream);
-  reader.accept(this,ClassReader.SKIP_CODE);
-}

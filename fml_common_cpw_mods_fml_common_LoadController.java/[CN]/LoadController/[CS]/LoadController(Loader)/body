@@ -1,0 +1,22 @@
+{
+  this.loader=loader;
+  this.modList=loader.getIndexedModList();
+  this.masterChannel=new EventBus("FMLMainChannel");
+  this.masterChannel.register(this);
+  this.log=Loader.log;
+  Builder<String,EventBus> eventBus=ImmutableMap.builder();
+  for (  ModContainer mod : Loader.getModList()) {
+    EventBus bus=new EventBus(mod.getModId());
+    boolean isActive=mod.registerBus(bus,this);
+    if (isActive) {
+      modStates.put(mod.getModId(),ModState.UNLOADED);
+      eventBus.put(mod.getModId(),bus);
+    }
+ else {
+      modStates.put(mod.getModId(),ModState.UNLOADED);
+      modStates.put(mod.getModId(),ModState.DISABLED);
+    }
+  }
+  eventChannels=eventBus.build();
+  state=LoaderState.CONSTRUCTING;
+}

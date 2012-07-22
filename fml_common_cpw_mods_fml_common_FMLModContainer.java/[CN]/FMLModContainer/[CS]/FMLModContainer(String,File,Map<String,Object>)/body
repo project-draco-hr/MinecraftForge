@@ -1,0 +1,5 @@
+{
+  this.className=className;
+  this.source=modSource;
+  this.descriptor=modDescriptor;
+}

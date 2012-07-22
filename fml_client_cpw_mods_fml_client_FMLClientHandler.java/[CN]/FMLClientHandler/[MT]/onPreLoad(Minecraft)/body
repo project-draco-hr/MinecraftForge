@@ -1,6 +1,6 @@
 {
   client=minecraft;
-  ReflectionHelper.detectObfuscation(World.class);
+  ObfuscationReflectionHelper.detectObfuscation(World.class);
   FMLCommonHandler.instance().beginLoading(this);
   FMLRegistry.registerRegistry(new ClientRegistry());
   try {

@@ -1,9 +1,13 @@
 {
+  initializeLoader();
   state=LoaderState.NOINIT;
   mods=new ArrayList<ModContainer>();
   namedMods=new HashMap<String,ModContainer>();
-  load();
-  preModInit();
+  state=LoaderState.LOADING;
+  identifyMods();
+  disableRequestedMods();
   sortModList();
-  mods=Collections.unmodifiableList(mods);
+  mods=ImmutableList.copyOf(mods);
+  modController=new LoadController(this);
+  modController.runNextPhase(modClassLoader);
 }

@@ -1,6 +1,0 @@
-{
-  this.classPathRoot=classPathRoot;
-  this.modContainer=modContainer;
-  this.className=className;
-  this.sourceType=sourceType;
-}

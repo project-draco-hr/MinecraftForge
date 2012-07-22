@@ -1,0 +1,8 @@
+{
+  List<ModContainer> modList=Lists.newArrayList();
+  for (  ModCandidate candidate : candidates) {
+    List<ModContainer> mods=candidate.explore();
+    modList.addAll(mods);
+  }
+  return modList;
+}

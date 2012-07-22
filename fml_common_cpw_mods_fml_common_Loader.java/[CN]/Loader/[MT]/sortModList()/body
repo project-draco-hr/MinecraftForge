@@ -1,19 +1,18 @@
 {
-  log.fine("Verifying mod dependencies are satisfied");
+  log.fine("Verifying mod requirements are satisfied");
   try {
     for (    ModContainer mod : mods) {
-      if (!namedMods.keySet().containsAll(mod.getDependencies())) {
-        log.severe(String.format("The mod %s requires mods %s to be available, one or more are not",mod.getName(),mod.getDependencies()));
-        LoaderException le=new LoaderException();
-        log.throwing("Loader","sortModList",le);
+      if (!namedMods.keySet().containsAll(mod.getRequirements())) {
+        log.log(Level.SEVERE,String.format("The mod %s (%s) requires mods %s to be available, one or more are not",mod.getModId(),mod.getName(),mod.getRequirements()));
         throw new LoaderException();
       }
     }
-    log.fine("All dependencies are satisfied");
+    log.fine("All mod requirements are satisfied");
     ModSorter sorter=new ModSorter(mods,namedMods);
     try {
       log.fine("Sorting mods into an ordered list");
       mods=sorter.sort();
+      log.fine("Mod sorting completed successfully");
     }
  catch (    ModSortingException sortException) {
       log.severe("A dependency cycle was detected in the input mod set so an ordering cannot be determined");
@@ -26,7 +25,7 @@
   finally {
     log.fine("Mod sorting data:");
     for (    ModContainer mod : mods) {
-      log.fine(String.format("\t%s: %s (%s)",mod.getName(),mod.getSource().getName(),mod.getSortingRules()));
+      log.fine(String.format("\t%s(%s): %s (%s)",mod.getModId(),mod.getName(),mod.getSource().getName(),mod.getSortingRules()));
     }
   }
 }

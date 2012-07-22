@@ -1,0 +1,5 @@
+{
+  MetadataCollection mc=new MetadataCollection();
+  mc.parseModMetadataList(root);
+  return mc;
+}

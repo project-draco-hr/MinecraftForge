@@ -1,0 +1,37 @@
+{
+  if (dependencyString == null || dependencyString.length() == 0) {
+    return;
+  }
+  boolean parseFailure=false;
+  for (  String dep : DEPENDENCYSPLITTER.split(dependencyString)) {
+    List<String> depparts=Lists.newArrayList(DEPENDENCYPARTSPLITTER.split(dep));
+    String instruction=depparts.get(0);
+    String target=depparts.get(1);
+    boolean targetIsAll=target.equals("*");
+    if (depparts.size() != 2) {
+      parseFailure=true;
+      continue;
+    }
+    if ("required-before".equals(instruction) || "required-after".equals(instruction)) {
+      if (!targetIsAll) {
+        requirements.add(target);
+      }
+ else {
+        parseFailure=true;
+        continue;
+      }
+    }
+    if ("required-before".equals(instruction) || "before".equals(instruction)) {
+      dependants.add(target);
+    }
+ else     if ("required-after".equals(instruction) || "after".equals(instruction)) {
+      dependencies.add(target);
+    }
+ else {
+      parseFailure=true;
+    }
+  }
+  if (parseFailure) {
+    throw new LoaderException();
+  }
+}

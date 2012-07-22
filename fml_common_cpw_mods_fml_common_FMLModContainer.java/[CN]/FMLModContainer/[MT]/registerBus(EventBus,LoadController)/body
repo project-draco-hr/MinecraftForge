@@ -1,0 +1,11 @@
+{
+  if (this.enabled) {
+    this.eventBus=bus;
+    this.controller=controller;
+    eventBus.register(this);
+    return true;
+  }
+ else {
+    return false;
+  }
+}

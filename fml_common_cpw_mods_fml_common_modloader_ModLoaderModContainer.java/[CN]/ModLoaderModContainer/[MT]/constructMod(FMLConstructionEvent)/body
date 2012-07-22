@@ -1,0 +1,11 @@
+{
+  try {
+    ModClassLoader modClassLoader=event.getModClassLoader();
+    modClassLoader.addFile(modSource);
+    mod=(BaseMod)Class.forName(modClazzName,true,modClassLoader).newInstance();
+  }
+ catch (  Exception e) {
+    controller.errorOccurred(this,e);
+    Throwables.propagateIfPossible(e);
+  }
+}

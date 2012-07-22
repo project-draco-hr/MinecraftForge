@@ -1,0 +1,3 @@
+{
+  return (String)descriptor.get("modid");
+}

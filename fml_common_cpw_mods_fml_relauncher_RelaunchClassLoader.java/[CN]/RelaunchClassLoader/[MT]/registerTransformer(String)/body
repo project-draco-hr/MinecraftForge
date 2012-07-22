@@ -1,0 +1,7 @@
+{
+  try {
+    transformers.add((IClassTransformer)loadClass(transformerClassName).newInstance());
+  }
+ catch (  Exception e) {
+  }
+}

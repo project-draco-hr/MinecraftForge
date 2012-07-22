@@ -1,0 +1,5 @@
+{
+  this.asmType=Type.getObjectType(typeQName);
+  this.classVersion=classVersion;
+  this.asmSuperType=Type.getObjectType(superClassQName);
+}

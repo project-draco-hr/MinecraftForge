@@ -1,0 +1,11 @@
+{
+  for (  Map.Entry<String,EventBus> entry : eventChannels.entrySet()) {
+    entry.getValue().post(stateEvent);
+    if (errors.isEmpty()) {
+      modStates.put(entry.getKey(),stateEvent.getModState());
+    }
+ else {
+      modStates.put(entry.getKey(),ModState.ERRORED);
+    }
+  }
+}

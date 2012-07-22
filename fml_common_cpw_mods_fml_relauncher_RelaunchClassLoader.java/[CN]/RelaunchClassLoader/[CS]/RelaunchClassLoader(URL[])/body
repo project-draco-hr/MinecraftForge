@@ -1,4 +1,9 @@
 {
-  super(sources);
+  super(sources,null);
   this.sources=new ArrayList<URL>(Arrays.asList(sources));
+  this.parent=getClass().getClassLoader();
+  this.cachedClasses=new HashMap<String,Class>(1000);
+  this.transformers=new ArrayList<IClassTransformer>(2);
+  ReflectionHelper.setPrivateValue(ClassLoader.class,null,this,"scl");
+  Thread.currentThread().setContextClassLoader(this);
 }
