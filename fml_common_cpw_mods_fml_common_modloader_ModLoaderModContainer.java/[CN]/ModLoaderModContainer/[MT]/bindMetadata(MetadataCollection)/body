@@ -1,3 +1,5 @@
 {
-  this.metadata=mc.getMetadataForId(modId);
+  Map<String,Object> dummyMetadata=ImmutableMap.<String,Object>builder().put("name",modId).put("version","").build();
+  this.metadata=mc.getMetadataForId(modId,dummyMetadata);
+  Loader.instance().computeDependencies(sortingProperties,getRequirements(),getDependencies(),getDependants());
 }

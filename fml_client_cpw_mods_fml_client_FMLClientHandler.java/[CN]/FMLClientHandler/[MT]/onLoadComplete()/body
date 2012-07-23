@@ -6,18 +6,6 @@
     haltGame("There was a severe problem during mod loading that has caused the game to fail",le);
     return;
   }
-  for (  ModContainer mod : Loader.getModList()) {
-    mod.gatherRenderers(RenderManager.field_1233_a.getRendererList());
-    for (    Render r : RenderManager.field_1233_a.getRendererList().values()) {
-      r.func_4009_a(RenderManager.field_1233_a);
-    }
-  }
-  GameSettings gs=client.field_6304_y;
-  KeyBinding[] modKeyBindings=harvestKeyBindings();
-  KeyBinding[] allKeys=new KeyBinding[gs.field_1564_t.length + modKeyBindings.length];
-  System.arraycopy(gs.field_1564_t,0,allKeys,0,gs.field_1564_t.length);
-  System.arraycopy(modKeyBindings,0,allKeys,gs.field_1564_t.length,modKeyBindings.length);
-  gs.field_1564_t=allKeys;
-  gs.func_6519_a();
+  KeyBindingRegistry.uploadKeyBindingsToGame(client.field_6304_y);
   firstTick=true;
 }

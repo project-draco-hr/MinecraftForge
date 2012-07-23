@@ -8,7 +8,7 @@
     return sources;
   }
  catch (  URISyntaxException e) {
-    Loader.log.log(Level.SEVERE,"Unable to process our input to locate the minecraft code",e);
+    FMLLog.log.log(Level.SEVERE,"Unable to process our input to locate the minecraft code",e);
     throw new LoaderException(e);
   }
 }

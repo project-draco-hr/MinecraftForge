@@ -1,0 +1,40 @@
+{
+  if (path.length() == 0) {
+    File metadata=new File(modDir,"mcmod.info");
+    try {
+      FileInputStream fis=new FileInputStream(metadata);
+      mc=MetadataCollection.from(fis);
+      fis.close();
+    }
+ catch (    Exception e) {
+      mc=MetadataCollection.from(null);
+    }
+  }
+  File[] content=modDir.listFiles(new ClassFilter());
+  Arrays.sort(content);
+  for (  File file : content) {
+    if (file.isDirectory()) {
+      FMLLog.log.finest("Recursing into package %s",path + file.getName());
+      exploreFileSystem(path + file.getName() + ".",file,harvestedMods,candidate,mc);
+      continue;
+    }
+    Matcher match=classFile.matcher(file.getName());
+    if (match.matches()) {
+      ASMModParser modParser=null;
+      try {
+        FileInputStream fis=new FileInputStream(file);
+        modParser=new ASMModParser(fis);
+        fis.close();
+      }
+ catch (      Exception e) {
+        Throwables.propagate(e);
+      }
+      modParser.validate();
+      ModContainer container=ModContainerFactory.instance().build(modParser,candidate.getModContainer());
+      if (container != null) {
+        harvestedMods.add(container);
+        container.bindMetadata(mc);
+      }
+    }
+  }
+}

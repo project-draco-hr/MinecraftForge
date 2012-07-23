@@ -1,5 +1,2 @@
 {
-  this.animationCallbackMod=mod;
-  mod.requestAnimations();
-  this.animationCallbackMod=null;
 }

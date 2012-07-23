@@ -1,25 +1,24 @@
 {
   String disabledModList=System.getProperty("fml.disabledMods","");
-  log.log(Level.FINE,String.format("Received a system property request \'%s\'",disabledModList));
+  FMLLog.log.fine("Received a system property request \'%s\'",disabledModList);
   Map<String,String> sysPropertyStateList=Splitter.on(CharMatcher.anyOf(";:")).omitEmptyStrings().trimResults().withKeyValueSeparator("=").split(disabledModList);
-  log.log(Level.FINE,String.format("System property request managing the state of %d mods",sysPropertyStateList.size()));
+  FMLLog.log.fine("System property request managing the state of %d mods",sysPropertyStateList.size());
   Map<String,String> modStates=Maps.newHashMap();
   File disabledModFile=new File(canonicalConfigDir,"fmlModState.properties");
   Properties disabledModListProperties=new Properties();
   if (disabledModFile.exists() && disabledModFile.isFile()) {
-    log.log(Level.FINE,String.format("Found a mod state file %s",disabledModFile.getName()));
+    FMLLog.log.fine("Found a mod state file %s",disabledModFile.getName());
     try {
       disabledModListProperties.load(new FileReader(disabledModFile));
-      log.log(Level.FINE,String.format("Loaded states for %d mods from file",disabledModListProperties.size()));
+      FMLLog.log.fine("Loaded states for %d mods from file",disabledModListProperties.size());
     }
  catch (    Exception e) {
-      log.log(Level.INFO,"An error occurred reading the fmlModState.properties file",e);
+      FMLLog.log.log(Level.INFO,e,"An error occurred reading the fmlModState.properties file");
     }
-    log.log(Level.FINE,String.format("Found a mod state file %s",disabledModFile.getName()));
   }
   modStates.putAll(Maps.fromProperties(disabledModListProperties));
   modStates.putAll(sysPropertyStateList);
-  log.log(Level.FINE,String.format("After merging, found state information for %d mods",modStates.size()));
+  FMLLog.log.fine("After merging, found state information for %d mods",modStates.size());
   Map<String,Boolean> isEnabled=Maps.transformValues(modStates,new Function<String,Boolean>(){
     public Boolean apply(    String input){
       return !Boolean.parseBoolean(input);
@@ -28,7 +27,7 @@
 );
   for (  Map.Entry<String,Boolean> entry : isEnabled.entrySet()) {
     if (namedMods.containsKey(entry.getKey())) {
-      log.log(Level.INFO,String.format("Setting mod %s to enabled state %b",entry.getKey(),entry.getValue()));
+      FMLLog.log.info("Setting mod %s to enabled state %b",entry.getKey(),entry.getValue());
       namedMods.get(entry.getKey()).setEnabledState(entry.getValue());
     }
   }

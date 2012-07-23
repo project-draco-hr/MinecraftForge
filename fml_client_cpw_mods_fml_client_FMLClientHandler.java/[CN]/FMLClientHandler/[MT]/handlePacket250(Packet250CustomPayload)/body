@@ -3,8 +3,4 @@
     handleServerRegistration(packet);
     return;
   }
-  ModContainer mod=FMLCommonHandler.instance().getModForChannel(packet.field_44012_a);
-  if (mod != null) {
-    mod.getNetworkHandler().onPacket250Packet(packet);
-  }
 }

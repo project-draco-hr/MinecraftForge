@@ -9,5 +9,8 @@
   sortModList();
   mods=ImmutableList.copyOf(mods);
   modController=new LoadController(this);
-  modController.runNextPhase(modClassLoader);
+  modController.distributeStateMessage(modClassLoader);
+  modController.transition(LoaderState.PREINITIALIZATION);
+  modController.distributeStateMessage();
+  modController.transition(LoaderState.INITIALIZATION);
 }

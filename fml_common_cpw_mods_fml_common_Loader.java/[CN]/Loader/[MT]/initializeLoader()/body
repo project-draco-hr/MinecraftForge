@@ -12,33 +12,33 @@
     canonicalModsDir=modsDir.getCanonicalFile();
   }
  catch (  IOException ioe) {
-    log.log(Level.SEVERE,String.format("Failed to resolve loader directories: mods : %s ; config %s",canonicalModsDir.getAbsolutePath(),configDir.getAbsolutePath()),ioe);
+    FMLLog.log.log(Level.SEVERE,String.format("Failed to resolve loader directories: mods : %s ; config %s",canonicalModsDir.getAbsolutePath(),configDir.getAbsolutePath()),ioe);
     throw new LoaderException(ioe);
   }
   if (!canonicalModsDir.exists()) {
-    log.log(Level.INFO,String.format("No mod directory found, creating one: %s",canonicalModsPath));
+    FMLLog.log.info("No mod directory found, creating one: %s",canonicalModsPath);
     boolean dirMade=canonicalModsDir.mkdir();
     if (!dirMade) {
-      log.log(Level.SEVERE,String.format("Unable to create the mod directory %s",canonicalModsPath));
+      FMLLog.log.severe("Unable to create the mod directory %s",canonicalModsPath);
       throw new LoaderException();
     }
-    log.log(Level.INFO,"Mod directory created successfully");
+    FMLLog.log.info("Mod directory created successfully");
   }
   if (!canonicalConfigDir.exists()) {
-    log.fine(String.format("No config directory found, creating one: %s",canonicalConfigPath));
+    FMLLog.log.fine("No config directory found, creating one: %s",canonicalConfigPath);
     boolean dirMade=canonicalConfigDir.mkdir();
     if (!dirMade) {
-      log.log(Level.SEVERE,String.format("Unable to create the config directory %s",canonicalConfigPath));
+      FMLLog.log.severe("Unable to create the config directory %s",canonicalConfigPath);
       throw new LoaderException();
     }
-    log.log(Level.INFO,"Config directory created successfully");
+    FMLLog.log.info("Config directory created successfully");
   }
   if (!canonicalModsDir.isDirectory()) {
-    log.log(Level.SEVERE,String.format("Attempting to load mods from %s, which is not a directory",canonicalModsPath));
+    FMLLog.log.severe("Attempting to load mods from %s, which is not a directory",canonicalModsPath);
     throw new LoaderException();
   }
   if (!configDir.isDirectory()) {
-    log.log(Level.SEVERE,String.format("Attempting to load configuration from %s, which is not a directory",canonicalConfigPath));
+    FMLLog.log.severe("Attempting to load configuration from %s, which is not a directory",canonicalConfigPath);
     throw new LoaderException();
   }
 }

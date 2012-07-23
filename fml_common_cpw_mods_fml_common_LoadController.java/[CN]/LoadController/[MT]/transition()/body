@@ -1,3 +1,0 @@
-{
-  state=state.transition(!errors.isEmpty());
-}

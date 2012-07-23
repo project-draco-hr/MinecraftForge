@@ -1,0 +1,13 @@
+{
+  if (!end) {
+    return;
+  }
+  upArmed=false;
+  if (type.contains(TickType.GUILOAD) || type.contains(TickType.GAME)) {
+    downArmed=true;
+  }
+  if (type.contains(TickType.RENDER) && downArmed) {
+    onRenderEndTick();
+    downArmed=false;
+  }
+}

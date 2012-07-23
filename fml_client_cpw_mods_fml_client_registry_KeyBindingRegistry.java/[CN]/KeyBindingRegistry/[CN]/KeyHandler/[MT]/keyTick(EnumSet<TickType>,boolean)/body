@@ -1,0 +1,13 @@
+{
+  int keyCode=keyBinding.field_1370_b;
+  boolean state=(keyCode < 0 ? Mouse.isButtonDown(keyCode + 100) : Keyboard.isKeyDown(keyCode));
+  if (state != keyDown || (state && repeating)) {
+    if (state) {
+      keyDown(type,tickEnd,state != keyDown);
+    }
+ else {
+      keyUp(type,tickEnd);
+    }
+    keyDown=state;
+  }
+}

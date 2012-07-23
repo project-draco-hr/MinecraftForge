@@ -1,0 +1,6 @@
+{
+  this.modClazzName=className;
+  this.modSource=modSource;
+  this.modId=className.contains(".") ? className.substring(className.lastIndexOf('.') + 1) : className;
+  this.sortingProperties=sortingProperties;
+}

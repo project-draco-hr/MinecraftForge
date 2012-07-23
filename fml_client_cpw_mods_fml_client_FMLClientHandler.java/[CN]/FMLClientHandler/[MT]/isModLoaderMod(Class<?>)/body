@@ -1,3 +1,0 @@
-{
-  return BaseMod.class.isAssignableFrom(clazz);
-}

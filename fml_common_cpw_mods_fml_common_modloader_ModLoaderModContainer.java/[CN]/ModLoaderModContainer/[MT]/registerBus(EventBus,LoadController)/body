@@ -1,6 +1,6 @@
 {
   if (this.enabled) {
-    controller.log(Level.FINE,"Enabling mod %s",getModId());
+    FMLLog.fine("Enabling mod %s",getModId());
     this.bus=bus;
     this.controller=controller;
     bus.register(this);

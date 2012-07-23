@@ -1,0 +1,13 @@
+{
+  for (  Object o : annotations.get(Instance.class)) {
+    Field f=(Field)o;
+    f.set(modInstance,modInstance);
+  }
+  for (  Object o : annotations.get(Metadata.class)) {
+    Field f=(Field)o;
+    f.set(modInstance,modMetadata);
+  }
+  for (  Object o : annotations.get(Block.class)) {
+    Field f=(Field)o;
+  }
+}

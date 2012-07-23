@@ -1,0 +1,21 @@
+{
+  Multimap<Class<? extends Annotation>,Object> anns=ArrayListMultimap.create();
+  for (  Field f : clazz.getDeclaredFields()) {
+    for (    Annotation a : f.getAnnotations()) {
+      f.setAccessible(true);
+      anns.put(a.annotationType(),f);
+    }
+  }
+  for (  Method m : clazz.getDeclaredMethods()) {
+    for (    Annotation a : m.getAnnotations()) {
+      if (m.getParameterTypes().length == 0) {
+        m.setAccessible(true);
+        anns.put(a.annotationType(),m);
+      }
+ else {
+        FMLLog.severe("The mod type %s appears to have an invalid method annotation %s. This annotation can only apply to zero argument methods",getModId(),a.annotationType().getSimpleName());
+      }
+    }
+  }
+  return anns;
+}

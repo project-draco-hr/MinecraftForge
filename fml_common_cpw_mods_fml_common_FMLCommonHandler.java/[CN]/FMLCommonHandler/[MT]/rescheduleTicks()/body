@@ -1,15 +1,5 @@
 {
   sidedDelegate.profileStart("modTickScheduling");
-  TickQueueElement.tickCounter++;
-  scheduledTicks.clear();
-  while (true) {
-    if (tickHandlers.size() == 0 || !tickHandlers.peek().scheduledNow()) {
-      break;
-    }
-    TickQueueElement tickQueueElement=tickHandlers.poll();
-    tickQueueElement.update();
-    tickHandlers.offer(tickQueueElement);
-    scheduledTicks.add(tickQueueElement.ticker);
-  }
+  TickRegistry.updateTickQueue(scheduledTicks);
   sidedDelegate.profileEnd();
 }

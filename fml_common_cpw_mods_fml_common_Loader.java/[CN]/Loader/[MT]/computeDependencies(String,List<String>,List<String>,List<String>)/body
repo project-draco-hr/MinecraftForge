@@ -5,13 +5,13 @@
   boolean parseFailure=false;
   for (  String dep : DEPENDENCYSPLITTER.split(dependencyString)) {
     List<String> depparts=Lists.newArrayList(DEPENDENCYPARTSPLITTER.split(dep));
-    String instruction=depparts.get(0);
-    String target=depparts.get(1);
-    boolean targetIsAll=target.equals("*");
     if (depparts.size() != 2) {
       parseFailure=true;
       continue;
     }
+    String instruction=depparts.get(0);
+    String target=depparts.get(1);
+    boolean targetIsAll=target.equals("*");
     if ("required-before".equals(instruction) || "required-after".equals(instruction)) {
       if (!targetIsAll) {
         requirements.add(target);
@@ -32,6 +32,7 @@
     }
   }
   if (parseFailure) {
+    FMLLog.log(Level.WARNING,"Unable to parse dependency string %s",dependencyString);
     throw new LoaderException();
   }
 }

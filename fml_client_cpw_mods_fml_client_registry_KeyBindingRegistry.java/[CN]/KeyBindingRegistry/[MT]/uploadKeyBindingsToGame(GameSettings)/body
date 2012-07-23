@@ -1,0 +1,12 @@
+{
+  ArrayList<KeyBinding> harvestedBindings=Lists.newArrayList();
+  for (  KeyHandler key : keyHandlers) {
+    harvestedBindings.add(key.keyBinding);
+  }
+  KeyBinding[] modKeyBindings=harvestedBindings.toArray(new KeyBinding[harvestedBindings.size()]);
+  KeyBinding[] allKeys=new KeyBinding[settings.field_1564_t.length + modKeyBindings.length];
+  System.arraycopy(settings.field_1564_t,0,allKeys,0,settings.field_1564_t.length);
+  System.arraycopy(modKeyBindings,0,allKeys,settings.field_1564_t.length,modKeyBindings.length);
+  settings.field_1564_t=allKeys;
+  settings.func_6519_a();
+}

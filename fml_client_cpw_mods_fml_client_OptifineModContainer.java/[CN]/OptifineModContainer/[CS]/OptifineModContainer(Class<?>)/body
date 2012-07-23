@@ -1,9 +1,0 @@
-{
-  super();
-  try {
-    optifineVersion=(String)optifineConfig.getField("VERSION").get(null);
-  }
- catch (  Exception e) {
-    throw new RuntimeException(e);
-  }
-}

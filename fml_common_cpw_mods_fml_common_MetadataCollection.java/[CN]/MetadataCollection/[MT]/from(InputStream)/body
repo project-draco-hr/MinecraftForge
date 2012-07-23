@@ -1,4 +1,7 @@
 {
+  if (inputStream == null) {
+    return new MetadataCollection();
+  }
   InputStreamReader reader=new InputStreamReader(inputStream);
   try {
     JsonRootNode root=parser.parse(reader);

@@ -2,9 +2,12 @@
   try {
     ModClassLoader modClassLoader=event.getModClassLoader();
     modClassLoader.addFile(source);
-    modInstance=Class.forName(className,true,modClassLoader).newInstance();
+    Class<?> clazz=Class.forName(className,true,modClassLoader);
+    annotations=gatherAnnotations(clazz);
+    modInstance=clazz.newInstance();
+    processFieldAnnotations();
   }
- catch (  Exception e) {
+ catch (  Throwable e) {
     controller.errorOccurred(this,e);
     Throwables.propagateIfPossible(e);
   }

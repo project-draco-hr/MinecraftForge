@@ -3,16 +3,17 @@
   this.modList=loader.getIndexedModList();
   this.masterChannel=new EventBus("FMLMainChannel");
   this.masterChannel.register(this);
-  this.log=Loader.log;
   Builder<String,EventBus> eventBus=ImmutableMap.builder();
   for (  ModContainer mod : Loader.getModList()) {
     EventBus bus=new EventBus(mod.getModId());
     boolean isActive=mod.registerBus(bus,this);
     if (isActive) {
+      FMLLog.fine("Activating mod %s",mod.getModId());
       modStates.put(mod.getModId(),ModState.UNLOADED);
       eventBus.put(mod.getModId(),bus);
     }
  else {
+      FMLLog.warning("Mod %s has been disabled through configuration",mod.getModId());
       modStates.put(mod.getModId(),ModState.UNLOADED);
       modStates.put(mod.getModId(),ModState.DISABLED);
     }

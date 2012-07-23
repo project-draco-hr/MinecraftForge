@@ -1,17 +1,22 @@
 {
   File[] minecraftSources=modClassLoader.getParentSources();
   if (minecraftSources.length == 1 && minecraftSources[0].isFile()) {
-    log.fine(String.format("Minecraft is a file at %s, loading",minecraftSources[0].getAbsolutePath()));
+    FMLLog.log.fine("Minecraft is a file at %s, loading",minecraftSources[0].getAbsolutePath());
     candidates.add(new ModCandidate(minecraftSources[0],minecraftSources[0],ContainerType.JAR));
   }
  else {
     for (int i=0; i < minecraftSources.length; i++) {
       if (minecraftSources[i].isFile()) {
-        log.fine(String.format("Found a minecraft related file at %s, examining for mod candidates",minecraftSources[i].getAbsolutePath()));
-        candidates.add(new ModCandidate(minecraftSources[i],minecraftSources[i],ContainerType.JAR,true));
+        if (modClassLoader.getDefaultLibraries().contains(minecraftSources[i].getName())) {
+          FMLLog.log.fine("Skipping known library file %s",minecraftSources[i].getAbsolutePath());
+        }
+ else {
+          FMLLog.log.fine("Found a minecraft related file at %s, examining for mod candidates",minecraftSources[i].getAbsolutePath());
+          candidates.add(new ModCandidate(minecraftSources[i],minecraftSources[i],ContainerType.JAR,true));
+        }
       }
  else       if (minecraftSources[i].isDirectory()) {
-        log.fine(String.format("Found a minecraft related directory at %s, examining for mod candidates",minecraftSources[i].getAbsolutePath()));
+        FMLLog.log.fine("Found a minecraft related directory at %s, examining for mod candidates",minecraftSources[i].getAbsolutePath());
         candidates.add(new ModCandidate(minecraftSources[i],minecraftSources[i],ContainerType.DIR,true));
       }
     }

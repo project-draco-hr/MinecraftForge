@@ -1,7 +1,7 @@
 {
   for (  Map.Entry<String,EventBus> entry : eventChannels.entrySet()) {
     entry.getValue().post(stateEvent);
-    if (errors.isEmpty()) {
+    if (!errors.containsKey(entry.getKey())) {
       modStates.put(entry.getKey(),stateEvent.getModState());
     }
  else {

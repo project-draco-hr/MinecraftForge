@@ -1,6 +1,8 @@
 {
   StringBuilder ret=new StringBuilder();
-  Joiner.on('\n').appendTo(ret,FMLCommonHandler.instance().getBrandingStrings(getFMLVersionString()));
-  modController.printModStates(ret);
+  Joiner.on('\n').appendTo(ret,FMLCommonHandler.instance().getBrandingStrings(""));
+  if (modController != null) {
+    modController.printModStates(ret);
+  }
   return ret.toString();
 }

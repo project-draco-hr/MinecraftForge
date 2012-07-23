@@ -1,0 +1,4 @@
+{
+  ModLoaderModContainer mlmc=ModLoaderHelper.registerKeyHelper(mod);
+  KeyBindingRegistry.registerKeyBinding(new ModLoaderKeyBindingHandler(keyHandler,allowRepeat,mlmc));
+}

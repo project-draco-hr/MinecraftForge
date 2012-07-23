@@ -1,8 +1,3 @@
 {
-  int keyCode=keyBinding.field_1370_b;
-  boolean state=(keyCode < 0 ? Mouse.isButtonDown(keyCode + 100) : Keyboard.isKeyDown(keyCode));
-  if (state && (!lastState || (lastState && shouldRepeat))) {
-    modContainer.keyBindEvent(keyBinding);
-  }
-  lastState=state;
+  ((net.minecraft.src.BaseMod)modContainer.getMod()).keyboardEvent(keyBinding);
 }

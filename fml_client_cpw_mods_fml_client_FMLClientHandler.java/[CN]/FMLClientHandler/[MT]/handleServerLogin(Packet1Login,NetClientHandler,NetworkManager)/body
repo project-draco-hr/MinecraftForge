@@ -7,7 +7,4 @@
   if (packet.field_44010_b > 0) {
     networkManager.func_972_a(packet);
   }
-  for (  ModContainer mod : Loader.getModList()) {
-    mod.getNetworkHandler().onServerLogin(handler);
-  }
 }

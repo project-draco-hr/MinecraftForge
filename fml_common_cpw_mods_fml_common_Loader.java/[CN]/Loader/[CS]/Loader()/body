@@ -1,5 +1,4 @@
 {
-  configureLogging();
   InputStream stream=getClass().getClassLoader().getResourceAsStream("fmlversion.properties");
   Properties properties=new Properties();
   if (stream != null) {
@@ -7,7 +6,7 @@
       properties.load(stream);
     }
  catch (    IOException ex) {
-      Loader.log.log(Level.SEVERE,"Could not get FML version information - corrupted installation detected!",ex);
+      FMLLog.log.log(Level.SEVERE,"Could not get FML version information - corrupted installation detected!",ex);
       throw new LoaderException(ex);
     }
   }
@@ -17,6 +16,6 @@
   build=properties.getProperty("fmlbuild.build.number","missing");
   mccversion=properties.getProperty("fmlbuild.mcclientversion","missing");
   mcsversion=properties.getProperty("fmlbuild.mcserverversion","missing");
-  log.info(String.format("Forge Mod Loader version %s.%s.%s.%s for Minecraft c:%s, s:%s loading",major,minor,rev,build,mccversion,mcsversion));
+  FMLLog.log.info("Forge Mod Loader version %s.%s.%s.%s for Minecraft client:%s, server:%s loading",major,minor,rev,build,mccversion,mcsversion);
   modClassLoader=new ModClassLoader(getClass().getClassLoader());
 }

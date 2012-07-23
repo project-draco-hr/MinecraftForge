@@ -1,0 +1,3 @@
+EnumSet<TickType> type
+boolean end
+boolean repeats
