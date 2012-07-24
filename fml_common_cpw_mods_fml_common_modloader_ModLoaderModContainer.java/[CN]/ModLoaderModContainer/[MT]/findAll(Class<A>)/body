@@ -1,6 +1,6 @@
 {
   ArrayList<A> modList=new ArrayList<A>();
-  for (  ModContainer mc : Loader.getModList()) {
+  for (  ModContainer mc : Loader.instance().getActiveModList()) {
     if (mc instanceof ModLoaderModContainer && mc.getMod() != null) {
       modList.add((A)((ModLoaderModContainer)mc).mod);
     }

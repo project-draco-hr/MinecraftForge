@@ -1,6 +1,7 @@
 {
   StringBuilder ret=new StringBuilder();
-  Joiner.on('\n').appendTo(ret,FMLCommonHandler.instance().getBrandingStrings(""));
+  List<String> branding=FMLCommonHandler.instance().getBrandings();
+  Joiner.on(' ').skipNulls().appendTo(ret,branding.subList(1,branding.size()));
   if (modController != null) {
     modController.printModStates(ret);
   }

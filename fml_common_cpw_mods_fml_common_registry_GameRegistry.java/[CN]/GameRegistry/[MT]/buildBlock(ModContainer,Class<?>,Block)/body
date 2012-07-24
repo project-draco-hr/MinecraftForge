@@ -1,0 +1,5 @@
+{
+  Object o=type.getConstructor(int.class).newInstance(250);
+  registerBlock((BlockProxy)o);
+  return o;
+}

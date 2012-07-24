@@ -1,5 +1,5 @@
 {
-  for (  ModContainer mc : Loader.getModList()) {
+  for (  ModContainer mc : Loader.instance().getActiveModList()) {
     if (mc.matches(mod)) {
       return mc;
     }

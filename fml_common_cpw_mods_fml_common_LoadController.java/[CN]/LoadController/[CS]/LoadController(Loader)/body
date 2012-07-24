@@ -4,11 +4,12 @@
   this.masterChannel=new EventBus("FMLMainChannel");
   this.masterChannel.register(this);
   Builder<String,EventBus> eventBus=ImmutableMap.builder();
-  for (  ModContainer mod : Loader.getModList()) {
+  for (  ModContainer mod : loader.getModList()) {
     EventBus bus=new EventBus(mod.getModId());
     boolean isActive=mod.registerBus(bus,this);
     if (isActive) {
       FMLLog.fine("Activating mod %s",mod.getModId());
+      activeModList.add(mod);
       modStates.put(mod.getModId(),ModState.UNLOADED);
       eventBus.put(mod.getModId(),bus);
     }

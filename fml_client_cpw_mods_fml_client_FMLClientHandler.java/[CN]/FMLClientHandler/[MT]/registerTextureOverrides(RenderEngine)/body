@@ -1,5 +1,5 @@
 {
-  for (  ModContainer mod : Loader.getModList()) {
+  for (  ModContainer mod : Loader.instance().getActiveModList()) {
     registerAnimatedTexturesFor(mod);
   }
   for (  OverrideInfo animationOverride : animationSet) {

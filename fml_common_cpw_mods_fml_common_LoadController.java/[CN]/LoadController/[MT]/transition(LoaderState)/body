@@ -10,6 +10,6 @@
     for (    Entry<String,Throwable> error : errors.entries()) {
       FMLLog.log(Level.SEVERE,error.getValue(),"Caught exception from %s",error.getKey());
     }
-    throw new LoaderException();
+    throw new LoaderException(errors.values().iterator().next());
   }
 }
