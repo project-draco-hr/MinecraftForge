@@ -1,7 +1,7 @@
 {
   List<IFMLLoadingPlugin> loadPlugins=new ArrayList<IFMLLoadingPlugin>();
   List<ILibrarySet> libraries=new ArrayList<ILibrarySet>();
-  for (  String s : plugins) {
+  for (  String s : rootPlugins) {
     try {
       IFMLLoadingPlugin plugin=(IFMLLoadingPlugin)Class.forName(s,true,actualClassLoader).newInstance();
       loadPlugins.add(plugin);
@@ -15,6 +15,7 @@
   if (loadPlugins.isEmpty()) {
     throw new RuntimeException("A fatal error has occured - no valid fml load plugin was found - this is a completely corrupt FML installation.");
   }
+  discoverCoreMods(mcDir,actualClassLoader,loadPlugins,libraries);
   List<Throwable> caughtErrors=new ArrayList<Throwable>();
   try {
     File libDir;
@@ -93,8 +94,10 @@
     }
   }
   for (  IFMLLoadingPlugin plug : loadPlugins) {
-    for (    String xformClass : plug.getASMTransformerClass()) {
-      actualClassLoader.registerTransformer(xformClass);
+    if (plug.getASMTransformerClass() != null) {
+      for (      String xformClass : plug.getASMTransformerClass()) {
+        actualClassLoader.registerTransformer(xformClass);
+      }
     }
   }
   try {

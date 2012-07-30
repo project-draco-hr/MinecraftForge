@@ -1,0 +1,4 @@
+File mcDir
+RelaunchClassLoader classLoader
+List<IFMLLoadingPlugin> loadPlugins
+List<ILibrarySet> libraries
