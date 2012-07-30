@@ -12,33 +12,33 @@
     canonicalModsDir=modsDir.getCanonicalFile();
   }
  catch (  IOException ioe) {
-    FMLLog.log.log(Level.SEVERE,String.format("Failed to resolve loader directories: mods : %s ; config %s",canonicalModsDir.getAbsolutePath(),configDir.getAbsolutePath()),ioe);
+    FMLLog.log(Level.SEVERE,String.format("Failed to resolve loader directories: mods : %s ; config %s",canonicalModsDir.getAbsolutePath(),configDir.getAbsolutePath()),ioe);
     throw new LoaderException(ioe);
   }
   if (!canonicalModsDir.exists()) {
-    FMLLog.log.info("No mod directory found, creating one: %s",canonicalModsPath);
+    FMLLog.info("No mod directory found, creating one: %s",canonicalModsPath);
     boolean dirMade=canonicalModsDir.mkdir();
     if (!dirMade) {
-      FMLLog.log.severe("Unable to create the mod directory %s",canonicalModsPath);
+      FMLLog.severe("Unable to create the mod directory %s",canonicalModsPath);
       throw new LoaderException();
     }
-    FMLLog.log.info("Mod directory created successfully");
+    FMLLog.info("Mod directory created successfully");
   }
   if (!canonicalConfigDir.exists()) {
-    FMLLog.log.fine("No config directory found, creating one: %s",canonicalConfigPath);
+    FMLLog.fine("No config directory found, creating one: %s",canonicalConfigPath);
     boolean dirMade=canonicalConfigDir.mkdir();
     if (!dirMade) {
-      FMLLog.log.severe("Unable to create the config directory %s",canonicalConfigPath);
+      FMLLog.severe("Unable to create the config directory %s",canonicalConfigPath);
       throw new LoaderException();
     }
-    FMLLog.log.info("Config directory created successfully");
+    FMLLog.info("Config directory created successfully");
   }
   if (!canonicalModsDir.isDirectory()) {
-    FMLLog.log.severe("Attempting to load mods from %s, which is not a directory",canonicalModsPath);
+    FMLLog.severe("Attempting to load mods from %s, which is not a directory",canonicalModsPath);
     throw new LoaderException();
   }
   if (!configDir.isDirectory()) {
-    FMLLog.log.severe("Attempting to load configuration from %s, which is not a directory",canonicalConfigPath);
+    FMLLog.severe("Attempting to load configuration from %s, which is not a directory",canonicalConfigPath);
     throw new LoaderException();
   }
 }

@@ -1,0 +1,16 @@
+{
+  String record;
+synchronized (this) {
+    super.flush();
+    record=this.toString();
+    super.reset();
+    currentMessage.append(record);
+    if (currentMessage.lastIndexOf(FMLLogFormatter.LINE_SEPARATOR) >= 0) {
+      if (currentMessage.length() > FMLLogFormatter.LINE_SEPARATOR.length()) {
+        currentMessage.setLength(currentMessage.length() - FMLLogFormatter.LINE_SEPARATOR.length());
+        log.log(Level.INFO,currentMessage.toString());
+      }
+      currentMessage.setLength(0);
+    }
+  }
+}

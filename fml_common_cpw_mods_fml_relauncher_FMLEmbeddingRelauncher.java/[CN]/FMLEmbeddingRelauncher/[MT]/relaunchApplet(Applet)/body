@@ -21,7 +21,7 @@
       ReflectionHelper.findMethod(launcherClass,appletContainer,new String[]{"replace"},parentAppletClass).invoke(appletContainer,newApplet);
     }
  else {
-      System.out.printf("Found unknown applet parent %s, unable to inject!\n",launcherClass);
+      FMLLog.severe("Found unknown applet parent %s, unable to inject!\n",launcherClass);
       throw new RuntimeException();
     }
   }

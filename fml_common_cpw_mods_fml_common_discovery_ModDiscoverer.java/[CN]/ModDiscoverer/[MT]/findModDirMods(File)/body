@@ -3,17 +3,17 @@
   Arrays.sort(modList);
   for (  File modFile : modList) {
     if (modFile.isDirectory()) {
-      FMLLog.log.fine("Found a candidate mod directory %s",modFile.getName());
+      FMLLog.fine("Found a candidate mod directory %s",modFile.getName());
       candidates.add(new ModCandidate(modFile,modFile,ContainerType.DIR));
     }
  else {
       Matcher matcher=zipJar.matcher(modFile.getName());
       if (matcher.matches()) {
-        FMLLog.log.fine("Found a candidate zip or jar file %s",matcher.group(0));
+        FMLLog.fine("Found a candidate zip or jar file %s",matcher.group(0));
         candidates.add(new ModCandidate(modFile,modFile,ContainerType.JAR));
       }
  else {
-        FMLLog.log.fine("Ignoring unknown file %s in mods directory",modFile.getName());
+        FMLLog.fine("Ignoring unknown file %s in mods directory",modFile.getName());
       }
     }
   }

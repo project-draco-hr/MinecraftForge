@@ -1,0 +1,3 @@
+{
+  return "http://cloud.github.com/downloads/cpw/FML/%s";
+}

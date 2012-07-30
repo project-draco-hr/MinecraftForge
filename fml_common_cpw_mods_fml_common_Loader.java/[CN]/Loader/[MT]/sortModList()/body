@@ -1,34 +1,34 @@
 {
-  FMLLog.log.fine("Verifying mod requirements are satisfied");
+  FMLLog.fine("Verifying mod requirements are satisfied");
   try {
     for (    ModContainer mod : mods) {
       if (!namedMods.keySet().containsAll(mod.getRequirements())) {
-        FMLLog.log.log(Level.SEVERE,"The mod %s (%s) requires mods %s to be available, one or more are not",mod.getModId(),mod.getName(),mod.getRequirements());
+        FMLLog.log(Level.SEVERE,"The mod %s (%s) requires mods %s to be available, one or more are not",mod.getModId(),mod.getName(),mod.getRequirements());
         throw new LoaderException();
       }
     }
-    FMLLog.log.fine("All mod requirements are satisfied");
+    FMLLog.fine("All mod requirements are satisfied");
     ModSorter sorter=new ModSorter(mods,namedMods);
     try {
-      FMLLog.log.fine("Sorting mods into an ordered list");
+      FMLLog.fine("Sorting mods into an ordered list");
       mods=sorter.sort();
-      FMLLog.log.fine("Mod sorting completed successfully");
+      FMLLog.fine("Mod sorting completed successfully");
     }
  catch (    ModSortingException sortException) {
-      FMLLog.log.severe("A dependency cycle was detected in the input mod set so an ordering cannot be determined");
-      FMLLog.log.severe("The visited mod list is %s",sortException.getExceptionData().getVisitedNodes());
-      FMLLog.log.severe("The first mod in the cycle is %s",sortException.getExceptionData().getFirstBadNode());
-      FMLLog.log.log(Level.SEVERE,sortException,"The full error");
+      FMLLog.severe("A dependency cycle was detected in the input mod set so an ordering cannot be determined");
+      FMLLog.severe("The visited mod list is %s",sortException.getExceptionData().getVisitedNodes());
+      FMLLog.severe("The first mod in the cycle is %s",sortException.getExceptionData().getFirstBadNode());
+      FMLLog.log(Level.SEVERE,sortException,"The full error");
       throw new LoaderException(sortException);
     }
   }
   finally {
-    FMLLog.log.fine("Mod sorting data:");
+    FMLLog.fine("Mod sorting data:");
     for (    ModContainer mod : mods) {
-      FMLLog.log.fine("\t%s(%s): %s (%s)",mod.getModId(),mod.getName(),mod.getSource().getName(),mod.getSortingRules());
+      FMLLog.fine("\t%s(%s): %s (%s)",mod.getModId(),mod.getName(),mod.getSource().getName(),mod.getSortingRules());
     }
     if (mods.size() == 0) {
-      FMLLog.log.fine("No mods found to sort");
+      FMLLog.fine("No mods found to sort");
     }
   }
 }

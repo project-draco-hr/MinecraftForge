@@ -14,7 +14,7 @@
   Arrays.sort(content);
   for (  File file : content) {
     if (file.isDirectory()) {
-      FMLLog.log.finest("Recursing into package %s",path + file.getName());
+      FMLLog.finest("Recursing into package %s",path + file.getName());
       exploreFileSystem(path + file.getName() + ".",file,harvestedMods,candidate,mc);
       continue;
     }

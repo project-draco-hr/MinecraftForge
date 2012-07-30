@@ -1,6 +1,6 @@
 {
   List<ModContainer> found=Lists.newArrayList();
-  FMLLog.log.fine("Examining directory %s for potential mods",candidate.getModContainer().getName());
+  FMLLog.fine("Examining directory %s for potential mods",candidate.getModContainer().getName());
   exploreFileSystem("",candidate.getModContainer(),found,candidate,null);
   return found;
 }

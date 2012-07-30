@@ -7,6 +7,8 @@
  catch (  Exception e) {
   }
   File minecraftHome=ReflectionHelper.getPrivateValue(mcMaster,null,"field_6275_Z","ap","minecraftDir");
+  FMLLog.minecraftHome=minecraftHome;
+  FMLLog.info("FML relaunch active");
   RelaunchLibraryManager.handleLaunch(minecraftHome,clientLoader);
   return minecraftHome;
 }

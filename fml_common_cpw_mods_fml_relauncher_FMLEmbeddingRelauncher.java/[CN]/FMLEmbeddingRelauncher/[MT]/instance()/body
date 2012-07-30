@@ -1,7 +1,6 @@
 {
   if (INSTANCE == null) {
     INSTANCE=new FMLEmbeddingRelauncher();
-    System.out.println("FML relaunch active");
   }
   return INSTANCE;
 }

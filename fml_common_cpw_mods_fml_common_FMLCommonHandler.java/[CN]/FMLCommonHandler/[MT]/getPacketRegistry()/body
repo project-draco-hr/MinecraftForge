@@ -7,7 +7,7 @@
     return sb.toString().getBytes("UTF8");
   }
  catch (  UnsupportedEncodingException e) {
-    FMLLog.log.log(Level.WARNING,e,"Error building registration list");
+    FMLLog.log(Level.WARNING,e,"Error building registration list");
     return new byte[0];
   }
 }
