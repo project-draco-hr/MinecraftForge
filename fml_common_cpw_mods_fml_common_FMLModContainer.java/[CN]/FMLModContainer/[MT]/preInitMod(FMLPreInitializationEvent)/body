@@ -2,7 +2,7 @@
   try {
     for (    Object o : annotations.get(Mod.PreInit.class)) {
       Method m=(Method)o;
-      m.invoke(modInstance);
+      m.invoke(modInstance,event);
     }
   }
  catch (  Throwable t) {

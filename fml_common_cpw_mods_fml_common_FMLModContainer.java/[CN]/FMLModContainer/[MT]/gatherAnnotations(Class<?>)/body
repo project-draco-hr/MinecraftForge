@@ -8,12 +8,25 @@
   }
   for (  Method m : clazz.getDeclaredMethods()) {
     for (    Annotation a : m.getAnnotations()) {
-      if (m.getParameterTypes().length == 0) {
+      Class<?>[] paramTypes;
+      if (a.annotationType() == Mod.PreInit.class) {
+        paramTypes=Mod.PreInit.paramTypes;
+      }
+ else       if (a.annotationType() == Mod.Init.class) {
+        paramTypes=Mod.Init.paramTypes;
+      }
+ else       if (a.annotationType() == Mod.PostInit.class) {
+        paramTypes=Mod.PostInit.paramTypes;
+      }
+ else {
+        continue;
+      }
+      if (Arrays.equals(m.getParameterTypes(),paramTypes)) {
         m.setAccessible(true);
         anns.put(a.annotationType(),m);
       }
  else {
-        FMLLog.severe("The mod type %s appears to have an invalid method annotation %s. This annotation can only apply to zero argument methods",getModId(),a.annotationType().getSimpleName());
+        FMLLog.severe("The mod %s appears to have an invalid method annotation %s. This annotation can only apply to methods with argument types %s -it will not be called",getModId(),a.annotationType().getSimpleName(),Arrays.toString(paramTypes));
       }
     }
   }

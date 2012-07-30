@@ -1,0 +1,4 @@
+{
+  this.modMetadata=activeContainer.getMetadata();
+  this.sourceFile=activeContainer.getSource();
+}
