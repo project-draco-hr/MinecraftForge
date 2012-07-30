@@ -7,6 +7,13 @@
   if (cachedClasses.containsKey(name)) {
     return cachedClasses.get(name);
   }
+  for (  String st : transformerExclusions) {
+    if (name.startsWith(st)) {
+      Class<?> cl=super.findClass(name);
+      cachedClasses.put(name,cl);
+      return cl;
+    }
+  }
   try {
     byte[] basicClass=readFully(findResource(name.replace('.','/').concat(".class")).openStream());
     byte[] transformedClass=runTransformers(name,basicClass);
