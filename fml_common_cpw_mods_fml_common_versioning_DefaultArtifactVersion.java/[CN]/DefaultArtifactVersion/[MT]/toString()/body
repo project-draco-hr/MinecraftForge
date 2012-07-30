@@ -1,0 +1,3 @@
+{
+  return label == null ? comparableVersion.toString() : label + (unbounded ? "" : "@" + range);
+}

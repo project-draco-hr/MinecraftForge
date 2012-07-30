@@ -4,11 +4,11 @@
   mods=new ArrayList<ModContainer>();
   namedMods=new HashMap<String,ModContainer>();
   state=LoaderState.LOADING;
+  modController=new LoadController(this);
   identifyMods();
   disableRequestedMods();
   sortModList();
   mods=ImmutableList.copyOf(mods);
-  modController=new LoadController(this);
   modController.distributeStateMessage(modClassLoader);
   modController.transition(LoaderState.PREINITIALIZATION);
   modController.distributeStateMessage();

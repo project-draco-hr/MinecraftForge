@@ -1,10 +1,19 @@
 {
   FMLLog.fine("Verifying mod requirements are satisfied");
   try {
+    Map<String,ArtifactVersion> modVersions=Maps.newHashMap();
     for (    ModContainer mod : mods) {
-      if (!namedMods.keySet().containsAll(mod.getRequirements())) {
-        FMLLog.log(Level.SEVERE,"The mod %s (%s) requires mods %s to be available, one or more are not",mod.getModId(),mod.getName(),mod.getRequirements());
-        throw new LoaderException();
+      modVersions.put(mod.getModId(),mod.getProcessedVersion());
+    }
+    for (    ModContainer mod : mods) {
+      ImmutableList<ArtifactVersion> allDeps=ImmutableList.<ArtifactVersion>builder().addAll(mod.getDependants()).addAll(mod.getDependencies()).build();
+      for (      ArtifactVersion v : allDeps) {
+        if (modVersions.containsKey(v.getLabel())) {
+          if (!v.containsVersion(modVersions.get(v.getLabel()))) {
+            FMLLog.log(Level.SEVERE,"The mod %s (%s) requires mods %s to be available, one or more are not",mod.getModId(),mod.getName(),allDeps);
+            throw new LoaderException();
+          }
+        }
       }
     }
     FMLLog.fine("All mod requirements are satisfied");

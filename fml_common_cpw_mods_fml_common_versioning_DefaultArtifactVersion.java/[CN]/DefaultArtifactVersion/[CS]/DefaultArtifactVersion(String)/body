@@ -1,0 +1,4 @@
+{
+  comparableVersion=new ComparableVersion(versionNumber);
+  range=VersionRange.createFromVersion(versionNumber,this);
+}

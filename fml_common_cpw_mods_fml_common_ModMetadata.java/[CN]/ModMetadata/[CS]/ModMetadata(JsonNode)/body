@@ -10,8 +10,8 @@
   credits=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("credits")));
   parent=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("parent")));
   authorList=Optional.fromNullable((List<String>)processedFields.get(aStringBuilder("authorList"))).or(authorList);
-  requiredMods=Optional.fromNullable((List<String>)processedFields.get(aStringBuilder("requiredMods"))).or(requiredMods);
-  dependencies=Optional.fromNullable((List<String>)processedFields.get(aStringBuilder("dependencies"))).or(dependencies);
-  dependants=Optional.fromNullable((List<String>)processedFields.get(aStringBuilder("dependants"))).or(dependants);
+  requiredMods=processReferences((List<String>)processedFields.get(aStringBuilder("requiredMods")));
+  dependencies=processReferences((List<String>)processedFields.get(aStringBuilder("dependencies")));
+  dependants=processReferences((List<String>)processedFields.get(aStringBuilder("dependants")));
   useDependencyInformation=Boolean.parseBoolean(Strings.nullToEmpty((String)processedFields.get(aStringBuilder("useDependencyInformation"))));
 }

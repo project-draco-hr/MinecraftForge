@@ -4,9 +4,9 @@
     overridesMetadata=!((Boolean)descriptor.get("usesMetadata")).booleanValue();
   }
   if (overridesMetadata || !modMetadata.useDependencyInformation) {
-    List<String> requirements=Lists.newArrayList();
-    List<String> dependencies=Lists.newArrayList();
-    List<String> dependants=Lists.newArrayList();
+    List<ArtifactVersion> requirements=Lists.newArrayList();
+    List<ArtifactVersion> dependencies=Lists.newArrayList();
+    List<ArtifactVersion> dependants=Lists.newArrayList();
     Loader.instance().computeDependencies((String)descriptor.get("dependencies"),requirements,dependencies,dependants);
     modMetadata.requiredMods=requirements;
     modMetadata.dependencies=dependencies;

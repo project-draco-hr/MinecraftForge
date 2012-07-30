@@ -1,0 +1,10 @@
+{
+  List<ArtifactVersion> res=Lists.newArrayList();
+  if (refs == null) {
+    return res;
+  }
+  for (  String ref : refs) {
+    res.add(VersionParser.parseVersionReference(ref));
+  }
+  return res;
+}

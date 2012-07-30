@@ -1,4 +1,0 @@
-String dependencyString
-List<String> requirements
-List<String> dependencies
-List<String> dependants

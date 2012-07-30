@@ -1,0 +1,3 @@
+{
+  return ((DefaultArtifactVersion)obj).containsVersion(this);
+}
