@@ -1,7 +1,14 @@
 {
-  File minecraftHome=setupHome();
-  Class<? super Object> client=ReflectionHelper.getClass(clientLoader,"net.minecraft.client.Minecraft");
-  ReflectionHelper.setPrivateValue(client,null,minecraftHome,"field_6275_Z","ap","minecraftDir");
+  Class<? super Object> client;
+  try {
+    File minecraftHome=setupHome();
+    client=ReflectionHelper.getClass(clientLoader,"net.minecraft.client.Minecraft");
+    ReflectionHelper.setPrivateValue(client,null,minecraftHome,"field_6275_Z","ap","minecraftDir");
+  }
+  finally {
+    popupWindow.setVisible(false);
+    popupWindow.dispose();
+  }
   try {
     ReflectionHelper.findMethod(client,null,new String[]{"fmlReentry"},ArgsWrapper.class).invoke(null,wrap);
   }
