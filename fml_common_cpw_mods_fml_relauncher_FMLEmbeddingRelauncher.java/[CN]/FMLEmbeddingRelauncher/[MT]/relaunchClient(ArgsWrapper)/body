@@ -6,8 +6,10 @@
     ReflectionHelper.setPrivateValue(client,null,minecraftHome,"field_6275_Z","ap","minecraftDir");
   }
   finally {
-    popupWindow.setVisible(false);
-    popupWindow.dispose();
+    if (popupWindow != null) {
+      popupWindow.setVisible(false);
+      popupWindow.dispose();
+    }
   }
   try {
     ReflectionHelper.findMethod(client,null,new String[]{"fmlReentry"},ArgsWrapper.class).invoke(null,wrap);

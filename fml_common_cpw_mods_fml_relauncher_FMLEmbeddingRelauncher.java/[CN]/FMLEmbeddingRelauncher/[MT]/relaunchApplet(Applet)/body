@@ -28,4 +28,10 @@
  catch (  Exception e) {
     throw new RuntimeException(e);
   }
+ finally {
+    if (popupWindow != null) {
+      popupWindow.setVisible(false);
+      popupWindow.dispose();
+    }
+  }
 }
