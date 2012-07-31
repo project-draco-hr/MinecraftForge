@@ -1,0 +1,29 @@
+{
+  URL rulesResource=Resources.getResource(rulesFile);
+  Resources.readLines(rulesResource,Charsets.UTF_8,new LineProcessor<Void>(){
+    @Override public Void getResult(){
+      return null;
+    }
+    @Override public boolean processLine(    String input) throws IOException {
+      String line=Iterables.getFirst(Splitter.on('#').limit(2).split(input),"").trim();
+      if (line.length() == 0) {
+        return true;
+      }
+      List<String> parts=Lists.newArrayList(Splitter.on(" ").trimResults().split(line));
+      if (parts.size() > 2 || parts.get(1).indexOf('.') == -1) {
+        throw new RuntimeException("Invalid config file line " + input);
+      }
+      Modifier m=new Modifier();
+      m.setTargetAccess(parts.get(0));
+      List<String> descriptor=Lists.newArrayList(Splitter.on(".").trimResults().split(parts.get(1)));
+      List<String> method=Lists.newArrayList(Splitter.on(CharMatcher.anyOf("()")).omitEmptyStrings().trimResults().split(descriptor.get(1)));
+      if (method.size() == 2) {
+        m.desc=method.get(1);
+      }
+      m.name=method.get(0);
+      modifiers.put(descriptor.get(0),m);
+      return true;
+    }
+  }
+);
+}

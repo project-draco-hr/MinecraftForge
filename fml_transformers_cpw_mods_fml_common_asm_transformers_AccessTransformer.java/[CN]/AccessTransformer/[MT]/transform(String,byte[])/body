@@ -1,0 +1,32 @@
+{
+  if (!modifiers.containsKey(name)) {
+    return bytes;
+  }
+  ClassNode classNode=new ClassNode();
+  ClassReader classReader=new ClassReader(bytes);
+  classReader.accept(classNode,0);
+  Collection<Modifier> mods=modifiers.get(name);
+  for (  Modifier m : mods) {
+    if (m.desc.isEmpty()) {
+      for (      FieldNode n : (List<FieldNode>)classNode.fields) {
+        if (n.name.equals(m.name)) {
+          n.access=getFixedAccess(n.access,m);
+          System.out.println(String.format("Field: %s.%s %s -> %s",name,m.name,Integer.toBinaryString(m.oldAccess),Integer.toBinaryString(m.newAccess)));
+          break;
+        }
+      }
+    }
+ else {
+      for (      MethodNode n : (List<MethodNode>)classNode.methods) {
+        if (n.name.equals(m.name) && n.desc.equals(m.desc)) {
+          n.access=getFixedAccess(n.access,m);
+          System.out.println(String.format("Method: %s.%s%s %s -> %s",name,m.name,m.desc,toBinary(m.oldAccess),toBinary(m.newAccess)));
+          break;
+        }
+      }
+    }
+  }
+  ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
+  classNode.accept(writer);
+  return writer.toByteArray();
+}

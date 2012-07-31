@@ -1,0 +1,5 @@
+{
+  if (name.equalsIgnoreCase("public"))   targetAccess=ACC_PUBLIC;
+ else   if (name.equalsIgnoreCase("private"))   targetAccess=ACC_PRIVATE;
+ else   if (name.equalsIgnoreCase("protected"))   targetAccess=ACC_PROTECTED;
+}
