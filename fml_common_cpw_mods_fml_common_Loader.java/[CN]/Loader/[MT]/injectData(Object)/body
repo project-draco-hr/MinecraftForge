@@ -1,0 +1,9 @@
+{
+  major=(String)data[0];
+  minor=(String)data[1];
+  rev=(String)data[2];
+  build=(String)data[3];
+  mccversion=(String)data[4];
+  mcsversion=(String)data[5];
+  minecraftDir=(File)data[6];
+}

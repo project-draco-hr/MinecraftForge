@@ -1,0 +1,32 @@
+{
+  ITextureFX ifx=(effect instanceof ITextureFX ? ((ITextureFX)effect) : null);
+  if (ifx != null && ifx.getErrored()) {
+    return false;
+  }
+  String name=effect.getClass().getSimpleName();
+  FMLClientHandler.instance().profileStart(name);
+  try {
+    if (!FMLClientHandler.instance().hasOptifine()) {
+      effect.func_76846_a();
+    }
+  }
+ catch (  Exception e) {
+    FMLLog.warning("Texture FX %s has failed to animate. Likely caused by a texture pack change that they did not respond correctly to",name);
+    if (ifx != null) {
+      ifx.setErrored(true);
+    }
+    FMLClientHandler.instance().profileEnd();
+    return false;
+  }
+  FMLClientHandler.instance().profileEnd();
+  if (ifx != null) {
+    Dimension dim=getTextureDimensions(effect);
+    int target=((dim.width >> 4) * (dim.height >> 4)) << 2;
+    if (effect.field_76852_a.length != target) {
+      FMLLog.warning("Detected a texture FX sizing discrepancy in %s (%d, %d)",name,effect.field_76852_a.length,target);
+      ifx.setErrored(true);
+      return false;
+    }
+  }
+  return true;
+}

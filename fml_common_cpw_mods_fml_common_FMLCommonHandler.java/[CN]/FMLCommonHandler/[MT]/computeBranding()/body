@@ -1,9 +1,8 @@
 {
   if (brandings == null) {
     Builder brd=ImmutableList.<String>builder();
-    brd.add("Minecraft " + CallableMinecraftVersion.func_55337_a());
+    brd.add(Loader.instance().getMCVersionString());
     brd.add(Loader.instance().getFMLVersionString());
-    brd.add(Strings.nullToEmpty((String)callForgeMethod("getVersionString")));
     brd.addAll(sidedDelegate.getAdditionalBrandingInformation());
     try {
       Properties props=new Properties();

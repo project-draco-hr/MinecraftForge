@@ -1,4 +1,4 @@
 {
-  client.func_55071_b(new CrashReport(message,t));
+  client.func_71377_b(new CrashReport(message,t));
   throw Throwables.propagate(t);
 }

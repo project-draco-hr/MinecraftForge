@@ -1,5 +1,4 @@
 {
-  File minecraftDir=FMLCommonHandler.instance().getMinecraftRootDirectory();
   File modsDir=new File(minecraftDir,"mods");
   File configDir=new File(minecraftDir,"config");
   String canonicalModsPath;
@@ -12,7 +11,7 @@
     canonicalModsDir=modsDir.getCanonicalFile();
   }
  catch (  IOException ioe) {
-    FMLLog.log(Level.SEVERE,String.format("Failed to resolve loader directories: mods : %s ; config %s",canonicalModsDir.getAbsolutePath(),configDir.getAbsolutePath()),ioe);
+    FMLLog.log(Level.SEVERE,ioe,"Failed to resolve loader directories: mods : %s ; config %s",canonicalModsDir.getAbsolutePath(),configDir.getAbsolutePath());
     throw new LoaderException(ioe);
   }
   if (!canonicalModsDir.exists()) {

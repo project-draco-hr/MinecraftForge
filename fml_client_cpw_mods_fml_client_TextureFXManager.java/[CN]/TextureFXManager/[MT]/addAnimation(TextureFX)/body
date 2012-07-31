@@ -1,0 +1,10 @@
+{
+  OverrideInfo info=new OverrideInfo();
+  info.index=anim.field_76850_b;
+  info.imageIndex=anim.field_76847_f;
+  info.textureFX=anim;
+  if (animationSet.contains(info)) {
+    animationSet.remove(info);
+  }
+  animationSet.add(info);
+}

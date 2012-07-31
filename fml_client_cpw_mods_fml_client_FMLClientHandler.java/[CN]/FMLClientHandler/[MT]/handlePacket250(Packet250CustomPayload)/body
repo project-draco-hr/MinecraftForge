@@ -1,6 +1,0 @@
-{
-  if ("REGISTER".equals(packet.field_44012_a) || "UNREGISTER".equals(packet.field_44012_a)) {
-    handleServerRegistration(packet);
-    return;
-  }
-}

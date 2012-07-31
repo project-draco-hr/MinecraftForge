@@ -1,5 +1,0 @@
-{
-  if (this.networkClient != null) {
-    this.networkClient.func_847_a(packet);
-  }
-}

@@ -102,6 +102,8 @@
   }
   try {
     Class<?> loaderClazz=Class.forName("cpw.mods.fml.common.Loader",true,actualClassLoader);
+    Method m=loaderClazz.getMethod("injectData",Object[].class);
+    m.invoke(null,(Object)FMLVersionData.data());
   }
  catch (  Exception e) {
     throw new RuntimeException(e);

@@ -3,11 +3,11 @@
     ReflectionHelper.setPrivateValue(classToAccess,instance,value,fieldNames);
   }
  catch (  UnableToFindFieldException e) {
-    FMLCommonHandler.instance().getFMLLogger().log(Level.SEVERE,String.format("Unable to locate any field %s on type %s",Arrays.toString(fieldNames),classToAccess.getName()),e);
+    FMLLog.log(Level.SEVERE,e,"Unable to locate any field %s on type %s",Arrays.toString(fieldNames),classToAccess.getName());
     throw e;
   }
 catch (  UnableToAccessFieldException e) {
-    FMLCommonHandler.instance().getFMLLogger().log(Level.SEVERE,String.format("Unable to set any field %s on type %s",Arrays.toString(fieldNames),classToAccess.getName()),e);
+    FMLLog.log(Level.SEVERE,e,"Unable to set any field %s on type %s",Arrays.toString(fieldNames),classToAccess.getName());
     throw e;
   }
 }

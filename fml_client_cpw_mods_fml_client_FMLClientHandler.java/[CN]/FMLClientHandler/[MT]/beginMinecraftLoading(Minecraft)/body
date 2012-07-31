@@ -1,0 +1,29 @@
+{
+  if (minecraft.func_71355_q()) {
+    FMLLog.severe("DEMO MODE DETECTED, FML will not work. Finishing now.");
+    haltGame("FML will not run in demo mode",new RuntimeException());
+    return;
+  }
+  client=minecraft;
+  ObfuscationReflectionHelper.detectObfuscation(World.class);
+  FMLCommonHandler.instance().beginLoading(this);
+  FMLRegistry.registerRegistry(new ClientRegistry());
+  try {
+    Class<?> optifineConfig=Class.forName("Config",false,Loader.instance().getModClassLoader());
+    String optifineVersion=(String)optifineConfig.getField("VERSION").get(null);
+    Map<String,Object> dummyOptifineMeta=ImmutableMap.<String,Object>builder().put("name","Optifine").put("version",optifineVersion).build();
+    ModMetadata optifineMetadata=MetadataCollection.from(getClass().getResourceAsStream("optifinemod.info")).getMetadataForId("optifine",dummyOptifineMeta);
+    optifineContainer=new DummyModContainer(optifineMetadata);
+    FMLLog.info("Forge Mod Loader has detected optifine %s, enabling compatibility features",optifineContainer.getVersion());
+  }
+ catch (  Exception e) {
+    optifineContainer=null;
+  }
+  try {
+    Loader.instance().loadMods();
+  }
+ catch (  LoaderException le) {
+    haltGame("There was a severe problem during mod loading that has caused the game to fail",le);
+    return;
+  }
+}
