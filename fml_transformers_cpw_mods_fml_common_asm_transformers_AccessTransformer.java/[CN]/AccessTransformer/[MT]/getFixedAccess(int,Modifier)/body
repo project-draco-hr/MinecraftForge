@@ -18,6 +18,14 @@ break;
 default :
 throw new RuntimeException("The fuck?");
 }
+if (target.changeFinal && target.desc == "") {
+if (target.markFinal) {
+ret|=ACC_FINAL;
+}
+ else {
+ret&=~ACC_FINAL;
+}
+}
 target.newAccess=ret;
 return ret;
 }

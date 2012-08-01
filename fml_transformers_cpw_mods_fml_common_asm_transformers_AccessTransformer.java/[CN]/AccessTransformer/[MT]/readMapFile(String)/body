@@ -23,11 +23,15 @@
       Modifier m=new Modifier();
       m.setTargetAccess(parts.get(0));
       List<String> descriptor=Lists.newArrayList(Splitter.on(".").trimResults().split(parts.get(1)));
-      List<String> method=Lists.newArrayList(Splitter.on(CharMatcher.anyOf("()")).omitEmptyStrings().trimResults().split(descriptor.get(1)));
-      if (method.size() == 3) {
-        m.desc=String.format("(%s)%s",method.get(1),method.get(2));
+      String nameReference=descriptor.get(1);
+      int parenIdx=nameReference.indexOf('(');
+      if (parenIdx > 0) {
+        m.desc=nameReference.substring(parenIdx);
+        m.name=nameReference.substring(0,parenIdx - 1);
       }
-      m.name=method.get(0);
+ else {
+        m.name=nameReference;
+      }
       modifiers.put(descriptor.get(0),m);
       return true;
     }

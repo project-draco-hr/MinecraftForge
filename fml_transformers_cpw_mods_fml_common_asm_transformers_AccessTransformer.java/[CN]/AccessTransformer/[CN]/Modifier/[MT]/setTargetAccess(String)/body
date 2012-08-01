@@ -1,5 +1,13 @@
 {
-  if (name.equalsIgnoreCase("public"))   targetAccess=ACC_PUBLIC;
- else   if (name.equalsIgnoreCase("private"))   targetAccess=ACC_PRIVATE;
- else   if (name.equalsIgnoreCase("protected"))   targetAccess=ACC_PROTECTED;
+  if (name.startsWith("public"))   targetAccess=ACC_PUBLIC;
+ else   if (name.startsWith("private"))   targetAccess=ACC_PRIVATE;
+ else   if (name.startsWith("protected"))   targetAccess=ACC_PROTECTED;
+  if (name.endsWith("-f")) {
+    changeFinal=true;
+    markFinal=false;
+  }
+ else   if (name.endsWith("+f")) {
+    changeFinal=true;
+    markFinal=true;
+  }
 }
