@@ -1,5 +1,12 @@
 {
-  URL rulesResource=Resources.getResource(rulesFile);
+  File file=new File(rulesFile);
+  URL rulesResource;
+  if (file.exists()) {
+    rulesResource=file.toURI().toURL();
+  }
+ else {
+    rulesResource=Resources.getResource(rulesFile);
+  }
   Resources.readLines(rulesResource,Charsets.UTF_8,new LineProcessor<Void>(){
     @Override public Void getResult(){
       return null;
@@ -17,8 +24,8 @@
       m.setTargetAccess(parts.get(0));
       List<String> descriptor=Lists.newArrayList(Splitter.on(".").trimResults().split(parts.get(1)));
       List<String> method=Lists.newArrayList(Splitter.on(CharMatcher.anyOf("()")).omitEmptyStrings().trimResults().split(descriptor.get(1)));
-      if (method.size() == 2) {
-        m.desc=method.get(1);
+      if (method.size() == 3) {
+        m.desc=String.format("(%s)%s",method.get(1),method.get(2));
       }
       m.name=method.get(0);
       modifiers.put(descriptor.get(0),m);
