@@ -2,6 +2,8 @@ def merge_client_server(mcp_dir):
     client = os.path.join(mcp_dir, 'src', 'minecraft')
     server = os.path.join(mcp_dir, 'src', 'minecraft_server')
     shared = os.path.join(mcp_dir, 'src', 'common')
+    if (not os.path.isdir(shared)):
+        os.makedirs(shared)
     if ((not os.path.isdir(client)) or (not os.path.isdir(server))):
         return
     if (not os.path.isdir(shared)):

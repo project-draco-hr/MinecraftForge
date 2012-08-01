@@ -4,5 +4,6 @@ import commands
 import fnmatch
 import re
 import subprocess, shlex
+import difflib, time
 if (__name__ == '__main__'):
     main()
