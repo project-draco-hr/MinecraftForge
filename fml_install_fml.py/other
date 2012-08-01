@@ -2,4 +2,5 @@ import os, os.path, sys
 import urllib, zipfile
 import shutil, glob, fnmatch
 import subprocess, logging, re
+from hashlib import md5
 count = 0

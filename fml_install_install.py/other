@@ -1,6 +1,6 @@
 import os, os.path, sys
 fml_dir = os.path.dirname(os.path.abspath(__file__))
 mcp_dir = os.path.abspath('..')
-from fml import setup_fml, finish_setup_fml
+from fml import setup_fml, finish_setup_fml, apply_fml_patches
 if (__name__ == '__main__'):
     main()

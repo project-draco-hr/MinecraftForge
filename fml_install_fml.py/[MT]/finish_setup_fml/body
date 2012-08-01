@@ -11,3 +11,5 @@ def finish_setup_fml(fml_dir, mcp_dir):
     updatemd5(None, True)
     reset_logger()
     os.chdir(fml_dir)
+    print 'Fixing MCP Workspace'
+    merge_tree(os.path.join(fml_dir, 'eclipse'), os.path.join(mcp_dir, 'eclipse'))
