@@ -3,7 +3,7 @@ import os
 import commands
 import fnmatch
 import re
-import subprocess, shlex
+import subprocess, shlex, shutil
 import difflib, time
 if (__name__ == '__main__'):
     main()

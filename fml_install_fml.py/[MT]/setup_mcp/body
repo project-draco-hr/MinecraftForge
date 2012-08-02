@@ -1,0 +1,31 @@
+def setup_mcp(fml_dir, mcp_dir):
+    backup = os.path.join(fml_dir, 'commands.py.bck')
+    runtime = os.path.join(mcp_dir, 'runtime', 'commands.py')
+    patch = os.path.join(fml_dir, 'commands.patch')
+    print 'Setting up MCP'
+    if os.path.isfile(backup):
+        print '> Restoring commands.py backup'
+        if os.path.exists(runtime):
+            os.remove(runtime)
+        shutil.copy(backup, runtime)
+    else:
+        print '> Backing up commands.py'
+        shutil.copy(runtime, backup)
+    if (not os.path.isfile(patch)):
+        return
+    temp = os.path.abspath('temp.patch')
+    cmd = ('patch -i "%s" ' % temp)
+    windows = (os.name == 'nt')
+    if windows:
+        applydiff = os.path.abspath(os.path.join(mcp_dir, 'runtime', 'bin', 'applydiff.exe'))
+        cmd = ('"%s" -uf -i "%s"' % (applydiff, temp))
+    if (os.sep == '\\'):
+        cmd = cmd.replace('\\', '\\\\')
+    cmd = shlex.split(cmd)
+    if windows:
+        print ('Patching file %s' % os.path.normpath(runtime))
+    fix_patch(patch, temp)
+    process = subprocess.Popen(cmd, cwd=os.path.join(mcp_dir, 'runtime'), bufsize=(-1))
+    process.communicate()
+    if os.path.isfile(temp):
+        os.remove(temp)
