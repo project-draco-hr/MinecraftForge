@@ -18,10 +18,6 @@ def setup_fml(fml_dir, mcp_dir):
 
     def applyrg_shunt(self, side, reobf=False, applyrg_real=Commands.applyrg):
         jars = {CLIENT: self.jarclient, SERVER: self.jarserver, }
-        print ('==================================SHUNT %s============================' % side)
-        print ('Java: %s' % self.cmdjava)
-        print ('Javac: %s' % self.cmdjavac)
-        print ('Jar: %s' % jars[side])
         binDir = os.path.join(fml_dir, 'bin')
         if (not os.path.isdir(binDir)):
             os.makedirs(binDir)
