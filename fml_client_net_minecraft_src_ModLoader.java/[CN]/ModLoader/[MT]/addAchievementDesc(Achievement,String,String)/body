@@ -1,5 +1,5 @@
 {
-  String achName=achievement.func_44020_i();
+  String achName=achievement.func_75970_i();
   addLocalization(achName,name);
   addLocalization(achName + ".desc",description);
 }

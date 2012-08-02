@@ -1,3 +1,4 @@
 {
+  instance().validateAndClaimId(id);
   EntityList.func_75618_a(entityClass,entityName,id);
 }

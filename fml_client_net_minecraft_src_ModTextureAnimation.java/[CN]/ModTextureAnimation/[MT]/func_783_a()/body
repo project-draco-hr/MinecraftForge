@@ -3,7 +3,7 @@
     if (++index >= images.length) {
       index=0;
     }
-    field_1127_a=images[index];
+    field_76852_a=images[index];
     ticks=0;
   }
 }

@@ -1,0 +1,4 @@
+{
+  RenderPlayer.field_77110_j=ObjectArrays.concat(RenderPlayer.field_77110_j,armor);
+  return RenderPlayer.field_77110_j.length - 1;
+}

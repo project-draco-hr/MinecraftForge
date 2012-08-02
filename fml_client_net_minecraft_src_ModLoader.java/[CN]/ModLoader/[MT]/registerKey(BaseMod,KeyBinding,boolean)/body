@@ -1,3 +1,4 @@
 {
-  FMLClientHandler.instance().registerModLoaderKeyHandler(mod,keyHandler,allowRepeat);
+  ModLoaderModContainer mlmc=ModLoaderHelper.registerKeyHelper(mod);
+  KeyBindingRegistry.registerKeyBinding(new ModLoaderKeyBindingHandler(keyHandler,allowRepeat,mlmc));
 }

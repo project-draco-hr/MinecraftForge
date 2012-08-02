@@ -1,0 +1,6 @@
+{
+  if (!availableIndicies.get(id)) {
+    throw new RuntimeException(String.format("Unable to claim entity id %d",id));
+  }
+  availableIndicies.clear(id);
+}

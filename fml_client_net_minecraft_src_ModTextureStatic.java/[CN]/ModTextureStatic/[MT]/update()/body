@@ -6,13 +6,13 @@
     int r=pixels[idx] >> 16 & 255;
     int g=pixels[idx] >> 8 & 255;
     int b=pixels[idx] >> 0 & 255;
-    if (field_1131_c) {
+    if (field_76851_c) {
       r=g=b=(r + g + b) / 3;
     }
-    field_1127_a[i + 0]=(byte)r;
-    field_1127_a[i + 1]=(byte)g;
-    field_1127_a[i + 2]=(byte)b;
-    field_1127_a[i + 3]=(byte)a;
+    field_76852_a[i + 0]=(byte)r;
+    field_76852_a[i + 1]=(byte)g;
+    field_76852_a[i + 2]=(byte)b;
+    field_76852_a[i + 3]=(byte)a;
   }
-  oldanaglyph=field_1131_c;
+  oldanaglyph=field_76851_c;
 }
