@@ -1,6 +1,10 @@
 {
+  Class<? extends Annotation> annotation=modAnnotationTypes.get(event.getClass());
+  if (annotation == null) {
+    return;
+  }
   try {
-    for (    Object o : annotations.get(Mod.PostInit.class)) {
+    for (    Object o : annotations.get(annotation)) {
       Method m=(Method)o;
       m.invoke(modInstance,event);
     }

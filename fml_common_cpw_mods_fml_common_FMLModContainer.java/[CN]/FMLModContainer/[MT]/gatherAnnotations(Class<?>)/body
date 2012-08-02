@@ -8,19 +8,7 @@
   }
   for (  Method m : clazz.getDeclaredMethods()) {
     for (    Annotation a : m.getAnnotations()) {
-      Class<?>[] paramTypes;
-      if (a.annotationType() == Mod.PreInit.class) {
-        paramTypes=Mod.PreInit.paramTypes;
-      }
- else       if (a.annotationType() == Mod.Init.class) {
-        paramTypes=Mod.Init.paramTypes;
-      }
- else       if (a.annotationType() == Mod.PostInit.class) {
-        paramTypes=Mod.PostInit.paramTypes;
-      }
- else {
-        continue;
-      }
+      Class<?>[] paramTypes=new Class[]{modTypeAnnotations.get(a.annotationType())};
       if (Arrays.equals(m.getParameterTypes(),paramTypes)) {
         m.setAccessible(true);
         anns.put(a.annotationType(),m);
