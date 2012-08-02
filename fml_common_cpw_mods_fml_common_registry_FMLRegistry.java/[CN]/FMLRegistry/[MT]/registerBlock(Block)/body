@@ -1,4 +1,0 @@
-{
-  GameRegistry.registerBlock((BlockProxy)block);
-  instance.registerBlock(block);
-}

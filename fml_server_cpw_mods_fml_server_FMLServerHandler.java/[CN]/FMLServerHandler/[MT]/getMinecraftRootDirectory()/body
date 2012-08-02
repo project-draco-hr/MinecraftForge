@@ -1,8 +1,0 @@
-{
-  try {
-    return server.func_6009_a(".").getCanonicalFile();
-  }
- catch (  IOException ioe) {
-    return new File(".");
-  }
-}

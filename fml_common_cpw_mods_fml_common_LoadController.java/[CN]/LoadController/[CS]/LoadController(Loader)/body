@@ -20,5 +20,5 @@
     }
   }
   eventChannels=eventBus.build();
-  state=LoaderState.CONSTRUCTING;
+  state=LoaderState.NOINIT;
 }

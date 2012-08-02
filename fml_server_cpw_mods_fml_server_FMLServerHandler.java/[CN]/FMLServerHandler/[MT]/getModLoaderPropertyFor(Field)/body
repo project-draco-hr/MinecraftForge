@@ -1,7 +1,3 @@
 {
-  if (f.isAnnotationPresent(MLProp.class)) {
-    MLProp prop=f.getAnnotation(MLProp.class);
-    return new ModProperty(prop.info(),prop.min(),prop.max(),prop.name());
-  }
   return null;
 }

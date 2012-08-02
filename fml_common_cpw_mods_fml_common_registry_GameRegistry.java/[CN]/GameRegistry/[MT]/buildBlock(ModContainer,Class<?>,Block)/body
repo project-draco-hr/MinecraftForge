@@ -1,5 +1,5 @@
 {
-  Object o=type.getConstructor(int.class).newInstance(250);
-  registerBlock((BlockProxy)o);
+  Object o=type.getConstructor(int.class).newInstance(findSpareBlockId());
+  registerBlock((net.minecraft.src.Block)o);
   return o;
 }

@@ -1,0 +1,4 @@
+{
+  URLClassLoader ucl=(URLClassLoader)getClass().getClassLoader();
+  classLoader=new RelaunchClassLoader(ucl.getURLs());
+}

@@ -1,0 +1,18 @@
+{
+  FMLVersionData.build(minecraftHome,classLoader);
+  FMLLog.info("Forge Mod Loader version %s.%s.%s.%s for Minecraft client:%s, server:%s loading",FMLVersionData.major,FMLVersionData.minor,FMLVersionData.rev,FMLVersionData.build,FMLVersionData.mccversion,FMLVersionData.mcsversion);
+  try {
+    RelaunchLibraryManager.handleLaunch(minecraftHome,classLoader);
+  }
+ catch (  Throwable t) {
+    if (popupWindow != null) {
+      try {
+        String logFile=new File(minecraftHome,"ForgeModLoader-0.log").getCanonicalPath();
+        JOptionPane.showMessageDialog(popupWindow,String.format("<html><div align=\"center\"><font size=\"+1\">There was a fatal error starting up minecraft and FML</font></div><br/>" + "Minecraft cannot launch in it's current configuration<br/>" + "Please consult the file <i><a href=\"file:///%s\">%s</a></i> for further information</html>",logFile,logFile),"Fatal FML error",JOptionPane.ERROR_MESSAGE);
+      }
+ catch (      Exception ex) {
+      }
+    }
+    throw new RuntimeException(t);
+  }
+}

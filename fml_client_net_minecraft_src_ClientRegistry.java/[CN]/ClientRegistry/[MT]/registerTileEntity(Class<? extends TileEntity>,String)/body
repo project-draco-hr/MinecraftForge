@@ -1,3 +1,0 @@
-{
-  TileEntity.addNewTileEntityMapping(tileEntityClass,id);
-}

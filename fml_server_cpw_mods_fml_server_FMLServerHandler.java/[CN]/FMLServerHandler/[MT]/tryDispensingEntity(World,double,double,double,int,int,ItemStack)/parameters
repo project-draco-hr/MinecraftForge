@@ -1,7 +1,0 @@
-World world
-double x
-double y
-double z
-int xVelocity
-int zVelocity
-ItemStack item
