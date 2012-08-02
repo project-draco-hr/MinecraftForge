@@ -1,0 +1,3 @@
+KeyBinding keyBinding
+boolean allowRepeat
+ModLoaderModContainer modContainer

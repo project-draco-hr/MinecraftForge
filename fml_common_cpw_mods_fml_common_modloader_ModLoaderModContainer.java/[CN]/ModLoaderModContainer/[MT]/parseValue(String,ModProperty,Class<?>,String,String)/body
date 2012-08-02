@@ -29,7 +29,7 @@
       throw new IllegalArgumentException(String.format("MLProp declared on %s of type %s, an unsupported type",propertyName,type.getName()));
     }
     if (n.doubleValue() < property.min() || n.doubleValue() > property.max()) {
-      Loader.log.warning(String.format("Configuration for %s.%s found value %s outside acceptable range %s,%s",modConfigName,propertyName,n,property.min(),property.max()));
+      FMLLog.warning("Configuration for %s.%s found value %s outside acceptable range %s,%s",modConfigName,propertyName,n,property.min(),property.max());
       return null;
     }
  else {

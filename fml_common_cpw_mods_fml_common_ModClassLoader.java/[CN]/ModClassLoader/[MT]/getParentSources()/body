@@ -1,19 +1,14 @@
 {
-  ClassLoader cl=getParent();
-  if (cl instanceof URLClassLoader) {
-    URLClassLoader ucl=(URLClassLoader)cl;
-    URL[] pUrl=ucl.getURLs();
-    File[] sources=new File[pUrl.length];
-    try {
-      for (int i=0; i < pUrl.length; i++) {
-        sources[i]=new File(pUrl[i].toURI());
-      }
-      return sources;
+  List<URL> urls=mainClassLoader.getSources();
+  File[] sources=new File[urls.size()];
+  try {
+    for (int i=0; i < urls.size(); i++) {
+      sources[i]=new File(urls.get(i).toURI());
     }
- catch (    URISyntaxException e) {
-      Loader.log.throwing("ModClassLoader","getParentSources",e);
-    }
+    return sources;
   }
-  Loader.log.severe("Unable to process our input to locate the minecraft code");
-  throw new LoaderException();
+ catch (  URISyntaxException e) {
+    FMLLog.log(Level.SEVERE,"Unable to process our input to locate the minecraft code",e);
+    throw new LoaderException(e);
+  }
 }

@@ -1,3 +1,3 @@
 {
-  field_1127_a=new byte[tileSizeSquare << 2];
+  field_76852_a=new byte[tileSizeSquare << 2];
 }

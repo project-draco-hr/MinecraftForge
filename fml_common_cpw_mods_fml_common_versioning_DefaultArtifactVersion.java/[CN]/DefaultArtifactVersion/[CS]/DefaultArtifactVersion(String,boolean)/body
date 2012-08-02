@@ -1,0 +1,4 @@
+{
+  this.label=string;
+  this.unbounded=true;
+}

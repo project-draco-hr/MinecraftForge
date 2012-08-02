@@ -1,0 +1,14 @@
+{
+  try {
+    ModClassLoader modClassLoader=event.getModClassLoader();
+    modClassLoader.addFile(source);
+    Class<?> clazz=Class.forName(className,true,modClassLoader);
+    annotations=gatherAnnotations(clazz);
+    modInstance=clazz.newInstance();
+    processFieldAnnotations();
+  }
+ catch (  Throwable e) {
+    controller.errorOccurred(this,e);
+    Throwables.propagateIfPossible(e);
+  }
+}

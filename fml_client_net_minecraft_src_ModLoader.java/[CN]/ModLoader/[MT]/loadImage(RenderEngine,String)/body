@@ -1,3 +1,3 @@
 {
-  return FMLClientHandler.instance().loadImageFromTexturePack(renderEngine,path);
+  return TextureFXManager.instance().loadImageFromTexturePack(renderEngine,path);
 }

@@ -1,0 +1,3 @@
+{
+  return modContainer.getModId() + " KB " + keyBinding.field_74512_d;
+}

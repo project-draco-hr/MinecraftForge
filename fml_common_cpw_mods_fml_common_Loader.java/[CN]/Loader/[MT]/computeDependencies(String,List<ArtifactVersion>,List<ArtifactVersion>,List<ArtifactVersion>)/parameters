@@ -1,0 +1,4 @@
+String dependencyString
+List<ArtifactVersion> requirements
+List<ArtifactVersion> dependencies
+List<ArtifactVersion> dependants

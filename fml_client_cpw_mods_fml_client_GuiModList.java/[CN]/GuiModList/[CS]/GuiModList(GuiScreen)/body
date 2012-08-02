@@ -2,7 +2,7 @@
   this.mainMenu=mainMenu;
   this.mods=new ArrayList<ModContainer>();
   FMLClientHandler.instance().addSpecialModEntries(mods);
-  for (  ModContainer mod : Loader.getModList()) {
+  for (  ModContainer mod : Loader.instance().getModList()) {
     if (mod.getMetadata() != null && mod.getMetadata().parentMod != null) {
       continue;
     }

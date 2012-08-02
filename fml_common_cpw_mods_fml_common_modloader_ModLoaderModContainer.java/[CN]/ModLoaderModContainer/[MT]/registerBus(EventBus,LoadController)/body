@@ -1,0 +1,12 @@
+{
+  if (this.enabled) {
+    FMLLog.fine("Enabling mod %s",getModId());
+    this.bus=bus;
+    this.controller=controller;
+    bus.register(this);
+    return true;
+  }
+ else {
+    return false;
+  }
+}

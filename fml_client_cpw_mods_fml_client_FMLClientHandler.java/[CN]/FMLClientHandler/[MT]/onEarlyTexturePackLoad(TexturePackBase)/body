@@ -1,8 +1,0 @@
-{
-  if (client == null) {
-    this.fallbackTexturePack=fallback;
-  }
- else {
-    loadTextures(fallback);
-  }
-}

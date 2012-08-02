@@ -1,0 +1,4 @@
+{
+  this.keyBinding=keyBinding;
+  this.repeating=repeating;
+}

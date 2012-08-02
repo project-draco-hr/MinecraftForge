@@ -1,3 +1,0 @@
-{
-  FMLCommonHandler.instance().tickStart(EnumSet.of(TickType.WORLDLOAD));
-}

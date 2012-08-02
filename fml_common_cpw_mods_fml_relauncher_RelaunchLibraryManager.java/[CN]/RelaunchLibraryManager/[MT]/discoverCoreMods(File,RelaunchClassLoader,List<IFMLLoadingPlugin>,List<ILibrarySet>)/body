@@ -1,0 +1,59 @@
+{
+  File coreMods=setupCoreModDir(mcDir);
+  FilenameFilter ff=new FilenameFilter(){
+    @Override public boolean accept(    File dir,    String name){
+      return name.endsWith(".jar");
+    }
+  }
+;
+  File[] coreModList=coreMods.listFiles(ff);
+  Arrays.sort(coreModList);
+  for (  File coreMod : coreModList) {
+    FMLLog.fine("Found a candidate coremod %s",coreMod.getName());
+    JarFile jar;
+    Attributes mfAttributes;
+    try {
+      jar=new JarFile(coreMod);
+      mfAttributes=jar.getManifest().getMainAttributes();
+    }
+ catch (    IOException ioe) {
+      FMLLog.log(Level.SEVERE,ioe,"Unable to read the coremod jar file %s - ignoring",coreMod.getName());
+      continue;
+    }
+    String fmlCorePlugin=mfAttributes.getValue("FMLCorePlugin");
+    if (fmlCorePlugin == null) {
+      FMLLog.severe("The coremod %s does not contain a valid jar manifest- it will be ignored",coreMod.getName());
+      continue;
+    }
+    try {
+      classLoader.addURL(coreMod.toURI().toURL());
+    }
+ catch (    MalformedURLException e) {
+      FMLLog.log(Level.SEVERE,e,"Unable to convert file into a URL. weird");
+      continue;
+    }
+    try {
+      Class<?> coreModClass=Class.forName(fmlCorePlugin,true,classLoader);
+      IFMLLoadingPlugin plugin=(IFMLLoadingPlugin)coreModClass.newInstance();
+      loadPlugins.add(plugin);
+      if (plugin.getLibraryRequestClass() != null) {
+        for (        String libName : plugin.getLibraryRequestClass()) {
+          libraries.add((ILibrarySet)Class.forName(libName,true,classLoader).newInstance());
+        }
+      }
+      FMLLog.fine("Loaded coremod %s",coreMod.getName());
+    }
+ catch (    ClassNotFoundException cnfe) {
+      FMLLog.log(Level.SEVERE,cnfe,"Coremod %s: Unable to class load the plugin %s",coreMod.getName(),fmlCorePlugin);
+    }
+catch (    ClassCastException cce) {
+      FMLLog.log(Level.SEVERE,cce,"Coremod %s: The plugin %s is not an implementor of IFMLLoadingPlugin",coreMod.getName(),fmlCorePlugin);
+    }
+catch (    InstantiationException ie) {
+      FMLLog.log(Level.SEVERE,ie,"Coremod %s: The plugin class %s was not instantiable",coreMod.getName(),fmlCorePlugin);
+    }
+catch (    IllegalAccessException iae) {
+      FMLLog.log(Level.SEVERE,iae,"Coremod %s: The plugin class %s was not accessible",coreMod.getName(),fmlCorePlugin);
+    }
+  }
+}

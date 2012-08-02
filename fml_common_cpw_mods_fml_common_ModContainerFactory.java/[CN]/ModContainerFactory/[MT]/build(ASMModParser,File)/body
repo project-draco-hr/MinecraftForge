@@ -1,0 +1,14 @@
+{
+  String className=modParser.getASMType().getClassName();
+  if (modParser.isBaseMod() && modClass.matcher(className).find()) {
+    FMLLog.fine("Identified a BaseMod type mod %s",className);
+    return new ModLoaderModContainer(className,modSource,modParser.getBaseModProperties());
+  }
+  for (  ModAnnotation ann : modParser.getAnnotations()) {
+    if (ann.getASMType().equals(Type.getType(Mod.class))) {
+      FMLLog.fine("Identified a FMLMod type mod %s",className);
+      return new FMLModContainer(className,modSource,ann.getValues());
+    }
+  }
+  return null;
+}

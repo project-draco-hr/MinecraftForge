@@ -1,9 +1,0 @@
-{
-  if (client.field_6324_e != null) {
-    FMLCommonHandler.instance().tickEnd(EnumSet.of(TickType.WORLD),client.field_6324_e,client.field_6313_p,client.field_6324_e);
-    FMLCommonHandler.instance().tickEnd(EnumSet.of(TickType.GAME,TickType.WORLDGUI),0.0f,client.field_6313_p,client.field_6324_e);
-  }
-  for (  IKeyHandler entry : keyHandlers) {
-    entry.onEndTick();
-  }
-}

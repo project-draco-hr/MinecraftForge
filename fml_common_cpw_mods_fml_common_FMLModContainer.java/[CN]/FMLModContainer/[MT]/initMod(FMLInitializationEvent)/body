@@ -1,0 +1,12 @@
+{
+  try {
+    for (    Object o : annotations.get(Mod.Init.class)) {
+      Method m=(Method)o;
+      m.invoke(modInstance,event);
+    }
+  }
+ catch (  Throwable t) {
+    controller.errorOccurred(this,t);
+    Throwables.propagateIfPossible(t);
+  }
+}

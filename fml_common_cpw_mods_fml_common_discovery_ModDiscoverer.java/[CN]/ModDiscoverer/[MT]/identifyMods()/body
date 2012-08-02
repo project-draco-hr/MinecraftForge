@@ -1,0 +1,16 @@
+{
+  List<ModContainer> modList=Lists.newArrayList();
+  for (  ModCandidate candidate : candidates) {
+    try {
+      List<ModContainer> mods=candidate.explore();
+      modList.addAll(mods);
+    }
+ catch (    LoaderException le) {
+      FMLLog.log(Level.WARNING,le,"Identified a problem with the mod candidate %s, ignoring this source",candidate.getModContainer());
+    }
+catch (    Throwable t) {
+      Throwables.propagate(t);
+    }
+  }
+  return modList;
+}

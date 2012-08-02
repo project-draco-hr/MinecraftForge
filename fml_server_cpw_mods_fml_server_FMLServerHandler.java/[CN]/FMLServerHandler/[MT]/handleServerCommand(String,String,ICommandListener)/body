@@ -1,8 +1,0 @@
-{
-  for (  ModContainer mod : Loader.getModList()) {
-    if (mod.wantsConsoleCommands() && mod.getConsoleHandler().handleCommand(command,player,listener)) {
-      return true;
-    }
-  }
-  return false;
-}

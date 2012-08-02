@@ -1,26 +1,43 @@
 {
-  log.fine("Verifying mod dependencies are satisfied");
-  for (  ModContainer mod : mods) {
-    if (!namedMods.keySet().containsAll(mod.getDependencies())) {
-      log.severe(String.format("The mod %s requires mods %s to be available, one or more are not",mod.getName(),mod.getDependencies()));
-      LoaderException le=new LoaderException();
-      log.throwing("Loader","sortModList",le);
-      throw new LoaderException();
-    }
-  }
-  log.fine("All dependencies are satisfied");
-  ModSorter sorter=new ModSorter(mods,namedMods);
+  FMLLog.fine("Verifying mod requirements are satisfied");
   try {
-    log.fine("Sorting mods into an ordered list");
-    mods=sorter.sort();
-    log.fine("Sorted mod list:");
+    Map<String,ArtifactVersion> modVersions=Maps.newHashMap();
     for (    ModContainer mod : mods) {
-      log.fine(String.format("\t%s: %s (%s)",mod.getName(),mod.getSource().getName(),mod.getSortingRules()));
+      modVersions.put(mod.getModId(),mod.getProcessedVersion());
+    }
+    for (    ModContainer mod : mods) {
+      ImmutableList<ArtifactVersion> allDeps=ImmutableList.<ArtifactVersion>builder().addAll(mod.getDependants()).addAll(mod.getDependencies()).build();
+      for (      ArtifactVersion v : allDeps) {
+        if (modVersions.containsKey(v.getLabel())) {
+          if (!v.containsVersion(modVersions.get(v.getLabel()))) {
+            FMLLog.log(Level.SEVERE,"The mod %s (%s) requires mods %s to be available, one or more are not",mod.getModId(),mod.getName(),allDeps);
+            throw new LoaderException();
+          }
+        }
+      }
+    }
+    FMLLog.fine("All mod requirements are satisfied");
+    ModSorter sorter=new ModSorter(mods,namedMods);
+    try {
+      FMLLog.fine("Sorting mods into an ordered list");
+      mods=sorter.sort();
+      FMLLog.fine("Mod sorting completed successfully");
+    }
+ catch (    ModSortingException sortException) {
+      FMLLog.severe("A dependency cycle was detected in the input mod set so an ordering cannot be determined");
+      FMLLog.severe("The visited mod list is %s",sortException.getExceptionData().getVisitedNodes());
+      FMLLog.severe("The first mod in the cycle is %s",sortException.getExceptionData().getFirstBadNode());
+      FMLLog.log(Level.SEVERE,sortException,"The full error");
+      throw new LoaderException(sortException);
     }
   }
- catch (  IllegalArgumentException iae) {
-    log.severe("A dependency cycle was detected in the input mod set so they cannot be loaded in order");
-    log.throwing("Loader","sortModList",iae);
-    throw new LoaderException(iae);
+  finally {
+    FMLLog.fine("Mod sorting data:");
+    for (    ModContainer mod : mods) {
+      FMLLog.fine("\t%s(%s): %s (%s)",mod.getModId(),mod.getName(),mod.getSource().getName(),mod.getSortingRules());
+    }
+    if (mods.size() == 0) {
+      FMLLog.fine("No mods found to sort");
+    }
   }
 }

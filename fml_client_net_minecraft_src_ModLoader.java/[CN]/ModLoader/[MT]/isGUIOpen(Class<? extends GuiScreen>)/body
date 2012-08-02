@@ -1,3 +1,3 @@
 {
-  return FMLClientHandler.instance().getClient().field_6313_p != null && FMLClientHandler.instance().getClient().field_6313_p.equals(gui);
+  return FMLClientHandler.instance().getClient().field_71462_r != null && FMLClientHandler.instance().getClient().field_71462_r.equals(gui);
 }

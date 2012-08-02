@@ -1,0 +1,8 @@
+{
+  try {
+    findField(classToAccess,fieldNames).set(instance,value);
+  }
+ catch (  Exception e) {
+    throw new UnableToAccessFieldException(fieldNames,e);
+  }
+}

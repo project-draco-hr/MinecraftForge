@@ -1,0 +1,11 @@
+{
+  if (applet.getClass().getClassLoader() == classLoader) {
+    try {
+      ReflectionHelper.findMethod(appletClass,newApplet,new String[]{"fmlStartReentry"}).invoke(newApplet);
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+  return;
+}

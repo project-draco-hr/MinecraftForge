@@ -1,0 +1,9 @@
+{
+  try {
+    mod.modsLoaded();
+  }
+ catch (  Throwable t) {
+    controller.errorOccurred(this,t);
+    Throwables.propagateIfPossible(t);
+  }
+}

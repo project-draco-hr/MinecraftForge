@@ -1,0 +1,4 @@
+{
+  discoverer.startClassAnnotation(annotationName);
+  return new ModAnnotationVisitor(discoverer);
+}

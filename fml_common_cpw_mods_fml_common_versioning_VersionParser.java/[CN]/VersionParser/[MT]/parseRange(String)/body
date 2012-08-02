@@ -1,0 +1,9 @@
+{
+  try {
+    return VersionRange.createFromVersionSpec(range);
+  }
+ catch (  InvalidVersionSpecificationException e) {
+    FMLLog.log(Level.SEVERE,e,"Unable to parse a version range specification successfully %s",range);
+    throw new LoaderException(e);
+  }
+}

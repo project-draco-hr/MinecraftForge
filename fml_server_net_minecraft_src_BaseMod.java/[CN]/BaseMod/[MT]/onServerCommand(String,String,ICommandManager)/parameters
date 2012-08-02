@@ -1,0 +1,3 @@
+String command
+String sender
+ICommandManager listener

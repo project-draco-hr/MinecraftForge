@@ -1,10 +1,9 @@
 {
-  StringBuffer ret=new StringBuffer();
-  for (  String brand : FMLCommonHandler.instance().getBrandingStrings(String.format("Forge Mod Loader version %s.%s.%s.%s for Minecraft %s",major,minor,rev,build,mccversion))) {
-    ret.append(brand).append("\n");
-  }
-  for (  ModContainer mod : mods) {
-    ret.append(String.format("\t%s : %s (%s)\n",mod.getName(),mod.getModState(),mod.getSource().getName()));
+  StringBuilder ret=new StringBuilder();
+  List<String> branding=FMLCommonHandler.instance().getBrandings();
+  Joiner.on(' ').skipNulls().appendTo(ret,branding.subList(1,branding.size()));
+  if (modController != null) {
+    modController.printModStates(ret);
   }
   return ret.toString();
 }

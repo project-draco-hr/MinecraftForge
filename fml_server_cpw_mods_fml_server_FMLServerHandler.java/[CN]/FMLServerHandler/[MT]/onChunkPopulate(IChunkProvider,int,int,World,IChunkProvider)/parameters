@@ -1,5 +1,0 @@
-IChunkProvider chunkProvider
-int chunkX
-int chunkZ
-World world
-IChunkProvider generator

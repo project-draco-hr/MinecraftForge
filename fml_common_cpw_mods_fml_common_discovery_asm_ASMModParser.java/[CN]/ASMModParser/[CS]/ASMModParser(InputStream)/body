@@ -1,0 +1,4 @@
+{
+  ClassReader reader=new ClassReader(stream);
+  reader.accept(new ModClassVisitor(this),0);
+}

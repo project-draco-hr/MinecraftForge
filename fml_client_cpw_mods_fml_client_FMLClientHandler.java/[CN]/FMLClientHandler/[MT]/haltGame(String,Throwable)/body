@@ -1,3 +1,4 @@
 {
-  client.func_28003_b(new UnexpectedThrowable(message,t));
+  client.func_71377_b(new CrashReport(message,t));
+  throw Throwables.propagate(t);
 }

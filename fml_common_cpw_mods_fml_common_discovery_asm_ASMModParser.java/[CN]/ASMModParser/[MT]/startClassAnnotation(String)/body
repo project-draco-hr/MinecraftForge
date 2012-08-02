@@ -1,0 +1,4 @@
+{
+  ModAnnotation ann=new ModAnnotation(AnnotationType.CLASS,Type.getType(annotationName),this.asmType.getClassName());
+  annotations.addFirst(ann);
+}

@@ -1,0 +1,19 @@
+{
+  if (brandings == null) {
+    Builder brd=ImmutableList.<String>builder();
+    brd.add(Loader.instance().getMCVersionString());
+    brd.add(Loader.instance().getFMLVersionString());
+    brd.addAll(sidedDelegate.getAdditionalBrandingInformation());
+    try {
+      Properties props=new Properties();
+      props.load(getClass().getClassLoader().getResourceAsStream("fmlbranding.properties"));
+      brd.add(props.getProperty("fmlbranding"));
+    }
+ catch (    Exception ex) {
+    }
+    int tModCount=Loader.instance().getModList().size();
+    int aModCount=Loader.instance().getActiveModList().size();
+    brd.add(String.format("%d mod%s loaded, %d mod%s active",tModCount,tModCount != 1 ? "s" : "",aModCount,aModCount != 1 ? "s" : ""));
+    brandings=brd.build();
+  }
+}

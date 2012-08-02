@@ -1,0 +1,5 @@
+String path
+File modDir
+List<ModContainer> harvestedMods
+ModCandidate candidate
+MetadataCollection mc

@@ -1,9 +1,16 @@
 {
-  state=State.NOINIT;
-  mods=new ArrayList<ModContainer>();
-  namedMods=new HashMap<String,ModContainer>();
-  load();
-  preModInit();
+  initializeLoader();
+  mods=Lists.newArrayList();
+  namedMods=Maps.newHashMap();
+  modController=new LoadController(this);
+  modController.transition(LoaderState.LOADING);
+  identifyMods();
+  disableRequestedMods();
   sortModList();
-  mods=Collections.unmodifiableList(mods);
+  mods=ImmutableList.copyOf(mods);
+  modController.transition(LoaderState.CONSTRUCTING);
+  modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader);
+  modController.transition(LoaderState.PREINITIALIZATION);
+  modController.distributeStateMessage(LoaderState.PREINITIALIZATION);
+  modController.transition(LoaderState.INITIALIZATION);
 }

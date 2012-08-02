@@ -1,0 +1,34 @@
+{
+  String disabledModList=System.getProperty("fml.disabledMods","");
+  FMLLog.fine("Received a system property request \'%s\'",disabledModList);
+  Map<String,String> sysPropertyStateList=Splitter.on(CharMatcher.anyOf(";:")).omitEmptyStrings().trimResults().withKeyValueSeparator("=").split(disabledModList);
+  FMLLog.fine("System property request managing the state of %d mods",sysPropertyStateList.size());
+  Map<String,String> modStates=Maps.newHashMap();
+  File disabledModFile=new File(canonicalConfigDir,"fmlModState.properties");
+  Properties disabledModListProperties=new Properties();
+  if (disabledModFile.exists() && disabledModFile.isFile()) {
+    FMLLog.fine("Found a mod state file %s",disabledModFile.getName());
+    try {
+      disabledModListProperties.load(new FileReader(disabledModFile));
+      FMLLog.fine("Loaded states for %d mods from file",disabledModListProperties.size());
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.INFO,e,"An error occurred reading the fmlModState.properties file");
+    }
+  }
+  modStates.putAll(Maps.fromProperties(disabledModListProperties));
+  modStates.putAll(sysPropertyStateList);
+  FMLLog.fine("After merging, found state information for %d mods",modStates.size());
+  Map<String,Boolean> isEnabled=Maps.transformValues(modStates,new Function<String,Boolean>(){
+    public Boolean apply(    String input){
+      return !Boolean.parseBoolean(input);
+    }
+  }
+);
+  for (  Map.Entry<String,Boolean> entry : isEnabled.entrySet()) {
+    if (namedMods.containsKey(entry.getKey())) {
+      FMLLog.info("Setting mod %s to enabled state %b",entry.getKey(),entry.getValue());
+      namedMods.get(entry.getKey()).setEnabledState(entry.getValue());
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  List<Restriction> restrictions=Collections.emptyList();
+  if (existing == null) {
+    existing=new DefaultArtifactVersion(version);
+  }
+  return new VersionRange(existing,restrictions);
+}

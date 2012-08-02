@@ -1,6 +1,0 @@
-double x
-double y
-double z
-byte xVelocity
-byte zVelocity
-Object data

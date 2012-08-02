@@ -1,0 +1,2 @@
+net.minecraft.src.Block block
+Class<? extends ItemBlock> itemclass

@@ -1,0 +1,17 @@
+{
+  Map<JsonStringNode,Object> processedFields=Maps.transformValues(node.getFields(),new JsonStringConverter());
+  modId=(String)processedFields.get(aStringBuilder("modid"));
+  name=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("name")));
+  description=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("description")));
+  url=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("url")));
+  updateUrl=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("updateUrl")));
+  logoFile=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("logoFile")));
+  version=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("version")));
+  credits=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("credits")));
+  parent=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("parent")));
+  authorList=Optional.fromNullable((List<String>)processedFields.get(aStringBuilder("authorList"))).or(authorList);
+  requiredMods=processReferences((List<String>)processedFields.get(aStringBuilder("requiredMods")));
+  dependencies=processReferences((List<String>)processedFields.get(aStringBuilder("dependencies")));
+  dependants=processReferences((List<String>)processedFields.get(aStringBuilder("dependants")));
+  useDependencyInformation=Boolean.parseBoolean(Strings.nullToEmpty((String)processedFields.get(aStringBuilder("useDependencyInformation"))));
+}

@@ -4,7 +4,7 @@
       return;
     }
     System.out.printf("%s: %s\n%s\n%s\n",node,sortedResult,visitedNodes,expandedNodes);
-    throw new IllegalArgumentException("There was a cycle detected in the input graph, sorting is not possible");
+    throw new ModSortingException("There was a cycle detected in the input graph, sorting is not possible",node,visitedNodes);
   }
   visitedNodes.add(node);
   for (  T inbound : graph.edgesFrom(node)) {

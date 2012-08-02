@@ -1,0 +1,14 @@
+{
+  for (  Map.Entry<String,EventBus> entry : eventChannels.entrySet()) {
+    activeContainer=entry.getKey();
+    stateEvent.applyModContainer(activeContainer());
+    entry.getValue().post(stateEvent);
+    activeContainer=null;
+    if (!errors.containsKey(entry.getKey())) {
+      modStates.put(entry.getKey(),stateEvent.getModState());
+    }
+ else {
+      modStates.put(entry.getKey(),ModState.ERRORED);
+    }
+  }
+}

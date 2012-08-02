@@ -1,0 +1,3 @@
+def pre_decompile(mcp_dir, fml_dir):
+    file_backup(os.path.join(mcp_dir, 'jars', 'bin'), 'minecraft.jar')
+    file_backup(os.path.join(mcp_dir, 'jars'), 'minecraft_server.jar')

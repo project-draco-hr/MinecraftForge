@@ -1,0 +1,3 @@
+{
+  return new String[]{"cpw.mods.fml.relauncher.CoreFMLLibraries"};
+}

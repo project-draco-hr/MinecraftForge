@@ -1,0 +1,3 @@
+{
+  ((net.minecraft.src.BaseMod)modContainer.getMod()).keyboardEvent(keyBinding);
+}

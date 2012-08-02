@@ -1,0 +1,6 @@
+{
+  for (  IClassTransformer transformer : transformers) {
+    basicClass=transformer.transform(name,basicClass);
+  }
+  return basicClass;
+}

@@ -1,3 +1,7 @@
 {
-  return RenderPlayer.addNewArmourPrefix(armor);
+  String[] prefixes=ObfuscationReflectionHelper.getPrivateValue(RenderPlayer.class,null,"field_77110_j","j","armorFilenamePrefix");
+  String[] newPrefixes=Arrays.copyOf(prefixes,prefixes.length + 1);
+  newPrefixes[prefixes.length]=armor;
+  ObfuscationReflectionHelper.setPrivateValue(RenderPlayer.class,null,newPrefixes,"field_77110_j","j","armorFilenamePrefix");
+  return prefixes.length;
 }

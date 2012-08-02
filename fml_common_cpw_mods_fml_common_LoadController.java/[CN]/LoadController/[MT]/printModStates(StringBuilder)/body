@@ -1,0 +1,7 @@
+{
+  for (  String modId : modStates.keySet()) {
+    ModContainer mod=modList.get(modId);
+    ret.append("\n\t").append(mod.getName()).append(" (").append(mod.getSource().getName()).append(") ");
+    Joiner.on("->").appendTo(ret,modStates.get(modId));
+  }
+}

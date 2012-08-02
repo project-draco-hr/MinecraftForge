@@ -1,8 +1,0 @@
-{
-  try {
-    modClassLoader.addFile(file);
-  }
- catch (  MalformedURLException e) {
-    throw new LoaderException(e);
-  }
-}

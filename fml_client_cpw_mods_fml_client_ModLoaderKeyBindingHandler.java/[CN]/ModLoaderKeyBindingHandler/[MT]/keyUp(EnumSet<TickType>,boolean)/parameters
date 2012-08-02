@@ -1,0 +1,2 @@
+EnumSet<TickType> type
+boolean end

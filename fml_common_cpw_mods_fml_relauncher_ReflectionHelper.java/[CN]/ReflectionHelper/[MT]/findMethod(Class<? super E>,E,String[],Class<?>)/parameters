@@ -1,0 +1,4 @@
+Class<? super E> clazz
+E instance
+String[] methodNames
+Class<?> methodTypes

@@ -1,16 +1,4 @@
 {
-  ClassLoader cl=getParent();
-  if (cl instanceof URLClassLoader) {
-    URLClassLoader ucl=(URLClassLoader)cl;
-    URL url=modFile.toURI().toURL();
-    try {
-      Method addUrl=URLClassLoader.class.getDeclaredMethod("addURL",URL.class);
-      addUrl.setAccessible(true);
-      addUrl.invoke(ucl,url);
-    }
- catch (    Exception e) {
-      Loader.log.severe("A fatal error occured attempting to load a file into the classloader");
-      throw new LoaderException(e);
-    }
-  }
+  URL url=modFile.toURI().toURL();
+  mainClassLoader.addURL(url);
 }

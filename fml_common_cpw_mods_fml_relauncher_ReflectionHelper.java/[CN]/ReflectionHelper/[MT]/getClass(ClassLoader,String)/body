@@ -1,0 +1,12 @@
+{
+  Exception err=null;
+  for (  String className : classNames) {
+    try {
+      return (Class<? super Object>)Class.forName(className,false,loader);
+    }
+ catch (    Exception e) {
+      err=e;
+    }
+  }
+  throw new UnableToFindClassException(classNames,err);
+}

@@ -1,3 +1,0 @@
-{
-  instance.registerEntityID(entityClass,entityName,id,backgroundEggColour,foregroundEggColour);
-}

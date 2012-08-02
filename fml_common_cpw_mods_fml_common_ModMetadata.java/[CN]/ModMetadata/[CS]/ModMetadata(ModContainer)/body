@@ -1,4 +1,0 @@
-{
-  this.mod=mod;
-  this.type=(mod instanceof FMLModContainer ? ModType.FML : ModType.MODLOADER);
-}

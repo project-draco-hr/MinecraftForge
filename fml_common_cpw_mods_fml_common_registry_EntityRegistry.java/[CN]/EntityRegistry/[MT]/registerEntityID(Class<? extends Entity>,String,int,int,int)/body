@@ -1,0 +1,3 @@
+{
+  EntityList.func_75614_a(entityClass,entityName,id,backgroundEggColour,foregroundEggColour);
+}

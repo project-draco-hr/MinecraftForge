@@ -1,0 +1,4 @@
+{
+  TileEntityRenderer.field_76963_a.field_76966_m.put(tileEntityClass,specialRenderer);
+  specialRenderer.func_76893_a(TileEntityRenderer.field_76963_a);
+}

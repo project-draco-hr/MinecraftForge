@@ -1,0 +1,5 @@
+{
+  if (Opcodes.ARETURN == opcode && labels.size() == 1 && foundProperties != null) {
+    validProperties=true;
+  }
+}

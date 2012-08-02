@@ -1,6 +1,6 @@
 {
   sidedDelegate=handler;
-  getFMLLogger().info("Attempting early MinecraftForge initialization");
+  FMLLog.info("Attempting early MinecraftForge initialization");
   callForgeMethod("initialize");
-  getFMLLogger().info("Completed early MinecraftForge initialization");
+  FMLLog.info("Completed early MinecraftForge initialization");
 }

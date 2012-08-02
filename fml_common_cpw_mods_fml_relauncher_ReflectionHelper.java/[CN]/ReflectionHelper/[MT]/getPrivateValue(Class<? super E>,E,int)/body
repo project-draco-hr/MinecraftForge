@@ -1,0 +1,10 @@
+{
+  try {
+    Field f=classToAccess.getDeclaredFields()[fieldIndex];
+    f.setAccessible(true);
+    return (T)f.get(instance);
+  }
+ catch (  Exception e) {
+    throw new UnableToAccessFieldException(new String[0],e);
+  }
+}

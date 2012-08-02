@@ -1,0 +1,15 @@
+{
+  modMetadata=mc.getMetadataForId(getModId(),descriptor);
+  if (descriptor.containsKey("usesMetadata")) {
+    overridesMetadata=!((Boolean)descriptor.get("usesMetadata")).booleanValue();
+  }
+  if (overridesMetadata || !modMetadata.useDependencyInformation) {
+    List<ArtifactVersion> requirements=Lists.newArrayList();
+    List<ArtifactVersion> dependencies=Lists.newArrayList();
+    List<ArtifactVersion> dependants=Lists.newArrayList();
+    Loader.instance().computeDependencies((String)descriptor.get("dependencies"),requirements,dependencies,dependants);
+    modMetadata.requiredMods=requirements;
+    modMetadata.dependencies=dependencies;
+    modMetadata.dependants=dependants;
+  }
+}

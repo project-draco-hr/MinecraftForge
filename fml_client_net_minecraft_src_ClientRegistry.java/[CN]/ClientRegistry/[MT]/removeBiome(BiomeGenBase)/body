@@ -1,3 +1,0 @@
-{
-  FMLClientHandler.instance().removeBiomeFromDefaultWorldGenerator(biome);
-}

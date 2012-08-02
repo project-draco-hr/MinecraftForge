@@ -1,0 +1,3 @@
+{
+  setPrivateValue(classToAccess,instance,value,fieldName);
+}

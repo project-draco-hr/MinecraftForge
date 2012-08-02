@@ -1,3 +1,3 @@
 {
-  return ReflectionHelper.getPrivateValue(instanceclass,instance,fieldindex);
+  return ObfuscationReflectionHelper.getPrivateValue(instanceclass,instance,fieldindex);
 }
