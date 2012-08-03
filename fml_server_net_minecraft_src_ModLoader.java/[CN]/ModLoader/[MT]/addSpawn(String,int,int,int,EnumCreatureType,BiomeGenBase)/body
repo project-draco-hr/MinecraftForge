@@ -1,3 +1,3 @@
 {
-  FMLRegistry.addSpawn(entityName,weightedProb,min,max,spawnList,biomes);
+  EntityRegistry.addSpawn(entityName,weightedProb,min,max,spawnList,biomes);
 }

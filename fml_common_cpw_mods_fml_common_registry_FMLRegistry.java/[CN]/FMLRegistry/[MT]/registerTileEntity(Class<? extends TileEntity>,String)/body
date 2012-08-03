@@ -1,3 +1,0 @@
-{
-  instance.registerTileEntity(tileEntityClass,id);
-}

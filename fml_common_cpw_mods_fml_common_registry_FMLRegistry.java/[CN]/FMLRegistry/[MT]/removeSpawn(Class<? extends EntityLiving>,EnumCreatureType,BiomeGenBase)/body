@@ -1,3 +1,0 @@
-{
-  instance.removeSpawn(entityClass,typeOfCreature,biomes);
-}

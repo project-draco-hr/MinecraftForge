@@ -1,3 +1,0 @@
-{
-  instance.addSpawn(entityClass,weightedProb,min,max,typeOfCreature,biomes);
-}

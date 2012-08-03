@@ -1,3 +1,0 @@
-{
-  instance.addSpawn(entityName,weightedProb,min,max,spawnList,biomes);
-}

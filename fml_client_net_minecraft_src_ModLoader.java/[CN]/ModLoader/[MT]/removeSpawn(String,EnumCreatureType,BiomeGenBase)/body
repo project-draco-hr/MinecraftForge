@@ -1,3 +1,3 @@
 {
-  FMLRegistry.removeSpawn(entityName,spawnList,biomes);
+  EntityRegistry.removeSpawn(entityName,spawnList,biomes);
 }
