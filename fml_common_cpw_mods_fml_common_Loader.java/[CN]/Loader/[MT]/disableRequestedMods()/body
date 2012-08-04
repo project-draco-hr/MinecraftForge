@@ -1,5 +1,5 @@
 {
-  String disabledModList=System.getProperty("fml.disabledMods","");
+  String disabledModList=System.getProperty("fml.modStates","");
   FMLLog.fine("Received a system property request \'%s\'",disabledModList);
   Map<String,String> sysPropertyStateList=Splitter.on(CharMatcher.anyOf(";:")).omitEmptyStrings().trimResults().withKeyValueSeparator("=").split(disabledModList);
   FMLLog.fine("System property request managing the state of %d mods",sysPropertyStateList.size());
