@@ -1,5 +1,6 @@
 {
   modGraph=new DirectedGraph<ModContainer>();
+  immutableMods=Lists.newArrayList();
   modGraph.addNode(beforeAll);
   modGraph.addNode(before);
   modGraph.addNode(afterAll);
@@ -8,9 +9,15 @@
   modGraph.addEdge(beforeAll,before);
   modGraph.addEdge(after,afterAll);
   for (  ModContainer mod : modList) {
-    modGraph.addNode(mod);
+    if (!mod.isImmutable()) {
+      modGraph.addNode(mod);
+    }
+ else {
+      immutableMods.add(mod);
+    }
   }
   for (  ModContainer mod : modList) {
+    if (mod.isImmutable())     continue;
     boolean preDepAdded=false;
     boolean postDepAdded=false;
     for (    ArtifactVersion dep : mod.getDependencies()) {

@@ -1,6 +1,7 @@
 {
-  List<IFMLLoadingPlugin> loadPlugins=new ArrayList<IFMLLoadingPlugin>();
-  List<ILibrarySet> libraries=new ArrayList<ILibrarySet>();
+  pluginLocations=new HashMap<IFMLLoadingPlugin,File>();
+  loadPlugins=new ArrayList<IFMLLoadingPlugin>();
+  libraries=new ArrayList<ILibrarySet>();
   for (  String s : rootPlugins) {
     try {
       IFMLLoadingPlugin plugin=(IFMLLoadingPlugin)Class.forName(s,true,actualClassLoader).newInstance();
@@ -100,10 +101,34 @@
       }
     }
   }
+  Map<String,Object> data=new HashMap<String,Object>();
+  data.put("mcLocation",mcDir);
+  data.put("coremodList",loadPlugins);
+  for (  IFMLLoadingPlugin plugin : loadPlugins) {
+    data.put("coremodLocation",pluginLocations.get(plugin));
+    plugin.injectData(data);
+    String setupClass=plugin.getSetupClass();
+    if (setupClass != null) {
+      try {
+        IFMLCallHook call=(IFMLCallHook)Class.forName(setupClass,true,actualClassLoader).newInstance();
+        Map<String,Object> callData=new HashMap<String,Object>();
+        callData.put("classLoader",actualClassLoader);
+        call.injectData(callData);
+        call.call();
+      }
+ catch (      Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
+    String modContainer=plugin.getModContainerClass();
+    if (modContainer != null) {
+      FMLInjectionData.containers.add(modContainer);
+    }
+  }
   try {
     Class<?> loaderClazz=Class.forName("cpw.mods.fml.common.Loader",true,actualClassLoader);
     Method m=loaderClazz.getMethod("injectData",Object[].class);
-    m.invoke(null,(Object)FMLVersionData.data());
+    m.invoke(null,(Object)FMLInjectionData.data());
   }
  catch (  Exception e) {
     throw new RuntimeException(e);

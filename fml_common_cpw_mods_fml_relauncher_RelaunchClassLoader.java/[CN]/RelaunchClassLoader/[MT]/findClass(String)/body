@@ -15,7 +15,7 @@
     }
   }
   try {
-    byte[] basicClass=readFully(findResource(name.replace('.','/').concat(".class")).openStream());
+    byte[] basicClass=getClassBytes(name);
     byte[] transformedClass=runTransformers(name,basicClass);
     Class<?> cl=defineClass(name,transformedClass,0,transformedClass.length);
     cachedClasses.put(name,cl);

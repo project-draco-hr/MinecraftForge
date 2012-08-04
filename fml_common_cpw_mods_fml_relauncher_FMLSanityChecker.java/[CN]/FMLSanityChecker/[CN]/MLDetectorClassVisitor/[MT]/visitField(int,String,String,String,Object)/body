@@ -1,0 +1,6 @@
+{
+  if (arg1 == "fmlMarker") {
+    foundMarker=true;
+  }
+  return null;
+}

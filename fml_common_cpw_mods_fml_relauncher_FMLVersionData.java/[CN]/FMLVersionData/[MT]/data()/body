@@ -1,3 +1,0 @@
-{
-  return new Object[]{major,minor,rev,build,mccversion,mcsversion,minecraftHome};
-}

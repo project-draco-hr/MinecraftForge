@@ -1,0 +1,20 @@
+{
+  InputStream classStream=null;
+  try {
+    URL classResource=findResource(name.replace('.','/').concat(".class"));
+    if (classResource == null) {
+      return null;
+    }
+    classStream=classResource.openStream();
+    return readFully(classStream);
+  }
+  finally {
+    if (classStream != null) {
+      try {
+        classStream.close();
+      }
+ catch (      IOException e) {
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{
+  cl=(RelaunchClassLoader)data.get("classLoader");
+}

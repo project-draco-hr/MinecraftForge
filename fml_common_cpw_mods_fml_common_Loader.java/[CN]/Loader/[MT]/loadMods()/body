@@ -8,6 +8,7 @@
   disableRequestedMods();
   sortModList();
   mods=ImmutableList.copyOf(mods);
+  modController.distributeStateMessage(FMLLoadEvent.class);
   modController.transition(LoaderState.CONSTRUCTING);
   modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader);
   modController.transition(LoaderState.PREINITIALIZATION);

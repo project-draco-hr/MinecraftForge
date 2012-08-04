@@ -1,5 +1,6 @@
 {
   List<ModContainer> sortedList=TopologicalSort.topologicalSort(modGraph);
   sortedList.removeAll(Arrays.asList(new ModContainer[]{beforeAll,before,after,afterAll}));
-  return sortedList;
+  immutableMods.addAll(sortedList);
+  return immutableMods;
 }

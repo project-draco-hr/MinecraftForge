@@ -36,6 +36,7 @@
       Class<?> coreModClass=Class.forName(fmlCorePlugin,true,classLoader);
       IFMLLoadingPlugin plugin=(IFMLLoadingPlugin)coreModClass.newInstance();
       loadPlugins.add(plugin);
+      pluginLocations.put(plugin,coreMod);
       if (plugin.getLibraryRequestClass() != null) {
         for (        String libName : plugin.getLibraryRequestClass()) {
           libraries.add((ILibrarySet)Class.forName(libName,true,classLoader).newInstance());
