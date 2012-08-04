@@ -39,3 +39,4 @@ def gen_merged_srg(mcp_dir, forge_dir):
         for type in ['PK:', 'CL:', 'FD:', 'MD:']:
             for key in sorted(common[type]):
                 f.write(('%s %s %s\n' % (type, key, common[type][key])))
+    return common

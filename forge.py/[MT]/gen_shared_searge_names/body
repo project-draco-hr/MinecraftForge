@@ -1,0 +1,23 @@
+def gen_shared_searge_names(common_srg, common_exc):
+    field = re.compile('field_[0-9]+_[a-zA-Z_]+$')
+    method = re.compile('func_[0-9]+_[a-zA-Z_]+')
+    param = re.compile('p_[\\w]+_\\d+_')
+    searge = []
+    for (key, value) in common_srg['FD:'].items():
+        m = field.search(value)
+        if (not (m is None)):
+            if (not (m.group(0) in searge)):
+                searge.append(m.group(0))
+    for (key, value) in common_srg['MD:'].items():
+        m = method.search(value)
+        if ((not (m is None)) and (not ('#' in value))):
+            if (not (m.group(0) in searge)):
+                searge.append(m.group(0))
+    for (key, value) in common_exc.items():
+        m = param.findall(value)
+        if (not (m is None)):
+            print m
+            for p in m:
+                if (not (p in searge)):
+                    searge.append(p)
+    return searge

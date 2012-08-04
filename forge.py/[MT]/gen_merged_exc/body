@@ -32,3 +32,4 @@ def gen_merged_exc(mcp_dir, forge_dir):
     with open(os.path.join(forge_dir, 'conf', 'joined.exc'), 'w') as f:
         for key in sorted(common):
             f.write(('%s=%s\n' % (key, common[key])))
+    return common
