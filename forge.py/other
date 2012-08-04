@@ -6,7 +6,4 @@ forge_dir = os.path.dirname(os.path.abspath(__file__))
 mcp_dir = os.path.abspath('..')
 src_dir = os.path.join(mcp_dir, 'src')
 sys.path.append(mcp_dir)
-from runtime.pylibs.normlines import normaliselines
-from runtime.commands import cmdsplit
 version_reg = re.compile('(([a-z]+)Version[\\s]+=[\\s]+)(\\d+);')
-count = 0

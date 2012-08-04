@@ -14,6 +14,6 @@ def setup_fml():
     zf = zipfile.ZipFile(fml[0])
     zf.extractall(forge_dir)
     zf.close()
-    print 'Applying Forge ModLoader patches'
-    apply_patches(os.path.join(fml_dir, 'patches'), src_dir)
-    copytree(os.path.join(fml_dir, 'src'), src_dir)
+    sys.path.append(fml_dir)
+    from install import fml_main
+    fml_main(fml_dir, mcp_dir)
