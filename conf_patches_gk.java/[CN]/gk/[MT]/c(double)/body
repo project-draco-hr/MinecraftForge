@@ -1,4 +1,0 @@
-{
-  int i=(int)d;
-  return d >= (double)i ? i : i - 1;
-}
