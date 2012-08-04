@@ -1,4 +1,4 @@
-def gen_merged_rg(mcp_dir, forge_dir):
+def gen_merged_srg(mcp_dir, forge_dir):
     print 'Generating merged Retroguard data'
     srg_client = os.path.join(mcp_dir, 'conf', 'client.srg')
     srg_server = os.path.join(mcp_dir, 'conf', 'server.srg')
