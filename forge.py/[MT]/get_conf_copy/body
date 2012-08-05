@@ -9,3 +9,6 @@ def get_conf_copy(mcp_dir, forge_dir):
     common_srg = gen_merged_srg(mcp_dir, forge_dir)
     common_exc = gen_merged_exc(mcp_dir, forge_dir)
     common_map = gen_shared_searge_names(common_srg, common_exc)
+    gen_merged_csv(common_map, os.path.join(mcp_dir, 'conf', 'fields.csv'), os.path.join(forge_dir, 'conf', 'fields.csv'))
+    gen_merged_csv(common_map, os.path.join(mcp_dir, 'conf', 'methods.csv'), os.path.join(forge_dir, 'conf', 'methods.csv'))
+    gen_merged_csv(common_map, os.path.join(mcp_dir, 'conf', 'params.csv'), os.path.join(forge_dir, 'conf', 'params.csv'), main_key='param')

@@ -2,6 +2,7 @@ def gen_shared_searge_names(common_srg, common_exc):
     field = re.compile('field_[0-9]+_[a-zA-Z_]+$')
     method = re.compile('func_[0-9]+_[a-zA-Z_]+')
     param = re.compile('p_[\\w]+_\\d+_')
+    print 'Gathering list of common searge names'
     searge = []
     for (key, value) in common_srg['FD:'].items():
         m = field.search(value)
@@ -16,7 +17,6 @@ def gen_shared_searge_names(common_srg, common_exc):
     for (key, value) in common_exc.items():
         m = param.findall(value)
         if (not (m is None)):
-            print m
             for p in m:
                 if (not (p in searge)):
                     searge.append(p)

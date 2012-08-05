@@ -28,8 +28,8 @@ def gen_merged_exc(mcp_dir, forge_dir):
             server.pop(key)
         elif (value != '|'):
             common[key] = value
-    common = dict((common.items() + server.items()))
+    joined = dict((common.items() + server.items()))
     with open(os.path.join(forge_dir, 'conf', 'joined.exc'), 'w') as f:
-        for key in sorted(common):
-            f.write(('%s=%s\n' % (key, common[key])))
+        for key in sorted(joined):
+            f.write(('%s=%s\n' % (key, joined[key])))
     return common

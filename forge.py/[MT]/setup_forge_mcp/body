@@ -1,0 +1,13 @@
+def setup_forge_mcp(mcp_dir, forge_dir, dont_gen_conf=True):
+    mcp_conf = os.path.join(mcp_dir, 'conf')
+    mcp_conf_bak = os.path.join(mcp_dir, 'conf.bak')
+    forge_conf = os.path.join(forge_dir, 'conf')
+    if os.path.isdir(mcp_conf_bak):
+        print 'Removing old conf backup folder'
+        shutil.rmtree(mcp_conf_bak)
+    if (not dont_gen_conf):
+        get_conf_copy(mcp_dir, forge_dir)
+    print 'Backing up MCP Conf'
+    os.rename(mcp_conf, mcp_conf_bak)
+    print 'Copying Forge conf'
+    shutil.copytree(forge_conf, mcp_conf)

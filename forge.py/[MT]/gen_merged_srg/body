@@ -31,10 +31,10 @@ def gen_merged_srg(mcp_dir, forge_dir):
                     common[type][key] = value
     for type in common:
         for (key, value) in client[type].items():
-            common[type][key] = (value + ' #C')
+            common[type][key] = value
     for type in common:
         for (key, value) in server[type].items():
-            common[type][key] = (value + ' #S')
+            common[type][key] = value
     with open(os.path.join(forge_dir, 'conf', 'joined.srg'), 'w') as f:
         for type in ['PK:', 'CL:', 'FD:', 'MD:']:
             for key in sorted(common[type]):
