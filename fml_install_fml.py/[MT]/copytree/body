@@ -1,7 +1,7 @@
 def copytree(src, dst, verbose=0, symlinks=False):
     'Recursively copy a directory tree using copy2().\n\n    The destination directory must not already exist.\n    If exception(s) occur, an Error is raised with a list of reasons.\n\n    If the optional symlinks flag is true, symbolic links in the\n    source tree result in symbolic links in the destination tree; if\n    it is false, the contents of the files pointed to by symbolic\n    links are copied.\n\n    XXX Consider this example code rather than the ultimate tool.\n\n    '
     if (verbose == (-1)):
-        verbose = (len(os.path.abspath(dst)) - 1)
+        verbose = (len(os.path.abspath(dst)) + 1)
     names = os.listdir(src)
     _mkdir(dst)
     errors = []
@@ -17,7 +17,7 @@ def copytree(src, dst, verbose=0, symlinks=False):
             else:
                 shutil.copy2(srcname, dstname)
                 if (verbose > 0):
-                    print os.path.abspath(srcname)[verbose:]
+                    print os.path.abspath(dstname)[verbose:]
         except (IOError, os.error) as why:
             errors.append((srcname, dstname, str(why)))
         except Exception as err:
