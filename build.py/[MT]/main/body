@@ -5,4 +5,5 @@ def main():
             build_num = int(sys.argv[1])
         except:
             pass
-    sys.exit(build(build_num))
+    fml_dir = os.path.join(forge_dir, 'fml')
+    sys.exit(build_forge_dev(mcp_dir, forge_dir, fml_dir, build_num))

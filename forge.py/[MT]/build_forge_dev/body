@@ -1,22 +1,25 @@
-def build(build_num=0):
+def build_forge_dev(mcp_dir, forge_dir, fml_dir, build_num=0):
     version = load_version(build_num)
     print ('=================================== Build %d.%d.%d.%d Start =================================' % (version['major'], version['minor'], version['revision'], version['build']))
+    src_dir = os.path.join(mcp_dir, 'src')
     if os.path.isdir(src_dir):
         shutil.rmtree(src_dir)
-    inject_version(os.path.join(forge_dir, 'forge_common', 'net', 'minecraft', 'src', 'forge', 'ForgeHooks.java'), build_num)
+    sys.path.append(fml_dir)
+    from fml import copytree
     print 'src_work -> src'
     copytree(os.path.join(mcp_dir, 'src_work'), src_dir)
-    print '\nforge_client -> minecraft'
-    copytree(os.path.join(forge_dir, 'forge_client', 'src'), os.path.join(src_dir, 'minecraft'), (-1))
-    print '\nforge_server -> minecraft_server'
-    copytree(os.path.join(forge_dir, 'forge_server', 'src'), os.path.join(src_dir, 'minecraft_server'), (-1))
-    print '\nforge_common -> minecraft'
-    copytree(os.path.join(forge_dir, 'forge_common'), os.path.join(src_dir, 'minecraft'), (-1))
-    print '\nforge_common -> minecraft_server'
-    copytree(os.path.join(forge_dir, 'forge_common'), os.path.join(src_dir, 'minecraft_server'), (-1))
+    print '\nCopying Client Code'
+    copytree(os.path.join(forge_dir, 'client'), os.path.join(src_dir, 'minecraft'), (-1))
+    print '\nCopying Server Code'
+    copytree(os.path.join(forge_dir, 'server'), os.path.join(src_dir, 'minecraft_server'), (-1))
+    print '\nCopying Common Code'
+    copytree(os.path.join(forge_dir, 'common'), os.path.join(src_dir, 'common'), (-1))
     print 
+    inject_version(os.path.join(src_dir, 'common/net/minecraftforge/common/ForgeVersion.java'.replace('/', os.sep)), build_num)
     error_level = 0
     try:
+        sys.path.append(mcp_dir)
+        from runtime.recompile import recompile
         os.chdir(mcp_dir)
         reset_logger()
         recompile(None)
