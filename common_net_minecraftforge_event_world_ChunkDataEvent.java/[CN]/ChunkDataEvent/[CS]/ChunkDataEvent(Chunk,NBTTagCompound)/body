@@ -1,0 +1,4 @@
+{
+  super(chunk);
+  this.data=data;
+}

@@ -1,0 +1,4 @@
+{
+  super(chunk.worldObj);
+  this.chunk=chunk;
+}
