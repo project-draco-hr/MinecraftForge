@@ -1,7 +1,8 @@
 import os
-import commands
+import sys
 import fnmatch
-import re
-import subprocess, shlex, shutil
+import shlex
+import difflib
+import time
 if (__name__ == '__main__'):
     main()
