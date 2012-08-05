@@ -1,3 +1,0 @@
-{
-  reverseBytes(buffer,0,buffer.length);
-}

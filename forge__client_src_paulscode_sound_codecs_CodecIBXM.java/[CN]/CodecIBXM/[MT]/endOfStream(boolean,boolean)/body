@@ -1,4 +1,0 @@
-{
-  if (action == SET)   endOfStream=value;
-  return endOfStream;
-}

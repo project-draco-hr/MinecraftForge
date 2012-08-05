@@ -1,4 +1,0 @@
-{
-  if (action == SET)   initialized=value;
-  return initialized;
-}
