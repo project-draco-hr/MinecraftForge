@@ -1,0 +1,5 @@
+Class<T> enumClass
+String value
+int ordinal
+Class<?>[] additionalTypes
+Object[] additionalValues

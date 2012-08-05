@@ -1,0 +1,6 @@
+{
+  ArrayList<IEventListener> list=listeners.remove(object);
+  for (  IEventListener listener : list) {
+    ListenerList.unregiterAll(busID,listener);
+  }
+}

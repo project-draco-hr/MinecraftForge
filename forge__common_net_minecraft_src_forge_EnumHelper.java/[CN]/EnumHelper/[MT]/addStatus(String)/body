@@ -1,6 +1,0 @@
-{
-  if (!isSetup) {
-    setup();
-  }
-  return addEnum(decompiledFlags[10],EnumStatus.class,name,new Class[]{},new Object[]{});
-}

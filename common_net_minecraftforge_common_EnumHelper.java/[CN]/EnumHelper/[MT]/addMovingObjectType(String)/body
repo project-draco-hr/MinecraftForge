@@ -1,0 +1,6 @@
+{
+  if (!isSetup) {
+    setup();
+  }
+  return addEnum(EnumMovingObjectType.class,name);
+}

@@ -1,0 +1,3 @@
+{
+  return addEnum(EnumToolMaterial.class,name,harvestLevel,maxUses,efficiency,damage,enchantability);
+}

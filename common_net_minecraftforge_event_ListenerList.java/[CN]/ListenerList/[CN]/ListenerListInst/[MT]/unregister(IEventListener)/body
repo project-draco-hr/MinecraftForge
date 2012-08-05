@@ -1,0 +1,5 @@
+{
+  for (  ArrayList<IEventListener> list : priorities) {
+    list.remove(listener);
+  }
+}

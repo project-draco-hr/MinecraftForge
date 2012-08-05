@@ -1,0 +1,14 @@
+{
+  ClassReader cr=new ClassReader(bytes);
+  ClassNode classNode=new ClassNode();
+  cr.accept(classNode,0);
+  try {
+    buildEvents(classNode);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+  ClassWriter cw=new ClassWriter(COMPUTE_MAXS | COMPUTE_FRAMES);
+  classNode.accept(cw);
+  return cw.toByteArray();
+}

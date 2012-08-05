@@ -1,0 +1,3 @@
+{
+  return addEnum(EnumEntitySize.class,name);
+}

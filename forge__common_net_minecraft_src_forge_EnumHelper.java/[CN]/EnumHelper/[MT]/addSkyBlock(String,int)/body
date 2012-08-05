@@ -1,6 +1,0 @@
-{
-  if (!isSetup) {
-    setup();
-  }
-  return addEnum(decompiledFlags[9],EnumSkyBlock.class,name,new Class[]{int.class},new Object[]{lightValue});
-}

@@ -1,0 +1,3 @@
+{
+  return addEnum(EnumCreatureAttribute.class,name);
+}

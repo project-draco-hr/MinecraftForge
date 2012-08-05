@@ -1,0 +1,7 @@
+{
+  Class<?>[] parameterTypes=new Class[additionalParameterTypes.length + 2];
+  parameterTypes[0]=String.class;
+  parameterTypes[1]=int.class;
+  System.arraycopy(additionalParameterTypes,0,parameterTypes,2,additionalParameterTypes.length);
+  return newConstructorAccessor.invoke(reflectionFactory,enumClass.getDeclaredConstructor(parameterTypes));
+}

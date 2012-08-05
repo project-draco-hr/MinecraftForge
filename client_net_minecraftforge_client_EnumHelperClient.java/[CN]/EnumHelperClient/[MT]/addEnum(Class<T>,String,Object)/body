@@ -1,0 +1,3 @@
+{
+  return addEnum(clentTypes,enumType,enumName,paramValues);
+}

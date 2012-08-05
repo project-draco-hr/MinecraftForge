@@ -1,0 +1,6 @@
+{
+  IEventListener[] listeners=event.getListenerList().getListeners(busID);
+  for (  IEventListener listener : listeners) {
+    listener.invoke(event);
+  }
+}

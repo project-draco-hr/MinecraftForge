@@ -1,0 +1,3 @@
+{
+  return addEnum(EnumGameType.class,name,id,displayName);
+}

@@ -1,6 +1,0 @@
-{
-  if (!isSetup) {
-    setup();
-  }
-  return addEnum(decompiled[0],JsonNodeType.class,name,new Class[]{},new Object[]{});
-}

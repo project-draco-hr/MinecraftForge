@@ -1,0 +1,3 @@
+{
+  return addEnum(EnumMobType.class,name);
+}

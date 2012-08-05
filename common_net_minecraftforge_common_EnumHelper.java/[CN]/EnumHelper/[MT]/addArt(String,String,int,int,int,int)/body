@@ -1,0 +1,3 @@
+{
+  return addEnum(EnumArt.class,name,tile,sizeX,sizeY,offsetX,offsetY);
+}
