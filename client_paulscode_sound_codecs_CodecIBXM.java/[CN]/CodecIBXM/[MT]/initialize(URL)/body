@@ -1,0 +1,57 @@
+{
+  initialized(SET,false);
+  cleanup();
+  if (url == null) {
+    errorMessage("url null in method 'initialize'");
+    cleanup();
+    return false;
+  }
+  InputStream is=null;
+  try {
+    is=url.openStream();
+  }
+ catch (  IOException ioe) {
+    errorMessage("Unable to open stream in method 'initialize'");
+    printStackTrace(ioe);
+    return false;
+  }
+  if (ibxm == null)   ibxm=new IBXM(48000);
+  if (myAudioFormat == null)   myAudioFormat=new AudioFormat(48000,16,2,true,true);
+  try {
+    setModule(loadModule(is));
+  }
+ catch (  IllegalArgumentException iae) {
+    errorMessage("Illegal argument in method 'initialize'");
+    printStackTrace(iae);
+    if (is != null) {
+      try {
+        is.close();
+      }
+ catch (      IOException ioe) {
+      }
+    }
+    return false;
+  }
+catch (  IOException ioe) {
+    errorMessage("Error loading module in method 'initialize'");
+    printStackTrace(ioe);
+    if (is != null) {
+      try {
+        is.close();
+      }
+ catch (      IOException ioe2) {
+      }
+    }
+    return false;
+  }
+  if (is != null) {
+    try {
+      is.close();
+    }
+ catch (    IOException ioe) {
+    }
+  }
+  endOfStream(SET,false);
+  initialized(SET,true);
+  return true;
+}

@@ -1,0 +1,8 @@
+{
+  byte[] trimmedArray=null;
+  if (array != null && array.length > maxLength) {
+    trimmedArray=new byte[maxLength];
+    System.arraycopy(array,0,trimmedArray,0,maxLength);
+  }
+  return trimmedArray;
+}
