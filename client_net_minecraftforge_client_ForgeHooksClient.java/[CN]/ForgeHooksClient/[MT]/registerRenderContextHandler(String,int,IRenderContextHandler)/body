@@ -1,0 +1,8 @@
+{
+  Integer texID=textures.get(texture);
+  if (texID == null) {
+    texID=ModLoader.getMinecraftInstance().renderEngine.getTexture(texture);
+    textures.put(texture,texID);
+  }
+  renderHandlers.put(new TesKey(texID,subID),handler);
+}

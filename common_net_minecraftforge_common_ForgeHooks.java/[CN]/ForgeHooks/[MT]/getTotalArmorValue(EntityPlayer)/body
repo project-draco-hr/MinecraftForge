@@ -1,0 +1,13 @@
+{
+  int ret=0;
+  for (int x=0; x < player.inventory.armorInventory.length; x++) {
+    ItemStack stack=player.inventory.armorInventory[x];
+    if (stack != null && stack.getItem() instanceof ISpecialArmor) {
+      ret+=((ISpecialArmor)stack.getItem()).getArmorDisplay(player,stack,x);
+    }
+ else     if (stack != null && stack.getItem() instanceof ItemArmor) {
+      ret+=((ItemArmor)stack.getItem()).damageReduceAmount;
+    }
+  }
+  return ret;
+}

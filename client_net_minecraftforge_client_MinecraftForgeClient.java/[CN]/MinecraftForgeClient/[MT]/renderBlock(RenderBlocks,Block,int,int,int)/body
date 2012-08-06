@@ -1,0 +1,5 @@
+{
+  ForgeHooksClient.beforeBlockRender(block,render);
+  render.renderBlockByRenderType(block,x,y,z);
+  ForgeHooksClient.afterBlockRender(block,render);
+}

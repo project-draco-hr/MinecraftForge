@@ -1,3 +1,0 @@
-{
-  ForgeHooksClient.renderWorldLastHandlers.add(handler);
-}

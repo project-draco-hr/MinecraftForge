@@ -1,8 +1,0 @@
-{
-  if (o.Priority != Priority) {
-    return o.Priority - Priority;
-  }
-  double left=(AbsorbRatio == 0 ? 0 : AbsorbMax * 100.0D / AbsorbRatio);
-  double right=(o.AbsorbRatio == 0 ? 0 : o.AbsorbMax * 100.0D / o.AbsorbRatio);
-  return (int)(left - right);
-}

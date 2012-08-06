@@ -6,6 +6,10 @@
     if (Tessellator.instance.isDrawing) {
       int mode=Tessellator.instance.drawMode;
       Tessellator.instance.draw();
+      if (unbindContext != null) {
+        unbindContext.afterRenderContext();
+        unbindContext=null;
+      }
       Tessellator.instance.startDrawing(mode);
     }
     GL11.glBindTexture(GL11.GL_TEXTURE_2D,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));

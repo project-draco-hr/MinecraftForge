@@ -1,3 +1,0 @@
-{
-  return new ArmorProperties(Priority,AbsorbRatio,AbsorbMax);
-}

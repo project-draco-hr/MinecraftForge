@@ -1,3 +1,0 @@
-{
-  ForgeHooksClient.bindTexture(texture,subid);
-}

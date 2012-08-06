@@ -1,5 +1,0 @@
-{
-  super(item);
-  this.item=item;
-  this.player=player;
-}

@@ -1,0 +1,3 @@
+String texture
+int subID
+IRenderContextHandler handler
