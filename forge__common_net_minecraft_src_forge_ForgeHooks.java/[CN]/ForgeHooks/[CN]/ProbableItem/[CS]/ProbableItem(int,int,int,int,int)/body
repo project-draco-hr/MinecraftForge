@@ -1,7 +1,0 @@
-{
-  WeightStart=start;
-  WeightEnd=end;
-  ItemID=item;
-  Metadata=metadata;
-  Quantity=quantity;
-}

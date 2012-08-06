@@ -1,4 +1,0 @@
-ItemStack itemstack
-World world
-EntityPlayer player
-int heldTime

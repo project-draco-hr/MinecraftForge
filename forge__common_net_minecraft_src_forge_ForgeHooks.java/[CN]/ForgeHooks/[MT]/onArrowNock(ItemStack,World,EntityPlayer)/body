@@ -1,9 +1,0 @@
-{
-  for (  IArrowNockHandler handler : arrowNockHandlers) {
-    ItemStack ret=handler.onArrowNock(itemstack,world,player);
-    if (ret != null) {
-      return ret;
-    }
-  }
-  return null;
-}

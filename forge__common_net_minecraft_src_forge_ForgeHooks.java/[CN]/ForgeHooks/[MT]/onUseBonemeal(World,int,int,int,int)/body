@@ -1,8 +1,0 @@
-{
-  for (  IBonemealHandler handler : bonemealHandlers) {
-    if (handler.onUseBonemeal(world,blockID,x,y,z)) {
-      return true;
-    }
-  }
-  return false;
-}

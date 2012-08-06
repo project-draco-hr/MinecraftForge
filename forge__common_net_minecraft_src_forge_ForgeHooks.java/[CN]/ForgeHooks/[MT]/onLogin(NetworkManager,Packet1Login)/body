@@ -1,5 +1,0 @@
-{
-  for (  IConnectionHandler handler : connectionHandlers) {
-    handler.onLogin(network,login);
-  }
-}

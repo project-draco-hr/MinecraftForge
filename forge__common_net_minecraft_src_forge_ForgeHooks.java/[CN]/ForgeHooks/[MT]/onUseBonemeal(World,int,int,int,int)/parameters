@@ -1,5 +1,0 @@
-World world
-int blockID
-int x
-int y
-int z

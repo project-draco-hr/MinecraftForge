@@ -1,4 +1,0 @@
-{
-  plantGrassList.add(new ProbableItem(item,metadata,1,plantGrassWeight,plantGrassWeight + probability));
-  plantGrassWeight+=probability;
-}

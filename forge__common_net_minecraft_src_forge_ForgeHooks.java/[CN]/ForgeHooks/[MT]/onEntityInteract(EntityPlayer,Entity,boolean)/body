@@ -1,8 +1,0 @@
-{
-  for (  IEntityInteractHandler handler : entityInteractHandlers) {
-    if (!handler.onEntityInteract(player,entity,isAttack)) {
-      return false;
-    }
-  }
-  return true;
-}

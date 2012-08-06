@@ -1,5 +1,0 @@
-{
-  for (  ISaveEventHandler handler : saveHandlers) {
-    handler.onChunkLoad(world,chunk);
-  }
-}

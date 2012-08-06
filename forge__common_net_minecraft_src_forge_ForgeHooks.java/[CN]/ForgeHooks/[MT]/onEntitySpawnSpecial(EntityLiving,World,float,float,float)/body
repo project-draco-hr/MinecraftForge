@@ -1,8 +1,0 @@
-{
-  for (  ISpecialMobSpawnHandler handler : specialMobSpawnHandlers) {
-    if (handler.onSpecialEntitySpawn(entity,world,x,y,z)) {
-      return true;
-    }
-  }
-  return false;
-}

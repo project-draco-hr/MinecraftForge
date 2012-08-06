@@ -1,8 +1,0 @@
-{
-  for (  IHoeHandler handler : hoeHandlers) {
-    if (handler.onUseHoe(hoe,player,world,x,y,z)) {
-      return true;
-    }
-  }
-  return false;
-}

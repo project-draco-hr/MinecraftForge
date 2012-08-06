@@ -1,5 +1,0 @@
-{
-  for (  IMinecartHandler handler : minecartHandlers) {
-    handler.onMinecartEntityCollision(minecart,entity);
-  }
-}

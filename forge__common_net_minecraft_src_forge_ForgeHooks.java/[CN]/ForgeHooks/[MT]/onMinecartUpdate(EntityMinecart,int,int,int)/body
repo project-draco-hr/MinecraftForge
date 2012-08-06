@@ -1,5 +1,0 @@
-{
-  for (  IMinecartHandler handler : minecartHandlers) {
-    handler.onMinecartUpdate(minecart,x,y,z);
-  }
-}

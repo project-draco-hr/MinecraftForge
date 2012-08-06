@@ -1,5 +1,0 @@
-{
-  for (  IEntityLivingHandler handler : entityLivingHandlers) {
-    handler.onEntityLivingDrops(entity,source,drops,lootingLevel,recentlyHit,specialDropValue);
-  }
-}

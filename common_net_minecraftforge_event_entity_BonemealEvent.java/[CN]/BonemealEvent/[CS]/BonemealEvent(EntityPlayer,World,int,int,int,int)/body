@@ -1,0 +1,8 @@
+{
+  super(player);
+  this.world=world;
+  this.ID=id;
+  this.X=x;
+  this.Y=y;
+  this.Z=z;
+}

@@ -1,5 +1,0 @@
-{
-  for (  ICraftingHandler handler : craftingHandlers) {
-    handler.onTakenFromCrafting(player,stack,craftMatrix);
-  }
-}

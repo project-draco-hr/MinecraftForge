@@ -1,9 +1,0 @@
-{
-  for (  IFuelHandler handler : fuelHandlers) {
-    int ret=handler.getItemBurnTime(stack);
-    if (ret > 0) {
-      return ret;
-    }
-  }
-  return 0;
-}
