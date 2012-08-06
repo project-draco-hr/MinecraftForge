@@ -1,3 +1,0 @@
-{
-  OreDictionary.registerOre(oreClass,ore);
-}

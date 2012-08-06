@@ -1,3 +1,0 @@
-{
-  ForgeHooks.fuelHandlers.add(handler);
-}

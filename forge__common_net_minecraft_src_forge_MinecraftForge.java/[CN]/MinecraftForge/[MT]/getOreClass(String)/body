@@ -1,3 +1,0 @@
-{
-  return OreDictionary.getOres(oreClass);
-}

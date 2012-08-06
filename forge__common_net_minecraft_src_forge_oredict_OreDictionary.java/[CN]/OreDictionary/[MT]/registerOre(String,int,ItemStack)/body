@@ -1,8 +1,0 @@
-{
-  ArrayList<ItemStack> ores=getOres(id);
-  ore=ore.copy();
-  ores.add(ore);
-  for (  IOreHandler handler : oreHandlers) {
-    handler.registerOre(name,ore);
-  }
-}

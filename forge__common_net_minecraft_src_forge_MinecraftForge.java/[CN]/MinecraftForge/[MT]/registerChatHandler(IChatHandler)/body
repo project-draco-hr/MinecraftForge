@@ -1,3 +1,0 @@
-{
-  ForgeHooks.chatHandlers.add(handler);
-}

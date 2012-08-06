@@ -1,3 +1,0 @@
-{
-  ForgeHooks.entityInteractHandlers.add(handler);
-}

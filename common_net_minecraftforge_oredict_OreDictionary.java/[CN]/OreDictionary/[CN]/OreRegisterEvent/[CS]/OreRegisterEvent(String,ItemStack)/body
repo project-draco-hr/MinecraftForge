@@ -1,0 +1,4 @@
+{
+  this.Name=name;
+  this.Ore=ore;
+}
