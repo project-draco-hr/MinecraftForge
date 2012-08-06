@@ -1,3 +1,3 @@
 {
-  return FMLCommonHandler.instance().isChannelActive(channel,player);
+  return NetworkRegistry.instance().isChannelActive(channel,(Player)player);
 }
