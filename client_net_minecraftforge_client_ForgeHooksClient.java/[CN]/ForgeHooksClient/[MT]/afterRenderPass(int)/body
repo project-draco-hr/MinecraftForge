@@ -1,0 +1,12 @@
+{
+  renderPass=-1;
+  inWorld=false;
+  for (  TesKey info : renderTextures) {
+    GL11.glBindTexture(GL11.GL_TEXTURE_2D,info.texture);
+    Tessellator tess=tessellators.get(info);
+    tess.draw();
+  }
+  GL11.glBindTexture(GL11.GL_TEXTURE_2D,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
+  Tessellator.renderingWorldRenderer=false;
+  Tessellator.instance=defaultTessellator;
+}

@@ -1,0 +1,23 @@
+{
+  Block.stone.getTextureFile();
+  Item.appleGold.getTextureFile();
+  Block filler=null;
+  try {
+    filler=Block.class.getConstructor(int.class,Material.class).newInstance(256,Material.air);
+  }
+ catch (  Exception e) {
+  }
+  if (filler == null) {
+    throw new RuntimeException("Could not create Forge filler block");
+  }
+  for (int x=256; x < 4096; x++) {
+    if (Item.itemsList[x - 256] != null) {
+      Block.blocksList[x]=filler;
+    }
+  }
+  boolean[] temp=new boolean[4096];
+  for (int x=0; x < EntityEnderman.carriableBlocks.length; x++) {
+    temp[x]=EntityEnderman.carriableBlocks[x];
+  }
+  EntityEnderman.carriableBlocks=temp;
+}

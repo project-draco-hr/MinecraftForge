@@ -1,8 +1,0 @@
-{
-  ForgeHooks.initTools();
-  for (int metadata=0; metadata < 16; metadata++) {
-    List key=Arrays.asList(block.blockID,metadata,toolClass);
-    ForgeHooks.toolHarvestLevels.put(key,harvestLevel);
-    ForgeHooks.toolEffectiveness.add(key);
-  }
-}

@@ -1,0 +1,3 @@
+{
+  return compareTo((TesKey)obj) == 0;
+}

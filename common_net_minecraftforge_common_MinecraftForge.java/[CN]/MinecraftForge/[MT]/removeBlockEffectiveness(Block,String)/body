@@ -1,0 +1,6 @@
+{
+  for (int metadata=0; metadata < 16; metadata++) {
+    List key=Arrays.asList(block,metadata,toolClass);
+    ForgeHooks.toolEffectiveness.remove(key);
+  }
+}

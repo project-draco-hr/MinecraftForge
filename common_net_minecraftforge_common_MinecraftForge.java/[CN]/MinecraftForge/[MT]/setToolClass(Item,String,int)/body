@@ -1,0 +1,3 @@
+{
+  ForgeHooks.toolClasses.put(tool,Arrays.asList(toolClass,harvestLevel));
+}

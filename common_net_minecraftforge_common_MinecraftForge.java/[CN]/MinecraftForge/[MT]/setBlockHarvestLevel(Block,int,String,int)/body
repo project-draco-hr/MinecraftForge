@@ -1,0 +1,5 @@
+{
+  List key=Arrays.asList(block,metadata,toolClass);
+  ForgeHooks.toolHarvestLevels.put(key,harvestLevel);
+  ForgeHooks.toolEffectiveness.add(key);
+}

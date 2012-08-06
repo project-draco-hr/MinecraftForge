@@ -1,0 +1,7 @@
+{
+  List toolClass=(List)toolClasses.get(stack.getItem());
+  if (toolClass == null) {
+    return false;
+  }
+  return toolEffectiveness.contains(Arrays.asList(block,metadata,(String)toolClass.get(0)));
+}

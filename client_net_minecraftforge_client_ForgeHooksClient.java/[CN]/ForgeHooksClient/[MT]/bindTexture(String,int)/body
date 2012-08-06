@@ -1,0 +1,17 @@
+{
+  Integer texID=textures.get(texture);
+  if (texID == null) {
+    texID=ModLoader.getMinecraftInstance().renderEngine.getTexture(texture);
+    textures.put(texture,texID);
+  }
+  if (!inWorld) {
+    if (Tessellator.instance.isDrawing) {
+      int mode=Tessellator.instance.drawMode;
+      Tessellator.instance.draw();
+      Tessellator.instance.startDrawing(mode);
+    }
+    GL11.glBindTexture(GL11.GL_TEXTURE_2D,texID);
+    return;
+  }
+  bindTessellator(texID,subID);
+}

@@ -1,0 +1,11 @@
+{
+  if (obj instanceof Item) {
+    return ((Item)obj).getTextureFile();
+  }
+ else   if (obj instanceof Block) {
+    return ((Block)obj).getTextureFile();
+  }
+ else {
+    return _default;
+  }
+}
