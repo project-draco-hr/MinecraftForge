@@ -1,0 +1,6 @@
+{
+  if ("fmlMarker".equals(arg1)) {
+    foundMarker=true;
+  }
+  return null;
+}

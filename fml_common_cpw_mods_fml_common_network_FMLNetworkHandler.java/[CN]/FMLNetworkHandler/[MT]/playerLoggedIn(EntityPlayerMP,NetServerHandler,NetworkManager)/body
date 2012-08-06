@@ -1,0 +1,3 @@
+{
+  NetworkRegistry.instance().playerLoggedIn(player,netHandler,manager);
+}

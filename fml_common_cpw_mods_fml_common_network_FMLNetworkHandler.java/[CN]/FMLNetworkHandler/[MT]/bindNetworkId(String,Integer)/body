@@ -1,0 +1,6 @@
+{
+  Map<String,ModContainer> mods=Loader.instance().getIndexedModList();
+  NetworkModHandler handler=findNetworkModHandler(mods.get(key));
+  handler.setNetworkId(value);
+  networkIdLookup.put(value,handler);
+}

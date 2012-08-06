@@ -1,0 +1,3 @@
+{
+  instance().playerLoggedIn(player,netHandler,manager);
+}

@@ -1,14 +1,16 @@
 {
   if (!loginStates.containsKey(netLoginHandler)) {
-    ServerConfigurationManager playerList=server.func_71203_ab();
-    String kickReason=playerList.func_72399_a(address,userName);
-    if (kickReason != null) {
-      netLoginHandler.completeConnection(kickReason);
+    if (handleVanillaLoginKick(netLoginHandler,server,address,userName)) {
+      FMLRelaunchLog.fine("Connection from %s rejected - no FML packet received from client",userName);
+      netLoginHandler.completeConnection("You don't have FML installed, or your installation is too old");
+      return;
     }
-    netLoginHandler.completeConnection("You don't have FML installed, or your installation is too old");
-    return;
   }
   if (loginStates.get(netLoginHandler) == 1) {
+    if (!handleVanillaLoginKick(netLoginHandler,server,address,userName)) {
+      loginStates.remove(netLoginHandler);
+      return;
+    }
     NetLoginHandler.func_72531_a(netLoginHandler,false);
     netLoginHandler.field_72538_b.func_74429_a(getModListRequestPacket());
     loginStates.put(netLoginHandler,2);

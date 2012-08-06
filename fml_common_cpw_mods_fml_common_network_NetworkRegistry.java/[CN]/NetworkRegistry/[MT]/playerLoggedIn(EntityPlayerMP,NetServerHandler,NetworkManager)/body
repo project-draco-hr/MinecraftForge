@@ -1,0 +1,6 @@
+{
+  for (  IConnectionHandler handler : connectionHandlers) {
+    handler.playerLoggedIn((Player)player,netHandler,manager);
+  }
+  generateChannelRegistration(player,netHandler,manager);
+}

@@ -1,0 +1,3 @@
+{
+  connectionHandlers.add(handler);
+}

@@ -1,3 +1,3 @@
 {
-  return Joiner.on('\0').join(channelList.values()).getBytes(Charsets.UTF_8);
+  return Joiner.on('\0').join(packetHandlers.keySet()).getBytes(Charsets.UTF_8);
 }

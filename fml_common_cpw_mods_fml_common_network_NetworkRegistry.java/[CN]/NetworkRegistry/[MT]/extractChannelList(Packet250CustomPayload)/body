@@ -1,0 +1,5 @@
+{
+  String request=new String(packet.field_73629_c,Charsets.UTF_8);
+  List<String> channels=Lists.newArrayList(Splitter.on('\0').split(request));
+  return channels;
+}

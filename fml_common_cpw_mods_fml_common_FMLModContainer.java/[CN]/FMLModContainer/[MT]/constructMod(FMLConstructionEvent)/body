@@ -6,6 +6,7 @@
     ASMDataTable asmHarvestedAnnotations=event.getASMHarvestedData();
     asmHarvestedAnnotations.getAnnotationsFor(this);
     annotations=gatherAnnotations(clazz);
+    isNetworkMod=FMLNetworkHandler.instance().registerNetworkMod(this,clazz,event.getASMHarvestedData());
     modInstance=clazz.newInstance();
     processFieldAnnotations();
   }

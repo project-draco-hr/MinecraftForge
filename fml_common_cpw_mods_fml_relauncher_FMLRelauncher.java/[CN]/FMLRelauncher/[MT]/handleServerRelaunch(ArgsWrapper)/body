@@ -1,3 +1,4 @@
 {
+  logFileNamePattern="ForgeModLoader-server-%g.log";
   instance().relaunchServer(wrap);
 }

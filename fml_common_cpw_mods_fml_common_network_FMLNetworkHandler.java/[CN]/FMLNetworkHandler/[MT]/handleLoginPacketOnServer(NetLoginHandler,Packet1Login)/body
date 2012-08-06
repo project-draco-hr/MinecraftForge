@@ -1,5 +1,9 @@
 {
   if (login.field_73561_a == FML_HASH && login.field_73558_e == PROTOCOL_VERSION) {
+    FMLRelaunchLog.finest("Received valid FML login packet from %s",handler.field_72538_b.func_74430_c());
     instance().loginStates.put(handler,1);
+  }
+ else {
+    FMLRelaunchLog.fine("Received invalid FML login packet %d, %d from %s",login.field_73561_a,login.field_73558_e,handler.field_72538_b.func_74430_c());
   }
 }

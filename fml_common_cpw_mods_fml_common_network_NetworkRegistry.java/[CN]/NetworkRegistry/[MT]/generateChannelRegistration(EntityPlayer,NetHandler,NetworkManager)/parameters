@@ -1,0 +1,3 @@
+EntityPlayer player
+NetHandler netHandler
+NetworkManager manager

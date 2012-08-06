@@ -5,6 +5,9 @@
     return;
   }
   if (target.equals("FML")) {
-    instance().handleFMLPacket(packet,network);
+    instance().handleFMLPacket(packet,network,handler);
+  }
+ else {
+    NetworkRegistry.instance().handleCustomPacket(packet,network,handler);
   }
 }

@@ -1,6 +1,6 @@
 {
   ByteArrayDataOutput dat=ByteStreams.newDataOutput();
-  List<ModContainer> activeMods=FMLNetworkHandler.instance().getNetworkModList();
+  Set<ModContainer> activeMods=FMLNetworkHandler.instance().getNetworkModList();
   dat.writeInt(activeMods.size());
   for (  ModContainer mc : activeMods) {
     dat.writeUTF(mc.getModId());
