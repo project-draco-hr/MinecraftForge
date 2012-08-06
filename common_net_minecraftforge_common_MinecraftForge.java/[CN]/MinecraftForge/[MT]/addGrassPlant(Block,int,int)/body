@@ -1,0 +1,3 @@
+{
+  ForgeHooks.grassList.add(new GrassEntry(block,metadata,weight));
+}

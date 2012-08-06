@@ -1,0 +1,3 @@
+{
+  ForgeHooks.seedList.add(new SeedEntry(seed,weight));
+}
