@@ -1,0 +1,3 @@
+ModContainer container
+Class<?> networkModClass
+ASMDataTable table

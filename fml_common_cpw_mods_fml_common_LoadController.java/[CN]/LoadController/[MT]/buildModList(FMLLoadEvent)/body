@@ -17,4 +17,5 @@
     }
   }
   eventChannels=eventBus.build();
+  FMLNetworkHandler.instance().freezeModList(activeModList);
 }

@@ -1,0 +1,15 @@
+{
+  if (checkHandler != null) {
+    try {
+      return (Boolean)checkHandler.invoke(container.getMod(),version);
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.WARNING,e,"There was a problem invoking the checkhandler method %s for network mod id %s",checkHandler.getName(),container.getModId());
+      return false;
+    }
+  }
+  if (acceptableRange != null) {
+    return acceptableRange.containsVersion(new DefaultArtifactVersion(version));
+  }
+  return container.getVersion().equals(version);
+}

@@ -1,0 +1,3 @@
+{
+  globalAnnotationData.put(annotation,new ASMData(candidate,annotation,className,objectName,annotationInfo));
+}

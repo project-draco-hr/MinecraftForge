@@ -1,0 +1,5 @@
+{
+  for (  ModAnnotation ma : annotations) {
+    table.addASMData(candidate,ma.asmType.getClassName(),this.asmType.getClassName(),ma.member,ma.values);
+  }
+}

@@ -1,0 +1,4 @@
+{
+  byte[] packetData=type.make().generatePacket(data);
+  return Bytes.concat(new byte[]{UnsignedBytes.checkedCast(type.ordinal())},packetData);
+}

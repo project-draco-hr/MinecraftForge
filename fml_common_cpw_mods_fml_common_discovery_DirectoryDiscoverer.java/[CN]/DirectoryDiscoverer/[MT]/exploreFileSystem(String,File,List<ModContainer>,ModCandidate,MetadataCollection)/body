@@ -30,6 +30,7 @@
         Throwables.propagate(e);
       }
       modParser.validate();
+      modParser.sendToTable(table,candidate);
       ModContainer container=ModContainerFactory.instance().build(modParser,candidate.getModContainer());
       if (container != null) {
         harvestedMods.add(container);

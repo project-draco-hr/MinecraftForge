@@ -1,0 +1,5 @@
+{
+  if (login.field_73561_a == FML_HASH && login.field_73558_e == PROTOCOL_VERSION) {
+    instance().loginStates.put(handler,1);
+  }
+}

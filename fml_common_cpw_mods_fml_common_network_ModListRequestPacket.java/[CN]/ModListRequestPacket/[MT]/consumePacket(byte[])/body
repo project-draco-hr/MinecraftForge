@@ -1,0 +1,9 @@
+{
+  sentModList=Lists.newArrayList();
+  ByteArrayDataInput in=ByteStreams.newDataInput(data);
+  int listSize=in.readInt();
+  for (int i=0; i < listSize; i++) {
+    sentModList.add(in.readUTF());
+  }
+  return this;
+}

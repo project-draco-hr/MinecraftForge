@@ -2,7 +2,7 @@
   List<ModContainer> modList=Lists.newArrayList();
   for (  ModCandidate candidate : candidates) {
     try {
-      List<ModContainer> mods=candidate.explore();
+      List<ModContainer> mods=candidate.explore(dataTable);
       modList.addAll(mods);
     }
  catch (    LoaderException le) {

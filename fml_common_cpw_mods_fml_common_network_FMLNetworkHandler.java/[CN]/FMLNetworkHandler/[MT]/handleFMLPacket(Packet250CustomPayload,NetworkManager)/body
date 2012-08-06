@@ -1,0 +1,4 @@
+{
+  FMLPacket pkt=FMLPacket.readPacket(packet.field_73629_c);
+  pkt.execute(network,this);
+}

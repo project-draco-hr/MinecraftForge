@@ -1,0 +1,8 @@
+{
+  NetworkModHandler handler=new NetworkModHandler(container,networkModClass,asmData);
+  if (handler.isNetworkMod()) {
+    networkModHandlers.put(container,handler);
+    networkIdLookup.put(handler.getNetworkId(),handler);
+  }
+  return handler.isNetworkMod();
+}

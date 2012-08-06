@@ -1,0 +1,3 @@
+{
+  return networkModHandlers.get(mc);
+}

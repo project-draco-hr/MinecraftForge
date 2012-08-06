@@ -1,3 +1,4 @@
 {
   this.modClassLoader=(ModClassLoader)eventData[0];
+  this.asmData=(ASMDataTable)eventData[1];
 }

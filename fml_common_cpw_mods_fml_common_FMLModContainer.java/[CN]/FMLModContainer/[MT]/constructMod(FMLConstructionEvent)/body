@@ -3,6 +3,8 @@
     ModClassLoader modClassLoader=event.getModClassLoader();
     modClassLoader.addFile(source);
     Class<?> clazz=Class.forName(className,true,modClassLoader);
+    ASMDataTable asmHarvestedAnnotations=event.getASMHarvestedData();
+    asmHarvestedAnnotations.getAnnotationsFor(this);
     annotations=gatherAnnotations(clazz);
     modInstance=clazz.newInstance();
     processFieldAnnotations();

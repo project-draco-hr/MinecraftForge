@@ -4,6 +4,7 @@
     modClassLoader.addFile(modSource);
     Class<? extends BaseMod> modClazz=(Class<? extends BaseMod>)Class.forName(modClazzName,true,modClassLoader);
     configureMod(modClazz);
+    isNetworkMod=FMLNetworkHandler.instance().registerNetworkMod(this,modClazz,event.getASMHarvestedData());
     mod=(BaseMod)modClazz.newInstance();
   }
  catch (  Exception e) {

@@ -1,0 +1,3 @@
+NetworkManager mgr
+FMLNetworkHandler handler
+NetHandler netHandler

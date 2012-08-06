@@ -1,3 +1,0 @@
-{
-  return modChannels.get(channel);
-}

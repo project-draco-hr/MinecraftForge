@@ -1,3 +1,0 @@
-{
-  return activeChannels.get(player).contains(channel);
-}

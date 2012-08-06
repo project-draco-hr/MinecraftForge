@@ -1,0 +1,21 @@
+{
+  List<String> missingMods=Lists.newArrayList();
+  Map<String,String> modVersions=Maps.newHashMap();
+  Map<String,ModContainer> indexedModList=Maps.newHashMap(Loader.instance().getIndexedModList());
+  for (  String m : sentModList) {
+    ModContainer mc=indexedModList.get(m);
+    if (mc == null) {
+      missingMods.add(m);
+      continue;
+    }
+    indexedModList.remove(m);
+    modVersions.put(m,mc.getVersion());
+  }
+  if (indexedModList.size() > 0) {
+  }
+  Packet250CustomPayload pkt=new Packet250CustomPayload();
+  pkt.field_73630_a="FML";
+  pkt.field_73629_c=FMLPacket.makePacket(MOD_LIST_RESPONSE,modVersions,missingMods);
+  pkt.field_73628_b=pkt.field_73629_c.length;
+  mgr.func_74429_a(pkt);
+}

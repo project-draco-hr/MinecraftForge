@@ -20,4 +20,5 @@
   mods.addAll(discoverer.identifyMods());
   namedMods=Maps.uniqueIndex(mods,new ModIdFunction());
   FMLLog.info("Forge Mod Loader has identified %d mod%s to load",mods.size(),mods.size() != 1 ? "s" : "");
+  return discoverer;
 }

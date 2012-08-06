@@ -4,14 +4,14 @@
   namedMods=Maps.newHashMap();
   modController=new LoadController(this);
   modController.transition(LoaderState.LOADING);
-  identifyMods();
+  ModDiscoverer disc=identifyMods();
   disableRequestedMods();
   sortModList();
   mods=ImmutableList.copyOf(mods);
   modController.distributeStateMessage(FMLLoadEvent.class);
   modController.transition(LoaderState.CONSTRUCTING);
-  modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader);
+  modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader,disc.getASMTable());
   modController.transition(LoaderState.PREINITIALIZATION);
-  modController.distributeStateMessage(LoaderState.PREINITIALIZATION);
+  modController.distributeStateMessage(LoaderState.PREINITIALIZATION,disc.getASMTable());
   modController.transition(LoaderState.INITIALIZATION);
 }
