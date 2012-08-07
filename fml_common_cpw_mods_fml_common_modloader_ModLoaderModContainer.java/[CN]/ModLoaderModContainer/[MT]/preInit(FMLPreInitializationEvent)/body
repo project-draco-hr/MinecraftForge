@@ -7,7 +7,9 @@
     this.guiTickHandler.setMod(mod);
     TickRegistry.registerTickHandler(this.gameTickHandler);
     TickRegistry.registerTickHandler(this.guiTickHandler);
-    GameRegistry.registerWorldGenerator(this.mod);
+    GameRegistry.registerWorldGenerator(ModLoaderHelper.buildWorldGenHelper(mod));
+    GameRegistry.registerFuelHandler(ModLoaderHelper.buildFuelHelper(mod));
+    GameRegistry.registerCraftingHandler(ModLoaderHelper.buildCraftingHelper(mod));
   }
  catch (  Exception e) {
     controller.errorOccurred(this,e);

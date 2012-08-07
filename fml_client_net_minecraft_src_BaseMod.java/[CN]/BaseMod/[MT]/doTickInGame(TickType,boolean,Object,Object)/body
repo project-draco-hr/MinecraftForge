@@ -1,8 +1,0 @@
-{
-  Minecraft mc=(Minecraft)minecraftInstance;
-  boolean hasWorld=true;
-  if (tickEnd && (tick == TickType.RENDER || tick == TickType.GAME) && hasWorld) {
-    return onTickInGame((Float)data[0],mc);
-  }
-  return true;
-}

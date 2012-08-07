@@ -1,3 +1,0 @@
-{
-  return onServerCommand(command,(String)data[0],(ICommandManager)data[1]);
-}

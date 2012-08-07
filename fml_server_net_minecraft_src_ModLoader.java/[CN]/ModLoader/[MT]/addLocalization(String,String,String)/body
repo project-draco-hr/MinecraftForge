@@ -1,3 +1,3 @@
 {
-  FMLCommonHandler.instance().addStringLocalization(key,lang,value);
+  LanguageRegistry.instance().addStringLocalization(key,lang,value);
 }

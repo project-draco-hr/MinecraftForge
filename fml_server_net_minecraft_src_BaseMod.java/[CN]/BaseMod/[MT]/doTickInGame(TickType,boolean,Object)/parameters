@@ -1,0 +1,3 @@
+TickType tick
+boolean tickEnd
+Object data

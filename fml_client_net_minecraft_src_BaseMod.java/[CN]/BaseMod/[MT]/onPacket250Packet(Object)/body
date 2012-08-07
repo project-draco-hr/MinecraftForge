@@ -1,3 +1,0 @@
-{
-  receiveCustomPacket((Packet250CustomPayload)data[0]);
-}

@@ -1,3 +1,0 @@
-{
-  onPacket250Received((EntityPlayer)data[1],(Packet250CustomPayload)data[0]);
-}

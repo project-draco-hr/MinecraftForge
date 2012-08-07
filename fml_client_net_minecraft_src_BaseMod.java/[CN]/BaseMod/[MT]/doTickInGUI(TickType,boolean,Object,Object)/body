@@ -1,7 +1,0 @@
-{
-  Minecraft mc=(Minecraft)minecraftInstance;
-  if (tickEnd && (tick == TickType.RENDER || tick == TickType.GAME) || tick == TickType.GUILOAD) {
-    return onTickInGUI((Float)data[0],mc,mc.field_71462_r);
-  }
-  return true;
-}

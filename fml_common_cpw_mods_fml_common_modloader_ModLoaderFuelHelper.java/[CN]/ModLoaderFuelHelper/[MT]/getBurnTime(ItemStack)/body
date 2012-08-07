@@ -1,0 +1,3 @@
+{
+  return mod.addFuel(fuel.field_77993_c,fuel.field_77993_c);
+}

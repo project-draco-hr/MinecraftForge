@@ -1,4 +1,0 @@
-{
-  String label=sidedDelegate.getObjectName(minecraftObject);
-  addStringLocalization(label,lang,name);
-}

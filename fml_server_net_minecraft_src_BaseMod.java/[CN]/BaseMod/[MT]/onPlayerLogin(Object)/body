@@ -1,3 +1,0 @@
-{
-  onClientLogin((EntityPlayer)player);
-}

@@ -1,6 +1,0 @@
-{
-  this.info=info;
-  this.min=min;
-  this.max=max;
-  this.name=name;
-}

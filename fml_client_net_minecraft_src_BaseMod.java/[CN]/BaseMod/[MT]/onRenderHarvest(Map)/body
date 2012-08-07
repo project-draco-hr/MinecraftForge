@@ -1,3 +1,0 @@
-{
-  addRenderer((Map<Class<? extends Entity>,Render>)renderers);
-}

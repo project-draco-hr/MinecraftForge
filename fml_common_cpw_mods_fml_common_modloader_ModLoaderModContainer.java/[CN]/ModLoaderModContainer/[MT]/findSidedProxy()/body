@@ -1,9 +1,0 @@
-{
-  if (sidedProxy == null) {
-    sidedProxy=FMLCommonHandler.instance().getSidedDelegate().findSidedProxyOn(mod);
-    if (sidedProxy == null) {
-      sidedProxy=NULLPROXY;
-    }
-  }
-  return sidedProxy == NULLPROXY ? null : sidedProxy;
-}

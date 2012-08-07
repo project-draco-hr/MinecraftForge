@@ -1,4 +1,0 @@
-{
-  int fv=0;
-  return fv;
-}

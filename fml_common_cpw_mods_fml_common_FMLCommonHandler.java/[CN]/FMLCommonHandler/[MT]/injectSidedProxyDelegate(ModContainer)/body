@@ -1,6 +1,0 @@
-{
-  ProxyInjector injector=mod.findSidedProxy();
-  if (injector != null) {
-    injector.inject(mod,sidedDelegate.getSide());
-  }
-}

@@ -1,5 +1,0 @@
-{
-  EntityItem item=(EntityItem)pickupData[0];
-  EntityPlayer player=(EntityPlayer)pickupData[1];
-  onItemPickup(player,item.field_70294_a);
-}

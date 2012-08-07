@@ -2,10 +2,10 @@
   try {
     ModClassLoader modClassLoader=event.getModClassLoader();
     modClassLoader.addFile(modSource);
-    Class<? extends BaseMod> modClazz=(Class<? extends BaseMod>)Class.forName(modClazzName,true,modClassLoader);
-    configureMod(modClazz);
+    Class<? extends BaseModProxy> modClazz=(Class<? extends BaseModProxy>)Class.forName(modClazzName,true,modClassLoader);
+    configureMod(modClazz,event.getASMHarvestedData());
     isNetworkMod=FMLNetworkHandler.instance().registerNetworkMod(this,modClazz,event.getASMHarvestedData());
-    mod=(BaseMod)modClazz.newInstance();
+    mod=(BaseModProxy)modClazz.newInstance();
   }
  catch (  Exception e) {
     controller.errorOccurred(this,e);

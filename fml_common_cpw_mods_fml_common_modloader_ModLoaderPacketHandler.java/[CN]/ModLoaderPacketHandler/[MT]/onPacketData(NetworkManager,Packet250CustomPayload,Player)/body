@@ -1,0 +1,3 @@
+{
+  mod.onPacket250Received((EntityPlayer)player,packet);
+}

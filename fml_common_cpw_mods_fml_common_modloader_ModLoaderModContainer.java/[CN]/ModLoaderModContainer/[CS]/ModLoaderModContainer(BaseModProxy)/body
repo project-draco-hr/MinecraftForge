@@ -1,0 +1,5 @@
+{
+  this.mod=instance;
+  this.gameTickHandler=new BaseModTicker(instance,false);
+  this.guiTickHandler=new BaseModTicker(instance,true);
+}

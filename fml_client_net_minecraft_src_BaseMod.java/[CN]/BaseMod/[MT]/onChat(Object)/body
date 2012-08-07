@@ -1,4 +1,0 @@
-{
-  receiveChatPacket(((Packet3Chat)data[0]).field_73476_b);
-  return true;
-}

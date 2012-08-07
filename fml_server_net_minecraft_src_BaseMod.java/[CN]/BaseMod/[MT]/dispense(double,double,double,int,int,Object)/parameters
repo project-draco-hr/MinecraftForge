@@ -1,6 +1,0 @@
-double x
-double y
-double z
-int xVelocity
-int zVelocity
-Object data

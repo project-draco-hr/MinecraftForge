@@ -1,0 +1,3 @@
+{
+  mod.takenFromCrafting(player,item,craftMatrix);
+}

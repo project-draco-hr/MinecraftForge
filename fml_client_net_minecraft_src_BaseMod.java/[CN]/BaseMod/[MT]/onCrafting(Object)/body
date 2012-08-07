@@ -1,3 +1,0 @@
-{
-  takenFromCrafting((EntityPlayer)craftingParameters[0],(ItemStack)craftingParameters[1],(IInventory)craftingParameters[2]);
-}
