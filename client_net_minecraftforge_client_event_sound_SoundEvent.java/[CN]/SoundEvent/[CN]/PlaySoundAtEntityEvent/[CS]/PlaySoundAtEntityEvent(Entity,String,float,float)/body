@@ -1,0 +1,6 @@
+{
+  this.entity=entity;
+  this.name=name;
+  this.volume=volume;
+  this.pitch=pitch;
+}
