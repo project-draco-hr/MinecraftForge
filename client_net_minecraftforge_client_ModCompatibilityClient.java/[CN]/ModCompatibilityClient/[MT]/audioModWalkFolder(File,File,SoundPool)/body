@@ -1,0 +1,15 @@
+{
+  if (folder.exists() || folder.mkdirs()) {
+    for (    File file : folder.listFiles()) {
+      if (!file.getName().startsWith(".")) {
+        if (file.isDirectory()) {
+          audioModWalkFolder(base,file,pool);
+        }
+ else         if (file.isFile()) {
+          String subpath=file.getPath().substring(base.getPath().length() + 1).replace('\\','/');
+          pool.addSound(subpath,file);
+        }
+      }
+    }
+  }
+}

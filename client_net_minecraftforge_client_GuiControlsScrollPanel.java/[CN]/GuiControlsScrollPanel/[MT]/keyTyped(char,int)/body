@@ -1,0 +1,9 @@
+{
+  if (selected != -1) {
+    options.setKeyBinding(selected,i);
+    selected=-1;
+    KeyBinding.resetKeyBindingArrayAndHash();
+    return false;
+  }
+  return true;
+}

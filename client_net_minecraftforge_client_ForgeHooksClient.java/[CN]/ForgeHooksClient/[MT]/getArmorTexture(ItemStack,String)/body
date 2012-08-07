@@ -1,0 +1,6 @@
+{
+  if (armor.getItem() instanceof IArmorTextureProvider) {
+    return ((IArmorTextureProvider)armor.getItem()).getArmorTextureFile(armor);
+  }
+  return _default;
+}

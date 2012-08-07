@@ -1,0 +1,12 @@
+{
+  Class mlmp=getClass("ModLoaderMp");
+  if (!isMLMPInstalled() || mlmp == null) {
+    return;
+  }
+  try {
+    mlmp.getDeclaredMethod("handleGUI",Packet100OpenWindow.class).invoke(null,pkt);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+}
