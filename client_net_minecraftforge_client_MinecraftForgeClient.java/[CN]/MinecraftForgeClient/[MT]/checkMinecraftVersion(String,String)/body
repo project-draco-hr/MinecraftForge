@@ -1,5 +1,0 @@
-{
-  if (!Display.getTitle().equals(version)) {
-    MinecraftForge.killMinecraft("Minecraft Forge",message.replaceAll("%version%",Display.getTitle()));
-  }
-}

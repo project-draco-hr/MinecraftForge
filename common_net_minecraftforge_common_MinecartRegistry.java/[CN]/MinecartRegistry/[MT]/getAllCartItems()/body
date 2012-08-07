@@ -1,0 +1,7 @@
+{
+  Set<ItemStack> ret=new HashSet<ItemStack>();
+  for (  ItemStack item : minecartForItem.keySet()) {
+    ret.add(item.copy());
+  }
+  return ret;
+}

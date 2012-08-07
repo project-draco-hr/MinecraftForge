@@ -1,0 +1,14 @@
+{
+  if (Tessellator.renderingWorldRenderer) {
+    String msg=String.format("Warning: Texture %s not preloaded, will cause render glitches!",texture);
+    System.out.println(msg);
+    if (Tessellator.class.getPackage() != null) {
+      if (Tessellator.class.getPackage().equals("net.minecraft.src")) {
+        Minecraft mc=ModLoader.getMinecraftInstance();
+        if (mc.ingameGUI != null) {
+          mc.ingameGUI.func_73827_b().func_73765_a(msg);
+        }
+      }
+    }
+  }
+}

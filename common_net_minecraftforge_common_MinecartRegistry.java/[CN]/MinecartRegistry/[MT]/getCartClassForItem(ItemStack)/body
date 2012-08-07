@@ -1,0 +1,13 @@
+{
+  MinecartKey key=null;
+  for (  Map.Entry<ItemStack,MinecartKey> entry : minecartForItem.entrySet()) {
+    if (entry.getKey().isItemEqual(item)) {
+      key=entry.getValue();
+      break;
+    }
+  }
+  if (key != null) {
+    return key.minecart;
+  }
+  return null;
+}

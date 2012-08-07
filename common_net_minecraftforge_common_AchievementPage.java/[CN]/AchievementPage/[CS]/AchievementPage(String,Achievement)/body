@@ -1,0 +1,4 @@
+{
+  this.name=name;
+  this.achievements=new LinkedList<Achievement>(Arrays.asList(achievements));
+}

@@ -3,4 +3,5 @@
   for (  IEventListener listener : listeners) {
     listener.invoke(event);
   }
+  return (event.isCancelable() ? event.isCanceled() : false);
 }

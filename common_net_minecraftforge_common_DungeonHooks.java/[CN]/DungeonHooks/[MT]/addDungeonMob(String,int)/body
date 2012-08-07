@@ -1,0 +1,12 @@
+{
+  if (rarity <= 0) {
+    throw new IllegalArgumentException("Rarity must be greater then zero");
+  }
+  for (  DungeonMob mob : dungeonMobs) {
+    if (name.equals(mob.type)) {
+      return mob.itemWeight+=rarity;
+    }
+  }
+  dungeonMobs.add(new DungeonMob(rarity,name));
+  return rarity;
+}

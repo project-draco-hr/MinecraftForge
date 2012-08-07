@@ -1,0 +1,9 @@
+{
+  for (  DungeonMob mob : dungeonMobs) {
+    if (name.equals(mob.type)) {
+      dungeonMobs.remove(mob);
+      return mob.itemWeight;
+    }
+  }
+  return 0;
+}

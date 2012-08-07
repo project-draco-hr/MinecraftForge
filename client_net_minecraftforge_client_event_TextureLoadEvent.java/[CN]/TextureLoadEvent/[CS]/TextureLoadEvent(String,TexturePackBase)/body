@@ -1,0 +1,4 @@
+{
+  this.texture=texture;
+  this.pack=pack;
+}

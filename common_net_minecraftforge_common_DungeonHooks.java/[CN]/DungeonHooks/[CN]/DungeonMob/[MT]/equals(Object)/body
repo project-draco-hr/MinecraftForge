@@ -1,0 +1,6 @@
+{
+  if (target instanceof DungeonMob) {
+    return this.type.equals(((DungeonMob)target).type);
+  }
+  return false;
+}

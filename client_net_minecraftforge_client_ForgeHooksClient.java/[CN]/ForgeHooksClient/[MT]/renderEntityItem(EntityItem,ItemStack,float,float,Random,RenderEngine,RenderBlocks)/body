@@ -1,0 +1,35 @@
+{
+  IItemRenderer customRenderer=MinecraftForgeClient.getItemRenderer(item,ENTITY);
+  if (customRenderer == null) {
+    return false;
+  }
+  if (customRenderer.shouldUseRenderHelper(ENTITY,item,ENTITY_ROTATION)) {
+    GL11.glRotatef(rotation,0.0F,1.0F,0.0F);
+  }
+  if (!customRenderer.shouldUseRenderHelper(ENTITY,item,ENTITY_BOBBING)) {
+    GL11.glTranslatef(0.0F,-bobing,0.0F);
+  }
+  boolean is3D=customRenderer.shouldUseRenderHelper(ENTITY,item,BLOCK_3D);
+  if (item.getItem() instanceof ItemBlock && (is3D || RenderBlocks.renderItemIn3d(Block.blocksList[item.itemID].getRenderType()))) {
+    engine.bindTexture(engine.getTexture(item.getItem().getTextureFile()));
+    int renderType=Block.blocksList[item.itemID].getRenderType();
+    float scale=(renderType == 1 || renderType == 19 || renderType == 12 || renderType == 2 ? 0.5F : 0.25F);
+    GL11.glScalef(scale,scale,scale);
+    int size=entity.item.stackSize;
+    int count=(size > 20 ? 4 : (size > 5 ? 3 : (size > 1 ? 2 : 1)));
+    for (int j=0; j < size; j++) {
+      GL11.glPushMatrix();
+      if (j > 0) {
+        GL11.glTranslatef(((random.nextFloat() * 2.0F - 1.0F) * 0.2F) / 0.5F,((random.nextFloat() * 2.0F - 1.0F) * 0.2F) / 0.5F,((random.nextFloat() * 2.0F - 1.0F) * 0.2F) / 0.5F);
+      }
+      customRenderer.renderItem(ENTITY,item,renderBlocks,entity);
+      GL11.glPopMatrix();
+    }
+  }
+ else {
+    engine.bindTexture(engine.getTexture(item.getItem().getTextureFile()));
+    GL11.glScalef(0.5F,0.5F,0.5F);
+    customRenderer.renderItem(ENTITY,item,renderBlocks,entity);
+  }
+  return true;
+}

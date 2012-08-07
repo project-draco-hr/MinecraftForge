@@ -1,0 +1,2 @@
+Class<? extends EntityMinecart> minecart
+int type

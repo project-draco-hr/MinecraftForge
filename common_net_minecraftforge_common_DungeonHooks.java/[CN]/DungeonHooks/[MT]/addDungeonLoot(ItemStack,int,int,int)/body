@@ -1,0 +1,9 @@
+{
+  for (  DungeonLoot loot : dungeonLoot) {
+    if (loot.equals(item,minCount,maxCount)) {
+      return loot.itemWeight+=rarity;
+    }
+  }
+  dungeonLoot.add(new DungeonLoot(rarity,item,minCount,maxCount));
+  return rarity;
+}

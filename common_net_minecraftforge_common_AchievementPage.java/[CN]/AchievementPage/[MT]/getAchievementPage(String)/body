@@ -1,0 +1,8 @@
+{
+  for (  AchievementPage page : achievementPages) {
+    if (page.getName().equals(name)) {
+      return page;
+    }
+  }
+  return null;
+}
