@@ -1,5 +1,0 @@
-int index
-int xPosition
-int yPosition
-int l
-Tessellator tessellator
