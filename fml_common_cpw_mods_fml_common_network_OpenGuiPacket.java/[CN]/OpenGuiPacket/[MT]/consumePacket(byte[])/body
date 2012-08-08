@@ -1,0 +1,10 @@
+{
+  ByteArrayDataInput dat=ByteStreams.newDataInput(data);
+  windowId=dat.readInt();
+  networkId=dat.readInt();
+  modGuiId=dat.readInt();
+  x=dat.readInt();
+  y=dat.readInt();
+  z=dat.readInt();
+  return this;
+}
