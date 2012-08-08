@@ -1,4 +1,11 @@
 {
   FMLPacket pkt=FMLPacket.readPacket(packet.field_73629_c);
-  pkt.execute(network,this,netHandler);
+  String userName=null;
+  if (netHandler instanceof NetLoginHandler) {
+    userName=((NetLoginHandler)netHandler).field_72543_h;
+  }
+ else {
+    userName=netHandler.getPlayer().func_70005_c_();
+  }
+  pkt.execute(network,this,netHandler,userName);
 }

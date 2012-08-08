@@ -1,3 +1,4 @@
 NetworkManager network
 FMLNetworkHandler handler
 NetHandler netHandler
+String userName

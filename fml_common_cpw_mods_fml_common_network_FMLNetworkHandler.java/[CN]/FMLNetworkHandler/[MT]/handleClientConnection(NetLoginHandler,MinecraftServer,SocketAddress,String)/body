@@ -7,6 +7,12 @@
     }
   }
   if (loginStates.get(netLoginHandler) == 1) {
+    String modKick=NetworkRegistry.instance().connectionReceived(netLoginHandler,netLoginHandler.field_72538_b);
+    if (modKick != null) {
+      netLoginHandler.completeConnection(modKick);
+      loginStates.remove(netLoginHandler);
+      return;
+    }
     if (!handleVanillaLoginKick(netLoginHandler,server,address,userName)) {
       loginStates.remove(netLoginHandler);
       return;

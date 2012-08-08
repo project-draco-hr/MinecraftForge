@@ -1,0 +1,11 @@
+{
+  if (mc instanceof ModContainer) {
+    return networkModHandlers.get(mc);
+  }
+ else   if (mc instanceof Integer) {
+    return networkIdLookup.get(mc);
+  }
+ else {
+    return networkModHandlers.get(FMLCommonHandler.instance().findContainerFor(mc));
+  }
+}

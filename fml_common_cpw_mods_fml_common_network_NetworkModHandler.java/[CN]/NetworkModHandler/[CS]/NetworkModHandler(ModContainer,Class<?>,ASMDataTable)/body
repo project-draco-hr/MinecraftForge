@@ -1,11 +1,8 @@
 {
-  this.container=container;
-  this.mod=networkModClass.getAnnotation(NetworkMod.class);
+  this(container,networkModClass.getAnnotation(NetworkMod.class));
   if (this.mod == null) {
     return;
   }
-  this.localId=assignedIds++;
-  this.networkId=this.localId;
   Set<ASMData> versionCheckHandlers=table.getAnnotationsFor(container).get(NetworkMod.VersionCheckHandler.class.getName());
   String versionCheckHandlerMethod=null;
   for (  ASMData vch : versionCheckHandlers) {

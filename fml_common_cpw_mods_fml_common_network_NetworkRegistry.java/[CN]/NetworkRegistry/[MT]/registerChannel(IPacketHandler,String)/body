@@ -1,7 +1,3 @@
 {
-  if ("FML".equals(channelName) || (channelName != null && channelName.startsWith("MC|"))) {
-    FMLLog.severe("Illegal attempt to register a special channel %s",channelName);
-    throw new FMLNetworkException();
-  }
   packetHandlers.put(channelName,handler);
 }
