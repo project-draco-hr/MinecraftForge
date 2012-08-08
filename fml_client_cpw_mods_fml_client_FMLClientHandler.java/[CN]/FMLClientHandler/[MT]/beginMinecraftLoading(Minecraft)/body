@@ -6,6 +6,7 @@
   }
   client=minecraft;
   ObfuscationReflectionHelper.detectObfuscation(World.class);
+  TextureFXManager.instance().setClient(client);
   FMLCommonHandler.instance().beginLoading(this);
   try {
     Class<?> optifineConfig=Class.forName("Config",false,Loader.instance().getModClassLoader());

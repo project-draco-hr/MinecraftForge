@@ -3,5 +3,6 @@
     transformers.add((IClassTransformer)loadClass(transformerClassName).newInstance());
   }
  catch (  Exception e) {
+    FMLRelaunchLog.log(Level.SEVERE,e,"A critical problem occured registering the ASM transformer class %s",transformerClassName);
   }
 }
