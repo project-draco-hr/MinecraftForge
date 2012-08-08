@@ -1,0 +1,16 @@
+{
+  InputStream classStream=null;
+  try {
+    classStream=MCPMerger.class.getResourceAsStream("/" + name.replace('.','/').concat(".class"));
+    return readFully(classStream);
+  }
+  finally {
+    if (classStream != null) {
+      try {
+        classStream.close();
+      }
+ catch (      IOException e) {
+      }
+    }
+  }
+}

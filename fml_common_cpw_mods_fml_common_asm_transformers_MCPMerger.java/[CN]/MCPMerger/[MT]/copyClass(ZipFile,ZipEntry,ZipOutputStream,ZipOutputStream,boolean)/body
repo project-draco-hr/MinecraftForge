@@ -1,0 +1,15 @@
+{
+  ClassReader reader=new ClassReader(readEntry(inJar,entry));
+  ClassNode classNode=new ClassNode();
+  reader.accept(classNode,0);
+  if (classNode.visibleAnnotations == null)   classNode.visibleAnnotations=new ArrayList<AnnotationNode>();
+  classNode.visibleAnnotations.add(getSideAnn(isClientOnly));
+  ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
+  classNode.accept(writer);
+  byte[] data=writer.toByteArray();
+  ZipEntry newEntry=new ZipEntry(entry.getName());
+  outJar.putNextEntry(newEntry);
+  outJar.write(data);
+  outJar2.putNextEntry(newEntry);
+  outJar2.write(data);
+}

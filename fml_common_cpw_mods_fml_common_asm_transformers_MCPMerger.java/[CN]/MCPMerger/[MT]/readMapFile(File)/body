@@ -1,0 +1,20 @@
+{
+  try {
+    FileInputStream fstream=new FileInputStream(mapFile);
+    DataInputStream in=new DataInputStream(fstream);
+    BufferedReader br=new BufferedReader(new InputStreamReader(in));
+    String line;
+    while ((line=br.readLine()) != null) {
+      boolean toClient=line.charAt(0) == '<';
+      line=line.substring(1);
+      if (toClient)       copyToClient.add(line);
+ else       copyToServer.add(line);
+    }
+    in.close();
+    return true;
+  }
+ catch (  Exception e) {
+    System.err.println("Error: " + e.getMessage());
+    return false;
+  }
+}
