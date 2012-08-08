@@ -1,0 +1,5 @@
+{
+  for (  IConnectionHandler handler : connectionHandlers) {
+    handler.connectionClosed(manager);
+  }
+}
