@@ -1,3 +1,0 @@
-{
-  return (min == minCount && max == maxCount && item.isItemEqual(this.itemStack));
-}
