@@ -1,0 +1,8 @@
+{
+  ByteArrayDataInput dat=ByteStreams.newDataInput(data);
+  entityId=dat.readInt();
+  serverX=dat.readInt();
+  serverY=dat.readInt();
+  serverZ=dat.readInt();
+  return this;
+}

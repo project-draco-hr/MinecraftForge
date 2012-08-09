@@ -1,0 +1,5 @@
+int entityId
+EntityPlayerMP player
+int serverX
+int serverY
+int serverZ
