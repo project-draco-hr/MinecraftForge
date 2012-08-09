@@ -1,3 +1,3 @@
 {
-  EntityRegistry.registerEntityID(entityClass,entityName,id,background,foreground);
+  EntityRegistry.registerGlobalEntityID(entityClass,entityName,id,background,foreground);
 }
