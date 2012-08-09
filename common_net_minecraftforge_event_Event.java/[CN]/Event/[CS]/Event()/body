@@ -7,6 +7,7 @@
       found=true;
       break;
     }
+    cls=cls.getSuperclass();
   }
   isCancelable=found;
 }
