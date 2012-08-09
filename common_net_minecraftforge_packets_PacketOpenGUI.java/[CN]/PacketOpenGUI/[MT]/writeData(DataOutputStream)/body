@@ -1,8 +1,0 @@
-{
-  data.writeInt(WindowID);
-  data.writeInt(ModID);
-  data.writeInt(GuiID);
-  data.writeInt(X);
-  data.writeInt(Y);
-  data.writeInt(Z);
-}

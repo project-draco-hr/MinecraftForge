@@ -1,8 +1,7 @@
 def main():
     print '=================================== Setup Start ================================='
     dont_gen_conf = ('-no_gen_conf' in sys.argv)
-    setup_forge_mcp(mcp_dir, forge_dir, dont_gen_conf)
-    setup_fml()
+    setup_fml(dont_gen_conf)
     base_dir = os.path.join(mcp_dir, 'src_base')
     work_dir = os.path.join(mcp_dir, 'src_work')
     if os.path.isdir(base_dir):

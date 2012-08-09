@@ -1,6 +1,0 @@
-{
-  entityId=data.readInt();
-  serverPosX=data.readInt();
-  serverPosY=data.readInt();
-  serverPosZ=data.readInt();
-}

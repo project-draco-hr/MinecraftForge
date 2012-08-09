@@ -1,8 +1,0 @@
-{
-  WindowID=data.readInt();
-  ModID=data.readInt();
-  GuiID=data.readInt();
-  X=data.readInt();
-  Y=data.readInt();
-  Z=data.readInt();
-}
