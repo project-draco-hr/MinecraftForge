@@ -1,0 +1,4 @@
+ModContainer mc
+Class<? extends Entity> entityClass
+String entityName
+int id

@@ -1,4 +1,5 @@
 {
   logFileNamePattern="ForgeModLoader-client-%g.log";
+  side="CLIENT";
   instance().relaunchClient(wrap);
 }

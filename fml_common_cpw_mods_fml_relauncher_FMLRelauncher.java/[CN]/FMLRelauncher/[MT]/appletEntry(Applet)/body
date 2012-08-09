@@ -1,3 +1,5 @@
 {
+  side="CLIENT";
+  logFileNamePattern="ForgeModLoader-client-%g.log";
   instance().relaunchApplet(minecraftApplet);
 }

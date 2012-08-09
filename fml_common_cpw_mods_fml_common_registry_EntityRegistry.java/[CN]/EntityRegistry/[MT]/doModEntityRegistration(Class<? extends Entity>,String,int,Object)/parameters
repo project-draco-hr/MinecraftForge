@@ -1,0 +1,4 @@
+Class<? extends Entity> entityClass
+String entityName
+int id
+Object mod
