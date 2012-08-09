@@ -1,0 +1,57 @@
+{
+  List<FieldNode> cFields=cClass.fields;
+  List<FieldNode> sFields=sClass.fields;
+  int sI=0;
+  for (int x=0; x < cFields.size(); x++) {
+    FieldNode cF=cFields.get(x);
+    if (sI < sFields.size()) {
+      if (!cF.name.equals(sFields.get(sI).name)) {
+        boolean serverHas=false;
+        for (int y=sI + 1; y < sFields.size(); y++) {
+          if (cF.name.equals(sFields.get(y).name)) {
+            serverHas=true;
+            break;
+          }
+        }
+        if (serverHas) {
+          boolean clientHas=false;
+          FieldNode sF=sFields.get(sI);
+          for (int y=x + 1; y < cFields.size(); y++) {
+            if (sF.name.equals(cFields.get(y).name)) {
+              clientHas=true;
+              break;
+            }
+          }
+          if (!clientHas) {
+            if (sF.visibleAnnotations == null)             sF.visibleAnnotations=new ArrayList<AnnotationNode>();
+            sF.visibleAnnotations.add(getSideAnn(false));
+            cFields.add(x++,sF);
+            info.sField.add(sF);
+          }
+        }
+ else {
+          if (cF.visibleAnnotations == null)           cF.visibleAnnotations=new ArrayList<AnnotationNode>();
+          cF.visibleAnnotations.add(getSideAnn(true));
+          sFields.add(sI,cF);
+          info.cField.add(cF);
+        }
+      }
+    }
+ else {
+      if (cF.visibleAnnotations == null)       cF.visibleAnnotations=new ArrayList<AnnotationNode>();
+      cF.visibleAnnotations.add(getSideAnn(true));
+      sFields.add(sI,cF);
+      info.cField.add(cF);
+    }
+    sI++;
+  }
+  if (sFields.size() != cFields.size()) {
+    for (int x=cFields.size(); x < sFields.size(); x++) {
+      FieldNode sF=sFields.get(x);
+      if (sF.visibleAnnotations == null)       sF.visibleAnnotations=new ArrayList<AnnotationNode>();
+      sF.visibleAnnotations.add(getSideAnn(true));
+      cFields.add(x++,sF);
+      info.sField.add(sF);
+    }
+  }
+}

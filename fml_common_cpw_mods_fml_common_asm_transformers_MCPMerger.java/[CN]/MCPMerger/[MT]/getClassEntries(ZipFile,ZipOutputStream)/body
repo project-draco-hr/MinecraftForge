@@ -1,0 +1,17 @@
+{
+  Hashtable<String,ZipEntry> ret=new Hashtable<String,ZipEntry>();
+  for (  ZipEntry entry : Collections.list((Enumeration<ZipEntry>)inFile.entries())) {
+    if (entry.isDirectory()) {
+      outFile.putNextEntry(entry);
+      continue;
+    }
+    String entryName=entry.getName();
+    if (!entryName.endsWith(".class") || entryName.startsWith(".")) {
+      copyEntry(inFile,entry,outFile);
+    }
+ else {
+      ret.put(entryName.replace(".class",""),entry);
+    }
+  }
+  return ret;
+}

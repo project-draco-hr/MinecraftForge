@@ -1,0 +1,24 @@
+{
+  ClassNode classNode=new ClassNode();
+  ClassReader classReader=new ClassReader(bytes);
+  classReader.accept(classNode,0);
+  Iterator<FieldNode> fields=classNode.fields.iterator();
+  while (fields.hasNext()) {
+    FieldNode field=fields.next();
+    if (remove((List<AnnotationNode>)field.visibleAnnotations,SIDE)) {
+      System.out.println("Removing Field: " + field.name);
+      fields.remove();
+    }
+  }
+  Iterator<MethodNode> methods=classNode.methods.iterator();
+  while (methods.hasNext()) {
+    MethodNode method=methods.next();
+    if (remove((List<AnnotationNode>)method.visibleAnnotations,SIDE)) {
+      System.out.println("Removing Method: " + method.name + " "+ method.desc);
+      methods.remove();
+    }
+  }
+  ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
+  classNode.accept(writer);
+  return writer.toByteArray();
+}

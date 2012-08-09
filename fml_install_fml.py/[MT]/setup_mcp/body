@@ -1,4 +1,4 @@
-def setup_mcp(fml_dir, mcp_dir):
+def setup_mcp(fml_dir, mcp_dir, dont_gen_conf=True):
     backup = os.path.join(mcp_dir, 'runtime', 'commands.py.bck')
     runtime = os.path.join(mcp_dir, 'runtime', 'commands.py')
     patch = os.path.join(fml_dir, 'commands.patch')
@@ -29,5 +29,20 @@ def setup_mcp(fml_dir, mcp_dir):
     process.communicate()
     if os.path.isfile(temp):
         os.remove(temp)
+    mcp_conf = os.path.join(mcp_dir, 'conf')
+    mcp_conf_bak = os.path.join(mcp_dir, 'conf.bak')
+    fml_conf = os.path.join(fml_dir, 'conf')
+    if (not dont_gen_conf):
+        if os.path.isdir(mcp_conf_bak):
+            print 'Reverting old conf backup folder'
+            shutil.rmtree(mcp_conf)
+            os.rename(mcp_conf_bak, mcp_conf)
+        get_conf_copy(mcp_dir, fml_dir)
+        print 'Backing up MCP Conf'
+        os.rename(mcp_conf, mcp_conf_bak)
+    else:
+        shutil.rmtree(mcp_conf)
+    print 'Copying FML conf'
+    shutil.copytree(fml_conf, mcp_conf)
     print 'Fixing MCP Workspace'
     merge_tree(os.path.join(fml_dir, 'eclipse'), os.path.join(mcp_dir, 'eclipse'))

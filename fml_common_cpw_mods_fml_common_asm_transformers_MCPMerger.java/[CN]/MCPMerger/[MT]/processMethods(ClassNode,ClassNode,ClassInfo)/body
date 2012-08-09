@@ -1,0 +1,57 @@
+{
+  List<MethodNode> cMethods=(List<MethodNode>)cClass.methods;
+  List<MethodNode> sMethods=(List<MethodNode>)sClass.methods;
+  int sI=0;
+  for (int x=0; x < cMethods.size(); x++) {
+    MethodNode cM=cMethods.get(x);
+    if (sI < sMethods.size()) {
+      if (!cM.name.equals(sMethods.get(sI).name) || (cM.name.equals("<init>") && !cM.desc.equals(sMethods.get(sI).desc))) {
+        boolean serverHas=false;
+        for (int y=sI + 1; y < sMethods.size(); y++) {
+          if (cM.name.equals(sMethods.get(y).name) && cM.desc.equals(sMethods.get(y).desc)) {
+            serverHas=true;
+            break;
+          }
+        }
+        if (serverHas) {
+          boolean clientHas=false;
+          MethodNode sM=sMethods.get(sI);
+          for (int y=x + 1; y < cMethods.size(); y++) {
+            if (sM.name.equals(cMethods.get(y).name) && sM.desc.equals(cMethods.get(y).desc)) {
+              clientHas=true;
+              break;
+            }
+          }
+          if (!clientHas) {
+            if (sM.visibleAnnotations == null)             sM.visibleAnnotations=new ArrayList<AnnotationNode>();
+            sM.visibleAnnotations.add(getSideAnn(false));
+            cMethods.add(x,sM);
+            info.sMethods.add(sM);
+          }
+        }
+ else {
+          if (cM.visibleAnnotations == null)           cM.visibleAnnotations=new ArrayList<AnnotationNode>();
+          cM.visibleAnnotations.add(getSideAnn(true));
+          sMethods.add(sI,cM);
+          info.cMethods.add(cM);
+        }
+      }
+    }
+ else {
+      if (cM.visibleAnnotations == null)       cM.visibleAnnotations=new ArrayList<AnnotationNode>();
+      cM.visibleAnnotations.add(getSideAnn(true));
+      sMethods.add(sI,cM);
+      info.cMethods.add(cM);
+    }
+    sI++;
+  }
+  if (sMethods.size() != cMethods.size()) {
+    for (int x=cMethods.size(); x < sMethods.size(); x++) {
+      MethodNode sM=sMethods.get(x);
+      if (sM.visibleAnnotations == null)       sM.visibleAnnotations=new ArrayList<AnnotationNode>();
+      sM.visibleAnnotations.add(getSideAnn(false));
+      cMethods.add(x++,sM);
+      info.sMethods.add(sM);
+    }
+  }
+}

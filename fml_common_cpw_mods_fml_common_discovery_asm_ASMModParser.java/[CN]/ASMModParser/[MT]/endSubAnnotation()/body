@@ -1,0 +1,4 @@
+{
+  ModAnnotation child=annotations.removeFirst();
+  annotations.addLast(child);
+}

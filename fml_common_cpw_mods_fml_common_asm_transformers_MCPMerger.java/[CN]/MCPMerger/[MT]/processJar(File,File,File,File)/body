@@ -1,0 +1,97 @@
+{
+  ZipFile cInJar=null;
+  ZipFile sInJar=null;
+  ZipOutputStream cOutJar=null;
+  ZipOutputStream sOutJar=null;
+  try {
+    try {
+      cInJar=new ZipFile(clientInFile);
+      sInJar=new ZipFile(serverInFile);
+    }
+ catch (    FileNotFoundException e) {
+      throw new FileNotFoundException("Could not open input file: " + e.getMessage());
+    }
+    try {
+      cOutJar=new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(clientOutFile)));
+      sOutJar=new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(serverOutFile)));
+    }
+ catch (    FileNotFoundException e) {
+      throw new FileNotFoundException("Could not open output file: " + e.getMessage());
+    }
+    Hashtable<String,ZipEntry> cClasses=getClassEntries(cInJar,cOutJar);
+    Hashtable<String,ZipEntry> sClasses=getClassEntries(sInJar,sOutJar);
+    for (    Entry<String,ZipEntry> entry : cClasses.entrySet()) {
+      String name=entry.getKey();
+      ZipEntry cEntry=entry.getValue();
+      ZipEntry sEntry=sClasses.get(name);
+      if (sEntry == null) {
+        if (!copyToServer.contains(name)) {
+          copyEntry(cInJar,cEntry,cOutJar);
+        }
+ else {
+          System.out.println("Copy class c->s : " + name);
+          copyClass(cInJar,cEntry,cOutJar,sOutJar,true);
+        }
+        continue;
+      }
+      sClasses.remove(name);
+      ClassInfo info=new ClassInfo(name);
+      shared.put(name,info);
+      byte[] cData=readEntry(cInJar,entry.getValue());
+      byte[] sData=readEntry(sInJar,sEntry);
+      byte[] data=processClass(cData,sData,info);
+      ZipEntry newEntry=new ZipEntry(cEntry.getName());
+      cOutJar.putNextEntry(newEntry);
+      cOutJar.write(data);
+      sOutJar.putNextEntry(newEntry);
+      sOutJar.write(data);
+    }
+    for (    Entry<String,ZipEntry> entry : sClasses.entrySet()) {
+      if (!copyToClient.contains(entry.getKey())) {
+        copyEntry(sInJar,entry.getValue(),sOutJar);
+      }
+ else {
+        System.out.println("Copy class s->c : " + entry.getKey());
+        copyClass(sInJar,entry.getValue(),cOutJar,sOutJar,false);
+      }
+    }
+    for (    String name : new String[]{SideOnly.class.getName(),Side.class.getName()}) {
+      byte[] data=getClassBytes(name);
+      ZipEntry newEntry=new ZipEntry(name.replace(".","/").concat(".class"));
+      cOutJar.putNextEntry(newEntry);
+      cOutJar.write(data);
+      sOutJar.putNextEntry(newEntry);
+      sOutJar.write(data);
+    }
+  }
+  finally {
+    if (cInJar != null) {
+      try {
+        cInJar.close();
+      }
+ catch (      IOException e) {
+      }
+    }
+    if (sInJar != null) {
+      try {
+        sInJar.close();
+      }
+ catch (      IOException e) {
+      }
+    }
+    if (cOutJar != null) {
+      try {
+        cOutJar.close();
+      }
+ catch (      IOException e) {
+      }
+    }
+    if (sOutJar != null) {
+      try {
+        sOutJar.close();
+      }
+ catch (      IOException e) {
+      }
+    }
+  }
+}

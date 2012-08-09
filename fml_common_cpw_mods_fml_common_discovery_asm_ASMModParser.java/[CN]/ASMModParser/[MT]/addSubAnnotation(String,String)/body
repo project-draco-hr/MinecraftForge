@@ -1,0 +1,4 @@
+{
+  ModAnnotation ma=annotations.getFirst();
+  annotations.addFirst(ma.addChildAnnotation(name,desc));
+}

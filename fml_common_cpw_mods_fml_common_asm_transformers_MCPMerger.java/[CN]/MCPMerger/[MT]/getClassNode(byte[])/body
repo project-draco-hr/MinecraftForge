@@ -1,0 +1,6 @@
+{
+  ClassReader reader=new ClassReader(data);
+  ClassNode classNode=new ClassNode();
+  reader.accept(classNode,0);
+  return classNode;
+}

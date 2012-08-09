@@ -1,0 +1,8 @@
+{
+  if (this.arrayList != null) {
+    arrayList.add(value);
+  }
+ else {
+    values.put(key,value);
+  }
+}

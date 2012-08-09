@@ -1,0 +1,7 @@
+{
+  AnnotationNode ann=new AnnotationNode(Type.getDescriptor(SideOnly.class));
+  ann.values=new ArrayList<Object>();
+  ann.values.add("value");
+  ann.values.add(new String[]{Type.getDescriptor(Side.class),(isClientOnly ? "CLIENT" : "SERVER")});
+  return ann;
+}
