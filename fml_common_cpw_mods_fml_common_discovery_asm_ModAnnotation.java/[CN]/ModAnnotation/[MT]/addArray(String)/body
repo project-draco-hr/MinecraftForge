@@ -1,0 +1,4 @@
+{
+  this.arrayList=Lists.newArrayList();
+  this.arrayName=name;
+}
