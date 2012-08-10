@@ -1,5 +1,5 @@
 {
-  this.entity=entity;
+  super(entity);
   this.name=name;
   this.volume=volume;
   this.pitch=pitch;
