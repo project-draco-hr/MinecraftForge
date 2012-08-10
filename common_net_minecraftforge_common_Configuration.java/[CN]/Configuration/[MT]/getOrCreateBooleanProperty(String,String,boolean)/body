@@ -1,6 +1,6 @@
 {
   Property prop=getOrCreateProperty(key,category,Boolean.toString(defaultValue));
-  if ("true".equals(prop.value.toLowerCase()) || "false".equals(prop.value.toLowerCase())) {
+  if ("true".equals(prop.value.toLowerCase(Locale.ENGLISH)) || "false".equals(prop.value.toLowerCase(Locale.ENGLISH))) {
     return prop;
   }
  else {

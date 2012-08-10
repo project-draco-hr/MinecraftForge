@@ -14,7 +14,7 @@
  else {
     Property property=new Property();
     properties.put(key,property);
-    property.name=key;
+    property.setName(key);
     if (Block.blocksList[defaultId] == null && !configBlocks[defaultId]) {
       property.value=Integer.toString(defaultId);
       configBlocks[defaultId]=true;

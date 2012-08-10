@@ -3,7 +3,7 @@
     if (property.comment != null) {
       buffer.write("   # " + property.comment + "\r\n");
     }
-    buffer.write("   " + property.name + "="+ property.value);
+    buffer.write("   " + property.getName() + "="+ property.value);
     buffer.write("\r\n");
   }
 }

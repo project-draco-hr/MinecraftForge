@@ -1,5 +1,5 @@
 {
-  category=category.toLowerCase();
+  category=category.toLowerCase(Locale.ENGLISH);
   Map<String,Property> source=categories.get(category);
   if (source == null) {
     source=new TreeMap<String,Property>();
@@ -11,7 +11,7 @@
  else   if (defaultValue != null) {
     Property property=new Property();
     source.put(key,property);
-    property.name=key;
+    property.setName(key);
     property.value=defaultValue;
     return property;
   }
