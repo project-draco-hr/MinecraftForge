@@ -1,4 +1,4 @@
-NetworkModHandler networkModHandler
+ModContainer mc
 EntityPlayerMP player
 int modGuiId
 World world

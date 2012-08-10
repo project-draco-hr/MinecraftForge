@@ -1,0 +1,11 @@
+{
+  ModContainer mc=FMLCommonHandler.instance().findContainerFor(mod);
+  NetworkModHandler nmh=FMLNetworkHandler.instance().findNetworkModHandler(mc);
+  if (nmh == null) {
+    FMLLog.log(Level.FINE,"The mod %s needs to be a @NetworkMod to register a Networked Gui Handler",mc.getModId());
+  }
+ else {
+    serverGuiHandlers.put(mc,handler);
+  }
+  clientGuiHandlers.put(mc,handler);
+}

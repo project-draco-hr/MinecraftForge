@@ -1,4 +1,4 @@
 {
-  IGuiHandler handler=clientGuiHandlers.get(networkModHandler.getContainer());
+  IGuiHandler handler=clientGuiHandlers.get(mc);
   FMLCommonHandler.instance().showGuiScreen(handler.getClientGuiElement(modGuiId,player,world,x,y,z));
 }
