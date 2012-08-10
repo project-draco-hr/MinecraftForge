@@ -1,3 +1,0 @@
-{
-  tickStart(EnumSet.of(TickType.WORLDLOAD),Side.SERVER,world);
-}

@@ -1,0 +1,3 @@
+{
+  tickEnd(EnumSet.of(TickType.PLAYER),Side.SERVER,player);
+}

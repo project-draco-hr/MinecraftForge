@@ -5,7 +5,7 @@
   t2.interval=2;
   TickTester t3=new TickTester();
   t3.interval=3;
-  TickRegistry.registerScheduledTickHandler(t1);
-  TickRegistry.registerScheduledTickHandler(t2);
-  TickRegistry.registerScheduledTickHandler(t3);
+  TickRegistry.registerScheduledTickHandler(t1,Side.CLIENT);
+  TickRegistry.registerScheduledTickHandler(t2,Side.SERVER);
+  TickRegistry.registerScheduledTickHandler(t3,Side.CLIENT);
 }
