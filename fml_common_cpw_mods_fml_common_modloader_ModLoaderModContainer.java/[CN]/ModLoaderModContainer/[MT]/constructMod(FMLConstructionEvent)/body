@@ -6,6 +6,7 @@
     configureMod(modClazz,event.getASMHarvestedData());
     isNetworkMod=FMLNetworkHandler.instance().registerNetworkMod(this,modClazz,event.getASMHarvestedData());
     mod=(BaseModProxy)modClazz.newInstance();
+    ProxyInjector.inject(this,event.getASMHarvestedData(),FMLCommonHandler.instance().getSide());
   }
  catch (  Exception e) {
     controller.errorOccurred(this,e);
