@@ -1,0 +1,8 @@
+{
+  if (chunkGenerator instanceof ChunkProviderGenerate) {
+    mod.generateSurface(world,random,chunkX << 4,chunkZ << 4);
+  }
+ else   if (chunkGenerator instanceof ChunkProviderHell) {
+    mod.generateNether(world,random,chunkX << 4,chunkZ << 4);
+  }
+}

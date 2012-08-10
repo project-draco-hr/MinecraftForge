@@ -1,3 +1,0 @@
-{
-  GameRegistry.generateWorld(chunkX,chunkZ,worldSeed,data);
-}

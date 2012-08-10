@@ -1,4 +1,0 @@
-int chunkX
-int chunkZ
-long worldSeed
-Object data
