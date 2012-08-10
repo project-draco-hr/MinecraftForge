@@ -1,0 +1,2 @@
+IScheduledTickHandler ticker
+long tickCounter

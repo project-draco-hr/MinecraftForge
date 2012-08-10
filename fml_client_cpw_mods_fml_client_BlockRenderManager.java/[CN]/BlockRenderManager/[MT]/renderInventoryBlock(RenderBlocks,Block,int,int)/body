@@ -1,7 +1,0 @@
-{
-  if (!blockModelIds.containsKey(modelID)) {
-    return;
-  }
-  BlockRenderInfo bri=blockModelIds.get(modelID);
-  bri.renderInventoryBlock(block,metadata,modelID,renderer);
-}

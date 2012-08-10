@@ -1,0 +1,3 @@
+{
+  registerScheduledTickHandler(new SingleIntervalHandler(handler),side);
+}

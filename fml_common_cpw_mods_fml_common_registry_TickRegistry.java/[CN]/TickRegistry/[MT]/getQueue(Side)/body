@@ -1,0 +1,3 @@
+{
+  return side.isClient() ? clientTickHandlers : serverTickHandlers;
+}

@@ -1,8 +1,0 @@
-{
-  if (!guiLoaded) {
-    FMLCommonHandler.instance().rescheduleTicks();
-    FMLCommonHandler.instance().tickStart(EnumSet.of(TickType.GUILOAD),partialTickTime,client.field_71462_r);
-    guiLoaded=true;
-  }
-  FMLCommonHandler.instance().tickEnd(EnumSet.of(TickType.RENDER,TickType.GUI),partialTickTime,client.field_71462_r);
-}

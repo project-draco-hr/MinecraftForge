@@ -1,0 +1,3 @@
+{
+  tickStart(EnumSet.of(TickType.RENDER),Side.CLIENT,timer);
+}

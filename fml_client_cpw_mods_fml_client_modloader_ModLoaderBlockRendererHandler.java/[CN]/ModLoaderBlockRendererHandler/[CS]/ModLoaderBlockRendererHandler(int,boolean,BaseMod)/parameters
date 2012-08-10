@@ -1,0 +1,3 @@
+int renderId
+boolean render3dInInventory
+BaseMod mod

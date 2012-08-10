@@ -1,7 +1,0 @@
-{
-  if (!blockModelIds.containsKey(modelId)) {
-    return false;
-  }
-  BlockRenderInfo bri=blockModelIds.get(modelId);
-  return bri.renderWorldBlock(world,x,y,z,block,modelId,renderer);
-}

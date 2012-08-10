@@ -1,3 +1,3 @@
 {
-  return BlockRenderManager.instance().renderWorldBlock(renderer,world,x,y,z,block,modelID);
+  return RenderingRegistry.instance().renderWorldBlock(renderer,world,x,y,z,block,modelID);
 }

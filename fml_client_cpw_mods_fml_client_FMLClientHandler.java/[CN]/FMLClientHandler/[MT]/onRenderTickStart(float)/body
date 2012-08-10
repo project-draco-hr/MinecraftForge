@@ -1,6 +1,0 @@
-{
-  if (firstTick) {
-    firstTick=false;
-  }
-  FMLCommonHandler.instance().tickStart(EnumSet.of(TickType.RENDER,TickType.GUI),partialTickTime,client.field_71462_r);
-}

@@ -1,7 +1,0 @@
-{
-  ModLoaderModContainer mlmc=ModLoaderHelper.registerRenderHelper(mod);
-  int renderId=nextRenderId++;
-  BlockRenderInfo bri=new BlockRenderInfo(renderId,inventoryRenderer,mlmc);
-  blockModelIds.put(renderId,bri);
-  return renderId;
-}

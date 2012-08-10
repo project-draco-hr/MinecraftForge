@@ -1,0 +1,13 @@
+{
+  if (!end) {
+    return;
+  }
+  upArmed=false;
+  if (type.contains(TickType.CLIENT)) {
+    downArmed=true;
+  }
+  if (type.contains(TickType.RENDER) && downArmed) {
+    onRenderEndTick();
+    downArmed=false;
+  }
+}

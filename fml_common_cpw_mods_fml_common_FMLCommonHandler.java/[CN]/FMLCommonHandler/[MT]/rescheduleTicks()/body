@@ -1,5 +1,0 @@
-{
-  sidedDelegate.profileStart("modTickScheduling");
-  TickRegistry.updateTickQueue(scheduledTicks);
-  sidedDelegate.profileEnd();
-}

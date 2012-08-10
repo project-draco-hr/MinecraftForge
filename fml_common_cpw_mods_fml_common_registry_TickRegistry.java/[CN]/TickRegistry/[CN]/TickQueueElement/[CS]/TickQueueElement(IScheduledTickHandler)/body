@@ -1,4 +1,0 @@
-{
-  this.ticker=ticker;
-  update();
-}

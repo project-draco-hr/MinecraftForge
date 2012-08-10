@@ -1,0 +1,2 @@
+Class<? extends Entity> target
+Render renderer

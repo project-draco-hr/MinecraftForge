@@ -1,0 +1,7 @@
+{
+  if (!blockRenderers.containsKey(modelId)) {
+    return false;
+  }
+  ISimpleBlockRenderingHandler bri=blockRenderers.get(modelId);
+  return bri.renderWorldBlock(world,x,y,z,block,modelId,renderer);
+}

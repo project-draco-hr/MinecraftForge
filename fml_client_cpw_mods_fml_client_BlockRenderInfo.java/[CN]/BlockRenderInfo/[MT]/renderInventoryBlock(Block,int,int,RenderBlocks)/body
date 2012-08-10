@@ -1,3 +1,0 @@
-{
-  ((BaseMod)modContainer.getMod()).renderInvBlock(renderer,block,metadata,modelID);
-}

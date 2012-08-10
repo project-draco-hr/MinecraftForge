@@ -1,3 +1,4 @@
 {
   keyHandlers.add(handler);
+  TickRegistry.registerTickHandler(handler,Side.CLIENT);
 }

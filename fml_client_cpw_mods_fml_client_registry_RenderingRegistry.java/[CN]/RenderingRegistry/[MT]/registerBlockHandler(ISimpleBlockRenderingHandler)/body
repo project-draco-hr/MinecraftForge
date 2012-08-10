@@ -1,0 +1,3 @@
+{
+  blockRenderers.put(handler.getRenderId(),handler);
+}

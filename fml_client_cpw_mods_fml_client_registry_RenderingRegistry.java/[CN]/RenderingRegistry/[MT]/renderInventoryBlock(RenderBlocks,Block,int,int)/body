@@ -1,0 +1,7 @@
+{
+  if (!blockRenderers.containsKey(modelID)) {
+    return;
+  }
+  ISimpleBlockRenderingHandler bri=blockRenderers.get(modelID);
+  bri.renderInventoryBlock(block,metadata,modelID,renderer);
+}

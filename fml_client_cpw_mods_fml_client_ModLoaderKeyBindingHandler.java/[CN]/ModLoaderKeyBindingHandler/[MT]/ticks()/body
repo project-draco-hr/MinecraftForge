@@ -1,3 +1,0 @@
-{
-  return EnumSet.of(TickType.GAME,TickType.RENDER,TickType.GUILOAD);
-}

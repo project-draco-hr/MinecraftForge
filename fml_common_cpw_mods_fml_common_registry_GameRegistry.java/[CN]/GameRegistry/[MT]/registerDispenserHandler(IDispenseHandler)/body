@@ -1,0 +1,3 @@
+{
+  dispenserHandlers.add(handler);
+}
