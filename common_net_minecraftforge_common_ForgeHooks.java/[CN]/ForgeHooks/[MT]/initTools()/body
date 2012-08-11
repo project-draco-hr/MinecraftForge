@@ -18,7 +18,17 @@
   MinecraftForge.setToolClass(Item.shovelSteel,"shovel",2);
   MinecraftForge.setToolClass(Item.shovelGold,"shovel",0);
   MinecraftForge.setToolClass(Item.shovelDiamond,"shovel",3);
+  for (  Block block : ItemPickaxe.blocksEffectiveAgainst) {
+    MinecraftForge.setBlockHarvestLevel(block,"pickaxe",0);
+  }
+  for (  Block block : ItemSpade.blocksEffectiveAgainst) {
+    MinecraftForge.setBlockHarvestLevel(block,"shovel",0);
+  }
+  for (  Block block : ItemAxe.blocksEffectiveAgainst) {
+    MinecraftForge.setBlockHarvestLevel(block,"axe",0);
+  }
   MinecraftForge.setBlockHarvestLevel(Block.obsidian,"pickaxe",3);
+  MinecraftForge.setBlockHarvestLevel(Block.oreEmerald,"pickaxe",2);
   MinecraftForge.setBlockHarvestLevel(Block.oreDiamond,"pickaxe",2);
   MinecraftForge.setBlockHarvestLevel(Block.blockDiamond,"pickaxe",2);
   MinecraftForge.setBlockHarvestLevel(Block.oreGold,"pickaxe",2);
@@ -32,13 +42,4 @@
   MinecraftForge.removeBlockEffectiveness(Block.oreRedstone,"pickaxe");
   MinecraftForge.removeBlockEffectiveness(Block.obsidian,"pickaxe");
   MinecraftForge.removeBlockEffectiveness(Block.oreRedstoneGlowing,"pickaxe");
-  for (  Block block : ItemPickaxe.blocksEffectiveAgainst) {
-    MinecraftForge.setBlockHarvestLevel(block,"pickaxe",0);
-  }
-  for (  Block block : ItemSpade.blocksEffectiveAgainst) {
-    MinecraftForge.setBlockHarvestLevel(block,"shovel",0);
-  }
-  for (  Block block : ItemAxe.blocksEffectiveAgainst) {
-    MinecraftForge.setBlockHarvestLevel(block,"axe",0);
-  }
 }

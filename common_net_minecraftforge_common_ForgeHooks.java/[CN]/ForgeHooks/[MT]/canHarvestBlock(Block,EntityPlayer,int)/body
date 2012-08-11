@@ -6,7 +6,7 @@
   if (stack == null) {
     return player.canHarvestBlock(block);
   }
-  List info=(List)toolClasses.get(stack);
+  List info=(List)toolClasses.get(stack.getItem());
   if (info == null) {
     return player.canHarvestBlock(block);
   }
