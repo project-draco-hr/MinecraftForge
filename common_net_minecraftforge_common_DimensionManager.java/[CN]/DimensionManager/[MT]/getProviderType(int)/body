@@ -1,0 +1,6 @@
+{
+  if (!dimensions.containsKey(dim)) {
+    throw new IllegalArgumentException(String.format("Could not get provider type for dimension %d, does not exist",dim));
+  }
+  return dimensions.get(dim);
+}

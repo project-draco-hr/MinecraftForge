@@ -1,0 +1,17 @@
+{
+  worlds.put(id,world);
+  WorldServer[] tmp=new WorldServer[worlds.size() > 3 ? worlds.size() : 3];
+  for (int x=-1; x <= 1; x++) {
+    tmp[(x == 0 ? 0 : x == -1 ? 1 : 2)]=worlds.get(x);
+  }
+  int x=3;
+  for (  Entry<Integer,WorldServer> entry : worlds.entrySet()) {
+    int dim=entry.getKey();
+    if (dim >= -1 && dim <= 1) {
+      continue;
+    }
+    tmp[x++]=entry.getValue();
+  }
+  MinecraftServer.getServer().dimensionServerList=tmp;
+  MinecraftServer.getServer().worldTickTimes.put(id,new long[100]);
+}

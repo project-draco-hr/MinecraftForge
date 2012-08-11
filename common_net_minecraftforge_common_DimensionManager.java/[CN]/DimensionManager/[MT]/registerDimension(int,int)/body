@@ -1,0 +1,9 @@
+{
+  if (!providers.containsKey(providerType)) {
+    throw new IllegalArgumentException(String.format("Failed to register dimensiuon for id %d, provider type %d does not exist",id,providerType));
+  }
+  if (dimensions.containsKey(id)) {
+    throw new IllegalArgumentException(String.format("Failed to register dimensiuon for id %d, One is already registered",id));
+  }
+  dimensions.put(id,providerType);
+}

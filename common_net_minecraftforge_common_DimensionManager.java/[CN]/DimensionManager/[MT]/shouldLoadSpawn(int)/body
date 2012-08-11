@@ -1,3 +1,4 @@
 {
+  int id=getProviderType(dim);
   return spawnSettings.contains(id) && spawnSettings.get(id);
 }
