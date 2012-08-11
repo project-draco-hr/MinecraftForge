@@ -1,6 +1,6 @@
 def main():
     print '=================================== Setup Start ================================='
-    dont_gen_conf = ('-no_gen_conf' in sys.argv)
+    dont_gen_conf = True
     setup_fml(dont_gen_conf)
     base_dir = os.path.join(mcp_dir, 'src_base')
     work_dir = os.path.join(mcp_dir, 'src_work')
