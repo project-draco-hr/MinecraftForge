@@ -13,4 +13,7 @@
       modStates.put(entry.getKey(),ModState.ERRORED);
     }
   }
+  if (stateEvent instanceof FMLConstructionEvent) {
+    buildModObjectList();
+  }
 }
