@@ -1,0 +1,4 @@
+{
+  instance=new Downloader();
+  instance.makeDialog();
+}

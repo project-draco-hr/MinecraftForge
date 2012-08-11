@@ -1,0 +1,18 @@
+{
+  container=new JDialog(null,"Hello",ModalityType.MODELESS);
+  container.setResizable(false);
+  container.setLocationRelativeTo(null);
+  container.add(instance);
+  instance.updateUI();
+  container.pack();
+  container.setMinimumSize(container.getPreferredSize());
+  container.setVisible(true);
+  container.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+  container.addWindowListener(new WindowAdapter(){
+    @Override public void windowClosing(    WindowEvent e){
+      instance.requestClose("Closing this window will stop minecraft from launching\nAre you sure you wish to do this?");
+    }
+  }
+);
+  return container;
+}

@@ -1,0 +1,38 @@
+{
+  if (sizeGuess > downloadBuffer.capacity()) {
+    throw new RuntimeException(String.format("The file %s is too large to be downloaded by FML - the coremod is invalid",target.getName()));
+  }
+  downloadBuffer.clear();
+  int bytesRead, fullLength=0;
+  downloadMonitor.resetProgress(sizeGuess);
+  try {
+    byte[] smallBuffer=new byte[1024];
+    while ((bytesRead=is.read(smallBuffer)) >= 0) {
+      downloadBuffer.put(smallBuffer,0,bytesRead);
+      fullLength+=bytesRead;
+      downloadMonitor.updateProgress(fullLength);
+    }
+    is.close();
+    downloadBuffer.limit(fullLength);
+    downloadBuffer.position(0);
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+  try {
+    String cksum=generateChecksum(downloadBuffer);
+    if (cksum.equals(validationHash)) {
+      downloadBuffer.position(0);
+      FileOutputStream fos=new FileOutputStream(target);
+      fos.getChannel().write(downloadBuffer);
+      fos.close();
+    }
+ else {
+      throw new RuntimeException(String.format("The downloaded file %s has an invalid checksum %s (expecting %s). The download did not succeed correctly and the file has been deleted. Please try launching again.",target.getName(),cksum,validationHash));
+    }
+  }
+ catch (  Exception e) {
+    if (e instanceof RuntimeException)     throw (RuntimeException)e;
+    throw new RuntimeException(e);
+  }
+}

@@ -1,8 +1,0 @@
-{
-  if (popupWindow != null) {
-    return new ProgressMonitorInputStream(popupWindow,infoString,inputStream);
-  }
- else {
-    return inputStream;
-  }
-}

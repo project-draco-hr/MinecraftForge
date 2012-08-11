@@ -1,12 +1,7 @@
 {
   try {
-    FileInputStream fis=new FileInputStream(file);
-    FileChannel chan=fis.getChannel();
     MessageDigest digest=MessageDigest.getInstance("SHA-1");
-    MappedByteBuffer mappedFile=chan.map(MapMode.READ_ONLY,0,file.length());
-    digest.update(mappedFile);
-    chan.close();
-    fis.close();
+    digest.update(buffer);
     byte[] chksum=digest.digest();
     final StringBuilder hex=new StringBuilder(2 * chksum.length);
     for (    final byte b : chksum) {

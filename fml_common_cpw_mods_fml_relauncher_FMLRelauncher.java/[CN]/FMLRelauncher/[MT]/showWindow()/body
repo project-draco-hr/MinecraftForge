@@ -1,13 +1,10 @@
 {
   try {
-    popupWindow=new JDialog(null,"FML Initial Setup",ModalityType.MODELESS);
-    JOptionPane optPane=new JOptionPane("<html><font size=\"+1\">FML Setup</font><br/><br/>FML is performing some configuration, please wait</html>",JOptionPane.INFORMATION_MESSAGE,JOptionPane.DEFAULT_OPTION,null,new Object[0]);
-    popupWindow.add(optPane);
-    popupWindow.pack();
-    popupWindow.setLocationRelativeTo(null);
-    popupWindow.setVisible(true);
+    RelaunchLibraryManager.downloadMonitor=new Downloader();
+    popupWindow=RelaunchLibraryManager.downloadMonitor.makeDialog();
   }
  catch (  Exception e) {
+    Downloader.makeHeadless();
     popupWindow=null;
   }
 }

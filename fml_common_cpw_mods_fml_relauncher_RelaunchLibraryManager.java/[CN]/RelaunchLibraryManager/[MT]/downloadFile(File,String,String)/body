@@ -2,20 +2,16 @@
   try {
     URL libDownload=new URL(String.format(rootUrl,libFile.getName()));
     String infoString=String.format("Downloading file %s",libDownload.toString());
+    downloadMonitor.updateProgressString(infoString);
     FMLRelaunchLog.info(infoString);
-    InputStream urlStream=libDownload.openStream();
-    urlStream=FMLRelauncher.instance().wrapStream(urlStream,infoString);
-    ReadableByteChannel urlChannel=Channels.newChannel(urlStream);
-    FileOutputStream libFileStream=new FileOutputStream(libFile);
-    FileChannel libFileChannel=libFileStream.getChannel();
-    libFileChannel.transferFrom(urlChannel,0,1 << 24);
-    libFileChannel.close();
-    libFileStream.close();
-    urlChannel.close();
-    urlStream.close();
+    URLConnection connection=libDownload.openConnection();
+    int sizeGuess=connection.getContentLength();
+    performDownload(connection.getInputStream(),sizeGuess,hash,libFile);
+    downloadMonitor.updateProgressString("Download complete");
     FMLRelaunchLog.info("Download complete");
   }
  catch (  Exception e) {
+    if (e instanceof RuntimeException)     throw (RuntimeException)e;
     FMLRelaunchLog.severe("There was a problem downloading the file %s automatically. Perhaps you" + "have an environment without internet access. You will need to download " + "the file manually\n",libFile.getName());
     libFile.delete();
     throw new RuntimeException("A download error occured",e);

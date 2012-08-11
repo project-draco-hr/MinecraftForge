@@ -16,6 +16,7 @@
   if (loadPlugins.isEmpty()) {
     throw new RuntimeException("A fatal error has occured - no valid fml load plugin was found - this is a completely corrupt FML installation.");
   }
+  downloadMonitor.updateProgressString("All core mods are successfully located");
   discoverCoreMods(mcDir,actualClassLoader,loadPlugins,libraries);
   List<Throwable> caughtErrors=new ArrayList<Throwable>();
   try {
@@ -35,7 +36,7 @@
         File libFile=new File(libDir,libName);
         if (!libFile.exists()) {
           try {
-            downloadFile(libFile,lib.getRootURL());
+            downloadFile(libFile,lib.getRootURL(),checksum);
             download=true;
           }
  catch (          Throwable e) {
@@ -47,21 +48,29 @@
           caughtErrors.add(new RuntimeException(String.format("Found a file %s that is not a normal file - you should clear this out of the way",libName)));
           continue;
         }
-        String fileChecksum=generateChecksum(libFile);
-        if (!checksum.equals(fileChecksum) && !download) {
-          caughtErrors.add(new RuntimeException(String.format("The file %s was found in your lib directory and has an invalid checksum %s (expecting %s) - it is unlikely to be the correct download, please move it out of the way and try again.",libName,fileChecksum,checksum)));
-          continue;
-        }
- else         if (!checksum.equals(fileChecksum)) {
-          caughtErrors.add(new RuntimeException(String.format("The downloaded file %s has an invalid checksum %s (expecting %s). The download did not succeed correctly and the file has been deleted. Please try launching again.",libName,fileChecksum,checksum)));
-          libFile.delete();
-          continue;
+        if (!download) {
+          try {
+            FileInputStream fis=new FileInputStream(libFile);
+            FileChannel chan=fis.getChannel();
+            MappedByteBuffer mappedFile=chan.map(MapMode.READ_ONLY,0,libFile.length());
+            String fileChecksum=generateChecksum(mappedFile);
+            fis.close();
+            if (!checksum.equals(fileChecksum)) {
+              caughtErrors.add(new RuntimeException(String.format("The file %s was found in your lib directory and has an invalid checksum %s (expecting %s) - it is unlikely to be the correct download, please move it out of the way and try again.",libName,fileChecksum,checksum)));
+              continue;
+            }
+          }
+ catch (          Exception e) {
+            FMLRelaunchLog.log(Level.SEVERE,e,"The library file %s could not be validated",libFile.getName());
+            caughtErrors.add(new RuntimeException(String.format("The library file %s could not be validated",libFile.getName()),e));
+            continue;
+          }
         }
         if (!download) {
-          System.out.printf("Found library file %s present and correct in lib dir\n",libName);
+          downloadMonitor.updateProgressString("Found library file %s present and correct in lib dir\n",libName);
         }
  else {
-          System.out.printf("Library file %s was downloaded and verified successfully\n",libName);
+          downloadMonitor.updateProgressString("Library file %s was downloaded and verified successfully\n",libName);
         }
         try {
           actualClassLoader.addURL(libFile.toURI().toURL());
@@ -84,7 +93,9 @@
       FMLRelaunchLog.severe("<===========>");
       FMLRelaunchLog.severe("The following is the errors that caused the setup to fail. " + "They may help you diagnose and resolve the issue");
       for (      Throwable t : caughtErrors) {
-        FMLRelaunchLog.severe(t.getMessage());
+        if (t.getMessage() != null) {
+          FMLRelaunchLog.severe(t.getMessage());
+        }
       }
       FMLRelaunchLog.severe("<<< ==== >>>");
       FMLRelaunchLog.severe("The following is diagnostic information for developers to review.");
@@ -101,10 +112,12 @@
       }
     }
   }
+  downloadMonitor.updateProgressString("Running coremod plugins");
   Map<String,Object> data=new HashMap<String,Object>();
   data.put("mcLocation",mcDir);
   data.put("coremodList",loadPlugins);
   for (  IFMLLoadingPlugin plugin : loadPlugins) {
+    downloadMonitor.updateProgressString("Running coremod plugin %s",plugin.getClass().getSimpleName());
     data.put("coremodLocation",pluginLocations.get(plugin));
     plugin.injectData(data);
     String setupClass=plugin.getSetupClass();
@@ -120,15 +133,19 @@
         throw new RuntimeException(e);
       }
     }
+    downloadMonitor.updateProgressString("Coremod plugin %s run successfully",plugin.getClass().getSimpleName());
     String modContainer=plugin.getModContainerClass();
     if (modContainer != null) {
       FMLInjectionData.containers.add(modContainer);
     }
   }
   try {
+    downloadMonitor.updateProgressString("Validating minecraft");
     Class<?> loaderClazz=Class.forName("cpw.mods.fml.common.Loader",true,actualClassLoader);
     Method m=loaderClazz.getMethod("injectData",Object[].class);
     m.invoke(null,(Object)FMLInjectionData.data());
+    downloadMonitor.updateProgressString("Minecraft validated, launching...");
+    downloadBuffer=null;
   }
  catch (  Exception e) {
     System.out.println("RelaunchLibraryManager.handleLaunch");

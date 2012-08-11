@@ -1,0 +1,4 @@
+InputStream is
+int sizeGuess
+String validationHash
+File target

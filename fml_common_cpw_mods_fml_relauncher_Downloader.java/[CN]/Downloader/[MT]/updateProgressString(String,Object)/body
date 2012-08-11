@@ -1,0 +1,6 @@
+{
+  FMLLog.finest(progressUpdate,data);
+  if (currentActivity != null) {
+    currentActivity.setText(String.format(progressUpdate,data));
+  }
+}

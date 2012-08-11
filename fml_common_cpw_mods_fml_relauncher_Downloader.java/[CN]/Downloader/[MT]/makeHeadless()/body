@@ -1,0 +1,5 @@
+{
+  instance.container=null;
+  instance.progress=null;
+  instance.currentActivity=null;
+}
