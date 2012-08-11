@@ -7,6 +7,8 @@
       return;
     }
  catch (    Exception e) {
+      System.out.println("FMLRelauncher.relaunchApplet");
+      e.printStackTrace();
       throw new RuntimeException(e);
     }
   }

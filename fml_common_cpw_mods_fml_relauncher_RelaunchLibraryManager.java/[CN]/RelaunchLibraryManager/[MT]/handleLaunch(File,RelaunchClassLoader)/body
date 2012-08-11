@@ -131,6 +131,8 @@
     m.invoke(null,(Object)FMLInjectionData.data());
   }
  catch (  Exception e) {
+    System.out.println("RelaunchLibraryManager.handleLaunch");
+    e.printStackTrace();
     throw new RuntimeException(e);
   }
 }

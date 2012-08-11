@@ -4,6 +4,8 @@
       ReflectionHelper.findMethod(appletClass,newApplet,new String[]{"fmlStartReentry"}).invoke(newApplet);
     }
  catch (    Exception e) {
+      System.out.println("FMLRelauncher.startApplet");
+      e.printStackTrace();
       throw new RuntimeException(e);
     }
   }
