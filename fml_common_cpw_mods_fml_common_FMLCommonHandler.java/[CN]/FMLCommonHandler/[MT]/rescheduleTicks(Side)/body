@@ -1,5 +1,3 @@
 {
-  sidedDelegate.profileStart("modTickScheduling");
   TickRegistry.updateTickQueue(side.isClient() ? scheduledClientTicks : scheduledServerTicks,side);
-  sidedDelegate.profileEnd();
 }

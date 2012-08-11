@@ -4,7 +4,7 @@
     return false;
   }
   String name=effect.getClass().getSimpleName();
-  FMLClientHandler.instance().profileStart(name);
+  client.field_71424_I.func_76320_a(name);
   try {
     if (!FMLClientHandler.instance().hasOptifine()) {
       effect.func_76846_a();
@@ -15,10 +15,10 @@
     if (ifx != null) {
       ifx.setErrored(true);
     }
-    FMLClientHandler.instance().profileEnd();
+    client.field_71424_I.func_76319_b();
     return false;
   }
-  FMLClientHandler.instance().profileEnd();
+  client.field_71424_I.func_76319_b();
   if (ifx != null) {
     Dimension dim=getTextureDimensions(effect);
     int target=((dim.width >> 4) * (dim.height >> 4)) << 2;
