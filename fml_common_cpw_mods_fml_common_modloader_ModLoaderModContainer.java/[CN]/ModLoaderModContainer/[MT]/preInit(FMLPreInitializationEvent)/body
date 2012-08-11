@@ -10,6 +10,7 @@
     GameRegistry.registerWorldGenerator(ModLoaderHelper.buildWorldGenHelper(mod));
     GameRegistry.registerFuelHandler(ModLoaderHelper.buildFuelHelper(mod));
     GameRegistry.registerCraftingHandler(ModLoaderHelper.buildCraftingHelper(mod));
+    NetworkRegistry.instance().registerConnectionHandler(ModLoaderHelper.buildConnectionHelper(mod));
   }
  catch (  Exception e) {
     controller.errorOccurred(this,e);

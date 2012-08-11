@@ -1,3 +1,8 @@
 {
-  mod.onPacket250Received((EntityPlayer)player,packet);
+  if (player instanceof EntityPlayerMP) {
+    mod.onPacket250Received((EntityPlayer)player,packet);
+  }
+ else {
+    mod.receiveCustomPacket(packet);
+  }
 }

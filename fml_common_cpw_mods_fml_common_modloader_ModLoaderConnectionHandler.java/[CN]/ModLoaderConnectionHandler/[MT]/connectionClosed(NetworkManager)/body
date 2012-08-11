@@ -1,2 +1,4 @@
 {
+  mod.serverDisconnect();
+  mod.onClientLogout(manager);
 }

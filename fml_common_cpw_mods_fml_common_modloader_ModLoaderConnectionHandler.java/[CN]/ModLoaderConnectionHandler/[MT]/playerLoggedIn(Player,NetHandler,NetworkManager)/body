@@ -1,2 +1,3 @@
 {
+  mod.onClientLogin((EntityPlayer)player);
 }
