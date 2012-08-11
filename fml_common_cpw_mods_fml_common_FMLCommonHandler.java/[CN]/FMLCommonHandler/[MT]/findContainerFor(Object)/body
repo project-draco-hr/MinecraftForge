@@ -1,8 +1,3 @@
 {
-  for (  ModContainer mc : Loader.instance().getActiveModList()) {
-    if (mc.matches(mod)) {
-      return mc;
-    }
-  }
-  return null;
+  return Loader.instance().getReversedModObjectList().get(mod);
 }
