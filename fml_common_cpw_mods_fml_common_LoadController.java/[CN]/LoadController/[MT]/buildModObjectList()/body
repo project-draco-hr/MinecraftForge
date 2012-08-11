@@ -1,7 +1,9 @@
 {
   ImmutableBiMap.Builder<ModContainer,Object> builder=ImmutableBiMap.<ModContainer,Object>builder();
   for (  ModContainer mc : activeModList) {
-    builder.put(mc,mc.getMod());
+    if (!mc.isImmutable()) {
+      builder.put(mc,mc.getMod());
+    }
   }
   modObjectList=builder.build();
 }
