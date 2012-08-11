@@ -29,7 +29,7 @@ def gen_merged_exc(mcp_dir, fml_dir):
         elif (value != '|'):
             common[key] = value
     joined = dict((common.items() + server.items()))
-    with open(os.path.join(fml_dir, 'conf', 'joined.exc'), 'w') as f:
+    with open(os.path.join(fml_dir, 'conf', 'joined.exc'), 'wb') as f:
         for key in sorted(joined):
             f.write(('%s=%s\n' % (key, joined[key])))
     return common

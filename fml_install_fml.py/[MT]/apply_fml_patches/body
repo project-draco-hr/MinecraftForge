@@ -1,6 +1,9 @@
 def apply_fml_patches(fml_dir, mcp_dir, src_dir, copy_files=True):
     has_client = os.path.isdir(os.path.join(src_dir, 'minecraft'))
     has_server = os.path.isdir(os.path.join(src_dir, 'minecraft_server'))
+    cpw_dir = os.path.join(src_dir, 'common', 'cpw')
+    if os.path.isdir(cpw_dir):
+        shutil.rmtree(cpw_dir)
     print 'Applying Forge ModLoader patches'
     sys.stdout.flush()
     if has_client:
