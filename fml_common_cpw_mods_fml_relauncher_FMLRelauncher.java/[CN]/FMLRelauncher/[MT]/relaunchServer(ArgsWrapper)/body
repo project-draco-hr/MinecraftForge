@@ -1,4 +1,5 @@
 {
+  showWindow(false);
   Class<? super Object> server;
   File minecraftHome=new File(".");
   setupHome(minecraftHome);

@@ -1,5 +1,5 @@
 {
-  showWindow();
+  showWindow(true);
   Class<? super Object> client;
   try {
     File minecraftHome=computeExistingClientHome();

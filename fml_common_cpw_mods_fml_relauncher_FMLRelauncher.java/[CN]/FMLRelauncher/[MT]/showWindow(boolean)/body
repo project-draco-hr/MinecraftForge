@@ -1,7 +1,9 @@
 {
   try {
     RelaunchLibraryManager.downloadMonitor=new Downloader();
-    popupWindow=RelaunchLibraryManager.downloadMonitor.makeDialog();
+    if (showIt) {
+      popupWindow=RelaunchLibraryManager.downloadMonitor.makeDialog();
+    }
   }
  catch (  Exception e) {
     Downloader.makeHeadless();
