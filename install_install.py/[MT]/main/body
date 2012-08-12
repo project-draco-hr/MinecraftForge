@@ -5,6 +5,9 @@ def main():
     apply_fml_patches(fml_dir, mcp_dir, os.path.join(mcp_dir, 'src'))
     finish_setup_fml(fml_dir, mcp_dir)
     print '================  Forge ModLoader Setup End  ==================='
+    sys.path.append(mcp_dir)
+    from runtime.updatenames import updatenames
+    from runtime.updatemd5 import updatemd5
     print '=============================== Minecraft Forge Setup Start ====================================='
     print 'Applying forge patches'
     apply_forge_patches(os.path.join(forge_dir, 'fml'), mcp_dir, forge_dir, src_dir, True)
