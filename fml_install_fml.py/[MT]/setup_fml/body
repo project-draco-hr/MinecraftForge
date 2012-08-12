@@ -21,13 +21,17 @@ def setup_fml(fml_dir, mcp_dir):
         binDir = os.path.join(fml_dir, 'bin')
         if (not os.path.isdir(binDir)):
             os.makedirs(binDir)
+        print 'Compiling AccessTransformer'
         forkcmd = ('%s -Xlint:-options -deprecation -g -source 1.6 -target 1.6 -classpath "{classpath}" -sourcepath "{sourcepath}" -d "{outpath}" "{target}"' % self.cmdjavac).format(classpath=os.pathsep.join(['.', os.path.join(mcp_dir, 'lib', '*')]), sourcepath=os.path.join(fml_dir, 'common'), outpath=os.path.join(fml_dir, 'bin'), target=os.path.join(fml_dir, 'common', 'cpw', 'mods', 'fml', 'common', 'asm', 'transformers', 'AccessTransformer.java'))
         self.runcmd(forkcmd)
         if (side == CLIENT):
+            print 'Compiling MCPMerger'
             forkcmd = ('%s -Xlint:-options -deprecation -g -source 1.6 -target 1.6 -classpath "{classpath}" -sourcepath "{sourcepath}" -d "{outpath}" "{target}"' % self.cmdjavac).format(classpath=os.pathsep.join(['.', os.path.join(mcp_dir, 'lib', '*')]), sourcepath=os.path.join(fml_dir, 'common'), outpath=os.path.join(fml_dir, 'bin'), target=os.path.join(fml_dir, 'common', 'cpw', 'mods', 'fml', 'common', 'asm', 'transformers', 'MCPMerger.java'))
             self.runcmd(forkcmd)
+            print ('Running MCPMerder for %s' % side)
             forkcmd = ('%s -classpath "{classpath}" cpw.mods.fml.common.asm.transformers.MCPMerger "{mergecfg}" "{client}" "{server}"' % self.cmdjava).format(classpath=os.pathsep.join([os.path.join(mcp_dir, 'lib', '*'), binDir]), mergecfg=os.path.join(fml_dir, 'mcp_merge.cfg'), client=jars[CLIENT], server=jars[SERVER])
             self.runcmd(forkcmd)
+        print 'Running AccessTransformer'
         forkcmd = ('%s -classpath "{classpath}" cpw.mods.fml.common.asm.transformers.AccessTransformer "{jar}" "{fmlconfig}"' % self.cmdjava).format(classpath=os.pathsep.join([os.path.join(mcp_dir, 'lib', '*'), binDir]), jar=jars[side], fmlconfig=os.path.join(fml_dir, 'common', 'fml_at.cfg'))
         forge_cfg = os.path.join(mcp_dir, 'forge', 'common', 'forge_at.cfg')
         if os.path.isfile(forge_cfg):
@@ -38,6 +42,7 @@ def setup_fml(fml_dir, mcp_dir):
     def checkjars_shunt(self, side, checkjars_real=Commands.checkjars):
         self.jarclient = (self.jarclient + '.backup')
         self.jarserver = (self.jarserver + '.backup')
+        print ('Jar Check %s %s %s' % (side, self.jarclient, self.jarserver))
         ret = checkjars_real(self, side)
         self.jarclient = self.jarclient[:(-7)]
         self.jarserver = self.jarserver[:(-7)]
