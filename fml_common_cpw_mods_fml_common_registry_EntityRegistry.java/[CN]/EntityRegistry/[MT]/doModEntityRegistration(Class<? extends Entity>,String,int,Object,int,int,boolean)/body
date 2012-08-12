@@ -1,6 +1,6 @@
 {
   ModContainer mc=FMLCommonHandler.instance().findContainerFor(mod);
-  EntityRegistration er=new EntityRegistration(mc,entityClass,entityName,id);
+  EntityRegistration er=new EntityRegistration(mc,entityClass,entityName,id,trackingRange,updateFrequency,sendsVelocityUpdates);
   try {
     entityClassRegistrations.put(entityClass,er);
     entityNames.put(entityName,mc);

@@ -1,6 +1,0 @@
-{
-  this.container=mc;
-  this.entityClass=entityClass;
-  this.entityName=entityName;
-  this.modId=id;
-}

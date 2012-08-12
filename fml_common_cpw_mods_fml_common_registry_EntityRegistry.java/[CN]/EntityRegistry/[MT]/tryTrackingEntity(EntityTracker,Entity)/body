@@ -1,0 +1,8 @@
+{
+  EntityRegistration er=lookupModSpawn(entity.getClass(),true);
+  if (er != null) {
+    entityTracker.func_72785_a(entity,er.getTrackingRange(),er.getUpdateFrequency(),er.sendsVelocityUpdates());
+    return true;
+  }
+  return false;
+}

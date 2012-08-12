@@ -1,3 +1,0 @@
-{
-  instance().doModEntityRegistration(entityClass,entityName,id,mod);
-}

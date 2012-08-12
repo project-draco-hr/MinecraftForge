@@ -2,3 +2,6 @@ ModContainer mc
 Class<? extends Entity> entityClass
 String entityName
 int id
+int trackingRange
+int updateFrequency
+boolean sendsVelocityUpdates
