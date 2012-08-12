@@ -12,10 +12,9 @@ def apply_patches(mcp_dir, patch_dir, target_dir, find=None, rep=None):
         for cur_file in fnmatch.filter(filelist, '*.patch'):
             patch_file = os.path.normpath(os.path.join(patch_dir, path[(len(patch_dir) + 1):], cur_file))
             target_file = os.path.join(target_dir, fix_patch(patch_file, temp, find, rep))
-            if os.path.isfile(target_file):
-                if display:
-                    print ('patching file %s' % os.path.normpath(target_file))
-                process = subprocess.Popen(cmd, cwd=target_dir, bufsize=(-1))
-                process.communicate()
+            if display:
+                print ('patching file %s' % os.path.normpath(target_file))
+            process = subprocess.Popen(cmd, cwd=target_dir, bufsize=(-1))
+            process.communicate()
     if os.path.isfile(temp):
         os.remove(temp)

@@ -12,6 +12,7 @@ def setup_mcp(fml_dir, mcp_dir, dont_gen_conf=True):
         print '> Backing up commands.py'
         shutil.copy(runtime, backup)
     if (not os.path.isfile(patch)):
+        raise Exception(('Commands.py patch not found %s' % patch))
         return
     temp = os.path.abspath('temp.patch')
     cmd = ('patch -i "%s" ' % temp)
@@ -29,6 +30,9 @@ def setup_mcp(fml_dir, mcp_dir, dont_gen_conf=True):
     process.communicate()
     if os.path.isfile(temp):
         os.remove(temp)
+    sys.path.append(mcp_dir)
+    from runtime.commands import commands_sanity_check
+    commands_sanity_check()
     mcp_conf = os.path.join(mcp_dir, 'conf')
     mcp_conf_bak = os.path.join(mcp_dir, 'conf.bak')
     fml_conf = os.path.join(fml_dir, 'conf')
