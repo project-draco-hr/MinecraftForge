@@ -11,7 +11,9 @@
       for (      FieldNode n : (List<FieldNode>)classNode.fields) {
         if (n.name.equals(m.name)) {
           n.access=getFixedAccess(n.access,m);
-          System.out.println(String.format("Field: %s.%s %s -> %s",name,m.name,Integer.toBinaryString(m.oldAccess),Integer.toBinaryString(m.newAccess)));
+          if (DEBUG) {
+            System.out.println(String.format("Field: %s.%s %s -> %s",name,m.name,toBinary(m.oldAccess),toBinary(m.newAccess)));
+          }
           break;
         }
       }
@@ -20,7 +22,9 @@
       for (      MethodNode n : (List<MethodNode>)classNode.methods) {
         if (n.name.equals(m.name) && n.desc.equals(m.desc)) {
           n.access=getFixedAccess(n.access,m);
-          System.out.println(String.format("Method: %s.%s%s %s -> %s",name,m.name,m.desc,toBinary(m.oldAccess),toBinary(m.newAccess)));
+          if (DEBUG) {
+            System.out.println(String.format("Method: %s.%s%s %s -> %s",name,m.name,m.desc,toBinary(m.oldAccess),toBinary(m.newAccess)));
+          }
           break;
         }
       }

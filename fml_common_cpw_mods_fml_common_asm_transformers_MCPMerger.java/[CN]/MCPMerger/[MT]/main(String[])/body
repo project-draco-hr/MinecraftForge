@@ -1,7 +1,7 @@
 {
   if (args.length != 3) {
     System.out.println("Usage: AccessTransformer <MapFile> <minecraft.jar> <minecraft_server.jar>");
-    return;
+    System.exit(1);
   }
   File map_file=new File(args[0]);
   File client_jar=new File(args[1]);
@@ -16,29 +16,30 @@
   }
   if (!client_jar.exists()) {
     System.out.println("Could not find minecraft.jar: " + client_jar);
-    return;
+    System.exit(1);
   }
   if (!server_jar.exists()) {
     System.out.println("Could not find minecraft_server.jar: " + server_jar);
-    return;
+    System.exit(1);
   }
   if (!client_jar.renameTo(client_jar_tmp)) {
     System.out.println("Could not rename file: " + client_jar + " -> "+ client_jar_tmp);
-    return;
+    System.exit(1);
   }
   if (!server_jar.renameTo(server_jar_tmp)) {
     System.out.println("Could not rename file: " + server_jar + " -> "+ server_jar_tmp);
-    return;
+    System.exit(1);
   }
   if (!readMapFile(map_file)) {
     System.out.println("Could not read map file: " + map_file);
-    return;
+    System.exit(1);
   }
   try {
     processJar(client_jar_tmp,server_jar_tmp,client_jar,server_jar);
   }
  catch (  IOException e) {
     e.printStackTrace();
+    System.exit(1);
   }
   if (!client_jar_tmp.delete()) {
     System.out.println("Could not delete temp file: " + client_jar_tmp);

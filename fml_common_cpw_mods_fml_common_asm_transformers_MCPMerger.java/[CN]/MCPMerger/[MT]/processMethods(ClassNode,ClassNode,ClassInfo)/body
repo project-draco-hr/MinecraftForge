@@ -17,13 +17,17 @@
       MethodNode sM=sMethods.get(sPos);
       serverName=sM.name;
       if (!serverName.equals(lastName) && cPos != cLen) {
-        System.out.printf("Server -skip : %s %s %d (%s %d) %d [%s]\n",sClass.name,clientName,cLen - cPos,serverName,sLen - sPos,allMethods.size(),lastName);
+        if (DEBUG) {
+          System.out.printf("Server -skip : %s %s %d (%s %d) %d [%s]\n",sClass.name,clientName,cLen - cPos,serverName,sLen - sPos,allMethods.size(),lastName);
+        }
         break;
       }
       MethodWrapper mw=new MethodWrapper(sM);
       mw.server=true;
       allMethods.add(mw);
-      System.out.printf("Server *add* : %s %s %d (%s %d) %d [%s]\n",sClass.name,clientName,cLen - cPos,serverName,sLen - sPos,allMethods.size(),lastName);
+      if (DEBUG) {
+        System.out.printf("Server *add* : %s %s %d (%s %d) %d [%s]\n",sClass.name,clientName,cLen - cPos,serverName,sLen - sPos,allMethods.size(),lastName);
+      }
       sPos++;
     }
  while (sPos < sLen);
@@ -35,13 +39,17 @@
       lastName=clientName;
       clientName=cM.name;
       if (!clientName.equals(lastName) && sPos != sLen) {
-        System.out.printf("Client -skip : %s %s %d (%s %d) %d [%s]\n",cClass.name,clientName,cLen - cPos,serverName,sLen - sPos,allMethods.size(),lastName);
+        if (DEBUG) {
+          System.out.printf("Client -skip : %s %s %d (%s %d) %d [%s]\n",cClass.name,clientName,cLen - cPos,serverName,sLen - sPos,allMethods.size(),lastName);
+        }
         break;
       }
       MethodWrapper mw=new MethodWrapper(cM);
       mw.client=true;
       allMethods.add(mw);
-      System.out.printf("Client *add* : %s %s %d (%s %d) %d [%s]\n",cClass.name,clientName,cLen - cPos,serverName,sLen - sPos,allMethods.size(),lastName);
+      if (DEBUG) {
+        System.out.printf("Client *add* : %s %s %d (%s %d) %d [%s]\n",cClass.name,clientName,cLen - cPos,serverName,sLen - sPos,allMethods.size(),lastName);
+      }
       cPos++;
     }
  while (cPos < cLen);

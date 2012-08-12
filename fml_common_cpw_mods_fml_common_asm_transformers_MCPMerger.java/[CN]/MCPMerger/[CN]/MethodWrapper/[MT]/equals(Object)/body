@@ -7,7 +7,9 @@
     mw.server=this.server | mw.server;
     this.client=this.client | mw.client;
     this.server=this.server | mw.server;
-    System.out.printf(" eq: %s %s\n",this,mw);
+    if (DEBUG) {
+      System.out.printf(" eq: %s %s\n",this,mw);
+    }
   }
   return eq;
 }

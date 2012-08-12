@@ -29,7 +29,9 @@
           copyEntry(cInJar,cEntry,cOutJar);
         }
  else {
-          System.out.println("Copy class c->s : " + name);
+          if (DEBUG) {
+            System.out.println("Copy class c->s : " + name);
+          }
           copyClass(cInJar,cEntry,cOutJar,sOutJar,true);
         }
         continue;
@@ -51,7 +53,9 @@
         copyEntry(sInJar,entry.getValue(),sOutJar);
       }
  else {
-        System.out.println("Copy class s->c : " + entry.getKey());
+        if (DEBUG) {
+          System.out.println("Copy class s->c : " + entry.getKey());
+        }
         copyClass(sInJar,entry.getValue(),cOutJar,sOutJar,false);
       }
     }
