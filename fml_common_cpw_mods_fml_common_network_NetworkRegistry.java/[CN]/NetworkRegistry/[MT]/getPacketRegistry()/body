@@ -1,3 +1,3 @@
 {
-  return Joiner.on('\0').join(packetHandlers.keySet()).getBytes(Charsets.UTF_8);
+  return Joiner.on('\0').join(Iterables.concat(Arrays.asList("FML"),packetHandlers.keySet())).getBytes(Charsets.UTF_8);
 }
