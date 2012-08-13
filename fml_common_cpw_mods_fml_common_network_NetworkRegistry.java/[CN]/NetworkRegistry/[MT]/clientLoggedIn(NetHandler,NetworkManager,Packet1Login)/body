@@ -1,4 +1,5 @@
 {
+  generateChannelRegistration(clientHandler.getPlayer(),clientHandler,manager);
   for (  IConnectionHandler handler : connectionHandlers) {
     handler.clientLoggedIn(clientHandler,manager,login);
   }
