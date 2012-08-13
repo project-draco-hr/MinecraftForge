@@ -17,20 +17,25 @@
         return true;
       }
       List<String> parts=Lists.newArrayList(Splitter.on(" ").trimResults().split(line));
-      if (parts.size() > 2 || parts.get(1).indexOf('.') == -1) {
+      if (parts.size() > 2) {
         throw new RuntimeException("Invalid config file line " + input);
       }
       Modifier m=new Modifier();
       m.setTargetAccess(parts.get(0));
       List<String> descriptor=Lists.newArrayList(Splitter.on(".").trimResults().split(parts.get(1)));
-      String nameReference=descriptor.get(1);
-      int parenIdx=nameReference.indexOf('(');
-      if (parenIdx > 0) {
-        m.desc=nameReference.substring(parenIdx);
-        m.name=nameReference.substring(0,parenIdx);
+      if (descriptor.size() == 1) {
+        m.modifyClassVisibility=true;
       }
  else {
-        m.name=nameReference;
+        String nameReference=descriptor.get(1);
+        int parenIdx=nameReference.indexOf('(');
+        if (parenIdx > 0) {
+          m.desc=nameReference.substring(parenIdx);
+          m.name=nameReference.substring(0,parenIdx);
+        }
+ else {
+          m.name=nameReference;
+        }
       }
       modifiers.put(descriptor.get(0),m);
       return true;

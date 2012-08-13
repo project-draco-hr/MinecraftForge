@@ -7,6 +7,13 @@
   classReader.accept(classNode,0);
   Collection<Modifier> mods=modifiers.get(name);
   for (  Modifier m : mods) {
+    if (m.modifyClassVisibility) {
+      classNode.access=getFixedAccess(classNode.access,m);
+      if (DEBUG) {
+        System.out.println(String.format("Class: %s %s -> %s",name,toBinary(m.oldAccess),toBinary(m.newAccess)));
+      }
+      continue;
+    }
     if (m.desc.isEmpty()) {
       for (      FieldNode n : (List<FieldNode>)classNode.fields) {
         if (n.name.equals(m.name)) {
