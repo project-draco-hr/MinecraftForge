@@ -1,0 +1,11 @@
+{
+  try {
+    if (clientHandlerDefaultValue == null) {
+      clientHandlerDefaultValue=NetworkMod.class.getMethod("clientPacketHandler").getDefaultValue();
+    }
+    return clientHandlerDefaultValue;
+  }
+ catch (  NoSuchMethodException e) {
+    throw new RuntimeException("Derp?",e);
+  }
+}

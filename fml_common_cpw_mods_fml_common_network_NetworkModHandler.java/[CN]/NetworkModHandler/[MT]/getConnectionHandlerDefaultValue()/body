@@ -1,0 +1,11 @@
+{
+  try {
+    if (connectionHandlerDefaultValue == null) {
+      connectionHandlerDefaultValue=NetworkMod.class.getMethod("connectionHandler").getDefaultValue();
+    }
+    return connectionHandlerDefaultValue;
+  }
+ catch (  NoSuchMethodException e) {
+    throw new RuntimeException("Derp?",e);
+  }
+}
