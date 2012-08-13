@@ -1,5 +1,3 @@
 {
-  int idx=SpriteHelper.getUniqueSpriteIndex(fileToOverride);
-  addOverride(fileToOverride,fileToAdd,idx);
-  return idx;
+  return RenderingRegistry.addTextureOverride(fileToOverride,fileToAdd);
 }

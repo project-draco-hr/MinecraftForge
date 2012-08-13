@@ -1,3 +1,3 @@
 {
-  return RenderingRegistry.instance().addNewArmourRendererPrefix(armor);
+  return RenderingRegistry.addNewArmourRendererPrefix(armor);
 }

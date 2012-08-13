@@ -1,4 +1,4 @@
 {
-  keyHandlers.add(handler);
+  instance().keyHandlers.add(handler);
   TickRegistry.registerTickHandler(handler,Side.CLIENT);
 }

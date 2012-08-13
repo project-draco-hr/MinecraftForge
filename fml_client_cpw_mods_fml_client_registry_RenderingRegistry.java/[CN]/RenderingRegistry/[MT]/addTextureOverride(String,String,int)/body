@@ -1,0 +1,3 @@
+{
+  TextureFXManager.instance().addNewTextureOverride(path,overlayPath,index);
+}

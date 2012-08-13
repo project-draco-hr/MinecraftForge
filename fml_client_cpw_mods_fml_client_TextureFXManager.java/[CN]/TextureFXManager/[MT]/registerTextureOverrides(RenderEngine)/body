@@ -1,7 +1,4 @@
 {
-  for (  ModContainer mod : Loader.instance().getActiveModList()) {
-    registerAnimatedTexturesFor(mod);
-  }
   for (  OverrideInfo animationOverride : animationSet) {
     renderer.func_78355_a(animationOverride.textureFX);
     addedTextureFX.add(animationOverride.textureFX);

@@ -1,2 +1,3 @@
 {
+  PacketDispatcher.sendPacketToServer(packet);
 }

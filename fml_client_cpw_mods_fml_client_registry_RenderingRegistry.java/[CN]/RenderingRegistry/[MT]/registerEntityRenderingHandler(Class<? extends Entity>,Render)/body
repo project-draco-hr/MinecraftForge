@@ -1,3 +1,3 @@
 {
-  entityRenderers.add(new EntityRendererInfo(entityClass,renderer));
+  instance().entityRenderers.add(new EntityRendererInfo(entityClass,renderer));
 }

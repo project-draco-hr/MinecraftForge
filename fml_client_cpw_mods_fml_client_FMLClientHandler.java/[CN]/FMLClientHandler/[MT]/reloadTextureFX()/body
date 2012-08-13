@@ -1,0 +1,3 @@
+{
+  TextureFXManager.instance().loadTextures(client.field_71418_C.func_77292_e());
+}

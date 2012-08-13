@@ -7,6 +7,5 @@
     return;
   }
   RenderingRegistry.instance().loadEntityRenderers((Map<Class<? extends Entity>,Render>)RenderManager.field_78727_a.field_78729_o);
-  KeyBindingRegistry.uploadKeyBindingsToGame(client.field_71474_y);
-  firstTick=true;
+  KeyBindingRegistry.instance().uploadKeyBindingsToGame(client.field_71474_y);
 }

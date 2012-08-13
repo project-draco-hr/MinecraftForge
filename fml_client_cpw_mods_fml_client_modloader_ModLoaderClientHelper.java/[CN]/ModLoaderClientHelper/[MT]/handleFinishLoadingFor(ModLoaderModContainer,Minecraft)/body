@@ -3,7 +3,7 @@
   Map<Class<? extends Entity>,Render> renderers=Maps.newHashMap();
   mod.addRenderer(renderers);
   for (  Entry<Class<? extends Entity>,Render> e : renderers.entrySet()) {
-    RenderingRegistry.instance().registerEntityRenderingHandler(e.getKey(),e.getValue());
+    RenderingRegistry.registerEntityRenderingHandler(e.getKey(),e.getValue());
   }
   mod.registerAnimation(game);
 }
