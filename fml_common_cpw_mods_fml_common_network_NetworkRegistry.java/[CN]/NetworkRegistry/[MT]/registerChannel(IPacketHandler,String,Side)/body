@@ -1,0 +1,8 @@
+{
+  if (side.isClient()) {
+    clientPacketHandlers.put(channelName,handler);
+  }
+ else {
+    serverPacketHandlers.put(channelName,handler);
+  }
+}

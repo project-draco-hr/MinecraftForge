@@ -1,6 +1,6 @@
 {
   if (activeChannels.containsEntry(player,packet.field_73630_a)) {
-    for (    IPacketHandler handler : packetHandlers.get(packet.field_73630_a)) {
+    for (    IPacketHandler handler : Iterables.concat(universalPacketHandlers.get(packet.field_73630_a),player instanceof EntityPlayerMP ? serverPacketHandlers.get(packet.field_73630_a) : clientPacketHandlers.get(packet.field_73630_a))) {
       handler.onPacketData(network,packet,player);
     }
   }
