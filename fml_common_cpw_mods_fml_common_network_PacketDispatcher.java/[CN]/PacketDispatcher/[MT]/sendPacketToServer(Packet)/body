@@ -1,0 +1,3 @@
+{
+  FMLCommonHandler.instance().getSidedDelegate().sendPacket(packet);
+}
