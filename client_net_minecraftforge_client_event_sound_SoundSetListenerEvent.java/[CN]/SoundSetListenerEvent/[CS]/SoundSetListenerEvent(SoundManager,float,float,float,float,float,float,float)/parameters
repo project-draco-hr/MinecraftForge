@@ -1,0 +1,8 @@
+SoundManager manager
+float elapsed
+float posX
+float posY
+float posZ
+float lookX
+float lookY
+float lookZ
