@@ -1,7 +1,7 @@
 def file_backup(base, file):
     back_jar = os.path.join(base, (file + '.backup'))
     src_jar = os.path.join(base, file)
-    if (not os.path.isfile(src_jar)):
+    if ((not os.path.isfile(src_jar)) and (not os.path.isfile(back_jar))):
         return
     if os.path.isfile(back_jar):
         if os.path.isfile(src_jar):
