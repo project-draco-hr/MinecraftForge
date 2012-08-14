@@ -1,3 +1,4 @@
 {
-  tickStart(EnumSet.of(TickType.PLAYER),Side.SERVER,player);
+  Side side=player instanceof EntityPlayerMP ? Side.SERVER : Side.CLIENT;
+  tickStart(EnumSet.of(TickType.PLAYER),side,player);
 }
