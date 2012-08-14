@@ -1,4 +1,7 @@
 {
+  if (RelaunchLibraryManager.downloadMonitor != null) {
+    return;
+  }
   try {
     RelaunchLibraryManager.downloadMonitor=new Downloader();
     if (showIt) {

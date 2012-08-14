@@ -1,5 +1,9 @@
 {
   if (applet.getClass().getClassLoader() == classLoader) {
+    if (popupWindow != null) {
+      popupWindow.setVisible(false);
+      popupWindow.dispose();
+    }
     try {
       ReflectionHelper.findMethod(appletClass,newApplet,new String[]{"fmlStartReentry"}).invoke(newApplet);
     }
