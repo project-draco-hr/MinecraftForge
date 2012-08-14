@@ -1,4 +1,5 @@
 {
+  showWindow(true);
   appletClass=ReflectionHelper.getClass(classLoader,"net.minecraft.client.MinecraftApplet");
   if (minecraftApplet.getClass().getClassLoader() == classLoader) {
     try {
