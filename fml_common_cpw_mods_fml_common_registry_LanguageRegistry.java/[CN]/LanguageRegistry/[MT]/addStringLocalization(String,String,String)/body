@@ -5,5 +5,4 @@
     modLanguageData.put(lang,langPack);
   }
   langPack.put(key,value);
-  loadLanguageTable(StringTranslate.func_74808_a().field_74815_b,lang);
 }
