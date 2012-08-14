@@ -1,7 +1,7 @@
 {
   try {
     if (clientHandlerDefaultValue == null) {
-      clientHandlerDefaultValue=NetworkMod.class.getMethod("clientPacketHandler").getDefaultValue();
+      clientHandlerDefaultValue=NetworkMod.class.getMethod("clientPacketHandlerSpec").getDefaultValue();
     }
     return clientHandlerDefaultValue;
   }
