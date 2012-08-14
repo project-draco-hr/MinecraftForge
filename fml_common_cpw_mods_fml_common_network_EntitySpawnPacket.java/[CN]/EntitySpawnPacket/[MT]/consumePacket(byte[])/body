@@ -19,7 +19,7 @@
   }
  catch (  IOException e) {
   }
-  dat.skipBytes(data.length - bis.available());
+  dat.skipBytes(data.length - bis.available() - 27);
   throwerId=dat.readInt();
   if (throwerId != 0) {
     speedScaledX=dat.readInt() / 8000D;

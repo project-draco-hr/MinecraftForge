@@ -42,6 +42,9 @@
     dat.writeInt((int)(mY * 8000D));
     dat.writeInt((int)(mZ * 8000D));
   }
+ else {
+    dat.writeInt(0);
+  }
   if (ent instanceof IEntityAdditionalSpawnData) {
     ((IEntityAdditionalSpawnData)ent).writeSpawnData(dat);
   }
