@@ -12,4 +12,7 @@
     modMetadata.dependencies=dependencies;
     modMetadata.dependants=dependants;
   }
+  if (Strings.isNullOrEmpty(modMetadata.name)) {
+    modMetadata.name=getModId();
+  }
 }

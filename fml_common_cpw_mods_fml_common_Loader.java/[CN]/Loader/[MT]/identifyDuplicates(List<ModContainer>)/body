@@ -1,0 +1,19 @@
+{
+  boolean foundDupe=false;
+  TreeMultimap<ModContainer,File> dupsearch=TreeMultimap.create(new ModIdComparator(),Ordering.arbitrary());
+  for (  ModContainer mc : mods) {
+    if (mc.getSource() != null) {
+      dupsearch.put(mc,mc.getSource());
+    }
+  }
+  ImmutableMultiset<ModContainer> duplist=Multisets.copyHighestCountFirst(dupsearch.keys());
+  for (  Entry<ModContainer> e : duplist.entrySet()) {
+    if (e.getCount() > 1) {
+      FMLLog.severe("Found a duplicate mod %s at %s",e.getElement().getModId(),dupsearch.get(e.getElement()));
+      foundDupe=true;
+    }
+  }
+  if (foundDupe) {
+    throw new LoaderException();
+  }
+}
