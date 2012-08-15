@@ -1,7 +1,9 @@
 {
   try {
     if (dimensions.containsKey(dim)) {
-      return providers.get(getProviderType(dim)).newInstance();
+      WorldProvider provider=providers.get(getProviderType(dim)).newInstance();
+      provider.setDimension(dim);
+      return provider;
     }
  else {
       return null;
