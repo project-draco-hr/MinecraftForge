@@ -1,5 +1,0 @@
-{
-  int c1=Integer.valueOf(tex).hashCode();
-  int c2=Integer.valueOf(sub).hashCode();
-  return c1 + 31 * c2;
-}

@@ -1,8 +1,0 @@
-{
-  if (obj instanceof ITextureProvider) {
-    return ((ITextureProvider)obj).getTextureFile();
-  }
- else {
-    return def;
-  }
-}

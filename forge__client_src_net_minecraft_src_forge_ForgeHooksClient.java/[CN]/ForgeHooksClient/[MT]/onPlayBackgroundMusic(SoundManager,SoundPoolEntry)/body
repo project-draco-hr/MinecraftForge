@@ -1,9 +1,0 @@
-{
-  for (  ISoundHandler handler : soundHandlers) {
-    entry=handler.onPlayBackgroundMusic(soundManager,entry);
-    if (entry == null) {
-      return null;
-    }
-  }
-  return entry;
-}

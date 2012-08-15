@@ -1,3 +1,0 @@
-{
-  return String.format("%d.%d.%d.%d",ForgeHooks.majorVersion,ForgeHooks.minorVersion,ForgeHooks.revisionVersion,ForgeHooks.buildVersion);
-}

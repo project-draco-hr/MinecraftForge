@@ -1,4 +1,0 @@
-{
-  MinecraftForge.getDungeonLootTries();
-  MinecraftForgeClient.init();
-}

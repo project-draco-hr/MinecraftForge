@@ -1,4 +1,0 @@
-ItemStack item
-float rarity
-int minCount
-int maxCount

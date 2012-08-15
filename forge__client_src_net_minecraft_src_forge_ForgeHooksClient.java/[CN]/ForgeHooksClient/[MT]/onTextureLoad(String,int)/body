@@ -1,5 +1,0 @@
-{
-  for (  ITextureLoadHandler handler : textureLoadHandlers) {
-    handler.onTextureLoad(textureName,textureID);
-  }
-}

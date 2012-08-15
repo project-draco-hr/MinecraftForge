@@ -1,5 +1,0 @@
-{
-  if (guibutton.id == 0) {
-    mc.displayGuiScreen(new GuiMainMenu());
-  }
-}

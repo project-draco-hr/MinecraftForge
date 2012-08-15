@@ -1,8 +1,0 @@
-{
-  for (  IHighlightHandler handler : highlightHandlers) {
-    if (handler.onBlockHighlight(render,player,target,i,itemstack,partialTicks)) {
-      return true;
-    }
-  }
-  return false;
-}

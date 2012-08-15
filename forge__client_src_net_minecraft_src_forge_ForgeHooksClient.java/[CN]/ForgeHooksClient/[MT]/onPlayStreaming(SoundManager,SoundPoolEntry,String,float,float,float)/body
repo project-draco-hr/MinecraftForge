@@ -1,9 +1,0 @@
-{
-  for (  ISoundHandler handler : soundHandlers) {
-    entry=handler.onPlayStreaming(soundManager,entry,soundName,x,y,z);
-    if (entry == null) {
-      return null;
-    }
-  }
-  return entry;
-}

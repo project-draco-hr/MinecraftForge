@@ -1,3 +1,0 @@
-{
-  return ForgeHooks.networkMods.get(id);
-}

@@ -1,9 +1,0 @@
-{
-  if (DEBUG) {
-    System.out.println("S->C: " + pkt.toString(true));
-  }
-  net.disconnect();
-  Minecraft mc=ModLoader.getMinecraftInstance();
-  mc.changeWorld1(null);
-  mc.displayGuiScreen(new GuiMissingMods(pkt));
-}

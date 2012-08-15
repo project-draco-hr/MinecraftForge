@@ -1,8 +1,0 @@
-{
-  for (  AchievementPage page : achievementPages) {
-    if (page.getAchievements().contains(achievement)) {
-      return true;
-    }
-  }
-  return false;
-}

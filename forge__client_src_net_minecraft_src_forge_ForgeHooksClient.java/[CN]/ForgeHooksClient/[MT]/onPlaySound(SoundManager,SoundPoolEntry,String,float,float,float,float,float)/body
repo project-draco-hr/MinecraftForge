@@ -1,9 +1,0 @@
-{
-  for (  ISoundHandler handler : soundHandlers) {
-    entry=handler.onPlaySound(soundManager,entry,soundName,x,y,z,volume,pitch);
-    if (entry == null) {
-      return null;
-    }
-  }
-  return entry;
-}

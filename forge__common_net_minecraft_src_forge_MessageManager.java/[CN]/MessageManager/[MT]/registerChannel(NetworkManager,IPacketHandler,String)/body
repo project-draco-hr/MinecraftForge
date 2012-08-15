@@ -1,4 +1,0 @@
-{
-  ConnectionInstance con=getConnection(manager);
-  return con.registerChannel(handler,channel);
-}

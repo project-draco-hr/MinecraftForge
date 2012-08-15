@@ -1,4 +1,0 @@
-{
-  NetServerHandler net=(NetServerHandler)network.getNetHandler();
-  net.sendPacket(packet);
-}

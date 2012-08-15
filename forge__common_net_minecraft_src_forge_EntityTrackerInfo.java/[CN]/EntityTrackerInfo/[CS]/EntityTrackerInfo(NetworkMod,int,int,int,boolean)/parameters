@@ -1,5 +1,0 @@
-NetworkMod mod
-int ID
-int range
-int updateFrequency
-boolean sendVelocityInfo

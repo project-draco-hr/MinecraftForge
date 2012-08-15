@@ -1,8 +1,0 @@
-{
-  EntityTrackerInfo info=MinecraftForge.getEntityTrackerInfo(entity,false);
-  if (info == null) {
-    return null;
-  }
-  PacketEntitySpawn pkt=new PacketEntitySpawn(entity,info.Mod,info.ID);
-  return pkt.getPacket();
-}

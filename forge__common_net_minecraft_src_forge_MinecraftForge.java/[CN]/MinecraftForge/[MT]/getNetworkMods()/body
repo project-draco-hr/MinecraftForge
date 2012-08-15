@@ -1,9 +1,0 @@
-{
-  ArrayList<NetworkMod> ret=new ArrayList<NetworkMod>();
-  for (  BaseMod mod : (List<BaseMod>)ModLoader.getLoadedMods()) {
-    if (mod instanceof NetworkMod) {
-      ret.add((NetworkMod)mod);
-    }
-  }
-  return ret.toArray(new NetworkMod[0]);
-}

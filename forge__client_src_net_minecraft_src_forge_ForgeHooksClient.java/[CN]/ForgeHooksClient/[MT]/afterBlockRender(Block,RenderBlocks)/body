@@ -1,5 +1,0 @@
-{
-  if (!block.isDefaultTexture && render.overrideBlockTexture == -1) {
-    unbindTexture();
-  }
-}

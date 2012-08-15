@@ -1,7 +1,0 @@
-{
-  if (connections.containsKey(manager)) {
-    ConnectionInstance con=getConnection(manager);
-    return con.unregisterHandler(handler);
-  }
-  return new String[0];
-}

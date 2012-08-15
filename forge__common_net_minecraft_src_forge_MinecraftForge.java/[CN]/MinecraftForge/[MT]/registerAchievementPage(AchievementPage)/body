@@ -1,6 +1,0 @@
-{
-  if (getAchievementPage(page.getName()) != null) {
-    throw new RuntimeException("Duplicate achievement page name \"" + page.getName() + "\"!");
-  }
-  achievementPages.add(page);
-}

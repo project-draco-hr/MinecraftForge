@@ -1,3 +1,0 @@
-{
-  ForgeHooks.arrowNockHandlers.add(handler);
-}

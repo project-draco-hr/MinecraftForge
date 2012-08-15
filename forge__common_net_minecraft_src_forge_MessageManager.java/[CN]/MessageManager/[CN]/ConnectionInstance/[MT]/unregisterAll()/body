@@ -1,6 +1,0 @@
-{
-  String[] ret=getRegisteredChannels();
-  channelToHandlers.clear();
-  handlerToChannels.clear();
-  return ret;
-}

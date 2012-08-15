@@ -1,5 +1,0 @@
-{
-  if (!activeChannels.contains(channel)) {
-    activeChannels.add(channel);
-  }
-}

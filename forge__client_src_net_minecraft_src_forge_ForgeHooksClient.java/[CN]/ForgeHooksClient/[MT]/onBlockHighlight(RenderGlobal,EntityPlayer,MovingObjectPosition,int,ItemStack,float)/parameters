@@ -1,6 +1,0 @@
-RenderGlobal render
-EntityPlayer player
-MovingObjectPosition target
-int i
-ItemStack itemstack
-float partialTicks

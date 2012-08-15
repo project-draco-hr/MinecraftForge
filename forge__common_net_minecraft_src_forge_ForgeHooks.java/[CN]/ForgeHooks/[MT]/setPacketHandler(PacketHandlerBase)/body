@@ -1,6 +1,0 @@
-{
-  if (forgePacketHandler != null) {
-    throw new RuntimeException("Attempted to set Forge's Internal packet handler after it was already set");
-  }
-  forgePacketHandler=handler;
-}

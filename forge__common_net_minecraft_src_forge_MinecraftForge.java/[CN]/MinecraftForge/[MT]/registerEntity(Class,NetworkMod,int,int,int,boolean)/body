@@ -1,7 +1,0 @@
-{
-  if (ForgeHooks.entityTrackerMap.containsKey(entityClass)) {
-    return false;
-  }
-  ForgeHooks.entityTrackerMap.put(entityClass,new EntityTrackerInfo(mod,ID,range,updateFrequency,sendVelocityInfo));
-  return true;
-}

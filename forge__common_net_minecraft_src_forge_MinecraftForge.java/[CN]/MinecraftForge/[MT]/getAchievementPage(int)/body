@@ -1,3 +1,0 @@
-{
-  return achievementPages.get(index);
-}

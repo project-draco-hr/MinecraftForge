@@ -1,7 +1,0 @@
-{
-  Mod=mod;
-  this.ID=ID;
-  Range=range;
-  UpdateFrequency=updateFrequency;
-  SendVelocityInfo=sendVelocityInfo;
-}

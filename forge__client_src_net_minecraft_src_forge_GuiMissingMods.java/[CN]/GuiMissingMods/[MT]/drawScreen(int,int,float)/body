@@ -1,9 +1,0 @@
-{
-  drawDefaultBackground();
-  drawCenteredString(fontRenderer,"The server requires you to have the following mods:",width / 2,50,0xffffff);
-  int y=0;
-  for (  String mod : packet.Mods) {
-    drawCenteredString(fontRenderer,mod,width / 2,80 + y++ * 10,0xffffff);
-  }
-  super.drawScreen(i,j,f);
-}

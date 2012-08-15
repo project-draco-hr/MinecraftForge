@@ -1,9 +1,0 @@
-{
-  for (  ObjectPair<Float,String> mob : dungeonMobs) {
-    if (name.equals(name)) {
-      dungeonMobs.remove(mob);
-      return mob.getValue1();
-    }
-  }
-  return 0;
-}
