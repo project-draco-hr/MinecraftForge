@@ -1,0 +1,5 @@
+{
+  this.command=command;
+  this.sender=sender;
+  this.parameters=parameters;
+}
