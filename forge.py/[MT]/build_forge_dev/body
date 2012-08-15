@@ -10,8 +10,6 @@ def build_forge_dev(mcp_dir, forge_dir, fml_dir, build_num=0):
     copytree(os.path.join(mcp_dir, 'src_work'), src_dir)
     print '\nCopying Client Code'
     copytree(os.path.join(forge_dir, 'client'), os.path.join(src_dir, 'minecraft'), (-1))
-    print '\nCopying Server Code'
-    copytree(os.path.join(forge_dir, 'server'), os.path.join(src_dir, 'minecraft_server'), (-1))
     print '\nCopying Common Code'
     copytree(os.path.join(forge_dir, 'common'), os.path.join(src_dir, 'common'), (-1))
     print 

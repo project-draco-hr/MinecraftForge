@@ -1,7 +1,6 @@
 def main():
     print '=================================== Setup Start ================================='
-    dont_gen_conf = True
-    setup_fml(dont_gen_conf)
+    setup_fml()
     base_dir = os.path.join(mcp_dir, 'src_base')
     work_dir = os.path.join(mcp_dir, 'src_work')
     if os.path.isdir(base_dir):
@@ -13,12 +12,4 @@ def main():
     shutil.copytree(src_dir, work_dir)
     print 'Applying forge patches'
     apply_forge_patches(os.path.join(forge_dir, 'fml'), mcp_dir, forge_dir, work_dir, False)
-    if (not dont_gen_conf):
-        mcp_conf = os.path.join(mcp_dir, 'conf')
-        mcp_conf_bak = os.path.join(mcp_dir, 'conf.bak')
-        if os.path.isdir(mcp_conf):
-            print 'Removing new conf folder'
-            shutil.rmtree(mcp_conf)
-        print 'Restoreing original MCP Conf'
-        os.rename(mcp_conf_bak, mcp_conf)
     print '=================================== Setup Finished ================================='

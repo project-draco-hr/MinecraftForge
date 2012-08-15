@@ -48,7 +48,6 @@ def main():
     zip_start(('minecraftforge-src-%s.zip' % version_str), 'forge')
     zip_add('client', 'client')
     zip_add('common', 'common')
-    zip_add('server', 'server')
     zip_add('patches', 'patches')
     zip_add('fml', 'fml')
     zip_add('install/install.cmd')

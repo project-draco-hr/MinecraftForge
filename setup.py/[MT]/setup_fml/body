@@ -1,4 +1,4 @@
-def setup_fml(dont_gen_conf):
+def setup_fml():
     print 'Setting up Forge ModLoader'
     fml = glob.glob(os.path.join(forge_dir, 'fml-src-*.zip'))
     if (not (len(fml) == 1)):
@@ -16,4 +16,4 @@ def setup_fml(dont_gen_conf):
     zf.close()
     sys.path.append(fml_dir)
     from install import fml_main
-    fml_main(fml_dir, mcp_dir, dont_gen_conf)
+    fml_main(fml_dir, mcp_dir, True)

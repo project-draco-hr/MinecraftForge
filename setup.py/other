@@ -5,6 +5,6 @@ import subprocess, logging
 forge_dir = os.path.dirname(os.path.abspath(__file__))
 mcp_dir = os.path.abspath('..')
 src_dir = os.path.join(mcp_dir, 'src')
-from forge import setup_forge_mcp, apply_forge_patches
+from forge import apply_forge_patches
 if (__name__ == '__main__'):
     main()
