@@ -1,0 +1,5 @@
+{
+  Class<? super Object> client=ReflectionHelper.getClass(classLoader,"net.minecraft.client.Minecraft");
+  ReflectionHelper.setPrivateValue(client,null,minecraftHome,"minecraftDir","am","minecraftDir");
+  return client;
+}

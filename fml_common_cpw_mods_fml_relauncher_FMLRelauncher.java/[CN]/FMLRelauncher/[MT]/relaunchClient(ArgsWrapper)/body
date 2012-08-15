@@ -4,8 +4,7 @@
   try {
     File minecraftHome=computeExistingClientHome();
     setupHome(minecraftHome);
-    client=ReflectionHelper.getClass(classLoader,"net.minecraft.client.Minecraft");
-    ReflectionHelper.setPrivateValue(client,null,minecraftHome,"field_71463_am","am","minecraftDir");
+    client=setupNewClientHome(minecraftHome);
   }
   finally {
     if (popupWindow != null) {

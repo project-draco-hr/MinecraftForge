@@ -17,7 +17,9 @@
       throw new RuntimeException(e);
     }
   }
-  setupHome(computeExistingClientHome());
+  File mcDir=computeExistingClientHome();
+  setupHome(mcDir);
+  setupNewClientHome(mcDir);
   Class<? super Object> parentAppletClass=ReflectionHelper.getClass(getClass().getClassLoader(),"java.applet.Applet");
   try {
     newApplet=appletClass.newInstance();
