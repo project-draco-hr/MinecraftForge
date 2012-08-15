@@ -1,2 +1,4 @@
 EnumSet<TickType> type
+KeyBinding kb
 boolean end
+boolean repeats

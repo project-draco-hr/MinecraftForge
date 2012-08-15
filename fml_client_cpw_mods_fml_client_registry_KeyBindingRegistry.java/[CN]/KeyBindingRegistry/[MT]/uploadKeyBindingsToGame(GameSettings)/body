@@ -1,7 +1,9 @@
 {
   ArrayList<KeyBinding> harvestedBindings=Lists.newArrayList();
   for (  KeyHandler key : keyHandlers) {
-    harvestedBindings.add(key.keyBinding);
+    for (    KeyBinding kb : key.keyBindings) {
+      harvestedBindings.add(kb);
+    }
   }
   KeyBinding[] modKeyBindings=harvestedBindings.toArray(new KeyBinding[harvestedBindings.size()]);
   KeyBinding[] allKeys=new KeyBinding[settings.field_74324_K.length + modKeyBindings.length];

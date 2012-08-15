@@ -1,2 +1,3 @@
 EnumSet<TickType> types
+KeyBinding kb
 boolean tickEnd
