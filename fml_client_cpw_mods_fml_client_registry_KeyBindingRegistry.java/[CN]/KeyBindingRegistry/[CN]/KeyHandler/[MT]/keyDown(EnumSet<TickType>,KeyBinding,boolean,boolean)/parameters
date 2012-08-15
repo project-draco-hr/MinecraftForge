@@ -1,3 +1,4 @@
 EnumSet<TickType> types
+KeyBinding kb
 boolean tickEnd
 boolean isRepeat
