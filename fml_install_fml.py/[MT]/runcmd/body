@@ -4,10 +4,10 @@ def runcmd(commands, command, echo=True):
     (output, _) = process.communicate()
     if echo:
         for line in output.splitlines():
-            self.logger.info(line)
+            commands.logger.info(line)
     if process.returncode:
         if (not echo):
             for line in output.splitlines():
-                self.logger.info(line)
+                commands.logger.info(line)
         return False
     return True
