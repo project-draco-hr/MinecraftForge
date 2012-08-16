@@ -1,6 +1,6 @@
 {
   if (stateEvent instanceof FMLPreInitializationEvent) {
-    buildModObjectList();
+    modObjectList=buildModObjectList();
   }
   for (  Map.Entry<String,EventBus> entry : eventChannels.entrySet()) {
     activeContainer=entry.getKey();
