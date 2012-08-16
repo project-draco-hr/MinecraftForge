@@ -3,4 +3,8 @@
   if (shouldClose == JOptionPane.YES_OPTION) {
     container.dispose();
   }
+  stopIt=true;
+  if (pokeThread != null) {
+    pokeThread.interrupt();
+  }
 }

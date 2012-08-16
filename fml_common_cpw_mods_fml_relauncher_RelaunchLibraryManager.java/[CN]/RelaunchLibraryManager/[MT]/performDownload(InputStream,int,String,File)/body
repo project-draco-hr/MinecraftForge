@@ -6,18 +6,27 @@
   int bytesRead, fullLength=0;
   downloadMonitor.resetProgress(sizeGuess);
   try {
+    downloadMonitor.pokeThread=Thread.currentThread();
     byte[] smallBuffer=new byte[1024];
     while ((bytesRead=is.read(smallBuffer)) >= 0) {
       downloadBuffer.put(smallBuffer,0,bytesRead);
       fullLength+=bytesRead;
+      if (downloadMonitor.stopIt) {
+        break;
+      }
       downloadMonitor.updateProgress(fullLength);
     }
     is.close();
+    downloadMonitor.pokeThread=null;
     downloadBuffer.limit(fullLength);
     downloadBuffer.position(0);
   }
- catch (  IOException e) {
-    e.printStackTrace();
+ catch (  InterruptedIOException e) {
+    Thread.interrupted();
+    return;
+  }
+catch (  IOException e) {
+    throw new RuntimeException(e);
   }
   try {
     String cksum=generateChecksum(downloadBuffer);

@@ -4,6 +4,9 @@
       popupWindow.setVisible(false);
       popupWindow.dispose();
     }
+    if (RelaunchLibraryManager.downloadMonitor.stopIt) {
+      System.exit(1);
+    }
     try {
       ReflectionHelper.findMethod(appletClass,newApplet,new String[]{"fmlStartReentry"}).invoke(newApplet);
     }

@@ -83,6 +83,9 @@
     }
   }
   finally {
+    if (downloadMonitor.stopIt) {
+      return;
+    }
     if (!caughtErrors.isEmpty()) {
       FMLRelaunchLog.severe("There were errors during initial FML setup. " + "Some files failed to download or were otherwise corrupted. " + "You will need to manually obtain the following files from "+ "these download links and ensure your lib directory is clean. ");
       for (      ILibrarySet set : libraries) {
@@ -151,7 +154,6 @@
   }
  catch (  Exception e) {
     System.out.println("A CRITICAL PROBLEM OCCURED INITIALIZING MINECRAFT - LIKELY YOU HAVE AN INCORRECT VERSION FOR THIS FML");
-    e.printStackTrace();
     throw new RuntimeException(e);
   }
 }
