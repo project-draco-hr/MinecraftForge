@@ -7,7 +7,8 @@
     List<ArtifactVersion> requirements=Lists.newArrayList();
     List<ArtifactVersion> dependencies=Lists.newArrayList();
     List<ArtifactVersion> dependants=Lists.newArrayList();
-    Loader.instance().computeDependencies((String)descriptor.get("dependencies"),requirements,dependencies,dependants);
+    annotationDependencies=(String)descriptor.get("dependencies");
+    Loader.instance().computeDependencies(annotationDependencies,requirements,dependencies,dependants);
     modMetadata.requiredMods=requirements;
     modMetadata.dependencies=dependencies;
     modMetadata.dependants=dependants;

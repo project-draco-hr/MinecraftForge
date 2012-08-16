@@ -1,8 +1,5 @@
 {
   try {
-    EnumSet<TickType> ticks=EnumSet.noneOf(TickType.class);
-    this.gameTickHandler=new BaseModTicker(ticks,false);
-    this.guiTickHandler=new BaseModTicker(ticks.clone(),true);
     this.gameTickHandler.setMod(mod);
     this.guiTickHandler.setMod(mod);
     TickRegistry.registerTickHandler(this.gameTickHandler,Side.CLIENT);

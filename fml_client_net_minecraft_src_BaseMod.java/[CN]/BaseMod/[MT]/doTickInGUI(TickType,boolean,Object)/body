@@ -1,5 +1,12 @@
 {
   Minecraft mc=FMLClientHandler.instance().getClient();
+  boolean hasWorld=mc.field_71441_e != null;
+  if (!hasWorld && !fml_lastWorld) {
+    fml_lastWorld=true;
+  }
+ else   if (!hasWorld && fml_lastWorld) {
+    return true;
+  }
   if (tickEnd && (tick == TickType.RENDER || tick == TickType.CLIENT)) {
     return onTickInGUI((Float)data[0],mc,mc.field_71462_r);
   }

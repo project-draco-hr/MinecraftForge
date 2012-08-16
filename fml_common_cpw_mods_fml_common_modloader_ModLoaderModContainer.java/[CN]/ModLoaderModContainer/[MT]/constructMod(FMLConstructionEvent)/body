@@ -2,6 +2,9 @@
   try {
     ModClassLoader modClassLoader=event.getModClassLoader();
     modClassLoader.addFile(modSource);
+    EnumSet<TickType> ticks=EnumSet.noneOf(TickType.class);
+    this.gameTickHandler=new BaseModTicker(ticks,false);
+    this.guiTickHandler=new BaseModTicker(ticks.clone(),true);
     Class<? extends BaseModProxy> modClazz=(Class<? extends BaseModProxy>)Class.forName(modClazzName,true,modClassLoader);
     configureMod(modClazz,event.getASMHarvestedData());
     isNetworkMod=FMLNetworkHandler.instance().registerNetworkMod(this,modClazz,event.getASMHarvestedData());
