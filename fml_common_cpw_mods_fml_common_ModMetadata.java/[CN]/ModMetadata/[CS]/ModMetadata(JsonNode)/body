@@ -1,6 +1,10 @@
 {
   Map<JsonStringNode,Object> processedFields=Maps.transformValues(node.getFields(),new JsonStringConverter());
   modId=(String)processedFields.get(aStringBuilder("modid"));
+  if (Strings.isNullOrEmpty(modId)) {
+    FMLLog.log(Level.SEVERE,"Found an invalid mod metadata file - missing modid");
+    throw new LoaderException();
+  }
   name=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("name")));
   description=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("description")));
   url=Strings.nullToEmpty((String)processedFields.get(aStringBuilder("url")));
