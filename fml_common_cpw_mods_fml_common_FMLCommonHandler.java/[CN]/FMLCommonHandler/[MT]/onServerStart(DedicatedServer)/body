@@ -1,10 +1,4 @@
 {
-  try {
-    Class<?> cls=Class.forName("cpw.mods.fml.server.FMLServerHandler",true,getClass().getClassLoader());
-  }
- catch (  ClassNotFoundException e) {
-    FMLLog.log(Level.SEVERE,e,"Unable to load the FML server handler");
-    throw Throwables.propagate(e);
-  }
+  FMLServerHandler.instance();
   sidedDelegate.beginServerLoading(dedicatedServer);
 }
