@@ -1,7 +1,7 @@
 {
   if (!loginStates.containsKey(netLoginHandler)) {
     if (handleVanillaLoginKick(netLoginHandler,server,address,userName)) {
-      FMLRelaunchLog.fine("Connection from %s rejected - no FML packet received from client",userName);
+      FMLLog.fine("Connection from %s rejected - no FML packet received from client",userName);
       netLoginHandler.completeConnection("You don't have FML installed, or your installation is too old");
       return;
     }
