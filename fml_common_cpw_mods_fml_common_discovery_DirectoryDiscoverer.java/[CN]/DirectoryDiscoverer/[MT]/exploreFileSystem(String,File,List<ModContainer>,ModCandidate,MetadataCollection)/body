@@ -5,9 +5,11 @@
       FileInputStream fis=new FileInputStream(metadata);
       mc=MetadataCollection.from(fis);
       fis.close();
+      FMLLog.fine("Found an mcmod.info file in directory %s",modDir.getName());
     }
  catch (    Exception e) {
       mc=MetadataCollection.from(null);
+      FMLLog.info("No mcmod.info file found in directory %s",modDir.getName());
     }
   }
   File[] content=modDir.listFiles(new ClassFilter());
