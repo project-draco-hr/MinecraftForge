@@ -30,7 +30,7 @@
     }
   }
  catch (  Exception e) {
-    FMLLog.warning("Zip file %s failed to read properly, it will be ignored",candidate.getModContainer().getName());
+    FMLLog.log(Level.WARNING,e,"Zip file %s failed to read properly, it will be ignored",candidate.getModContainer().getName());
   }
  finally {
     if (jar != null) {
