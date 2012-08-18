@@ -33,12 +33,12 @@
       }
     }
   }
-  tryCreatingPacketHandler(container,mod.packetHandler(),mod.channels());
+  tryCreatingPacketHandler(container,mod.packetHandler(),mod.channels(),null);
   if (mod.clientPacketHandlerSpec() != getClientHandlerSpecDefaultValue()) {
-    tryCreatingPacketHandler(container,mod.clientPacketHandlerSpec().packetHandler(),mod.clientPacketHandlerSpec().channels());
+    tryCreatingPacketHandler(container,mod.clientPacketHandlerSpec().packetHandler(),mod.clientPacketHandlerSpec().channels(),Side.CLIENT);
   }
   if (mod.serverPacketHandlerSpec() != getServerHandlerSpecDefaultValue()) {
-    tryCreatingPacketHandler(container,mod.serverPacketHandlerSpec().packetHandler(),mod.serverPacketHandlerSpec().channels());
+    tryCreatingPacketHandler(container,mod.serverPacketHandlerSpec().packetHandler(),mod.serverPacketHandlerSpec().channels(),Side.SERVER);
   }
   if (mod.connectionHandler() != getConnectionHandlerDefaultValue()) {
     IConnectionHandler instance;

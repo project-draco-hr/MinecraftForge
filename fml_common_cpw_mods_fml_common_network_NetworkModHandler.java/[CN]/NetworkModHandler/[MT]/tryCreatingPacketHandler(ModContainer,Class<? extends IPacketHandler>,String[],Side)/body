@@ -13,7 +13,7 @@
         throw new FMLNetworkException(e);
       }
       for (      String channel : channels) {
-        NetworkRegistry.instance().registerChannel(instance,channel);
+        NetworkRegistry.instance().registerChannel(instance,channel,side);
       }
     }
   }
