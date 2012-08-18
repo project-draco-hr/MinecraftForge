@@ -1,4 +1,6 @@
 {
   instance().keyHandlers.add(handler);
-  TickRegistry.registerTickHandler(handler,Side.CLIENT);
+  if (!handler.isDummy) {
+    TickRegistry.registerTickHandler(handler,Side.CLIENT);
+  }
 }

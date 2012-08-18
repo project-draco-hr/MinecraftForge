@@ -1,0 +1,4 @@
+{
+  this.keyBindings=keyBindings;
+  this.isDummy=true;
+}
