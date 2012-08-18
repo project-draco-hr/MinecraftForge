@@ -1,0 +1,3 @@
+{
+  GameRegistry.addSmelting(input,output,experience);
+}
