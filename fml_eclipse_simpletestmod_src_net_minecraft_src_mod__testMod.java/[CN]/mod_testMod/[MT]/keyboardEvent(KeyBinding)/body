@@ -1,0 +1,4 @@
+{
+  Mouse.setGrabbed(false);
+  System.out.println(event.field_74515_c);
+}

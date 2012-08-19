@@ -1,11 +1,3 @@
 {
-  TickTester t1=new TickTester();
-  t1.interval=1;
-  TickTester t2=new TickTester();
-  t2.interval=2;
-  TickTester t3=new TickTester();
-  t3.interval=3;
-  TickRegistry.registerScheduledTickHandler(t1,Side.CLIENT);
-  TickRegistry.registerScheduledTickHandler(t2,Side.SERVER);
-  TickRegistry.registerScheduledTickHandler(t3,Side.CLIENT);
+  ModLoader.registerKey(this,new KeyBinding("Fishhead",Keyboard.KEY_O),true);
 }

@@ -1,4 +1,0 @@
-{
-  super(new KeyBinding[]{keyBinding},new boolean[]{allowRepeat});
-  this.modContainer=modContainer;
-}

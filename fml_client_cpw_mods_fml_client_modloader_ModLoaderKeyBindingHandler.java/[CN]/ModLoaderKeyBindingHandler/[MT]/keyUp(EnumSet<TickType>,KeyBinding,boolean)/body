@@ -2,12 +2,6 @@
   if (!end) {
     return;
   }
-  downArmed=false;
-  if (type.contains(TickType.CLIENT)) {
-    upArmed=true;
-  }
-  if (type.contains(TickType.RENDER) && upArmed) {
-    onRenderEndTick();
-    upArmed=false;
-  }
+  int idx=helper.indexOf(kb);
+  active[idx]=false;
 }

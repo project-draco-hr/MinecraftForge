@@ -10,7 +10,9 @@
  else {
         keyUp(type,keyBinding,tickEnd);
       }
-      keyDown[i]=state;
+      if (tickEnd) {
+        keyDown[i]=state;
+      }
     }
   }
 }

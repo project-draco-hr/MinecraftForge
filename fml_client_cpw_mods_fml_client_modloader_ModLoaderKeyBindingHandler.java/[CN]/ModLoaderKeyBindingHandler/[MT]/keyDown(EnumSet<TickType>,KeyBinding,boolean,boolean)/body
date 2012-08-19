@@ -2,12 +2,13 @@
   if (!end) {
     return;
   }
-  upArmed=false;
+  int idx=helper.indexOf(kb);
   if (type.contains(TickType.CLIENT)) {
-    downArmed=true;
+    armed[idx]=true;
   }
-  if (type.contains(TickType.RENDER) && downArmed) {
-    onRenderEndTick();
-    downArmed=false;
+  if (armed[idx] && type.contains(TickType.RENDER) && (!active[idx] || mlRepeats[idx])) {
+    fireKeyEvent(kb);
+    active[idx]=true;
+    armed[idx]=false;
   }
 }

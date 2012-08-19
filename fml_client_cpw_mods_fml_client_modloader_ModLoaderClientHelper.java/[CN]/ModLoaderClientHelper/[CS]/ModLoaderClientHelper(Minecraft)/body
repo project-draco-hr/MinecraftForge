@@ -1,4 +1,10 @@
 {
   this.client=client;
   ModLoaderHelper.sidedHelper=this;
+  keyBindingContainers=Multimaps.newMultimap(Maps.<ModLoaderModContainer,Collection<ModLoaderKeyBindingHandler>>newHashMap(),new Supplier<Collection<ModLoaderKeyBindingHandler>>(){
+    @Override public Collection<ModLoaderKeyBindingHandler> get(){
+      return Collections.singleton(new ModLoaderKeyBindingHandler());
+    }
+  }
+);
 }
