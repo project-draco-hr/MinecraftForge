@@ -1,0 +1,6 @@
+{
+  List<StructureVillagePieceWeight> parts=components;
+  for (  IVillageCreationHandler handler : instance().villageCreationHandlers) {
+    parts.addAll(handler.getVillagePieces(random,i));
+  }
+}

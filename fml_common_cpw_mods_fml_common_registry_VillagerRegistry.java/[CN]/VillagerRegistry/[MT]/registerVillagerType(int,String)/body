@@ -1,0 +1,7 @@
+{
+  if (newVillagers.containsKey(villagerId)) {
+    FMLLog.severe("Attempt to register duplicate villager id %d",villagerId);
+    throw new RuntimeException();
+  }
+  newVillagers.put(villagerId,villagerSkin);
+}
