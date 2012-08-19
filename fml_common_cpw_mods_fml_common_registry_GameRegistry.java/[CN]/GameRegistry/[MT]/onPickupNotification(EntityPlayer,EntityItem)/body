@@ -1,0 +1,5 @@
+{
+  for (  IPickupNotifier notify : pickupHandlers) {
+    notify.notifyPickup(item,player);
+  }
+}
