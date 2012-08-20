@@ -1,5 +1,0 @@
-{
-  ZipEntry newEntry=new ZipEntry(entry.getName());
-  outFile.putNextEntry(newEntry);
-  outFile.write(readEntry(inFile,entry));
-}

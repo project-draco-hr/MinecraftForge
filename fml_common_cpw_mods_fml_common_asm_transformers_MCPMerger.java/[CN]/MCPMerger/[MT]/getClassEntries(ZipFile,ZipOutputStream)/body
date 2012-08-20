@@ -7,7 +7,9 @@
     }
     String entryName=entry.getName();
     if (!entryName.endsWith(".class") || entryName.startsWith(".")) {
-      copyEntry(inFile,entry,outFile);
+      ZipEntry newEntry=new ZipEntry(entry.getName());
+      outFile.putNextEntry(newEntry);
+      outFile.write(readEntry(inFile,entry));
     }
  else {
       ret.put(entryName.replace(".class",""),entry);

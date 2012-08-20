@@ -28,7 +28,7 @@
       ZipEntry sEntry=sClasses.get(name);
       if (sEntry == null) {
         if (!copyToServer.contains(name)) {
-          copyEntry(cInJar,cEntry,cOutJar);
+          copyClass(cInJar,cEntry,cOutJar,null,true);
           cAdded.add(name);
         }
  else {
@@ -57,7 +57,7 @@
     }
     for (    Entry<String,ZipEntry> entry : sClasses.entrySet()) {
       if (!copyToClient.contains(entry.getKey())) {
-        copyEntry(sInJar,entry.getValue(),sOutJar);
+        copyClass(sInJar,entry.getValue(),null,sOutJar,false);
       }
  else {
         if (DEBUG) {
