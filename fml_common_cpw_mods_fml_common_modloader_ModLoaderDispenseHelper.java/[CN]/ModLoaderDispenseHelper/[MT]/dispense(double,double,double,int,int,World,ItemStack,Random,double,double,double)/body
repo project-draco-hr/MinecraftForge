@@ -1,0 +1,3 @@
+{
+  return mod.dispenseEntity(world,item,random,x,y,z,xVelocity,zVelocity,entX,entY,entZ);
+}

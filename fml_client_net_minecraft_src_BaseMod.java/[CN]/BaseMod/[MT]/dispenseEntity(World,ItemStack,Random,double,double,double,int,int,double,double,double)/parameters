@@ -1,0 +1,11 @@
+World world
+ItemStack item
+Random rnd
+double x
+double y
+double z
+int xVel
+int zVel
+double entX
+double entY
+double entZ
