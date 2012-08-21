@@ -1,4 +1,4 @@
-EntityPlayer player
+EntityPlayerMP player
 Container container
 int ID
 int x

@@ -1,4 +1,4 @@
-EntityPlayer player
+EntityClientPlayerMP player
 int containerID
 int x
 int y

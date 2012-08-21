@@ -1,0 +1,6 @@
+{
+  if (sidedHelper != null) {
+    return sidedHelper.getClientGui(mod,player,ID,x,y,z);
+  }
+  return null;
+}

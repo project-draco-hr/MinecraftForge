@@ -25,6 +25,7 @@
       if (dat.getClassName().equals(modClazzName)) {
         try {
           mlPropFields.add(new ModProperty(modClazz.getDeclaredField(dat.getObjectName()),dat.getAnnotationInfo()));
+          FMLLog.finest("Found an MLProp field %s in %s",dat.getObjectName(),modClazzName);
         }
  catch (        Exception e) {
           FMLLog.log(Level.WARNING,e,"An error occured trying to access field %s in mod %s",dat.getObjectName(),getModId());

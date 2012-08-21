@@ -9,6 +9,10 @@
     configureMod(modClazz,event.getASMHarvestedData());
     isNetworkMod=FMLNetworkHandler.instance().registerNetworkMod(this,modClazz,event.getASMHarvestedData());
     mod=(BaseModProxy)modClazz.newInstance();
+    if (!isNetworkMod) {
+      FMLLog.fine("Injecting dummy network mod handler for BaseMod %s",getModId());
+      FMLNetworkHandler.instance().registerNetworkMod(new ModLoaderNetworkHandler(this,mod));
+    }
     ProxyInjector.inject(this,event.getASMHarvestedData(),FMLCommonHandler.instance().getSide());
   }
  catch (  Exception e) {
