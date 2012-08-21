@@ -1,0 +1,7 @@
+{
+  Thread thr=Thread.currentThread();
+  if ((thr instanceof ThreadServerApplication) || (thr instanceof ServerListenThread)) {
+    return Side.SERVER;
+  }
+  return Side.CLIENT;
+}
