@@ -1,0 +1,5 @@
+{
+  for (  ICrashCallable call : crashCallables) {
+    crashReport.func_71500_a(call.getLabel(),call);
+  }
+}
