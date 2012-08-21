@@ -1,4 +1,0 @@
-{
-  ModLoaderModContainer mlmc=findOrBuildModContainer(mod);
-  return mlmc;
-}

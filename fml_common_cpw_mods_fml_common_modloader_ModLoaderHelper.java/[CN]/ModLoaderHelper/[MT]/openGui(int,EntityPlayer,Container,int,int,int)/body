@@ -1,0 +1,4 @@
+{
+  guiHelpers.get(id).injectContainer(container);
+  player.openGui(guiHelpers.get(id).getMod(),id,player.field_70170_p,x,y,z);
+}

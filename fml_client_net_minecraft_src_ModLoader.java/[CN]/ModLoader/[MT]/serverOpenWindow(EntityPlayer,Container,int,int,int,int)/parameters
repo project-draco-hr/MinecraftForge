@@ -1,0 +1,6 @@
+EntityPlayer player
+Container container
+int ID
+int x
+int y
+int z

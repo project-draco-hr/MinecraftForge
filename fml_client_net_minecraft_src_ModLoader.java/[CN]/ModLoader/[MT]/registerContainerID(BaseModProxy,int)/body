@@ -1,0 +1,3 @@
+{
+  ModLoaderHelper.buildGuiHelper(mod,id);
+}

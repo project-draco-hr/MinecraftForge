@@ -1,0 +1,5 @@
+{
+  ModLoaderGuiHelper handler=new ModLoaderGuiHelper(mod,id);
+  guiHelpers.put(id,handler);
+  NetworkRegistry.instance().registerGuiHandler(Loader.instance().activeModContainer(),handler);
+}
