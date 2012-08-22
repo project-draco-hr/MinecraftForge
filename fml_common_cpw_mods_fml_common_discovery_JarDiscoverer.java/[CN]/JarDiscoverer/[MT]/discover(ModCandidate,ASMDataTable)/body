@@ -17,7 +17,14 @@
     for (    ZipEntry ze : Collections.list(jar.entries())) {
       Matcher match=classFile.matcher(ze.getName());
       if (match.matches()) {
-        ASMModParser modParser=new ASMModParser(jar.getInputStream(ze));
+        ASMModParser modParser;
+        try {
+          modParser=new ASMModParser(jar.getInputStream(ze));
+        }
+ catch (        LoaderException e) {
+          FMLLog.log(Level.SEVERE,e,"There was a problem reading the entry %s in the jar %s - probably a corrupt zip",ze.getName(),candidate.getModContainer().getPath());
+          throw e;
+        }
         modParser.validate();
         modParser.sendToTable(table,candidate);
         ModContainer container=ModContainerFactory.instance().build(modParser,candidate.getModContainer(),candidate);
