@@ -1,0 +1,3 @@
+{
+  for (  IPlayerTracker tracker : playerTrackers)   tracker.onPlayerLogout(player);
+}
