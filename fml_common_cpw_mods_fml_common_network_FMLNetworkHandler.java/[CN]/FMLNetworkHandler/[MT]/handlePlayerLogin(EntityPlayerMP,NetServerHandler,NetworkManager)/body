@@ -1,3 +1,4 @@
 {
   NetworkRegistry.instance().playerLoggedIn(player,netHandler,manager);
+  GameRegistry.onPlayerLogin(player);
 }
