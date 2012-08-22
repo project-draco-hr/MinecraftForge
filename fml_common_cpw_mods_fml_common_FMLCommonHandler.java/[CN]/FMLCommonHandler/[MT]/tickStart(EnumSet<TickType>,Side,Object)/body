@@ -4,7 +4,7 @@
     return;
   }
   for (  IScheduledTickHandler ticker : scheduledTicks) {
-    EnumSet<TickType> ticksToRun=EnumSet.copyOf(ticker.ticks());
+    EnumSet<TickType> ticksToRun=EnumSet.copyOf(Objects.firstNonNull(ticker.ticks(),EnumSet.noneOf(TickType.class)));
     ticksToRun.removeAll(EnumSet.complementOf(ticks));
     if (!ticksToRun.isEmpty()) {
       ticker.tickStart(ticksToRun,data);
