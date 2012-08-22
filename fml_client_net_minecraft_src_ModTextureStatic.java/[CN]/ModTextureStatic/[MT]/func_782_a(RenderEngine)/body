@@ -1,3 +1,0 @@
-{
-  GL11.glBindTexture(GL_TEXTURE_2D,p_782_1_.func_78341_b(targetTex));
-}
