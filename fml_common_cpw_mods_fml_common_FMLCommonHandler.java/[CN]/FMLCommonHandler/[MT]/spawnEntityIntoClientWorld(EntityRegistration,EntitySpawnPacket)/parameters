@@ -1,2 +1,2 @@
-Class<? extends Entity> cls
+EntityRegistration registration
 EntitySpawnPacket entitySpawnPacket

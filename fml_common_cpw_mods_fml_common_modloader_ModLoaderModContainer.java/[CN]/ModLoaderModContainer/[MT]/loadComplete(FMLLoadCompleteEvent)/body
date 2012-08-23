@@ -1,0 +1,3 @@
+{
+  ModLoaderHelper.finishModLoading(this);
+}

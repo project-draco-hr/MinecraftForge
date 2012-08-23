@@ -1,0 +1,3 @@
+{
+  return ModLoaderHelper.sidedHelper.spawnEntity(mod,input,registration);
+}

@@ -1,0 +1,4 @@
+{
+  EntityRegistration er=EntityRegistry.registerModLoaderEntity(mod,entityClass,entityTypeId,updateRange,updateInterval,sendVelocityInfo);
+  er.setCustomSpawning(new ModLoaderEntitySpawnCallback(mod,er));
+}
