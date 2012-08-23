@@ -1,0 +1,3 @@
+{
+  return getASMSuperType().equals(Type.getType(BaseMod.class)) || rememberedTypes.contains(getASMSuperType().getClassName());
+}

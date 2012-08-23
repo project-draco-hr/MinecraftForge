@@ -1,3 +1,0 @@
-{
-  return getASMSuperType().equals(Type.getType(BaseMod.class));
-}
