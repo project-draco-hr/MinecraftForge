@@ -12,7 +12,11 @@
       return parseModInfo(root);
     }
   }
- catch (  Exception e) {
+ catch (  InvalidSyntaxException e) {
+    FMLLog.log(Level.SEVERE,e,"The mcmod.info file in %s cannot be parsed as valid JSON. It will be ignored",sourceName);
+    return null;
+  }
+catch (  Exception e) {
     throw Throwables.propagate(e);
   }
 }
