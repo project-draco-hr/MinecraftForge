@@ -1,6 +1,8 @@
 {
   if (modsMissing != null) {
-    client.func_71373_a(new ModsMissingGuiScreen(modsMissing));
+    ModsMissingGuiScreen err=new ModsMissingGuiScreen();
+    err.setList(modsMissing);
+    client.func_71373_a(err);
   }
  else {
     TextureFXManager.instance().loadTextures(client.field_71418_C.func_77292_e());
