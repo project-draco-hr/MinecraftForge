@@ -1,0 +1,3 @@
+{
+  this(id,chance,buying,0,0);
+}
