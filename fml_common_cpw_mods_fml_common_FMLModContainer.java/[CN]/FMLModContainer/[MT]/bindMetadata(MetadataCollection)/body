@@ -4,7 +4,7 @@
     overridesMetadata=!((Boolean)descriptor.get("usesMetadata")).booleanValue();
   }
   if (overridesMetadata || !modMetadata.useDependencyInformation) {
-    List<ArtifactVersion> requirements=Lists.newArrayList();
+    Set<ArtifactVersion> requirements=Sets.newHashSet();
     List<ArtifactVersion> dependencies=Lists.newArrayList();
     List<ArtifactVersion> dependants=Lists.newArrayList();
     annotationDependencies=(String)descriptor.get("dependencies");
@@ -12,8 +12,14 @@
     modMetadata.requiredMods=requirements;
     modMetadata.dependencies=dependencies;
     modMetadata.dependants=dependants;
+    FMLLog.finest("Parsed dependency info : %s %s %s",requirements,dependencies,dependants);
   }
   if (Strings.isNullOrEmpty(modMetadata.name)) {
+    FMLLog.info("Mod %s is missing a required element, name. Substituting %s",getModId(),getModId());
     modMetadata.name=getModId();
+  }
+  if (Strings.isNullOrEmpty(modMetadata.version)) {
+    FMLLog.warning("Mod %s is missing a required element, version. Substituting 1",getModId());
+    modMetadata.version="1";
   }
 }

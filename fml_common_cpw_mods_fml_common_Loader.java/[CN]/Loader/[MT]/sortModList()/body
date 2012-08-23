@@ -1,19 +1,28 @@
 {
   FMLLog.fine("Verifying mod requirements are satisfied");
   try {
-    Map<String,ArtifactVersion> modVersions=Maps.newHashMap();
+    BiMap<String,ArtifactVersion> modVersions=HashBiMap.create();
     for (    ModContainer mod : mods) {
       modVersions.put(mod.getModId(),mod.getProcessedVersion());
     }
     for (    ModContainer mod : mods) {
+      Set<ArtifactVersion> missingMods=Sets.difference(mod.getRequirements(),modVersions.values());
+      if (!missingMods.isEmpty()) {
+        FMLLog.severe("The mod %s (%s) requires mods %s to be available",mod.getModId(),mod.getName(),missingMods);
+        throw new MissingModsException(missingMods);
+      }
       ImmutableList<ArtifactVersion> allDeps=ImmutableList.<ArtifactVersion>builder().addAll(mod.getDependants()).addAll(mod.getDependencies()).build();
       for (      ArtifactVersion v : allDeps) {
+        missingMods=Sets.newHashSet();
         if (modVersions.containsKey(v.getLabel())) {
           if (!v.containsVersion(modVersions.get(v.getLabel()))) {
-            FMLLog.log(Level.SEVERE,"The mod %s (%s) requires mods %s to be available, one or more are not",mod.getModId(),mod.getName(),allDeps);
-            throw new LoaderException();
+            missingMods.add(v);
           }
         }
+      }
+      if (!missingMods.isEmpty()) {
+        FMLLog.severe("The mod %s (%s) requires mod versions %s to be available",mod.getModId(),mod.getName(),missingMods);
+        throw new MissingModsException(missingMods);
       }
     }
     FMLLog.fine("All mod requirements are satisfied");

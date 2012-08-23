@@ -1,4 +1,7 @@
 {
+  if (modsMissing != null) {
+    return;
+  }
   try {
     Loader.instance().initializeMods();
   }
