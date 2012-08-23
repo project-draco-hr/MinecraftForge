@@ -2,10 +2,10 @@
   FMLLog.fine("Verifying mod requirements are satisfied");
   try {
     BiMap<String,ArtifactVersion> modVersions=HashBiMap.create();
-    for (    ModContainer mod : mods) {
+    for (    ModContainer mod : getActiveModList()) {
       modVersions.put(mod.getModId(),mod.getProcessedVersion());
     }
-    for (    ModContainer mod : mods) {
+    for (    ModContainer mod : getActiveModList()) {
       Set<ArtifactVersion> missingMods=Sets.difference(mod.getRequirements(),modVersions.values());
       if (!missingMods.isEmpty()) {
         FMLLog.severe("The mod %s (%s) requires mods %s to be available",mod.getModId(),mod.getName(),missingMods);
@@ -26,7 +26,7 @@
       }
     }
     FMLLog.fine("All mod requirements are satisfied");
-    ModSorter sorter=new ModSorter(mods,namedMods);
+    ModSorter sorter=new ModSorter(getActiveModList(),namedMods);
     try {
       FMLLog.fine("Sorting mods into an ordered list");
       mods=sorter.sort();
@@ -42,7 +42,7 @@
   }
   finally {
     FMLLog.fine("Mod sorting data:");
-    for (    ModContainer mod : mods) {
+    for (    ModContainer mod : getActiveModList()) {
       if (!mod.isImmutable()) {
         FMLLog.fine("\t%s(%s:%s): %s (%s)",mod.getModId(),mod.getName(),mod.getVersion(),mod.getSource().getName(),mod.getSortingRules());
       }

@@ -6,9 +6,9 @@
   modController.transition(LoaderState.LOADING);
   ModDiscoverer disc=identifyMods();
   disableRequestedMods();
+  modController.distributeStateMessage(FMLLoadEvent.class);
   sortModList();
   mods=ImmutableList.copyOf(mods);
-  modController.distributeStateMessage(FMLLoadEvent.class);
   modController.transition(LoaderState.CONSTRUCTING);
   modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader,disc.getASMTable());
   modController.transition(LoaderState.PREINITIALIZATION);
