@@ -39,6 +39,8 @@
     try {
       FMLLog.fine("Sorting mods into an ordered list");
       List<ModContainer> sortedMods=sorter.sort();
+      modController.getActiveModList().clear();
+      modController.getActiveModList().addAll(sortedMods);
       mods.removeAll(sortedMods);
       sortedMods.addAll(mods);
       mods=sortedMods;
