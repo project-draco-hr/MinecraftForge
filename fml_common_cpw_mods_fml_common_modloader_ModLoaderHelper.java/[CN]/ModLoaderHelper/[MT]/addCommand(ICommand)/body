@@ -1,0 +1,6 @@
+{
+  ModLoaderModContainer mlmc=(ModLoaderModContainer)Loader.instance().activeModContainer();
+  if (mlmc != null) {
+    mlmc.addServerCommand(command);
+  }
+}

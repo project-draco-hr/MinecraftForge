@@ -1,0 +1,3 @@
+{
+  serverCommands.add(command);
+}

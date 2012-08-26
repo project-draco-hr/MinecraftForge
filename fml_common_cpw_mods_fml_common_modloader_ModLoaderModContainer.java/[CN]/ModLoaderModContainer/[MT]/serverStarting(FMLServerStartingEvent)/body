@@ -1,0 +1,5 @@
+{
+  for (  ICommand cmd : serverCommands) {
+    evt.registerServerCommand(cmd);
+  }
+}
