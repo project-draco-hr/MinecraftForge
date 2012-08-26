@@ -1,0 +1,5 @@
+{
+  AccessTransformer transformer=(AccessTransformer)mainClassLoader.getTransformers().get(0);
+  transformer.ensurePublicAccessFor(modClazzName);
+  return (Class<? extends BaseModProxy>)Class.forName(modClazzName,true,this);
+}
