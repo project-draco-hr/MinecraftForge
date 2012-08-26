@@ -9,7 +9,7 @@
     isNetworkMod=FMLNetworkHandler.instance().registerNetworkMod(this,clazz,event.getASMHarvestedData());
     modInstance=clazz.newInstance();
     ProxyInjector.inject(this,event.getASMHarvestedData(),FMLCommonHandler.instance().getSide());
-    processFieldAnnotations();
+    processFieldAnnotations(event.getASMHarvestedData());
   }
  catch (  Throwable e) {
     controller.errorOccurred(this,e);

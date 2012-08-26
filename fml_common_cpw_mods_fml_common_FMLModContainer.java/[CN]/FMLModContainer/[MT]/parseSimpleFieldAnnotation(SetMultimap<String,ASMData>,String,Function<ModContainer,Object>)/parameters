@@ -1,0 +1,3 @@
+SetMultimap<String,ASMData> annotations
+String annotationClassName
+Function<ModContainer,Object> retreiver

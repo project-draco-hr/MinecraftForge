@@ -1,0 +1,41 @@
+{
+  System.out.println(annotationClassName);
+  String[] annName=annotationClassName.split("\\.");
+  System.out.println(Arrays.toString(annName));
+  String annotationName=annName[annName.length - 1];
+  for (  ASMData targets : annotations.get(annotationClassName)) {
+    String targetMod=(String)targets.getAnnotationInfo().get("value");
+    Field f=null;
+    Object injectedMod=null;
+    ModContainer mc=this;
+    boolean isStatic=false;
+    Class<?> clz=modInstance.getClass();
+    if (!Strings.isNullOrEmpty(targetMod)) {
+      mc=Loader.instance().getIndexedModList().get(targetMod);
+    }
+    if (mc != null) {
+      try {
+        clz=Class.forName(targets.getClassName(),true,Loader.instance().getModClassLoader());
+        f=clz.getDeclaredField(targets.getObjectName());
+        f.setAccessible(true);
+        isStatic=Modifier.isStatic(f.getModifiers());
+        injectedMod=retreiver.apply(mc);
+      }
+ catch (      Exception e) {
+        Throwables.propagateIfPossible(e);
+        FMLLog.log(Level.WARNING,e,"Attempting to load @%s in class %s for %s and failing",annotationName,targets.getClassName(),mc.getModId());
+      }
+    }
+    if (f != null) {
+      Object target=null;
+      if (!isStatic) {
+        target=modInstance;
+        if (!modInstance.getClass().equals(clz)) {
+          FMLLog.warning("Unable to inject @%s in non-static field %s.%s for %s as it is NOT the primary mod instance",annotationName,targets.getClassName(),targets.getObjectName(),mc.getModId());
+          continue;
+        }
+      }
+      f.set(target,injectedMod);
+    }
+  }
+}

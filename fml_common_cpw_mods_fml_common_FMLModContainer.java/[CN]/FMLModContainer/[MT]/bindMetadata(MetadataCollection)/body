@@ -21,8 +21,13 @@
     FMLLog.info("Mod %s is missing the required element 'name'. Substituting %s",getModId(),getModId());
     modMetadata.name=getModId();
   }
-  if (Strings.isNullOrEmpty(modMetadata.version)) {
-    FMLLog.warning("Mod %s is missing the required element 'version'. Substituting 1",getModId());
-    modMetadata.version="1";
+  internalVersion=(String)descriptor.get("version");
+  if (Strings.isNullOrEmpty(internalVersion) && !Strings.isNullOrEmpty(modMetadata.version)) {
+    FMLLog.warning("Mod %s is missing the required element 'version'. Falling back to metadata version %s",getModId(),modMetadata.version);
+    modMetadata.version=internalVersion;
+  }
+  if (Strings.isNullOrEmpty(internalVersion)) {
+    FMLLog.warning("Mod %s is missing the required element 'version' and no fallback can be found. Substituting '1.0'.",getModId());
+    modMetadata.version=internalVersion="1.0";
   }
 }
