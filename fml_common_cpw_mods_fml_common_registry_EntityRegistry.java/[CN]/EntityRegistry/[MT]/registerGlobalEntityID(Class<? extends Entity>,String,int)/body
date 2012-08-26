@@ -3,6 +3,6 @@
     FMLLog.warning("The mod %s tried to register the entity class %s which was already registered - if you wish to override default naming for FML mod entities, register it here first",Loader.instance().activeModContainer().getModId(),entityClass);
     return;
   }
-  instance().validateAndClaimId(id);
+  id=instance().validateAndClaimId(id);
   EntityList.func_75618_a(entityClass,entityName,id);
 }

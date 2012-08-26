@@ -1,6 +1,6 @@
 {
   availableIndicies=new BitSet(256);
-  availableIndicies.set(0,255);
+  availableIndicies.set(1,255);
   for (  Object id : EntityList.field_75623_d.keySet()) {
     availableIndicies.clear((Integer)id);
   }

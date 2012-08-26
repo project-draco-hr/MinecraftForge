@@ -1,6 +1,10 @@
 {
+  if (id < 0) {
+    id+=3000;
+  }
   if (!availableIndicies.get(id)) {
-    throw new RuntimeException(String.format("Unable to claim entity id %d",id));
+    FMLLog.severe("The mod %s has attempted to register an entity ID %d which is already reserved. This could cause severe problems",Loader.instance().activeModContainer().getModId(),id);
   }
   availableIndicies.clear(id);
+  return id;
 }
