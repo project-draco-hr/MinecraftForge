@@ -34,8 +34,10 @@
     }
   }
   tryCreatingPacketHandler(container,mod.packetHandler(),mod.channels(),null);
-  if (mod.clientPacketHandlerSpec() != getClientHandlerSpecDefaultValue()) {
-    tryCreatingPacketHandler(container,mod.clientPacketHandlerSpec().packetHandler(),mod.clientPacketHandlerSpec().channels(),Side.CLIENT);
+  if (FMLCommonHandler.instance().getSide().isClient()) {
+    if (mod.clientPacketHandlerSpec() != getClientHandlerSpecDefaultValue()) {
+      tryCreatingPacketHandler(container,mod.clientPacketHandlerSpec().packetHandler(),mod.clientPacketHandlerSpec().channels(),Side.CLIENT);
+    }
   }
   if (mod.serverPacketHandlerSpec() != getServerHandlerSpecDefaultValue()) {
     tryCreatingPacketHandler(container,mod.serverPacketHandlerSpec().packetHandler(),mod.serverPacketHandlerSpec().channels(),Side.SERVER);
