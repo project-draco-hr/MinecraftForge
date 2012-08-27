@@ -1,5 +1,18 @@
 {
+  ByteArrayDataOutput dat=ByteStreams.newDataOutput();
   List<String> missing=(List<String>)data[0];
   List<String> badVersion=(List<String>)data[1];
-  return new byte[0];
+  dat.writeInt(missing.size());
+  for (  String missed : missing) {
+    ModContainer mc=Loader.instance().getIndexedModList().get(missed);
+    dat.writeUTF(missed);
+    dat.writeUTF(mc.getVersion());
+  }
+  dat.writeInt(badVersion.size());
+  for (  String bad : badVersion) {
+    ModContainer mc=Loader.instance().getIndexedModList().get(bad);
+    dat.writeUTF(bad);
+    dat.writeUTF(mc.getVersion());
+  }
+  return dat.toByteArray();
 }

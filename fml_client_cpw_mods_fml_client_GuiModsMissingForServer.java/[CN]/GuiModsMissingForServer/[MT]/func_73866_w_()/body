@@ -1,0 +1,4 @@
+{
+  StringTranslate translations=StringTranslate.func_74808_a();
+  this.field_73887_h.add(new GuiSmallButton(1,this.field_73880_f / 2 - 75,this.field_73881_g - 38,translations.func_74805_b("gui.done")));
+}

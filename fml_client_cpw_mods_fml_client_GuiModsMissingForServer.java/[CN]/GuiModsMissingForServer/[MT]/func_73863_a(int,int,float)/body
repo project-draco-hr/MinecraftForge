@@ -1,0 +1,15 @@
+{
+  this.func_73873_v_();
+  int offset=85 - modsMissing.getModList().size() * 10;
+  this.func_73732_a(this.field_73886_k,"Forge Mod Loader could not connect to this server",this.field_73880_f / 2,offset,0xFFFFFF);
+  offset+=10;
+  this.func_73732_a(this.field_73886_k,"The mods and versions listed below could not be found",this.field_73880_f / 2,offset,0xFFFFFF);
+  offset+=10;
+  this.func_73732_a(this.field_73886_k,"They are required to play on this server",this.field_73880_f / 2,offset,0xFFFFFF);
+  offset+=5;
+  for (  ArtifactVersion v : modsMissing.getModList()) {
+    offset+=10;
+    this.func_73732_a(this.field_73886_k,String.format("%s : %s",v.getLabel(),v.getRangeString()),this.field_73880_f / 2,offset,0xEEEEEE);
+  }
+  super.func_73863_a(p_73863_1_,p_73863_2_,p_73863_3_);
+}

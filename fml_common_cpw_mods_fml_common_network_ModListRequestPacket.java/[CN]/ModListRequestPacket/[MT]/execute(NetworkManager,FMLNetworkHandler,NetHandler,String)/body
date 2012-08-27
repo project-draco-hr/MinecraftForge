@@ -12,6 +12,14 @@
     modVersions.put(m,mc.getVersion());
   }
   if (indexedModList.size() > 0) {
+    for (    Entry<String,ModContainer> e : indexedModList.entrySet()) {
+      if (e.getValue().isNetworkMod()) {
+        NetworkModHandler missingHandler=FMLNetworkHandler.instance().findNetworkModHandler(e.getValue());
+        if (missingHandler.requiresServerSide()) {
+          FMLLog.warning("The mod %s was not found on the server you connected to, but requested that the server side be present",e.getKey());
+        }
+      }
+    }
   }
   Packet250CustomPayload pkt=new Packet250CustomPayload();
   pkt.field_73630_a="FML";

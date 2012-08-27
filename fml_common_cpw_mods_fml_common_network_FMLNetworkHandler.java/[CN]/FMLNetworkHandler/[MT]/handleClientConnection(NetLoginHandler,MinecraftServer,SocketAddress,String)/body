@@ -25,6 +25,10 @@
     netLoginHandler.completeConnection(null);
     loginStates.remove(netLoginHandler);
   }
+ else   if (loginStates.get(netLoginHandler) == 3) {
+    netLoginHandler.completeConnection("The server requires mods that are missing on your client");
+    loginStates.remove(netLoginHandler);
+  }
  else {
     netLoginHandler.completeConnection("There was a problem during FML negotiation");
     loginStates.remove(netLoginHandler);

@@ -20,11 +20,14 @@
   pkt.field_73630_a="FML";
   if (missingClientMods.size() > 0 || versionIncorrectMods.size() > 0) {
     pkt.field_73629_c=FMLPacket.makePacket(MOD_MISSING,missingClientMods,versionIncorrectMods);
-    FMLLog.fine("User %s connection failed: missing %s, bad versions %s",userName,missingClientMods,versionIncorrectMods);
+    Logger.getLogger("Minecraft").info(String.format("User %s connection failed: missing %s, bad versions %s",userName,missingClientMods,versionIncorrectMods));
+    FMLLog.info("User %s connection failed: missing %s, bad versions %s",userName,missingClientMods,versionIncorrectMods);
+    FMLNetworkHandler.setHandlerState((NetLoginHandler)netHandler,3);
   }
  else {
     pkt.field_73629_c=FMLPacket.makePacket(MOD_IDENTIFIERS,netHandler);
-    FMLLog.fine("User %s connecting with mods %s",userName,modVersions.keySet());
+    Logger.getLogger("Minecraft").info(String.format("User %s connecting with mods %s",userName,modVersions.keySet()));
+    FMLLog.info("User %s connecting with mods %s",userName,modVersions.keySet());
   }
   pkt.field_73628_b=pkt.field_73629_c.length;
   network.func_74429_a(pkt);

@@ -1,2 +1,3 @@
 {
+  FMLCommonHandler.instance().getSidedDelegate().displayMissingMods(this);
 }
