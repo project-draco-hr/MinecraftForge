@@ -4,6 +4,7 @@
     haltGame("FML will not run in demo mode",new RuntimeException());
     return;
   }
+  loading=true;
   client=minecraft;
   ObfuscationReflectionHelper.detectObfuscation(World.class);
   TextureFXManager.instance().setClient(client);
