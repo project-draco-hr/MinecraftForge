@@ -1,0 +1,4 @@
+{
+  this.customSpawnCallback=callable;
+  this.usesVanillaSpawning=usesVanillaSpawning;
+}
