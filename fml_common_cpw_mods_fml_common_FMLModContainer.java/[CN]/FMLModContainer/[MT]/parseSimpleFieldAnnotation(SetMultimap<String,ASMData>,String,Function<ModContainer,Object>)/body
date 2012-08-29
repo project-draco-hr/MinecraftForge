@@ -1,7 +1,5 @@
 {
-  System.out.println(annotationClassName);
   String[] annName=annotationClassName.split("\\.");
-  System.out.println(Arrays.toString(annName));
   String annotationName=annName[annName.length - 1];
   for (  ASMData targets : annotations.get(annotationClassName)) {
     String targetMod=(String)targets.getAnnotationInfo().get("value");
