@@ -3,7 +3,12 @@
   for (  ModCandidate candidate : candidates) {
     try {
       List<ModContainer> mods=candidate.explore(dataTable);
-      modList.addAll(mods);
+      if (mods.isEmpty()) {
+        nonModLibs.add(candidate.getModContainer());
+      }
+ else {
+        modList.addAll(mods);
+      }
     }
  catch (    LoaderException le) {
       FMLLog.log(Level.WARNING,le,"Identified a problem with the mod candidate %s, ignoring this source",candidate.getModContainer());
