@@ -3,7 +3,7 @@
   for (  ModCandidate candidate : candidates) {
     try {
       List<ModContainer> mods=candidate.explore(dataTable);
-      if (mods.isEmpty()) {
+      if (mods.isEmpty() && !candidate.isClasspath()) {
         nonModLibs.add(candidate.getModContainer());
       }
  else {

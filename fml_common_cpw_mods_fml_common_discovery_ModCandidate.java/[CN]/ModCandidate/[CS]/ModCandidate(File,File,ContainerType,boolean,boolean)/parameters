@@ -1,4 +1,5 @@
 File classPathRoot
 File modContainer
 ContainerType sourceType
+boolean isMinecraft
 boolean classpath
