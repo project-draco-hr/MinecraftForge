@@ -1,5 +1,5 @@
 {
-  instance.container=null;
-  instance.progress=null;
-  instance.currentActivity=null;
+  container=null;
+  progress=null;
+  currentActivity=null;
 }

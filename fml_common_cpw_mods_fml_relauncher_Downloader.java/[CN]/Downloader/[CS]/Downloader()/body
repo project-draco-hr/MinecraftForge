@@ -1,15 +1,3 @@
 {
   super();
-  instance=this;
-  setMessageType(JOptionPane.INFORMATION_MESSAGE);
-  setMessage(makeProgressPanel());
-  setOptions(new Object[]{"Stop"});
-  addPropertyChangeListener(new PropertyChangeListener(){
-    @Override public void propertyChange(    PropertyChangeEvent evt){
-      if (evt.getSource() == instance && evt.getPropertyName() == VALUE_PROPERTY) {
-        requestClose("This will stop minecraft from launching\nAre you sure you want to do this?");
-      }
-    }
-  }
-);
 }
