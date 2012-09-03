@@ -1,3 +1,8 @@
 {
-  dispenserHandlers.add(handler);
+  registerDispenserHandler(new IDispenserHandler(){
+    @Override public int dispense(    int x,    int y,    int z,    int xVelocity,    int zVelocity,    World world,    ItemStack item,    Random random,    double entX,    double entY,    double entZ){
+      return handler.dispense(x,y,z,xVelocity,zVelocity,world,item,random,entX,entY,entZ);
+    }
+  }
+);
 }

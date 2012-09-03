@@ -1,7 +1,7 @@
 World world
-double x
-double y
-double z
+int x
+int y
+int z
 int xVelocity
 int zVelocity
 ItemStack item

@@ -1,0 +1,4 @@
+{
+  int ret=mod.dispenseEntity(world,item,random,x,y,z,xVelocity,zVelocity,entX,entY,entZ);
+  return ret == 0 ? -1 : ret;
+}
