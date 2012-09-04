@@ -6,8 +6,7 @@
       modId=activeModContainer.getModId();
     }
  else {
-      FMLLog.severe("There is a rogue mod trying to register entities from outside the context of mod loading. This is incredibly dangerous and should be stopped.");
-      Thread.dumpStack();
+      FMLLog.severe("There is a rogue mod failing to register entities from outside the context of mod loading. This is incredibly dangerous and should be stopped.");
     }
     FMLLog.warning("The mod %s tried to register the entity class %s which was already registered - if you wish to override default naming for FML mod entities, register it here first",modId,entityClass);
     return;
