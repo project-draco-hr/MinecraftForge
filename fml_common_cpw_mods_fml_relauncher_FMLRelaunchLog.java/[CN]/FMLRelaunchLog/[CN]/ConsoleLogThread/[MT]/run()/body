@@ -1,0 +1,13 @@
+{
+  do {
+    LogRecord lr;
+    try {
+      lr=recordQueue.take();
+      wrappedHandler.publish(lr);
+    }
+ catch (    InterruptedException e) {
+      Thread.interrupted();
+    }
+  }
+ while (true);
+}

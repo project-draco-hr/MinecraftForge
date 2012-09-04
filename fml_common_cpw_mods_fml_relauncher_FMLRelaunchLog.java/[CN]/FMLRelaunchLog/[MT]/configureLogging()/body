@@ -8,11 +8,12 @@
   Logger stdErr=Logger.getLogger("STDERR");
   stdErr.setParent(log.myLog);
   FMLLogFormatter formatter=new FMLLogFormatter();
-  ConsoleHandler ch=new ConsoleHandler();
-  ch.setLevel(Level.parse(System.getProperty("fml.log.level","INFO")));
   log.myLog.setUseParentHandlers(false);
-  log.myLog.addHandler(ch);
-  ch.setFormatter(formatter);
+  log.myLog.addHandler(new ConsoleLogWrapper());
+  consoleLogThread=new Thread(new ConsoleLogThread());
+  consoleLogThread.start();
+  ConsoleLogThread.wrappedHandler.setLevel(Level.parse(System.getProperty("fml.log.level","INFO")));
+  ConsoleLogThread.wrappedHandler.setFormatter(formatter);
   log.myLog.setLevel(Level.ALL);
   try {
     File logPath=new File(minecraftHome,FMLRelauncher.logFileNamePattern);

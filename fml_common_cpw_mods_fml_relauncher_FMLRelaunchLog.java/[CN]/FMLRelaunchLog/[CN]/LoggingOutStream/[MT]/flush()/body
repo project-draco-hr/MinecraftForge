@@ -1,6 +1,6 @@
 {
   String record;
-synchronized (this) {
+synchronized (FMLRelaunchLog.class) {
     super.flush();
     record=this.toString();
     super.reset();
