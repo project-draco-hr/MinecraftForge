@@ -1,0 +1,10 @@
+{
+  Side s=Side.CLIENT;
+  if (handler instanceof NetServerHandler) {
+    s=Side.SERVER;
+  }
+  for (  IChatListener listener : chatListeners) {
+    chat=s.isClient() ? listener.clientChat(handler,chat) : listener.serverChat(handler,chat);
+  }
+  return chat;
+}

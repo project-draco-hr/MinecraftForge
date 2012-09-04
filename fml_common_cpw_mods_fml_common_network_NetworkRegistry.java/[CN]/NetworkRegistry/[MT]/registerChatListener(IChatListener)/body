@@ -1,0 +1,3 @@
+{
+  chatListeners.add(listener);
+}

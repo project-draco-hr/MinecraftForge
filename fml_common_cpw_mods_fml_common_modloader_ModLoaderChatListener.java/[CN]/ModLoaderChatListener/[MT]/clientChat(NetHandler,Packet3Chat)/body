@@ -1,0 +1,4 @@
+{
+  mod.clientChat(message.field_73476_b);
+  return message;
+}
