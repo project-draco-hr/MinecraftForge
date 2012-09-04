@@ -1,5 +1,9 @@
 {
   ModContainer mc=FMLCommonHandler.instance().findContainerFor(mod);
+  if (mc == null) {
+    mc=Loader.instance().activeModContainer();
+    FMLLog.log(Level.WARNING,"Mod %s attempted to register a gui network handler during a construction phase",mc.getModId());
+  }
   NetworkModHandler nmh=FMLNetworkHandler.instance().findNetworkModHandler(mc);
   if (nmh == null) {
     FMLLog.log(Level.FINE,"The mod %s needs to be a @NetworkMod to register a Networked Gui Handler",mc.getModId());

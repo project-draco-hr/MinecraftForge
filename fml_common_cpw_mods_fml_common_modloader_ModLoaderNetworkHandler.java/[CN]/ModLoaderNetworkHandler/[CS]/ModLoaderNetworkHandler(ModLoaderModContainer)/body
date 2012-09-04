@@ -1,4 +1,3 @@
 {
   super(mlmc,null);
-  this.baseMod=mod;
 }
