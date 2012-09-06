@@ -1,0 +1,9 @@
+{
+  MinecraftServer server=FMLCommonHandler.instance().getMinecraftServerInstance();
+  if (server != null) {
+    server.func_71203_ab().func_72384_a(packet);
+  }
+ else {
+    FMLLog.fine("Attempt to send packet to all in dimension without a server instance available");
+  }
+}

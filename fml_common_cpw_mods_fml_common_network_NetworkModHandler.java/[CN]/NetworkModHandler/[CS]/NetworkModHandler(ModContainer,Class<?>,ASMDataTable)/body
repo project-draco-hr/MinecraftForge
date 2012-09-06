@@ -61,4 +61,13 @@
     }
     NetworkRegistry.instance().registerConnectionHandler(instance);
   }
+  if (mod.tinyPacketHandler() != tinyPacketHandlerDefaultValue) {
+    try {
+      tinyPacketHandler=mod.tinyPacketHandler().newInstance();
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.SEVERE,e,"Unable to create tiny packet handler instance %s",mod.tinyPacketHandler().getName());
+      throw new FMLNetworkException(e);
+    }
+  }
 }
