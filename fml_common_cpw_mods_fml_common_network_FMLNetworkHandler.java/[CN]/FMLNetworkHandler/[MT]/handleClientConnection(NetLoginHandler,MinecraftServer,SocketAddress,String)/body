@@ -2,35 +2,41 @@
   if (!loginStates.containsKey(netLoginHandler)) {
     if (handleVanillaLoginKick(netLoginHandler,server,address,userName)) {
       FMLLog.fine("Connection from %s rejected - no FML packet received from client",userName);
-      netLoginHandler.completeConnection("You don't have FML installed, or your installation is too old");
+      netLoginHandler.completeConnection("You don't have FML installed, you cannot connect to this server");
       return;
     }
   }
-  if (loginStates.get(netLoginHandler) == 1) {
+switch (loginStates.get(netLoginHandler)) {
+case LOGIN_RECEIVED:
     String modKick=NetworkRegistry.instance().connectionReceived(netLoginHandler,netLoginHandler.field_72538_b);
-    if (modKick != null) {
-      netLoginHandler.completeConnection(modKick);
-      loginStates.remove(netLoginHandler);
-      return;
-    }
-    if (!handleVanillaLoginKick(netLoginHandler,server,address,userName)) {
-      loginStates.remove(netLoginHandler);
-      return;
-    }
-    NetLoginHandler.func_72531_a(netLoginHandler,false);
-    netLoginHandler.field_72538_b.func_74429_a(getModListRequestPacket());
-    loginStates.put(netLoginHandler,2);
-  }
- else   if (loginStates.get(netLoginHandler) == 2) {
-    netLoginHandler.completeConnection(null);
+  if (modKick != null) {
+    netLoginHandler.completeConnection(modKick);
     loginStates.remove(netLoginHandler);
+    return;
   }
- else   if (loginStates.get(netLoginHandler) == 3) {
-    netLoginHandler.completeConnection("The server requires mods that are missing on your client");
-    loginStates.remove(netLoginHandler);
-  }
- else {
-    netLoginHandler.completeConnection("There was a problem during FML negotiation");
-    loginStates.remove(netLoginHandler);
-  }
+if (!handleVanillaLoginKick(netLoginHandler,server,address,userName)) {
+  loginStates.remove(netLoginHandler);
+  return;
+}
+NetLoginHandler.func_72531_a(netLoginHandler,false);
+netLoginHandler.field_72538_b.func_74429_a(getModListRequestPacket());
+loginStates.put(netLoginHandler,CONNECTION_VALID);
+break;
+case CONNECTION_VALID:
+netLoginHandler.completeConnection(null);
+loginStates.remove(netLoginHandler);
+break;
+case MISSING_MODS_OR_VERSIONS:
+netLoginHandler.completeConnection("The server requires mods that are absent or out of date on your client");
+loginStates.remove(netLoginHandler);
+break;
+case FML_OUT_OF_DATE:
+netLoginHandler.completeConnection("Your client is not running a new enough version of FML to connect to this server");
+loginStates.remove(netLoginHandler);
+break;
+default :
+netLoginHandler.completeConnection("There was a problem during FML negotiation");
+loginStates.remove(netLoginHandler);
+break;
+}
 }
