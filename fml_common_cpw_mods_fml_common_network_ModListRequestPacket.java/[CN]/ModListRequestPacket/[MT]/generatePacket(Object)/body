@@ -5,5 +5,6 @@
   for (  ModContainer mc : activeMods) {
     dat.writeUTF(mc.getModId());
   }
+  dat.writeByte(FMLNetworkHandler.getCompatibilityLevel());
   return dat.toByteArray();
 }

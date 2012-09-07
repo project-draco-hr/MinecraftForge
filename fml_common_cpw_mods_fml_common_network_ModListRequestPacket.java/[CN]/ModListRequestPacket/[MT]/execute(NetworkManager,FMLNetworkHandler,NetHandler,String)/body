@@ -21,6 +21,10 @@
       }
     }
   }
+  if (compatibilityLevel != 0) {
+    FMLLog.fine("The server has compatibility level %d",compatibilityLevel);
+    FMLCommonHandler.instance().getSidedDelegate().setCompatibilityLevel(netHandler,compatibilityLevel);
+  }
   Packet250CustomPayload pkt=new Packet250CustomPayload();
   pkt.field_73630_a="FML";
   pkt.field_73629_c=FMLPacket.makePacket(MOD_LIST_RESPONSE,modVersions,missingMods);
