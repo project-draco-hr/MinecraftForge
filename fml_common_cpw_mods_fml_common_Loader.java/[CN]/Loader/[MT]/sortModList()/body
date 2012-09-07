@@ -30,7 +30,7 @@
         }
       }
       if (!versionMissingMods.isEmpty()) {
-        FMLLog.severe("The mod %s (%s) requires mod versions %s to be available",mod.getModId(),mod.getName(),missingMods);
+        FMLLog.severe("The mod %s (%s) requires mod versions %s to be available",mod.getModId(),mod.getName(),versionMissingMods);
         throw new MissingModsException(versionMissingMods);
       }
     }
