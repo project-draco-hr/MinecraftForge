@@ -1,5 +1,13 @@
 {
-  for (  String st : excludedPackages) {
+  if (excludedPackages.length != 0) {
+    classLoaderExceptions.addAll(Arrays.asList(excludedPackages));
+    excludedPackages=new String[0];
+  }
+  if (transformerExclusions.length != 0) {
+    transformerExceptions.addAll(Arrays.asList(transformerExclusions));
+    transformerExclusions=new String[0];
+  }
+  for (  String st : classLoaderExceptions) {
     if (name.startsWith(st)) {
       return parent.loadClass(name);
     }
@@ -7,7 +15,7 @@
   if (cachedClasses.containsKey(name)) {
     return cachedClasses.get(name);
   }
-  for (  String st : transformerExclusions) {
+  for (  String st : transformerExceptions) {
     if (name.startsWith(st)) {
       Class<?> cl=super.findClass(name);
       cachedClasses.put(name,cl);

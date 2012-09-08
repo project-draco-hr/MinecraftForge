@@ -1,0 +1,3 @@
+{
+  classLoaderExceptions.add(toExclude);
+}

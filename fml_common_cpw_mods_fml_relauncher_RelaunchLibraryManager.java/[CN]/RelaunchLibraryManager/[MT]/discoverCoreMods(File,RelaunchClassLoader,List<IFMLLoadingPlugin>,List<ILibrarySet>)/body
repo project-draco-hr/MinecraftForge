@@ -35,7 +35,14 @@
     }
     try {
       downloadMonitor.updateProgressString("Loading coremod %s",coreMod.getName());
+      classLoader.addTransformerExclusion(fmlCorePlugin);
       Class<?> coreModClass=Class.forName(fmlCorePlugin,true,classLoader);
+      TransformerExclusions trExclusions=coreModClass.getAnnotation(IFMLLoadingPlugin.TransformerExclusions.class);
+      if (trExclusions != null) {
+        for (        String st : trExclusions.value()) {
+          classLoader.addTransformerExclusion(st);
+        }
+      }
       IFMLLoadingPlugin plugin=(IFMLLoadingPlugin)coreModClass.newInstance();
       loadPlugins.add(plugin);
       pluginLocations.put(plugin,coreMod);

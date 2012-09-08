@@ -5,4 +5,12 @@
   this.cachedClasses=new HashMap<String,Class>(1000);
   this.transformers=new ArrayList<IClassTransformer>(2);
   Thread.currentThread().setContextClassLoader(this);
+  addClassLoaderExclusion("java.");
+  addClassLoaderExclusion("sun.");
+  addClassLoaderExclusion("cpw.mods.fml.relauncher.");
+  addClassLoaderExclusion("net.minecraftforge.classloading.");
+  addTransformerExclusion("javax.");
+  addTransformerExclusion("cpw.mods.fml.");
+  addTransformerExclusion("org.objectweb.asm.");
+  addTransformerExclusion("com.google.common.");
 }
