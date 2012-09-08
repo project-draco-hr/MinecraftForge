@@ -1,5 +1,3 @@
 {
-  System.out.printf("Server Compatibility %d\n",0);
-  Thread.dumpStack();
   return 0;
 }
