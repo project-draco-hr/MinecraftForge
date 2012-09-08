@@ -1,4 +1,5 @@
 {
+  FMLCommonHandler.instance().getSidedDelegate().setClientCompatibilityLevel((byte)0);
   Packet1Login fake=new Packet1Login();
   fake.field_73561_a=FML_HASH;
   fake.field_73558_e=PROTOCOL_VERSION;

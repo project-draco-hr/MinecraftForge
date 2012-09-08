@@ -8,7 +8,7 @@
   try {
     compatibilityLevel=in.readByte();
   }
- catch (  IllegalArgumentException e) {
+ catch (  IllegalStateException e) {
     FMLLog.fine("No compatibility byte found - the server is too old");
   }
   return this;
