@@ -4,8 +4,7 @@
     audioModWalkFolder(folder,folder,pool);
   }
  catch (  IOException ex) {
-    ModLoader.getLogger().fine("Loading Mod audio failed for folder: " + path);
-    ModLoader.getLogger().fine(ex.toString());
+    FMLLog.log(Level.FINE,ex,"Loading Mod audio failed for folder: %s",path);
     ex.printStackTrace();
   }
 }

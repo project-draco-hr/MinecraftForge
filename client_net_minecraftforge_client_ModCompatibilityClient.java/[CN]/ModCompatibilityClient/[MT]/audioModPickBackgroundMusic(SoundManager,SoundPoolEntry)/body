@@ -1,5 +1,5 @@
 {
-  Minecraft mc=ModLoader.getMinecraftInstance();
+  Minecraft mc=FMLClientHandler.instance().getClient();
   if (mc != null && mc.theWorld != null && audioModSoundPoolCave != null) {
     Entity ent=mc.renderViewEntity;
     int x=MathHelper.truncateDoubleToInt(ent.posX);

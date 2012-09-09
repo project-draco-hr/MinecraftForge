@@ -1,7 +1,7 @@
 {
   Integer texID=textures.get(texture);
   if (texID == null) {
-    texID=ModLoader.getMinecraftInstance().renderEngine.getTexture(texture);
+    texID=engine().getTexture(texture);
     textures.put(texture,texID);
   }
   if (!inWorld) {

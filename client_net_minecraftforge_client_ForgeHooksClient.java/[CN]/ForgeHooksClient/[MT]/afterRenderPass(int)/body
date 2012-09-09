@@ -15,7 +15,7 @@
       handler.afterRenderContext();
     }
   }
-  GL11.glBindTexture(GL11.GL_TEXTURE_2D,ModLoader.getMinecraftInstance().renderEngine.getTexture("/terrain.png"));
+  GL11.glBindTexture(GL11.GL_TEXTURE_2D,engine().getTexture("/terrain.png"));
   Tessellator.renderingWorldRenderer=false;
   Tessellator.instance=defaultTessellator;
 }

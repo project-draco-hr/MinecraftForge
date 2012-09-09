@@ -4,7 +4,7 @@
     System.out.println(msg);
     if (Tessellator.class.getPackage() != null) {
       if (Tessellator.class.getPackage().equals("net.minecraft.src")) {
-        Minecraft mc=ModLoader.getMinecraftInstance();
+        Minecraft mc=FMLClientHandler.instance().getClient();
         if (mc.ingameGUI != null) {
           mc.ingameGUI.getChatGUI().printChatMessage(msg);
         }

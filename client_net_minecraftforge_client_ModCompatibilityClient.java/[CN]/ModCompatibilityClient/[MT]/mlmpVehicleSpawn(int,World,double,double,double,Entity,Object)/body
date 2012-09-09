@@ -16,7 +16,7 @@
     }
     if (thrower == null) {
       System.out.println("Received spawn packet for entity with owner, but owner was not found.");
-      ModLoader.getLogger().fine("Received spawn packet for entity with owner, but owner was not found.");
+      FMLLog.fine("Received spawn packet for entity with owner, but owner was not found.");
     }
  else {
       if (!owner.getType().isAssignableFrom(thrower.getClass())) {
