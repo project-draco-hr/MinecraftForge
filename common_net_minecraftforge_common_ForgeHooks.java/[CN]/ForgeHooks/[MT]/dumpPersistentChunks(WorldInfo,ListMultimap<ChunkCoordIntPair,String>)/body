@@ -1,0 +1,15 @@
+{
+  worldInfo.forgeWorldData=new NBTTagCompound();
+  NBTTagList chunkDataList=new NBTTagList();
+  for (  Entry<ChunkCoordIntPair,Collection<String>> entry : persistentChunks.asMap().entrySet()) {
+    NBTTagCompound dataList=new NBTTagCompound();
+    dataList.setIntArray("Chunk",new int[]{entry.getKey().chunkXPos,entry.getKey().chunkZPos});
+    NBTTagList modList=new NBTTagList();
+    for (    String modId : entry.getValue()) {
+      modList.appendTag(new NBTTagString(modId,""));
+    }
+    dataList.setTag("Mods",modList);
+    chunkDataList.appendTag(dataList);
+  }
+  worldInfo.forgeWorldData.setTag("PersistentChunks",chunkDataList);
+}
