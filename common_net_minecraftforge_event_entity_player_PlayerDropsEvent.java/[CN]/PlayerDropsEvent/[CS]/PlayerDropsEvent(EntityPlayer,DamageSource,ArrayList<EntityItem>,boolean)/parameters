@@ -1,0 +1,4 @@
+EntityPlayer entity
+DamageSource source
+ArrayList<EntityItem> drops
+boolean recentlyHit
