@@ -23,6 +23,7 @@ def main():
         print ('Reobfusicate Exception: %d ' % e.code)
         error_level = e.code
     extract_fml_obfed()
+    extract_paulscode()
     version = load_version(build_num)
     version_str = ('%d.%d.%d.%d' % (version['major'], version['minor'], version['revision'], version['build']))
     out_folder = os.path.join(forge_dir, ('forge-%s' % version_str))

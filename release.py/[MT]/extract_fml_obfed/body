@@ -10,7 +10,7 @@ def extract_fml_obfed():
     for line in lines:
         line = line.replace('\n', '').replace('\r', '').replace('/', os.sep)
         if (not os.path.isfile(os.path.join(reobf_dir, line))):
-            print line
+            print ('    %s' % line)
             side = line.split(os.sep)[0]
             if (side == 'minecraft'):
                 client.extract(line[10:].replace(os.sep, '/'), client_dir)
