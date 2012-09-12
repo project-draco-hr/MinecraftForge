@@ -1,4 +1,6 @@
 {
+  System.out.printf("MinecraftForge v%s Initialized\n",ForgeVersion.getVersion());
+  FMLLog.info("MinecraftForge v%s Initialized",ForgeVersion.getVersion());
   Block filler=new Block(0,Material.air);
   Block.blocksList[0]=null;
   Block.opaqueCubeLookup[0]=false;
@@ -13,4 +15,5 @@
     temp[x]=EntityEnderman.carriableBlocks[x];
   }
   EntityEnderman.carriableBlocks=temp;
+  EVENT_BUS.register(INTERNAL_HANDLER);
 }
