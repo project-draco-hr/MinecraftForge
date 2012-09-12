@@ -9,7 +9,7 @@
     }
     if (file.canRead()) {
       FileInputStream fileinputstream=new FileInputStream(file);
-      buffer=new BufferedReader(new InputStreamReader(fileinputstream,"8859_1"));
+      buffer=new BufferedReader(new InputStreamReader(fileinputstream,"UTF-8"));
       String line;
       Map<String,Property> currentMap=null;
       while (true) {
