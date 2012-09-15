@@ -1,0 +1,3 @@
+{
+  NetworkRegistry.instance().connectionClosed(manager,player);
+}

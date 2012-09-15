@@ -2,4 +2,5 @@
   for (  IConnectionHandler handler : connectionHandlers) {
     handler.connectionClosed(manager);
   }
+  activeChannels.removeAll(player);
 }
