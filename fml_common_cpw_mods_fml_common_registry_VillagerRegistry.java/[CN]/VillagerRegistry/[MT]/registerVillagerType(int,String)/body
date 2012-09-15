@@ -4,4 +4,5 @@
     throw new RuntimeException();
   }
   newVillagers.put(villagerId,villagerSkin);
+  newVillagerIds.add(villagerId);
 }
