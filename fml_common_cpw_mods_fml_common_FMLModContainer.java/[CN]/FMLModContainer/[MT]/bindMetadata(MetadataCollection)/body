@@ -22,6 +22,9 @@
     modMetadata.name=getModId();
   }
   internalVersion=(String)descriptor.get("version");
+  if (Strings.isNullOrEmpty(internalVersion) && getSource().isFile()) {
+    internalVersion=searchForVersionProperties();
+  }
   if (Strings.isNullOrEmpty(internalVersion) && !Strings.isNullOrEmpty(modMetadata.version)) {
     FMLLog.warning("Mod %s is missing the required element 'version'. Falling back to metadata version %s",getModId(),modMetadata.version);
     internalVersion=modMetadata.version;

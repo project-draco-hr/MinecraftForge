@@ -1,0 +1,21 @@
+{
+  try {
+    FMLLog.fine("Attempting to load the file version.properties and from %s locate a version",getSource().getName());
+    String version=null;
+    ZipFile source=new ZipFile(getSource());
+    ZipEntry versionFile=source.getEntry("version.properties");
+    if (versionFile != null) {
+      Properties versionProps=new Properties();
+      versionProps.load(source.getInputStream(versionFile));
+      version=versionProps.getProperty(getModId() + ".version");
+      FMLLog.fine("Found version %s for mod %s in version.properties",version,getModId());
+    }
+    source.close();
+    return version;
+  }
+ catch (  Exception e) {
+    Throwables.propagateIfPossible(e);
+    FMLLog.fine("Failed to find a usable version.properties file");
+    return null;
+  }
+}
