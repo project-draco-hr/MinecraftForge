@@ -1,0 +1,6 @@
+{
+  if (this.modContainer instanceof FMLModContainer) {
+    return ((FMLModContainer)(this.modContainer)).searchForVersionProperties();
+  }
+  return null;
+}

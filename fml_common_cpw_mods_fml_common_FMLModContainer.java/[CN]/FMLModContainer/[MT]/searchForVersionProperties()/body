@@ -1,16 +1,25 @@
 {
   try {
-    FMLLog.fine("Attempting to load the file version.properties and from %s locate a version",getSource().getName());
-    String version=null;
-    ZipFile source=new ZipFile(getSource());
-    ZipEntry versionFile=source.getEntry("version.properties");
-    if (versionFile != null) {
-      Properties versionProps=new Properties();
-      versionProps.load(source.getInputStream(versionFile));
-      version=versionProps.getProperty(getModId() + ".version");
-      FMLLog.fine("Found version %s for mod %s in version.properties",version,getModId());
+    FMLLog.fine("Attempting to load the file version.properties from %s to locate a version number for %s",getSource().getName(),getModId());
+    Properties version=null;
+    if (getSource().isFile()) {
+      ZipFile source=new ZipFile(getSource());
+      ZipEntry versionFile=source.getEntry("version.properties");
+      if (versionFile != null) {
+        version=new Properties();
+        version.load(source.getInputStream(versionFile));
+      }
+      source.close();
     }
-    source.close();
+ else     if (getSource().isDirectory()) {
+      File propsFile=new File(getSource(),"version.properties");
+      if (propsFile.exists() && propsFile.isFile()) {
+        version=new Properties();
+        FileInputStream fis=new FileInputStream(propsFile);
+        version.load(fis);
+        fis.close();
+      }
+    }
     return version;
   }
  catch (  Exception e) {
