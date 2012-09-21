@@ -1,0 +1,8 @@
+{
+  this(category);
+  for (  WeightedRandomChestContent item : items) {
+    contents.add(item);
+  }
+  countMin=min;
+  countMax=max;
+}

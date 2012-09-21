@@ -1,0 +1,3 @@
+{
+  return countMin < countMax ? countMin + rand.nextInt(countMax - countMin) : countMin;
+}

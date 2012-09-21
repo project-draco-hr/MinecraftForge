@@ -1,0 +1,9 @@
+{
+  Iterator<WeightedRandomChestContent> itr=contents.iterator();
+  while (itr.hasNext()) {
+    WeightedRandomChestContent cont=itr.next();
+    if (item.isItemEqual(cont.itemStack) || (item.getItemDamage() == -1 && item.itemID == cont.itemStack.itemID)) {
+      itr.remove();
+    }
+  }
+}
