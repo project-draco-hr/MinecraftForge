@@ -5,6 +5,10 @@
       netLoginHandler.completeConnection("You don't have FML installed, you cannot connect to this server");
       return;
     }
+ else {
+      FMLLog.fine("Connection from %s was closed by vanilla minecraft",userName);
+      return;
+    }
   }
 switch (loginStates.get(netLoginHandler)) {
 case LOGIN_RECEIVED:
