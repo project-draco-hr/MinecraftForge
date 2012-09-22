@@ -43,15 +43,26 @@
         Ticket tick=new Ticket(modId,type,world);
         tick.modData=modData;
         if (type == Type.ENTITY) {
-          int entX=ticket.getInteger("entityX");
-          int entY=ticket.getInteger("entityY");
-          int entZ=ticket.getInteger("entityZ");
-          String entClass=ticket.getString("entityClass");
-          tick.bindEntityData(entX,entY,entZ,entClass);
+          tick.entityChunkX=ticket.getInteger("chunkX");
+          tick.entityChunkZ=ticket.getInteger("chunkZ");
+          UUID uuid=new UUID(ticket.getLong("PersistentIDMSB"),ticket.getLong("PersistentIDLSB"));
+          pendingEntities.put(uuid,tick);
         }
         loadedTickets.put(modId,tick);
       }
     }
+    for (    Ticket tick : ImmutableSet.copyOf(pendingEntities.values())) {
+      if (tick.ticketType == Type.ENTITY && tick.entity == null) {
+        world.getChunkFromChunkCoords(tick.entityChunkX,tick.entityChunkZ);
+      }
+    }
+    for (    Ticket tick : ImmutableSet.copyOf(pendingEntities.values())) {
+      if (tick.ticketType == Type.ENTITY && tick.entity == null) {
+        FMLLog.warning("Failed to load persistent chunkloading entity %s from store.",pendingEntities.inverse().get(tick));
+        loadedTickets.remove(tick.modId,tick);
+      }
+    }
+    pendingEntities.clear();
     for (    String modId : loadedTickets.keySet()) {
       callbacks.get(modId).ticketsLoaded(loadedTickets.get(modId),world);
     }

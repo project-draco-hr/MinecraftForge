@@ -1,0 +1,8 @@
+{
+  UUID id=entity.getPersistentID();
+  Ticket tick=pendingEntities.get(id);
+  if (tick != null) {
+    tick.bindEntity(entity);
+    pendingEntities.remove(id);
+  }
+}

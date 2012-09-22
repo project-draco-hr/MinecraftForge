@@ -22,10 +22,10 @@
       ticket.setByte("ChunkListDepth",(byte)tick.maxDepth);
       ticket.setCompoundTag("ModData",tick.modData);
       if (tick.ticketType == Type.ENTITY) {
-        ticket.setInteger("entityX",MathHelper.floor_double(tick.entity.posX));
-        ticket.setInteger("entityY",MathHelper.floor_double(tick.entity.posY));
-        ticket.setInteger("entityZ",MathHelper.floor_double(tick.entity.posZ));
-        ticket.setString("entityClass",tick.entity.getClass().getName());
+        ticket.setInteger("chunkX",MathHelper.floor_double(tick.entity.chunkCoordX));
+        ticket.setInteger("chunkZ",MathHelper.floor_double(tick.entity.chunkCoordZ));
+        ticket.setLong("persistentIDMSB",tick.entity.getPersistentID().getMostSignificantBits());
+        ticket.setLong("persistentIDLSB",tick.entity.getPersistentID().getLeastSignificantBits());
       }
     }
   }
