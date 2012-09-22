@@ -1,0 +1,4 @@
+{
+  ModContainer container=Loader.instance().getModObjectList().inverse().get(mod);
+  return container;
+}

@@ -1,0 +1,6 @@
+{
+  if (this.modData == null) {
+    this.modData=new NBTTagCompound();
+  }
+  return modData;
+}

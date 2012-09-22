@@ -1,0 +1,6 @@
+{
+  this.entityX=x;
+  this.entityY=y;
+  this.entityZ=z;
+  this.entityClazz=clazz;
+}

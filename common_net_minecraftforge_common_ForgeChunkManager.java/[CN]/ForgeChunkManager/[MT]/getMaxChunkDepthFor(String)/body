@@ -1,0 +1,4 @@
+{
+  int allowedCount=chunkConstraints.containsKey(modId) && overridesEnabled ? chunkConstraints.get(modId) : defaultMaxChunks;
+  return allowedCount;
+}

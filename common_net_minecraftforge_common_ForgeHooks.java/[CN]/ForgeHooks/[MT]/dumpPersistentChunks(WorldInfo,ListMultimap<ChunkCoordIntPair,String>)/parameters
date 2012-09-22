@@ -1,2 +1,0 @@
-WorldInfo worldInfo
-ListMultimap<ChunkCoordIntPair,String> persistentChunks

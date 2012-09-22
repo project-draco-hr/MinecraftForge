@@ -1,0 +1,6 @@
+{
+  if (ticketType != Type.ENTITY) {
+    throw new RuntimeException("Cannot bind an entity to a non-entity ticket");
+  }
+  this.entity=entity;
+}

@@ -1,0 +1,7 @@
+{
+  if (ticket == null || chunk == null) {
+    return;
+  }
+  ticket.requestedChunks.remove(chunk);
+  forcedChunks.get(ticket.world).remove(chunk,ticket);
+}

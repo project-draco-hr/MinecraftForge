@@ -1,0 +1,8 @@
+{
+  ModContainer container=getContainer(mod);
+  if (container == null) {
+    FMLLog.warning("Unable to register a callback for an unknown mod %s (%s : %x)",mod,mod.getClass().getName(),System.identityHashCode(mod));
+    return;
+  }
+  callbacks.put(container.getModId(),callback);
+}

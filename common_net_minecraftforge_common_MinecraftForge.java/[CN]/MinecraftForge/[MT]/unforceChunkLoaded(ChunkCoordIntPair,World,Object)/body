@@ -1,9 +1,0 @@
-{
-  ModContainer mc=FMLCommonHandler.instance().findContainerFor(mod);
-  if (mc == null) {
-    FMLLog.warning("Attempt to unforce chunk load for a non-existent mod %s",mod.getClass().getName());
-    return;
-  }
-  String modId=mc.getModId();
-  world.getPersistentChunks().remove(chunk,modId);
-}

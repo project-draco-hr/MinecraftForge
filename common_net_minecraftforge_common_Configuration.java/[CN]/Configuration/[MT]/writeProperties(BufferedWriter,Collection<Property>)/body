@@ -1,7 +1,10 @@
 {
   for (  Property property : props) {
     if (property.comment != null) {
-      buffer.write("   # " + property.comment + "\r\n");
+      Splitter splitter=Splitter.onPattern("\r?\n");
+      for (      String commentLine : splitter.split(property.comment)) {
+        buffer.write("   # " + commentLine + "\r\n");
+      }
     }
     buffer.write("   " + property.getName() + "="+ property.value);
     buffer.write("\r\n");

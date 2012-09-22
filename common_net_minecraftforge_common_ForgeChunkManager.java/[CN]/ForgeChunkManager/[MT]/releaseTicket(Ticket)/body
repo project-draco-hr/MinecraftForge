@@ -1,0 +1,9 @@
+{
+  if (ticket == null) {
+    return;
+  }
+  for (  ChunkCoordIntPair chunk : ticket.requestedChunks) {
+    unforceChunk(ticket,chunk);
+  }
+  tickets.get(ticket.world).remove(ticket.modId,ticket);
+}

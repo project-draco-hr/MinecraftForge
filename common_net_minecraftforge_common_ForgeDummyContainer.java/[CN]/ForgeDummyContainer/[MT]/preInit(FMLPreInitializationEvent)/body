@@ -1,0 +1,3 @@
+{
+  ForgeChunkManager.loadConfiguration(evt.getModConfigurationDirectory());
+}

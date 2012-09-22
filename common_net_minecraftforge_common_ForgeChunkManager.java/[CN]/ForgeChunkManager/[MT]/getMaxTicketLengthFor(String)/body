@@ -1,0 +1,4 @@
+{
+  int allowedCount=ticketConstraints.containsKey(modId) && overridesEnabled ? ticketConstraints.get(modId) : defaultMaxCount;
+  return allowedCount;
+}

@@ -1,0 +1,59 @@
+{
+  ArrayListMultimap<String,Ticket> loadedTickets=ArrayListMultimap.<String,Ticket>create();
+  tickets.put(world,loadedTickets);
+  SetMultimap<ChunkCoordIntPair,Ticket> forcedChunkMap=LinkedHashMultimap.create();
+  forcedChunks.put(world,forcedChunkMap);
+  if (!(world instanceof WorldServer)) {
+    return;
+  }
+  WorldServer worldServer=(WorldServer)world;
+  File chunkDir=worldServer.getChunkSaveLocation();
+  File chunkLoaderData=new File(chunkDir,"forcedchunks.dat");
+  if (chunkLoaderData.exists() && chunkLoaderData.isFile()) {
+    NBTTagCompound forcedChunkData;
+    try {
+      forcedChunkData=CompressedStreamTools.read(chunkLoaderData);
+    }
+ catch (    IOException e) {
+      FMLLog.log(Level.WARNING,e,"Unable to read forced chunk data at %s - it will be ignored",chunkLoaderData.getAbsolutePath());
+      return;
+    }
+    NBTTagList ticketList=forcedChunkData.getTagList("TicketList");
+    for (int i=0; i < ticketList.tagCount(); i++) {
+      NBTTagCompound ticketHolder=(NBTTagCompound)ticketList.tagAt(i);
+      String modId=ticketHolder.getString("Owner");
+      if (!Loader.isModLoaded(modId)) {
+        FMLLog.warning("Found chunkloading data for mod %s which is currently not available or active - it will be removed from the world save",modId);
+        continue;
+      }
+      if (!callbacks.containsKey(modId)) {
+        FMLLog.warning("The mod %s has registered persistent chunkloading data but doesn't seem to want to be called back with it - it will be removed from the world save",modId);
+        continue;
+      }
+      int maxTicketLength=getMaxTicketLengthFor(modId);
+      NBTTagList tickets=ticketHolder.getTagList("Tickets");
+      if (tickets.tagCount() > maxTicketLength) {
+        FMLLog.warning("The mod %s has more tickets in to load than it is allowed. Only the first %d will be loaded - the rest will be removed",modId,maxTicketLength);
+      }
+      for (int j=0; j < Math.min(tickets.tagCount(),maxTicketLength); j++) {
+        NBTTagCompound ticket=(NBTTagCompound)tickets.tagAt(j);
+        Type type=Type.values()[ticket.getByte("Type")];
+        byte ticketChunkDepth=ticket.getByte("ChunkListDepth");
+        NBTTagCompound modData=ticket.getCompoundTag("ModData");
+        Ticket tick=new Ticket(modId,type,world);
+        tick.modData=modData;
+        if (type == Type.ENTITY) {
+          int entX=ticket.getInteger("entityX");
+          int entY=ticket.getInteger("entityY");
+          int entZ=ticket.getInteger("entityZ");
+          String entClass=ticket.getString("entityClass");
+          tick.bindEntityData(entX,entY,entZ,entClass);
+        }
+        loadedTickets.put(modId,tick);
+      }
+    }
+    for (    String modId : loadedTickets.keySet()) {
+      callbacks.get(modId).ticketsLoaded(loadedTickets.get(modId),world);
+    }
+  }
+}

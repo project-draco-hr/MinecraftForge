@@ -1,0 +1,14 @@
+{
+  if (ticket == null || chunk == null) {
+    return;
+  }
+  if (ticket.ticketType == Type.ENTITY && ticket.entity == null) {
+    throw new RuntimeException("Attempted to use an entity ticket to force a chunk, without an entity");
+  }
+  ticket.requestedChunks.add(chunk);
+  forcedChunks.get(ticket.world).put(chunk,ticket);
+  if (ticket.maxDepth > 0 && ticket.requestedChunks.size() > ticket.maxDepth) {
+    ChunkCoordIntPair removed=ticket.requestedChunks.iterator().next();
+    unforceChunk(ticket,removed);
+  }
+}

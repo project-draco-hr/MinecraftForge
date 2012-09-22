@@ -1,0 +1,11 @@
+{
+  ModContainer container=getContainer(mod);
+  if (container != null) {
+    String modId=container.getModId();
+    int allowedCount=getMaxTicketLengthFor(modId);
+    return allowedCount - tickets.get(world).get(modId).size();
+  }
+ else {
+    return 0;
+  }
+}

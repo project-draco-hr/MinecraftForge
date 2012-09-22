@@ -1,0 +1,20 @@
+{
+  ModContainer container=getContainer(mod);
+  if (container == null) {
+    FMLLog.log(Level.SEVERE,"Failed to locate the container for mod instance %s (%s : %x)",mod,mod.getClass().getName(),System.identityHashCode(mod));
+    return null;
+  }
+  String modId=container.getModId();
+  if (!callbacks.containsKey(modId)) {
+    FMLLog.severe("The mod %s has attempted to request a ticket without a listener in place",modId);
+    throw new RuntimeException("Invalid ticket request");
+  }
+  int allowedCount=ticketConstraints.containsKey(modId) ? ticketConstraints.get(modId) : defaultMaxCount;
+  if (tickets.get(world).get(modId).size() >= allowedCount) {
+    FMLLog.info("The mod %s has attempted to allocate a chunkloading ticket beyond it's currently allocated maximum : %d",modId,allowedCount);
+    return null;
+  }
+  Ticket ticket=new Ticket(modId,type,world);
+  tickets.get(world).put(modId,ticket);
+  return ticket;
+}

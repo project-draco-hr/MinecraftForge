@@ -1,0 +1,4 @@
+{
+  this(file);
+  this.caseSensitiveCustomCategories=caseSensitiveCustomCategories;
+}

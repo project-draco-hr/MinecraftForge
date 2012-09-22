@@ -15,6 +15,15 @@
       for (      Map.Entry<String,Map<String,Property>> category : categories.entrySet()) {
         buffer.write("####################\r\n");
         buffer.write("# " + category.getKey() + " \r\n");
+        if (customCategoryComments.containsKey(category.getKey())) {
+          buffer.write("#===================\r\n");
+          String comment=customCategoryComments.get(category.getKey());
+          Splitter splitter=Splitter.onPattern("\r?\n");
+          for (          String commentLine : splitter.split(comment)) {
+            buffer.write("# ");
+            buffer.write(commentLine + "\r\n");
+          }
+        }
         buffer.write("####################\r\n\r\n");
         buffer.write(category.getKey() + " {\r\n");
         writeProperties(buffer,category.getValue().values());

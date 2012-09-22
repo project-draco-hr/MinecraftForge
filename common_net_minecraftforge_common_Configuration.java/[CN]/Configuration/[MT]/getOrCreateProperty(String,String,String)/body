@@ -1,5 +1,7 @@
 {
-  category=category.toLowerCase(Locale.ENGLISH);
+  if (!caseSensitiveCustomCategories) {
+    category=category.toLowerCase(Locale.ENGLISH);
+  }
   Map<String,Property> source=categories.get(category);
   if (source == null) {
     source=new TreeMap<String,Property>();

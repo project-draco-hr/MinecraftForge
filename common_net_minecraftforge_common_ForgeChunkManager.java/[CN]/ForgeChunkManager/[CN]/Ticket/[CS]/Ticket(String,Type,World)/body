@@ -1,0 +1,7 @@
+{
+  this.modId=modId;
+  this.ticketType=type;
+  this.world=world;
+  this.maxDepth=getMaxChunkDepthFor(modId);
+  this.requestedChunks=Sets.newLinkedHashSet();
+}
