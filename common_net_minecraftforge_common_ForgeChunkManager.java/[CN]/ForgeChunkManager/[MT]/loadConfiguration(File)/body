@@ -10,6 +10,9 @@
     Property maxChunks=config.getOrCreateIntProperty("maximumChunksPerTicket","defaults",25);
     maxChunks.comment="The default maximum number of chunks a mod can force, per ticket, \n" + "for a mod without an override. This is the maximum number of chunks a single ticket can force.";
     defaultMaxChunks=maxChunks.getInt(25);
+    Property dormantChunkCacheSize=config.getOrCreateIntProperty("dormantChunkCacheSize","defaults",0);
+    dormantChunkCacheSize.comment="Unloaded chunks can first be kept in a dormant cache for quicker\n" + "loading times. Specify the size of that cache here";
+    dormantChunkCache=CacheBuilder.newBuilder().maximumSize(dormantChunkCacheSize.getInt(0)).build();
     Property modOverridesEnabled=config.getOrCreateBooleanProperty("enabled","defaults",true);
     modOverridesEnabled.comment="Are mod overrides enabled?";
     overridesEnabled=modOverridesEnabled.getBoolean(true);
@@ -18,6 +21,15 @@
     sampleTC.comment="Maximum ticket count for the mod. Zero disables chunkloading capabilities.";
     sampleTC=config.getOrCreateIntProperty("maximumChunksPerTicket","Forge",25);
     sampleTC.comment="Maximum chunks per ticket for the mod.";
+    for (    String mod : config.categories.keySet()) {
+      if (mod.equals("Forge") || mod.equals("defaults")) {
+        continue;
+      }
+      Property modTC=config.getOrCreateIntProperty("maximumTicketCount",mod,200);
+      Property modCPT=config.getOrCreateIntProperty("maximumChunksPerTicket",mod,25);
+      ticketConstraints.put(mod,modTC.getInt(200));
+      chunkConstraints.put(mod,modCPT.getInt(25));
+    }
   }
   finally {
     config.save();
