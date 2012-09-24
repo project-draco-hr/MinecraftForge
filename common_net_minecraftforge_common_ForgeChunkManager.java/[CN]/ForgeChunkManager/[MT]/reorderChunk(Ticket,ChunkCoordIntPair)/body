@@ -1,0 +1,7 @@
+{
+  if (ticket == null || chunk == null || !ticket.requestedChunks.contains(chunk)) {
+    return;
+  }
+  ticket.requestedChunks.remove(chunk);
+  ticket.requestedChunks.add(chunk);
+}

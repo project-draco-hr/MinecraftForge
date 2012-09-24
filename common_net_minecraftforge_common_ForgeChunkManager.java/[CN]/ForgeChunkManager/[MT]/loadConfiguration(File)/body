@@ -13,6 +13,7 @@
     Property dormantChunkCacheSize=config.getOrCreateIntProperty("dormantChunkCacheSize","defaults",0);
     dormantChunkCacheSize.comment="Unloaded chunks can first be kept in a dormant cache for quicker\n" + "loading times. Specify the size of that cache here";
     dormantChunkCache=CacheBuilder.newBuilder().maximumSize(dormantChunkCacheSize.getInt(0)).build();
+    FMLLog.info("Configured a dormant chunk cache size of %d",dormantChunkCacheSize.getInt(0));
     Property modOverridesEnabled=config.getOrCreateBooleanProperty("enabled","defaults",true);
     modOverridesEnabled.comment="Are mod overrides enabled?";
     overridesEnabled=modOverridesEnabled.getBoolean(true);

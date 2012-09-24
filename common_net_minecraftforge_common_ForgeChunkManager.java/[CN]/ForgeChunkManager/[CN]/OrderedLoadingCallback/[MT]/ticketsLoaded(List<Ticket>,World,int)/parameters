@@ -1,0 +1,3 @@
+List<Ticket> tickets
+World world
+int maxTicketCount

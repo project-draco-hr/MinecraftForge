@@ -1,6 +1,6 @@
 {
-  if (depth > getMaxChunkDepthFor(modId)) {
-    FMLLog.warning("The mod %s tried to modify the chunk ticket depth to: %d, greater than it's maximum: %d",modId,depth,getMaxChunkDepthFor(modId));
+  if (depth > getMaxChunkDepthFor(modId) || (depth <= 0 && getMaxChunkDepthFor(modId) > 0)) {
+    FMLLog.warning("The mod %s tried to modify the chunk ticket depth to: %d, its allowed maximum is: %d",modId,depth,getMaxChunkDepthFor(modId));
   }
  else {
     this.maxDepth=depth;

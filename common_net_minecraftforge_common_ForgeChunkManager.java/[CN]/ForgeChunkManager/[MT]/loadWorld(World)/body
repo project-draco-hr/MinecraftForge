@@ -30,18 +30,15 @@
         FMLLog.warning("The mod %s has registered persistent chunkloading data but doesn't seem to want to be called back with it - it will be removed from the world save",modId);
         continue;
       }
-      int maxTicketLength=getMaxTicketLengthFor(modId);
       NBTTagList tickets=ticketHolder.getTagList("Tickets");
-      if (tickets.tagCount() > maxTicketLength) {
-        FMLLog.warning("The mod %s has more tickets in to load than it is allowed. Only the first %d will be loaded - the rest will be removed",modId,maxTicketLength);
-      }
-      for (int j=0; j < Math.min(tickets.tagCount(),maxTicketLength); j++) {
+      for (int j=0; j < tickets.tagCount(); j++) {
         NBTTagCompound ticket=(NBTTagCompound)tickets.tagAt(j);
         Type type=Type.values()[ticket.getByte("Type")];
         byte ticketChunkDepth=ticket.getByte("ChunkListDepth");
-        NBTTagCompound modData=ticket.getCompoundTag("ModData");
         Ticket tick=new Ticket(modId,type,world);
-        tick.modData=modData;
+        if (ticket.hasKey("ModData")) {
+          tick.modData=ticket.getCompoundTag("ModData");
+        }
         if (type == Type.ENTITY) {
           tick.entityChunkX=ticket.getInteger("chunkX");
           tick.entityChunkZ=ticket.getInteger("chunkZ");
@@ -64,7 +61,25 @@
     }
     pendingEntities.clear();
     for (    String modId : loadedTickets.keySet()) {
-      callbacks.get(modId).ticketsLoaded(loadedTickets.get(modId),world);
+      LoadingCallback loadingCallback=callbacks.get(modId);
+      int maxTicketLength=getMaxTicketLengthFor(modId);
+      List<Ticket> tickets=loadedTickets.get(modId);
+      if (loadingCallback instanceof OrderedLoadingCallback) {
+        OrderedLoadingCallback orderedLoadingCallback=(OrderedLoadingCallback)loadingCallback;
+        tickets=orderedLoadingCallback.ticketsLoaded(tickets,world,maxTicketLength);
+        if (tickets.size() > maxTicketLength) {
+          FMLLog.warning("The mod %s has too many open chunkloading tickets %d. Excess will be dropped",modId,tickets.size());
+          tickets.subList(maxTicketLength,tickets.size()).clear();
+        }
+      }
+ else {
+        if (tickets.size() > maxTicketLength) {
+          FMLLog.warning("The mod %s has too many open chunkloading tickets %d. Excess will be dropped",modId,tickets.size());
+          tickets.subList(maxTicketLength,tickets.size()).clear();
+        }
+        loadingCallback.ticketsLoaded(tickets,world);
+      }
+      ForgeChunkManager.tickets.get(world).putAll(modId,tickets);
     }
   }
 }
