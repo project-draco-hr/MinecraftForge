@@ -25,7 +25,11 @@
           }
         }
         buffer.write("####################\r\n\r\n");
-        buffer.write(category.getKey() + " {\r\n");
+        String catKey=category.getKey();
+        if (!allowedProperties.matchesAllOf(catKey)) {
+          catKey='"' + catKey + '"';
+        }
+        buffer.write(catKey + " {\r\n");
         writeProperties(buffer,category.getValue().values());
         buffer.write("}\r\n\r\n");
       }

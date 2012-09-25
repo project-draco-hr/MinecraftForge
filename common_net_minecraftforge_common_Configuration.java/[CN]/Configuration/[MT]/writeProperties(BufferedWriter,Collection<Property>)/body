@@ -6,7 +6,11 @@
         buffer.write("   # " + commentLine + "\r\n");
       }
     }
-    buffer.write("   " + property.getName() + "="+ property.value);
+    String propName=property.getName();
+    if (!allowedProperties.matchesAllOf(propName)) {
+      propName='"' + propName + '"';
+    }
+    buffer.write("   " + propName + "="+ property.value);
     buffer.write("\r\n");
   }
 }

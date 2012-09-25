@@ -19,8 +19,9 @@
         }
         int nameStart=-1, nameEnd=-1;
         boolean skip=false;
+        boolean quoted=false;
         for (int i=0; i < line.length() && !skip; ++i) {
-          if (Character.isLetterOrDigit(line.charAt(i)) || ALLOWED_CHARS.indexOf(line.charAt(i)) != -1) {
+          if (Character.isLetterOrDigit(line.charAt(i)) || ALLOWED_CHARS.indexOf(line.charAt(i)) != -1 || (quoted && line.charAt(i) != '"')) {
             if (nameStart == -1) {
               nameStart=i;
             }
@@ -33,16 +34,24 @@ switch (line.charAt(i)) {
 case '#':
               skip=true;
             continue;
+case '"':
+          if (quoted) {
+            quoted=false;
+          }
+        if (!quoted && nameStart == -1) {
+          quoted=true;
+        }
+      break;
 case '{':
-          String scopeName=line.substring(nameStart,nameEnd + 1);
-        currentMap=categories.get(scopeName);
-      if (currentMap == null) {
-        currentMap=new TreeMap<String,Property>();
-        categories.put(scopeName,currentMap);
-      }
-    break;
+    String scopeName=line.substring(nameStart,nameEnd + 1);
+  currentMap=categories.get(scopeName);
+if (currentMap == null) {
+  currentMap=new TreeMap<String,Property>();
+  categories.put(scopeName,currentMap);
+}
+break;
 case '}':
-  currentMap=null;
+currentMap=null;
 break;
 case '=':
 String propertyName=line.substring(nameStart,nameEnd + 1);
@@ -59,6 +68,9 @@ default :
 throw new RuntimeException("unknown character " + line.charAt(i));
 }
 }
+}
+if (quoted) {
+throw new RuntimeException("unmatched quote");
 }
 }
 }
