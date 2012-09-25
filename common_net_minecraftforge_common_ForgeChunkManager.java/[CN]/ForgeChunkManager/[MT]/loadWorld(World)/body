@@ -1,6 +1,6 @@
 {
-  ArrayListMultimap<String,Ticket> loadedTickets=ArrayListMultimap.<String,Ticket>create();
-  tickets.put(world,loadedTickets);
+  ArrayListMultimap<String,Ticket> newTickets=ArrayListMultimap.<String,Ticket>create();
+  tickets.put(world,newTickets);
   SetMultimap<ChunkCoordIntPair,Ticket> forcedChunkMap=LinkedHashMultimap.create();
   forcedChunks.put(world,forcedChunkMap);
   if (!(world instanceof WorldServer)) {
@@ -10,6 +10,7 @@
   File chunkDir=worldServer.getChunkSaveLocation();
   File chunkLoaderData=new File(chunkDir,"forcedchunks.dat");
   if (chunkLoaderData.exists() && chunkLoaderData.isFile()) {
+    ArrayListMultimap<String,Ticket> loadedTickets=ArrayListMultimap.<String,Ticket>create();
     NBTTagCompound forcedChunkData;
     try {
       forcedChunkData=CompressedStreamTools.read(chunkLoaderData);
