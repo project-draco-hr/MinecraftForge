@@ -8,8 +8,9 @@
       return;
     }
     if (file.canRead()) {
-      FileInputStream fileinputstream=new FileInputStream(file);
-      buffer=new BufferedReader(new InputStreamReader(fileinputstream,"UTF-8"));
+      UnicodeInputStreamReader input=new UnicodeInputStreamReader(new FileInputStream(file),defaultEncoding);
+      defaultEncoding=input.getEncoding();
+      buffer=new BufferedReader(input);
       String line;
       Map<String,Property> currentMap=null;
       while (true) {

@@ -8,7 +8,7 @@
     }
     if (file.canWrite()) {
       FileOutputStream fos=new FileOutputStream(file);
-      BufferedWriter buffer=new BufferedWriter(new OutputStreamWriter(fos,"UTF-8"));
+      BufferedWriter buffer=new BufferedWriter(new OutputStreamWriter(fos,defaultEncoding));
       buffer.write("# Configuration file\r\n");
       buffer.write("# Generated on " + DateFormat.getInstance().format(new Date()) + "\r\n");
       buffer.write("\r\n");
