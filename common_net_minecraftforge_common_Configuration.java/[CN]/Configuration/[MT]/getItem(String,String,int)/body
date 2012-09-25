@@ -14,7 +14,7 @@
  else {
       for (int x=configItems.length - 1; x >= ITEM_SHIFT; x--) {
         if (Item.itemsList[x] == null && !configItems[x]) {
-          prop.value=Integer.toString(x);
+          prop.value=Integer.toString(x - ITEM_SHIFT);
           configItems[x]=true;
           return prop;
         }
