@@ -1,0 +1,24 @@
+{
+  Property prop=get(category,key,-1);
+  if (prop.getInt() != -1) {
+    configBlocks[prop.getInt()]=true;
+    return prop;
+  }
+ else {
+    if (Block.blocksList[defaultID] == null && !configBlocks[defaultID]) {
+      prop.value=Integer.toString(defaultID);
+      configBlocks[defaultID]=true;
+      return prop;
+    }
+ else {
+      for (int j=configBlocks.length - 1; j > 0; j--) {
+        if (Block.blocksList[j] == null && !configBlocks[j]) {
+          prop.value=Integer.toString(j);
+          configBlocks[j]=true;
+          return prop;
+        }
+      }
+      throw new RuntimeException("No more block ids available for " + key);
+    }
+  }
+}

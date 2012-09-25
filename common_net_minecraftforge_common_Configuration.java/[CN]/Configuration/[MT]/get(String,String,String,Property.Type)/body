@@ -1,0 +1,21 @@
+{
+  if (!caseSensitiveCustomCategories) {
+    category=category.toLowerCase(Locale.ENGLISH);
+  }
+  Map<String,Property> source=categories.get(category);
+  if (source == null) {
+    source=new TreeMap<String,Property>();
+    categories.put(category,source);
+  }
+  if (source.containsKey(key)) {
+    return source.get(key);
+  }
+ else   if (defaultValue != null) {
+    Property prop=new Property(key,defaultValue,type);
+    source.put(key,prop);
+    return prop;
+  }
+ else {
+    return null;
+  }
+}

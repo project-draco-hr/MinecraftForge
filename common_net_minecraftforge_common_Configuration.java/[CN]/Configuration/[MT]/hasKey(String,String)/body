@@ -1,0 +1,4 @@
+{
+  Map<String,Property> cat=categories.get(category);
+  return cat != null && cat.get(key) != null;
+}
