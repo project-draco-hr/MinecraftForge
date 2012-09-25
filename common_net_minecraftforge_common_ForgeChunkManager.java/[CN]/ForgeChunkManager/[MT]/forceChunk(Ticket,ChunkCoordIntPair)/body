@@ -5,6 +5,10 @@
   if (ticket.ticketType == Type.ENTITY && ticket.entity == null) {
     throw new RuntimeException("Attempted to use an entity ticket to force a chunk, without an entity");
   }
+  if (!tickets.get(ticket.world).containsEntry(ticket.modId,ticket)) {
+    FMLLog.severe("The mod %s attempted to force load a chunk with an invalid ticket. This is not permitted.",ticket.modId);
+    return;
+  }
   ticket.requestedChunks.add(chunk);
   forcedChunks.get(ticket.world).put(chunk,ticket);
   if (ticket.maxDepth > 0 && ticket.requestedChunks.size() > ticket.maxDepth) {

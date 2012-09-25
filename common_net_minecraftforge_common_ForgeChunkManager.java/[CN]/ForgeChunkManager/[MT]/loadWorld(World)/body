@@ -66,20 +66,14 @@
       List<Ticket> tickets=loadedTickets.get(modId);
       if (loadingCallback instanceof OrderedLoadingCallback) {
         OrderedLoadingCallback orderedLoadingCallback=(OrderedLoadingCallback)loadingCallback;
-        tickets=orderedLoadingCallback.ticketsLoaded(tickets,world,maxTicketLength);
-        if (tickets.size() > maxTicketLength) {
-          FMLLog.warning("The mod %s has too many open chunkloading tickets %d. Excess will be dropped",modId,tickets.size());
-          tickets.subList(maxTicketLength,tickets.size()).clear();
-        }
+        tickets=orderedLoadingCallback.ticketsLoaded(ImmutableList.copyOf(tickets),world,maxTicketLength);
       }
- else {
-        if (tickets.size() > maxTicketLength) {
-          FMLLog.warning("The mod %s has too many open chunkloading tickets %d. Excess will be dropped",modId,tickets.size());
-          tickets.subList(maxTicketLength,tickets.size()).clear();
-        }
-        loadingCallback.ticketsLoaded(tickets,world);
+      if (tickets.size() > maxTicketLength) {
+        FMLLog.warning("The mod %s has too many open chunkloading tickets %d. Excess will be dropped",modId,tickets.size());
+        tickets.subList(maxTicketLength,tickets.size()).clear();
       }
       ForgeChunkManager.tickets.get(world).putAll(modId,tickets);
+      loadingCallback.ticketsLoaded(ImmutableList.copyOf(tickets),world);
     }
   }
 }

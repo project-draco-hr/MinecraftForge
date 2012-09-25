@@ -2,6 +2,9 @@
   if (ticket == null) {
     return;
   }
+  if (!tickets.get(ticket.world).containsEntry(ticket.modId,ticket)) {
+    return;
+  }
   if (ticket.requestedChunks != null) {
     for (    ChunkCoordIntPair chunk : ImmutableSet.copyOf(ticket.requestedChunks)) {
       unforceChunk(ticket,chunk);
