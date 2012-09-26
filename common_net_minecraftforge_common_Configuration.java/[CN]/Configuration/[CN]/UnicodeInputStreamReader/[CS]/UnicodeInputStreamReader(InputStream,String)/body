@@ -4,7 +4,7 @@
   byte[] data=new byte[4];
   PushbackInputStream pbStream=new PushbackInputStream(source,data.length);
   int read=pbStream.read(data,0,data.length);
-  int size=4;
+  int size=0;
   int bom16=(data[0] & 0xFF) << 8 | (data[1] & 0xFF);
   int bom24=bom16 << 8 | (data[2] & 0xFF);
   int bom32=bom24 << 8 | (data[3] & 0xFF);
@@ -22,9 +22,11 @@
   }
  else   if (bom32 == 0x0000FEFF) {
     enc="UTF-32BE";
+    size=4;
   }
  else   if (bom32 == 0xFFFE0000) {
     enc="UTF-32LE";
+    size=4;
   }
   if (size < read) {
     pbStream.unread(data,size,read - size);
