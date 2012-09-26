@@ -1,0 +1,7 @@
+{
+  super(entity);
+  this.newChunkX=newChunkX;
+  this.newChunkZ=newChunkZ;
+  this.oldChunkX=oldChunkX;
+  this.oldChunkZ=oldChunkZ;
+}
