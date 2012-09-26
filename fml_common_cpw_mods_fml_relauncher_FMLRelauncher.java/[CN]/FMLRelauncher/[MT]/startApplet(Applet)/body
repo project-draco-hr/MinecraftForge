@@ -4,7 +4,7 @@
       popupWindow.setVisible(false);
       popupWindow.dispose();
     }
-    if (RelaunchLibraryManager.downloadMonitor.stopIt) {
+    if (RelaunchLibraryManager.downloadMonitor.shouldStopIt()) {
       System.exit(1);
     }
     try {

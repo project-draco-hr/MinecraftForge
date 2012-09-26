@@ -83,7 +83,7 @@
     }
   }
   finally {
-    if (downloadMonitor.stopIt) {
+    if (downloadMonitor.shouldStopIt()) {
       return;
     }
     if (!caughtErrors.isEmpty()) {

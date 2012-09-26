@@ -3,16 +3,22 @@
     return;
   }
   try {
-    RelaunchLibraryManager.downloadMonitor=new Downloader();
     if (showIt) {
-      popupWindow=RelaunchLibraryManager.downloadMonitor.makeDialog();
+      RelaunchLibraryManager.downloadMonitor=new Downloader();
+      popupWindow=(JDialog)RelaunchLibraryManager.downloadMonitor.makeDialog();
+    }
+ else {
+      RelaunchLibraryManager.downloadMonitor=new DummyDownloader();
     }
   }
- catch (  Exception e) {
+ catch (  Throwable e) {
     if (RelaunchLibraryManager.downloadMonitor == null) {
+      RelaunchLibraryManager.downloadMonitor=new DummyDownloader();
       e.printStackTrace();
     }
+ else {
+      RelaunchLibraryManager.downloadMonitor.makeHeadless();
+    }
     popupWindow=null;
-    RelaunchLibraryManager.downloadMonitor.makeHeadless();
   }
 }

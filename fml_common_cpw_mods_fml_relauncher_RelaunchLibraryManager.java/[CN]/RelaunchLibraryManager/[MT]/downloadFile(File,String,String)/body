@@ -14,7 +14,7 @@
     FMLRelaunchLog.info("Download complete");
   }
  catch (  Exception e) {
-    if (downloadMonitor.stopIt) {
+    if (downloadMonitor.shouldStopIt()) {
       FMLRelaunchLog.warning("You have stopped the downloading operation before it could complete");
       return;
     }

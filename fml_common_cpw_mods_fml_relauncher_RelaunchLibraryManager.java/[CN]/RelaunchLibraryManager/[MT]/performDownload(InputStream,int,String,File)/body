@@ -6,18 +6,18 @@
   int bytesRead, fullLength=0;
   downloadMonitor.resetProgress(sizeGuess);
   try {
-    downloadMonitor.pokeThread=Thread.currentThread();
+    downloadMonitor.setPokeThread(Thread.currentThread());
     byte[] smallBuffer=new byte[1024];
     while ((bytesRead=is.read(smallBuffer)) >= 0) {
       downloadBuffer.put(smallBuffer,0,bytesRead);
       fullLength+=bytesRead;
-      if (downloadMonitor.stopIt) {
+      if (downloadMonitor.shouldStopIt()) {
         break;
       }
       downloadMonitor.updateProgress(fullLength);
     }
     is.close();
-    downloadMonitor.pokeThread=null;
+    downloadMonitor.setPokeThread(null);
     downloadBuffer.limit(fullLength);
     downloadBuffer.position(0);
   }
