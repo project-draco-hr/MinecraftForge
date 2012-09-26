@@ -1,0 +1,27 @@
+{
+  InputStream langStream=null;
+  Properties langPack=new Properties();
+  try {
+    langStream=localizationFile.openStream();
+    if (isXML) {
+      langPack.loadFromXML(langStream);
+    }
+ else {
+      langPack.load(langStream);
+    }
+    addStringLocalization(langPack,lang);
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+ finally {
+    try {
+      if (langStream != null) {
+        langStream.close();
+      }
+    }
+ catch (    IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+}

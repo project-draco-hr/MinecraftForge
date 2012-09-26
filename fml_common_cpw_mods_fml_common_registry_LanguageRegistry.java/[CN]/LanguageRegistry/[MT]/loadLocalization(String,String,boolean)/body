@@ -1,0 +1,3 @@
+{
+  loadLocalization(this.getClass().getResource(localizationFile),lang,isXML);
+}
