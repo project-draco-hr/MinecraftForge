@@ -1,0 +1,3 @@
+{
+  return getStringLocalization(key,StringTranslate.getInstance().getCurrentLanguage());
+}

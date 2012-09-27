@@ -1,0 +1,3 @@
+String localizationFile
+String lang
+boolean isXML
