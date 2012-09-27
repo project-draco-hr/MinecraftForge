@@ -1,0 +1,9 @@
+{
+  super(player);
+  this.action=action;
+  this.x=x;
+  this.y=y;
+  this.z=z;
+  this.face=face;
+  if (face == -1)   useBlock=DENY;
+}
