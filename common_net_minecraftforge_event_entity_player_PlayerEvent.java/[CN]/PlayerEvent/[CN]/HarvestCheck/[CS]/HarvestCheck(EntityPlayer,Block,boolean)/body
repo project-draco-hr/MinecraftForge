@@ -1,0 +1,5 @@
+{
+  super(player);
+  this.block=block;
+  this.success=success;
+}

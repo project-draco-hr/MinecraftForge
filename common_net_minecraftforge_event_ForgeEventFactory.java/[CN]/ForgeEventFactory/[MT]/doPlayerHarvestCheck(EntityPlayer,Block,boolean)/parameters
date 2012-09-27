@@ -1,0 +1,3 @@
+EntityPlayer player
+Block block
+boolean success

@@ -1,0 +1,6 @@
+{
+  super(player);
+  this.block=block;
+  this.metadata=metadata;
+  this.originalSpeed=original;
+}
