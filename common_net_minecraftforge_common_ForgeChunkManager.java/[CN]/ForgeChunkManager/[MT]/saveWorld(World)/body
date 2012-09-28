@@ -19,6 +19,10 @@
       NBTTagCompound ticket=new NBTTagCompound();
       ticket.setByte("Type",(byte)tick.ticketType.ordinal());
       ticket.setByte("ChunkListDepth",(byte)tick.maxDepth);
+      if (tick.isPlayerTicket()) {
+        ticket.setString("ModId",tick.modId);
+        ticket.setString("Player",tick.player);
+      }
       if (tick.modData != null) {
         ticket.setCompoundTag("ModData",tick.modData);
       }

@@ -5,7 +5,7 @@
   if (ticket.ticketType == Type.ENTITY && ticket.entity == null) {
     throw new RuntimeException("Attempted to use an entity ticket to force a chunk, without an entity");
   }
-  if (!tickets.get(ticket.world).containsEntry(ticket.modId,ticket)) {
+  if (ticket.isPlayerTicket() ? !playerTickets.containsValue(ticket) : !tickets.get(ticket.world).containsEntry(ticket.modId,ticket)) {
     FMLLog.severe("The mod %s attempted to force load a chunk with an invalid ticket. This is not permitted.",ticket.modId);
     return;
   }

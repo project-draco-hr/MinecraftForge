@@ -1,0 +1,10 @@
+{
+  this(modId,type,world);
+  if (player != null) {
+    this.player=player.getEntityName();
+  }
+ else {
+    FMLLog.log(Level.SEVERE,"Attempt to create a player ticket without a valid player");
+    throw new RuntimeException();
+  }
+}

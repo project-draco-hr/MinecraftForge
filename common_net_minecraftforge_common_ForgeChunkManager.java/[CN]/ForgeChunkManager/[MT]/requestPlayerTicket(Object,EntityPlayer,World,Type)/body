@@ -1,0 +1,15 @@
+{
+  ModContainer mc=getContainer(mod);
+  if (mc == null) {
+    FMLLog.log(Level.SEVERE,"Failed to locate the container for mod instance %s (%s : %x)",mod,mod.getClass().getName(),System.identityHashCode(mod));
+    return null;
+  }
+  if (playerTickets.get(player.getEntityName()).size() > playerTicketLength) {
+    FMLLog.warning("Unable to assign further chunkloading tickets to player %s (on behalf of mod %s)",player.getEntityName(),mc.getModId());
+    return null;
+  }
+  Ticket ticket=new Ticket(mc.getModId(),type,world,player);
+  playerTickets.put(player.getEntityName(),ticket);
+  tickets.get(world).put("Forge",ticket);
+  return ticket;
+}

@@ -11,6 +11,7 @@
   File chunkLoaderData=new File(chunkDir,"forcedchunks.dat");
   if (chunkLoaderData.exists() && chunkLoaderData.isFile()) {
     ArrayListMultimap<String,Ticket> loadedTickets=ArrayListMultimap.<String,Ticket>create();
+    ArrayListMultimap<String,Ticket> playerLoadedTickets=ArrayListMultimap.<String,Ticket>create();
     NBTTagCompound forcedChunkData;
     try {
       forcedChunkData=CompressedStreamTools.read(chunkLoaderData);
@@ -23,22 +24,32 @@
     for (int i=0; i < ticketList.tagCount(); i++) {
       NBTTagCompound ticketHolder=(NBTTagCompound)ticketList.tagAt(i);
       String modId=ticketHolder.getString("Owner");
-      if (!Loader.isModLoaded(modId)) {
+      boolean isPlayer="Forge".equals(modId);
+      if (!isPlayer && !Loader.isModLoaded(modId)) {
         FMLLog.warning("Found chunkloading data for mod %s which is currently not available or active - it will be removed from the world save",modId);
         continue;
       }
-      if (!callbacks.containsKey(modId)) {
+      if (!isPlayer && !callbacks.containsKey(modId)) {
         FMLLog.warning("The mod %s has registered persistent chunkloading data but doesn't seem to want to be called back with it - it will be removed from the world save",modId);
         continue;
       }
       NBTTagList tickets=ticketHolder.getTagList("Tickets");
       for (int j=0; j < tickets.tagCount(); j++) {
         NBTTagCompound ticket=(NBTTagCompound)tickets.tagAt(j);
+        modId=ticket.hasKey("ModId") ? ticket.getString("ModId") : modId;
         Type type=Type.values()[ticket.getByte("Type")];
         byte ticketChunkDepth=ticket.getByte("ChunkListDepth");
         Ticket tick=new Ticket(modId,type,world);
         if (ticket.hasKey("ModData")) {
           tick.modData=ticket.getCompoundTag("ModData");
+        }
+        if (ticket.hasKey("Player")) {
+          tick.player=ticket.getString("Player");
+          playerLoadedTickets.put(tick.modId,tick);
+          playerTickets.put(tick.player,tick);
+        }
+ else {
+          loadedTickets.put(modId,tick);
         }
         if (type == Type.ENTITY) {
           tick.entityChunkX=ticket.getInteger("chunkX");
@@ -46,7 +57,6 @@
           UUID uuid=new UUID(ticket.getLong("PersistentIDMSB"),ticket.getLong("PersistentIDLSB"));
           pendingEntities.put(uuid,tick);
         }
-        loadedTickets.put(modId,tick);
       }
     }
     for (    Ticket tick : ImmutableSet.copyOf(pendingEntities.values())) {
@@ -74,6 +84,12 @@
         tickets.subList(maxTicketLength,tickets.size()).clear();
       }
       ForgeChunkManager.tickets.get(world).putAll(modId,tickets);
+      loadingCallback.ticketsLoaded(ImmutableList.copyOf(tickets),world);
+    }
+    for (    String modId : playerLoadedTickets.keySet()) {
+      LoadingCallback loadingCallback=callbacks.get(modId);
+      List<Ticket> tickets=playerLoadedTickets.get(modId);
+      ForgeChunkManager.tickets.get(world).putAll("Forge",tickets);
       loadingCallback.ticketsLoaded(ImmutableList.copyOf(tickets),world);
     }
   }

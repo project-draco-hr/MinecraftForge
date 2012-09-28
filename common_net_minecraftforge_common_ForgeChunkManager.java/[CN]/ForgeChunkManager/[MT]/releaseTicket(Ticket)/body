@@ -2,7 +2,7 @@
   if (ticket == null) {
     return;
   }
-  if (!tickets.get(ticket.world).containsEntry(ticket.modId,ticket)) {
+  if (ticket.isPlayerTicket() ? !playerTickets.containsValue(ticket) : !tickets.get(ticket.world).containsEntry(ticket.modId,ticket)) {
     return;
   }
   if (ticket.requestedChunks != null) {
@@ -10,5 +10,11 @@
       unforceChunk(ticket,chunk);
     }
   }
-  tickets.get(ticket.world).remove(ticket.modId,ticket);
+  if (ticket.isPlayerTicket()) {
+    playerTickets.remove(ticket.player,ticket);
+    tickets.get(ticket.world).remove("Forge",ticket);
+  }
+ else {
+    tickets.get(ticket.world).remove(ticket.modId,ticket);
+  }
 }

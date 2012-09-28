@@ -1,0 +1,45 @@
+{
+  cfgFile=new File(configDir,"forgeChunkLoading.cfg");
+  config=new Configuration(cfgFile,true);
+  config.categories.clear();
+  try {
+    config.load();
+  }
+ catch (  Exception e) {
+    File dest=new File(cfgFile.getParentFile(),"forgeChunkLoading.cfg.bak");
+    if (dest.exists()) {
+      dest.delete();
+    }
+    cfgFile.renameTo(dest);
+    FMLLog.log(Level.SEVERE,e,"A critical error occured reading the forgeChunkLoading.cfg file, defaults will be used - the invalid file is backed up at forgeChunkLoading.cfg.bak");
+  }
+  config.addCustomCategoryComment("defaults","Default configuration for forge chunk loading control");
+  Property maxTicketCount=config.get("defaults","maximumTicketCount",200);
+  maxTicketCount.comment="The default maximum ticket count for a mod which does not have an override\n" + "in this file. This is the number of chunk loading requests a mod is allowed to make.";
+  defaultMaxCount=maxTicketCount.getInt(200);
+  Property maxChunks=config.get("defaults","maximumChunksPerTicket",25);
+  maxChunks.comment="The default maximum number of chunks a mod can force, per ticket, \n" + "for a mod without an override. This is the maximum number of chunks a single ticket can force.";
+  defaultMaxChunks=maxChunks.getInt(25);
+  Property playerTicketCount=config.get("defaults","playetTicketCount",500);
+  playerTicketCount.comment="The number of tickets a player can be assigned instead of a mod. This is shared across all mods and it is up to the mods to use it.";
+  playerTicketLength=playerTicketCount.getInt(500);
+  Property dormantChunkCacheSize=config.get("defaults","dormantChunkCacheSize",0);
+  dormantChunkCacheSize.comment="Unloaded chunks can first be kept in a dormant cache for quicker\n" + "loading times. Specify the size of that cache here";
+  dormantChunkCache=CacheBuilder.newBuilder().maximumSize(dormantChunkCacheSize.getInt(0)).build();
+  FMLLog.info("Configured a dormant chunk cache size of %d",dormantChunkCacheSize.getInt(0));
+  Property modOverridesEnabled=config.get("defaults","enabled",true);
+  modOverridesEnabled.comment="Are mod overrides enabled?";
+  overridesEnabled=modOverridesEnabled.getBoolean(true);
+  config.addCustomCategoryComment("Forge","Sample mod specific control section.\n" + "Copy this section and rename the with the modid for the mod you wish to override.\n" + "A value of zero in either entry effectively disables any chunkloading capabilities\n"+ "for that mod");
+  Property sampleTC=config.get("Forge","maximumTicketCount",200);
+  sampleTC.comment="Maximum ticket count for the mod. Zero disables chunkloading capabilities.";
+  sampleTC=config.get("Forge","maximumChunksPerTicket",25);
+  sampleTC.comment="Maximum chunks per ticket for the mod.";
+  for (  String mod : config.categories.keySet()) {
+    if (mod.equals("Forge") || mod.equals("defaults")) {
+      continue;
+    }
+    Property modTC=config.get(mod,"maximumTicketCount",200);
+    Property modCPT=config.get(mod,"maximumChunksPerTicket",25);
+  }
+}
