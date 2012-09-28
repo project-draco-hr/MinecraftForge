@@ -9,8 +9,4 @@
     chunkConstraints.put(mod,modCPT.getInt(25));
   }
   config.save();
-  if (dormantChunkCache == null) {
-    dormantChunkCache=CacheBuilder.newBuilder().maximumSize(0).build();
-    FMLLog.info("Configured a dormant chunk cache size of 0");
-  }
 }

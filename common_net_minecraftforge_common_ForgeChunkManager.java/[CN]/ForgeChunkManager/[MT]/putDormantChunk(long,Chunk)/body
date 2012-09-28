@@ -1,3 +1,6 @@
 {
-  dormantChunkCache.put(coords,chunk);
+  Cache<Long,Chunk> cache=dormantChunkCache.get(chunk.worldObj);
+  if (cache != null) {
+    cache.put(coords,chunk);
+  }
 }

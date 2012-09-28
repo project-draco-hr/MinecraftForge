@@ -1,0 +1,4 @@
+{
+  Cache<Long,Chunk> cache=dormantChunkCache.get(world);
+  return cache == null ? null : cache.getIfPresent(coords);
+}

@@ -6,6 +6,7 @@
   if (!(world instanceof WorldServer)) {
     return;
   }
+  dormantChunkCache.put(world,CacheBuilder.newBuilder().maximumSize(dormantChunkCacheSize).<Long,Chunk>build());
   WorldServer worldServer=(WorldServer)world;
   File chunkDir=worldServer.getChunkSaveLocation();
   File chunkLoaderData=new File(chunkDir,"forcedchunks.dat");
