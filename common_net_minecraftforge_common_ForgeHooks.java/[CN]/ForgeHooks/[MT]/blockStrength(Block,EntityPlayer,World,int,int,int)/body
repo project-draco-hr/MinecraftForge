@@ -5,7 +5,8 @@
     return 0.0F;
   }
   if (!canHarvestBlock(block,player,metadata)) {
-    return 1.0F / hardness / 100F;
+    float speed=ForgeEventFactory.getBreakSpeed(player,block,metadata,1.0f);
+    return (speed < 0 ? 0 : speed) / hardness / 100F;
   }
  else {
     return player.getCurrentPlayerStrVsBlock(block,metadata) / hardness / 30F;
