@@ -24,7 +24,10 @@
   try {
     Loader.instance().loadMods();
   }
- catch (  MissingModsException missing) {
+ catch (  WrongMinecraftVersionException wrong) {
+    wrongMC=wrong;
+  }
+catch (  MissingModsException missing) {
     modsMissing=missing;
   }
 catch (  LoaderException le) {

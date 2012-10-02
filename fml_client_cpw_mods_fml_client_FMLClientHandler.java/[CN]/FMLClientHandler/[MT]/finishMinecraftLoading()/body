@@ -1,5 +1,5 @@
 {
-  if (modsMissing != null) {
+  if (modsMissing != null || wrongMC != null) {
     return;
   }
   try {

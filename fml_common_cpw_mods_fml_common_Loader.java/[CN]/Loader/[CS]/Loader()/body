@@ -5,4 +5,5 @@
     FMLLog.severe("This version of FML is built for Minecraft %s, we have detected Minecraft %s in your minecraft jar file",mccversion,actualMCVersion);
     throw new LoaderException();
   }
+  minecraft=new MinecraftDummyContainer(actualMCVersion);
 }

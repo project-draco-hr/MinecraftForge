@@ -37,4 +37,11 @@
     FMLLog.warning("Mod %s is missing the required element 'version' and no fallback can be found. Substituting '1.0'.",getModId());
     modMetadata.version=internalVersion="1.0";
   }
+  String mcVersionString=(String)descriptor.get("acceptedMinecraftVersions");
+  if (!Strings.isNullOrEmpty(mcVersionString)) {
+    minecraftAccepted=VersionParser.parseRange(mcVersionString);
+  }
+ else {
+    minecraftAccepted=Loader.instance().getMinecraftModContainer().getStaticVersionRange();
+  }
 }
