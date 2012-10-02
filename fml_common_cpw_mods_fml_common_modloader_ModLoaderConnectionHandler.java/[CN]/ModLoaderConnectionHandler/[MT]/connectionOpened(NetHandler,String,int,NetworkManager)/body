@@ -1,2 +1,3 @@
 {
+  ModLoaderHelper.sidedHelper.clientConnectionOpened(netClientHandler,manager,mod);
 }

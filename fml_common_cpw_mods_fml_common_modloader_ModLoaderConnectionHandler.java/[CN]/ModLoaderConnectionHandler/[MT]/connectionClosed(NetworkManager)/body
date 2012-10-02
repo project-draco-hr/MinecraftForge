@@ -1,4 +1,6 @@
 {
-  mod.serverDisconnect();
-  mod.onClientLogout(manager);
+  if (!ModLoaderHelper.sidedHelper.clientConnectionClosed(manager,mod)) {
+    mod.serverDisconnect();
+    mod.onClientLogout(manager);
+  }
 }

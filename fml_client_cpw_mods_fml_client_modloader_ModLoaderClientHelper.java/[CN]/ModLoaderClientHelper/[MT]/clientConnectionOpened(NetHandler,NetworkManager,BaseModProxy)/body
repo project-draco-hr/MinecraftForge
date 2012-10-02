@@ -1,0 +1,4 @@
+{
+  managerLookups.put(manager,netClientHandler);
+  ((BaseMod)mod).clientConnect((NetClientHandler)netClientHandler);
+}
