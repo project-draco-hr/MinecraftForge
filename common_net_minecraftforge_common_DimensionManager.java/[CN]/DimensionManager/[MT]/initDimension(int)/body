@@ -1,0 +1,23 @@
+{
+  WorldServer overworld=getWorld(0);
+  if (overworld == null) {
+    throw new RuntimeException("Cannot Hotload Dim: Overworld is not Loaded!");
+  }
+  try {
+    DimensionManager.getProviderType(dim);
+  }
+ catch (  Exception e) {
+    System.err.println("Cannot Hotload Dim: " + e.getMessage());
+    return;
+  }
+  MinecraftServer mcServer=overworld.getMinecraftServer();
+  ISaveHandler savehandler=overworld.getSaveHandler();
+  WorldSettings worldSettings=new WorldSettings(overworld.getWorldInfo());
+  WorldServer world=(dim == 0 ? overworld : new WorldServerMulti(mcServer,savehandler,overworld.getWorldInfo().getWorldName(),dim,worldSettings,overworld,mcServer.theProfiler));
+  MinecraftForge.EVENT_BUS.post(new WorldEvent.Load(world));
+  world.addWorldAccess(new WorldManager(mcServer,world));
+  if (!mcServer.isSinglePlayer()) {
+    world.getWorldInfo().setGameType(mcServer.getGameType());
+  }
+  mcServer.setDifficultyForAllWorlds(mcServer.getDifficulty());
+}

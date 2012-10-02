@@ -1,9 +1,16 @@
 {
-  worlds.put(id,world);
+  if (world != null) {
+    worlds.put(id,world);
+    MinecraftServer.getServer().worldTickTimes.put(id,new long[100]);
+  }
+ else {
+    worlds.remove(id);
+    MinecraftServer.getServer().worldTickTimes.remove(id);
+  }
   ArrayList<WorldServer> tmp=new ArrayList<WorldServer>();
-  tmp.add(worlds.get(0));
-  tmp.add(worlds.get(-1));
-  tmp.add(worlds.get(1));
+  if (worlds.get(0) != null)   tmp.add(worlds.get(0));
+  if (worlds.get(-1) != null)   tmp.add(worlds.get(-1));
+  if (worlds.get(1) != null)   tmp.add(worlds.get(1));
   for (  Entry<Integer,WorldServer> entry : worlds.entrySet()) {
     int dim=entry.getKey();
     if (dim >= -1 && dim <= 1) {
@@ -12,5 +19,4 @@
     tmp.add(entry.getValue());
   }
   MinecraftServer.getServer().worldServers=tmp.toArray(new WorldServer[0]);
-  MinecraftServer.getServer().worldTickTimes.put(id,new long[100]);
 }

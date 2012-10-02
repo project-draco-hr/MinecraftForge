@@ -1,0 +1,14 @@
+{
+  for (  int id : unloadQueue) {
+    try {
+      worlds.get(id).saveAllChunks(true,null);
+    }
+ catch (    MinecraftException e) {
+      e.printStackTrace();
+    }
+    MinecraftForge.EVENT_BUS.post(new WorldEvent.Unload(worlds.get(id)));
+    ((WorldServer)worlds.get(id)).flush();
+    setWorld(id,null);
+  }
+  unloadQueue.clear();
+}
