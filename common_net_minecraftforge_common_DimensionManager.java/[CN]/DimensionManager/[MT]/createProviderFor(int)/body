@@ -6,7 +6,7 @@
       return provider;
     }
  else {
-      return null;
+      throw new RuntimeException(String.format("No WorldProvider bound for dimension %d",dim));
     }
   }
  catch (  Exception e) {

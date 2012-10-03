@@ -1,0 +1,6 @@
+{
+  if (!dimensions.containsKey(id)) {
+    throw new IllegalArgumentException(String.format("Failed to unregister dimension for id %d; No provider registered",id));
+  }
+  dimensions.remove(id);
+}
