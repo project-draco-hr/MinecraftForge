@@ -1,0 +1,13 @@
+{
+  int[] data=new int[(dimensionMap.length() + Integer.SIZE - 1) / Integer.SIZE];
+  NBTTagCompound dimMap=new NBTTagCompound();
+  for (int i=0; i < data.length; i++) {
+    int val=0;
+    for (int j=0; j < Integer.SIZE; j++) {
+      val|=dimensionMap.get(i * Integer.SIZE + j) ? (1 << j) : 0;
+    }
+    data[i]=val;
+  }
+  dimMap.setIntArray("DimensionArray",data);
+  return dimMap;
+}

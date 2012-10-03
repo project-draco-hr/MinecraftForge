@@ -1,0 +1,5 @@
+{
+  if (tag.hasKey("DimensionData")) {
+    DimensionManager.loadDimensionDataMap(tag.hasKey("DimensionData") ? tag.getCompoundTag("DimensionData") : null);
+  }
+}

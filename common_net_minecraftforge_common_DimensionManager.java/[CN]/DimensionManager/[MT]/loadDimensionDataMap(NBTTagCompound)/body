@@ -1,0 +1,18 @@
+{
+  if (compoundTag == null) {
+    dimensionMap.clear();
+    for (    Integer id : dimensions.keySet()) {
+      if (id >= 0) {
+        dimensionMap.set(id);
+      }
+    }
+  }
+ else {
+    int[] intArray=compoundTag.getIntArray("DimensionArray");
+    for (int i=0; i < intArray.length; i++) {
+      for (int j=0; j < Integer.SIZE; j++) {
+        dimensionMap.set(i * Integer.SIZE + j,(intArray[i] & (1 << j)) != 0);
+      }
+    }
+  }
+}
