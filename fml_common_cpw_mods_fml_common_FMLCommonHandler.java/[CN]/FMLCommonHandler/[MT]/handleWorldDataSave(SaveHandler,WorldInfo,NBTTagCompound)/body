@@ -1,0 +1,11 @@
+{
+  for (  ModContainer mc : Loader.instance().getModList()) {
+    if (mc instanceof InjectedModContainer) {
+      WorldAccessContainer wac=((InjectedModContainer)mc).getWrappedWorldAccessContainer();
+      if (wac != null) {
+        NBTTagCompound dataForWriting=wac.getDataForWriting(handler,worldInfo);
+        tagCompound.func_74766_a(mc.getModId(),dataForWriting);
+      }
+    }
+  }
+}

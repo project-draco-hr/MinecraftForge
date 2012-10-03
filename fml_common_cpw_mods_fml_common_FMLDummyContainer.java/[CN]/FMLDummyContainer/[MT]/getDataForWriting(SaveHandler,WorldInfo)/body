@@ -1,0 +1,12 @@
+{
+  NBTTagCompound fmlData=new NBTTagCompound();
+  NBTTagList list=new NBTTagList();
+  for (  ModContainer mc : Loader.instance().getActiveModList()) {
+    NBTTagCompound mod=new NBTTagCompound();
+    mod.func_74778_a("ModId",mc.getModId());
+    mod.func_74778_a("ModVersion",mc.getVersion());
+    list.func_74742_a(mod);
+  }
+  fmlData.func_74782_a("ModList",list);
+  return fmlData;
+}

@@ -1,0 +1,19 @@
+{
+  if (getEffectiveSide() != Side.SERVER) {
+    return;
+  }
+  if (handlerSet.contains(handler)) {
+    return;
+  }
+  handlerSet.add(handler);
+  Map<String,NBTBase> additionalProperties=Maps.newHashMap();
+  worldInfo.setAdditionalProperties(additionalProperties);
+  for (  ModContainer mc : Loader.instance().getModList()) {
+    if (mc instanceof InjectedModContainer) {
+      WorldAccessContainer wac=((InjectedModContainer)mc).getWrappedWorldAccessContainer();
+      if (wac != null) {
+        wac.readData(handler,worldInfo,additionalProperties,tagCompound.func_74775_l(mc.getModId()));
+      }
+    }
+  }
+}
