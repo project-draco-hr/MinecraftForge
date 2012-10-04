@@ -2,10 +2,12 @@
   if (world != null) {
     worlds.put(id,world);
     MinecraftServer.getServer().worldTickTimes.put(id,new long[100]);
+    FMLLog.info("Loading dimension %d (%s) (%s)",id,world.getWorldInfo().getWorldName(),world.getMinecraftServer());
   }
  else {
     worlds.remove(id);
     MinecraftServer.getServer().worldTickTimes.remove(id);
+    FMLLog.info("Unloading dimension %d",id);
   }
   ArrayList<WorldServer> tmp=new ArrayList<WorldServer>();
   if (worlds.get(0) != null)   tmp.add(worlds.get(0));
