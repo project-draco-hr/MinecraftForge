@@ -3,5 +3,8 @@
     return;
   }
   ticket.requestedChunks.remove(chunk);
-  forcedChunks.get(ticket.world).remove(chunk,ticket);
+  LinkedHashMultimap<ChunkCoordIntPair,Ticket> copy=LinkedHashMultimap.create(forcedChunks.get(ticket.world));
+  copy.remove(chunk,ticket);
+  ImmutableSetMultimap<ChunkCoordIntPair,Ticket> newMap=ImmutableSetMultimap.copyOf(copy);
+  forcedChunks.put(ticket.world,newMap);
 }
