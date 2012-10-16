@@ -1,3 +1,4 @@
 {
   System.out.printf("Hello from mockmod init : %s %s %s\n",myInstance,meta,MockBlock.tstInstance);
+  proxy.throwError();
 }

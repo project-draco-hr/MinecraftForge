@@ -5,7 +5,12 @@
   try {
     Loader.instance().initializeMods();
   }
- catch (  LoaderException le) {
+ catch (  CustomModLoadingErrorDisplayException custom) {
+    FMLLog.log(Level.SEVERE,custom,"A custom exception was thrown by a mod, the game will now halt");
+    customError=custom;
+    return;
+  }
+catch (  LoaderException le) {
     haltGame("There was a severe problem during mod loading that has caused the game to fail",le);
     return;
   }

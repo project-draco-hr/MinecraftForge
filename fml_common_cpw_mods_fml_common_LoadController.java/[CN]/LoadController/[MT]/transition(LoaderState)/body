@@ -2,6 +2,7 @@
   LoaderState oldState=state;
   state=state.transition(!errors.isEmpty());
   if (state != desiredState) {
+    Throwable toThrow=null;
     FMLLog.severe("Fatal errors were detected during the transition from %s to %s. Loading cannot continue",oldState,desiredState);
     StringBuilder sb=new StringBuilder();
     printModStates(sb);
@@ -9,7 +10,18 @@
     FMLLog.severe("The following problems were captured during this phase");
     for (    Entry<String,Throwable> error : errors.entries()) {
       FMLLog.log(Level.SEVERE,error.getValue(),"Caught exception from %s",error.getKey());
+      if (error.getValue() instanceof IFMLHandledException) {
+        toThrow=error.getValue();
+      }
+ else       if (toThrow == null) {
+        toThrow=error.getValue();
+      }
     }
-    throw new LoaderException(errors.values().iterator().next());
+    if (toThrow != null && toThrow instanceof RuntimeException) {
+      throw (RuntimeException)toThrow;
+    }
+ else {
+      throw new LoaderException(toThrow);
+    }
   }
 }
