@@ -24,6 +24,7 @@
   }
  catch (  Exception e) {
   }
+  errCache=System.err;
   System.setOut(new PrintStream(new LoggingOutStream(stdOut),true));
   System.setErr(new PrintStream(new LoggingOutStream(stdErr),true));
   configured=true;

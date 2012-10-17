@@ -1,8 +1,12 @@
 {
+  boolean currInt=Thread.interrupted();
   try {
     ConsoleLogThread.recordQueue.put(record);
   }
  catch (  InterruptedException e) {
-    Thread.interrupted();
+    e.printStackTrace(errCache);
+  }
+  if (currInt) {
+    Thread.currentThread().interrupt();
   }
 }

@@ -6,6 +6,7 @@
       wrappedHandler.publish(lr);
     }
  catch (    InterruptedException e) {
+      e.printStackTrace(errCache);
       Thread.interrupted();
     }
   }
