@@ -6,7 +6,8 @@
   boolean hasSetup=false;
   boolean hasGetListenerList=false;
   boolean hasDefaultCtr=false;
-  Type tList=Type.getType(ListenerList.class);
+  Class<?> listenerListClazz=Class.forName("net.minecraftforge.event.ListenerList",false,getClass().getClassLoader());
+  Type tList=Type.getType(listenerListClazz);
   for (  MethodNode method : (List<MethodNode>)classNode.methods) {
     if (method.name.equals("setup") && method.desc.equals(Type.getMethodDescriptor(VOID_TYPE)) && (method.access & ACC_PROTECTED) == ACC_PROTECTED) {
       hasSetup=true;

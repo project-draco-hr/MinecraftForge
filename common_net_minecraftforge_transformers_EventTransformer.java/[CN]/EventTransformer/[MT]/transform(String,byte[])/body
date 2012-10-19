@@ -1,5 +1,5 @@
 {
-  if (name.equals("net.minecraftforge.event.Event") || name.startsWith("net.minecraft.src.") || name.indexOf('.') == -1) {
+  if (name.equals("net.minecraftforge.event.Event") || name.startsWith("net.minecraft.") || name.indexOf('.') == -1) {
     return bytes;
   }
   ClassReader cr=new ClassReader(bytes);
