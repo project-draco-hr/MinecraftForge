@@ -1,4 +1,7 @@
 {
   Thread thr=Thread.currentThread();
+  if ((thr instanceof ThreadMinecraftServer) || (thr instanceof ServerListenThread)) {
+    return Side.SERVER;
+  }
   return Side.CLIENT;
 }
