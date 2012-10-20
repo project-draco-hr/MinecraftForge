@@ -1,4 +1,0 @@
-{
-  System.out.printf("%d MLGUITICK\n",System.currentTimeMillis());
-  return true;
-}
