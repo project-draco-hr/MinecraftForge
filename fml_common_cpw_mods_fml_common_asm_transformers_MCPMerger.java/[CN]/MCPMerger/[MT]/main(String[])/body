@@ -1,6 +1,6 @@
 {
   if (args.length != 3) {
-    System.out.println("Usage: AccessTransformer <MapFile> <minecraft.jar> <minecraft_server.jar>");
+    System.out.println("Usage: MCPMerger <MapFile> <minecraft.jar> <minecraft_server.jar>");
     System.exit(1);
   }
   File map_file=new File(args[0]);
