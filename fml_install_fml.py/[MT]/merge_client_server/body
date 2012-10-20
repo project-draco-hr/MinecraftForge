@@ -8,6 +8,7 @@ def merge_client_server(mcp_dir):
         return
     if (not os.path.isdir(shared)):
         os.makedirs(shared)
+    special_cases = ['GuiStatsComponent.java', 'HttpUtilRunnable.java', 'PlayerUsageSnooper.java', 'RConThreadClient.java']
     for (path, _, filelist) in os.walk(client, followlinks=True):
         for cur_file in filelist:
             f_client = os.path.normpath(os.path.join(client, path[(len(client) + 1):], cur_file)).replace(os.path.sep, '/')
@@ -21,7 +22,7 @@ def merge_client_server(mcp_dir):
                 md5_c = md5(fh.read()).hexdigest()
             with open(f_server, 'rb') as fh:
                 md5_s = md5(fh.read()).hexdigest()
-            if (md5_c != md5_s):
+            if ((md5_c != md5_s) and (not (cur_file in special_cases))):
                 continue
             new_dir = os.path.join(shared, path[(len(client) + 1):])
             if (not os.path.isdir(new_dir)):
