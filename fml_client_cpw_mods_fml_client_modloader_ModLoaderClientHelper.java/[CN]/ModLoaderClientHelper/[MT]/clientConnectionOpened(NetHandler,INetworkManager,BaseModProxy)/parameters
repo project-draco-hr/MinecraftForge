@@ -1,0 +1,3 @@
+NetHandler netClientHandler
+INetworkManager manager
+BaseModProxy mod

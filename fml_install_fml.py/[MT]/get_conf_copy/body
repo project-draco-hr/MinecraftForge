@@ -1,5 +1,5 @@
 def get_conf_copy(mcp_dir, fml_dir):
-    for file in ['astyle.cfg', 'version.cfg', 'patches/minecraft_ff.patch', 'patches/minecraft_server_ff.patch', 'newids.csv']:
+    for file in ['astyle.cfg', 'version.cfg', 'newids.csv']:
         dst_file = os.path.normpath(os.path.join(fml_dir, 'conf', file))
         src_file = os.path.normpath(os.path.join(mcp_dir, 'conf', file))
         if (not os.path.isdir(os.path.dirname(dst_file))):
@@ -9,15 +9,6 @@ def get_conf_copy(mcp_dir, fml_dir):
         shutil.copy(src_file, dst_file)
         normaliselines(dst_file)
         print ('Grabbing: ' + src_file)
-    ff_server = os.path.normpath(os.path.join(fml_dir, 'conf', 'patches', 'minecraft_server_ff.patch'))
-    data = []
-    with open(ff_server) as f:
-        data = f.readlines()
-    data = (data + ['diff -r -U 3 minecraft_server\\net\\minecraft\\src\\ItemMap.java minecraft_server_patched\\net\\minecraft\\src\\ItemMap.java', '--- minecraft_server\\net\\minecraft\\src\\ItemMap.java\tWed Aug 01 18:15:37 2012', '+++ minecraft_server_patched\\net\\minecraft\\src\\ItemMap.java\tWed Aug 01 18:27:23 2012', '@@ -24,7 +24,6 @@', '    }', ' ', '    public static MapData func_77874_a(short p_77874_0_, World p_77874_1_) {', '-      "map_" + p_77874_0_;', '       MapData var3 = (MapData)p_77874_1_.func_72943_a(MapData.class, "map_" + p_77874_0_);', '       if(var3 == null) {', '          int var4 = p_77874_1_.func_72841_b("map");'])
-    os.remove(ff_server)
-    with open(ff_server, 'wb') as f:
-        for line in data:
-            f.write((line.rstrip('\r\n') + '\n'))
     common_srg = gen_merged_srg(mcp_dir, fml_dir)
     common_exc = gen_merged_exc(mcp_dir, fml_dir)
     common_map = gen_shared_searge_names(common_srg, common_exc)

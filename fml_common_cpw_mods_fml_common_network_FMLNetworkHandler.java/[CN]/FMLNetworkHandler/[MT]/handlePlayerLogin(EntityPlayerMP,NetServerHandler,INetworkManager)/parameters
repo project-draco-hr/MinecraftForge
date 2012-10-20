@@ -1,0 +1,3 @@
+EntityPlayerMP player
+NetServerHandler netHandler
+INetworkManager manager

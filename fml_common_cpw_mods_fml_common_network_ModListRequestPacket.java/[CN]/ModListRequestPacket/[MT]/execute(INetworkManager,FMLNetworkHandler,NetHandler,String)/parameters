@@ -1,0 +1,4 @@
+INetworkManager mgr
+FMLNetworkHandler handler
+NetHandler netHandler
+String userName

@@ -1,3 +1,0 @@
-{
-  ModLoader.registerKey(this,new KeyBinding("Fishhead",Keyboard.KEY_O),true);
-}

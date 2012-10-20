@@ -62,7 +62,7 @@ def setup_fml(fml_dir, mcp_dir):
         os.chdir(mcp_dir)
         Commands.applyrg = applyrg_shunt
         Commands.checkjars = checkjars_shunt
-        decompile(None, False, False, True, True, False, True, False, False, False, False)
+        decompile(None, False, False, True, True, False, True, False, False, False, False, False, False)
         reset_logger()
         os.chdir(fml_dir)
         post_decompile(mcp_dir, fml_dir)

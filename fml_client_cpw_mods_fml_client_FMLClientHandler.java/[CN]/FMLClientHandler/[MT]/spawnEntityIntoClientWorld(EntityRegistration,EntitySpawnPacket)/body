@@ -18,7 +18,7 @@
     entity.field_70117_cu=packet.rawY;
     entity.field_70116_cv=packet.rawZ;
     if (entity instanceof IThrowableEntity) {
-      Entity thrower=client.field_71439_g.field_70157_k == packet.throwerId ? client.field_71439_g : wc.func_73024_a(packet.throwerId);
+      Entity thrower=client.field_71439_g.field_70157_k == packet.throwerId ? client.field_71439_g : wc.func_73045_a(packet.throwerId);
       ((IThrowableEntity)entity).setThrower(thrower);
     }
     Entity parts[]=entity.func_70021_al();
