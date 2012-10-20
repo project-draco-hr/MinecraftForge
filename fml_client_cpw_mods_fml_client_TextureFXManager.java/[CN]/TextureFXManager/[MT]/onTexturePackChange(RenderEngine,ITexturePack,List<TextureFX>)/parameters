@@ -1,0 +1,3 @@
+RenderEngine engine
+ITexturePack texturepack
+List<TextureFX> effects

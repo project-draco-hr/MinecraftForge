@@ -1,4 +1,0 @@
-NetHandler netClientHandler
-String server
-int port
-NetworkManager networkManager
