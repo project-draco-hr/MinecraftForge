@@ -1,4 +1,5 @@
 {
   RenderPlayer.field_77110_j=ObjectArrays.concat(RenderPlayer.field_77110_j,armor);
+  RenderBiped.field_82424_k=RenderPlayer.field_77110_j;
   return RenderPlayer.field_77110_j.length - 1;
 }
