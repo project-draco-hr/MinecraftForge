@@ -1,0 +1,10 @@
+{
+  Class cls=this.getClass();
+  while (cls != Event.class) {
+    if (cls.isAnnotationPresent(Cancelable.class)) {
+      return true;
+    }
+    cls=cls.getSuperclass();
+  }
+  return false;
+}

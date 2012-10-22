@@ -1,13 +1,5 @@
 {
   setup();
-  Class cls=this.getClass();
-  boolean found=false;
-  while (cls != Event.class) {
-    if (cls.isAnnotationPresent(Cancelable.class)) {
-      found=true;
-      break;
-    }
-    cls=cls.getSuperclass();
-  }
-  isCancelable=found;
+  isCancelable=hasAnnotation(Cancelable.class);
+  hasResult=hasAnnotation(HasResult.class);
 }
