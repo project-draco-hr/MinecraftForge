@@ -1,3 +1,0 @@
-{
-  return getBlock(CATEGORY_BLOCK,key,defaultID);
-}
