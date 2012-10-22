@@ -5,7 +5,7 @@
       int subY=y - startY;
       Object target=null;
       if (subX >= 0 && subY >= 0 && subX < width && subY < height) {
-        if (mirrior) {
+        if (mirror) {
           target=input[width - subX - 1 + subY * width];
         }
  else {

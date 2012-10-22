@@ -4,7 +4,7 @@
       if (checkMatch(inv,x,y,true)) {
         return true;
       }
-      if (mirriored && checkMatch(inv,x,y,false)) {
+      if (mirrored && checkMatch(inv,x,y,false)) {
         return true;
       }
     }
