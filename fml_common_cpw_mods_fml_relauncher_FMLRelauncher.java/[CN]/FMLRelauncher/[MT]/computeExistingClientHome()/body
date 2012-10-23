@@ -3,7 +3,7 @@
   String str=System.getProperty("minecraft.applet.TargetDirectory");
   if (str != null) {
     str=str.replace('/',File.separatorChar);
-    ReflectionHelper.setPrivateValue(mcMaster,null,new File(str),"minecraftDir","am","minecraftDir");
+    ReflectionHelper.setPrivateValue(mcMaster,null,new File(str),"minecraftDir","an","minecraftDir");
   }
   Method setupHome=ReflectionHelper.findMethod(mcMaster,null,new String[]{"func_71380_b","getMinecraftDir","b"});
   try {
@@ -11,6 +11,6 @@
   }
  catch (  Exception e) {
   }
-  File minecraftHome=ReflectionHelper.getPrivateValue(mcMaster,null,"field_71463_am","am","minecraftDir");
+  File minecraftHome=ReflectionHelper.getPrivateValue(mcMaster,null,"field_71463_am","an","minecraftDir");
   return minecraftHome;
 }
