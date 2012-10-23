@@ -1,4 +1,7 @@
 {
+  if (bytes == null) {
+    return null;
+  }
   if (!markers.containsKey(name)) {
     return bytes;
   }

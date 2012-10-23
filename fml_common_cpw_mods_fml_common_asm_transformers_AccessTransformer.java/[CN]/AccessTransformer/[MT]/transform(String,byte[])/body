@@ -1,4 +1,7 @@
 {
+  if (bytes == null) {
+    return null;
+  }
   if (!modifiers.containsKey(name)) {
     return bytes;
   }
