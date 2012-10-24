@@ -1,6 +1,7 @@
 {
   modController.distributeStateMessage(LoaderState.INITIALIZATION);
   modController.transition(LoaderState.POSTINITIALIZATION);
+  modController.distributeStateMessage(FMLInterModComms.IMCEvent.class);
   modController.distributeStateMessage(LoaderState.POSTINITIALIZATION);
   modController.transition(LoaderState.AVAILABLE);
   modController.distributeStateMessage(LoaderState.AVAILABLE);

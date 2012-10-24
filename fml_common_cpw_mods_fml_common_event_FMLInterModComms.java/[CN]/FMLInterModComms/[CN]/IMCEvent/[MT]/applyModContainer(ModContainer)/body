@@ -1,0 +1,3 @@
+{
+  currentList=messages.get(activeContainer.getModId());
+}

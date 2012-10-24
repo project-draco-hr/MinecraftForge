@@ -1,0 +1,7 @@
+{
+  if (Loader.instance().activeModContainer() == null) {
+    return false;
+  }
+  modMessages.put(modId,new IMCMessage(Loader.instance().activeModContainer().getModId(),key,value));
+  return Loader.isModLoaded(modId) && !Loader.instance().hasReachedState(LoaderState.POSTINITIALIZATION);
+}
