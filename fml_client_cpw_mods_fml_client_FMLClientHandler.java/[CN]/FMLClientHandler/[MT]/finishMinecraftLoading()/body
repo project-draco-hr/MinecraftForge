@@ -1,5 +1,5 @@
 {
-  if (modsMissing != null || wrongMC != null) {
+  if (modsMissing != null || wrongMC != null || customError != null || dupesFound != null) {
     return;
   }
   try {

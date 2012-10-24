@@ -27,6 +27,9 @@
  catch (  WrongMinecraftVersionException wrong) {
     wrongMC=wrong;
   }
+catch (  DuplicateModsFoundException dupes) {
+    dupesFound=dupes;
+  }
 catch (  MissingModsException missing) {
     modsMissing=missing;
   }

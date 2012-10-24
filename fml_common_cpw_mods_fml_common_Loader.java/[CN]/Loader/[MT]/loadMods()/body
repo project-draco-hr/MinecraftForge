@@ -11,7 +11,7 @@
   mods=ImmutableList.copyOf(mods);
   for (  File nonMod : disc.getNonModLibs()) {
     if (nonMod.isFile()) {
-      FMLLog.severe("FML has found a non-mod file %s in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.",nonMod.getName());
+      FMLLog.info("FML has found a non-mod file %s in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.",nonMod.getName());
       try {
         modClassLoader.addFile(nonMod);
       }
