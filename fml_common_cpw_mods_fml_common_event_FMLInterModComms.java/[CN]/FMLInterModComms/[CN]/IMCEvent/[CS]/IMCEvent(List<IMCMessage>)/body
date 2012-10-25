@@ -1,8 +1,0 @@
-{
-  this.messages=Multimaps.index(messages,new Function<IMCMessage,String>(){
-    public String apply(    IMCMessage msg){
-      return msg.sender;
-    }
-  }
-);
-}
