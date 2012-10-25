@@ -1,5 +1,6 @@
 {
   FMLLog.fine("Building injected Mod Containers %s",injectedContainers);
+  mods.add(new InjectedModContainer(mcp,null));
   File coremod=new File(minecraftDir,"coremods");
   for (  String cont : injectedContainers) {
     ModContainer mc;

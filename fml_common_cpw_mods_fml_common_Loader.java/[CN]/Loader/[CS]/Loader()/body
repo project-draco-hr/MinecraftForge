@@ -6,4 +6,5 @@
     throw new LoaderException();
   }
   minecraft=new MinecraftDummyContainer(actualMCVersion);
+  mcp=new MCPDummyContainer(MetadataCollection.from(getClass().getResourceAsStream("/mcpmod.info"),"MCP").getMetadataForId("mcp",null));
 }
