@@ -1,0 +1,5 @@
+{
+  if (!WorldChunkManager.allowedBiomes.contains(biome)) {
+    WorldChunkManager.allowedBiomes.add(biome);
+  }
+}
