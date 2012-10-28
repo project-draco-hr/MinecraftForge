@@ -1,0 +1,11 @@
+{
+  if (!children.containsKey(name)) {
+    children.put(name,child);
+  }
+ else {
+    Configuration old=children.get(name);
+    child.categories=old.categories;
+    child.customCategoryComments=old.customCategoryComments;
+    child.fileName=old.fileName;
+  }
+}

@@ -1,4 +1,7 @@
 {
+  if (PARENT != null && PARENT != this) {
+    return;
+  }
   BufferedReader buffer=null;
   try {
     if (file.getParentFile() != null) {
@@ -17,6 +20,22 @@
         line=buffer.readLine();
         if (line == null) {
           break;
+        }
+        Matcher start=CONFIG_START.matcher(line);
+        Matcher end=CONFIG_END.matcher(line);
+        if (start.matches()) {
+          fileName=start.group(1);
+          categories=new TreeMap<String,Map<String,Property>>();
+          customCategoryComments=Maps.newHashMap();
+          continue;
+        }
+ else         if (end.matches()) {
+          fileName=end.group(1);
+          Configuration child=new Configuration();
+          child.categories=categories;
+          child.customCategoryComments=customCategoryComments;
+          this.children.put(fileName,child);
+          continue;
         }
         int nameStart=-1, nameEnd=-1;
         boolean skip=false;

@@ -1,0 +1,4 @@
+{
+  PARENT=new Configuration(new File(Loader.instance().getConfigDir(),"global.cfg"));
+  PARENT.load();
+}

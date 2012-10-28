@@ -11,4 +11,13 @@
   meta.updateUrl="http://MinecraftForge.net/forum/index.php/topic,5.0.html";
   meta.screenshots=new String[0];
   meta.logoFile="/forge_logo.png";
+  Configuration config=new Configuration(new File(Loader.instance().getConfigDir(),"forge.cfg"));
+  if (!config.isChild) {
+    config.load();
+    Property enableGlobalCfg=config.get(Configuration.CATEGORY_GENERAL,"enableGlobalConfig",false);
+    if (enableGlobalCfg.getBoolean(false)) {
+      Configuration.enableGlobalConfig();
+    }
+    config.save();
+  }
 }

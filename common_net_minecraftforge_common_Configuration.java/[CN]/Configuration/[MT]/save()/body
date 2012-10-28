@@ -1,4 +1,8 @@
 {
+  if (PARENT != null && PARENT != this) {
+    PARENT.save();
+    return;
+  }
   try {
     if (file.getParentFile() != null) {
       file.getParentFile().mkdirs();
@@ -12,26 +16,15 @@
       buffer.write("# Configuration file\r\n");
       buffer.write("# Generated on " + DateFormat.getInstance().format(new Date()) + "\r\n");
       buffer.write("\r\n");
-      for (      Map.Entry<String,Map<String,Property>> category : categories.entrySet()) {
-        buffer.write("####################\r\n");
-        buffer.write("# " + category.getKey() + " \r\n");
-        if (customCategoryComments.containsKey(category.getKey())) {
-          buffer.write("#===================\r\n");
-          String comment=customCategoryComments.get(category.getKey());
-          Splitter splitter=Splitter.onPattern("\r?\n");
-          for (          String commentLine : splitter.split(comment)) {
-            buffer.write("# ");
-            buffer.write(commentLine + "\r\n");
-          }
+      if (children.isEmpty()) {
+        save(buffer);
+      }
+ else {
+        for (        Map.Entry<String,Configuration> entry : children.entrySet()) {
+          buffer.write("START: \"" + entry.getKey() + "\"\r\n");
+          entry.getValue().save(buffer);
+          buffer.write("END: \"" + entry.getKey() + "\"\r\n\r\n");
         }
-        buffer.write("####################\r\n\r\n");
-        String catKey=category.getKey();
-        if (!allowedProperties.matchesAllOf(catKey)) {
-          catKey='"' + catKey + '"';
-        }
-        buffer.write(catKey + " {\r\n");
-        writeProperties(buffer,category.getValue().values());
-        buffer.write("}\r\n\r\n");
       }
       buffer.close();
       fos.close();
