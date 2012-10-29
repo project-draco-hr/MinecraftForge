@@ -1,4 +1,4 @@
-def make_changelog(job_path, target_build, change_file):
+def make_changelog(job_path, target_build, change_file, current_version=None):
     builds = getBuildInfo(('%s/api/python?tree=builds[number,actions[text],changeSet[items[author[fullName],comment]]]&pretty=true' % job_path))
     log = ['Changelog:']
     for build in builds:
@@ -8,7 +8,10 @@ def make_changelog(job_path, target_build, change_file):
             continue
         log.append('')
         if (build['version'] is None):
-            log.append(('Build %s' % build['number']))
+            if (current_version is None):
+                log.append(('Build %s' % build['number']))
+            else:
+                log.append(('Build %s' % current_version))
         else:
             log.append(('Build %s' % build['version']))
         for change in build['items']:

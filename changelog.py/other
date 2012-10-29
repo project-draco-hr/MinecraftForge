@@ -4,5 +4,3 @@ from pprint import pprint
 from urlparse import urlparse
 import base64
 import optparse, ast
-if (__name__ == '__main__'):
-    main()
