@@ -1,0 +1,24 @@
+def main():
+    target_build = 0
+    job_path = None
+    change_file = None
+    if (len(sys.argv) > 3):
+        try:
+            target_build = int(sys.argv[1])
+            job_path = sys.argv[2]
+            change_file = sys.argv[3]
+        except:
+            pass
+    else:
+        target_build = 10000
+        job_path = 'http://jenkins.minecraftforge.net/job/forge/'
+        change_file = 'changes.txt'
+    p = re.compile('\\w+-(?P<type>\\w+)-(?P<version>[\\d]+.[\\d]+.[\\d]+.(?P<build>[\\d]+)).zip')
+    builds = {}
+    for filename in os.listdir('D:\\tmp'):
+        m = p.search(filename)
+        if (not (m is None)):
+            builds[m.group('build')] = m.group('version')
+    for key in sorted(builds.iterkeys(), key=(lambda key: int(key))):
+        print ('%s %s' % (key, builds[key]))
+        make_changelog(job_path, int(key), ('d:\\tmp\\minecraftforge-changelog-%s.txt' % builds[key]))
