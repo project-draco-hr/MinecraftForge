@@ -1,4 +1,7 @@
 {
+  if (invalidClasses.contains(name)) {
+    throw new ClassNotFoundException(name);
+  }
   if (excludedPackages.length != 0) {
     classLoaderExceptions.addAll(Arrays.asList(excludedPackages));
     excludedPackages=new String[0];
@@ -17,9 +20,15 @@
   }
   for (  String st : transformerExceptions) {
     if (name.startsWith(st)) {
-      Class<?> cl=super.findClass(name);
-      cachedClasses.put(name,cl);
-      return cl;
+      try {
+        Class<?> cl=super.findClass(name);
+        cachedClasses.put(name,cl);
+        return cl;
+      }
+ catch (      ClassNotFoundException e) {
+        invalidClasses.add(name);
+        throw e;
+      }
     }
   }
   try {
@@ -37,6 +46,7 @@
     return cl;
   }
  catch (  Throwable e) {
+    invalidClasses.add(name);
     throw new ClassNotFoundException(name,e);
   }
 }
