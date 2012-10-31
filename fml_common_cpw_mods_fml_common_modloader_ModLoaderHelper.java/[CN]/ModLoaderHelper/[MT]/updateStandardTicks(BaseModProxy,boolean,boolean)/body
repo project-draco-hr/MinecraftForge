@@ -1,5 +1,9 @@
 {
-  ModLoaderModContainer mlmc=(ModLoaderModContainer)Loader.instance().activeModContainer();
+  ModLoaderModContainer mlmc=(ModLoaderModContainer)Loader.instance().getReversedModObjectList().get(mod);
+  if (mlmc == null) {
+    FMLLog.severe("Attempted to register ModLoader ticking for invalid BaseMod %s",mod);
+    return;
+  }
   BaseModTicker ticker=mlmc.getGameTickHandler();
   EnumSet<TickType> ticks=ticker.ticks();
   if (enable && !useClock) {
