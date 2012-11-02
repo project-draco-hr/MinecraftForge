@@ -35,6 +35,8 @@ def gen_merged_srg(mcp_dir, fml_dir):
     for type in common:
         for (key, value) in server[type].items():
             common[type][key] = value
+    if (fml_dir is None):
+        return common
     with open(os.path.join(fml_dir, 'conf', 'joined.srg'), 'wb') as f:
         for type in ['PK:', 'CL:', 'FD:', 'MD:']:
             for key in sorted(common[type]):

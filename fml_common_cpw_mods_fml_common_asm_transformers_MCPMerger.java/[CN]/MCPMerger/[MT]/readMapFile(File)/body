@@ -5,8 +5,9 @@
     BufferedReader br=new BufferedReader(new InputStreamReader(in));
     String line;
     while ((line=br.readLine()) != null) {
+      line=line.split("#")[0];
       boolean toClient=line.charAt(0) == '<';
-      line=line.substring(1);
+      line=line.substring(1).trim();
       if (toClient)       copyToClient.add(line);
  else       copyToServer.add(line);
     }
