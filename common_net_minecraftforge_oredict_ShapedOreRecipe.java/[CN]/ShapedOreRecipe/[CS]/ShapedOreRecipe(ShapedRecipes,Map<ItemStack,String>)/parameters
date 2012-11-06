@@ -1,0 +1,2 @@
+ShapedRecipes recipe
+Map<ItemStack,String> replacements

@@ -1,0 +1,3 @@
+ItemStack target
+ItemStack input
+boolean strict

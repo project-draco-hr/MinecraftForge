@@ -1,0 +1,3 @@
+boolean strict
+ItemStack[] inputs
+ItemStack targets
