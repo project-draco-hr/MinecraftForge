@@ -1,18 +1,5 @@
 def download_deps(mcp_path):
-    bin_path = os.path.normpath(os.path.join(mcp_path, 'runtime', 'bin'))
-    ff_path = os.path.normpath(os.path.join(bin_path, 'fernflower.jar'))
     ret = True
-    if (not os.path.isfile(ff_path)):
-        try:
-            urllib.urlretrieve('http://goo.gl/PnJHp', 'fernflower.zip')
-            zf = zipfile.ZipFile('fernflower.zip')
-            zf.extract('fernflower.jar', bin_path)
-            zf.close()
-            os.remove('fernflower.zip')
-            print 'Downloaded Fernflower successfully'
-        except:
-            print 'Downloading Fernflower failed download manually from http://goo.gl/PnJHp'
-            ret = False
     for lib in ['argo-2.25.jar', 'guava-12.0.1.jar', 'guava-12.0.1-sources.jar', 'asm-all-4.0.jar', 'asm-all-4.0-source.jar']:
         libF = os.path.join(mcp_path, 'lib')
         if (not os.path.isdir(libF)):

@@ -1,0 +1,17 @@
+def download_native(url, folder, name):
+    if (not os.path.exists(folder)):
+        os.makedirs(folder)
+    target = os.path.join(folder, name)
+    if (not download_file((url + name), target)):
+        return False
+    with ZipFile(target) as zip:
+        for name in zip.namelist():
+            if ((not name.startswith('META-INF')) and (not name.endswith('/'))):
+                out_file = os.path.join(folder, name)
+                if (not os.path.isfile(out_file)):
+                    print ('    Extracting %s' % name)
+                    out = open(out_file, 'wb')
+                    out.write(zip.read(name))
+                    out.flush()
+                    out.close()
+    return True
