@@ -1,0 +1,3 @@
+int liquidId
+int quantity
+ItemStack emptyContainer

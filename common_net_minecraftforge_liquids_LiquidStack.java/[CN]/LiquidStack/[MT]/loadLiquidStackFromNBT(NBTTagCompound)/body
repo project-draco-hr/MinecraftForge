@@ -1,0 +1,5 @@
+{
+  LiquidStack liquidstack=new LiquidStack();
+  liquidstack.readFromNBT(nbttagcompound);
+  return liquidstack.itemID == 0 ? null : liquidstack;
+}

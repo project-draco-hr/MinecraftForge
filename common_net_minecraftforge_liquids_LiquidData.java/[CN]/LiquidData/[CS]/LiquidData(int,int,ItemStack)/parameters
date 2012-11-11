@@ -1,0 +1,3 @@
+int stillLiquidId
+int movingLiquidId
+ItemStack filled

@@ -1,0 +1,6 @@
+{
+  nbttagcompound.setShort("Id",(short)itemID);
+  nbttagcompound.setInteger("Amount",amount);
+  nbttagcompound.setShort("Meta",(short)itemMeta);
+  return nbttagcompound;
+}

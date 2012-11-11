@@ -1,0 +1,5 @@
+{
+  itemID=nbttagcompound.getShort("Id");
+  amount=nbttagcompound.getInteger("Amount");
+  itemMeta=nbttagcompound.getShort("Meta");
+}

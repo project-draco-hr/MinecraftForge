@@ -1,0 +1,26 @@
+{
+  if (resource == null || resource.itemID <= 0)   return 0;
+  if (liquid == null || liquid.itemID <= 0) {
+    if (resource.amount <= capacity) {
+      if (doFill)       this.liquid=resource.copy();
+      return resource.amount;
+    }
+ else {
+      if (doFill) {
+        this.liquid=resource.copy();
+        this.liquid.amount=capacity;
+      }
+      return capacity;
+    }
+  }
+  if (!liquid.isLiquidEqual(resource))   return 0;
+  int space=capacity - liquid.amount;
+  if (resource.amount <= space) {
+    if (doFill)     this.liquid.amount+=resource.amount;
+    return resource.amount;
+  }
+ else {
+    if (doFill)     this.liquid.amount=capacity;
+    return space;
+  }
+}

@@ -1,0 +1,5 @@
+{
+  if (block.itemID == 0)   return false;
+  for (  LiquidData liquid : liquids)   if (liquid.stillLiquid.isLiquidEqual(block) || liquid.movingLiquid.isLiquidEqual(block))   return true;
+  return false;
+}

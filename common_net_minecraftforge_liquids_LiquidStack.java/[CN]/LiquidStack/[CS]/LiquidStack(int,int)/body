@@ -1,0 +1,3 @@
+{
+  this(itemID,amount,0);
+}

@@ -1,0 +1,5 @@
+{
+  LiquidStack liquidForFilledItem=getLiquidForFilledItem(filledItem);
+  if (liquidForFilledItem == null)   return 0;
+  return liquidForFilledItem.itemID;
+}

@@ -1,0 +1,12 @@
+{
+  if (liquid == null || liquid.itemID <= 0)   return null;
+  if (liquid.amount <= 0)   return null;
+  int used=maxDrain;
+  if (liquid.amount < used)   used=liquid.amount;
+  if (doDrain) {
+    liquid.amount-=used;
+  }
+  LiquidStack drained=new LiquidStack(liquid.itemID,used,liquid.itemMeta);
+  if (liquid.amount <= 0)   liquid=null;
+  return drained;
+}

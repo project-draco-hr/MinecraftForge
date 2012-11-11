@@ -1,0 +1,8 @@
+{
+  LiquidStack existing=liquids.get(name);
+  if (existing != null) {
+    return existing.copy();
+  }
+  liquids.put(name,liquid.copy());
+  return liquid;
+}
