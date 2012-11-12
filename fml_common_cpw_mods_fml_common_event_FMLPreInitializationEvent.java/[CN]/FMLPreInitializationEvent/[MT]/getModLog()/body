@@ -1,0 +1,5 @@
+{
+  Logger log=Logger.getLogger(modContainer.getModId());
+  log.setParent(FMLLog.getLogger());
+  return log;
+}

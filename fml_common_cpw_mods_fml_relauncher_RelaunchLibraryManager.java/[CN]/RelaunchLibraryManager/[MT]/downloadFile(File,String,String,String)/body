@@ -1,9 +1,8 @@
 {
   try {
     URL libDownload=new URL(String.format(rootUrl,realFilePath));
-    String infoString=String.format("Downloading file %s",libDownload.toString());
-    downloadMonitor.updateProgressString(infoString);
-    FMLRelaunchLog.info(infoString);
+    downloadMonitor.updateProgressString("Downloading file %s",libDownload.toString());
+    FMLRelaunchLog.info("Downloading file %s",libDownload.toString());
     URLConnection connection=libDownload.openConnection();
     connection.setConnectTimeout(5000);
     connection.setReadTimeout(5000);

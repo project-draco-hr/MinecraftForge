@@ -96,10 +96,10 @@
           }
         }
         if (!download) {
-          downloadMonitor.updateProgressString("Found library file %s present and correct in lib dir\n",libName);
+          downloadMonitor.updateProgressString("Found library file %s present and correct in lib dir",libName);
         }
  else {
-          downloadMonitor.updateProgressString("Library file %s was downloaded and verified successfully\n",libName);
+          downloadMonitor.updateProgressString("Library file %s was downloaded and verified successfully",libName);
         }
         try {
           actualClassLoader.addURL(libFile.toURI().toURL());
