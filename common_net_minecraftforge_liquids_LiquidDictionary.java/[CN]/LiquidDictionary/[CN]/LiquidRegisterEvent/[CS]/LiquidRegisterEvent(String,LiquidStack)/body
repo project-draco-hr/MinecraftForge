@@ -1,0 +1,4 @@
+{
+  this.Name=name;
+  this.Liquid=liquid.copy();
+}
