@@ -1,21 +1,28 @@
 {
-  registerOre("logWood",new ItemStack(Block.wood,1,-1));
-  registerOre("plankWood",new ItemStack(Block.planks,1,-1));
-  registerOre("slabWood",new ItemStack(Block.woodSingleSlab,1,-1));
-  registerOre("stairWood",Block.stairCompactPlanks);
-  registerOre("stairWood",Block.stairsWoodBirch);
-  registerOre("stairWood",Block.stairsWoodJungle);
-  registerOre("stairWood",Block.stairsWoodSpruce);
-  registerOre("stickWood",Item.stick);
+  if (!hasInit) {
+    registerOre("logWood",new ItemStack(Block.wood,1,-1));
+    registerOre("plankWood",new ItemStack(Block.planks,1,-1));
+    registerOre("slabWood",new ItemStack(Block.woodSingleSlab,1,-1));
+    registerOre("stairWood",Block.stairCompactPlanks);
+    registerOre("stairWood",Block.stairsWoodBirch);
+    registerOre("stairWood",Block.stairsWoodJungle);
+    registerOre("stairWood",Block.stairsWoodSpruce);
+    registerOre("stickWood",Item.stick);
+    registerOre("treeSapling",new ItemStack(Block.sapling,1,-1));
+    registerOre("treeLeaves",new ItemStack(Block.leaves,1,-1));
+  }
   Map<ItemStack,String> replacements=new HashMap<ItemStack,String>();
   replacements.put(new ItemStack(Block.planks,1,-1),"plankWood");
   replacements.put(new ItemStack(Item.stick),"stickWood");
   String[] dyes={"dyeBlack","dyeRed","dyeGreen","dyeBrown","dyeBlue","dyePurple","dyeCyan","dyeLightGray","dyeGray","dyePink","dyeLime","dyeYellow","dyeLightBlue","dyeMagenta","dyeOrange","dyeWhite"};
   for (int i=0; i < 16; i++) {
     ItemStack dye=new ItemStack(Item.dyePowder,1,i);
-    registerOre(dyes[i],dye);
+    if (!hasInit) {
+      registerOre(dyes[i],dye);
+    }
     replacements.put(dye,dyes[i]);
   }
+  hasInit=true;
   ItemStack[] replaceStacks=replacements.keySet().toArray(new ItemStack[0]);
   ItemStack[] exclusions=new ItemStack[]{new ItemStack(Block.blockLapis),new ItemStack(Item.cookie)};
   List recipes=CraftingManager.getInstance().getRecipeList();
@@ -48,5 +55,7 @@
   }
   recipes.removeAll(recipesToRemove);
   recipes.addAll(recipesToAdd);
-  System.out.println(recipesToRemove.size() + " " + recipesToAdd.size());
+  if (recipesToRemove.size() > 0) {
+    System.out.println("Replaced " + recipesToRemove.size() + " ore recipies");
+  }
 }

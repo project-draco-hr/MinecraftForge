@@ -16,4 +16,5 @@
   }
   EntityEnderman.carriableBlocks=temp;
   EVENT_BUS.register(INTERNAL_HANDLER);
+  OreDictionary.getOreName(0);
 }
