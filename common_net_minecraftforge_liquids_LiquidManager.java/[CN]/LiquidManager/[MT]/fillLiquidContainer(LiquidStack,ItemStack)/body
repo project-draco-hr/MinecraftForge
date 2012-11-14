@@ -1,4 +1,6 @@
 {
-  for (  LiquidData data : liquids)   if (liquid.containsLiquid(data.stillLiquid) && data.container.isItemEqual(emptyContainer))   return data.filled.copy();
-  return null;
+  if (emptyContainer == null || liquid == null) {
+    return null;
+  }
+  return mapItemFromLiquid.get(Arrays.asList(emptyContainer.itemID,emptyContainer.getItemDamage(),liquid.itemID,liquid.itemMeta));
 }

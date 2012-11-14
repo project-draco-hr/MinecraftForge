@@ -1,0 +1,6 @@
+{
+  mapItemFromLiquid.put(Arrays.asList(data.container.itemID,data.container.getItemDamage(),data.stillLiquid.itemID,data.stillLiquid.itemMeta),data.filled);
+  mapLiquidFromItem.put(Arrays.asList(data.filled.itemID,data.filled.getItemDamage()),data.stillLiquid);
+  setLiquidValidation.add(Arrays.asList(data.stillLiquid.itemID,data.stillLiquid.itemMeta));
+  liquids.add(data);
+}
