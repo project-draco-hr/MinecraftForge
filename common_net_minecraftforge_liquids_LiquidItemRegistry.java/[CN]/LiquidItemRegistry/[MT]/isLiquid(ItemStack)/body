@@ -1,3 +1,0 @@
-{
-  return setLiquidValidation.contains(Arrays.asList(block.itemID,block.getItemDamage()));
-}

@@ -1,0 +1,13 @@
+{
+  if (container == null) {
+    return false;
+  }
+  if (container.isItemEqual(EMPTY_BUCKET)) {
+    return true;
+  }
+  LiquidContainerData ret=mapLiquidFromFilledItem.get(Arrays.asList(container.itemID,container.getItemDamage()));
+  if (ret != null) {
+    return ret.container.isItemEqual(EMPTY_BUCKET);
+  }
+  return false;
+}
