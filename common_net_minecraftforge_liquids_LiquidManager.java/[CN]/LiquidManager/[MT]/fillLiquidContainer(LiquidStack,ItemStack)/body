@@ -1,4 +1,0 @@
-{
-  for (  LiquidData data : liquids)   if (liquid.containsLiquid(data.stillLiquid) && data.container.isItemEqual(emptyContainer))   return data.filled.copy();
-  return null;
-}

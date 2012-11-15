@@ -1,3 +1,0 @@
-{
-  return fillLiquidContainer(new LiquidStack(liquidId,quantity,0),emptyContainer);
-}
