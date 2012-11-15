@@ -1,0 +1,6 @@
+{
+  if (emptyContainer == null || liquid == null) {
+    return null;
+  }
+  return mapItemFromLiquid.get(Arrays.asList(emptyContainer.itemID,emptyContainer.getItemDamage(),liquid.itemID,liquid.itemMeta));
+}

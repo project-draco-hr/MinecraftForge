@@ -1,0 +1,6 @@
+{
+  if (filledItem == null) {
+    return null;
+  }
+  return mapLiquidFromItem.get(Arrays.asList(filledItem.itemID,filledItem.getItemDamage()));
+}
