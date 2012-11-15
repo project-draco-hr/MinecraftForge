@@ -1,10 +1,10 @@
 {
-  if (filledContainer == null) {
-    return null;
+  if (filledContainer == null || liquid == null) {
+    return false;
   }
   LiquidContainerData ret=mapLiquidFromFilledItem.get(Arrays.asList(filledContainer.itemID,filledContainer.getItemDamage()));
   if (ret != null) {
-    return ret.stillLiquid.copy();
+    return ret.stillLiquid.isLiquidEqual(liquid);
   }
-  return null;
+  return false;
 }

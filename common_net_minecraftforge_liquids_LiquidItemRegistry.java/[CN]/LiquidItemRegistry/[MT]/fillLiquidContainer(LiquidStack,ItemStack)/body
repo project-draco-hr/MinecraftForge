@@ -1,6 +1,12 @@
 {
   if (emptyContainer == null || liquid == null) {
-    return null;
+    return emptyContainer;
   }
-  return mapItemFromLiquid.get(Arrays.asList(emptyContainer.itemID,emptyContainer.getItemDamage(),liquid.itemID,liquid.itemMeta));
+  LiquidContainerData ret=mapFilledItemFromLiquid.get(Arrays.asList(emptyContainer.itemID,emptyContainer.getItemDamage(),liquid.itemID,liquid.itemMeta));
+  if (ret != null) {
+    if (liquid.amount >= ret.stillLiquid.amount) {
+      return ret.filled.copy();
+    }
+  }
+  return emptyContainer;
 }
