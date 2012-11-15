@@ -1,3 +1,3 @@
 {
-  this(new LiquidStack(stillLiquidId,LiquidItemRegistry.BUCKET_VOLUME),new LiquidStack(movingLiquidId,LiquidItemRegistry.BUCKET_VOLUME),filled,new ItemStack(Item.bucketEmpty));
+  this(new LiquidStack(stillLiquidId,LiquidContainerRegistry.BUCKET_VOLUME),new LiquidStack(movingLiquidId,LiquidContainerRegistry.BUCKET_VOLUME),filled,new ItemStack(Item.bucketEmpty));
 }
