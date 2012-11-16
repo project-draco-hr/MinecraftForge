@@ -9,6 +9,7 @@
       if (doFill) {
         this.liquid=resource.copy();
         this.liquid.amount=capacity;
+        if (tile != null)         LiquidEvent.fireEvent(new LiquidEvent.LiquidFillingEvent(liquid,tile.worldObj,tile.xCoord,tile.yCoord,tile.zCoord,this));
       }
       return capacity;
     }

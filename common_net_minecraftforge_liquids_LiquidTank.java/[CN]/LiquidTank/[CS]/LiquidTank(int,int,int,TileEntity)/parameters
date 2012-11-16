@@ -1,0 +1,4 @@
+int liquidId
+int quantity
+int capacity
+TileEntity tile
