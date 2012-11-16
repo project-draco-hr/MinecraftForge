@@ -8,5 +8,5 @@
       return ret.filled.copy();
     }
   }
-  return emptyContainer;
+  return null;
 }
