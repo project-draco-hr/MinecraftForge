@@ -14,5 +14,6 @@ zip = None
 zip_name = None
 zip_base = None
 version_str = None
+version_mc = None
 if (__name__ == '__main__'):
     main()

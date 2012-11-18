@@ -1,9 +1,0 @@
-def update_info(input, version):
-    input = os.path.join(forge_dir, input.replace('/', os.sep))
-    temp = os.path.join(forge_dir, 'file.backup')
-    shutil.move(input, temp)
-    with open(temp, 'r') as fh:
-        buf = fh.read()
-    buf = re.sub('{version}', version, buf)
-    with open(input, 'w') as fh:
-        fh.write(buf)

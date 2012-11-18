@@ -1,5 +1,6 @@
 def main():
     global version_str
+    global version_mc
     build_num = 0
     if (len(sys.argv) > 1):
         try:
@@ -25,7 +26,9 @@ def main():
     extract_fml_obfed()
     extract_paulscode()
     version = load_version(build_num)
-    version_str = ('%d.%d.%d.%d' % (version['major'], version['minor'], version['revision'], version['build']))
+    version_forge = ('%d.%d.%d.%d' % (version['major'], version['minor'], version['revision'], version['build']))
+    version_mc = load_mc_version(forge_dir)
+    version_str = ('%s-%s' % (version_mc, version_forge))
     out_folder = os.path.join(forge_dir, ('forge-%s' % version_str))
     if os.path.isdir(out_folder):
         shutil.rmtree(out_folder)

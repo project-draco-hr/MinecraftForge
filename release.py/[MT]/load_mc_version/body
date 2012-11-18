@@ -1,0 +1,12 @@
+def load_mc_version(forge_dir):
+    props = os.path.join(forge_dir, 'fml', 'common', 'fmlversion.properties')
+    if (not os.path.isfile(props)):
+        print 'Could not load fmlversion.properties, build failed'
+        sys.exit(1)
+    with open(props, 'r') as fh:
+        for line in fh:
+            line = line.strip()
+            if line.startswith('fmlbuild.mcversion'):
+                return line.split('=')[1].strip()
+    print 'Could not load fmlversion.properties, build failed'
+    sys.exit(1)

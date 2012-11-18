@@ -1,7 +1,7 @@
 def zip_start(name, base=None):
     global zip, zip_name, zip_base
     zip_name = name
-    print ('=================================== %s Start =================================' % zip_name)
+    print ('================== %s Start ==================' % zip_name)
     zip_file = os.path.join(forge_dir, ('forge-%s' % version_str), name)
     zip = zipfile.ZipFile(zip_file, 'w', zipfile.ZIP_DEFLATED)
     zip_base = base
