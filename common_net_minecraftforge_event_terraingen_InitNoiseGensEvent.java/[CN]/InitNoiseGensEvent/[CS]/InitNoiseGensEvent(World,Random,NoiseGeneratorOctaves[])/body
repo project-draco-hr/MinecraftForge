@@ -1,0 +1,6 @@
+{
+  super(world);
+  this.rand=rand;
+  originalNoiseGens=original;
+  newNoiseGens=original.clone();
+}

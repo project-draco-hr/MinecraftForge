@@ -1,0 +1,5 @@
+{
+  GenerateMinable event=new GenerateMinable(world,rand,generator,worldX,worldZ,type);
+  MinecraftForge.ORE_GEN_BUS.post(event);
+  return event.getResult() != Result.DENY;
+}

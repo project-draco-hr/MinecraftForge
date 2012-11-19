@@ -1,0 +1,6 @@
+World world
+Random rand
+WorldGenerator generator
+int worldX
+int worldZ
+EventType type

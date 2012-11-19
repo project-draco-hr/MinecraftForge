@@ -1,0 +1,4 @@
+{
+  super(chunkProvider,world,rand,chunkX,chunkZ,hasVillageGenerated);
+  this.type=type;
+}

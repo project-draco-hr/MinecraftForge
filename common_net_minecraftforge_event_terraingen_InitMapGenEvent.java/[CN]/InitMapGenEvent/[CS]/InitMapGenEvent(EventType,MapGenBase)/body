@@ -1,0 +1,5 @@
+{
+  this.type=type;
+  this.originalGen=original;
+  this.newGen=original;
+}

@@ -1,0 +1,5 @@
+{
+  PopulateChunkEvent.Populate event=new PopulateChunkEvent.Populate(chunkProvider,world,rand,chunkX,chunkZ,hasVillageGenerated,type);
+  MinecraftForge.TERRAIN_GEN_BUS.post(event);
+  return event.getResult() != Result.DENY;
+}

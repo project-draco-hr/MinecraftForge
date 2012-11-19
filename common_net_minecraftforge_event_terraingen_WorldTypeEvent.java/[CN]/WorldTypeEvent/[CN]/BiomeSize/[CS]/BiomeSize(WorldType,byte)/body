@@ -1,0 +1,5 @@
+{
+  super(worldType);
+  originalSize=original;
+  newSize=original;
+}
