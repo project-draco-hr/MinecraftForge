@@ -1,0 +1,19 @@
+def apply_fml_patches(fml_dir, mcp_dir, src_dir, copy_files=True):
+    cpw_mc_dir = os.path.join(src_dir, 'minecraft', 'cpw')
+    cpw_com_dir = os.path.join(src_dir, 'common', 'cpw')
+    if os.path.isdir(cpw_mc_dir):
+        shutil.rmtree(cpw_mc_dir)
+    if os.path.isdir(cpw_com_dir):
+        shutil.rmtree(cpw_com_dir)
+    print 'Applying Forge ModLoader patches'
+    sys.stdout.flush()
+    if os.path.isdir(os.path.join(fml_dir, 'patches', 'minecraft')):
+        apply_patches(mcp_dir, os.path.join(fml_dir, 'patches', 'minecraft'), src_dir)
+    if (copy_files and os.path.isdir(os.path.join(fml_dir, 'client'))):
+        copytree(os.path.join(fml_dir, 'client'), os.path.join(src_dir, 'minecraft'))
+    if os.path.isdir(os.path.join(src_dir, 'minecraft', 'argo')):
+        shutil.rmtree(os.path.join(src_dir, 'minecraft', 'argo'))
+    if os.path.isdir(os.path.join(fml_dir, 'patches', 'common')):
+        apply_patches(mcp_dir, os.path.join(fml_dir, 'patches', 'common'), src_dir)
+    if (copy_files and os.path.isdir(os.path.join(fml_dir, 'common'))):
+        copytree(os.path.join(fml_dir, 'common'), os.path.join(src_dir, 'common'))

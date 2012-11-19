@@ -1,0 +1,2 @@
+def pre_decompile(mcp_dir, fml_dir):
+    download_minecraft(mcp_dir, fml_dir)

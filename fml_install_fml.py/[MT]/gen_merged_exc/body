@@ -1,0 +1,10 @@
+def gen_merged_exc(mcp_dir, fml_dir):
+    print 'Reading merged MCInjector config'
+    exc_joined = os.path.join(mcp_dir, 'conf', 'joined.exc')
+    joined = {}
+    with open(exc_joined, 'r') as fh:
+        for line in fh:
+            if (not line.startswith('#')):
+                pts = line.rstrip('\r\n').split('=')
+                joined[pts[0]] = pts[1]
+    return joined

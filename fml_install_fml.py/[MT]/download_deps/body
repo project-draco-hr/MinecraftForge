@@ -1,0 +1,15 @@
+def download_deps(mcp_path):
+    ret = True
+    for lib in ['argo-2.25.jar', 'guava-12.0.1.jar', 'guava-12.0.1-sources.jar', 'asm-all-4.0.jar', 'asm-all-4.0-source.jar']:
+        libF = os.path.join(mcp_path, 'lib')
+        if (not os.path.isdir(libF)):
+            os.makedirs(libF)
+        target = os.path.normpath(os.path.join(libF, lib))
+        if (not os.path.isfile(target)):
+            try:
+                urllib.urlretrieve(('http://files.minecraftforge.net/fmllibs/' + lib), target)
+                print ('Downloaded %s successfully' % lib)
+            except:
+                print ('Download %s failed, download manually from http://files.minecraftforge.net/fmllibs/%s or http://files.minecraftforge.net/fmllibs/fml_libs_dev.zip and place in MCP/lib' % (lib, lib))
+                ret = False
+    return ret

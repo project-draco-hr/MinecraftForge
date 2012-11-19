@@ -1,0 +1,15 @@
+def get_joined_srg(mcp_dir):
+    joined = os.path.join(mcp_dir, 'conf', 'joined.srg')
+    values = {'PK:': {}, 'CL:': {}, 'FD:': {}, 'MD:': {}, }
+    if (not os.path.isfile(joined)):
+        print 'Could not read joined.srg, file not found'
+        sys.exit(1)
+    else:
+        with open(joined, 'r') as fh:
+            for line in fh:
+                pts = line.rstrip('\r\n').split(' ')
+                if (pts[0] == 'MD:'):
+                    values[pts[0]][((pts[1] + ' ') + pts[2])] = ((pts[3] + ' ') + pts[4])
+                else:
+                    values[pts[0]][pts[1]] = pts[2]
+    return values

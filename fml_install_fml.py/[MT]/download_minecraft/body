@@ -1,0 +1,33 @@
+def download_minecraft(mcp_dir, fml_dir, version=None):
+    versions_file = os.path.join(fml_dir, 'mc_versions.cfg')
+    if (not os.path.isfile(versions_file)):
+        print 'Could not find mc_versions.cfg in FML directory.'
+        sys.exit(1)
+    config = ConfigParser.ConfigParser()
+    config.read(versions_file)
+    default = config_get_section(config, 'default')
+    if (version is None):
+        version = default['current_ver']
+    bin_folder = os.path.join(mcp_dir, 'jars', 'bin')
+    if (not os.path.exists(bin_folder)):
+        os.makedirs(bin_folder)
+    failed = False
+    for lib in default['libraries'].split(' '):
+        failed = ((not download_file((default['base_url'] + lib), os.path.join(bin_folder, lib))) or failed)
+    for native in default['natives'].split(' '):
+        failed = ((not download_native(default['base_url'], os.path.join(bin_folder, 'natives'), native)) or failed)
+    if (not config.has_section(version)):
+        print ("Error: Invalid minecraft version, could not find '%s' in mc_versions.cfg" % version)
+        sys.exit(1)
+    mc_info = config_get_section(config, version)
+    client_jar = os.path.join(bin_folder, 'minecraft.jar')
+    server_jar = os.path.join(mcp_dir, 'jars', 'minecraft_server.jar')
+    file_backup(os.path.join(mcp_dir, 'jars', 'bin'), 'minecraft.jar', mc_info['client_md5'])
+    file_backup(os.path.join(mcp_dir, 'jars'), 'minecraft_server.jar', mc_info['server_md5'])
+    failed = ((not download_file(mc_info['client_url'], client_jar, mc_info['client_md5'])) or failed)
+    failed = ((not download_file(mc_info['server_url'], server_jar, mc_info['server_md5'])) or failed)
+    file_backup(os.path.join(mcp_dir, 'jars', 'bin'), 'minecraft.jar', mc_info['client_md5'])
+    file_backup(os.path.join(mcp_dir, 'jars'), 'minecraft_server.jar', mc_info['server_md5'])
+    if failed:
+        print 'Something failed verifying minecraft files, see log for details.'
+        sys.exit(1)

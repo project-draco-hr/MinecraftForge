@@ -1,0 +1,14 @@
+def gen_merged_csv(common_map, in_file, out_file, main_key='searge'):
+    reader = csv.DictReader(open(in_file, 'r'))
+    print ('Generating merged csv for %s' % os.path.basename(in_file))
+    common = []
+    added = []
+    for row in reader:
+        if (not (row[main_key] in added)):
+            row['side'] = '2'
+            common.append(row)
+            added.append(row[main_key])
+    writer = csv.DictWriter(open(out_file, 'wb'), fieldnames=reader.fieldnames, lineterminator='\n')
+    writer.writeheader()
+    for row in sorted(common, key=(lambda row: row[main_key])):
+        writer.writerow(row)
