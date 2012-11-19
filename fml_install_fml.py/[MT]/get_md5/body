@@ -1,5 +1,0 @@
-def get_md5(file):
-    if (not os.path.isfile(file)):
-        return ''
-    with open(file, 'rb') as fh:
-        return md5(fh.read()).hexdigest()
