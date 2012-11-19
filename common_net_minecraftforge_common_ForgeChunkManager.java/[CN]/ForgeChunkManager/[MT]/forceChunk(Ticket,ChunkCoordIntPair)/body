@@ -10,6 +10,7 @@
     return;
   }
   ticket.requestedChunks.add(chunk);
+  MinecraftForge.EVENT_BUS.post(new ForceChunkEvent(ticket,chunk));
   ImmutableSetMultimap<ChunkCoordIntPair,Ticket> newMap=ImmutableSetMultimap.<ChunkCoordIntPair,Ticket>builder().putAll(forcedChunks.get(ticket.world)).put(chunk,ticket).build();
   forcedChunks.put(ticket.world,newMap);
   if (ticket.maxDepth > 0 && ticket.requestedChunks.size() > ticket.maxDepth) {
