@@ -6,16 +6,25 @@
     String line;
     while ((line=br.readLine()) != null) {
       line=line.split("#")[0];
-      boolean toClient=line.charAt(0) == '<';
+      char cmd=line.charAt(0);
       line=line.substring(1).trim();
-      if (toClient)       copyToClient.add(line);
- else       copyToServer.add(line);
-    }
-    in.close();
-    return true;
-  }
- catch (  Exception e) {
-    System.err.println("Error: " + e.getMessage());
-    return false;
-  }
+switch (cmd) {
+case '!':
+        dontAnnotate.add(line);
+      break;
+case '<':
+    copyToClient.add(line);
+  break;
+case '>':
+copyToServer.add(line);
+break;
+}
+}
+in.close();
+return true;
+}
+ catch (Exception e) {
+System.err.println("Error: " + e.getMessage());
+return false;
+}
 }

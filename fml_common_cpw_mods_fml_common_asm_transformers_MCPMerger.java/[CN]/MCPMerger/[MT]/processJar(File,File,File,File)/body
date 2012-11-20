@@ -56,15 +56,10 @@
       sAdded.add(name);
     }
     for (    Entry<String,ZipEntry> entry : sClasses.entrySet()) {
-      if (!copyToClient.contains(entry.getKey())) {
-        copyClass(sInJar,entry.getValue(),null,sOutJar,false);
+      if (DEBUG) {
+        System.out.println("Copy class s->c : " + entry.getKey());
       }
- else {
-        if (DEBUG) {
-          System.out.println("Copy class s->c : " + entry.getKey());
-        }
-        copyClass(sInJar,entry.getValue(),cOutJar,sOutJar,false);
-      }
+      copyClass(sInJar,entry.getValue(),cOutJar,sOutJar,false);
     }
     for (    String name : new String[]{SideOnly.class.getName(),Side.class.getName()}) {
       String eName=name.replace(".","/");
