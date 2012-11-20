@@ -1,0 +1,6 @@
+def repackage_class(pkgs, cls):
+    if cls.startswith('net/minecraft/src/'):
+        tmp = cls[18:]
+        if (tmp in pkgs.keys()):
+            return ('%s/%s' % (pkgs[tmp], tmp))
+    return cls

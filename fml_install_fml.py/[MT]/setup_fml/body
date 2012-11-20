@@ -76,7 +76,6 @@ def setup_fml(fml_dir, mcp_dir):
         print ('Something went wrong, src folder not found at: %s' % src_dir)
         sys.exit(1)
     cleanup_source(src_dir)
-    merge_client_server(mcp_dir)
     os.chdir(mcp_dir)
     commands = Commands(verify=True)
     updatemd5_side(mcp_dir, commands, CLIENT)
