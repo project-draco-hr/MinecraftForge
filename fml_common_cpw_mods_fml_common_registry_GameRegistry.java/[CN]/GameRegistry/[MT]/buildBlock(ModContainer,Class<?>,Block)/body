@@ -1,5 +1,5 @@
 {
   Object o=type.getConstructor(int.class).newInstance(findSpareBlockId());
-  registerBlock((net.minecraft.src.Block)o);
+  registerBlock((net.minecraft.shared.Block)o);
   return o;
 }
