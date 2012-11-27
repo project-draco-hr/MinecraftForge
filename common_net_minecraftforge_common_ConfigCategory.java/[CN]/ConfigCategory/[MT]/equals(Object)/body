@@ -1,0 +1,7 @@
+{
+  if (obj instanceof ConfigCategory) {
+    ConfigCategory cat=(ConfigCategory)obj;
+    return name.equals(cat.name) && children.equals(cat.children);
+  }
+  return false;
+}

@@ -2,20 +2,20 @@
   Property prop=get(category,key,-1);
   int defaultShift=defaultID + ITEM_SHIFT;
   if (prop.getInt() != -1) {
-    configItems[prop.getInt() + ITEM_SHIFT]=true;
+    configMarkers[prop.getInt() + ITEM_SHIFT]=true;
     return prop;
   }
  else {
-    if (Item.itemsList[defaultShift] == null && !configItems[defaultShift] && defaultShift > Block.blocksList.length) {
+    if (Item.itemsList[defaultShift] == null && !configMarkers[defaultShift] && defaultShift > Block.blocksList.length) {
       prop.value=Integer.toString(defaultID);
-      configItems[defaultShift]=true;
+      configMarkers[defaultShift]=true;
       return prop;
     }
  else {
-      for (int x=configItems.length - 1; x >= ITEM_SHIFT; x--) {
-        if (Item.itemsList[x] == null && !configItems[x]) {
+      for (int x=Item.itemsList.length - 1; x >= ITEM_SHIFT; x--) {
+        if (Item.itemsList[x] == null && !configMarkers[x]) {
           prop.value=Integer.toString(x - ITEM_SHIFT);
-          configItems[x]=true;
+          configMarkers[x]=true;
           return prop;
         }
       }

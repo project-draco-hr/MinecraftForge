@@ -1,0 +1,28 @@
+{
+  ConfigCategory ret=categories.get(category);
+  if (ret == null) {
+    if (category.contains(CATEGORY_SPLITTER)) {
+      String[] hierarchy=category.split("\\" + CATEGORY_SPLITTER);
+      ConfigCategory parent=categories.get(hierarchy[0]);
+      if (parent == null) {
+        parent=new ConfigCategory(hierarchy[0]);
+        categories.put(parent.getQualifiedName(),parent);
+      }
+      for (int i=1; i < hierarchy.length; i++) {
+        String name=ConfigCategory.getQualifiedName(hierarchy[i],parent);
+        ConfigCategory child=categories.get(name);
+        if (child == null) {
+          child=new ConfigCategory(hierarchy[i],parent);
+          categories.put(name,child);
+        }
+        ret=child;
+        parent=child;
+      }
+    }
+ else {
+      ret=new ConfigCategory(category);
+      categories.put(category,ret);
+    }
+  }
+  return ret;
+}

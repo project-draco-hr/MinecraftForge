@@ -1,0 +1,7 @@
+{
+  this.name=name;
+  this.parent=parent;
+  if (parent != null) {
+    parent.children.add(this);
+  }
+}

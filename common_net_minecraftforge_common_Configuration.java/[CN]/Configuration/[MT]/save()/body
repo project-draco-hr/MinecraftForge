@@ -13,17 +13,16 @@
     if (file.canWrite()) {
       FileOutputStream fos=new FileOutputStream(file);
       BufferedWriter buffer=new BufferedWriter(new OutputStreamWriter(fos,defaultEncoding));
-      buffer.write("# Configuration file\r\n");
-      buffer.write("# Generated on " + DateFormat.getInstance().format(new Date()) + "\r\n");
-      buffer.write("\r\n");
+      buffer.write("# Configuration file" + NEW_LINE);
+      buffer.write("# Generated on " + DateFormat.getInstance().format(new Date()) + NEW_LINE+ NEW_LINE);
       if (children.isEmpty()) {
         save(buffer);
       }
  else {
         for (        Map.Entry<String,Configuration> entry : children.entrySet()) {
-          buffer.write("START: \"" + entry.getKey() + "\"\r\n");
+          buffer.write("START: \"" + entry.getKey() + "\""+ NEW_LINE);
           entry.getValue().save(buffer);
-          buffer.write("END: \"" + entry.getKey() + "\"\r\n\r\n");
+          buffer.write("END: \"" + entry.getKey() + "\""+ NEW_LINE+ NEW_LINE);
         }
       }
       buffer.close();

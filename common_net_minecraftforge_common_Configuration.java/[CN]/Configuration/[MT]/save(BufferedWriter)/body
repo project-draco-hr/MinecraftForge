@@ -1,23 +1,8 @@
 {
-  for (  Map.Entry<String,Map<String,Property>> category : categories.entrySet()) {
-    out.write("####################\r\n");
-    out.write("# " + category.getKey() + " \r\n");
-    if (customCategoryComments.containsKey(category.getKey())) {
-      out.write("#===================\r\n");
-      String comment=customCategoryComments.get(category.getKey());
-      Splitter splitter=Splitter.onPattern("\r?\n");
-      for (      String commentLine : splitter.split(comment)) {
-        out.write("# ");
-        out.write(commentLine + "\r\n");
-      }
+  for (  ConfigCategory cat : categories.values()) {
+    if (!cat.isChild()) {
+      cat.write(out,0);
+      out.newLine();
     }
-    out.write("####################\r\n\r\n");
-    String catKey=category.getKey();
-    if (!allowedProperties.matchesAllOf(catKey)) {
-      catKey='"' + catKey + '"';
-    }
-    out.write(catKey + " {\r\n");
-    writeProperties(out,category.getValue().values());
-    out.write("}\r\n\r\n");
   }
 }

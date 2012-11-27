@@ -15,8 +15,13 @@
       defaultEncoding=input.getEncoding();
       buffer=new BufferedReader(input);
       String line;
-      Map<String,Property> currentMap=null;
+      ConfigCategory currentCat=null;
+      Property.Type type=null;
+      ArrayList<String> tmpList=null;
+      int lineNum=0;
+      String name=null;
       while (true) {
+        lineNum++;
         line=buffer.readLine();
         if (line == null) {
           break;
@@ -25,15 +30,13 @@
         Matcher end=CONFIG_END.matcher(line);
         if (start.matches()) {
           fileName=start.group(1);
-          categories=new TreeMap<String,Map<String,Property>>();
-          customCategoryComments=Maps.newHashMap();
+          categories=new TreeMap<String,ConfigCategory>();
           continue;
         }
  else         if (end.matches()) {
           fileName=end.group(1);
           Configuration child=new Configuration();
           child.categories=categories;
-          child.customCategoryComments=customCategoryComments;
           this.children.put(fileName,child);
           continue;
         }
@@ -63,34 +66,60 @@ case '"':
         }
       break;
 case '{':
-    String scopeName=line.substring(nameStart,nameEnd + 1);
-  currentMap=categories.get(scopeName);
-if (currentMap == null) {
-  currentMap=new TreeMap<String,Property>();
-  categories.put(scopeName,currentMap);
+    name=line.substring(nameStart,nameEnd + 1);
+  String qualifiedName=ConfigCategory.getQualifiedName(name,currentCat);
+currentCat=categories.get(qualifiedName);
+if (currentCat == null) {
+currentCat=new ConfigCategory(name,null);
+categories.put(qualifiedName,currentCat);
 }
+name=null;
 break;
 case '}':
-currentMap=null;
+currentCat=currentCat.parent;
 break;
 case '=':
-String propertyName=line.substring(nameStart,nameEnd + 1);
-if (currentMap == null) {
-throw new RuntimeException("property " + propertyName + " has no scope");
+name=line.substring(nameStart,nameEnd + 1);
+if (currentCat == null) {
+throw new RuntimeException(String.format("'%s' has no scope in '%s:%d'",name,fileName,lineNum));
 }
-Property prop=new Property();
-prop.setName(propertyName);
-prop.value=line.substring(i + 1);
+Property prop=new Property(name,line.substring(i + 1),type,true);
 i=line.length();
-currentMap.put(propertyName,prop);
+currentCat.set(name,prop);
+break;
+case ':':
+type=Property.Type.tryParse(line.substring(nameStart,nameEnd + 1).charAt(0));
+nameStart=nameEnd=-1;
+break;
+case '<':
+if (tmpList != null) {
+throw new RuntimeException(String.format("Malformed list property \"%s:%d\"",fileName,lineNum));
+}
+name=line.substring(nameStart,nameEnd + 1);
+if (currentCat == null) {
+throw new RuntimeException(String.format("'%s' has no scope in '%s:%d'",name,fileName,lineNum));
+}
+tmpList=new ArrayList<String>();
+break;
+case '>':
+if (tmpList == null) {
+throw new RuntimeException(String.format("Malformed list property \"%s:%d\"",fileName,lineNum));
+}
+currentCat.set(name,new Property(name,tmpList.toArray(new String[tmpList.size()]),type));
+name=null;
+tmpList=null;
+type=null;
 break;
 default :
-throw new RuntimeException("unknown character " + line.charAt(i));
+throw new RuntimeException(String.format("Unknown character '%s' in '%s:%d'",line.charAt(i),fileName,lineNum));
 }
 }
 }
 if (quoted) {
-throw new RuntimeException("unmatched quote");
+throw new RuntimeException(String.format("Unmatched quote in '%s:%d'",fileName,lineNum));
+}
+ else if (tmpList != null) {
+tmpList.add(line.trim());
 }
 }
 }

@@ -1,0 +1,50 @@
+{
+  String pad=getIndent(indent);
+  out.write(pad + "####################" + NEW_LINE);
+  out.write(pad + "# " + name+ NEW_LINE);
+  if (comment != null) {
+    out.write(pad + "#===================" + NEW_LINE);
+    Splitter splitter=Splitter.onPattern("\r?\n");
+    for (    String line : splitter.split(comment)) {
+      out.write(pad + "# " + line+ NEW_LINE);
+    }
+  }
+  out.write(pad + "####################" + NEW_LINE+ NEW_LINE);
+  if (!allowedProperties.matchesAllOf(name)) {
+    name='"' + name + '"';
+  }
+  out.write(pad + name + " {"+ NEW_LINE);
+  pad=getIndent(indent + 1);
+  Property[] props=properties.values().toArray(new Property[properties.size()]);
+  for (int x=0; x < props.length; x++) {
+    Property prop=props[x];
+    if (prop.comment != null) {
+      if (x != 0) {
+        out.newLine();
+      }
+      Splitter splitter=Splitter.onPattern("\r?\n");
+      for (      String commentLine : splitter.split(prop.comment)) {
+        out.write(pad + "# " + commentLine+ NEW_LINE);
+      }
+    }
+    String propName=prop.getName();
+    if (!allowedProperties.matchesAllOf(propName)) {
+      propName='"' + propName + '"';
+    }
+    if (prop.isList()) {
+      out.write(String.format(pad + "%s:%s <" + NEW_LINE,prop.getType().getID(),propName));
+      pad=getIndent(indent + 2);
+      for (      String line : prop.valueList) {
+        out.write(pad + line + NEW_LINE);
+      }
+      out.write(getIndent(indent + 1) + " >" + NEW_LINE);
+    }
+ else {
+      out.write(String.format(pad + "%s:%s=%s" + NEW_LINE,prop.getType().getID(),propName,prop.value));
+    }
+  }
+  for (  ConfigCategory child : children) {
+    child.write(out,indent + 1);
+  }
+  out.write(getIndent(indent) + "}" + NEW_LINE+ NEW_LINE);
+}

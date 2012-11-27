@@ -1,20 +1,20 @@
 {
   Property prop=get(category,key,-1);
   if (prop.getInt() != -1) {
-    configBlocks[prop.getInt()]=true;
+    configMarkers[prop.getInt()]=true;
     return prop;
   }
  else {
-    if (Block.blocksList[defaultID] == null && !configBlocks[defaultID]) {
+    if (Block.blocksList[defaultID] == null && !configMarkers[defaultID]) {
       prop.value=Integer.toString(defaultID);
-      configBlocks[defaultID]=true;
+      configMarkers[defaultID]=true;
       return prop;
     }
  else {
-      for (int j=configBlocks.length - 1; j > 0; j--) {
-        if (Block.blocksList[j] == null && !configBlocks[j]) {
+      for (int j=Block.blocksList.length - 1; j > 0; j--) {
+        if (Block.blocksList[j] == null && !configMarkers[j]) {
           prop.value=Integer.toString(j);
-          configBlocks[j]=true;
+          configMarkers[j]=true;
           return prop;
         }
       }

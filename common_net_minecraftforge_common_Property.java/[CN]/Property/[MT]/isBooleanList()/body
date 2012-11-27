@@ -1,0 +1,8 @@
+{
+  for (  String value : valueList) {
+    if (!"true".equalsIgnoreCase(value) && !"false".equalsIgnoreCase(value)) {
+      return false;
+    }
+  }
+  return true;
+}

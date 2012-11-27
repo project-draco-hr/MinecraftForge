@@ -1,0 +1,3 @@
+{
+  return (parent == null ? name : parent.getQualifiedName() + Configuration.CATEGORY_SPLITTER + name);
+}
