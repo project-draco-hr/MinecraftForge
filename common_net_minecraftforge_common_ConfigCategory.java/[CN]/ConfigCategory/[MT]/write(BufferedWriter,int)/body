@@ -39,6 +39,9 @@
       }
       out.write(getIndent(indent + 1) + " >" + NEW_LINE);
     }
+ else     if (prop.getType() == null) {
+      out.write(String.format(pad + "%s=%s" + NEW_LINE,propName,prop.value));
+    }
  else {
       out.write(String.format(pad + "%s:%s=%s" + NEW_LINE,prop.getType().getID(),propName,prop.value));
     }
