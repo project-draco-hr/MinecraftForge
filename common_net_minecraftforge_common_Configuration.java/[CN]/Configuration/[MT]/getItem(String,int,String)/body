@@ -1,0 +1,3 @@
+{
+  return getItem(CATEGORY_ITEM,key,defaultID,comment);
+}

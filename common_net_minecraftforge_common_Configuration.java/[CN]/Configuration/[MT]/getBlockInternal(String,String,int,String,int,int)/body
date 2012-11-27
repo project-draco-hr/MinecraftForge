@@ -1,0 +1,29 @@
+{
+  Property prop=get(category,key,-1,comment);
+  if (prop.getInt() != -1) {
+    configMarkers[prop.getInt()]=true;
+    return prop;
+  }
+ else {
+    if (defaultID < lower) {
+      FMLLog.warning("Mod attempted to get a block ID with a default in the Terrain Generation section, " + "mod authors should make sure there defaults are above 256 unless explicitly needed " + "for terrain generation. Most ores do not need to be below 256.");
+      FMLLog.warning("Config \"%s\" Category: \"%s\" Key: \"%s\" Default: %d",fileName,category,key,defaultID);
+      defaultID=upper;
+    }
+    if (Block.blocksList[defaultID] == null && !configMarkers[defaultID]) {
+      prop.value=Integer.toString(defaultID);
+      configMarkers[defaultID]=true;
+      return prop;
+    }
+ else {
+      for (int j=upper - 1; j > 0; j--) {
+        if (Block.blocksList[j] == null && !configMarkers[j]) {
+          prop.value=Integer.toString(j);
+          configMarkers[j]=true;
+          return prop;
+        }
+      }
+      throw new RuntimeException("No more block ids available for " + key);
+    }
+  }
+}

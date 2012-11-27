@@ -1,7 +1,3 @@
 {
-  Property prop=get(category,key,Boolean.toString(defaultValue),BOOLEAN);
-  if (!prop.isBooleanValue()) {
-    prop.value=Boolean.toString(defaultValue);
-  }
-  return prop;
+  return get(category,key,defaultValue,null);
 }

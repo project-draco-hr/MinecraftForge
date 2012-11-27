@@ -1,25 +1,3 @@
 {
-  Property prop=get(category,key,-1);
-  int defaultShift=defaultID + ITEM_SHIFT;
-  if (prop.getInt() != -1) {
-    configMarkers[prop.getInt() + ITEM_SHIFT]=true;
-    return prop;
-  }
- else {
-    if (Item.itemsList[defaultShift] == null && !configMarkers[defaultShift] && defaultShift > Block.blocksList.length) {
-      prop.value=Integer.toString(defaultID);
-      configMarkers[defaultShift]=true;
-      return prop;
-    }
- else {
-      for (int x=Item.itemsList.length - 1; x >= ITEM_SHIFT; x--) {
-        if (Item.itemsList[x] == null && !configMarkers[x]) {
-          prop.value=Integer.toString(x - ITEM_SHIFT);
-          configMarkers[x]=true;
-          return prop;
-        }
-      }
-      throw new RuntimeException("No more item ids available for " + key);
-    }
-  }
+  return getItem(category,key,defaultID,null);
 }

@@ -1,0 +1,3 @@
+{
+  return getBlockInternal(category,key,defaultID,comment,0,256);
+}

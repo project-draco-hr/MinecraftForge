@@ -1,0 +1,7 @@
+{
+  Property prop=get(category,key,Integer.toString(defaultValue),comment,INTEGER);
+  if (!prop.isIntValue()) {
+    prop.value=Integer.toString(defaultValue);
+  }
+  return prop;
+}

@@ -1,0 +1,4 @@
+String category
+String key
+boolean defaultValue
+String comment

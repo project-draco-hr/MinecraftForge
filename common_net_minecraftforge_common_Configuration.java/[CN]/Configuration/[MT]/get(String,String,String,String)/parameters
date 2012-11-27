@@ -1,4 +1,4 @@
 String category
 String key
 String defaultValue
-Property.Type type
+String comment
