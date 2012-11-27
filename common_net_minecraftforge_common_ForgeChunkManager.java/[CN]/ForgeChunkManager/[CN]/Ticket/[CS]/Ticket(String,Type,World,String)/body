@@ -1,7 +1,7 @@
 {
   this(modId,type,world);
   if (player != null) {
-    this.player=player.getEntityName();
+    this.player=player;
   }
  else {
     FMLLog.log(Level.SEVERE,"Attempt to create a player ticket without a valid player");
