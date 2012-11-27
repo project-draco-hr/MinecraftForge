@@ -1,0 +1,9 @@
+{
+  if (itemStack == null)   return -1;
+  for (  int oreID : oreStacks.keySet()) {
+    for (    ItemStack target : oreStacks.get(oreID)) {
+      if (itemStack.itemID == target.itemID && (target.getItemDamage() == -1 || itemStack.getItemDamage() == target.getItemDamage()))       return oreID;
+    }
+  }
+  return -1;
+}
