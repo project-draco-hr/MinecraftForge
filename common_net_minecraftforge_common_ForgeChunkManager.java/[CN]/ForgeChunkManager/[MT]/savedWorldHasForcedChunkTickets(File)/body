@@ -1,0 +1,13 @@
+{
+  File chunkLoaderData=new File(chunkDir,"forcedchunks.dat");
+  if (chunkLoaderData.exists() && chunkLoaderData.isFile()) {
+    ;
+    try {
+      NBTTagCompound forcedChunkData=CompressedStreamTools.read(chunkLoaderData);
+      return forcedChunkData.getTagList("TicketList").tagCount() > 0;
+    }
+ catch (    IOException e) {
+    }
+  }
+  return false;
+}

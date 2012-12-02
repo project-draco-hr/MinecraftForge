@@ -11,7 +11,7 @@
   File chunkLoaderData=new File(chunkDir,"forcedchunks.dat");
   if (chunkLoaderData.exists() && chunkLoaderData.isFile()) {
     ArrayListMultimap<String,Ticket> loadedTickets=ArrayListMultimap.<String,Ticket>create();
-    ArrayListMultimap<String,Ticket> playerLoadedTickets=ArrayListMultimap.<String,Ticket>create();
+    Map<String,ListMultimap<String,Ticket>> playerLoadedTickets=Maps.newHashMap();
     NBTTagCompound forcedChunkData;
     try {
       forcedChunkData=CompressedStreamTools.read(chunkLoaderData);
@@ -45,8 +45,10 @@
         }
         if (ticket.hasKey("Player")) {
           tick.player=ticket.getString("Player");
-          playerLoadedTickets.put(tick.modId,tick);
-          playerTickets.put(tick.player,tick);
+          if (!playerLoadedTickets.containsKey(tick.modId)) {
+            playerLoadedTickets.put(modId,ArrayListMultimap.<String,Ticket>create());
+          }
+          playerLoadedTickets.get(tick.modId).put(tick.player,tick);
         }
  else {
           loadedTickets.put(modId,tick);
@@ -88,9 +90,14 @@
     }
     for (    String modId : playerLoadedTickets.keySet()) {
       LoadingCallback loadingCallback=callbacks.get(modId);
-      List<Ticket> tickets=playerLoadedTickets.get(modId);
-      ForgeChunkManager.tickets.get(world).putAll("Forge",tickets);
-      loadingCallback.ticketsLoaded(ImmutableList.copyOf(tickets),world);
+      ListMultimap<String,Ticket> tickets=playerLoadedTickets.get(modId);
+      if (loadingCallback instanceof PlayerOrderedLoadingCallback) {
+        PlayerOrderedLoadingCallback orderedLoadingCallback=(PlayerOrderedLoadingCallback)loadingCallback;
+        tickets=orderedLoadingCallback.playerTicketsLoaded(ImmutableListMultimap.copyOf(tickets),world);
+        playerTickets.putAll(tickets);
+      }
+      ForgeChunkManager.tickets.get(world).putAll("Forge",tickets.values());
+      loadingCallback.ticketsLoaded(ImmutableList.copyOf(tickets.values()),world);
     }
   }
 }

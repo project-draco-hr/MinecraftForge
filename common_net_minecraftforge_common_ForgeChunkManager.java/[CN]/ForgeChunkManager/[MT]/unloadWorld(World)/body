@@ -1,0 +1,11 @@
+{
+  if (!(world instanceof WorldServer)) {
+    return;
+  }
+  forcedChunks.remove(world);
+  dormantChunkCache.remove(world);
+  if (!MinecraftServer.getServer().isServerRunning()) {
+    playerTickets.clear();
+    tickets.clear();
+  }
+}
