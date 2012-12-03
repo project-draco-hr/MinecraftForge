@@ -1,5 +1,7 @@
 def setup_mcp(fml_dir, mcp_dir, dont_gen_conf=True):
     global mcp_version
+    if (not download_mcp(mcp_dir, fml_dir)):
+        sys.exit(1)
     backup = os.path.join(mcp_dir, 'runtime', 'commands.py.bck')
     runtime = os.path.join(mcp_dir, 'runtime', 'commands.py')
     patch = os.path.join(fml_dir, 'commands.patch')
