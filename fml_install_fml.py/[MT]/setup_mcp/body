@@ -57,9 +57,3 @@ def setup_mcp(fml_dir, mcp_dir, dont_gen_conf=True):
         shutil.rmtree(mcp_conf)
     print 'Copying FML conf'
     shutil.copytree(fml_conf, mcp_conf)
-    print 'Fixing MCP Workspace'
-    if (not os.path.isdir(os.path.join(fml_dir, 'eclipse', 'Clean-Client'))):
-        mcp_eclipse = os.path.join(mcp_dir, 'eclipse')
-        if os.path.isdir(mcp_eclipse):
-            shutil.rmtree(mcp_eclipse)
-        shutil.copytree(os.path.join(fml_dir, 'eclipse'), mcp_eclipse)
