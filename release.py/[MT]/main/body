@@ -1,12 +1,21 @@
 def main():
     global version_str
     global version_mc
+    parser = OptionParser()
+    parser.add_option('-m', '--mcp-dir', action='store', dest='mcp_dir', help='MCP Path', default=None)
+    parser.add_option('-b', '--build', action='store', dest='build', help='Build number', default=None)
+    (options, _) = parser.parse_args()
     build_num = 0
-    if (len(sys.argv) > 1):
+    if (not (options.build is None)):
         try:
-            build_num = int(sys.argv[1])
+            build_num = int(options.build)
         except:
             pass
+    mcp_dir = os.path.join(forge_dir, 'mcp')
+    if (not (options.mcp_dir is None)):
+        mcp_dir = os.path.abspath(options.mcp_dir)
+    elif os.path.isfile(os.path.join('..', 'runtime', 'commands.py')):
+        mcp_dir = os.path.abspath('..')
     ret = 0
     fml_dir = os.path.join(forge_dir, 'fml')
     build_forge_dev(mcp_dir, forge_dir, fml_dir, build_num)
@@ -15,6 +24,8 @@ def main():
     print '=================================== Release Start ================================='
     error_level = 0
     try:
+        sys.path.append(mcp_dir)
+        from runtime.reobfuscate import reobfuscate
         os.chdir(mcp_dir)
         reset_logger()
         reobfuscate(None, False, True, True, True, False)
@@ -23,12 +34,18 @@ def main():
     except SystemExit as e:
         print ('Reobfusicate Exception: %d ' % e.code)
         error_level = e.code
-    extract_fml_obfed()
-    extract_paulscode()
+    src_dir = os.path.join(mcp_dir, 'src')
+    reobf_dir = os.path.join(mcp_dir, 'reobf')
+    client_dir = os.path.join(reobf_dir, 'minecraft')
+    extract_fml_obfed(mcp_dir, reobf_dir, client_dir)
+    extract_paulscode(mcp_dir, client_dir)
     version = load_version(build_num)
     version_forge = ('%d.%d.%d.%d' % (version['major'], version['minor'], version['revision'], version['build']))
     version_mc = load_mc_version(forge_dir)
+    branch = get_branch_name()
     version_str = ('%s-%s' % (version_mc, version_forge))
+    if (not (branch == '')):
+        version_str = ('%s-%s' % (version_str, branch))
     out_folder = os.path.join(forge_dir, ('forge-%s' % version_str))
     if os.path.isdir(out_folder):
         shutil.rmtree(out_folder)
@@ -69,15 +86,8 @@ def main():
     zip_add('common', 'common')
     zip_add('patches', 'patches')
     zip_add('fml', 'fml')
-    zip_add('install/install.cmd')
-    zip_add('install/install.sh')
-    zip_add('install/README-MinecraftForge.txt')
-    zip_add('install/install.py')
+    zip_add('install', '')
     zip_add('forge.py')
-    zip_add('install/MinecraftForge-Credits.txt')
-    zip_add('install/MinecraftForge-License.txt')
-    zip_add('install/Paulscode IBXM Library License.txt')
-    zip_add('install/Paulscode SoundSystem CodecIBXM License.txt')
     zip_add(version_file)
     zip_add(changelog_file, 'MinecraftForge-Changelog.txt')
     zip_end()

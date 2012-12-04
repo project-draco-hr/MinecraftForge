@@ -5,7 +5,4 @@ import subprocess, logging, re
 import csv, shutil
 import pprint
 forge_dir = os.path.dirname(os.path.abspath(__file__))
-mcp_dir = os.path.abspath('..')
-src_dir = os.path.join(mcp_dir, 'src')
-sys.path.append(mcp_dir)
 version_reg = re.compile('(([a-z]+)Version[\\s]+=[\\s]+)(\\d+);')

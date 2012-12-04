@@ -24,7 +24,8 @@ def build_forge_dev(mcp_dir, forge_dir, fml_dir, build_num=0):
         reset_logger()
         os.chdir(forge_dir)
     except SystemExit as e:
-        print ('Recompile Exception: %d ' % e.code)
-        error_level = e.code
+        if (not (e.code == 0)):
+            print ('Recompile Exception: %d ' % e.code)
+            error_level = e.code
     print ('=================================== Build Finished %d =================================' % error_level)
     return error_level

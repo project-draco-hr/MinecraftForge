@@ -1,4 +1,4 @@
-def extract_paulscode():
+def extract_paulscode(mcp_dir, client_dir):
     client = zipfile.ZipFile(os.path.join(mcp_dir, 'temp', 'client_reobf.jar'))
     print 'Extracting Reobfed Paulscode for mac users -.-'
     for i in client.filelist:

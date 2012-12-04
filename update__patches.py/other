@@ -4,5 +4,6 @@ import fnmatch
 import shlex
 import difflib
 import time
+from optparse import OptionParser
 if (__name__ == '__main__'):
     main()
