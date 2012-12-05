@@ -106,6 +106,7 @@ if (currentCat == null) {
 throw new RuntimeException(String.format("'%s' has no scope in '%s:%d'",name,fileName,lineNum));
 }
 tmpList=new ArrayList<String>();
+skip=true;
 break;
 case '>':
 if (tmpList == null) {
@@ -124,7 +125,7 @@ throw new RuntimeException(String.format("Unknown character '%s' in '%s:%d'",lin
 if (quoted) {
 throw new RuntimeException(String.format("Unmatched quote in '%s:%d'",fileName,lineNum));
 }
- else if (tmpList != null) {
+ else if (tmpList != null && !skip) {
 tmpList.add(line.trim());
 }
 }
