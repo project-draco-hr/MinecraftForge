@@ -1,0 +1,7 @@
+{
+  ((NetClientHandler)toKill).func_72553_e();
+  GuiConnecting.forceTermination((GuiConnecting)client.field_71462_r);
+  mgr.func_74428_b();
+  client.func_71403_a((WorldClient)null);
+  warnIDMismatch(s,false);
+}

@@ -1,4 +1,0 @@
-{
-  int type=UnsignedBytes.toInt(payload[0]);
-  return Type.values()[type].make().consumePacket(Arrays.copyOfRange(payload,1,payload.length));
-}

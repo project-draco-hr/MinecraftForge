@@ -1,0 +1,6 @@
+{
+  this.modId=tag.func_74779_i("ModId");
+  this.itemType=tag.func_74779_i("ItemType");
+  this.itemId=tag.func_74762_e("ItemId");
+  this.ordinal=tag.func_74762_e("ordinal");
+}

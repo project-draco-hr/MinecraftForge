@@ -23,13 +23,21 @@
     Logger.getLogger("Minecraft").info(String.format("User %s connection failed: missing %s, bad versions %s",userName,missingClientMods,versionIncorrectMods));
     FMLLog.info("User %s connection failed: missing %s, bad versions %s",userName,missingClientMods,versionIncorrectMods);
     FMLNetworkHandler.setHandlerState((NetLoginHandler)netHandler,FMLNetworkHandler.MISSING_MODS_OR_VERSIONS);
+    pkt.field_73628_b=pkt.field_73629_c.length;
+    network.func_74429_a(pkt);
   }
  else {
     pkt.field_73629_c=FMLPacket.makePacket(MOD_IDENTIFIERS,netHandler);
     Logger.getLogger("Minecraft").info(String.format("User %s connecting with mods %s",userName,modVersions.keySet()));
     FMLLog.info("User %s connecting with mods %s",userName,modVersions.keySet());
+    pkt.field_73628_b=pkt.field_73629_c.length;
+    network.func_74429_a(pkt);
+    NBTTagList itemList=new NBTTagList();
+    GameRegistry.writeItemData(itemList);
+    byte[][] registryPackets=FMLPacket.makePacketSet(MOD_IDMAP,itemList);
+    for (int i=0; i < registryPackets.length; i++) {
+      network.func_74429_a(PacketDispatcher.getPacket("FML",registryPackets[i]));
+    }
   }
-  pkt.field_73628_b=pkt.field_73629_c.length;
-  network.func_74429_a(pkt);
   NetLoginHandler.func_72531_a((NetLoginHandler)netHandler,true);
 }

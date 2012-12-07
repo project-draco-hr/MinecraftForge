@@ -15,4 +15,12 @@
       }
     }
   }
+  if (tag.func_74764_b("ModItemData")) {
+    NBTTagList modList=tag.func_74761_m("ModItemData");
+    Set<ItemData> worldSaveItems=GameRegistry.buildWorldItemData(modList);
+    GameRegistry.validateWorldSave(worldSaveItems);
+  }
+ else {
+    GameRegistry.validateWorldSave(null);
+  }
 }

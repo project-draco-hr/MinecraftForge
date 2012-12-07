@@ -1,0 +1,4 @@
+{
+  GuiIdMismatchScreen mismatch=new GuiIdMismatchScreen(idDifferences,mayContinue);
+  client.func_71373_a(mismatch);
+}

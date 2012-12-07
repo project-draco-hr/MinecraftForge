@@ -1,5 +1,8 @@
 {
-  FMLPacket pkt=FMLPacket.readPacket(packet.field_73629_c);
+  FMLPacket pkt=FMLPacket.readPacket(network,packet.field_73629_c);
+  if (pkt == null) {
+    return;
+  }
   String userName="";
   if (netHandler instanceof NetLoginHandler) {
     userName=((NetLoginHandler)netHandler).field_72543_h;

@@ -1,0 +1,2 @@
+MapDifference<Integer,ItemData> idDifferences
+boolean mayContinue

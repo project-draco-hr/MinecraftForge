@@ -1,0 +1,4 @@
+{
+  serverValidationLatch=new CountDownLatch(gateCount - 1);
+  clientValidationLatch=new CountDownLatch(gateCount - 1);
+}
