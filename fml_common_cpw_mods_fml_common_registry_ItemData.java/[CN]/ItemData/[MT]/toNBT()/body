@@ -1,0 +1,8 @@
+{
+  NBTTagCompound tag=new NBTTagCompound();
+  tag.func_74778_a("ModId",modId);
+  tag.func_74778_a("ItemType",itemType);
+  tag.func_74768_a("ItemId",itemId);
+  tag.func_74768_a("ordinal",ordinal);
+  return tag;
+}

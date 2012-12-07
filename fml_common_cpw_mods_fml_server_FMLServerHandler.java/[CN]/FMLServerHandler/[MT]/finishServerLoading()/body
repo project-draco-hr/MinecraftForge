@@ -1,4 +1,5 @@
 {
   Loader.instance().initializeMods();
   LanguageRegistry.reloadLanguageTable();
+  GameRegistry.initializeServerGate(1);
 }

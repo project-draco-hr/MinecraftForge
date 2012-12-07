@@ -1,9 +1,3 @@
 {
-  for (  IDispenserHandler handler : dispenserHandlers) {
-    int dispensed=handler.dispense(x,y,z,xVelocity,zVelocity,world,item,random,entX,entY,entZ);
-    if (dispensed > -1) {
-      return dispensed;
-    }
-  }
   return -1;
 }

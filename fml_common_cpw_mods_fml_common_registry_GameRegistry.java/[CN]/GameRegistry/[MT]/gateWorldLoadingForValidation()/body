@@ -1,0 +1,12 @@
+{
+  try {
+    serverValidationLatch.await();
+    if (!isSaveValid) {
+      return difference;
+    }
+  }
+ catch (  InterruptedException e) {
+  }
+  difference=null;
+  return null;
+}

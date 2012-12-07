@@ -1,0 +1,9 @@
+{
+  if (partTracker == null) {
+    partTracker=new MapMaker().weakKeys().weakValues().makeMap();
+  }
+  if (!partTracker.containsKey(network)) {
+    partTracker.put(network,make());
+  }
+  return partTracker.get(network);
+}

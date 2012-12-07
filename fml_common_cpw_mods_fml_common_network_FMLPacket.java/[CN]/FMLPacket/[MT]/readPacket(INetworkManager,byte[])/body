@@ -1,0 +1,12 @@
+{
+  int type=UnsignedBytes.toInt(payload[0]);
+  Type eType=Type.values()[type];
+  FMLPacket pkt;
+  if (eType.isMultipart()) {
+    pkt=eType.findCurrentPart(network);
+  }
+ else {
+    pkt=eType.make();
+  }
+  return pkt.consumePacket(Arrays.copyOfRange(payload,1,payload.length));
+}

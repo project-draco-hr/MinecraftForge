@@ -1,0 +1,9 @@
+{
+  try {
+    ItemData other=(ItemData)obj;
+    return Objects.equal(modId,other.modId) && Objects.equal(itemType,other.itemType) && Objects.equal(itemId,other.itemId)&& Objects.equal(ordinal,other.ordinal);
+  }
+ catch (  ClassCastException cce) {
+    return false;
+  }
+}

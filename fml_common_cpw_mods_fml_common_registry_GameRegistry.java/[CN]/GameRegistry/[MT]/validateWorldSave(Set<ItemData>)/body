@@ -1,0 +1,38 @@
+{
+  isSaveValid=true;
+  shouldContinue=true;
+  if (worldSaveItems == null) {
+    serverValidationLatch.countDown();
+    try {
+      clientValidationLatch.await();
+    }
+ catch (    InterruptedException e) {
+    }
+    return;
+  }
+  Function<? super ItemData,Integer> idMapFunction=new Function<ItemData,Integer>(){
+    public Integer apply(    ItemData input){
+      return input.itemId;
+    }
+  }
+;
+  Map<Integer,ItemData> worldMap=Maps.uniqueIndex(worldSaveItems,idMapFunction);
+  Map<Integer,ItemData> gameMap=Maps.uniqueIndex(itemRegistry,idMapFunction);
+  difference=Maps.difference(worldMap,gameMap);
+  if (!difference.entriesDiffering().isEmpty() || !difference.entriesOnlyOnLeft().isEmpty()) {
+    isSaveValid=false;
+    serverValidationLatch.countDown();
+  }
+ else {
+    isSaveValid=true;
+    serverValidationLatch.countDown();
+  }
+  try {
+    clientValidationLatch.await();
+    if (!shouldContinue) {
+      throw new RuntimeException("This server instance is going to stop abnormally because of a fatal ID mismatch");
+    }
+  }
+ catch (  InterruptedException e) {
+  }
+}

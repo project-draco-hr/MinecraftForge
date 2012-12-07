@@ -1,0 +1,12 @@
+{
+  NBTTagList completeList=(NBTTagList)data[0];
+  NBTTagCompound wrap=new NBTTagCompound();
+  wrap.func_74782_a("List",completeList);
+  try {
+    return CompressedStreamTools.func_74798_a(wrap);
+  }
+ catch (  Exception e) {
+    FMLLog.log(Level.SEVERE,e,"A critical error writing the id map");
+    throw new FMLNetworkException(e);
+  }
+}
