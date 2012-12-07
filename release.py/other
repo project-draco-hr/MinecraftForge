@@ -1,4 +1,4 @@
-import os, os.path, sys
+import os, os.path, sys, glob
 import shutil, fnmatch
 import logging, zipfile, re
 from optparse import OptionParser
