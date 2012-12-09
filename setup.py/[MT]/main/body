@@ -23,4 +23,5 @@ def main():
     shutil.copytree(src_dir, work_dir)
     print 'Applying forge patches'
     apply_forge_patches(os.path.join(forge_dir, 'fml'), mcp_dir, forge_dir, work_dir, False)
+    setup_eclipse(forge_dir)
     print '=================================== Setup Finished ================================='
