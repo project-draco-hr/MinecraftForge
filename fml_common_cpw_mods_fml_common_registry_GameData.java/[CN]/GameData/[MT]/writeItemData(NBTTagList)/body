@@ -1,5 +1,5 @@
 {
-  for (  ItemData dat : itemRegistry) {
+  for (  ItemData dat : idMap.values()) {
     itemList.func_74742_a(dat.toNBT());
   }
 }
