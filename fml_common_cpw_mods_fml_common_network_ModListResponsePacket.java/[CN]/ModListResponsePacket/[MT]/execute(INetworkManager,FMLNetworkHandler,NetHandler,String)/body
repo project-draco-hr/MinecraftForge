@@ -33,7 +33,7 @@
     pkt.field_73628_b=pkt.field_73629_c.length;
     network.func_74429_a(pkt);
     NBTTagList itemList=new NBTTagList();
-    GameRegistry.writeItemData(itemList);
+    GameData.writeItemData(itemList);
     byte[][] registryPackets=FMLPacket.makePacketSet(MOD_IDMAP,itemList);
     for (int i=0; i < registryPackets.length; i++) {
       network.func_74429_a(PacketDispatcher.getPacket("FML",registryPackets[i]));
