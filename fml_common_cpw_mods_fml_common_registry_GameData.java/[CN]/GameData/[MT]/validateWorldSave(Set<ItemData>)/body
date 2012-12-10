@@ -17,8 +17,7 @@
   }
 ;
   Map<Integer,ItemData> worldMap=Maps.uniqueIndex(worldSaveItems,idMapFunction);
-  Map<Integer,ItemData> gameMap=Maps.uniqueIndex(itemRegistry,idMapFunction);
-  difference=Maps.difference(worldMap,gameMap);
+  difference=Maps.difference(worldMap,idMap);
   if (!difference.entriesDiffering().isEmpty() || !difference.entriesOnlyOnLeft().isEmpty()) {
     isSaveValid=false;
     serverValidationLatch.countDown();

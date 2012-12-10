@@ -1,12 +1,12 @@
 {
   if (response) {
     serverShouldBeKilledQuietly=false;
-    GameRegistry.releaseGate(true);
+    GameData.releaseGate(true);
     client.continueWorldLoading();
   }
  else {
     serverShouldBeKilledQuietly=true;
-    GameRegistry.releaseGate(false);
+    GameData.releaseGate(false);
     client.func_71403_a((WorldClient)null);
     client.func_71373_a(null);
   }
