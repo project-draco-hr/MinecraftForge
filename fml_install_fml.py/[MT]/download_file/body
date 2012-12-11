@@ -12,7 +12,7 @@ def download_file(url, target, md5=None):
                     print ('Download of %s failed md5 check, deleting' % name)
                     os.remove(target)
                     return False
-            print ('Downloaded %s successfully' % name)
+            print ('Downloaded %s' % name)
         except Exception as e:
             print e
             print ("Download of %s failed, download it manually from '%s' to '%s'" % (target, url, target))

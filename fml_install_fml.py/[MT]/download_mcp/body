@@ -27,4 +27,7 @@ def download_mcp(mcp_dir, fml_dir, version=None):
     zf = ZipFile(mcp_zip)
     zf.extractall(mcp_dir)
     zf.close()
+    eclipse_dir = os.path.join(mcp_dir, 'eclipse')
+    if os.path.isdir(eclipse_dir):
+        shutil.rmtree(eclipse_dir)
     return True
