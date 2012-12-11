@@ -12,6 +12,7 @@
     addStringLocalization(langPack,lang);
   }
  catch (  IOException e) {
+    FMLLog.getLogger().severe("Unable to load localization from file: " + localizationFile);
     e.printStackTrace();
   }
  finally {
