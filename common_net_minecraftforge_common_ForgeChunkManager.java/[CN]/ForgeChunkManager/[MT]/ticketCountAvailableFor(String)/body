@@ -1,0 +1,3 @@
+{
+  return playerTicketLength - playerTickets.get(username).size();
+}
