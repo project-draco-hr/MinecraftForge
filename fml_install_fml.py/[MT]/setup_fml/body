@@ -16,6 +16,10 @@ def setup_fml(fml_dir, mcp_dir):
         sys.exit(1)
 
     def applyrg_shunt(self, side, reobf=False, applyrg_real=Commands.applyrg):
+        if ((not self.has_wine) and (not self.has_astyle)):
+            self.logger.error('!! Please install either wine or astyle for source cleanup !!')
+            self.logger.error('!! This is REQUIRED by FML/Forge Cannot proceed !!')
+            sys.exit(1)
         jars = {CLIENT: self.jarclient, SERVER: self.jarserver, }
         dir_bin = os.path.join(fml_dir, 'bin')
         if (not os.path.isdir(dir_bin)):

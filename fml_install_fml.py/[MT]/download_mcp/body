@@ -30,4 +30,12 @@ def download_mcp(mcp_dir, fml_dir, version=None):
     eclipse_dir = os.path.join(mcp_dir, 'eclipse')
     if os.path.isdir(eclipse_dir):
         shutil.rmtree(eclipse_dir)
+    if (os.name != 'nt'):
+        for (path, _, filelist) in os.walk(mcp_dir):
+            for cur_file in fnmatch.filter(filelist, '*.sh'):
+                file_name = os.path.join(path, cur_file)
+                process = subprocess.Popen(cmdsplit(('chmod +x "%s"' % file_name)), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=(-1))
+                (output, _) = process.communicate()
+        process = subprocess.Popen(cmdsplit(('chmod +x "%s/runtime/bin/astyle-osx"' % mcp_dir)), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=(-1))
+        (output, _) = process.communicate()
     return True
