@@ -7,7 +7,5 @@ def apply_forge_patches(fml_dir, mcp_dir, forge_dir, src_dir, copy_files=True):
         apply_patches(mcp_dir, os.path.join(forge_dir, 'patches', 'minecraft'), src_dir)
     if (copy_files and os.path.isdir(os.path.join(forge_dir, 'client'))):
         copytree(os.path.join(forge_dir, 'client'), os.path.join(src_dir, 'minecraft'))
-    if os.path.isdir(os.path.join(forge_dir, 'patches', 'common')):
-        apply_patches(mcp_dir, os.path.join(forge_dir, 'patches', 'common'), src_dir)
     if (copy_files and os.path.isdir(os.path.join(forge_dir, 'common'))):
-        copytree(os.path.join(forge_dir, 'common'), os.path.join(src_dir, 'common'))
+        copytree(os.path.join(forge_dir, 'common'), os.path.join(src_dir, 'minecraft'))

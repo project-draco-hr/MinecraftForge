@@ -11,9 +11,9 @@ def build_forge_dev(mcp_dir, forge_dir, fml_dir, build_num=0):
     print '\nCopying Client Code'
     copytree(os.path.join(forge_dir, 'client'), os.path.join(src_dir, 'minecraft'), (-1))
     print '\nCopying Common Code'
-    copytree(os.path.join(forge_dir, 'common'), os.path.join(src_dir, 'common'), (-1))
+    copytree(os.path.join(forge_dir, 'common'), os.path.join(src_dir, 'minecraft'), (-1))
     print 
-    inject_version(os.path.join(src_dir, 'common/net/minecraftforge/common/ForgeVersion.java'.replace('/', os.sep)), build_num)
+    inject_version(os.path.join(src_dir, 'minecraft/net/minecraftforge/common/ForgeVersion.java'.replace('/', os.sep)), build_num)
     error_level = 0
     try:
         sys.path.append(mcp_dir)
