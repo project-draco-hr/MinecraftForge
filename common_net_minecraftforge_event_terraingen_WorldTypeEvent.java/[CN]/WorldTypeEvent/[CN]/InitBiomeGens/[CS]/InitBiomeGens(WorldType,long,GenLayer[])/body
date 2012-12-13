@@ -1,0 +1,6 @@
+{
+  super(worldType);
+  this.seed=seed;
+  originalBiomeGens=original;
+  newBiomeGens=original.clone();
+}

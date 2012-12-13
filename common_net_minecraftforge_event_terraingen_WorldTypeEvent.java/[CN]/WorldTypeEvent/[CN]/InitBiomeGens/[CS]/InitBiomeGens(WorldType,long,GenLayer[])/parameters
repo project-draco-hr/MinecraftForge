@@ -1,0 +1,3 @@
+WorldType worldType
+long seed
+GenLayer[] original

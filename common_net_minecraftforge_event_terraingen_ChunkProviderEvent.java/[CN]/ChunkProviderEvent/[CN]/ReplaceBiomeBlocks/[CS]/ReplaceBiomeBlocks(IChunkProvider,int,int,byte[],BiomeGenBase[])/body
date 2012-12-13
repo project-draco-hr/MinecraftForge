@@ -1,0 +1,7 @@
+{
+  super(chunkProvider);
+  this.chunkX=chunkX;
+  this.chunkZ=chunkZ;
+  this.blockArray=blockArray;
+  this.biomeArray=biomeArray;
+}

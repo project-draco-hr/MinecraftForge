@@ -1,0 +1,7 @@
+{
+  super(world);
+  this.rand=rand;
+  this.x=x;
+  this.y=y;
+  this.z=z;
+}
