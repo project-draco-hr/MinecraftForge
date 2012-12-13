@@ -1,0 +1,3 @@
+{
+  return Objects.equal(itemType,rightValue.itemType) && Objects.equal(modId,rightValue.modId);
+}

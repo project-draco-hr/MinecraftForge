@@ -1,6 +1,11 @@
 {
   this.itemId=item.field_77779_bT;
-  this.itemType=item.getClass().getName();
+  if (item.getClass().equals(ItemBlock.class)) {
+    this.itemType=Block.field_71973_m[this.itemId].getClass().getName();
+  }
+ else {
+    this.itemType=item.getClass().getName();
+  }
   this.modId=mc.getModId();
   if (!modOrdinals.containsKey(mc.getModId())) {
     modOrdinals.put(mc.getModId(),HashMultiset.<String>create());
