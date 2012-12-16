@@ -1,15 +1,3 @@
 {
-  try {
-    MessageDigest digest=MessageDigest.getInstance("SHA-1");
-    digest.update(buffer);
-    byte[] chksum=digest.digest();
-    final StringBuilder hex=new StringBuilder(2 * chksum.length);
-    for (    final byte b : chksum) {
-      hex.append(HEXES.charAt((b & 0xF0) >> 4)).append(HEXES.charAt((b & 0x0F)));
-    }
-    return hex.toString();
-  }
- catch (  Exception e) {
-    return null;
-  }
+  return CertificateHelper.getFingerprint(buffer);
 }

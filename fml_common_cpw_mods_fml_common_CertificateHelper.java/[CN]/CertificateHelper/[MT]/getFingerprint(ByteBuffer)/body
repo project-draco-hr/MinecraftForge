@@ -1,0 +1,11 @@
+{
+  try {
+    MessageDigest digest=MessageDigest.getInstance("SHA-1");
+    digest.update(buffer);
+    byte[] chksum=digest.digest();
+    return hexify(chksum);
+  }
+ catch (  Exception e) {
+    return null;
+  }
+}
