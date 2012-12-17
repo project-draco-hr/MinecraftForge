@@ -1,0 +1,3 @@
+boolean isDirectory
+File source
+ImmutableSet<String> fingerprints

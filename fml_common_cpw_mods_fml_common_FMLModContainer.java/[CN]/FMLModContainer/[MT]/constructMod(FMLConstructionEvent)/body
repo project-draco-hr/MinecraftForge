@@ -3,11 +3,30 @@
     ModClassLoader modClassLoader=event.getModClassLoader();
     modClassLoader.addFile(source);
     Class<?> clazz=Class.forName(className,true,modClassLoader);
-    ASMDataTable asmHarvestedAnnotations=event.getASMHarvestedData();
-    asmHarvestedAnnotations.getAnnotationsFor(this);
+    Certificate[] certificates=clazz.getProtectionDomain().getCodeSource().getCertificates();
+    int len=0;
+    if (certificates != null) {
+      len=certificates.length;
+    }
+    Builder<String> certBuilder=ImmutableSet.<String>builder();
+    for (int i=0; i < len; i++) {
+      certBuilder.add(CertificateHelper.getFingerprint(certificates[i]));
+    }
+    sourceFingerprints=certBuilder.build();
+    String expectedFingerprint=(String)descriptor.get("certificateFingerprint");
+    if (expectedFingerprint != "" && !sourceFingerprints.contains(expectedFingerprint)) {
+      Level warnLevel=Level.SEVERE;
+      if (source.isDirectory()) {
+        warnLevel=Level.FINER;
+      }
+      FMLLog.log(warnLevel,"The mod %s is expecting signature %s for source %s, however there is no signature matching that description",getModId(),expectedFingerprint,source.getName());
+    }
     annotations=gatherAnnotations(clazz);
     isNetworkMod=FMLNetworkHandler.instance().registerNetworkMod(this,clazz,event.getASMHarvestedData());
     modInstance=clazz.newInstance();
+    if (fingerprintNotPresent) {
+      handleModStateEvent(new FMLFingerprintViolationEvent(source.isDirectory(),source,ImmutableSet.copyOf(this.sourceFingerprints)));
+    }
     ProxyInjector.inject(this,event.getASMHarvestedData(),FMLCommonHandler.instance().getSide());
     processFieldAnnotations(event.getASMHarvestedData());
   }

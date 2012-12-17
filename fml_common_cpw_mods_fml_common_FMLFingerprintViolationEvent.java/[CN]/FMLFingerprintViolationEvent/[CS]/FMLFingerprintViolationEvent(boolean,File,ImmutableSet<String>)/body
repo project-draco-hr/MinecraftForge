@@ -1,0 +1,6 @@
+{
+  super();
+  this.isDirectory=isDirectory;
+  this.source=source;
+  this.fingerprints=fingerprints;
+}
