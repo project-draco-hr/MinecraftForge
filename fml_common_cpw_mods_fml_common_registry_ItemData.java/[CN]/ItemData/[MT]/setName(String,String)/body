@@ -1,4 +1,9 @@
 {
+  if (name == null) {
+    this.forcedName=null;
+    this.forcedModId=null;
+    return;
+  }
   String localModId=modId;
   if (modId == null) {
     localModId=Loader.instance().activeModContainer().getModId();
