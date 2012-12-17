@@ -26,7 +26,7 @@
   try {
     CodeSigner[] signers=null;
     int lastDot=name.lastIndexOf('.');
-    String pkgname=name.substring(0,lastDot);
+    String pkgname=lastDot == -1 ? "" : name.substring(0,lastDot);
     String fName=name.replace('.','/').concat(".class");
     String pkgPath=pkgname.replace('.','/');
     URLConnection urlConnection=findCodeSourceConnectionFor(fName);
@@ -37,11 +37,11 @@
         Manifest mf=jf.getManifest();
         JarEntry ent=jf.getJarEntry(fName);
         Package pkg=getPackage(pkgname);
+        getClassBytes(name);
+        signers=ent.getCodeSigners();
         if (pkg == null) {
           pkg=definePackage(pkgname,mf,jarUrlConn.getJarFileURL());
           packageManifests.put(pkg,mf);
-          getClassBytes(name);
-          signers=ent.getCodeSigners();
         }
  else {
           if (pkg.isSealed() && !pkg.isSealed(jarUrlConn.getJarFileURL())) {
