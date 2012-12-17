@@ -12,7 +12,7 @@
   }
   Function<? super ItemData,Integer> idMapFunction=new Function<ItemData,Integer>(){
     public Integer apply(    ItemData input){
-      return input.itemId;
+      return input.getItemId();
     }
   }
 ;
