@@ -1,0 +1,5 @@
+{
+  int id=item.field_77779_bT;
+  ItemData itemData=idMap.get(id);
+  itemData.setName(name,modId);
+}

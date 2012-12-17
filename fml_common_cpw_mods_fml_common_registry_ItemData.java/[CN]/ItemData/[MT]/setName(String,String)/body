@@ -1,0 +1,13 @@
+{
+  String localModId=modId;
+  if (modId == null) {
+    localModId=Loader.instance().activeModContainer().getModId();
+  }
+  if (modOrdinals.get(localModId).count(name) > 0) {
+    FMLLog.severe("The mod %s is attempting to redefine the item at id %d with a non-unique name (%s.%s)",Loader.instance().activeModContainer(),itemId,localModId,name);
+    throw new LoaderException();
+  }
+  modOrdinals.get(localModId).add(name);
+  this.forcedModId=modId;
+  this.forcedName=name;
+}
