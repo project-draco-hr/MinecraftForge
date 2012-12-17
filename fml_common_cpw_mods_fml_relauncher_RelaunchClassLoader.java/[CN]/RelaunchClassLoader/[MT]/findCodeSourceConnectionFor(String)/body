@@ -1,0 +1,14 @@
+{
+  URL res=findResource(name);
+  if (res != null) {
+    try {
+      return res.openConnection();
+    }
+ catch (    IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+ else {
+    return null;
+  }
+}

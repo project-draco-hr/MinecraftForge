@@ -8,11 +8,10 @@
   Thread.currentThread().setContextClassLoader(this);
   addClassLoaderExclusion("java.");
   addClassLoaderExclusion("sun.");
+  addClassLoaderExclusion("org.lwjgl.");
   addClassLoaderExclusion("cpw.mods.fml.relauncher.");
   addClassLoaderExclusion("net.minecraftforge.classloading.");
   addTransformerExclusion("javax.");
   addTransformerExclusion("org.objectweb.asm.");
   addTransformerExclusion("com.google.common.");
-  addTransformerExclusion("cpw.mods.fml.common.asm.SideOnly");
-  addTransformerExclusion("cpw.mods.fml.common.Side");
 }

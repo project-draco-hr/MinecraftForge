@@ -1,4 +1,26 @@
 {
+  CodeSource codeSource=getClass().getProtectionDomain().getCodeSource();
+  boolean goodFML=false;
+  if (codeSource.getLocation().getProtocol().equals("jar")) {
+    Certificate[] certificates=codeSource.getCertificates();
+    if (certificates != null && certificates.length > 0) {
+      Certificate certificate=certificates[0];
+      String fingerprint=CertificateHelper.getFingerprint(certificate);
+      if (fingerprint.equals(FMLFINGERPRINT)) {
+        FMLLog.info("Found valid fingerprint for FML: %s",fingerprint);
+        goodFML=true;
+      }
+ else {
+        FMLLog.severe("Found invalid fingerprint for FML: %s",fingerprint);
+      }
+    }
+  }
+ else {
+    goodFML=true;
+  }
+  if (!goodFML) {
+    FMLLog.severe("FML appears to be missing it's signature data. This is not a good thing");
+  }
   byte[] mlClass=cl.getClassBytes("ModLoader");
   if (mlClass == null) {
     return null;
