@@ -10,6 +10,10 @@
         FMLLog.info("Found valid fingerprint for FML: %s",fingerprint);
         goodFML=true;
       }
+ else       if (fingerprint.equals(FORGEFINGERPRINT)) {
+        FMLLog.info("Found valid fingerprint for Minecraft Forge: %s",fingerprint);
+        goodFML=true;
+      }
  else {
         FMLLog.severe("Found invalid fingerprint for FML: %s",fingerprint);
       }
@@ -19,7 +23,7 @@
     goodFML=true;
   }
   if (!goodFML) {
-    FMLLog.severe("FML appears to be missing it's signature data. This is not a good thing");
+    FMLLog.severe("FML appears to be missing any signature data. This is not a good thing");
   }
   byte[] mlClass=cl.getClassBytes("ModLoader");
   if (mlClass == null) {
