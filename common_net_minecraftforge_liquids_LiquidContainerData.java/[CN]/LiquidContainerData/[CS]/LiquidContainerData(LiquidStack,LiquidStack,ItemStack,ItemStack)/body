@@ -1,4 +1,0 @@
-{
-  this(stillLiquid,filled,container);
-  this.movingLiquid=movingLiquid;
-}

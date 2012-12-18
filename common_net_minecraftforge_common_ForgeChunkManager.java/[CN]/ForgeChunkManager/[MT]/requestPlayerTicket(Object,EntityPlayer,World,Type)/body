@@ -1,3 +1,0 @@
-{
-  return requestPlayerTicket(mod,player.getEntityName(),world,type);
-}

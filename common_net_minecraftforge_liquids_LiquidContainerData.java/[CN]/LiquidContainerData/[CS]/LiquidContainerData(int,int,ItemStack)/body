@@ -1,3 +1,0 @@
-{
-  this(new LiquidStack(stillLiquidId,LiquidContainerRegistry.BUCKET_VOLUME),new LiquidStack(movingLiquidId,LiquidContainerRegistry.BUCKET_VOLUME),filled,new ItemStack(Item.bucketEmpty));
-}
