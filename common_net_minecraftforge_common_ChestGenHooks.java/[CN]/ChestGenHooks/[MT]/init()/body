@@ -11,4 +11,12 @@
   addInfo(STRONGHOLD_CROSSING,ComponentStrongholdRoomCrossing.strongholdRoomCrossingChestContents,1,5);
   addInfo(VILLAGE_BLACKSMITH,ComponentVillageHouse2.villageBlacksmithChestContents,3,9);
   addInfo(BONUS_CHEST,WorldServer.bonusChestContent,10,10);
+  ItemStack book=new ItemStack(Item.field_92053_bW,1,0);
+  WeightedRandomChestContent tmp=new WeightedRandomChestContent(book,1,1,1);
+  getInfo(MINESHAFT_CORRIDOR).addItem(tmp);
+  getInfo(PYRAMID_DESERT_CHEST).addItem(tmp);
+  getInfo(PYRAMID_JUNGLE_CHEST).addItem(tmp);
+  getInfo(STRONGHOLD_CORRIDOR).addItem(tmp);
+  getInfo(STRONGHOLD_LIBRARY).addItem(new WeightedRandomChestContent(book,1,5,2));
+  getInfo(STRONGHOLD_CROSSING).addItem(tmp);
 }
