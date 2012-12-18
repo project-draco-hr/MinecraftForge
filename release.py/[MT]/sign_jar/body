@@ -1,0 +1,31 @@
+def sign_jar(forge_dir, command, files, dest_zip):
+    from subprocess import Popen, PIPE, STDOUT
+    global zip
+    zip_file = os.path.join(forge_dir, 'tmp.jar')
+    print '============== Creating tmp zip to sign ====================='
+    zf = zipfile.ZipFile(zip_file, 'w', zipfile.ZIP_DEFLATED)
+    zf.write(os.path.join(forge_dir, 'MANIFEST.MF'), 'META-INF/MANIFEST.MF')
+    zip_folder_filter(files, '', zf, 'cpw/mods/'.replace('/', os.sep))
+    zip_folder_filter(files, '', zf, 'net/minecraftforge/'.replace('/', os.sep))
+    zf.close()
+    print '================ End tmp zip to sign ========================'
+    try:
+        process = Popen([command, zip_file, 'forge'], stdout=PIPE, stderr=STDOUT, bufsize=(-1))
+        (out, _) = process.communicate()
+        print out
+    except OSError:
+        print 'Error creating signed tmp jar'
+        os.remove(zip_file)
+        sys.exit(1)
+    tmp_dir = os.path.join(forge_dir, 'tmp')
+    if os.path.isdir(tmp_dir):
+        shutil.rmtree(tmp_dir)
+    zf = zipfile.ZipFile(zip_file)
+    zf.extractall(tmp_dir)
+    zf.close()
+    os.remove(zip_file)
+    zip_start(dest_zip)
+    zip_folder(tmp_dir, '', zip)
+    zip_folder(files, '', zip)
+    if os.path.isdir(tmp_dir):
+        shutil.rmtree(tmp_dir)

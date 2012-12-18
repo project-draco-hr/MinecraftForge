@@ -1,11 +1,10 @@
-def zip_folder(path, key, zip):
-    import pprint
+def zip_folder_filter(path, key, zip, filter):
     files = os.listdir(path)
     for file in files:
         file_path = os.path.join(path, file)
         file_key = os.path.join(key, file)
         if os.path.isdir(file_path):
-            zip_folder(file_path, file_key, zip)
-        elif (not (file_key.replace(os.sep, '/') in zip.NameToInfo)):
+            zip_folder_filter(file_path, file_key, zip, filter)
+        elif file_key.startswith(filter):
             print file_key
             zip.write(file_path, file_key)

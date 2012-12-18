@@ -5,6 +5,7 @@ def main():
     parser.add_option('-m', '--mcp-dir', action='store', dest='mcp_dir', help='MCP Path', default=None)
     parser.add_option('-b', '--build', action='store', dest='build', help='Build number', default=None)
     parser.add_option('-s', '--skipchangelog', action='store_true', dest='skip_changelog', help='Skip Changelog', default=False)
+    parser.add_option('-j', '--sign-jar', action='store', dest='sign_jar', help='Path to jar signer command', default=None)
     (options, _) = parser.parse_args()
     build_num = 0
     if (not (options.build is None)):
@@ -63,8 +64,12 @@ def main():
         fh.write(('forge.minor.number=%d\n' % version['minor']))
         fh.write(('forge.revision.number=%d\n' % version['revision']))
         fh.write(('forge.build.number=%d\n' % version['build']))
-    zip_start(('minecraftforge-universal-%s.zip' % version_str))
-    zip_folder(client_dir, '', zip)
+    if (not (options.sign_jar is None)):
+        sign_jar(forge_dir, options.sign_jar, client_dir, ('minecraftforge-universal-%s.zip' % version_str))
+    else:
+        zip_start(('minecraftforge-universal-%s.zip' % version_str))
+        zip_folder(client_dir, '', zip)
+        zip_add('MANIFEST.MF', 'META-INF/MANIFEST.MF')
     zip_add('client/forge_logo.png')
     zip_add('install/MinecraftForge-Credits.txt')
     zip_add('install/MinecraftForge-License.txt')
@@ -82,7 +87,6 @@ def main():
     zip_add(version_file)
     if (not options.skip_changelog):
         zip_add(changelog_file, 'MinecraftForge-Changelog.txt')
-    zip_add('MANIFEST.MF', 'META-INF/MANIFEST.MF')
     zip_end()
     zips = glob.glob('fml/mcp*.zip')
     for i in zips:
