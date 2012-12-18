@@ -3,19 +3,20 @@
   boolean goodFML=false;
   if (codeSource.getLocation().getProtocol().equals("jar")) {
     Certificate[] certificates=codeSource.getCertificates();
-    if (certificates != null && certificates.length > 0) {
-      Certificate certificate=certificates[0];
-      String fingerprint=CertificateHelper.getFingerprint(certificate);
-      if (fingerprint.equals(FMLFINGERPRINT)) {
-        FMLLog.info("Found valid fingerprint for FML: %s",fingerprint);
-        goodFML=true;
-      }
- else       if (fingerprint.equals(FORGEFINGERPRINT)) {
-        FMLLog.info("Found valid fingerprint for Minecraft Forge: %s",fingerprint);
-        goodFML=true;
-      }
+    if (certificates != null) {
+      for (      Certificate cert : certificates) {
+        String fingerprint=CertificateHelper.getFingerprint(cert);
+        if (fingerprint.equals(FMLFINGERPRINT)) {
+          FMLLog.info("Found valid fingerprint for FML. Certificate fingerprint %s",fingerprint);
+          goodFML=true;
+        }
+ else         if (fingerprint.equals(FORGEFINGERPRINT)) {
+          FMLLog.info("Found valid fingerprint for Minecraft Forge. Certificate fingerprint %s",fingerprint);
+          goodFML=true;
+        }
  else {
-        FMLLog.severe("Found invalid fingerprint for FML: %s",fingerprint);
+          FMLLog.severe("Found invalid fingerprint for FML: %s",fingerprint);
+        }
       }
     }
   }

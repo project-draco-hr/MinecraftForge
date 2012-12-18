@@ -14,6 +14,9 @@ def process_file(file, srg):
             with open(file) as f:
                 for line in f:
                     parts = line.split('#')
+                    if (len(parts) < 2):
+                        nf.write(line)
+                        continue
                     if (len(parts[1]) < 4):
                         nf.write(line)
                         continue
@@ -42,6 +45,9 @@ def process_file(file, srg):
                         args += ')V'
                         newline = ('%s %s.%s #%s' % (action[0], targ, args, '#'.join(parts[1:])))
                         nf.write(newline)
+                    elif (name not in srg[typ]):
+                        nf.write(('%s # -- MISSING MAPPING' % line))
+                        print ('%s is missing a mapping' % name)
                     else:
                         targ = srg[typ][name]
                         args = targ.replace('/', '.', 1).replace(' ', '', 1)

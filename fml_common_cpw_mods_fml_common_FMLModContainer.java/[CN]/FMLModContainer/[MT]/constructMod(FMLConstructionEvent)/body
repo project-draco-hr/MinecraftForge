@@ -8,11 +8,12 @@
     if (certificates != null) {
       len=certificates.length;
     }
-    Builder<String> certBuilder=ImmutableSet.<String>builder();
+    Builder<String> certBuilder=ImmutableList.<String>builder();
     for (int i=0; i < len; i++) {
       certBuilder.add(CertificateHelper.getFingerprint(certificates[i]));
     }
-    sourceFingerprints=certBuilder.build();
+    ImmutableList<String> certList=certBuilder.build();
+    sourceFingerprints=ImmutableSet.copyOf(certList);
     String expectedFingerprint=(String)descriptor.get("certificateFingerprint");
     if (expectedFingerprint != "" && !sourceFingerprints.contains(expectedFingerprint)) {
       Level warnLevel=Level.SEVERE;
@@ -20,6 +21,9 @@
         warnLevel=Level.FINER;
       }
       FMLLog.log(warnLevel,"The mod %s is expecting signature %s for source %s, however there is no signature matching that description",getModId(),expectedFingerprint,source.getName());
+    }
+ else {
+      certificate=certificates[certList.indexOf(expectedFingerprint)];
     }
     annotations=gatherAnnotations(clazz);
     isNetworkMod=FMLNetworkHandler.instance().registerNetworkMod(this,clazz,event.getASMHarvestedData());

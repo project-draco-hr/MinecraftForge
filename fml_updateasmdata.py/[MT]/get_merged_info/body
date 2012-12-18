@@ -1,5 +1,5 @@
 def get_merged_info():
-    mcp_dir = os.path.join(os.getcwd(), '..')
+    mcp_dir = os.path.join(os.getcwd(), 'mcp')
     joined = os.path.join(mcp_dir, 'conf', 'joined.srg')
     values = {'PK:': {}, 'CL:': {}, 'FD:': {}, 'MD:': {}, }
     if (not os.path.isfile(joined)):
