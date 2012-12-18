@@ -11,8 +11,6 @@
   if (entity.getClass().equals(EntityItem.class)) {
     ItemStack stack=((EntityItem)entity).getDataWatcher().getWatchableObjectItemStack(10);
     if (stack == null) {
-      entity.setDead();
-      event.setCanceled(true);
       return;
     }
     Item item=stack.getItem();
