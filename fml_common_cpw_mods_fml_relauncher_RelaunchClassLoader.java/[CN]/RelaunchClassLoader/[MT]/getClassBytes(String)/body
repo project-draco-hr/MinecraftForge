@@ -1,4 +1,14 @@
 {
+  if (name.indexOf('.') == -1) {
+    for (    String res : RESERVED) {
+      if (name.toUpperCase(Locale.ENGLISH).startsWith(res)) {
+        byte[] data=getClassBytes("_" + name);
+        if (data != null) {
+          return data;
+        }
+      }
+    }
+  }
   InputStream classStream=null;
   try {
     URL classResource=findResource(name.replace('.','/').concat(".class"));
