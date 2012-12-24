@@ -1,9 +1,4 @@
 {
-  for (  DungeonLoot loot : dungeonLoot) {
-    if (loot.equals(item,minCount,maxCount)) {
-      return loot.itemWeight+=rarity;
-    }
-  }
-  dungeonLoot.add(new DungeonLoot(rarity,item,minCount,maxCount));
+  ChestGenHooks.addDungeonLoot(ChestGenHooks.getInfo(DUNGEON_CHEST),item,rarity,minCount,maxCount);
   return rarity;
 }

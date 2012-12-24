@@ -1,17 +1,3 @@
 {
-  ArrayList<DungeonLoot> lootTmp=(ArrayList<DungeonLoot>)dungeonLoot.clone();
-  if (minCount < 0) {
-    for (    DungeonLoot loot : lootTmp) {
-      if (loot.equals(item)) {
-        dungeonLoot.remove(loot);
-      }
-    }
-  }
- else {
-    for (    DungeonLoot loot : lootTmp) {
-      if (loot.equals(item,minCount,maxCount)) {
-        dungeonLoot.remove(loot);
-      }
-    }
-  }
+  ChestGenHooks.removeItem(DUNGEON_CHEST,item);
 }

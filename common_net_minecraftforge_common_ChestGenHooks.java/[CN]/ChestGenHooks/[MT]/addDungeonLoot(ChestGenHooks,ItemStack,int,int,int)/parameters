@@ -1,0 +1,5 @@
+ChestGenHooks dungeon
+ItemStack item
+int weight
+int min
+int max

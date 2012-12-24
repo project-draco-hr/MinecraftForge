@@ -1,6 +1,3 @@
 {
-  super(weight);
-  this.itemStack=item;
-  minCount=min;
-  maxCount=max;
+  super(item,weight,min,max);
 }

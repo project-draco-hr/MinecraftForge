@@ -1,7 +1,3 @@
 {
-  DungeonLoot ret=(DungeonLoot)WeightedRandom.getRandomItem(rand,dungeonLoot);
-  if (ret != null) {
-    return ret.generateStack(rand);
-  }
-  return null;
+  return ChestGenHooks.getOneItem(DUNGEON_CHEST,rand);
 }

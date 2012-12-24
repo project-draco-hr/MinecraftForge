@@ -1,3 +1,3 @@
 {
-  dungeonLoot.add(loot);
+  ChestGenHooks.getInfo(DUNGEON_CHEST).addItem(loot);
 }

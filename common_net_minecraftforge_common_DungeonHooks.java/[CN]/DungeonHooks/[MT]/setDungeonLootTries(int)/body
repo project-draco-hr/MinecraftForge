@@ -1,3 +1,4 @@
 {
-  dungeonLootAttempts=number;
+  ChestGenHooks.getInfo(DUNGEON_CHEST).setMax(number);
+  ChestGenHooks.getInfo(DUNGEON_CHEST).setMin(number);
 }

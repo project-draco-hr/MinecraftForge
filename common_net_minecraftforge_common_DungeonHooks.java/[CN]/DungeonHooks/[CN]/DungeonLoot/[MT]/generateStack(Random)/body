@@ -1,5 +1,7 @@
 {
-  ItemStack ret=this.itemStack.copy();
-  ret.stackSize=minCount + (rand.nextInt(maxCount - minCount + 1));
+  int min=theMinimumChanceToGenerateItem;
+  int max=theMaximumChanceToGenerateItem;
+  ItemStack ret=this.theItemId.copy();
+  ret.stackSize=min + (rand.nextInt(max - min + 1));
   return ret;
 }
