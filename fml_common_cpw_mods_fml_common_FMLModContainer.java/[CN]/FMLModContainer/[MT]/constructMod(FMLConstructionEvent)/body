@@ -16,7 +16,7 @@
     sourceFingerprints=ImmutableSet.copyOf(certList);
     String expectedFingerprint=(String)descriptor.get("certificateFingerprint");
     fingerprintNotPresent=true;
-    if (expectedFingerprint != "" && !sourceFingerprints.contains(expectedFingerprint)) {
+    if (expectedFingerprint != null && expectedFingerprint != "" && !sourceFingerprints.contains(expectedFingerprint)) {
       Level warnLevel=Level.SEVERE;
       if (source.isDirectory()) {
         warnLevel=Level.FINER;
