@@ -1,5 +1,11 @@
 {
-  ModContainer mc=FMLCommonHandler.instance().findContainerFor(sourceMod);
+  ModContainer mc;
+  if (sourceMod instanceof ModContainer) {
+    mc=(ModContainer)sourceMod;
+  }
+ else {
+    mc=FMLCommonHandler.instance().findContainerFor(sourceMod);
+  }
   if (mc != null && Loader.isModLoaded(modTarget)) {
     message.setSender(mc);
     modMessages.put(modTarget,message);

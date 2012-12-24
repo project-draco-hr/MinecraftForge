@@ -1,3 +1,4 @@
 {
   currentList=ImmutableList.copyOf(modMessages.removeAll(activeContainer.getModId()));
+  FMLLog.finest("Attempting to deliver %d IMC messages to mod %s",currentList.size(),activeContainer.getModId());
 }
