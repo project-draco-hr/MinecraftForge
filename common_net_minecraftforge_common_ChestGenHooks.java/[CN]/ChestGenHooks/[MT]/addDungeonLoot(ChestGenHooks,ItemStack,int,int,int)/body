@@ -1,3 +1,3 @@
 {
-  dungeon.addItem(new WeightedRandomChestContent(item,max,max,weight));
+  dungeon.addItem(new WeightedRandomChestContent(item,min,max,weight));
 }
