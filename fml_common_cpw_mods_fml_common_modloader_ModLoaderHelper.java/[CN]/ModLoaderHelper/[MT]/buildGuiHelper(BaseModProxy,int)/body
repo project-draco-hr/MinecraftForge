@@ -1,5 +1,10 @@
 {
-  ModLoaderGuiHelper handler=new ModLoaderGuiHelper(mod,id);
-  guiHelpers.put(id,handler);
-  NetworkRegistry.instance().registerGuiHandler(mod,handler);
+  ModLoaderGuiHelper handler=guiHelpers.get(mod);
+  if (handler == null) {
+    handler=new ModLoaderGuiHelper(mod);
+    guiHelpers.put(mod,handler);
+    NetworkRegistry.instance().registerGuiHandler(mod,handler);
+  }
+  handler.associateId(id);
+  guiIDs.put(id,handler);
 }

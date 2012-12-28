@@ -1,5 +1,5 @@
 {
-  ModLoaderGuiHelper helper=guiHelpers.get(id);
-  helper.injectContainer(container);
+  ModLoaderGuiHelper helper=guiIDs.get(id);
+  helper.injectContainerAndID(container,id);
   player.openGui(helper.getMod(),id,player.field_70170_p,x,y,z);
 }
