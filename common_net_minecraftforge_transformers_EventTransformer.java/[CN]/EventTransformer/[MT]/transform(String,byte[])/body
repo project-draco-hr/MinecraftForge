@@ -13,7 +13,9 @@
     }
     return bytes;
   }
- catch (  Exception e) {
+ catch (  ClassNotFoundException ex) {
+  }
+catch (  Exception e) {
     e.printStackTrace();
   }
   return bytes;
