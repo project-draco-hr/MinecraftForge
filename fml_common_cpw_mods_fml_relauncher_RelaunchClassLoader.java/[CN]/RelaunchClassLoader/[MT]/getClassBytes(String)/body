@@ -13,9 +13,15 @@
   try {
     URL classResource=findResource(name.replace('.','/').concat(".class"));
     if (classResource == null) {
+      if (DEBUG_CLASSLOADING) {
+        FMLLog.finest("Failed to find class resource %s",name.replace('.','/').concat(".class"));
+      }
       return null;
     }
     classStream=classResource.openStream();
+    if (DEBUG_CLASSLOADING) {
+      FMLLog.finest("Loading class %s from resource %s",name,classResource.toString());
+    }
     return readFully(classStream);
   }
   finally {

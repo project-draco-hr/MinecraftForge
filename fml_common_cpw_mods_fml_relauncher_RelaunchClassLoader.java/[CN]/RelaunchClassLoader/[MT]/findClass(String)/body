@@ -71,6 +71,9 @@
   }
  catch (  Throwable e) {
     invalidClasses.add(name);
+    if (DEBUG_CLASSLOADING) {
+      FMLLog.log(Level.FINEST,e,"Exception encountered attempting classloading of %s",name);
+    }
     throw new ClassNotFoundException(name,e);
   }
 }
