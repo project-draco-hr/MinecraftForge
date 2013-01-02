@@ -1,0 +1,8 @@
+{
+  boolean result=MinecraftForge.EVENT_BUS.post(new LivingSpecialSpawnEvent(entity,world,x,y,z));
+  LivingSpawnEvent.SpecialSpawn nEvent=new LivingSpawnEvent.SpecialSpawn(entity,world,x,y,z);
+  if (result) {
+    nEvent.setCanceled(true);
+  }
+  return MinecraftForge.EVENT_BUS.post(nEvent);
+}
