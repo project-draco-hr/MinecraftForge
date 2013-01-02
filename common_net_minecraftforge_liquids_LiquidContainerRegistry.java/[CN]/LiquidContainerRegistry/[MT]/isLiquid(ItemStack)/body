@@ -1,6 +1,3 @@
 {
-  if (item == null) {
-    return false;
-  }
-  return setLiquidValidation.contains(Arrays.asList(item.itemID,item.getItemDamage()));
+  return item != null && setLiquidValidation.contains(Arrays.asList(item.itemID,item.getItemDamage()));
 }

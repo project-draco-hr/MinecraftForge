@@ -1,6 +1,3 @@
 {
-  if (filledContainer == null) {
-    return false;
-  }
-  return getLiquidForFilledItem(filledContainer) != null;
+  return filledContainer != null && getLiquidForFilledItem(filledContainer) != null;
 }

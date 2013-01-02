@@ -1,6 +1,3 @@
 {
-  if (target instanceof DungeonMob) {
-    return this.type.equals(((DungeonMob)target).type);
-  }
-  return false;
+  return target instanceof DungeonMob && type.equals(((DungeonMob)target).type);
 }

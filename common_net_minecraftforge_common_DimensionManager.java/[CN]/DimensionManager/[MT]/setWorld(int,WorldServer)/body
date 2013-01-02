@@ -20,5 +20,5 @@
     }
     tmp.add(entry.getValue());
   }
-  MinecraftServer.getServer().worldServers=tmp.toArray(new WorldServer[0]);
+  MinecraftServer.getServer().worldServers=tmp.toArray(new WorldServer[tmp.size()]);
 }

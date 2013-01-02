@@ -1,4 +1,3 @@
 {
-  if (!isLiquidEqual(other))   return false;
-  return amount >= other.amount;
+  return isLiquidEqual(other) && amount >= other.amount;
 }

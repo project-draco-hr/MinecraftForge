@@ -2,6 +2,7 @@
   if (hasInit) {
     return;
   }
+  hasInit=true;
   registerProviderType(0,WorldProviderSurface.class,true);
   registerProviderType(-1,WorldProviderHell.class,true);
   registerProviderType(1,WorldProviderEnd.class,false);

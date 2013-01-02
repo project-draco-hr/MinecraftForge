@@ -1,7 +1,4 @@
 {
-  List toolClass=(List)toolClasses.get(stack.getItem());
-  if (toolClass == null) {
-    return false;
-  }
-  return toolEffectiveness.contains(Arrays.asList(block,metadata,(String)toolClass.get(0)));
+  List toolClass=toolClasses.get(stack.getItem());
+  return toolClass != null && toolEffectiveness.contains(Arrays.asList(block,metadata,toolClass.get(0)));
 }

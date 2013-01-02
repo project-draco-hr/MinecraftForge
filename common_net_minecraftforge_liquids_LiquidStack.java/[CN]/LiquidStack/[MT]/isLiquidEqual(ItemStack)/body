@@ -1,4 +1,3 @@
 {
-  if (other == null)   return false;
-  return itemID == other.itemID && itemMeta == other.getItemDamage();
+  return other != null && itemID == other.itemID && itemMeta == other.getItemDamage();
 }

@@ -39,7 +39,6 @@
   for (; idx < recipe.length; idx+=2) {
     Character chr=(Character)recipe[idx];
     Object in=recipe[idx + 1];
-    Object val=null;
     if (in instanceof ItemStack) {
       itemMap.put(chr,((ItemStack)in).copy());
     }

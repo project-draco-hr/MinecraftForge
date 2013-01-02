@@ -1,6 +1,3 @@
 {
-  if (emptyContainer == null) {
-    return false;
-  }
-  return setContainerValidation.contains(Arrays.asList(emptyContainer.itemID,emptyContainer.getItemDamage()));
+  return emptyContainer != null && setContainerValidation.contains(Arrays.asList(emptyContainer.itemID,emptyContainer.getItemDamage()));
 }

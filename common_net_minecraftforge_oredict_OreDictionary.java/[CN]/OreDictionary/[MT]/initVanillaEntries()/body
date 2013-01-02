@@ -23,7 +23,7 @@
     replacements.put(dye,dyes[i]);
   }
   hasInit=true;
-  ItemStack[] replaceStacks=replacements.keySet().toArray(new ItemStack[0]);
+  ItemStack[] replaceStacks=replacements.keySet().toArray(new ItemStack[replacements.keySet().size()]);
   ItemStack[] exclusions=new ItemStack[]{new ItemStack(Block.blockLapis),new ItemStack(Item.cookie)};
   List recipes=CraftingManager.getInstance().getRecipeList();
   List<IRecipe> recipesToRemove=new ArrayList<IRecipe>();
@@ -46,7 +46,7 @@
       if (output != null && containsMatch(false,exclusions,output)) {
         continue;
       }
-      if (containsMatch(true,(ItemStack[])recipe.recipeItems.toArray(new ItemStack[0]),replaceStacks)) {
+      if (containsMatch(true,(ItemStack[])recipe.recipeItems.toArray(new ItemStack[recipe.recipeItems.size()]),replaceStacks)) {
         recipesToRemove.add((IRecipe)obj);
         IRecipe newRecipe=new ShapelessOreRecipe(recipe,replacements);
         recipesToAdd.add(newRecipe);
