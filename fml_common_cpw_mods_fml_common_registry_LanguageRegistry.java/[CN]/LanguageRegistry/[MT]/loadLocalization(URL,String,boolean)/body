@@ -7,7 +7,7 @@
       langPack.loadFromXML(langStream);
     }
  else {
-      langPack.load(langStream);
+      langPack.load(new InputStreamReader(langStream,Charsets.UTF_8));
     }
     addStringLocalization(langPack,lang);
   }
