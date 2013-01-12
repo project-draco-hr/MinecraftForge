@@ -1,4 +1,0 @@
-int id
-int width
-int height
-List<TextureFX> effects

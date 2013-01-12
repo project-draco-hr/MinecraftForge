@@ -1,3 +1,0 @@
-{
-  this(icon,size,(target == 0 ? "/terrain.png" : "/gui/items.png"),image,tickCount);
-}

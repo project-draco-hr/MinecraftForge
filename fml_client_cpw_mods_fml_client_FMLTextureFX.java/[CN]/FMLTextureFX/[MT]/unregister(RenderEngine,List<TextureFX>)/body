@@ -1,4 +1,0 @@
-{
-  effects.remove(this);
-  return true;
-}
