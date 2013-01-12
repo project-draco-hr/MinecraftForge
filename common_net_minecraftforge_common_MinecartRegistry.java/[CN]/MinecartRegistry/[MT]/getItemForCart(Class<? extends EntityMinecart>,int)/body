@@ -1,7 +1,0 @@
-{
-  ItemStack item=itemForMinecart.get(new MinecartKey(minecart,type));
-  if (item == null) {
-    return null;
-  }
-  return item.copy();
-}
