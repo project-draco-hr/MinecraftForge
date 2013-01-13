@@ -10,7 +10,7 @@
       FMLLog.warning("Mod attempted to get a item ID with a default value in the block ID section, " + "mod authors should make sure there defaults are above %d unless explicitly needed " + "so that all block ids are free to store blocks.",MAX_BLOCKS - ITEM_SHIFT);
       FMLLog.warning("Config \"%s\" Category: \"%s\" Key: \"%s\" Default: %d",fileName,category,key,defaultID);
     }
-    if (Item.itemsList[defaultShift] == null && !configMarkers[defaultShift] && defaultShift > Block.blocksList.length) {
+    if (Item.itemsList[defaultShift] == null && !configMarkers[defaultShift] && defaultShift >= Block.blocksList.length) {
       prop.value=Integer.toString(defaultID);
       configMarkers[defaultShift]=true;
       return prop;
