@@ -1,0 +1,9 @@
+{
+  TileEntity.func_70306_a(tileEntityClass,id);
+  Map<String,Class> teMappings=ObfuscationReflectionHelper.getPrivateValue(TileEntity.class,null,"field_70326_a","a");
+  for (  String s : alternatives) {
+    if (!teMappings.containsKey(s)) {
+      teMappings.put(s,tileEntityClass);
+    }
+  }
+}
