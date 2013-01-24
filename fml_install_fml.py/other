@@ -9,4 +9,5 @@ from zipfile import ZipFile
 from pprint import pprint
 mcp_version = '7.23'
 count = 0
+compile_tools = True
 typere = re.compile('([\\[ZBCSIJFDV]|L([\\w\\/]+);)')

@@ -1,11 +1,11 @@
-def finish_setup_fml(fml_dir, mcp_dir):
+def finish_setup_fml(fml_dir, mcp_dir, enable_server=False, disable_client=False):
     sys.path.append(mcp_dir)
     from runtime.updatenames import updatenames
     from runtime.updatemd5 import updatemd5
     from runtime.updatemcp import updatemcp
     os.chdir(mcp_dir)
-    updatenames(None, True, True, False)
+    updatenames(None, True, (not disable_client), enable_server)
     reset_logger()
-    updatemd5(None, True, True, False)
+    updatemd5(None, True, (not disable_client), enable_server)
     reset_logger()
     os.chdir(fml_dir)

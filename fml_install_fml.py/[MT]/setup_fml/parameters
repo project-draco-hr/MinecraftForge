@@ -1,2 +1,6 @@
 fml_dir
 mcp_dir
+disable_at
+disable_merge
+enable_server
+disable_client
