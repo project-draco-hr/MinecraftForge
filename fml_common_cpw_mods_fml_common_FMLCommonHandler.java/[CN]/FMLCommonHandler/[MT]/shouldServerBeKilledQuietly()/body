@@ -1,3 +1,6 @@
 {
+  if (sidedDelegate == null) {
+    return false;
+  }
   return sidedDelegate.shouldServerShouldBeKilledQuietly();
 }
