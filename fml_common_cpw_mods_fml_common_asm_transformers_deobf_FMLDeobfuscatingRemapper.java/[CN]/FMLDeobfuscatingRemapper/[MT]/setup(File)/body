@@ -1,0 +1,20 @@
+{
+  try {
+    File libDir=new File(mcDir,"lib");
+    File mapData=new File(libDir,"deobfuscation_data.zip");
+    ZipFile mapZip=new ZipFile(mapData);
+    ZipEntry classData=mapZip.getEntry("class_data.csv");
+    ZipInputSupplier zis=new ZipInputSupplier(mapZip,classData);
+    InputSupplier<InputStreamReader> classNameSupplier=CharStreams.newReaderSupplier(zis,Charsets.UTF_8);
+    List<String> classList=CharStreams.readLines(classNameSupplier);
+    Builder<String,String> builder=ImmutableBiMap.<String,String>builder();
+    for (    String line : classList) {
+      String[] parts=line.split(",");
+      builder.put(parts[0],parts[1]);
+    }
+    classNameBiMap=builder.build();
+  }
+ catch (  IOException ioe) {
+    FMLRelaunchLog.log(Level.SEVERE,ioe,"An error occurred loading the class map data");
+  }
+}

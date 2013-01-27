@@ -1,0 +1,6 @@
+{
+  if (classNameBiMap == null) {
+    return typeName;
+  }
+  return classNameBiMap.containsValue(typeName) ? classNameBiMap.inverse().get(typeName) : typeName;
+}

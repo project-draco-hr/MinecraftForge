@@ -1,5 +1,8 @@
 {
   System.out.println("***" + name + ":"+ transformedName);
+  if (bytes == null) {
+    return null;
+  }
   ClassReader classReader=new ClassReader(bytes);
   ClassWriter classWriter=new ClassWriter(ClassWriter.COMPUTE_MAXS);
   RemappingClassAdapter remapAdapter=new RemappingClassAdapter(classWriter,FMLDeobfuscatingRemapper.INSTANCE);

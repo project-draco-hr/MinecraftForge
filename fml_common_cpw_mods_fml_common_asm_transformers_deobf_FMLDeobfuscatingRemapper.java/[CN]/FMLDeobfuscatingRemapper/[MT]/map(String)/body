@@ -1,0 +1,8 @@
+{
+  if (classNameBiMap == null) {
+    return typeName;
+  }
+  String result=classNameBiMap.containsKey(typeName) ? classNameBiMap.get(typeName) : typeName;
+  System.out.printf("Remapping %s to %s\n",typeName,result);
+  return result;
+}

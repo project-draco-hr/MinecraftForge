@@ -1,8 +1,0 @@
-{
-  if (typeName.indexOf('/') < 0) {
-    return "hello/world/" + typeName + "LexManos";
-  }
- else {
-    return typeName;
-  }
-}
