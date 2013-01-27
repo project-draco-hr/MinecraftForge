@@ -1,0 +1,9 @@
+{
+  System.out.println("+++" + owner + "."+ name+ "."+ desc);
+  if (owner.indexOf('/') < 0) {
+    return "lexManosWasHere" + name;
+  }
+ else {
+    return name;
+  }
+}

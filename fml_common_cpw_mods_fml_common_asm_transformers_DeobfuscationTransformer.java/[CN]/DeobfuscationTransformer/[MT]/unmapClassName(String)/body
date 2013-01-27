@@ -1,0 +1,8 @@
+{
+  if (name.startsWith("hello.world.")) {
+    return name.replace("hello.world.","").replace("LexManos","");
+  }
+ else {
+    return name;
+  }
+}

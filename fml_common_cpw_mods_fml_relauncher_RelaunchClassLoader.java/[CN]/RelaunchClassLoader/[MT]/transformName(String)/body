@@ -1,0 +1,8 @@
+{
+  if (renameTransformer != null) {
+    return renameTransformer.remapClassName(name);
+  }
+ else {
+    return name;
+  }
+}
