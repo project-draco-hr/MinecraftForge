@@ -1,3 +1,4 @@
 {
+  FMLDeobfuscatingRemapper.INSTANCE.mergeSuperMaps(name,superName);
   super.visit(version,access,name,signature,superName,interfaces);
 }

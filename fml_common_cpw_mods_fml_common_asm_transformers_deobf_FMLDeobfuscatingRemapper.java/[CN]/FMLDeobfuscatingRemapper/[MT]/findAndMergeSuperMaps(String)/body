@@ -1,0 +1,11 @@
+{
+  try {
+    byte[] classBytes=classLoader.getClassBytes(name);
+    ClassReader cr=new ClassReader(classBytes);
+    String superName=cr.getSuperName();
+    mergeSuperMaps(name,superName);
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+}

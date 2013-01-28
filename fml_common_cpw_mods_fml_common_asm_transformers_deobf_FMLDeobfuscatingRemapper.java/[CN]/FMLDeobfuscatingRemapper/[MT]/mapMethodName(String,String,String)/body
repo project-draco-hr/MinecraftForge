@@ -1,0 +1,8 @@
+{
+  if (classNameBiMap == null || !classNameBiMap.containsKey(owner)) {
+    return name;
+  }
+  Map<String,String> methodMap=getMethodMap(owner);
+  String methodDescriptor=name + desc;
+  return methodMap.containsKey(methodDescriptor) ? methodMap.get(methodDescriptor) : name;
+}
