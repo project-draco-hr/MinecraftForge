@@ -1,9 +1,16 @@
 {
   try {
     byte[] classBytes=classLoader.getClassBytes(name);
+    if (classBytes == null) {
+      return;
+    }
     ClassReader cr=new ClassReader(classBytes);
     String superName=cr.getSuperName();
-    mergeSuperMaps(name,superName);
+    String[] interfaces=cr.getInterfaces();
+    if (interfaces == null) {
+      interfaces=new String[0];
+    }
+    mergeSuperMaps(name,superName,interfaces);
   }
  catch (  IOException e) {
     e.printStackTrace();
