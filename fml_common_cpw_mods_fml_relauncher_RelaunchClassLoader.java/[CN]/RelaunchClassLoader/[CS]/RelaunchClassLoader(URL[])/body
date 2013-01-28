@@ -12,6 +12,7 @@
   addClassLoaderExclusion("cpw.mods.fml.relauncher.");
   addClassLoaderExclusion("net.minecraftforge.classloading.");
   addTransformerExclusion("javax.");
+  addTransformerExclusion("argo.");
   addTransformerExclusion("org.objectweb.asm.");
   addTransformerExclusion("com.google.common.");
   addTransformerExclusion("org.bouncycastle.");
