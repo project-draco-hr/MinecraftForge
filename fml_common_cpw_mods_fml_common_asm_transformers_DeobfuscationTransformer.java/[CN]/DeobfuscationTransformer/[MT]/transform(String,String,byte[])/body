@@ -1,5 +1,4 @@
 {
-  System.out.println("***" + name + ":"+ transformedName);
   if (bytes == null) {
     return null;
   }

@@ -1,0 +1,6 @@
+{
+  if (!fieldNameMaps.containsKey(className)) {
+    findAndMergeSuperMaps(className);
+  }
+  return fieldNameMaps.get(className);
+}

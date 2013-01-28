@@ -8,15 +8,22 @@
       findAndMergeSuperMaps(superName);
     }
   }
-  System.out.printf("Merging maps for %s (%s , %s)\n",name,superName,Arrays.asList(interfaces));
   Map<String,String> methodMap=Maps.<String,String>newHashMap();
+  Map<String,String> fieldMap=Maps.<String,String>newHashMap();
   for (  String parentThing : allParents) {
     if (methodNameMaps.containsKey(parentThing)) {
       methodMap.putAll(methodNameMaps.get(parentThing));
+    }
+    if (fieldNameMaps.containsKey(parentThing)) {
+      fieldMap.putAll(fieldNameMaps.get(parentThing));
     }
   }
   if (rawMethodMaps.containsKey(name)) {
     methodMap.putAll(rawMethodMaps.get(name));
   }
+  if (rawFieldMaps.containsKey(name)) {
+    fieldMap.putAll(rawFieldMaps.get(name));
+  }
   methodNameMaps.put(name,ImmutableMap.copyOf(methodMap));
+  fieldNameMaps.put(name,ImmutableMap.copyOf(fieldMap));
 }

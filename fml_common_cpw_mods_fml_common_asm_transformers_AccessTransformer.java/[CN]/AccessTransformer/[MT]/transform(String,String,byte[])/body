@@ -1,5 +1,4 @@
 {
-  System.out.printf("AT transforming %s : %s\n",name,transformedName);
   if (bytes == null) {
     return null;
   }

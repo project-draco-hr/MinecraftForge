@@ -15,7 +15,6 @@
     for (    String line : srgList) {
       String[] parts=Iterables.toArray(splitter.split(line),String.class);
       String typ=parts[0];
-      System.out.printf("PARTS: %s\n",Arrays.asList(parts));
       if ("CL".equals(typ)) {
         parseClass(builder,parts);
       }
@@ -32,4 +31,5 @@
     FMLRelaunchLog.log(Level.SEVERE,ioe,"An error occurred loading the deobfuscation map data");
   }
   methodNameMaps=Maps.newHashMapWithExpectedSize(rawMethodMaps.size());
+  fieldNameMaps=Maps.newHashMapWithExpectedSize(rawFieldMaps.size());
 }
