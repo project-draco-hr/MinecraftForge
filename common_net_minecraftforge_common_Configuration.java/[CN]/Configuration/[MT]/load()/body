@@ -3,6 +3,7 @@
     return;
   }
   BufferedReader buffer=null;
+  UnicodeInputStreamReader input=null;
   try {
     if (file.getParentFile() != null) {
       file.getParentFile().mkdirs();
@@ -11,7 +12,7 @@
       return;
     }
     if (file.canRead()) {
-      UnicodeInputStreamReader input=new UnicodeInputStreamReader(new FileInputStream(file),defaultEncoding);
+      input=new UnicodeInputStreamReader(new FileInputStream(file),defaultEncoding);
       defaultEncoding=input.getEncoding();
       buffer=new BufferedReader(input);
       String line;
@@ -138,6 +139,13 @@ e.printStackTrace();
 if (buffer != null) {
 try {
 buffer.close();
+}
+ catch (IOException e) {
+}
+}
+if (input != null) {
+try {
+input.close();
 }
  catch (IOException e) {
 }

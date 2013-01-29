@@ -1,6 +1,7 @@
 {
   if (world != null) {
     worlds.put(id,world);
+    weakWorldMap.put(world,world);
     MinecraftServer.getServer().worldTickTimes.put(id,new long[100]);
     FMLLog.info("Loading dimension %d (%s) (%s)",id,world.getWorldInfo().getWorldName(),world.getMinecraftServer());
   }
