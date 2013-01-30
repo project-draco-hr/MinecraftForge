@@ -6,9 +6,9 @@
     activeContainer=mc;
     String modId=mc.getModId();
     stateEvent.applyModContainer(activeContainer());
-    FMLLog.finer("Sending event %s to mod %s",stateEvent.getEventType(),modId);
+    FMLLog.log(modId,Level.FINEST,"Sending event %s to mod %s",stateEvent.getEventType(),modId);
     eventChannels.get(modId).post(stateEvent);
-    FMLLog.finer("Sent event %s to mod %s",stateEvent.getEventType(),modId);
+    FMLLog.log(modId,Level.FINEST,"Sent event %s to mod %s",stateEvent.getEventType(),modId);
     activeContainer=null;
     if (stateEvent instanceof FMLStateEvent) {
       if (!errors.containsKey(modId)) {

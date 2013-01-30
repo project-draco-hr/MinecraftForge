@@ -1,16 +1,16 @@
 {
   String forcedModList=System.getProperty("fml.modStates","");
-  FMLLog.fine("Received a system property request \'%s\'",forcedModList);
+  FMLLog.finer("Received a system property request \'%s\'",forcedModList);
   Map<String,String> sysPropertyStateList=Splitter.on(CharMatcher.anyOf(";:")).omitEmptyStrings().trimResults().withKeyValueSeparator("=").split(forcedModList);
-  FMLLog.fine("System property request managing the state of %d mods",sysPropertyStateList.size());
+  FMLLog.finer("System property request managing the state of %d mods",sysPropertyStateList.size());
   Map<String,String> modStates=Maps.newHashMap();
   File forcedModFile=new File(canonicalConfigDir,"fmlModState.properties");
   Properties forcedModListProperties=new Properties();
   if (forcedModFile.exists() && forcedModFile.isFile()) {
-    FMLLog.fine("Found a mod state file %s",forcedModFile.getName());
+    FMLLog.finer("Found a mod state file %s",forcedModFile.getName());
     try {
       forcedModListProperties.load(new FileReader(forcedModFile));
-      FMLLog.fine("Loaded states for %d mods from file",forcedModListProperties.size());
+      FMLLog.finer("Loaded states for %d mods from file",forcedModListProperties.size());
     }
  catch (    Exception e) {
       FMLLog.log(Level.INFO,e,"An error occurred reading the fmlModState.properties file");

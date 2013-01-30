@@ -9,7 +9,7 @@
           anns.put(a.annotationType(),m);
         }
  else {
-          FMLLog.severe("The mod %s appears to have an invalid method annotation %s. This annotation can only apply to methods with argument types %s -it will not be called",getModId(),a.annotationType().getSimpleName(),Arrays.toString(paramTypes));
+          FMLLog.log(getModId(),Level.SEVERE,"The mod %s appears to have an invalid method annotation %s. This annotation can only apply to methods with argument types %s -it will not be called",getModId(),a.annotationType().getSimpleName(),Arrays.toString(paramTypes));
         }
       }
     }

@@ -1,0 +1,4 @@
+String logChannel
+Level level
+String format
+Object data

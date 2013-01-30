@@ -6,6 +6,9 @@
   modController.transition(LoaderState.LOADING);
   ModDiscoverer disc=identifyMods();
   disableRequestedMods();
+  FMLLog.fine("Reloading logging properties from %s",loggingProperties.getPath());
+  FMLRelaunchLog.loadLogConfiguration(loggingProperties);
+  FMLLog.fine("Reloaded logging properties");
   modController.distributeStateMessage(FMLLoadEvent.class);
   sortModList();
   mods=ImmutableList.copyOf(mods);
@@ -22,7 +25,7 @@
   }
   modController.transition(LoaderState.CONSTRUCTING);
   modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader,disc.getASMTable());
-  FMLLog.fine("Mod signature data:");
+  FMLLog.fine("Mod signature data");
   for (  ModContainer mod : getActiveModList()) {
     FMLLog.fine("\t%s(%s:%s): %s (%s)",mod.getModId(),mod.getName(),mod.getVersion(),mod.getSource().getName(),CertificateHelper.getFingerprint(mod.getSigningCertificate()));
   }
