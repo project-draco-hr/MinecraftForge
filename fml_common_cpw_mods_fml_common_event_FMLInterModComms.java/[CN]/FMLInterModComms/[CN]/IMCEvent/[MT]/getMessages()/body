@@ -1,3 +1,6 @@
 {
+  if (currentList == null) {
+    currentList=ImmutableList.copyOf(modMessages.removeAll(activeContainer.getModId()));
+  }
   return currentList;
 }
