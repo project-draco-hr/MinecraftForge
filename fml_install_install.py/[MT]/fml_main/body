@@ -1,4 +1,4 @@
-def fml_main(fml_dir, mcp_dir, dont_gen_conf=True, disable_patches=False, disable_at=False, disable_merge=False, enable_server=False, disable_client=False):
+def fml_main(fml_dir, mcp_dir, dont_gen_conf=True, disable_patches=False, disable_at=False, disable_merge=False, enable_server=False, disable_client=False, disable_rename=False):
     print '================ Forge ModLoader Setup Start ==================='
     setup_mcp(fml_dir, mcp_dir, dont_gen_conf)
     setup_fml(fml_dir, mcp_dir, disable_at=disable_at, disable_merge=disable_merge, enable_server=enable_server, disable_client=disable_client)
@@ -6,5 +6,5 @@ def fml_main(fml_dir, mcp_dir, dont_gen_conf=True, disable_patches=False, disabl
         print 'Patching disabled'
     else:
         apply_fml_patches(fml_dir, mcp_dir, os.path.join(mcp_dir, 'src'))
-    finish_setup_fml(fml_dir, mcp_dir, enable_server=enable_server, disable_client=disable_client)
+    finish_setup_fml(fml_dir, mcp_dir, enable_server=enable_server, disable_client=disable_client, disable_rename=disable_rename)
     print '================  Forge ModLoader Setup End  ==================='
