@@ -22,7 +22,7 @@
         if (source.isDirectory()) {
           warnLevel=Level.FINER;
         }
-        FMLLog.log(warnLevel,"The mod %s is expecting signature %s for source %s, however there is no signature matching that description",getModId(),expectedFingerprint,source.getName());
+        FMLLog.log(getModId(),warnLevel,"The mod %s is expecting signature %s for source %s, however there is no signature matching that description",getModId(),expectedFingerprint,source.getName());
       }
  else {
         certificate=certificates[certList.indexOf(expectedFingerprint)];

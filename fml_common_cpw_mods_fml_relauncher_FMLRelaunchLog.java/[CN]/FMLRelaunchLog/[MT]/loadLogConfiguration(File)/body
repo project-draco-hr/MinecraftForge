@@ -1,0 +1,11 @@
+{
+  if (logConfigFile != null && logConfigFile.exists() && logConfigFile.canRead()) {
+    try {
+      LogManager.getLogManager().readConfiguration(new FileInputStream(logConfigFile));
+      resetLoggingHandlers();
+    }
+ catch (    Exception e) {
+      log(Level.SEVERE,e,"Error reading logging configuration file %s",logConfigFile.getName());
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  Logger l=Logger.getLogger(logChannel);
+  l.setParent(log.myLog);
+}

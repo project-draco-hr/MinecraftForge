@@ -26,7 +26,7 @@
       }
  catch (      Exception e) {
         Throwables.propagateIfPossible(e);
-        FMLLog.log(Level.WARNING,e,"Attempting to load @%s in class %s for %s and failing",annotationName,targets.getClassName(),mc.getModId());
+        FMLLog.log(getModId(),Level.WARNING,e,"Attempting to load @%s in class %s for %s and failing",annotationName,targets.getClassName(),mc.getModId());
       }
     }
     if (f != null) {
@@ -34,7 +34,7 @@
       if (!isStatic) {
         target=modInstance;
         if (!modInstance.getClass().equals(clz)) {
-          FMLLog.warning("Unable to inject @%s in non-static field %s.%s for %s as it is NOT the primary mod instance",annotationName,targets.getClassName(),targets.getObjectName(),mc.getModId());
+          FMLLog.log(getModId(),Level.WARNING,"Unable to inject @%s in non-static field %s.%s for %s as it is NOT the primary mod instance",annotationName,targets.getClassName(),targets.getObjectName(),mc.getModId());
           continue;
         }
       }

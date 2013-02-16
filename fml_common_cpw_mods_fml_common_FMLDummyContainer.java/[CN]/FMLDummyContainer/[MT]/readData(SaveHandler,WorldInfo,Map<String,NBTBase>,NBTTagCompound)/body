@@ -7,11 +7,11 @@
       String modVersion=mod.func_74779_i("ModVersion");
       ModContainer container=Loader.instance().getIndexedModList().get(modId);
       if (container == null) {
-        FMLLog.severe("This world was saved with mod %s which appears to be missing, things may not work well",modId);
+        FMLLog.log("fml.ModTracker",Level.SEVERE,"This world was saved with mod %s which appears to be missing, things may not work well",modId);
         continue;
       }
       if (!modVersion.equals(container.getVersion())) {
-        FMLLog.info("This world was saved with mod %s version %s and it is now at version %s, things may not work well",modId,modVersion,container.getVersion());
+        FMLLog.log("fml.ModTracker",Level.INFO,"This world was saved with mod %s version %s and it is now at version %s, things may not work well",modId,modVersion,container.getVersion());
       }
     }
   }

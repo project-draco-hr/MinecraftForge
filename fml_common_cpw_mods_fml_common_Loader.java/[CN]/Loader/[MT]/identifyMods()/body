@@ -23,5 +23,8 @@
   identifyDuplicates(mods);
   namedMods=Maps.uniqueIndex(mods,new ModIdFunction());
   FMLLog.info("Forge Mod Loader has identified %d mod%s to load",mods.size(),mods.size() != 1 ? "s" : "");
+  for (  String modId : namedMods.keySet()) {
+    FMLLog.makeLog(modId);
+  }
   return discoverer;
 }

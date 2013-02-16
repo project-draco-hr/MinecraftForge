@@ -9,7 +9,7 @@
     for (int i=0; i < minecraftSources.length; i++) {
       if (minecraftSources[i].isFile()) {
         if (knownLibraries.contains(minecraftSources[i].getName())) {
-          FMLLog.fine("Skipping known library file %s",minecraftSources[i].getAbsolutePath());
+          FMLLog.finer("Skipping known library file %s",minecraftSources[i].getAbsolutePath());
         }
  else {
           FMLLog.fine("Found a minecraft related file at %s, examining for mod candidates",minecraftSources[i].getAbsolutePath());

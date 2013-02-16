@@ -2,7 +2,7 @@
   for (  OverrideInfo animationOverride : animationSet) {
     renderer.func_78355_a(animationOverride.textureFX);
     addedTextureFX.add(animationOverride.textureFX);
-    FMLCommonHandler.instance().getFMLLogger().finer(String.format("Registered texture override %d (%d) on %s (%d)",animationOverride.index,animationOverride.textureFX.field_76850_b,animationOverride.textureFX.getClass().getSimpleName(),animationOverride.textureFX.field_76847_f));
+    FMLLog.log("fml.TextureManager",Level.FINE,"Registered texture override %d (%d) on %s (%d)",animationOverride.index,animationOverride.textureFX.field_76850_b,animationOverride.textureFX.getClass().getSimpleName(),animationOverride.textureFX.field_76847_f);
   }
   for (  String fileToOverride : overrideInfo.keySet()) {
     for (    OverrideInfo override : overrideInfo.get(fileToOverride)) {
@@ -11,10 +11,10 @@
         ModTextureStatic mts=new ModTextureStatic(override.index,1,override.texture,image);
         renderer.func_78355_a(mts);
         addedTextureFX.add(mts);
-        FMLCommonHandler.instance().getFMLLogger().finer(String.format("Registered texture override %d (%d) on %s (%d)",override.index,mts.field_76850_b,override.texture,mts.field_76847_f));
+        FMLLog.log("fml.TextureManager",Level.FINE,"Registered texture override %d (%d) on %s (%d)",override.index,mts.field_76850_b,override.texture,mts.field_76847_f);
       }
  catch (      IOException e) {
-        FMLCommonHandler.instance().getFMLLogger().throwing("FMLClientHandler","registerTextureOverrides",e);
+        FMLLog.log("fml.TextureManager",Level.WARNING,e,"Exception occurred registering texture override for %s",fileToOverride);
       }
     }
   }

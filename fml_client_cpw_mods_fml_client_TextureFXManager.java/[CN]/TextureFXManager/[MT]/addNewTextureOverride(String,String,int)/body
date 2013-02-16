@@ -4,5 +4,5 @@
   info.override=overridingTexturePath;
   info.texture=textureToOverride;
   overrideInfo.put(textureToOverride,info);
-  FMLLog.fine("Overriding %s @ %d with %s. %d slots remaining",textureToOverride,location,overridingTexturePath,SpriteHelper.freeSlotCount(textureToOverride));
+  FMLLog.log("fml.TextureManager",Level.FINE,"Overriding %s @ %d with %s. %d slots remaining",textureToOverride,location,overridingTexturePath,SpriteHelper.freeSlotCount(textureToOverride));
 }

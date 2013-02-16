@@ -18,11 +18,11 @@
 ;
   Map<Integer,ItemData> worldMap=Maps.uniqueIndex(worldSaveItems,idMapFunction);
   difference=Maps.difference(worldMap,idMap);
-  FMLLog.fine("The difference set is %s",difference);
+  FMLLog.log("fml.ItemTracker",Level.FINE,"The difference set is %s",difference);
   if (!difference.entriesDiffering().isEmpty() || !difference.entriesOnlyOnLeft().isEmpty()) {
-    FMLLog.severe("FML has detected item discrepancies");
-    FMLLog.severe("Missing items : %s",difference.entriesOnlyOnLeft());
-    FMLLog.severe("Mismatched items : %s",difference.entriesDiffering());
+    FMLLog.log("fml.ItemTracker",Level.SEVERE,"FML has detected item discrepancies");
+    FMLLog.log("fml.ItemTracker",Level.SEVERE,"Missing items : %s",difference.entriesOnlyOnLeft());
+    FMLLog.log("fml.ItemTracker",Level.SEVERE,"Mismatched items : %s",difference.entriesDiffering());
     boolean foundNonIgnored=false;
     for (    ItemData diff : difference.entriesOnlyOnLeft().values()) {
       if (!isModIgnoredForIdValidation(diff.getModId())) {
@@ -35,7 +35,7 @@
       }
     }
     if (!foundNonIgnored) {
-      FMLLog.severe("FML is ignoring these ID discrepancies because of configuration. YOUR GAME WILL NOW PROBABLY CRASH. HOPEFULLY YOU WON'T HAVE CORRUPTED YOUR WORLD. BLAME %s",ignoredMods.keySet());
+      FMLLog.log("fml.ItemTracker",Level.SEVERE,"FML is ignoring these ID discrepancies because of configuration. YOUR GAME WILL NOW PROBABLY CRASH. HOPEFULLY YOU WON'T HAVE CORRUPTED YOUR WORLD. BLAME %s",ignoredMods.keySet());
     }
     isSaveValid=!foundNonIgnored;
     serverValidationLatch.countDown();
