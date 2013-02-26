@@ -1,0 +1,29 @@
+{
+  if (classNameBiMap == null) {
+    return;
+  }
+  List<String> allParents=ImmutableList.<String>builder().add(superName).addAll(Arrays.asList(interfaces)).build();
+  for (  String parentThing : allParents) {
+    if (superName != null && classNameBiMap.containsKey(superName) && !methodNameMaps.containsKey(superName)) {
+      findAndMergeSuperMaps(superName);
+    }
+  }
+  Map<String,String> methodMap=Maps.<String,String>newHashMap();
+  Map<String,String> fieldMap=Maps.<String,String>newHashMap();
+  for (  String parentThing : allParents) {
+    if (methodNameMaps.containsKey(parentThing)) {
+      methodMap.putAll(methodNameMaps.get(parentThing));
+    }
+    if (fieldNameMaps.containsKey(parentThing)) {
+      fieldMap.putAll(fieldNameMaps.get(parentThing));
+    }
+  }
+  if (rawMethodMaps.containsKey(name)) {
+    methodMap.putAll(rawMethodMaps.get(name));
+  }
+  if (rawFieldMaps.containsKey(name)) {
+    fieldMap.putAll(rawFieldMaps.get(name));
+  }
+  methodNameMaps.put(name,ImmutableMap.copyOf(methodMap));
+  fieldNameMaps.put(name,ImmutableMap.copyOf(fieldMap));
+}
