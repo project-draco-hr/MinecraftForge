@@ -9,6 +9,7 @@ if (__name__ == '__main__'):
     parser.add_option('-s', '--server', action='store_true', dest='enable_server', help='Enable decompilation of server', default=False)
     parser.add_option('-c', '--no-client', action='store_true', dest='no_client', help='Disable decompilation of server', default=False)
     parser.add_option('-e', '--no-merge', action='store_true', dest='no_merge', help='Disable merging server code into client', default=False)
+    parser.add_option('-n', '--no-rename', action='store_true', dest='no_rename', help='Disable running updatenames', default=False)
     (options, _) = parser.parse_args()
     fml_dir = os.path.dirname(os.path.abspath(__file__))
     mcp_dir = os.path.abspath('mcp')
@@ -20,4 +21,4 @@ if (__name__ == '__main__'):
         options.no_patch = True
     if options.no_merge:
         options.no_patch = True
-    fml_main(fml_dir, mcp_dir, disable_patches=options.no_patch, disable_at=options.no_access, disable_merge=options.no_merge, enable_server=options.enable_server, disable_client=options.no_client)
+    fml_main(fml_dir, mcp_dir, disable_patches=options.no_patch, disable_at=options.no_access, disable_merge=options.no_merge, enable_server=options.enable_server, disable_client=options.no_client, disable_rename=options.no_rename)
