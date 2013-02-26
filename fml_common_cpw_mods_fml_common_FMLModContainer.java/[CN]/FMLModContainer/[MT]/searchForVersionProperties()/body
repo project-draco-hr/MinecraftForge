@@ -1,6 +1,6 @@
 {
   try {
-    FMLLog.fine("Attempting to load the file version.properties from %s to locate a version number for %s",getSource().getName(),getModId());
+    FMLLog.log(getModId(),Level.FINE,"Attempting to load the file version.properties from %s to locate a version number for %s",getSource().getName(),getModId());
     Properties version=null;
     if (getSource().isFile()) {
       ZipFile source=new ZipFile(getSource());
@@ -24,7 +24,7 @@
   }
  catch (  Exception e) {
     Throwables.propagateIfPossible(e);
-    FMLLog.fine("Failed to find a usable version.properties file");
+    FMLLog.log(getModId(),Level.FINEST,"Failed to find a usable version.properties file");
     return null;
   }
 }

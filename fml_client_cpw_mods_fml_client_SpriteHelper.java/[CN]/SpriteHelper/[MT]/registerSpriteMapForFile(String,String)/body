@@ -3,7 +3,7 @@
     initMCSpriteMaps();
   }
   if (spriteInfo.containsKey(file)) {
-    FMLCommonHandler.instance().getFMLLogger().finer(String.format("Duplicate attempt to register a sprite file %s for overriding -- ignoring",file));
+    FMLLog.log("fml.TextureManager",Level.FINE,"Duplicate attempt to register a sprite file %s for overriding -- ignoring",file);
     return;
   }
   spriteInfo.put(file,toBitSet(spriteMap));

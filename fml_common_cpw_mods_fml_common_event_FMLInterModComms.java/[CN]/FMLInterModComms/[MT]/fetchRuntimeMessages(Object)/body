@@ -1,7 +1,7 @@
 {
   ModContainer mc=FMLCommonHandler.instance().findContainerFor(forMod);
   if (mc != null) {
-    return ImmutableList.copyOf(modMessages.removeAll(mc));
+    return ImmutableList.copyOf(modMessages.removeAll(mc.getModId()));
   }
  else {
     return emptyIMCList;

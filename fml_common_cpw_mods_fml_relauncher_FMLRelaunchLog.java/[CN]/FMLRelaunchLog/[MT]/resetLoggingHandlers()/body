@@ -1,0 +1,8 @@
+{
+  ConsoleLogThread.wrappedHandler.setLevel(Level.parse(System.getProperty("fml.log.level","INFO")));
+  log.myLog.addHandler(new ConsoleLogWrapper());
+  ConsoleLogThread.wrappedHandler.setFormatter(formatter);
+  fileHandler.setLevel(Level.ALL);
+  fileHandler.setFormatter(formatter);
+  log.myLog.addHandler(fileHandler);
+}

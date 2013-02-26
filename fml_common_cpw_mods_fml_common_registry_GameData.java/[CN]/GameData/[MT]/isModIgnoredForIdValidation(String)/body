@@ -7,12 +7,12 @@
         p.load(new FileInputStream(f));
         ignoredMods=Maps.fromProperties(p);
         if (ignoredMods.size() > 0) {
-          FMLLog.warning("Using non-empty ignored mods configuration file %s",ignoredMods.keySet());
+          FMLLog.log("fml.ItemTracker",Level.WARNING,"Using non-empty ignored mods configuration file %s",ignoredMods.keySet());
         }
       }
  catch (      Exception e) {
         Throwables.propagateIfPossible(e);
-        FMLLog.log(Level.SEVERE,e,"Failed to read ignored ID checker mods properties file");
+        FMLLog.log("fml.ItemTracker",Level.SEVERE,e,"Failed to read ignored ID checker mods properties file");
         ignoredMods=ImmutableMap.<String,String>of();
       }
     }
