@@ -1,7 +1,0 @@
-{
-  BitSet ret=new BitSet(data.length());
-  for (int x=0; x < data.length(); x++) {
-    ret.set(x,data.charAt(x) == '1');
-  }
-  return ret;
-}
