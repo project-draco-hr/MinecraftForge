@@ -14,6 +14,11 @@
     engine.bindTexture(engine.getTexture("/terrain.png"));
     int renderType=Block.blocksList[item.itemID].getRenderType();
     float scale=(renderType == 1 || renderType == 19 || renderType == 12 || renderType == 2 ? 0.5F : 0.25F);
+    if (RenderItem.field_82407_g) {
+      GL11.glScalef(1.25F,1.25F,1.25F);
+      GL11.glTranslatef(0.0F,0.05F,0.0F);
+      GL11.glRotatef(-90.0F,0.0F,1.0F,0.0F);
+    }
     GL11.glScalef(scale,scale,scale);
     int size=item.stackSize;
     int count=(size > 20 ? 4 : (size > 5 ? 3 : (size > 1 ? 2 : 1)));

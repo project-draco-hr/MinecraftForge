@@ -3,5 +3,5 @@
   this.message=message;
   this.player=player;
   this.username=player.username;
-  this.line="<" + username + "> "+ message;
+  this.line=line;
 }
