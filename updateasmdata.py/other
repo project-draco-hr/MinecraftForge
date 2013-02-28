@@ -1,0 +1,7 @@
+import os, os.path, sys
+import shutil, glob, fnmatch
+import csv, re
+ctorsigre = re.compile('<init>\\((.*)\\)')
+ctorparamre = re.compile('(([ZBCSIJFD]|L([\\w\\/]+);))')
+if (__name__ == '__main__'):
+    main()
