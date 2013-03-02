@@ -2,7 +2,7 @@
   this.classLoader=classLoader;
   try {
     File libDir=new File(mcDir,"lib");
-    File mapData=new File(libDir,"deobfuscation_data.zip");
+    File mapData=new File(libDir,deobfFileName);
     ZipFile mapZip=new ZipFile(mapData);
     ZipEntry classData=mapZip.getEntry("joined.srg");
     ZipInputSupplier zis=new ZipInputSupplier(mapZip,classData);
