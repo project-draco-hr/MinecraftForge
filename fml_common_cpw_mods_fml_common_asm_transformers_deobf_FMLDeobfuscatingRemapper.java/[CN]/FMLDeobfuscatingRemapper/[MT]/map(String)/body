@@ -1,5 +1,5 @@
 {
-  if (classNameBiMap == null) {
+  if (classNameBiMap == null || classNameBiMap.isEmpty()) {
     return typeName;
   }
   String result=classNameBiMap.containsKey(typeName) ? classNameBiMap.get(typeName) : typeName;

@@ -1,5 +1,5 @@
 {
-  if (classNameBiMap == null) {
+  if (classNameBiMap == null || classNameBiMap.isEmpty()) {
     return;
   }
   List<String> allParents=ImmutableList.<String>builder().add(superName).addAll(Arrays.asList(interfaces)).build();

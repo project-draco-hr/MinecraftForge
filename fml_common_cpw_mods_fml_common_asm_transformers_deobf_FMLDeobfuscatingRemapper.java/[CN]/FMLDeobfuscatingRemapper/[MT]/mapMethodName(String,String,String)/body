@@ -1,5 +1,5 @@
 {
-  if (classNameBiMap == null) {
+  if (classNameBiMap == null || classNameBiMap.isEmpty()) {
     return name;
   }
   Map<String,String> methodMap=getMethodMap(owner);

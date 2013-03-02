@@ -1,12 +1,15 @@
 {
   try {
-    actualClassLoader.getClassBytes("net.minecraft.world.World");
-    FMLRelaunchLog.info("Managed to load a deobfuscated Minecraft name- we are in a deobfuscated environment. Skipping runtime deobfuscation");
-    deobfuscatedEnvironment=true;
+    byte[] bs=actualClassLoader.getClassBytes("net.minecraft.world.World");
+    if (bs != null) {
+      FMLRelaunchLog.info("Managed to load a deobfuscated Minecraft name- we are in a deobfuscated environment. Skipping runtime deobfuscation");
+      deobfuscatedEnvironment=true;
+    }
   }
  catch (  IOException e1) {
+  }
+  if (!deobfuscatedEnvironment) {
     FMLRelaunchLog.fine("Enabling runtime deobfuscation");
-    deobfuscatedEnvironment=false;
   }
   pluginLocations=new HashMap<IFMLLoadingPlugin,File>();
   loadPlugins=new ArrayList<IFMLLoadingPlugin>();
