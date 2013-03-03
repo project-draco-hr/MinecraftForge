@@ -1,8 +1,0 @@
-def setup_eclipse(forge_dir):
-    eclipse_dir = os.path.join(forge_dir, 'eclipse')
-    eclipse_zip = os.path.join(forge_dir, 'eclipse-workspace-dev.zip')
-    if ((not os.path.isdir(eclipse_dir)) and os.path.isfile(eclipse_zip)):
-        print 'Extracting Dev Workspace'
-        zf = zipfile.ZipFile(eclipse_zip)
-        zf.extractall(forge_dir)
-        zf.close()

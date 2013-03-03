@@ -1,7 +1,0 @@
-import os, os.path, sys, zipfile
-import shutil, glob, fnmatch
-from optparse import OptionParser
-forge_dir = os.path.dirname(os.path.abspath(__file__))
-from forge import apply_forge_patches
-if (__name__ == '__main__'):
-    main()
