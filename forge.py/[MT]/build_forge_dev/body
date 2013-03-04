@@ -5,6 +5,7 @@ def build_forge_dev(mcp_dir, forge_dir, fml_dir, build_num=0):
     if os.path.isdir(src_dir):
         shutil.rmtree(src_dir)
     sys.path.append(fml_dir)
+    sys.path.append(os.path.join(fml_dir, 'install'))
     from fml import copytree
     print 'src_work -> src'
     copytree(os.path.join(mcp_dir, 'src_work'), src_dir)

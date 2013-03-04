@@ -7,5 +7,5 @@ def zip_folder(path, key, zip):
         if os.path.isdir(file_path):
             zip_folder(file_path, file_key, zip)
         elif (not (file_key.replace(os.sep, '/') in zip.NameToInfo)):
-            print file_key
+            print ('    ' + file_key)
             zip.write(file_path, file_key)

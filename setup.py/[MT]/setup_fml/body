@@ -1,0 +1,14 @@
+def setup_fml(mcp_dir, fml_dir, build_num=0):
+    print 'Setting up Forge ModLoader'
+    os.environ['WORKSPACE'] = os.path.join(mcp_dir, '..')
+    os.environ['BUILD_NUMBER'] = str(build_num)
+    BUILD = ['ant', 'jenkinsbuild']
+    if sys.platform.startswith('win'):
+        BUILD = (['cmd', '/C'] + BUILD)
+    if (not run_command(BUILD, cwd=fml_dir)):
+        print 'Could not setup FML'
+        sys.exit(1)
+    sys.path.append(fml_dir)
+    sys.path.append(os.path.join(fml_dir, 'install'))
+    from fml import finish_setup_fml
+    finish_setup_fml(fml_dir, mcp_dir)

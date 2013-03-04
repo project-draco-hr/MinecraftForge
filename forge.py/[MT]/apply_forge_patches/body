@@ -1,5 +1,6 @@
 def apply_forge_patches(fml_dir, mcp_dir, forge_dir, src_dir, copy_files=True):
     sys.path.append(fml_dir)
+    sys.path.append(os.path.join(fml_dir, 'install'))
     from fml import copytree, apply_patches
     print 'Applying Minecraft Forge patches'
     sys.stdout.flush()

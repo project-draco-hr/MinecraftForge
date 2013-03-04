@@ -1,5 +1,5 @@
-def extract_fml_obfed(mcp_dir, reobf_dir, client_dir):
-    fml_file = os.path.join(forge_dir, 'fml', 'difflist.txt')
+def extract_fml_obfed(fml_dir, mcp_dir, reobf_dir, client_dir):
+    fml_file = os.path.join(fml_dir, 'difflist.txt')
     if (not os.path.isfile(fml_file)):
         print ("Could not find Forge ModLoader's DiffList, looking for it at: %s" % fml_file)
         sys.exit(1)
