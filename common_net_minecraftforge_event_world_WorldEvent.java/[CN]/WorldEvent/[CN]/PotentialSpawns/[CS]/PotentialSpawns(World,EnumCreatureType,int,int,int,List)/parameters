@@ -1,0 +1,6 @@
+World world
+EnumCreatureType type
+int x
+int y
+int z
+List oldList
