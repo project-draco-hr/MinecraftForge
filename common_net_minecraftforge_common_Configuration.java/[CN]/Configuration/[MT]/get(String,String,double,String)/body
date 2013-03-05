@@ -1,7 +1,7 @@
 {
   Property prop=get(category,key,Double.toString(defaultValue),comment,DOUBLE);
   if (!prop.isDoubleValue()) {
-    prop.value=Double.toString(defaultValue);
+    prop.set(defaultValue);
   }
   return prop;
 }

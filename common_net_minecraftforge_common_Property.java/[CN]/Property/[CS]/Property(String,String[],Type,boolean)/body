@@ -1,7 +1,7 @@
 {
   setName(name);
   this.type=type;
-  valueList=values;
+  this.values=values;
   wasRead=read;
   isList=true;
 }

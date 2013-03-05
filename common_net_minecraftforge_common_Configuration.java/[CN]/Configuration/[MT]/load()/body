@@ -92,7 +92,7 @@ throw new RuntimeException(String.format("'%s' has no scope in '%s:%d'",name,fil
 }
 Property prop=new Property(name,line.substring(i + 1),type,true);
 i=line.length();
-currentCat.set(name,prop);
+currentCat.put(name,prop);
 break;
 case ':':
 type=Property.Type.tryParse(line.substring(nameStart,nameEnd + 1).charAt(0));
@@ -113,7 +113,7 @@ case '>':
 if (tmpList == null) {
 throw new RuntimeException(String.format("Malformed list property \"%s:%d\"",fileName,lineNum));
 }
-currentCat.set(name,new Property(name,tmpList.toArray(new String[tmpList.size()]),type));
+currentCat.put(name,new Property(name,tmpList.toArray(new String[tmpList.size()]),type));
 name=null;
 tmpList=null;
 type=null;
@@ -151,4 +151,5 @@ input.close();
 }
 }
 }
+resetChangedState();
 }

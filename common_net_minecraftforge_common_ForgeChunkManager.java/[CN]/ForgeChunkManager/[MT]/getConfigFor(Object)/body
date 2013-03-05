@@ -1,7 +1,7 @@
 {
   ModContainer container=getContainer(mod);
   if (container != null) {
-    return config.getCategory(container.getModId()).getValues();
+    return config.getCategory(container.getModId());
   }
   return null;
 }

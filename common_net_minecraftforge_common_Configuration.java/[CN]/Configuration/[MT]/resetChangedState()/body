@@ -1,0 +1,9 @@
+{
+  changed=false;
+  for (  ConfigCategory cat : categories.values()) {
+    cat.resetChangedState();
+  }
+  for (  Configuration child : children.values()) {
+    child.resetChangedState();
+  }
+}

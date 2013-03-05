@@ -1,5 +1,5 @@
 {
-  for (  String value : valueList) {
+  for (  String value : values) {
     try {
       Double.parseDouble(value);
     }

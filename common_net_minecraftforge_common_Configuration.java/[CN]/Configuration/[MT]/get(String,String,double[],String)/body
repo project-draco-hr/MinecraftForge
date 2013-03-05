@@ -5,7 +5,7 @@
   }
   Property prop=get(category,key,values,comment,DOUBLE);
   if (!prop.isDoubleList()) {
-    prop.valueList=values;
+    prop.set(values);
   }
   return prop;
 }

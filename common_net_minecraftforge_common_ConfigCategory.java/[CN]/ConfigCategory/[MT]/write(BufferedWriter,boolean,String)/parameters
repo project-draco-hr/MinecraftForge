@@ -1,0 +1,3 @@
+BufferedWriter out
+boolean new_line
+String data

@@ -1,5 +1,5 @@
 {
-  for (  String value : valueList) {
+  for (  String value : values) {
     if (!"true".equalsIgnoreCase(value) && !"false".equalsIgnoreCase(value)) {
       return false;
     }

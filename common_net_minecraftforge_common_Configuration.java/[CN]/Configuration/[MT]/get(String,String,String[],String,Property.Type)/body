@@ -6,8 +6,8 @@
   if (cat.containsKey(key)) {
     Property prop=cat.get(key);
     if (prop.getType() == null) {
-      prop=new Property(prop.getName(),prop.value,type);
-      cat.set(key,prop);
+      prop=new Property(prop.getName(),prop.getString(),type);
+      cat.put(key,prop);
     }
     prop.comment=comment;
     return prop;
@@ -15,7 +15,7 @@
  else   if (defaultValue != null) {
     Property prop=new Property(key,defaultValue,type);
     prop.comment=comment;
-    cat.set(key,prop);
+    cat.put(key,prop);
     return prop;
   }
  else {
