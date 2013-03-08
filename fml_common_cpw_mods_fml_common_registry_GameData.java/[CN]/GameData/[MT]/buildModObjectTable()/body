@@ -1,0 +1,16 @@
+{
+  if (modObjectTable != null) {
+    throw new IllegalStateException("Illegal call to buildModObjectTable!");
+  }
+  Map<Integer,Cell<String,String,Integer>> map=Maps.transformValues(idMap,new Function<ItemData,Cell<String,String,Integer>>(){
+    public Cell<String,String,Integer> apply(    ItemData data){
+      return Tables.immutableCell(data.getModId(),data.getItemType(),data.getItemId());
+    }
+  }
+);
+  Builder<String,String,Integer> tBuilder=ImmutableTable.builder();
+  for (  Cell<String,String,Integer> c : map.values()) {
+    tBuilder.put(c);
+  }
+  modObjectTable=tBuilder.build();
+}
