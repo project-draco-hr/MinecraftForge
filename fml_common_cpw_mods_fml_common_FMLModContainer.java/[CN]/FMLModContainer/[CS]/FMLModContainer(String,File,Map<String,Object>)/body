@@ -2,4 +2,6 @@
   this.className=className;
   this.source=modSource;
   this.descriptor=modDescriptor;
+  this.modLanguage=(String)modDescriptor.get("modLanguage");
+  this.languageAdapter="scala".equals(modLanguage) ? new ScalaAdapter() : new JavaAdapter();
 }
