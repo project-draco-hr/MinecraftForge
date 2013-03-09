@@ -9,5 +9,5 @@ def zip_add(file, key=None):
     if os.path.isdir(file):
         zip_folder(file, key, zip)
     elif os.path.isfile(file):
-        print key
+        print ('    ' + key)
         zip.write(file, key)

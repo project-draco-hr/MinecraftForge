@@ -1,0 +1,10 @@
+{
+  if (changed)   return true;
+  for (  ConfigCategory cat : categories.values()) {
+    if (cat.hasChanged())     return true;
+  }
+  for (  Configuration child : children.values()) {
+    if (child.hasChanged())     return true;
+  }
+  return false;
+}

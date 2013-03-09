@@ -1,6 +1,6 @@
 {
   ArrayList<Integer> nums=new ArrayList<Integer>();
-  for (  String value : valueList) {
+  for (  String value : values) {
     try {
       nums.add(Integer.parseInt(value));
     }

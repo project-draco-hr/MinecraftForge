@@ -1,15 +1,15 @@
 {
-  ArrayList<Boolean> values=new ArrayList<Boolean>();
-  for (  String value : valueList) {
+  ArrayList<Boolean> tmp=new ArrayList<Boolean>();
+  for (  String value : values) {
     try {
-      values.add(Boolean.parseBoolean(value));
+      tmp.add(Boolean.parseBoolean(value));
     }
  catch (    NumberFormatException e) {
     }
   }
-  boolean[] primitives=new boolean[values.size()];
-  for (int i=0; i < values.size(); i++) {
-    primitives[i]=values.get(i);
+  boolean[] primitives=new boolean[tmp.size()];
+  for (int i=0; i < tmp.size(); i++) {
+    primitives[i]=tmp.get(i);
   }
   return primitives;
 }

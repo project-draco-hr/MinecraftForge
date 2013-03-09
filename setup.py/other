@@ -1,5 +1,6 @@
 import os, os.path, sys, zipfile
-import shutil, glob, fnmatch
+import shutil, glob, fnmatch, subprocess
+from pprint import pformat
 from optparse import OptionParser
 forge_dir = os.path.dirname(os.path.abspath(__file__))
 from forge import apply_forge_patches

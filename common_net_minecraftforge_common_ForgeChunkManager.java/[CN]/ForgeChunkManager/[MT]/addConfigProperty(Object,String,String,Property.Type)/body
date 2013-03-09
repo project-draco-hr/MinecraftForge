@@ -1,7 +1,7 @@
 {
   ModContainer container=getContainer(mod);
   if (container != null) {
-    Map<String,Property> props=config.getCategory(container.getModId()).getValues();
-    props.put(propertyName,new Property(propertyName,value,type));
+    ConfigCategory cat=config.getCategory(container.getModId());
+    cat.put(propertyName,new Property(propertyName,value,type));
   }
 }

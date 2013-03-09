@@ -1,0 +1,7 @@
+{
+  if (changed)   return true;
+  for (  Property prop : properties.values()) {
+    if (prop.hasChanged())     return true;
+  }
+  return false;
+}

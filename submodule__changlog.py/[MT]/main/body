@@ -1,0 +1,21 @@
+def main(options, args):
+    output = run_command(['git', 'diff', '--no-color', '--', 'fml'])
+    if (output is None):
+        print 'Failed to grab submodule commits'
+        sys.exit(1)
+    start = None
+    end = None
+    for line in output:
+        if (not ('Subproject commit' in line)):
+            continue
+        if (line[0:18] == '-Subproject commit'):
+            start = line[19:]
+        elif (line[0:18] == '+Subproject commit'):
+            end = line[19:]
+    if ((start == None) or (end == None)):
+        print 'Could not extract start and end range'
+        sys.exit(1)
+    output = run_command(['git', 'log', '--reverse', '--pretty=oneline', ('%s...%s' % (start, end))], './fml')
+    print 'Updated FML:'
+    for line in output:
+        print ('MinecraftForge/FML@%s' % line)

@@ -1,0 +1,8 @@
+def run_command(command, cwd='.'):
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1, cwd=cwd)
+    (out, err) = process.communicate()
+    out = out.strip('\n')
+    if process.returncode:
+        print ('failed: %d' % process.returncode)
+        return None
+    return out.split('\n')

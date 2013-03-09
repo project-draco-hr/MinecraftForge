@@ -1,10 +1,12 @@
 {
   if (!children.containsKey(name)) {
     children.put(name,child);
+    changed=true;
   }
  else {
     Configuration old=children.get(name);
     child.categories=old.categories;
     child.fileName=old.fileName;
+    old.changed=true;
   }
 }

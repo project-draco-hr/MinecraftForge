@@ -1,10 +1,15 @@
 {
   System.out.printf("MinecraftForge v%s Initialized\n",ForgeVersion.getVersion());
   FMLLog.info("MinecraftForge v%s Initialized",ForgeVersion.getVersion());
-  Block filler=new Block(0,Material.air);
+  Block filler=new Block(0,Material.air){
+    @SideOnly(Side.CLIENT) public void func_94332_a(    IconRegister register){
+    }
+  }
+;
   Block.blocksList[0]=null;
   Block.opaqueCubeLookup[0]=false;
   Block.lightOpacity[0]=0;
+  filler.setUnlocalizedName("ForgeFiller");
   for (int x=256; x < 4096; x++) {
     if (Item.itemsList[x] != null) {
       Block.blocksList[x]=filler;
@@ -15,4 +20,5 @@
   EntityEnderman.carriableBlocks=temp;
   EVENT_BUS.register(INTERNAL_HANDLER);
   OreDictionary.getOreName(0);
+  new CrashReport("ThisIsFake",new Exception("Not real"));
 }

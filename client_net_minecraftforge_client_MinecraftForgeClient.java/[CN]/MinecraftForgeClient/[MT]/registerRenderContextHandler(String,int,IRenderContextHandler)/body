@@ -1,3 +1,0 @@
-{
-  ForgeHooksClient.registerRenderContextHandler(texture,subid,handler);
-}

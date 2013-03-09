@@ -11,14 +11,14 @@
       FMLLog.warning("Config \"%s\" Category: \"%s\" Key: \"%s\" Default: %d",fileName,category,key,defaultID);
     }
     if (Item.itemsList[defaultShift] == null && !configMarkers[defaultShift] && defaultShift >= Block.blocksList.length) {
-      prop.value=Integer.toString(defaultID);
+      prop.set(defaultID);
       configMarkers[defaultShift]=true;
       return prop;
     }
  else {
       for (int x=Item.itemsList.length - 1; x >= ITEM_SHIFT; x--) {
         if (Item.itemsList[x] == null && !configMarkers[x]) {
-          prop.value=Integer.toString(x - ITEM_SHIFT);
+          prop.set(x - ITEM_SHIFT);
           configMarkers[x]=true;
           return prop;
         }

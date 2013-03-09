@@ -1,6 +1,0 @@
-{
-  if (subid == key.subid) {
-    return texture - key.texture;
-  }
-  return subid - key.subid;
-}

@@ -11,14 +11,14 @@
       defaultID=upper - 1;
     }
     if (Block.blocksList[defaultID] == null && !configMarkers[defaultID]) {
-      prop.value=Integer.toString(defaultID);
+      prop.set(defaultID);
       configMarkers[defaultID]=true;
       return prop;
     }
  else {
       for (int j=upper - 1; j > 0; j--) {
         if (Block.blocksList[j] == null && !configMarkers[j]) {
-          prop.value=Integer.toString(j);
+          prop.set(j);
           configMarkers[j]=true;
           return prop;
         }

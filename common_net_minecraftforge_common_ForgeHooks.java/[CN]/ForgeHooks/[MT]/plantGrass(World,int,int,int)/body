@@ -3,5 +3,5 @@
   if (grass == null || grass.block == null || !grass.block.canBlockStay(world,x,y,z)) {
     return;
   }
-  world.setBlockAndMetadataWithNotify(x,y,z,grass.block.blockID,grass.metadata);
+  world.setBlockAndMetadataWithNotify(x,y,z,grass.block.blockID,grass.metadata,3);
 }

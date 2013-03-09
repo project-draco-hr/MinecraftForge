@@ -34,7 +34,7 @@
   sampleTC.comment="Maximum ticket count for the mod. Zero disables chunkloading capabilities.";
   sampleTC=config.get("Forge","maximumChunksPerTicket",25);
   sampleTC.comment="Maximum chunks per ticket for the mod.";
-  for (  String mod : config.categories.keySet()) {
+  for (  String mod : config.getCategoryNames()) {
     if (mod.equals("Forge") || mod.equals("defaults")) {
       continue;
     }

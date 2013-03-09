@@ -1,15 +1,15 @@
 {
-  ArrayList<Double> values=new ArrayList<Double>();
-  for (  String value : valueList) {
+  ArrayList<Double> tmp=new ArrayList<Double>();
+  for (  String value : values) {
     try {
-      values.add(Double.parseDouble(value));
+      tmp.add(Double.parseDouble(value));
     }
  catch (    NumberFormatException e) {
     }
   }
-  double[] primitives=new double[values.size()];
-  for (int i=0; i < values.size(); i++) {
-    primitives[i]=values.get(i);
+  double[] primitives=new double[tmp.size()];
+  for (int i=0; i < tmp.size(); i++) {
+    primitives[i]=tmp.get(i);
   }
   return primitives;
 }

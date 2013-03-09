@@ -1,6 +1,0 @@
-{
-  int hash=7;
-  hash=59 * hash + (this.minecart != null ? this.minecart.hashCode() : 0);
-  hash=59 * hash + this.type;
-  return hash;
-}
