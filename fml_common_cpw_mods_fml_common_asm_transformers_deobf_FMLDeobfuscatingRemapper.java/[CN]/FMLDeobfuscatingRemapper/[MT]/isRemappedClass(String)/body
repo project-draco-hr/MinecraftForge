@@ -1,0 +1,3 @@
+{
+  return classNameBiMap.containsKey(className) || mcpNameBiMap.containsKey(className);
+}

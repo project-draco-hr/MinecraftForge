@@ -10,7 +10,7 @@
  catch (  Exception e) {
     FMLLog.log(mc.getModId(),Level.SEVERE,e,"A severe problem was detected with the mod %s during the addRenderer call. Continuing, but expect odd results",mc.getModId());
   }
-  MapDifference<Class<? extends Entity>,Render> difference=Maps.difference(RenderManager.field_78727_a.field_78729_o,renderers,Equivalences.identity());
+  MapDifference<Class<? extends Entity>,Render> difference=Maps.difference(RenderManager.field_78727_a.field_78729_o,renderers,Equivalence.identity());
   for (  Entry<Class<? extends Entity>,Render> e : difference.entriesOnlyOnLeft().entrySet()) {
     FMLLog.log(mc.getModId(),Level.WARNING,"The mod %s attempted to remove an entity renderer %s from the entity map. This will be ignored.",mc.getModId(),e.getKey().getName());
   }

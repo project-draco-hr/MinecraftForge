@@ -1,6 +1,10 @@
 {
   try {
-    transformers.add((IClassTransformer)loadClass(transformerClassName).newInstance());
+    IClassTransformer transformer=(IClassTransformer)loadClass(transformerClassName).newInstance();
+    transformers.add(transformer);
+    if (transformer instanceof IClassNameTransformer && renameTransformer == null) {
+      renameTransformer=(IClassNameTransformer)transformer;
+    }
   }
  catch (  Exception e) {
     FMLRelaunchLog.log(Level.SEVERE,e,"A critical problem occured registering the ASM transformer class %s",transformerClassName);

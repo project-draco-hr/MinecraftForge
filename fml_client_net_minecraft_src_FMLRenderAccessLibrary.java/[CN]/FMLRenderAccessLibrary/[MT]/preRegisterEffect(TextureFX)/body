@@ -1,3 +1,0 @@
-{
-  TextureFXManager.instance().onPreRegisterEffect(textureFX);
-}

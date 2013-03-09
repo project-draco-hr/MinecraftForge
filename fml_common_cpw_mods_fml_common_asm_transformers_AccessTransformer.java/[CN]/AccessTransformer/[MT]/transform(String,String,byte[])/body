@@ -1,0 +1,66 @@
+{
+  if (bytes == null) {
+    return null;
+  }
+  boolean makeAllPublic=FMLDeobfuscatingRemapper.INSTANCE.isRemappedClass(name);
+  if (!makeAllPublic && !modifiers.containsKey(name)) {
+    return bytes;
+  }
+  ClassNode classNode=new ClassNode();
+  ClassReader classReader=new ClassReader(bytes);
+  classReader.accept(classNode,0);
+  if (makeAllPublic) {
+    Modifier m=new Modifier();
+    m.targetAccess=ACC_PUBLIC;
+    m.modifyClassVisibility=true;
+    modifiers.put(name,m);
+    m=new Modifier();
+    m.targetAccess=ACC_PUBLIC;
+    m.name="*";
+    modifiers.put(name,m);
+    m=new Modifier();
+    m.targetAccess=ACC_PUBLIC;
+    m.name="*";
+    m.desc="";
+    modifiers.put(name,m);
+  }
+  Collection<Modifier> mods=modifiers.get(name);
+  for (  Modifier m : mods) {
+    if (m.modifyClassVisibility) {
+      classNode.access=getFixedAccess(classNode.access,m);
+      if (DEBUG) {
+        System.out.println(String.format("Class: %s %s -> %s",name,toBinary(m.oldAccess),toBinary(m.newAccess)));
+      }
+      continue;
+    }
+    if (m.desc.isEmpty()) {
+      for (      FieldNode n : (List<FieldNode>)classNode.fields) {
+        if (n.name.equals(m.name) || m.name.equals("*")) {
+          n.access=getFixedAccess(n.access,m);
+          if (DEBUG) {
+            System.out.println(String.format("Field: %s.%s %s -> %s",name,n.name,toBinary(m.oldAccess),toBinary(m.newAccess)));
+          }
+          if (!m.name.equals("*")) {
+            break;
+          }
+        }
+      }
+    }
+ else {
+      for (      MethodNode n : (List<MethodNode>)classNode.methods) {
+        if ((n.name.equals(m.name) && n.desc.equals(m.desc)) || m.name.equals("*")) {
+          n.access=getFixedAccess(n.access,m);
+          if (DEBUG) {
+            System.out.println(String.format("Method: %s.%s%s %s -> %s",name,n.name,n.desc,toBinary(m.oldAccess),toBinary(m.newAccess)));
+          }
+          if (!m.name.equals("*")) {
+            break;
+          }
+        }
+      }
+    }
+  }
+  ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
+  classNode.accept(writer);
+  return writer.toByteArray();
+}

@@ -1,4 +1,16 @@
 {
+  try {
+    byte[] bs=actualClassLoader.getClassBytes("net.minecraft.world.World");
+    if (bs != null) {
+      FMLRelaunchLog.info("Managed to load a deobfuscated Minecraft name- we are in a deobfuscated environment. Skipping runtime deobfuscation");
+      deobfuscatedEnvironment=true;
+    }
+  }
+ catch (  IOException e1) {
+  }
+  if (!deobfuscatedEnvironment) {
+    FMLRelaunchLog.fine("Enabling runtime deobfuscation");
+  }
   pluginLocations=new HashMap<IFMLLoadingPlugin,File>();
   loadPlugins=new ArrayList<IFMLLoadingPlugin>();
   libraries=new ArrayList<ILibrarySet>();
@@ -144,6 +156,9 @@
       }
     }
   }
+  if (!deobfuscatedEnvironment) {
+    actualClassLoader.registerTransformer("cpw.mods.fml.common.asm.transformers.DeobfuscationTransformer");
+  }
   downloadMonitor.updateProgressString("Running coremod plugins");
   Map<String,Object> data=new HashMap<String,Object>();
   data.put("mcLocation",mcDir);
@@ -158,6 +173,7 @@
         IFMLCallHook call=(IFMLCallHook)Class.forName(setupClass,true,actualClassLoader).newInstance();
         Map<String,Object> callData=new HashMap<String,Object>();
         callData.put("classLoader",actualClassLoader);
+        callData.put("deobfuscationFileName",FMLInjectionData.debfuscationDataName());
         call.injectData(callData);
         call.call();
       }

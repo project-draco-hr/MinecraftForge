@@ -1,3 +1,4 @@
 {
   cl=(RelaunchClassLoader)data.get("classLoader");
+  FMLDeobfuscatingRemapper.INSTANCE.setup((File)data.get("mcLocation"),cl,(String)data.get("deobfuscationFileName"));
 }

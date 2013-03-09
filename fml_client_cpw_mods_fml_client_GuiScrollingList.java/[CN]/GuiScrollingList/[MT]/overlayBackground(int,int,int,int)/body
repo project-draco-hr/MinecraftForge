@@ -1,6 +1,6 @@
 {
   Tessellator var5=Tessellator.field_78398_a;
-  GL11.glBindTexture(GL11.GL_TEXTURE_2D,this.client.field_71446_o.func_78341_b("/gui/background.png"));
+  this.client.field_71446_o.func_98187_b("/gui/background.png");
   GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
   float var6=32.0F;
   var5.func_78382_b();

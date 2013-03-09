@@ -38,7 +38,7 @@
         rdr.accept(cls,0);
         String name=cls.name.replace('/','.').replace('\\','.');
         for (        MarkerTransformer trans : transformers) {
-          entryData=trans.transform(name,entryData);
+          entryData=trans.transform(name,name,entryData);
         }
       }
       ZipEntry newEntry=new ZipEntry(entryName);

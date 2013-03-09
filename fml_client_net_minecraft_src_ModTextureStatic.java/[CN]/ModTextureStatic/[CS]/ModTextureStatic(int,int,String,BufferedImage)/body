@@ -1,9 +1,0 @@
-{
-  super(icon);
-  RenderEngine re=FMLClientHandler.instance().getClient().field_71446_o;
-  targetTex=target;
-  storedSize=size;
-  field_76849_e=size;
-  field_76847_f=re.func_78341_b(target);
-  overrideData=image;
-}

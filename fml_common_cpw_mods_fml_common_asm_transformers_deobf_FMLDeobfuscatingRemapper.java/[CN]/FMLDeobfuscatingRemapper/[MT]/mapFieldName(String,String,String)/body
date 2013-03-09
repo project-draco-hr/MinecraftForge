@@ -1,0 +1,7 @@
+{
+  if (classNameBiMap == null || classNameBiMap.isEmpty()) {
+    return name;
+  }
+  Map<String,String> fieldMap=getFieldMap(owner);
+  return fieldMap != null && fieldMap.containsKey(name) ? fieldMap.get(name) : name;
+}

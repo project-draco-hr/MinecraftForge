@@ -25,19 +25,21 @@
   }
   try {
     CodeSigner[] signers=null;
-    int lastDot=name.lastIndexOf('.');
-    String pkgname=lastDot == -1 ? "" : name.substring(0,lastDot);
-    String fName=name.replace('.','/').concat(".class");
+    String transformedName=transformName(name);
+    String untransformedName=untransformName(name);
+    int lastDot=untransformedName.lastIndexOf('.');
+    String pkgname=lastDot == -1 ? "" : untransformedName.substring(0,lastDot);
+    String fName=untransformedName.replace('.','/').concat(".class");
     String pkgPath=pkgname.replace('.','/');
     URLConnection urlConnection=findCodeSourceConnectionFor(fName);
-    if (urlConnection instanceof JarURLConnection && lastDot > -1) {
+    if (urlConnection instanceof JarURLConnection && lastDot > -1 && !untransformedName.startsWith("net.minecraft.")) {
       JarURLConnection jarUrlConn=(JarURLConnection)urlConnection;
       JarFile jf=jarUrlConn.getJarFile();
       if (jf != null && jf.getManifest() != null) {
         Manifest mf=jf.getManifest();
         JarEntry ent=jf.getJarEntry(fName);
         Package pkg=getPackage(pkgname);
-        getClassBytes(name);
+        getClassBytes(untransformedName);
         signers=ent.getCodeSigners();
         if (pkg == null) {
           pkg=definePackage(pkgname,mf,jarUrlConn.getJarFileURL());
@@ -53,7 +55,7 @@
         }
       }
     }
- else     if (lastDot > -1) {
+ else     if (lastDot > -1 && !untransformedName.startsWith("net.minecraft.")) {
       Package pkg=getPackage(pkgname);
       if (pkg == null) {
         pkg=definePackage(pkgname,null,null,null,null,null,null,null);
@@ -63,10 +65,10 @@
         FMLLog.severe("The URL %s is defining elements for sealed path %s",urlConnection.getURL(),pkgname);
       }
     }
-    byte[] basicClass=getClassBytes(name);
-    byte[] transformedClass=runTransformers(name,basicClass);
-    Class<?> cl=defineClass(name,transformedClass,0,transformedClass.length,new CodeSource(urlConnection.getURL(),signers));
-    cachedClasses.put(name,cl);
+    byte[] basicClass=getClassBytes(untransformedName);
+    byte[] transformedClass=runTransformers(untransformedName,transformedName,basicClass);
+    Class<?> cl=defineClass(transformedName,transformedClass,0,transformedClass.length,new CodeSource(urlConnection.getURL(),signers));
+    cachedClasses.put(transformedName,cl);
     return cl;
   }
  catch (  Throwable e) {

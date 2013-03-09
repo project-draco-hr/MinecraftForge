@@ -1,3 +1,0 @@
-{
-  return spriteInfo.get(textureToOverride).cardinality();
-}

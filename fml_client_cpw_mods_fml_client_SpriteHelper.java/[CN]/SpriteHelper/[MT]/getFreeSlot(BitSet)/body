@@ -1,5 +1,0 @@
-{
-  int next=slots.nextSetBit(0);
-  slots.clear(next);
-  return next;
-}

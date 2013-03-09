@@ -1,0 +1,4 @@
+{
+  classNameBiMap=ImmutableBiMap.of();
+  mcpNameBiMap=ImmutableBiMap.of();
+}

@@ -1,0 +1,6 @@
+{
+  if (modObjectTable == null) {
+    return null;
+  }
+  return Item.field_77698_e[modObjectTable.get(modId,name)];
+}

@@ -1,8 +1,0 @@
-{
-  tileSizeBase=width >> 4;
-  tileSizeSquare=tileSizeBase * tileSizeBase;
-  tileSizeMask=tileSizeBase - 1;
-  tileSizeSquareMask=tileSizeSquare - 1;
-  setErrored(false);
-  setup();
-}
