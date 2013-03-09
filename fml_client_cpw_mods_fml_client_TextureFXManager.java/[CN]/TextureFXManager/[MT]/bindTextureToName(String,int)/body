@@ -1,0 +1,7 @@
+{
+  TextureHolder holder=new TextureHolder();
+  holder.textureId=index;
+  holder.textureName=name;
+  texturesById.put(index,holder);
+  texturesByName.put(name,holder);
+}
