@@ -1,6 +1,5 @@
 {
   showWindow(true);
-  appletClass=ReflectionHelper.getClass(classLoader,"net.minecraft.client.MinecraftApplet");
   if (minecraftApplet.getClass().getClassLoader() == classLoader) {
     if (popupWindow != null) {
       popupWindow.setVisible(false);
@@ -8,6 +7,7 @@
     }
     try {
       newApplet=minecraftApplet;
+      appletClass=ReflectionHelper.getClass(classLoader,"net.minecraft.client.MinecraftApplet");
       ReflectionHelper.findMethod(appletClass,newApplet,new String[]{"fmlInitReentry"}).invoke(newApplet);
       return;
     }
@@ -22,6 +22,7 @@
   setupNewClientHome(mcDir);
   Class<? super Object> parentAppletClass=ReflectionHelper.getClass(getClass().getClassLoader(),"java.applet.Applet");
   try {
+    appletClass=ReflectionHelper.getClass(classLoader,"net.minecraft.client.MinecraftApplet");
     newApplet=appletClass.newInstance();
     Object appletContainer=ReflectionHelper.getPrivateValue(ReflectionHelper.getClass(getClass().getClassLoader(),"java.awt.Component"),minecraftApplet,"parent");
     String launcherClassName=System.getProperty("minecraft.applet.WrapperClass","net.minecraft.Launcher");
