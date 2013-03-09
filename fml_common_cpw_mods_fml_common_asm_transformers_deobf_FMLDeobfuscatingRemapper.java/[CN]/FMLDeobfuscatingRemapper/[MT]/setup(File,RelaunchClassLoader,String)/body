@@ -11,12 +11,14 @@
     rawMethodMaps=Maps.newHashMap();
     rawFieldMaps=Maps.newHashMap();
     Builder<String,String> builder=ImmutableBiMap.<String,String>builder();
+    Builder<String,String> mcpBuilder=ImmutableBiMap.<String,String>builder();
     Splitter splitter=Splitter.on(CharMatcher.anyOf(": ")).omitEmptyStrings().trimResults();
     for (    String line : srgList) {
       String[] parts=Iterables.toArray(splitter.split(line),String.class);
       String typ=parts[0];
       if ("CL".equals(typ)) {
         parseClass(builder,parts);
+        parseMCPClass(mcpBuilder,parts);
       }
  else       if ("MD".equals(typ)) {
         parseMethod(parts);
@@ -26,6 +28,12 @@
       }
     }
     classNameBiMap=builder.build();
+    mcpBuilder.put("BaseMod","net/minecraft/src/BaseMod");
+    mcpBuilder.put("ModLoader","net/minecraft/src/ModLoader");
+    mcpBuilder.put("EntityRendererProxy","net/minecraft/src/EntityRendererProxy");
+    mcpBuilder.put("MLProp","net/minecraft/src/MLProp");
+    mcpBuilder.put("TradeEntry","net/minecraft/src/TradeEntry");
+    mcpNameBiMap=mcpBuilder.build();
   }
  catch (  IOException ioe) {
     FMLRelaunchLog.log(Level.SEVERE,ioe,"An error occurred loading the deobfuscation map data");

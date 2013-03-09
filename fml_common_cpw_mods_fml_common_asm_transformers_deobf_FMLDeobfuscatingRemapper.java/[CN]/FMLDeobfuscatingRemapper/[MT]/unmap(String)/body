@@ -2,5 +2,6 @@
   if (classNameBiMap == null) {
     return typeName;
   }
-  return classNameBiMap.containsValue(typeName) ? classNameBiMap.inverse().get(typeName) : typeName;
+  String result=classNameBiMap.containsValue(typeName) ? classNameBiMap.inverse().get(typeName) : mcpNameBiMap.containsValue(typeName) ? mcpNameBiMap.inverse().get(typeName) : typeName;
+  return result;
 }
