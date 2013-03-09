@@ -2,6 +2,10 @@
   if (classNameBiMap == null || classNameBiMap.isEmpty()) {
     return typeName;
   }
-  String result=classNameBiMap.containsKey(typeName) ? classNameBiMap.get(typeName) : mcpNameBiMap.containsKey(typeName) ? mcpNameBiMap.get(typeName) : typeName;
+  int dollarIdx=typeName.indexOf('$');
+  String realType=dollarIdx > -1 ? typeName.substring(0,dollarIdx) : typeName;
+  String subType=dollarIdx > -1 ? typeName.substring(dollarIdx + 1) : "";
+  String result=classNameBiMap.containsKey(realType) ? classNameBiMap.get(realType) : mcpNameBiMap.containsKey(realType) ? mcpNameBiMap.get(realType) : realType;
+  result=dollarIdx > -1 ? result + "$" + subType : result;
   return result;
 }
