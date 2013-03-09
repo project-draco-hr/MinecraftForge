@@ -1,5 +1,5 @@
 {
-  String internalClassName=className.replace('.','/');
+  String internalClassName=FMLDeobfuscatingRemapper.INSTANCE.unmap(className.replace('.','/'));
   String[] mappedNames=new String[fieldNames.length];
   int i=0;
   for (  String fName : fieldNames) {
