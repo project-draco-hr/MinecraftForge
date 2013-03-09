@@ -1,8 +1,9 @@
 {
   Exception failed=null;
   for (  String fieldName : fieldNames) {
+    String remappedField=FMLDeobfuscatingRemapper.INSTANCE.mapFieldName(clazz.getName().replace('.','/'),fieldName,null);
     try {
-      Field f=clazz.getDeclaredField(fieldName);
+      Field f=clazz.getDeclaredField(remappedField);
       f.setAccessible(true);
       return f;
     }
