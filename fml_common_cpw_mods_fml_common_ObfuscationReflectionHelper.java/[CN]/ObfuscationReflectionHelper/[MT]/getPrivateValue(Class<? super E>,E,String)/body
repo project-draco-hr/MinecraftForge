@@ -1,6 +1,6 @@
 {
   try {
-    return ReflectionHelper.getPrivateValue(classToAccess,instance,fieldNames);
+    return ReflectionHelper.getPrivateValue(classToAccess,instance,remapFieldNames(classToAccess.getName(),fieldNames));
   }
  catch (  UnableToFindFieldException e) {
     FMLLog.log(Level.SEVERE,e,"Unable to locate any field %s on type %s",Arrays.toString(fieldNames),classToAccess.getName());

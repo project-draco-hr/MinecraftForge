@@ -6,7 +6,6 @@
   }
   loading=true;
   client=minecraft;
-  ObfuscationReflectionHelper.detectObfuscation(World.class);
   FMLCommonHandler.instance().beginLoading(this);
   new ModLoaderClientHelper(client);
   try {

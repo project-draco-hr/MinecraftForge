@@ -1,3 +1,0 @@
-{
-  obfuscation=!clazz.getSimpleName().equals("World");
-}

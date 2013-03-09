@@ -1,5 +1,4 @@
 {
   server=minecraftServer;
-  ObfuscationReflectionHelper.detectObfuscation(World.class);
   Loader.instance().loadMods();
 }
