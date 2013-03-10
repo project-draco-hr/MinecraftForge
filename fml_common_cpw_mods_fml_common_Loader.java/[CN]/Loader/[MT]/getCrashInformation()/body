@@ -1,4 +1,7 @@
 {
+  if (modController == null) {
+    return "";
+  }
   StringBuilder ret=new StringBuilder();
   List<String> branding=FMLCommonHandler.instance().getBrandings();
   Joiner.on(' ').skipNulls().appendTo(ret,branding.subList(1,branding.size()));
