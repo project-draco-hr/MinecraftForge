@@ -46,7 +46,7 @@
       itemMap.put(chr,new ItemStack((Item)in));
     }
  else     if (in instanceof Block) {
-      itemMap.put(chr,new ItemStack((Block)in,1,-1));
+      itemMap.put(chr,new ItemStack((Block)in,1,OreDictionary.WILDCARD_VALUE));
     }
  else     if (in instanceof String) {
       itemMap.put(chr,OreDictionary.getOres((String)in));

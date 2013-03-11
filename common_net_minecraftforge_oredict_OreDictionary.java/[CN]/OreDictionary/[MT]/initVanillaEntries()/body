@@ -1,15 +1,15 @@
 {
   if (!hasInit) {
-    registerOre("logWood",new ItemStack(Block.wood,1,-1));
-    registerOre("plankWood",new ItemStack(Block.planks,1,-1));
-    registerOre("slabWood",new ItemStack(Block.woodSingleSlab,1,-1));
+    registerOre("logWood",new ItemStack(Block.wood,1,WILDCARD_VALUE));
+    registerOre("plankWood",new ItemStack(Block.planks,1,WILDCARD_VALUE));
+    registerOre("slabWood",new ItemStack(Block.woodSingleSlab,1,WILDCARD_VALUE));
     registerOre("stairWood",Block.stairCompactPlanks);
     registerOre("stairWood",Block.stairsWoodBirch);
     registerOre("stairWood",Block.stairsWoodJungle);
     registerOre("stairWood",Block.stairsWoodSpruce);
     registerOre("stickWood",Item.stick);
-    registerOre("treeSapling",new ItemStack(Block.sapling,1,-1));
-    registerOre("treeLeaves",new ItemStack(Block.leaves,1,-1));
+    registerOre("treeSapling",new ItemStack(Block.sapling,1,WILDCARD_VALUE));
+    registerOre("treeLeaves",new ItemStack(Block.leaves,1,WILDCARD_VALUE));
   }
   Map<ItemStack,String> replacements=new HashMap<ItemStack,String>();
   replacements.put(new ItemStack(Block.planks,1,-1),"plankWood");
