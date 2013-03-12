@@ -1,0 +1,3 @@
+{
+  return ob instanceof LiquidStack && Objects.equal(((LiquidStack)ob).itemID,itemID) && Objects.equal(((LiquidStack)ob).itemMeta,itemMeta);
+}
