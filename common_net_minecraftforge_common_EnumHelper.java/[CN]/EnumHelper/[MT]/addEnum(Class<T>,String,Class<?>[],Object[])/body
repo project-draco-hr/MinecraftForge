@@ -4,13 +4,30 @@
   }
   Field valuesField=null;
   Field[] fields=enumType.getDeclaredFields();
-  int flags=Modifier.PRIVATE | Modifier.STATIC | Modifier.FINAL| 0x1000;
-  String valueType=String.format("[L%s;",enumType.getName().replace('.','/'));
   for (  Field field : fields) {
-    if ((field.getModifiers() & flags) == flags && field.getType().getName().replace('.','/').equals(valueType)) {
+    if (field.getName().equals("$VALUES")) {
       valuesField=field;
       break;
     }
+  }
+  if (valuesField == null) {
+    int flags=(FMLForgePlugin.RUNTIME_DEOBF ? Modifier.PUBLIC : Modifier.PRIVATE) | Modifier.STATIC | Modifier.FINAL| 0x1000;
+    String valueType=String.format("[L%s;",enumType.getName().replace('.','/'));
+    for (    Field field : fields) {
+      if ((field.getModifiers() & flags) == flags && field.getType().getName().replace('.','/').equals(valueType)) {
+        valuesField=field;
+        break;
+      }
+    }
+  }
+  if (valuesField == null) {
+    FMLLog.severe("Could not find $VALUES field for enum: %s",enumType.getName());
+    FMLLog.severe("Runtime Deobf: %s",FMLForgePlugin.RUNTIME_DEOBF);
+    FMLLog.severe("Fields:");
+    for (    Field field : fields) {
+      FMLLog.severe("    %s: %s",field.getName(),field.getType().getName());
+    }
+    return null;
   }
   valuesField.setAccessible(true);
   try {
