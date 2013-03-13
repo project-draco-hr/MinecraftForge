@@ -3,7 +3,7 @@
   if (customRenderer == null) {
     return false;
   }
-  engine.func_98187_b("/gui/items.png");
+  engine.func_98187_b(item.func_94608_d() == 0 ? "/terrain.png" : "/gui/items.png");
   if (customRenderer.shouldUseRenderHelper(INVENTORY,item,INVENTORY_BLOCK)) {
     GL11.glPushMatrix();
     GL11.glTranslatef(x - 2,y + 3,-3.0F + zLevel);
