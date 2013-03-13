@@ -1,4 +1,0 @@
-{
-  ChestGenHooks.addDungeonLoot(ChestGenHooks.getInfo(DUNGEON_CHEST),item,rarity,minCount,maxCount);
-  return rarity;
-}

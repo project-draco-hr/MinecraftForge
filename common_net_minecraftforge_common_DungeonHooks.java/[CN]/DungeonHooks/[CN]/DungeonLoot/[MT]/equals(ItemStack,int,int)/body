@@ -1,5 +1,0 @@
-{
-  int minCount=theMinimumChanceToGenerateItem;
-  int maxCount=theMaximumChanceToGenerateItem;
-  return (min == minCount && max == maxCount && item.isItemEqual(theItemId) && ItemStack.areItemStackTagsEqual(item,theItemId));
-}

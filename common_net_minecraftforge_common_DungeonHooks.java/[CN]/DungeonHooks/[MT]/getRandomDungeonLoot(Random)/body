@@ -1,3 +1,0 @@
-{
-  return ChestGenHooks.getOneItem(DUNGEON_CHEST,rand);
-}

@@ -1,3 +1,0 @@
-{
-  return ChestGenHooks.getInfo(DUNGEON_CHEST).contents.remove(loot);
-}

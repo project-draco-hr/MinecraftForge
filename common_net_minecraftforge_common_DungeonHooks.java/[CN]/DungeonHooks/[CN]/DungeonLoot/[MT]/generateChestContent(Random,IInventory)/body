@@ -1,4 +1,0 @@
-{
-  FMLLog.warning("Some mod is still using DungeonHooks.DungonLoot, tell them to stop! %s",this);
-  return new ItemStack[]{generateStack(random)};
-}

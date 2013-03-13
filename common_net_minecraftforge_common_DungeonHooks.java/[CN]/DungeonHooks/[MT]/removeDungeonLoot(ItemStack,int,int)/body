@@ -1,3 +1,0 @@
-{
-  ChestGenHooks.removeItem(DUNGEON_CHEST,item);
-}

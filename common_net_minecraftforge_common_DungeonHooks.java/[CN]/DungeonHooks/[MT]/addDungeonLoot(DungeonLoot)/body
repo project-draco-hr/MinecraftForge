@@ -1,3 +1,0 @@
-{
-  ChestGenHooks.getInfo(DUNGEON_CHEST).addItem(loot);
-}
