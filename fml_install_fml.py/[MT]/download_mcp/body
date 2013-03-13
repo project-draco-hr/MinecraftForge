@@ -25,7 +25,9 @@ def download_mcp(mcp_dir, fml_dir, version=None):
         _mkdir(mcp_dir)
     print ("Extracting MCP to '%s'" % mcp_dir)
     zf = ZipFile(mcp_zip)
-    zf.extractall(mcp_dir)
+    for path in zf.namelist():
+        if (not path.endswith('/')):
+            zf.extract(path, mcp_dir)
     zf.close()
     eclipse_dir = os.path.join(mcp_dir, 'eclipse')
     if os.path.isdir(eclipse_dir):
