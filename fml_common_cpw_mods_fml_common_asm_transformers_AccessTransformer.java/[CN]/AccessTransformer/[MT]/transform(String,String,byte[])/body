@@ -3,6 +3,9 @@
     return null;
   }
   boolean makeAllPublic=FMLDeobfuscatingRemapper.INSTANCE.isRemappedClass(name);
+  if (DEBUG) {
+    System.out.printf("Considering all methods and fields on %s (%s): %b\n",name,transformedName,makeAllPublic);
+  }
   if (!makeAllPublic && !modifiers.containsKey(name)) {
     return bytes;
   }
@@ -21,8 +24,11 @@
     m=new Modifier();
     m.targetAccess=ACC_PUBLIC;
     m.name="*";
-    m.desc="";
+    m.desc="<dummy>";
     modifiers.put(name,m);
+    if (DEBUG) {
+      System.out.printf("Injected all public modifiers for %s (%s)\n",name,transformedName);
+    }
   }
   Collection<Modifier> mods=modifiers.get(name);
   for (  Modifier m : mods) {
