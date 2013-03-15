@@ -5,11 +5,14 @@ synchronized (FMLRelaunchLog.class) {
     record=this.toString();
     super.reset();
     currentMessage.append(record.replace(FMLLogFormatter.LINE_SEPARATOR,"\n"));
-    if (currentMessage.lastIndexOf("\n") >= 0) {
-      if (currentMessage.length() > 1) {
-        currentMessage.setLength(currentMessage.length() - 1);
-        log.log(Level.INFO,currentMessage.toString());
-      }
+    int lastIdx=-1;
+    int idx=currentMessage.indexOf("\n",lastIdx + 1);
+    while (idx > 0) {
+      log.log(Level.INFO,currentMessage.substring(lastIdx + 1,idx));
+      lastIdx=idx;
+      idx=currentMessage.indexOf("\n",lastIdx + 1);
+    }
+    if (lastIdx >= 0) {
       currentMessage.setLength(0);
     }
   }
