@@ -1,13 +1,13 @@
 {
   if (DEBUG_CLASSLOADING_FINER) {
-    FMLLog.finest("Beginning transform of %s (%s) Start Length: %d",name,transformedName,(basicClass == null ? 0 : basicClass.length));
+    FMLRelaunchLog.finest("Beginning transform of %s (%s) Start Length: %d",name,transformedName,(basicClass == null ? 0 : basicClass.length));
     for (    IClassTransformer transformer : transformers) {
       String transName=transformer.getClass().getName();
-      FMLLog.finest("Before Transformer %s: %d",transName,(basicClass == null ? 0 : basicClass.length));
+      FMLRelaunchLog.finest("Before Transformer %s: %d",transName,(basicClass == null ? 0 : basicClass.length));
       basicClass=transformer.transform(name,transformedName,basicClass);
-      FMLLog.finest("After  Transformer %s: %d",transName,(basicClass == null ? 0 : basicClass.length));
+      FMLRelaunchLog.finest("After  Transformer %s: %d",transName,(basicClass == null ? 0 : basicClass.length));
     }
-    FMLLog.finest("Ending transform of %s (%s) Start Length: %d",name,transformedName,(basicClass == null ? 0 : basicClass.length));
+    FMLRelaunchLog.finest("Ending transform of %s (%s) Start Length: %d",name,transformedName,(basicClass == null ? 0 : basicClass.length));
   }
  else {
     for (    IClassTransformer transformer : transformers) {
