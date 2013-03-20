@@ -1,0 +1,5 @@
+{
+  LivingMaxCanSpawnEvent maxCanSpawnEvent=new LivingMaxCanSpawnEvent(entity);
+  MinecraftForge.EVENT_BUS.post(maxCanSpawnEvent);
+  return maxCanSpawnEvent.getResult() == Result.ALLOW ? maxCanSpawnEvent.maxSpawnInChunk : entity.getMaxSpawnedInChunk();
+}
