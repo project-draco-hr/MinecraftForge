@@ -7,7 +7,7 @@ synchronized (FMLRelaunchLog.class) {
     currentMessage.append(record.replace(FMLLogFormatter.LINE_SEPARATOR,"\n"));
     int lastIdx=-1;
     int idx=currentMessage.indexOf("\n",lastIdx + 1);
-    while (idx > 0) {
+    while (idx >= 0) {
       log.log(Level.INFO,currentMessage.substring(lastIdx + 1,idx));
       lastIdx=idx;
       idx=currentMessage.indexOf("\n",lastIdx + 1);
