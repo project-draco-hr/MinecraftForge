@@ -1,0 +1,3 @@
+{
+  customItemStacks.put(Loader.instance().activeModContainer().getModId(),name,itemStack);
+}
