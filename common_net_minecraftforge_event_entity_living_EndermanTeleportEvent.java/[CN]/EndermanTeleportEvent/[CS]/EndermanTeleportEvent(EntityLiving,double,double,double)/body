@@ -1,0 +1,6 @@
+{
+  super(entity);
+  this.targetX=targetX;
+  this.targetY=targetY;
+  this.targetZ=targetZ;
+}
