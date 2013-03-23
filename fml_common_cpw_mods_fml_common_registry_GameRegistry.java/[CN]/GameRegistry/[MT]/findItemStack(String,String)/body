@@ -1,3 +1,0 @@
-{
-  return GameData.findItemStack(modId,name);
-}

@@ -1,0 +1,5 @@
+{
+  ItemStack is=GameData.findItemStack(modId,name).func_77946_l();
+  is.field_77994_a=stackSize;
+  return is;
+}
