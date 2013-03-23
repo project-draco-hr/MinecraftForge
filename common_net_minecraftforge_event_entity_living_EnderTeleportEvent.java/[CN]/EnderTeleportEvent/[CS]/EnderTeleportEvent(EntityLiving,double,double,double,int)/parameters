@@ -1,0 +1,5 @@
+EntityLiving entity
+double targetX
+double targetY
+double targetZ
+int attackDamage
