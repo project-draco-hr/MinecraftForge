@@ -1,0 +1,3 @@
+{
+  return block instanceof BlockChest ? UP_DOWN_AXES : VALID_DIRECTIONS;
+}

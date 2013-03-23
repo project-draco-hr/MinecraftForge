@@ -1,0 +1,8 @@
+{
+  int rotMeta=worldObj.getBlockMetadata(x,y,z);
+  int masked=rotMeta & ~mask;
+  ForgeDirection orientation=ForgeDirection.getOrientation(rotMeta & mask);
+  ForgeDirection rotated=orientation.getRotation(axis);
+  worldObj.setBlockMetadataWithNotify(x,y,z,rotated.ordinal() & mask | masked,3);
+  return true;
+}
