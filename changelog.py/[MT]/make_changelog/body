@@ -1,0 +1,28 @@
+def make_changelog(job_path, target_build, change_file, current_version=None):
+    builds = getBuildInfo(('%s/api/python?tree=builds[number,actions[text],changeSet[items[author[fullName],comment]]]&pretty=true' % job_path))
+    log = ['Changelog:']
+    for build in builds:
+        if (int(build['number']) > target_build):
+            continue
+        if (len(build['items']) == 0):
+            continue
+        log.append('')
+        if (build['version'] is None):
+            if (current_version is None):
+                log.append(('Build %s' % build['number']))
+            else:
+                log.append(('Build %s' % current_version))
+        else:
+            log.append(('Build %s' % build['version']))
+        for change in build['items']:
+            comments = filter((lambda cmt: (len(cmt) > 0)), change['comment'].split('\n'))
+            if (len(comments) > 1):
+                log.append(('\t' + change['author']))
+                for comment in comments:
+                    log.append(('\t\t' + comment))
+            elif (len(comments) == 1):
+                log.append(('\t%s: %s' % (change['author'], comments[0])))
+    file = open(change_file, 'wb')
+    for line in log:
+        file.write(('%s\n' % line))
+    file.close()
