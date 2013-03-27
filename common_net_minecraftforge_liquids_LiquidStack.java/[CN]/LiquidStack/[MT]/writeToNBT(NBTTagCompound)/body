@@ -2,5 +2,6 @@
   nbt.setShort("Id",(short)itemID);
   nbt.setInteger("Amount",amount);
   nbt.setShort("Meta",(short)itemMeta);
+  nbt.setString("LiquidName",LiquidDictionary.findLiquidName(this));
   return nbt;
 }
