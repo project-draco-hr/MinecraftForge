@@ -2,7 +2,7 @@
   if (bytes == null) {
     return null;
   }
-  boolean makeAllPublic=FMLDeobfuscatingRemapper.INSTANCE.isRemappedClass(name) || !name.contains("/");
+  boolean makeAllPublic=FMLDeobfuscatingRemapper.INSTANCE.isRemappedClass(name);
   if (DEBUG) {
     System.out.printf("Considering all methods and fields on %s (%s): %b\n",name,transformedName,makeAllPublic);
   }
