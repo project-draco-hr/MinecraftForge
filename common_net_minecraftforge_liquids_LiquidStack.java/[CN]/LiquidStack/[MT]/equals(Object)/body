@@ -1,3 +1,7 @@
 {
-  return ob instanceof LiquidStack && Objects.equal(((LiquidStack)ob).itemID,itemID) && Objects.equal(((LiquidStack)ob).itemMeta,itemMeta);
+  if (ob instanceof LiquidStack) {
+    LiquidStack ls=(LiquidStack)ob;
+    return ls.itemID == itemID && ls.itemMeta == itemMeta;
+  }
+  return false;
 }

@@ -1,3 +1,8 @@
 {
-  return liquids.inverse().get(reference);
+  if (reference != null) {
+    return liquids.inverse().get(reference);
+  }
+ else {
+    return null;
+  }
 }

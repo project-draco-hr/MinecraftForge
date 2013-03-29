@@ -1,11 +1,2 @@
 {
-  String liquidName=nbt.getString("LiquidName");
-  itemID=nbt.getShort("Id");
-  itemMeta=nbt.getShort("Meta");
-  LiquidStack liquid=LiquidDictionary.getCanonicalLiquid(liquidName);
-  if (liquid != null) {
-    itemID=liquid.itemID;
-    itemMeta=liquid.itemMeta;
-  }
-  amount=nbt.getInteger("Amount");
 }

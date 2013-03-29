@@ -1,0 +1,3 @@
+{
+  return liquids.get(liquids.inverse().get(liquidStack));
+}
