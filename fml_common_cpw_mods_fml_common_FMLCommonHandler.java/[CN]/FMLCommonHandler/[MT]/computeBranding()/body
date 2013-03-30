@@ -11,12 +11,8 @@
     if (sidedDelegate != null) {
       brd.addAll(sidedDelegate.getAdditionalBrandingInformation());
     }
-    try {
-      Properties props=new Properties();
-      props.load(getClass().getClassLoader().getResourceAsStream("fmlbranding.properties"));
-      brd.add(props.getProperty("fmlbranding"));
-    }
- catch (    Exception ex) {
+    if (Loader.instance().getFMLBrandingProperties().containsKey("fmlbranding")) {
+      brd.add(Loader.instance().getFMLBrandingProperties().get("fmlbranding"));
     }
     int tModCount=Loader.instance().getModList().size();
     int aModCount=Loader.instance().getActiveModList().size();
