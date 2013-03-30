@@ -10,6 +10,9 @@
     itemID=liquid.itemID;
     itemMeta=liquid.itemMeta;
   }
+ else   if (Item.itemsList[itemID] == null) {
+    return null;
+  }
   int amount=nbt.getInteger("Amount");
   LiquidStack liquidstack=new LiquidStack(itemID,amount,itemMeta);
   return liquidstack.itemID == 0 ? null : liquidstack;
