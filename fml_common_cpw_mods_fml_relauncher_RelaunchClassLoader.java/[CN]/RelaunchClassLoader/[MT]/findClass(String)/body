@@ -67,6 +67,7 @@
     }
     byte[] basicClass=getClassBytes(untransformedName);
     byte[] transformedClass=runTransformers(untransformedName,transformedName,basicClass);
+    saveTransformedClass(transformedClass,transformedName);
     Class<?> cl=defineClass(transformedName,transformedClass,0,transformedClass.length,(urlConnection == null ? null : new CodeSource(urlConnection.getURL(),signers)));
     cachedClasses.put(transformedName,cl);
     return cl;
