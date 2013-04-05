@@ -1,0 +1,6 @@
+{
+  if (children.contains(child)) {
+    children.remove(child);
+    changed=true;
+  }
+}

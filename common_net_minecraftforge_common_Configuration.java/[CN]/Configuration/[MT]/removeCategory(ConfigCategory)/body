@@ -1,0 +1,12 @@
+{
+  for (  ConfigCategory child : category.getChildren()) {
+    removeCategory(child);
+  }
+  if (categories.containsKey(category.getQualifiedName())) {
+    categories.remove(category.getQualifiedName());
+    if (category.parent != null) {
+      category.parent.removeChild(category);
+    }
+    changed=true;
+  }
+}
