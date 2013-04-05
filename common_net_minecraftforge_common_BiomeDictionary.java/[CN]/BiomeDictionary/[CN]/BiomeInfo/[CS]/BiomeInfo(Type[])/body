@@ -1,0 +1,6 @@
+{
+  typeList=EnumSet.noneOf(Type.class);
+  for (  Type t : types) {
+    typeList.add(t);
+  }
+}

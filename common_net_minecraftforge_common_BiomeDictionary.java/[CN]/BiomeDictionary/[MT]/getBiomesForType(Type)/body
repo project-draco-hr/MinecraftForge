@@ -1,0 +1,6 @@
+{
+  if (typeInfoList[type.ordinal()] != null) {
+    return (BiomeGenBase[])typeInfoList[type.ordinal()].toArray();
+  }
+  return new BiomeGenBase[0];
+}

@@ -1,0 +1,30 @@
+{
+  if (biome.theBiomeDecorator.treesPerChunk >= 3) {
+    if (biome.isHighHumidity() && biome.temperature >= 1.0F) {
+      BiomeDictionary.registerBiomeType(biome,JUNGLE);
+    }
+ else     if (!biome.isHighHumidity()) {
+      BiomeDictionary.registerBiomeType(biome,FOREST);
+    }
+  }
+ else   if (biome.maxHeight <= 0.3F && biome.maxHeight >= 0.0F) {
+    if (!biome.isHighHumidity() || biome.minHeight >= 0.0F) {
+      BiomeDictionary.registerBiomeType(biome,PLAINS);
+    }
+  }
+  if (biome.isHighHumidity() && biome.minHeight < 0.0F && (biome.maxHeight <= 0.3F && biome.maxHeight >= 0.0F)) {
+    BiomeDictionary.registerBiomeType(biome,SWAMP);
+  }
+  if (biome.minHeight <= -0.5F) {
+    BiomeDictionary.registerBiomeType(biome,WATER);
+  }
+  if (biome.maxHeight >= 1.5F) {
+    BiomeDictionary.registerBiomeType(biome,MOUNTAIN);
+  }
+  if (biome.getEnableSnow() || biome.temperature < 0.2F) {
+    BiomeDictionary.registerBiomeType(biome,FROZEN);
+  }
+  if (!biome.isHighHumidity() && biome.temperature >= 1.0F) {
+    BiomeDictionary.registerBiomeType(biome,DESERT);
+  }
+}

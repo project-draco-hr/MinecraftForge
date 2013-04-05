@@ -1,0 +1,20 @@
+{
+  if (BiomeGenBase.biomeList[biome.biomeID] != null) {
+    for (    Type type : types) {
+      if (typeInfoList[type.ordinal()] == null) {
+        typeInfoList[type.ordinal()]=new ArrayList<BiomeGenBase>();
+      }
+      typeInfoList[type.ordinal()].add(biome);
+    }
+    if (biomeList[biome.biomeID] == null) {
+      biomeList[biome.biomeID]=new BiomeInfo(types);
+    }
+ else {
+      for (      Type type : types) {
+        biomeList[biome.biomeID].typeList.add(type);
+      }
+    }
+    return true;
+  }
+  return false;
+}

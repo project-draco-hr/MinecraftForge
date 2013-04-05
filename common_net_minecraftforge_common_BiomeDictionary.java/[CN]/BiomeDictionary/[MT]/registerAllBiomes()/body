@@ -1,0 +1,7 @@
+{
+  for (int i=0; i < BIOME_LIST_SIZE; i++) {
+    if (BiomeGenBase.biomeList[i] != null) {
+      checkRegistration(BiomeGenBase.biomeList[i]);
+    }
+  }
+}

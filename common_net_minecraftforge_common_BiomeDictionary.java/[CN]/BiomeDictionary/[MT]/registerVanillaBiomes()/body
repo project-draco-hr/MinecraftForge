@@ -1,0 +1,25 @@
+{
+  registerBiomeType(ocean,WATER);
+  registerBiomeType(plains,PLAINS);
+  registerBiomeType(desert,DESERT);
+  registerBiomeType(extremeHills,MOUNTAIN);
+  registerBiomeType(forest,FOREST);
+  registerBiomeType(taiga,FOREST,FROZEN);
+  registerBiomeType(taigaHills,FOREST,FROZEN);
+  registerBiomeType(swampland,SWAMP);
+  registerBiomeType(river,WATER);
+  registerBiomeType(frozenOcean,WATER,FROZEN);
+  registerBiomeType(frozenRiver,WATER,FROZEN);
+  registerBiomeType(icePlains,FROZEN);
+  registerBiomeType(iceMountains,FROZEN);
+  registerBiomeType(beach,BEACH);
+  registerBiomeType(desertHills,DESERT);
+  registerBiomeType(jungle,JUNGLE);
+  registerBiomeType(jungleHills,JUNGLE);
+  registerBiomeType(forestHills,FOREST);
+  registerBiomeType(sky,END);
+  registerBiomeType(hell,NETHER);
+  registerBiomeType(mushroomIsland,MUSHROOM);
+  registerBiomeType(extremeHillsEdge,MOUNTAIN);
+  registerBiomeType(mushroomIslandShore,MUSHROOM,BEACH);
+}
