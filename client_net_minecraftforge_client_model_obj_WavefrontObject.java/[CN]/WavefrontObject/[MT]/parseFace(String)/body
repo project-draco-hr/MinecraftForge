@@ -1,0 +1,61 @@
+{
+  Face face=null;
+  if (isValidFaceLine(line)) {
+    face=new Face();
+    String trimmedLine=line.substring(line.indexOf(" ") + 1);
+    String[] tokens=trimmedLine.split(" ");
+    String[] subTokens=null;
+    if (tokens.length == 3) {
+      if (currentGroupObject.glDrawingMode == -1) {
+        currentGroupObject.glDrawingMode=GL11.GL_TRIANGLES;
+      }
+ else       if (currentGroupObject.glDrawingMode != GL11.GL_TRIANGLES) {
+        return null;
+      }
+    }
+ else     if (tokens.length == 4) {
+      if (currentGroupObject.glDrawingMode == -1) {
+        currentGroupObject.glDrawingMode=GL11.GL_QUADS;
+      }
+ else       if (currentGroupObject.glDrawingMode != GL11.GL_QUADS) {
+        return null;
+      }
+    }
+    face.vertices=new Vertex[tokens.length];
+    face.textureCoordinates=new TextureCoordinate[tokens.length];
+    face.vertexNormals=new Vertex[tokens.length];
+    if (line.matches(REGEX_FACE_VERTEX_TEXTURECOORD_VERTEXNORMAL)) {
+      for (int i=0; i < tokens.length; ++i) {
+        subTokens=tokens[i].split("/");
+        face.vertices[i]=vertices.get(Integer.parseInt(subTokens[0]) - 1);
+        face.textureCoordinates[i]=textureCoordinates.get(Integer.parseInt(subTokens[1]) - 1);
+        face.vertexNormals[i]=vertexNormals.get(Integer.parseInt(subTokens[2]) - 1);
+      }
+      face.faceNormal=face.calculateFaceNormal();
+    }
+ else     if (line.matches(REGEX_FACE_VERTEX_TEXTURECOORD)) {
+      for (int i=0; i < tokens.length; ++i) {
+        subTokens=tokens[i].split("/");
+        face.vertices[i]=vertices.get(Integer.parseInt(subTokens[0]) - 1);
+        face.textureCoordinates[i]=textureCoordinates.get(Integer.parseInt(subTokens[1]) - 1);
+      }
+      face.faceNormal=face.calculateFaceNormal();
+    }
+ else     if (line.matches(REGEX_FACE_VERTEX_VERTEXNORMAL)) {
+      for (int i=0; i < tokens.length; ++i) {
+        subTokens=tokens[i].split("//");
+        face.vertices[i]=vertices.get(Integer.parseInt(subTokens[0]) - 1);
+        face.vertexNormals[i]=vertexNormals.get(Integer.parseInt(subTokens[1]) - 1);
+      }
+      face.faceNormal=face.calculateFaceNormal();
+    }
+ else     if (line.matches(REGEX_FACE_VERTEX)) {
+      for (int i=0; i < tokens.length; ++i) {
+        face.vertices[i]=vertices.get(Integer.parseInt(tokens[i]) - 1);
+      }
+      face.faceNormal=face.calculateFaceNormal();
+    }
+ else     throw new IllegalArgumentException();
+  }
+  return face;
+}

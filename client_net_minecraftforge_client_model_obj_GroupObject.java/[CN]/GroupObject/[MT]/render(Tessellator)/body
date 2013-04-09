@@ -1,0 +1,7 @@
+{
+  if (faces.size() > 0) {
+    for (    Face face : faces) {
+      face.addFaceForRender(tessellator);
+    }
+  }
+}

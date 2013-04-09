@@ -1,0 +1,10 @@
+{
+  GroupObject group=null;
+  if (isValidGroupObjectLine(line)) {
+    String trimmedLine=line.substring(line.indexOf(" ") + 1);
+    if (trimmedLine.length() > 0) {
+      group=new GroupObject(trimmedLine);
+    }
+  }
+  return group;
+}

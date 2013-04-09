@@ -1,0 +1,14 @@
+{
+  Vertex vertexNormal=null;
+  if (isValidVertexNormalLine(line)) {
+    line=line.substring(line.indexOf(" ") + 1);
+    String[] tokens=line.split(" ");
+    try {
+      if (tokens.length == 3)       return new Vertex(Float.parseFloat(tokens[0]),Float.parseFloat(tokens[1]),Float.parseFloat(tokens[2]));
+    }
+ catch (    NumberFormatException e) {
+      e.printStackTrace();
+    }
+  }
+  return vertexNormal;
+}

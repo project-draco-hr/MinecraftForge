@@ -1,0 +1,3 @@
+{
+  return line.matches(REGEX_GROUP_OBJECT);
+}

@@ -1,0 +1,8 @@
+{
+  try {
+    parseObjModel(this.getClass().getResource(fileName));
+  }
+ catch (  ParseException e) {
+    e.printStackTrace();
+  }
+}

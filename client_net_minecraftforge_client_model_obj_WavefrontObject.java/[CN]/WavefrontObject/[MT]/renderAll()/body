@@ -1,0 +1,13 @@
+{
+  Tessellator tessellator=Tessellator.instance;
+  if (currentGroupObject != null) {
+    tessellator.startDrawing(currentGroupObject.glDrawingMode);
+  }
+ else {
+    tessellator.startDrawing(GL11.GL_TRIANGLES);
+  }
+  for (  GroupObject groupObject : groupObjects) {
+    groupObject.render(tessellator);
+  }
+  tessellator.draw();
+}
