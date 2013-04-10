@@ -1,3 +1,2 @@
 {
-  ForgeHooksClient.engine().getTexture(texture);
 }
