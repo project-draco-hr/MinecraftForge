@@ -1,5 +1,4 @@
 {
-  this.fileName=fileName;
   try {
     loadObjModel(this.getClass().getResource(fileName));
   }
