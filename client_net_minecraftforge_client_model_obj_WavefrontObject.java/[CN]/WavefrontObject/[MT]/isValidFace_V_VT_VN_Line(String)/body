@@ -1,0 +1,7 @@
+{
+  if (face_V_VT_VN_Matcher != null) {
+    face_V_VT_VN_Matcher.reset();
+  }
+  face_V_VT_VN_Matcher=face_V_VT_VN_Pattern.matcher(line);
+  return face_V_VT_VN_Matcher.matches();
+}

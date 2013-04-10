@@ -6,5 +6,8 @@
       group=new GroupObject(trimmedLine);
     }
   }
+ else {
+    throw new DataFormatException("Error parsing entry ('" + line + "'"+ ", line "+ lineCount+ ") in file '"+ fileName+ "' - Incorrect format");
+  }
   return group;
 }

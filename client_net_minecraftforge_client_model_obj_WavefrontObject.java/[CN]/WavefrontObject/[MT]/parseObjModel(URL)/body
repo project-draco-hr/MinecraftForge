@@ -13,53 +13,38 @@
         continue;
       }
  else       if (currentLine.startsWith("v ")) {
-        Vertex vertex=parseVertex(currentLine);
+        Vertex vertex=parseVertex(currentLine,lineCount);
         if (vertex != null) {
           vertices.add(vertex);
         }
- else {
-          throw new ParseException("Error parsing entry ('" + currentLine + "'"+ ", line "+ lineCount+ ") in file '"+ fileURL.getFile()+ "'",lineCount);
-        }
       }
  else       if (currentLine.startsWith("vn ")) {
-        Vertex vertex=parseVertexNormal(currentLine);
+        Vertex vertex=parseVertexNormal(currentLine,lineCount);
         if (vertex != null) {
           vertexNormals.add(vertex);
         }
- else {
-          throw new ParseException("Error parsing entry ('" + currentLine + "'"+ ", line "+ lineCount+ ") in file '"+ fileURL.getFile()+ "'",lineCount);
-        }
       }
  else       if (currentLine.startsWith("vt ")) {
-        TextureCoordinate textureCoordinate=parseTextureCoordinate(currentLine);
+        TextureCoordinate textureCoordinate=parseTextureCoordinate(currentLine,lineCount);
         if (textureCoordinate != null) {
           textureCoordinates.add(textureCoordinate);
-        }
- else {
-          throw new ParseException("Error parsing entry ('" + currentLine + "'"+ ", line "+ lineCount+ ") in file '"+ fileURL.getFile()+ "'",lineCount);
         }
       }
  else       if (currentLine.startsWith("f ")) {
         if (currentGroupObject == null) {
           currentGroupObject=new GroupObject("Default");
         }
-        Face face=parseFace(currentLine);
+        Face face=parseFace(currentLine,lineCount);
         if (face != null) {
           currentGroupObject.faces.add(face);
         }
- else {
-          throw new ParseException("Error parsing entry ('" + currentLine + "'"+ ", line "+ lineCount+ ") in file '"+ fileURL.getFile()+ "'",lineCount);
-        }
       }
  else       if (currentLine.startsWith("g ") | currentLine.startsWith("o ")) {
-        GroupObject group=parseGroupObject(currentLine);
+        GroupObject group=parseGroupObject(currentLine,lineCount);
         if (group != null) {
           if (currentGroupObject != null) {
             groupObjects.add(currentGroupObject);
           }
-        }
- else {
-          throw new ParseException("Error parsing entry ('" + currentLine + "'"+ ", line "+ lineCount+ ") in file '"+ fileURL.getFile()+ "'",lineCount);
         }
         currentGroupObject=group;
       }

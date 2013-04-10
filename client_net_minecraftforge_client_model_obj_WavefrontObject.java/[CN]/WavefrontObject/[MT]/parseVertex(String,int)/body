@@ -1,0 +1,22 @@
+{
+  Vertex vertex=null;
+  if (isValidVertexLine(line)) {
+    line=line.substring(line.indexOf(" ") + 1);
+    String[] tokens=line.split(" ");
+    try {
+      if (tokens.length == 3) {
+        return new Vertex(Float.parseFloat(tokens[0]),Float.parseFloat(tokens[1]),Float.parseFloat(tokens[2]));
+      }
+ else       if (tokens.length == 4) {
+        return new Vertex(Float.parseFloat(tokens[0]),Float.parseFloat(tokens[1]),Float.parseFloat(tokens[2]),Float.parseFloat(tokens[3]));
+      }
+    }
+ catch (    NumberFormatException e) {
+      e.printStackTrace();
+    }
+  }
+ else {
+    throw new DataFormatException("Error parsing entry ('" + line + "'"+ ", line "+ lineCount+ ") in file '"+ fileName+ "' - Incorrect format");
+  }
+  return vertex;
+}

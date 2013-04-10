@@ -10,7 +10,7 @@
         currentGroupObject.glDrawingMode=GL11.GL_TRIANGLES;
       }
  else       if (currentGroupObject.glDrawingMode != GL11.GL_TRIANGLES) {
-        return null;
+        throw new DataFormatException("Error parsing entry ('" + line + "'"+ ", line "+ lineCount+ ") in file '"+ fileName+ "' - Invalid number of points for face (expected 4, found "+ tokens.length+ ")");
       }
     }
  else     if (tokens.length == 4) {
@@ -18,13 +18,13 @@
         currentGroupObject.glDrawingMode=GL11.GL_QUADS;
       }
  else       if (currentGroupObject.glDrawingMode != GL11.GL_QUADS) {
-        return null;
+        throw new DataFormatException("Error parsing entry ('" + line + "'"+ ", line "+ lineCount+ ") in file '"+ fileName+ "' - Invalid number of points for face (expected 3, found "+ tokens.length+ ")");
       }
     }
     face.vertices=new Vertex[tokens.length];
     face.textureCoordinates=new TextureCoordinate[tokens.length];
     face.vertexNormals=new Vertex[tokens.length];
-    if (line.matches(REGEX_FACE_VERTEX_TEXTURECOORD_VERTEXNORMAL)) {
+    if (isValidFace_V_VT_VN_Line(line)) {
       for (int i=0; i < tokens.length; ++i) {
         subTokens=tokens[i].split("/");
         face.vertices[i]=vertices.get(Integer.parseInt(subTokens[0]) - 1);
@@ -33,7 +33,7 @@
       }
       face.faceNormal=face.calculateFaceNormal();
     }
- else     if (line.matches(REGEX_FACE_VERTEX_TEXTURECOORD)) {
+ else     if (isValidFace_V_VT_Line(line)) {
       for (int i=0; i < tokens.length; ++i) {
         subTokens=tokens[i].split("/");
         face.vertices[i]=vertices.get(Integer.parseInt(subTokens[0]) - 1);
@@ -41,7 +41,7 @@
       }
       face.faceNormal=face.calculateFaceNormal();
     }
- else     if (line.matches(REGEX_FACE_VERTEX_VERTEXNORMAL)) {
+ else     if (isValidFace_V_VN_Line(line)) {
       for (int i=0; i < tokens.length; ++i) {
         subTokens=tokens[i].split("//");
         face.vertices[i]=vertices.get(Integer.parseInt(subTokens[0]) - 1);
@@ -49,13 +49,18 @@
       }
       face.faceNormal=face.calculateFaceNormal();
     }
- else     if (line.matches(REGEX_FACE_VERTEX)) {
+ else     if (isValidFace_V_Line(line)) {
       for (int i=0; i < tokens.length; ++i) {
         face.vertices[i]=vertices.get(Integer.parseInt(tokens[i]) - 1);
       }
       face.faceNormal=face.calculateFaceNormal();
     }
- else     throw new IllegalArgumentException();
+ else {
+      throw new DataFormatException("Error parsing entry ('" + line + "'"+ ", line "+ lineCount+ ") in file '"+ fileName+ "' - Incorrect format");
+    }
+  }
+ else {
+    throw new DataFormatException("Error parsing entry ('" + line + "'"+ ", line "+ lineCount+ ") in file '"+ fileName+ "' - Incorrect format");
   }
   return face;
 }

@@ -1,8 +1,9 @@
 {
+  this.fileName=fileURL.getFile();
   try {
     parseObjModel(fileURL);
   }
- catch (  ParseException e) {
+ catch (  DataFormatException e) {
     e.printStackTrace();
   }
 }
