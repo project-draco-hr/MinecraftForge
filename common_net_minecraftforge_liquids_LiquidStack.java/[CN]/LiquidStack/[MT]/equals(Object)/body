@@ -1,7 +1,7 @@
 {
   if (ob instanceof LiquidStack) {
     LiquidStack ls=(LiquidStack)ob;
-    return ls.itemID == itemID && ls.itemMeta == itemMeta;
+    return ls.itemID == itemID && ls.itemMeta == itemMeta && (extra == null ? ls.extra == null : extra.equals(ls.extra));
   }
   return false;
 }

@@ -15,5 +15,8 @@
   }
   int amount=nbt.getInteger("Amount");
   LiquidStack liquidstack=new LiquidStack(itemID,amount,itemMeta);
+  if (nbt.hasKey("extra")) {
+    liquidstack.extra=nbt.getCompoundTag("extra");
+  }
   return liquidstack.itemID == 0 ? null : liquidstack;
 }

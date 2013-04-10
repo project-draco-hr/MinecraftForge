@@ -3,5 +3,8 @@
   nbt.setShort("Id",(short)itemID);
   nbt.setShort("Meta",(short)itemMeta);
   nbt.setString("LiquidName",LiquidDictionary.findLiquidName(this));
+  if (extra != null) {
+    nbt.setTag("extra",extra);
+  }
   return nbt;
 }
