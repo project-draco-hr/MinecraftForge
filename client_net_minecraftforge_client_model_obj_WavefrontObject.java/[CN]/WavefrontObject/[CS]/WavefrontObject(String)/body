@@ -1,9 +1,0 @@
-{
-  this.fileName=fileName;
-  try {
-    loadObjModel(this.getClass().getResource(fileName));
-  }
- catch (  DataFormatException e) {
-    e.printStackTrace();
-  }
-}

@@ -52,20 +52,18 @@
     groupObjects.add(currentGroupObject);
   }
  catch (  IOException e) {
-    e.printStackTrace();
+    throw new ModelFormatException("IO Exception reading model format",e);
   }
  finally {
     try {
       reader.close();
     }
  catch (    IOException e) {
-      e.printStackTrace();
     }
     try {
       inputStream.close();
     }
  catch (    IOException e) {
-      e.printStackTrace();
     }
   }
 }
