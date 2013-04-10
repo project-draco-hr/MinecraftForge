@@ -1,0 +1,3 @@
+{
+  TextureFXManager.instance().getHelper().doTextureCopy(atlas,source,targetX,targetY);
+}
