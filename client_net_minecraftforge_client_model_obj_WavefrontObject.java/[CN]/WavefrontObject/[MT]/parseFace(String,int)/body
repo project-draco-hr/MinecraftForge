@@ -21,10 +21,10 @@
         throw new ModelFormatException("Error parsing entry ('" + line + "'"+ ", line "+ lineCount+ ") in file '"+ fileName+ "' - Invalid number of points for face (expected 3, found "+ tokens.length+ ")");
       }
     }
-    face.vertices=new Vertex[tokens.length];
-    face.textureCoordinates=new TextureCoordinate[tokens.length];
-    face.vertexNormals=new Vertex[tokens.length];
     if (isValidFace_V_VT_VN_Line(line)) {
+      face.vertices=new Vertex[tokens.length];
+      face.textureCoordinates=new TextureCoordinate[tokens.length];
+      face.vertexNormals=new Vertex[tokens.length];
       for (int i=0; i < tokens.length; ++i) {
         subTokens=tokens[i].split("/");
         face.vertices[i]=vertices.get(Integer.parseInt(subTokens[0]) - 1);
@@ -34,6 +34,8 @@
       face.faceNormal=face.calculateFaceNormal();
     }
  else     if (isValidFace_V_VT_Line(line)) {
+      face.vertices=new Vertex[tokens.length];
+      face.textureCoordinates=new TextureCoordinate[tokens.length];
       for (int i=0; i < tokens.length; ++i) {
         subTokens=tokens[i].split("/");
         face.vertices[i]=vertices.get(Integer.parseInt(subTokens[0]) - 1);
@@ -42,6 +44,8 @@
       face.faceNormal=face.calculateFaceNormal();
     }
  else     if (isValidFace_V_VN_Line(line)) {
+      face.vertices=new Vertex[tokens.length];
+      face.vertexNormals=new Vertex[tokens.length];
       for (int i=0; i < tokens.length; ++i) {
         subTokens=tokens[i].split("//");
         face.vertices[i]=vertices.get(Integer.parseInt(subTokens[0]) - 1);
@@ -50,6 +54,7 @@
       face.faceNormal=face.calculateFaceNormal();
     }
  else     if (isValidFace_V_Line(line)) {
+      face.vertices=new Vertex[tokens.length];
       for (int i=0; i < tokens.length; ++i) {
         face.vertices[i]=vertices.get(Integer.parseInt(tokens[i]) - 1);
       }
