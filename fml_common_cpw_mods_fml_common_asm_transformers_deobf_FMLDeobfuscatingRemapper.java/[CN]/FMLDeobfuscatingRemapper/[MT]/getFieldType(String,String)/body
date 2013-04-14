@@ -1,0 +1,20 @@
+{
+  try {
+    byte[] classBytes=classLoader.getClassBytes(owner);
+    if (classBytes == null) {
+      return null;
+    }
+    ClassReader cr=new ClassReader(classBytes);
+    ClassNode classNode=new ClassNode();
+    cr.accept(classNode,ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
+    for (    FieldNode fieldNode : (List<FieldNode>)classNode.fields) {
+      if (fieldNode.name.equals(name)) {
+        return fieldNode.desc;
+      }
+    }
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+  return null;
+}
