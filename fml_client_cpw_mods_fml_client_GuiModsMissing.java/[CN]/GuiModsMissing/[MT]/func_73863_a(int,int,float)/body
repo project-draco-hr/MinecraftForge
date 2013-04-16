@@ -7,6 +7,13 @@
   offset+=5;
   for (  ArtifactVersion v : modsMissing.missingMods) {
     offset+=10;
+    if (v instanceof DefaultArtifactVersion) {
+      DefaultArtifactVersion dav=(DefaultArtifactVersion)v;
+      if (dav.getRange() != null && dav.getRange().isUnboundedAbove()) {
+        this.func_73732_a(this.field_73886_k,String.format("%s : minimum version required is %s",v.getLabel(),dav.getRange().getLowerBoundString()),this.field_73880_f / 2,offset,0xEEEEEE);
+        continue;
+      }
+    }
     this.func_73732_a(this.field_73886_k,String.format("%s : %s",v.getLabel(),v.getRangeString()),this.field_73880_f / 2,offset,0xEEEEEE);
   }
   offset+=20;
