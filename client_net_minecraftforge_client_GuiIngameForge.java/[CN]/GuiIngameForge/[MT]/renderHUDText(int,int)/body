@@ -1,0 +1,65 @@
+{
+  mc.mcProfiler.startSection("forgeHudText");
+  ArrayList<String> left=new ArrayList<String>();
+  ArrayList<String> right=new ArrayList<String>();
+  if (mc.isDemo()) {
+    long time=mc.theWorld.getTotalWorldTime();
+    if (time >= 120500L) {
+      right.add(StatCollector.translateToLocal("demo.demoExpired"));
+    }
+ else {
+      right.add(String.format(StatCollector.translateToLocal("demo.remainingTime"),StringUtils.ticksToElapsedTime((int)(120500L - time))));
+    }
+  }
+  if (this.mc.gameSettings.showDebugInfo) {
+    mc.mcProfiler.startSection("debug");
+    GL11.glPushMatrix();
+    left.add("Minecraft 1.5.1 (" + this.mc.debug + ")");
+    left.add(mc.debugInfoRenders());
+    left.add(mc.getEntityDebug());
+    left.add(mc.debugInfoEntities());
+    left.add(mc.getWorldProviderName());
+    left.add(null);
+    long max=Runtime.getRuntime().maxMemory();
+    long total=Runtime.getRuntime().totalMemory();
+    long free=Runtime.getRuntime().freeMemory();
+    long used=total - free;
+    right.add("Used memory: " + used * 100L / max + "% (" + used / 1024L / 1024L + "MB) of " + max / 1024L / 1024L + "MB");
+    right.add("Allocated memory: " + total * 100L / max + "% (" + total / 1024L / 1024L + "MB)");
+    int x=MathHelper.floor_double(mc.thePlayer.posX);
+    int y=MathHelper.floor_double(mc.thePlayer.posY);
+    int z=MathHelper.floor_double(mc.thePlayer.posZ);
+    float yaw=mc.thePlayer.rotationYaw;
+    int heading=MathHelper.floor_double((double)(mc.thePlayer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+    left.add(String.format("x: %.5f (%d) // c: %d (%d)",mc.thePlayer.posX,x,x >> 4,x & 15));
+    left.add(String.format("y: %.3f (feet pos, %.3f eyes pos)",mc.thePlayer.boundingBox.minY,mc.thePlayer.posY));
+    left.add(String.format("z: %.5f (%d) // c: %d (%d)",mc.thePlayer.posZ,z,z >> 4,z & 15));
+    left.add(String.format("f: %d (%s) / %f",heading,Direction.directions[heading],MathHelper.wrapAngleTo180_float(yaw)));
+    if (mc.theWorld != null && mc.theWorld.blockExists(x,y,z)) {
+      Chunk chunk=this.mc.theWorld.getChunkFromBlockCoords(x,z);
+      left.add(String.format("lc: %d b: %s bl: %d sl: %d rl: %d",chunk.getTopFilledSegment() + 15,chunk.getBiomeGenForWorldCoords(x & 15,z & 15,mc.theWorld.getWorldChunkManager()).biomeName,chunk.getSavedLightValue(EnumSkyBlock.Block,x & 15,y,z & 15),chunk.getSavedLightValue(EnumSkyBlock.Sky,x & 15,y,z & 15),chunk.getBlockLightValue(x & 15,y,z & 15,0)));
+    }
+ else {
+      left.add(null);
+    }
+    left.add(String.format("ws: %.3f, fs: %.3f, g: %b, fl: %d",mc.thePlayer.capabilities.getWalkSpeed(),mc.thePlayer.capabilities.getFlySpeed(),mc.thePlayer.onGround,mc.theWorld.getHeightValue(x,z)));
+    GL11.glPopMatrix();
+    mc.mcProfiler.endSection();
+  }
+  RenderGameOverlayEvent.Text event=new RenderGameOverlayEvent.Text(eventParent,left,right);
+  if (!MinecraftForge.EVENT_BUS.post(event)) {
+    for (int x=0; x < left.size(); x++) {
+      String msg=left.get(x);
+      if (msg == null)       continue;
+      fontrenderer.drawStringWithShadow(msg,2,2 + x * 10,WHITE);
+    }
+    for (int x=0; x < right.size(); x++) {
+      String msg=right.get(x);
+      if (msg == null)       continue;
+      int w=fontrenderer.getStringWidth(msg);
+      fontrenderer.drawStringWithShadow(msg,width - w - 10,2 + x * 10,WHITE);
+    }
+  }
+  mc.mcProfiler.endSection();
+  post(TEXT);
+}

@@ -1,0 +1,7 @@
+{
+  this.partialTicks=partialTicks;
+  this.resolution=resolution;
+  this.mouseX=mouseX;
+  this.mouseY=mouseY;
+  this.type=null;
+}

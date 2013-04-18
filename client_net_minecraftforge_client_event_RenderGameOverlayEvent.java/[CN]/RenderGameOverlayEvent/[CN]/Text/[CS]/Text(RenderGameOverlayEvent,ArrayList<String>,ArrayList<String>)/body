@@ -1,0 +1,5 @@
+{
+  super(parent,ElementType.TEXT);
+  this.left=left;
+  this.right=right;
+}

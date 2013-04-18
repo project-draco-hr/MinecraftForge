@@ -1,0 +1,4 @@
+float partialTicks
+boolean hasScreen
+int mouseX
+int mouseY
