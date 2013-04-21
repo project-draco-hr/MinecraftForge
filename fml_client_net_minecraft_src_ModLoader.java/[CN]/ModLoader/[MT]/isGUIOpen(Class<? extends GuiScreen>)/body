@@ -1,3 +1,3 @@
 {
-  return FMLClientHandler.instance().getClient().field_71462_r != null && FMLClientHandler.instance().getClient().field_71462_r.equals(gui);
+  return FMLClientHandler.instance().isGUIOpen(gui);
 }

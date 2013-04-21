@@ -1,0 +1,3 @@
+{
+  return client.field_71462_r != null && client.field_71462_r.getClass().equals(gui);
+}
