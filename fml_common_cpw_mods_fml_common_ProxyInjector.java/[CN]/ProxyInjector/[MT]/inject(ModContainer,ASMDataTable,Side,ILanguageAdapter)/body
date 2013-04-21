@@ -12,7 +12,7 @@
       }
       String targetType=side.isClient() ? target.getAnnotation(SidedProxy.class).clientSide() : target.getAnnotation(SidedProxy.class).serverSide();
       Object proxy=Class.forName(targetType,true,mcl).newInstance();
-      if ((target.getModifiers() & Modifier.STATIC) == 0) {
+      if (languageAdapter.supportsStatics() && (target.getModifiers() & Modifier.STATIC) == 0) {
         FMLLog.severe("Attempted to load a proxy type %s into %s.%s, but the field is not static",targetType,targ.getClassName(),targ.getObjectName());
         throw new LoaderException();
       }
@@ -20,7 +20,7 @@
         FMLLog.severe("Attempted to load a proxy type %s into %s.%s, but the types don't match",targetType,targ.getClassName(),targ.getObjectName());
         throw new LoaderException();
       }
-      target.set(null,proxy);
+      languageAdapter.setProxy(target,proxyTarget,proxy);
     }
  catch (    Exception e) {
       FMLLog.log(Level.SEVERE,e,"An error occured trying to load a proxy into %s.%s",targ.getAnnotationInfo(),targ.getClassName(),targ.getObjectName());

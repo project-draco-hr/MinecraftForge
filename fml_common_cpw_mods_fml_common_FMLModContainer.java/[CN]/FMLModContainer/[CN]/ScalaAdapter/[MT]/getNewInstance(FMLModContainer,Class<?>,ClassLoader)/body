@@ -1,5 +1,0 @@
-{
-  System.out.println("Scala class : " + scalaObjectClass);
-  Class<?> sObjectClass=Class.forName(scalaObjectClass.getName() + "$",true,classLoader);
-  return sObjectClass.getField("MODULE$").get(null);
-}

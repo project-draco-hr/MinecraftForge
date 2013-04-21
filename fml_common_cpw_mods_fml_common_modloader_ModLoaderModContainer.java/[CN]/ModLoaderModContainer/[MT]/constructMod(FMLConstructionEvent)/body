@@ -20,7 +20,7 @@
     if (dummyHandler != null) {
       dummyHandler.setBaseMod(mod);
     }
-    ProxyInjector.inject(this,event.getASMHarvestedData(),FMLCommonHandler.instance().getSide());
+    ProxyInjector.inject(this,event.getASMHarvestedData(),FMLCommonHandler.instance().getSide(),new ILanguageAdapter.JavaAdapter());
   }
  catch (  Exception e) {
     controller.errorOccurred(this,e);
