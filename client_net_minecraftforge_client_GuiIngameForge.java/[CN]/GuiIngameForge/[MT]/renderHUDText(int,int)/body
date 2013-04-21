@@ -43,6 +43,10 @@
       left.add(null);
     }
     left.add(String.format("ws: %.3f, fs: %.3f, g: %b, fl: %d",mc.thePlayer.capabilities.getWalkSpeed(),mc.thePlayer.capabilities.getFlySpeed(),mc.thePlayer.onGround,mc.theWorld.getHeightValue(x,z)));
+    right.add(null);
+    for (    String s : FMLCommonHandler.instance().getBrandings().subList(1,FMLCommonHandler.instance().getBrandings().size())) {
+      right.add(s);
+    }
     GL11.glPopMatrix();
     mc.mcProfiler.endSection();
   }
