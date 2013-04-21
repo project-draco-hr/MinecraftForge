@@ -1,0 +1,7 @@
+{
+  if (pre(BOSSHEALTH))   return;
+  mc.mcProfiler.startSection("bossHealth");
+  super.renderBossHealth();
+  mc.mcProfiler.endSection();
+  post(BOSSHEALTH);
+}

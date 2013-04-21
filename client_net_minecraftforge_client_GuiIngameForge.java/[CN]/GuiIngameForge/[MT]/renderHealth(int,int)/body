@@ -1,0 +1,37 @@
+{
+  if (pre(HEALTH))   return;
+  mc.mcProfiler.startSection("health");
+  boolean highlight=mc.thePlayer.hurtResistantTime / 3 % 2 == 1;
+  if (mc.thePlayer.hurtResistantTime < 10) {
+    highlight=false;
+  }
+  int health=mc.thePlayer.getHealth();
+  int healthLast=mc.thePlayer.prevHealth;
+  int left=width / 2 - 91;
+  int top=height - 39;
+  int regen=-1;
+  if (mc.thePlayer.isPotionActive(Potion.regeneration)) {
+    regen=this.updateCounter % 25;
+  }
+  for (int i=0; i < 10; ++i) {
+    int idx=i * 2 + 1;
+    int iconX=16;
+    if (mc.thePlayer.isPotionActive(Potion.poison))     iconX+=36;
+ else     if (mc.thePlayer.isPotionActive(Potion.wither))     iconX+=72;
+    int x=left + i * 8;
+    int y=top;
+    if (health <= 4)     y=top + rand.nextInt(2);
+    if (i == regen)     y-=2;
+    byte iconY=0;
+    if (mc.theWorld.getWorldInfo().isHardcoreModeEnabled())     iconY=5;
+    drawTexturedModalRect(x,y,16 + (highlight ? 9 : 0),9 * iconY,9,9);
+    if (highlight) {
+      if (idx < healthLast)       drawTexturedModalRect(x,y,iconX + 54,9 * iconY,9,9);
+ else       if (idx == healthLast)       drawTexturedModalRect(x,y,iconX + 63,9 * iconY,9,9);
+    }
+    if (idx < health)     drawTexturedModalRect(x,y,iconX + 36,9 * iconY,9,9);
+ else     if (idx == health)     drawTexturedModalRect(x,y,iconX + 45,9 * iconY,9,9);
+  }
+  mc.mcProfiler.endSection();
+  post(HEALTH);
+}

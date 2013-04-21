@@ -1,0 +1,17 @@
+{
+  if (mc.thePlayer.getSleepTimer() > 0) {
+    mc.mcProfiler.startSection("sleep");
+    GL11.glDisable(GL11.GL_DEPTH_TEST);
+    GL11.glDisable(GL11.GL_ALPHA_TEST);
+    int sleepTime=mc.thePlayer.getSleepTimer();
+    float opacity=(float)sleepTime / 100.0F;
+    if (opacity > 1.0F) {
+      opacity=1.0F - (float)(sleepTime - 100) / 10.0F;
+    }
+    int color=(int)(220.0F * opacity) << 24 | 1052704;
+    drawRect(0,0,width,height,color);
+    GL11.glEnable(GL11.GL_ALPHA_TEST);
+    GL11.glEnable(GL11.GL_DEPTH_TEST);
+    mc.mcProfiler.endSection();
+  }
+}

@@ -1,0 +1,21 @@
+{
+  if (pre(ARMOR))   return;
+  mc.mcProfiler.startSection("armor");
+  int left=width / 2 - 91;
+  int top=height - 49;
+  int level=ForgeHooks.getTotalArmorValue(mc.thePlayer);
+  for (int i=1; level > 0 && i < 20; i+=2) {
+    if (i < level) {
+      drawTexturedModalRect(left,top,34,9,9,9);
+    }
+ else     if (i == level) {
+      drawTexturedModalRect(left,top,25,9,9,9);
+    }
+ else     if (i > level) {
+      drawTexturedModalRect(left,top,16,9,9,9);
+    }
+    left+=8;
+  }
+  mc.mcProfiler.endSection();
+  post(ARMOR);
+}
