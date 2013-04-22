@@ -1,0 +1,7 @@
+{
+  bindTexture();
+  ModelRenderer part=parts.get(partName);
+  if (part != null) {
+    part.renderWithRotation(1.0F);
+  }
+}
