@@ -2,11 +2,10 @@
   if (texture != null) {
     if (!textureNameSet) {
       try {
-        byte[] textureEntry=zipFile.get(texture);
+        byte[] textureEntry=zipContents.get(texture);
         if (textureEntry == null) {
           throw new ModelFormatException("Model " + fileName + " has no such texture "+ texture);
         }
-        System.out.println(textureEntry.length);
         BufferedImage image=ImageIO.read(new ByteArrayInputStream(textureEntry));
         textureName=Minecraft.getMinecraft().renderEngine.allocateAndSetupTexture(image);
         textureNameSet=true;
@@ -15,14 +14,6 @@
         throw new ModelFormatException("Model " + fileName + " is not a valid zip file");
       }
 catch (      IOException e) {
-        try {
-          FileOutputStream fileOutput=new FileOutputStream("techne_texture_debug.png");
-          fileOutput.write(zipFile.get(texture));
-          fileOutput.flush();
-          fileOutput.close();
-        }
- catch (        Throwable e1) {
-        }
         throw new ModelFormatException("Texture for model " + fileName + " could not be read",e);
       }
     }
