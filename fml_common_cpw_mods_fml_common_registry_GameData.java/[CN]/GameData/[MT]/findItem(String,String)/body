@@ -1,5 +1,5 @@
 {
-  if (modObjectTable == null) {
+  if (modObjectTable == null || !modObjectTable.contains(modId,name)) {
     return null;
   }
   return Item.field_77698_e[modObjectTable.get(modId,name)];

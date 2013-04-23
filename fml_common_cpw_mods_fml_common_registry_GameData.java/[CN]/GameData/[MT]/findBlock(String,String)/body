@@ -3,7 +3,7 @@
     return null;
   }
   Integer blockId=modObjectTable.get(modId,name);
-  if (blockId >= Block.field_71973_m.length) {
+  if (blockId == null || blockId >= Block.field_71973_m.length) {
     return null;
   }
   return Block.field_71973_m[blockId];
