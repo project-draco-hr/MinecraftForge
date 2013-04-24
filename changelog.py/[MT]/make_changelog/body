@@ -1,5 +1,5 @@
 def make_changelog(job_path, target_build, change_file, current_version=None):
-    builds = getBuildInfo(('%s/api/python?tree=builds[number,actions[text],changeSet[items[author[fullName],comment]]]&pretty=true' % job_path))
+    builds = getBuildInfo(('%s/api/python?tree=allBuilds[number,actions[text],changeSet[items[author[fullName],comment]]]&pretty=true' % job_path))
     log = ['Changelog:']
     for build in builds:
         if (int(build['number']) > target_build):
