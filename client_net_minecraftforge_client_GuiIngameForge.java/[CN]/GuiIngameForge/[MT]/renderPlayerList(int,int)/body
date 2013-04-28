@@ -25,7 +25,7 @@
       GL11.glEnable(GL11.GL_ALPHA_TEST);
       if (i < players.size()) {
         GuiPlayerInfo player=(GuiPlayerInfo)players.get(i);
-        ScorePlayerTeam team=mc.theWorld.getScoreboard().func_96509_i(player.name);
+        ScorePlayerTeam team=mc.theWorld.getScoreboard().getPlayersTeam(player.name);
         String displayName=ScorePlayerTeam.func_96667_a(team,player.name);
         fontrenderer.drawStringWithShadow(displayName,xPos,yPos,16777215);
         if (scoreobjective != null) {
