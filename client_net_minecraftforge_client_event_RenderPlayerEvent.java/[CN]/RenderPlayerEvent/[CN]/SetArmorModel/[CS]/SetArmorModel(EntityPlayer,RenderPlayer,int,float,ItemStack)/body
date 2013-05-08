@@ -1,0 +1,6 @@
+{
+  super(player,renderer);
+  this.slot=slot;
+  this.partialTick=partialTick;
+  this.stack=stack;
+}
