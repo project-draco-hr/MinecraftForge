@@ -1,0 +1,11 @@
+{
+  PixelFormat format=new PixelFormat().withDepthBits(24);
+  try {
+    Display.create(format.withStencilBits(8));
+    stencilBits=8;
+  }
+ catch (  LWJGLException e) {
+    Display.create(format);
+    stencilBits=0;
+  }
+}
