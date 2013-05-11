@@ -27,4 +27,5 @@
       throw new LoaderException(e);
     }
   }
+  languageAdapter.setInternalProxies(mod,side,mcl);
 }
