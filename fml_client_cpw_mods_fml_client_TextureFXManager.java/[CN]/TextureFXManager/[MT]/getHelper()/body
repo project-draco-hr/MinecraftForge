@@ -6,7 +6,6 @@
       has43=capabilities.getClass().getField("GL_ARB_copy_image").getBoolean(capabilities);
     }
  catch (    Exception e) {
-      e.printStackTrace();
       FMLLog.info("Forge Mod Loader has detected an older LWJGL version, new advanced texture animation features are disabled");
     }
 {
