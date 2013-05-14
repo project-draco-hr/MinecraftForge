@@ -16,6 +16,7 @@
     registerOre("oreDiamond",Block.oreDiamond);
     registerOre("oreRedstone",Block.oreRedstone);
     registerOre("oreEmerald",Block.oreEmerald);
+    registerOre("oreQuartz",Block.oreNetherQuartz);
   }
   Map<ItemStack,String> replacements=new HashMap<ItemStack,String>();
   replacements.put(new ItemStack(Block.planks,1,WILDCARD_VALUE),"plankWood");
