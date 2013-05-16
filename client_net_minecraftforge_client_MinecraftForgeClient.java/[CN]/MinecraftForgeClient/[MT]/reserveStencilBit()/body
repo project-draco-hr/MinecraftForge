@@ -1,0 +1,7 @@
+{
+  int bit=stencilBits.nextSetBit(0);
+  if (bit >= 0) {
+    stencilBits.clear(bit);
+  }
+  return bit;
+}
