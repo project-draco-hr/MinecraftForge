@@ -1,0 +1,4 @@
+NetHandler netClientHandler
+String server
+int port
+INetworkManager manager
