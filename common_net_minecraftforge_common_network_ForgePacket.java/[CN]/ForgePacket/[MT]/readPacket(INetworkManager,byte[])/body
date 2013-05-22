@@ -1,0 +1,16 @@
+{
+  boolean multipart=UnsignedBytes.toInt(payload[0]) == 1;
+  int type=UnsignedBytes.toInt(payload[1]);
+  Type eType=Type.values()[type];
+  byte[] data=Arrays.copyOfRange(payload,2,payload.length);
+  if (multipart) {
+    ForgePacket pkt=eType.consumePart(network,data);
+    if (pkt != null) {
+      return pkt.consumePacket(Bytes.concat(pkt.partials));
+    }
+    return null;
+  }
+ else {
+    return eType.make().consumePacket(data);
+  }
+}

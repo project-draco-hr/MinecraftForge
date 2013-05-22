@@ -1,2 +1,7 @@
 {
+  ForgePacket pkt=ForgePacket.readPacket(network,packet.data);
+  if (pkt == null) {
+    return;
+  }
+  pkt.execute(network,(EntityPlayer)player);
 }

@@ -1,0 +1,18 @@
+{
+  byte[] packetData=packet.generatePacket();
+  if (packetData.length < 32000) {
+    return new Packet250CustomPayload[]{new Packet250CustomPayload(CHANNEL_ID,Bytes.concat(new byte[]{UnsignedBytes.checkedCast(0),UnsignedBytes.checkedCast(packet.getID())},packetData))};
+  }
+ else {
+    byte[][] chunks=new byte[packetData.length / 32000 + 1][];
+    for (int i=0; i < packetData.length / 32000 + 1; i++) {
+      int len=Math.min(32000,packetData.length - i * 32000);
+      chunks[i]=Bytes.concat(new byte[]{UnsignedBytes.checkedCast(1),UnsignedBytes.checkedCast(packet.getID()),UnsignedBytes.checkedCast(i),UnsignedBytes.checkedCast(chunks.length)},Ints.toByteArray(len),Arrays.copyOfRange(packetData,i * 32000,len + i * 32000));
+    }
+    Packet250CustomPayload[] ret=new Packet250CustomPayload[chunks.length];
+    for (int i=0; i < chunks.length; i++) {
+      ret[i]=new Packet250CustomPayload(CHANNEL_ID,chunks[i]);
+    }
+    return ret;
+  }
+}

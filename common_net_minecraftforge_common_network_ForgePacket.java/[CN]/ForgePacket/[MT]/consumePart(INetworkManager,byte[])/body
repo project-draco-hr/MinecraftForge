@@ -1,0 +1,24 @@
+{
+  if (partTracker == null) {
+    partTracker=new MapMaker().weakKeys().weakValues().makeMap();
+  }
+  if (!partTracker.containsKey(network)) {
+    partTracker.put(network,make());
+  }
+  ForgePacket pkt=partTracker.get(network);
+  ByteArrayDataInput bdi=ByteStreams.newDataInput(data);
+  int chunkIdx=UnsignedBytes.toInt(bdi.readByte());
+  int chunkTotal=UnsignedBytes.toInt(bdi.readByte());
+  int chunkLength=bdi.readInt();
+  if (pkt.partials == null) {
+    pkt.partials=new byte[chunkTotal][];
+  }
+  pkt.partials[chunkIdx]=new byte[chunkLength];
+  bdi.readFully(pkt.partials[chunkIdx]);
+  for (int i=0; i < pkt.partials.length; i++) {
+    if (pkt.partials[i] == null) {
+      return null;
+    }
+  }
+  return pkt;
+}

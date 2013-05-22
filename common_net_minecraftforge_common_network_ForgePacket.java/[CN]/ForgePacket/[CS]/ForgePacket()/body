@@ -1,0 +1,11 @@
+{
+  for (  Type t : Type.values()) {
+    if (t.packetType == getClass()) {
+      type=t;
+      continue;
+    }
+  }
+  if (type == null) {
+    throw new RuntimeException("ForgePacket constructor called on ungregistered type.");
+  }
+}
