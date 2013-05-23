@@ -1,0 +1,6 @@
+{
+  ByteArrayDataInput dat=ByteStreams.newDataInput(data);
+  dimensionId=dat.readInt();
+  providerId=dat.readInt();
+  return this;
+}
