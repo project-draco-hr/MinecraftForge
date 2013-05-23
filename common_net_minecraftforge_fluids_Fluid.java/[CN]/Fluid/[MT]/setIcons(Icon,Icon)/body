@@ -1,0 +1,5 @@
+{
+  this.stillIcon=stillIcon;
+  this.flowingIcon=flowingIcon;
+  return this;
+}

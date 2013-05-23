@@ -1,0 +1,7 @@
+{
+  if (container == null) {
+    return null;
+  }
+  FluidContainerData data=containerFluidMap.get(Arrays.asList(container.itemID,container.getItemDamage()));
+  return data == null ? null : data.fluid.copy();
+}

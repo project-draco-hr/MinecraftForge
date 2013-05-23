@@ -1,0 +1,3 @@
+{
+  return tag == null ? other.tag == null : other.tag == null ? false : tag.equals(other.tag);
+}

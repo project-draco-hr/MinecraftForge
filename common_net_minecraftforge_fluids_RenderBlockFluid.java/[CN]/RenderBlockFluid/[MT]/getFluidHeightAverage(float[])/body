@@ -1,0 +1,14 @@
+{
+  float total=0;
+  int count=0;
+  for (int i=0; i < flow.length; i++) {
+    if (flow[i] >= 0.875F) {
+      return flow[i];
+    }
+    if (flow[i] >= 0) {
+      total+=flow[i];
+      count++;
+    }
+  }
+  return total / count;
+}

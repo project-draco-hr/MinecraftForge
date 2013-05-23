@@ -1,0 +1,4 @@
+{
+  this.unlocalizedName=unlocalizedName;
+  return this;
+}

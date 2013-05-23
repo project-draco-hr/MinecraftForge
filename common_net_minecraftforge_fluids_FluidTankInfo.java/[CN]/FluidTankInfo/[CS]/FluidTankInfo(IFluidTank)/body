@@ -1,0 +1,4 @@
+{
+  this.fluid=tank.getFluid();
+  this.capacity=tank.getCapacity();
+}

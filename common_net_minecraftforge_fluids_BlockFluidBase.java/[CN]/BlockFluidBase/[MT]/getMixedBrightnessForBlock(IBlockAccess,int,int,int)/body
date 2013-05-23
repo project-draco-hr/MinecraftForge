@@ -1,0 +1,9 @@
+{
+  int lightThis=world.getLightBrightnessForSkyBlocks(x,y,z,0);
+  int lightUp=world.getLightBrightnessForSkyBlocks(x,y + 1,z,0);
+  int lightThisBase=lightThis & 255;
+  int lightUpBase=lightUp & 255;
+  int lightThisExt=lightThis >> 16 & 255;
+  int lightUpExt=lightUp >> 16 & 255;
+  return (lightThisBase > lightUpBase ? lightThisBase : lightUpBase) | (lightThisExt > lightUpExt ? lightThisExt : lightUpExt) << 16;
+}

@@ -1,0 +1,5 @@
+{
+  this.stillIcon=commonIcon;
+  this.flowingIcon=commonIcon;
+  return this;
+}
