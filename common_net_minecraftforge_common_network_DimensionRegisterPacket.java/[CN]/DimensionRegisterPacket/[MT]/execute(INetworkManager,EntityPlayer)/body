@@ -1,0 +1,10 @@
+{
+  if (!(player instanceof EntityPlayerMP)) {
+    if (!DimensionManager.isDimensionRegistered(dimensionId)) {
+      DimensionManager.registerDimension(dimensionId,providerId);
+    }
+    if (player != null && player.worldObj != null) {
+      player.worldObj.provider.dimensionId=dimensionId;
+    }
+  }
+}
