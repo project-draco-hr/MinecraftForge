@@ -1,0 +1,3 @@
+{
+  return md != null ? getModId() : "Unknown Dummy Container @" + System.identityHashCode(this);
+}
