@@ -1,0 +1,3 @@
+{
+  return fullHit && meta == quantaPerBlock - 1;
+}

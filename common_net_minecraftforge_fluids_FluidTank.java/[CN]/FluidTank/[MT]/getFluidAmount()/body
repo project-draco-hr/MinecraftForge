@@ -1,0 +1,6 @@
+{
+  if (fluid == null) {
+    return 0;
+  }
+  return fluid.amount;
+}

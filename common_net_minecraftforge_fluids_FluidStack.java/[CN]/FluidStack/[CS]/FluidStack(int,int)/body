@@ -1,0 +1,4 @@
+{
+  this.fluidID=fluidID;
+  this.amount=amount;
+}

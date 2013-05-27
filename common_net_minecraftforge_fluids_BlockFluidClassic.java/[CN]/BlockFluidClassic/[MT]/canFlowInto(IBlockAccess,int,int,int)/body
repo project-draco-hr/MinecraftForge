@@ -1,0 +1,17 @@
+{
+  int bId=world.getBlockId(x,y,z);
+  if (bId == 0) {
+    return true;
+  }
+  if (bId == blockID) {
+    return true;
+  }
+  if (displacementIds.containsKey(bId)) {
+    return displacementIds.get(bId);
+  }
+  Material material=Block.blocksList[bId].blockMaterial;
+  if (material.blocksMovement() || material == Material.water || material == Material.lava || material == Material.portal) {
+    return false;
+  }
+  return true;
+}

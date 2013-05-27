@@ -1,2 +1,6 @@
 {
+  Packet250CustomPayload[] fluidPackets=ForgePacket.makePacketSet(new FluidIdMapPacket());
+  for (int i=0; i < fluidPackets.length; i++) {
+    PacketDispatcher.sendPacketToPlayer(fluidPackets[i],player);
+  }
 }

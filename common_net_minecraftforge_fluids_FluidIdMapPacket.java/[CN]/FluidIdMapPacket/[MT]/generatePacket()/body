@@ -1,0 +1,9 @@
+{
+  ByteArrayDataOutput dat=ByteStreams.newDataOutput();
+  dat.writeInt(FluidRegistry.maxID);
+  for (  Map.Entry<String,Integer> entry : FluidRegistry.fluidIDs.entrySet()) {
+    dat.writeUTF(entry.getKey());
+    dat.writeInt(entry.getValue());
+  }
+  return dat.toByteArray();
+}

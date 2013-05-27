@@ -1,0 +1,8 @@
+{
+  if (quantaPerBlock > 16 || quantaPerBlock < 1) {
+    quantaPerBlock=8;
+  }
+  this.quantaPerBlock=quantaPerBlock;
+  this.quantaPerBlockFloat=quantaPerBlock;
+  return this;
+}

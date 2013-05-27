@@ -1,0 +1,4 @@
+{
+  this.fluid=stack;
+  this.capacity=capacity;
+}

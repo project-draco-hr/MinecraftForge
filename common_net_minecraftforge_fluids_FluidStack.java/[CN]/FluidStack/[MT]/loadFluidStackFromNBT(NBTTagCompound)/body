@@ -1,0 +1,10 @@
+{
+  if (nbt == null || FluidRegistry.getFluid(nbt.getString("FluidName")) == null) {
+    return null;
+  }
+  FluidStack stack=new FluidStack(FluidRegistry.getFluidID(nbt.getString("FluidName")),nbt.getInteger("Amount"));
+  if (nbt.hasKey("Tag")) {
+    stack.tag=nbt.getCompoundTag("Tag");
+  }
+  return stack;
+}
