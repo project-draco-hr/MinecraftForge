@@ -8,6 +8,9 @@
  else   if (dupesFound != null) {
     client.func_71373_a(new GuiDupesFound(dupesFound));
   }
+ else   if (modSorting != null) {
+    client.func_71373_a(new GuiSortingProblem(modSorting));
+  }
  else   if (customError != null) {
     client.func_71373_a(new GuiCustomModLoadingErrorScreen(customError));
   }

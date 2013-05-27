@@ -1,0 +1,4 @@
+{
+  this.modSorting=modSorting;
+  this.failedList=modSorting.getExceptionData();
+}
