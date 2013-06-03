@@ -1,4 +1,7 @@
 {
+  if (cache.containsKey(callback)) {
+    return cache.get(callback);
+  }
   ClassWriter cw=new ClassWriter(0);
   MethodVisitor mv;
   String name=getUniqueName(callback);
@@ -36,5 +39,7 @@
     mv.visitEnd();
   }
   cw.visitEnd();
-  return LOADER.define(name,cw.toByteArray());
+  Class<?> ret=LOADER.define(name,cw.toByteArray());
+  cache.put(callback,ret);
+  return ret;
 }
