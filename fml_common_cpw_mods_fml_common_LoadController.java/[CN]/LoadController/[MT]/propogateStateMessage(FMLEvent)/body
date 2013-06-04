@@ -3,20 +3,6 @@
     modObjectList=buildModObjectList();
   }
   for (  ModContainer mc : activeModList) {
-    activeContainer=mc;
-    String modId=mc.getModId();
-    stateEvent.applyModContainer(activeContainer());
-    FMLLog.log(modId,Level.FINEST,"Sending event %s to mod %s",stateEvent.getEventType(),modId);
-    eventChannels.get(modId).post(stateEvent);
-    FMLLog.log(modId,Level.FINEST,"Sent event %s to mod %s",stateEvent.getEventType(),modId);
-    activeContainer=null;
-    if (stateEvent instanceof FMLStateEvent) {
-      if (!errors.containsKey(modId)) {
-        modStates.put(modId,((FMLStateEvent)stateEvent).getModState());
-      }
- else {
-        modStates.put(modId,ModState.ERRORED);
-      }
-    }
+    sendEventToModContainer(stateEvent,mc);
   }
 }
