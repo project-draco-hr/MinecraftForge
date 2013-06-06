@@ -1,0 +1,18 @@
+{
+  bind(field_110324_m);
+  if (pre(JUMPBAR))   return;
+  GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
+  mc.mcProfiler.startSection("jumpBar");
+  float charge=mc.thePlayer.func_110319_bJ();
+  final int barWidth=182;
+  int x=(width / 2) - (barWidth / 2);
+  int filled=(int)(charge * (float)(barWidth + 1));
+  int top=height - 32 + 3;
+  drawTexturedModalRect(x,top,0,84,barWidth,5);
+  if (filled > 0) {
+    this.drawTexturedModalRect(x,top,0,89,filled,5);
+  }
+  mc.mcProfiler.endSection();
+  GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
+  post(JUMPBAR);
+}

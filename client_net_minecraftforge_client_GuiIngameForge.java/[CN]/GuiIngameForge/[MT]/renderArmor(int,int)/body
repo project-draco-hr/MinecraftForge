@@ -2,7 +2,7 @@
   if (pre(ARMOR))   return;
   mc.mcProfiler.startSection("armor");
   int left=width / 2 - 91;
-  int top=height - 49;
+  int top=height - left_height;
   int level=ForgeHooks.getTotalArmorValue(mc.thePlayer);
   for (int i=1; level > 0 && i < 20; i+=2) {
     if (i < level) {
@@ -16,6 +16,7 @@
     }
     left+=8;
   }
+  left_height+=10;
   mc.mcProfiler.endSection();
   post(ARMOR);
 }

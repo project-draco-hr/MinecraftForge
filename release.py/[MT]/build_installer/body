@@ -1,0 +1,40 @@
+def build_installer(forge_dir, version_str, version_forge, version_minecraft, out_folder):
+    file_name = ('minecraftforge-installer-%s.jar' % version_str)
+    universal_name = ('minecraftforge-universal-%s.jar' % version_str)
+
+    def getTZ():
+        ret = '-'
+        t = time.timezone
+        print t
+        if (t < 0):
+            ret = '+'
+            t *= (-1)
+        h = int(((t / 60) / 60))
+        t -= ((h * 60) * 60)
+        m = int((t / 60))
+        return ('%s%02d%02d' % (ret, h, m))
+    timestamp = (datetime.now().replace(microsecond=0).isoformat() + getTZ())
+    print ('================== %s Start ==================' % file_name)
+    with closing(zipfile.ZipFile(os.path.join(forge_dir, 'fml', 'installer_base.jar'), mode='a')) as zip_in:
+        with closing(zipfile.ZipFile(os.path.join(out_folder, file_name), 'w', zipfile.ZIP_DEFLATED)) as zip_out:
+            for i in zip_in.filelist:
+                if (not (i.filename in ['install_profile.json', 'big_logo.png'])):
+                    print ('    %s' % i.filename)
+                    zip_out.writestr(i.filename, zip_in.read(i.filename))
+            print ('    %s' % universal_name)
+            zip_out.write(os.path.join(out_folder, universal_name), universal_name)
+            print '    big_logo.png'
+            zip_out.write(os.path.join(forge_dir, 'client', 'forge_logo.png'), 'big_logo.png')
+            with closing(open(os.path.join(forge_dir, 'fml', 'jsons', ('%s-rel.json' % version_minecraft)), 'r')) as fh:
+                data = fh.read()
+                data = data.replace('@version@', version_forge)
+                data = data.replace('@timestamp@', timestamp)
+                data = data.replace('@minecraft_version@', version_minecraft)
+                data = data.replace('@universal_jar@', universal_name)
+                data = data.replace('FMLTweaker', 'F_M_L_Tweaker')
+                data = data.replace('FML', 'Forge')
+                data = data.replace('F_M_L_Tweaker', 'FMLTweaker')
+                data = data.replace('cpw.mods:fml:', 'net.minecraftforge:minecraftforge:')
+                print '    install_profile.json'
+                zip_out.writestr('install_profile.json', data)
+    print ('================== %s Finished ==================' % file_name)

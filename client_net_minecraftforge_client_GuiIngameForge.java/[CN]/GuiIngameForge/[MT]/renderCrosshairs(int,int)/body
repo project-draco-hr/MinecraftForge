@@ -1,5 +1,6 @@
 {
   if (pre(CROSSHAIRS))   return;
+  bind(Gui.field_110324_m);
   GL11.glEnable(GL11.GL_BLEND);
   GL11.glBlendFunc(GL11.GL_ONE_MINUS_DST_COLOR,GL11.GL_ONE_MINUS_SRC_COLOR);
   drawTexturedModalRect(width / 2 - 7,height / 2 - 7,0,0,16,16);

@@ -1,7 +1,0 @@
-RenderBlocks renderBlocks
-RenderEngine engine
-ItemStack item
-boolean inColor
-float zLevel
-float x
-float y

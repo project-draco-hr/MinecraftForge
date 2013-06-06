@@ -4,7 +4,7 @@
   GL11.glEnable(GL11.GL_BLEND);
   GL11.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
   GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
-  mc.renderEngine.bindTexture("/gui/gui.png");
+  mc.renderEngine.func_110577_a(WIDGITS);
   InventoryPlayer inv=mc.thePlayer.inventory;
   drawTexturedModalRect(width / 2 - 91,height - 22,0,0,182,22);
   drawTexturedModalRect(width / 2 - 91 - 1 + inv.currentItem * 20,height - 22 - 1,0,22,24,22);

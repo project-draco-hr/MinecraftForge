@@ -1,0 +1,6 @@
+String name
+int harvestLevel
+int maxUses
+float efficiency
+float damage
+int enchantability

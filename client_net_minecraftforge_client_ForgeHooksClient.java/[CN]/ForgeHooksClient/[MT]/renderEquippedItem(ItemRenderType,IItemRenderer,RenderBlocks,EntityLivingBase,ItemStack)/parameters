@@ -1,0 +1,5 @@
+ItemRenderType type
+IItemRenderer customRenderer
+RenderBlocks renderBlocks
+EntityLivingBase entity
+ItemStack item

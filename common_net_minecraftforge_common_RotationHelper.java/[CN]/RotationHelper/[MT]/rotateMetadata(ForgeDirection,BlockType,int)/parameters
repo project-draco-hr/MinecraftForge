@@ -1,0 +1,3 @@
+ForgeDirection axis
+BlockType blockType
+int meta
