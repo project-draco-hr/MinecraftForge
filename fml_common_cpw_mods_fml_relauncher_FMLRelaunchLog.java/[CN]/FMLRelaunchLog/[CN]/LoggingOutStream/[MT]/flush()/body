@@ -13,7 +13,9 @@ synchronized (FMLRelaunchLog.class) {
       idx=currentMessage.indexOf("\n",lastIdx + 1);
     }
     if (lastIdx >= 0) {
+      String rem=currentMessage.substring(lastIdx + 1);
       currentMessage.setLength(0);
+      currentMessage.append(rem);
     }
   }
 }
