@@ -10,7 +10,12 @@
         FMLLog.severe("Attempted to load a proxy type into %s.%s but the field was not found",targ.getClassName(),targ.getObjectName());
         throw new LoaderException();
       }
-      String targetType=side.isClient() ? target.getAnnotation(SidedProxy.class).clientSide() : target.getAnnotation(SidedProxy.class).serverSide();
+      SidedProxy annotation=target.getAnnotation(SidedProxy.class);
+      if (!Strings.isNullOrEmpty(annotation.modId()) && !annotation.modId().equals(mod.getModId())) {
+        FMLLog.fine("Skipping proxy injection for %s.%s since it is not for mod %s",targ.getClassName(),targ.getObjectName(),mod.getModId());
+        continue;
+      }
+      String targetType=side.isClient() ? annotation.clientSide() : annotation.serverSide();
       Object proxy=Class.forName(targetType,true,mcl).newInstance();
       if (languageAdapter.supportsStatics() && (target.getModifiers() & Modifier.STATIC) == 0) {
         FMLLog.severe("Attempted to load a proxy type %s into %s.%s, but the field is not static",targetType,targ.getClassName(),targ.getObjectName());
