@@ -4,3 +4,4 @@ int y
 int z
 ForgeDirection axis
 int mask
+BlockType blockType
