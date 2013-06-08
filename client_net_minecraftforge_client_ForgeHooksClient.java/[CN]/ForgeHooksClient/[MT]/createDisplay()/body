@@ -1,4 +1,5 @@
 {
+  ImageIO.setUseCache(false);
   PixelFormat format=new PixelFormat().withDepthBits(24);
   try {
     Display.create(format.withStencilBits(8));
