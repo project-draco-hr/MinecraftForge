@@ -3,7 +3,7 @@
   mods=Lists.newArrayList();
   namedMods=Maps.newHashMap();
   modController=new LoadController(this);
-  modController.transition(LoaderState.LOADING);
+  modController.transition(LoaderState.LOADING,false);
   ModDiscoverer disc=identifyMods();
   disableRequestedMods();
   FMLLog.fine("Reloading logging properties from %s",loggingProperties.getPath());
@@ -23,7 +23,7 @@
       }
     }
   }
-  modController.transition(LoaderState.CONSTRUCTING);
+  modController.transition(LoaderState.CONSTRUCTING,false);
   modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader,disc.getASMTable());
   FMLLog.fine("Mod signature data");
   for (  ModContainer mod : getActiveModList()) {
@@ -32,7 +32,7 @@
   if (getActiveModList().isEmpty()) {
     FMLLog.fine("No user mod signature data found");
   }
-  modController.transition(LoaderState.PREINITIALIZATION);
+  modController.transition(LoaderState.PREINITIALIZATION,false);
   modController.distributeStateMessage(LoaderState.PREINITIALIZATION,disc.getASMTable(),canonicalConfigDir);
-  modController.transition(LoaderState.INITIALIZATION);
+  modController.transition(LoaderState.INITIALIZATION,false);
 }

@@ -1,4 +1,4 @@
 {
   modController.distributeStateMessage(LoaderState.SERVER_STARTED);
-  modController.transition(LoaderState.SERVER_STARTED);
+  modController.transition(LoaderState.SERVER_STARTED,false);
 }

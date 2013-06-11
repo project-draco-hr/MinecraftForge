@@ -1,3 +1,5 @@
 {
+  MinecraftServer server=getMinecraftServerInstance();
   Loader.instance().serverStopped();
+  ObfuscationReflectionHelper.setPrivateValue(MinecraftServer.class,server,false,"field_71316_v","u","serverStopped");
 }
