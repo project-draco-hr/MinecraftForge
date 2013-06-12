@@ -1,4 +1,8 @@
 {
   cl=(RelaunchClassLoader)data.get("classLoader");
-  FMLDeobfuscatingRemapper.INSTANCE.setup((File)data.get("mcLocation"),cl,(String)data.get("deobfuscationFileName"));
+  File mcDir=(File)data.get("mcLocation");
+  FMLDeobfuscatingRemapper.INSTANCE.setup(mcDir,cl,(String)data.get("deobfuscationFileName"));
+  File binpatches=new File(mcDir,"binpatch");
+  File side=new File(binpatches,FMLRelauncher.side().toLowerCase(Locale.ENGLISH));
+  ClassPatchManager.INSTANCE.setup(side);
 }

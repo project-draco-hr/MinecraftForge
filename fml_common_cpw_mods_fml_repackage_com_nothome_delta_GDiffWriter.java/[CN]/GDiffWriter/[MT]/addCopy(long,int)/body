@@ -1,0 +1,43 @@
+{
+  writeBuf();
+  if (debug)   System.err.println("COPY off: " + offset + ", len: "+ length);
+  if (offset > Integer.MAX_VALUE) {
+    output.writeByte(COPY_LONG_INT);
+    output.writeLong(offset);
+    output.writeInt(length);
+  }
+ else   if (offset < 65536) {
+    if (length < 256) {
+      output.writeByte(COPY_USHORT_UBYTE);
+      output.writeShort((int)offset);
+      output.writeByte(length);
+    }
+ else     if (length > 65535) {
+      output.writeByte(COPY_USHORT_INT);
+      output.writeShort((int)offset);
+      output.writeInt(length);
+    }
+ else {
+      output.writeByte(COPY_USHORT_USHORT);
+      output.writeShort((int)offset);
+      output.writeShort(length);
+    }
+  }
+ else {
+    if (length < 256) {
+      output.writeByte(COPY_INT_UBYTE);
+      output.writeInt((int)offset);
+      output.writeByte(length);
+    }
+ else     if (length > 65535) {
+      output.writeByte(COPY_INT_INT);
+      output.writeInt((int)offset);
+      output.writeInt(length);
+    }
+ else {
+      output.writeByte(COPY_INT_USHORT);
+      output.writeInt((int)offset);
+      output.writeShort(length);
+    }
+  }
+}

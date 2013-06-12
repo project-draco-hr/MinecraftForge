@@ -1,0 +1,4 @@
+{
+  if (!checksums.containsKey(hashf))   return -1;
+  return checksums.get(hashf);
+}

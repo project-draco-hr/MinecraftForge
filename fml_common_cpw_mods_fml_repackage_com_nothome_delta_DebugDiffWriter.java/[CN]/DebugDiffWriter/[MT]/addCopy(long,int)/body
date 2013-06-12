@@ -1,0 +1,4 @@
+{
+  if (os.size() > 0)   writeBuf();
+  System.err.println("COPY off: " + offset + ", len: "+ length);
+}

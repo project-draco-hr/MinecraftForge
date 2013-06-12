@@ -17,6 +17,8 @@
   addTransformerExclusion("com.google.common.");
   addTransformerExclusion("org.bouncycastle.");
   addTransformerExclusion("cpw.mods.fml.common.asm.transformers.deobf.");
+  addTransformerExclusion("cpw.mods.fml.common.patcher.");
+  addTransformerExclusion("cpw.mods.fml.repackage.");
   if (DEBUG_CLASSLOADING_SAVE) {
     int x=1;
     temp_folder=new File(FMLRelaunchLog.minecraftHome,"CLASSLOADER_TEMP");

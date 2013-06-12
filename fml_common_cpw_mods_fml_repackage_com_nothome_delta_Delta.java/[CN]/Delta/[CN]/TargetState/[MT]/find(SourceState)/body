@@ -1,0 +1,21 @@
+{
+  if (eof)   return -1;
+  sbuf.clear();
+  sbuf.limit(0);
+  if (hashReset) {
+    debug("hashReset");
+    while (tbuf.remaining() < S) {
+      tbuf.compact();
+      int read=c.read(tbuf);
+      tbuf.flip();
+      if (read == -1) {
+        debug("target ending");
+        return -1;
+      }
+    }
+    hash=Checksum.queryChecksum(tbuf,S);
+    hashReset=false;
+  }
+  if (debug)   debug("hash " + hash + " "+ dump());
+  return source.checksum.findChecksumIndex(hash);
+}

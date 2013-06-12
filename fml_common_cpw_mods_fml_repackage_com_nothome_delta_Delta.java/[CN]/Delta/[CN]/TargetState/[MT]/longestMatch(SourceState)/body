@@ -1,0 +1,26 @@
+{
+  debug("longestMatch");
+  int match=0;
+  hashReset=true;
+  while (true) {
+    if (!sbuf.hasRemaining()) {
+      sbuf.clear();
+      int read=source.source.read(sbuf);
+      sbuf.flip();
+      if (read == -1)       return match;
+    }
+    if (!tbuf.hasRemaining()) {
+      readMore();
+      if (!tbuf.hasRemaining()) {
+        debug("target ending");
+        eof=true;
+        return match;
+      }
+    }
+    if (sbuf.get() != tbuf.get()) {
+      tbuf.position(tbuf.position() - 1);
+      return match;
+    }
+    match++;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  bb.mark();
+  long sum=queryChecksum0(bb,len);
+  bb.reset();
+  return sum;
+}

@@ -1,0 +1,4 @@
+{
+  if (raf == null)   throw new NullPointerException("raf");
+  this.raf=raf;
+}

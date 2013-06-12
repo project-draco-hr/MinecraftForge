@@ -1,0 +1,37 @@
+{
+  String vanillaMinecraftJar=args[0];
+  String targetJar=args[1];
+  String reobfuscationOutputPath=args[2];
+  String deobfFileName=args[3];
+  String binPatchOutputDir=args[4];
+  Delta delta=new Delta();
+  FMLDeobfuscatingRemapper remapper=FMLDeobfuscatingRemapper.INSTANCE;
+  remapper.setupLoadOnly(deobfFileName,false);
+  JarFile originalJarFile=new JarFile(vanillaMinecraftJar);
+  JarFile targetJarFile=new JarFile(targetJar);
+  File f=new File(binPatchOutputDir);
+  f.mkdirs();
+  for (  JarEntry e : Collections.list(originalJarFile.entries())) {
+    String name=e.getName();
+    File reobfOutput=new File(reobfuscationOutputPath,name);
+    if (reobfOutput.exists()) {
+      String sourceClassName=name.substring(0,name.lastIndexOf(".")).replace('/','.');
+      String targetClassName=remapper.map(name.substring(0,name.lastIndexOf("."))).replace('/','.');
+      JarEntry entry=targetJarFile.getJarEntry(name);
+      byte[] vanillaBytes=entry != null ? ByteStreams.toByteArray(targetJarFile.getInputStream(entry)) : new byte[0];
+      byte[] patchedBytes=Files.toByteArray(reobfOutput);
+      byte[] diff=delta.compute(vanillaBytes,patchedBytes);
+      ByteArrayDataOutput diffOut=ByteStreams.newDataOutput(diff.length + 50);
+      diffOut.writeUTF(name);
+      diffOut.writeUTF(sourceClassName);
+      diffOut.writeUTF(targetClassName);
+      diffOut.writeBoolean(entry != null);
+      diffOut.writeInt(diff.length);
+      diffOut.write(diff);
+      File target=new File(binPatchOutputDir,targetClassName + ".binpatch");
+      target.getParentFile().mkdirs();
+      Files.write(diffOut.toByteArray(),target);
+      Logger.getLogger("GENDIFF").info(String.format("Wrote patch for %s (%s) at %s",name,targetClassName,target.getAbsolutePath()));
+    }
+  }
+}

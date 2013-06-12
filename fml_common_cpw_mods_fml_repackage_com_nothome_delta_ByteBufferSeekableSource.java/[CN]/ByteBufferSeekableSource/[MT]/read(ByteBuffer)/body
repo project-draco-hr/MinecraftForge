@@ -1,0 +1,9 @@
+{
+  if (!cur.hasRemaining())   return -1;
+  int c=0;
+  while (cur.hasRemaining() && dest.hasRemaining()) {
+    dest.put(cur.get());
+    c++;
+  }
+  return c;
+}

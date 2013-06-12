@@ -1,0 +1,6 @@
+{
+  char b1=(char)((value >> 4) & 0x0F);
+  char b2=(char)((value) & 0x0F);
+  sb.append(Character.forDigit(b1,16));
+  sb.append(Character.forDigit(b2,16));
+}
