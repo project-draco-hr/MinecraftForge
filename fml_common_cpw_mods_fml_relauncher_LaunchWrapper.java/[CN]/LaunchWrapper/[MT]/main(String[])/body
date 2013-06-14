@@ -1,3 +1,0 @@
-{
-  new LaunchWrapper().run(args);
-}

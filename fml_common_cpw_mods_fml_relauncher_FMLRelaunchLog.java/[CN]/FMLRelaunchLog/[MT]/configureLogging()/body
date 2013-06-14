@@ -21,7 +21,8 @@
     }
 ;
   }
- catch (  Exception e) {
+ catch (  Throwable t) {
+    throw Throwables.propagate(t);
   }
   resetLoggingHandlers();
   errCache=System.err;
