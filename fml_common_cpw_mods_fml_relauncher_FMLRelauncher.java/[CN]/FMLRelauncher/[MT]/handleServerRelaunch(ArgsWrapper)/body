@@ -1,5 +1,0 @@
-{
-  logFileNamePattern="ForgeModLoader-server-%g.log";
-  side="SERVER";
-  instance().relaunchServer(wrap);
-}

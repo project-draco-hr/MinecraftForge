@@ -1,4 +1,0 @@
-{
-  super.addURL(url);
-  sources.add(url);
-}

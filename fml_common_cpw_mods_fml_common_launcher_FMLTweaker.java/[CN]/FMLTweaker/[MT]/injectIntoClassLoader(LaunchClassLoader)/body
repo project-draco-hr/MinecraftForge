@@ -1,0 +1,3 @@
+{
+  FMLLaunchHandler.configureForClientLaunch(classLoader,this);
+}

@@ -1,0 +1,23 @@
+{
+  Pattern binpatchMatcher=Pattern.compile(String.format("binpatch/%s/*.binpatch",side.toString().toLowerCase(Locale.ENGLISH)));
+  JarFile fmlJar;
+  try {
+    File fmlJarFile=new File(fmlLib.getLocation().toURI());
+    fmlJar=new JarFile(fmlJarFile);
+  }
+ catch (  Exception e) {
+    FMLRelaunchLog.log(Level.SEVERE,e,"Error occurred reading binary patches. Problems may occur");
+    throw Throwables.propagate(e);
+  }
+  patches=ArrayListMultimap.create();
+  for (  JarEntry entry : Collections.list(fmlJar.entries())) {
+    if (binpatchMatcher.matcher(entry.getName()).matches()) {
+      ClassPatch cp=readPatch(entry,fmlJar);
+      if (cp != null) {
+        patches.put(cp.sourceClassName,cp);
+      }
+    }
+  }
+  FMLLog.fine("Read %d binary patches from %s",patches.size(),fmlJar.getName());
+  FMLLog.fine("Patch list :\n\t%s",Joiner.on("\t\n").join(patches.asMap().entrySet()));
+}

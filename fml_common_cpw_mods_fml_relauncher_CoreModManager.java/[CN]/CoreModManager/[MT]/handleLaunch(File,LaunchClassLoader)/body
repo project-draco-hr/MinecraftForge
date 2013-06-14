@@ -1,0 +1,203 @@
+{
+  try {
+    byte[] bs=classLoader.getClassBytes("net.minecraft.world.World");
+    if (bs != null) {
+      FMLRelaunchLog.info("Managed to load a deobfuscated Minecraft name- we are in a deobfuscated environment. Skipping runtime deobfuscation");
+      deobfuscatedEnvironment=true;
+    }
+  }
+ catch (  IOException e1) {
+  }
+  if (!deobfuscatedEnvironment) {
+    FMLRelaunchLog.fine("Enabling runtime deobfuscation");
+  }
+  pluginLocations=new HashMap<IFMLLoadingPlugin,File>();
+  loadPlugins=new ArrayList<IFMLLoadingPlugin>();
+  for (  String s : rootPlugins) {
+    try {
+      IFMLLoadingPlugin plugin=(IFMLLoadingPlugin)Class.forName(s,true,classLoader).newInstance();
+      loadPlugins.add(plugin);
+    }
+ catch (    Exception e) {
+    }
+  }
+  if (loadPlugins.isEmpty()) {
+    throw new RuntimeException("A fatal error has occured - no valid fml load plugin was found - this is a completely corrupt FML installation.");
+  }
+  downloadMonitor.updateProgressString("All core mods are successfully located");
+  String commandLineCoremods=System.getProperty("fml.coreMods.load","");
+  for (  String s : commandLineCoremods.split(",")) {
+    if (s.isEmpty()) {
+      continue;
+    }
+    FMLRelaunchLog.info("Found a command line coremod : %s",s);
+    try {
+      classLoader.addTransformerExclusion(s);
+      Class<?> coreModClass=Class.forName(s,true,classLoader);
+      TransformerExclusions trExclusions=coreModClass.getAnnotation(IFMLLoadingPlugin.TransformerExclusions.class);
+      if (trExclusions != null) {
+        for (        String st : trExclusions.value()) {
+          classLoader.addTransformerExclusion(st);
+        }
+      }
+      IFMLLoadingPlugin plugin=(IFMLLoadingPlugin)coreModClass.newInstance();
+      loadPlugins.add(plugin);
+      if (plugin.getLibraryRequestClass() != null) {
+        for (        String libName : plugin.getLibraryRequestClass()) {
+          libraries.add((ILibrarySet)Class.forName(libName,true,classLoader).newInstance());
+        }
+      }
+    }
+ catch (    Throwable e) {
+      FMLRelaunchLog.log(Level.SEVERE,e,"Exception occured trying to load coremod %s",s);
+      throw new RuntimeException(e);
+    }
+  }
+  discoverCoreMods(mcDir,classLoader,loadPlugins,libraries);
+  List<Throwable> caughtErrors=new ArrayList<Throwable>();
+  try {
+    File libDir;
+    try {
+      libDir=setupLibDir(mcDir);
+    }
+ catch (    Exception e) {
+      caughtErrors.add(e);
+      return;
+    }
+    for (    ILibrarySet lib : libraries) {
+      for (int i=0; i < lib.getLibraries().length; i++) {
+        boolean download=false;
+        String libName=lib.getLibraries()[i];
+        String targFileName=libName.lastIndexOf('/') >= 0 ? libName.substring(libName.lastIndexOf('/')) : libName;
+        String checksum=lib.getHashes()[i];
+        File libFile=new File(libDir,targFileName);
+        if (!libFile.exists()) {
+          try {
+            downloadFile(libFile,lib.getRootURL(),libName,checksum);
+            download=true;
+          }
+ catch (          Throwable e) {
+            caughtErrors.add(e);
+            continue;
+          }
+        }
+        if (libFile.exists() && !libFile.isFile()) {
+          caughtErrors.add(new RuntimeException(String.format("Found a file %s that is not a normal file - you should clear this out of the way",libName)));
+          continue;
+        }
+        if (!download) {
+          try {
+            FileInputStream fis=new FileInputStream(libFile);
+            FileChannel chan=fis.getChannel();
+            MappedByteBuffer mappedFile=chan.map(MapMode.READ_ONLY,0,libFile.length());
+            String fileChecksum=generateChecksum(mappedFile);
+            fis.close();
+            if (!checksum.equals(fileChecksum)) {
+              caughtErrors.add(new RuntimeException(String.format("The file %s was found in your lib directory and has an invalid checksum %s (expecting %s) - it is unlikely to be the correct download, please move it out of the way and try again.",libName,fileChecksum,checksum)));
+              continue;
+            }
+          }
+ catch (          Exception e) {
+            FMLRelaunchLog.log(Level.SEVERE,e,"The library file %s could not be validated",libFile.getName());
+            caughtErrors.add(new RuntimeException(String.format("The library file %s could not be validated",libFile.getName()),e));
+            continue;
+          }
+        }
+        if (!download) {
+          downloadMonitor.updateProgressString("Found library file %s present and correct in lib dir",libName);
+        }
+ else {
+          downloadMonitor.updateProgressString("Library file %s was downloaded and verified successfully",libName);
+        }
+        try {
+          classLoader.addURL(libFile.toURI().toURL());
+          loadedLibraries.add(libName);
+        }
+ catch (        MalformedURLException e) {
+          caughtErrors.add(new RuntimeException(String.format("Should never happen - %s is broken - probably a somehow corrupted download. Delete it and try again.",libFile.getName()),e));
+        }
+      }
+    }
+  }
+  finally {
+    if (downloadMonitor.shouldStopIt()) {
+      return;
+    }
+    if (!caughtErrors.isEmpty()) {
+      FMLRelaunchLog.severe("There were errors during initial FML setup. " + "Some files failed to download or were otherwise corrupted. " + "You will need to manually obtain the following files from "+ "these download links and ensure your lib directory is clean. ");
+      for (      ILibrarySet set : libraries) {
+        for (        String file : set.getLibraries()) {
+          FMLRelaunchLog.severe("*** Download " + set.getRootURL(),file);
+        }
+      }
+      FMLRelaunchLog.severe("<===========>");
+      FMLRelaunchLog.severe("The following is the errors that caused the setup to fail. " + "They may help you diagnose and resolve the issue");
+      for (      Throwable t : caughtErrors) {
+        if (t.getMessage() != null) {
+          FMLRelaunchLog.severe(t.getMessage());
+        }
+      }
+      FMLRelaunchLog.severe("<<< ==== >>>");
+      FMLRelaunchLog.severe("The following is diagnostic information for developers to review.");
+      for (      Throwable t : caughtErrors) {
+        FMLRelaunchLog.log(Level.SEVERE,t,"Error details");
+      }
+      throw new RuntimeException("A fatal error occured and FML cannot continue");
+    }
+  }
+  for (  IFMLLoadingPlugin plug : loadPlugins) {
+    if (plug.getASMTransformerClass() != null) {
+      for (      String xformClass : plug.getASMTransformerClass()) {
+        classLoader.registerTransformer(xformClass);
+      }
+    }
+  }
+  if (!deobfuscatedEnvironment) {
+    classLoader.registerTransformer("cpw.mods.fml.common.asm.transformers.DeobfuscationTransformer");
+  }
+  downloadMonitor.updateProgressString("Running coremod plugins");
+  Map<String,Object> data=new HashMap<String,Object>();
+  data.put("mcLocation",mcDir);
+  data.put("coremodList",loadPlugins);
+  data.put("runtimeDeobfuscationEnabled",!deobfuscatedEnvironment);
+  for (  IFMLLoadingPlugin plugin : loadPlugins) {
+    downloadMonitor.updateProgressString("Running coremod plugin %s",plugin.getClass().getSimpleName());
+    data.put("coremodLocation",pluginLocations.get(plugin));
+    plugin.injectData(data);
+    String setupClass=plugin.getSetupClass();
+    if (setupClass != null) {
+      try {
+        IFMLCallHook call=(IFMLCallHook)Class.forName(setupClass,true,classLoader).newInstance();
+        Map<String,Object> callData=new HashMap<String,Object>();
+        callData.put("mcLocation",mcDir);
+        callData.put("classLoader",classLoader);
+        callData.put("coremodLocation",pluginLocations.get(plugin));
+        callData.put("deobfuscationFileName",FMLInjectionData.debfuscationDataName());
+        call.injectData(callData);
+        call.call();
+      }
+ catch (      Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
+    downloadMonitor.updateProgressString("Coremod plugin %s run successfully",plugin.getClass().getSimpleName());
+    String modContainer=plugin.getModContainerClass();
+    if (modContainer != null) {
+      FMLInjectionData.containers.add(modContainer);
+    }
+  }
+  try {
+    downloadMonitor.updateProgressString("Validating minecraft");
+    Class<?> loaderClazz=Class.forName("cpw.mods.fml.common.Loader",true,classLoader);
+    Method m=loaderClazz.getMethod("injectData",Object[].class);
+    m.invoke(null,(Object)FMLInjectionData.data());
+    m=loaderClazz.getMethod("instance");
+    m.invoke(null);
+    downloadMonitor.updateProgressString("Minecraft validated, launching...");
+    downloadBuffer=null;
+  }
+ catch (  Exception e) {
+    System.out.println("A CRITICAL PROBLEM OCCURED INITIALIZING MINECRAFT - LIKELY YOU HAVE AN INCORRECT VERSION FOR THIS FML");
+    throw new RuntimeException(e);
+  }
+}

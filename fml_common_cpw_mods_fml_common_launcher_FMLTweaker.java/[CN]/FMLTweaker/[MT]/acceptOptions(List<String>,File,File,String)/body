@@ -1,0 +1,6 @@
+{
+  this.args=args;
+  this.gameDir=gameDir;
+  this.assetsDir=assetsDir;
+  this.profile=profile;
+}
