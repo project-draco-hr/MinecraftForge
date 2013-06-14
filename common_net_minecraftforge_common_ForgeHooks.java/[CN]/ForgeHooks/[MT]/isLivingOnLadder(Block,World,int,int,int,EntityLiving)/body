@@ -1,0 +1,3 @@
+{
+  return block != null && block.isLadder(world,x,y,z,entity);
+}
