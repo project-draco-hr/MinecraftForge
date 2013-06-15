@@ -9,7 +9,7 @@
     CoreModManager.handleLaunch(minecraftHome,classLoader);
   }
  catch (  Throwable t) {
-    FMLRelaunchLog.severe("An error occurred trying to configure the minecraft home at %s for Forge Mod Loader",minecraftHome.getAbsolutePath());
+    FMLRelaunchLog.log(Level.SEVERE,t,"An error occurred trying to configure the minecraft home at %s for Forge Mod Loader",minecraftHome.getAbsolutePath());
     throw Throwables.propagate(t);
   }
 }

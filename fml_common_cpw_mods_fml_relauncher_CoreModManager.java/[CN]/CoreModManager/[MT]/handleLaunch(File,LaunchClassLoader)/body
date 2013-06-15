@@ -15,6 +15,7 @@
   loadPlugins=new ArrayList<IFMLLoadingPlugin>();
   for (  String s : rootPlugins) {
     try {
+      FMLRelaunchLog.finest("Adding coremod for loading %s",s);
       IFMLLoadingPlugin plugin=(IFMLLoadingPlugin)Class.forName(s,true,classLoader).newInstance();
       loadPlugins.add(plugin);
     }
@@ -64,6 +65,7 @@
       caughtErrors.add(e);
       return;
     }
+    libraries=new ArrayList<ILibrarySet>();
     for (    ILibrarySet lib : libraries) {
       for (int i=0; i < lib.getLibraries().length; i++) {
         boolean download=false;
@@ -148,6 +150,7 @@
   for (  IFMLLoadingPlugin plug : loadPlugins) {
     if (plug.getASMTransformerClass() != null) {
       for (      String xformClass : plug.getASMTransformerClass()) {
+        FMLRelaunchLog.finest("Registering transformer %s",xformClass);
         classLoader.registerTransformer(xformClass);
       }
     }

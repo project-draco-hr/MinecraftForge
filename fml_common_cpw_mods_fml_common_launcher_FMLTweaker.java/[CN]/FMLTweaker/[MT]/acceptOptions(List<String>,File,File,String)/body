@@ -3,4 +3,11 @@
   this.gameDir=gameDir;
   this.assetsDir=assetsDir;
   this.profile=profile;
+  try {
+    jarLocation=getClass().getProtectionDomain().getCodeSource().getLocation().toURI();
+  }
+ catch (  URISyntaxException e) {
+    Logger.getLogger("FMLTWEAK").log(Level.SEVERE,"Missing URI information for FML tweak");
+    throw Throwables.propagate(e);
+  }
 }

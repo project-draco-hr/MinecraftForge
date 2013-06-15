@@ -4,6 +4,7 @@
   String reobfuscationOutputPath=args[2];
   String deobfFileName=args[3];
   String binPatchOutputDir=args[4];
+  Logger.getLogger("GENDIFF").log(Level.INFO,String.format("Creating patches at %s for %s from %s",binPatchOutputDir,targetJar,reobfuscationOutputPath));
   Delta delta=new Delta();
   FMLDeobfuscatingRemapper remapper=FMLDeobfuscatingRemapper.INSTANCE;
   remapper.setupLoadOnly(deobfFileName,false);

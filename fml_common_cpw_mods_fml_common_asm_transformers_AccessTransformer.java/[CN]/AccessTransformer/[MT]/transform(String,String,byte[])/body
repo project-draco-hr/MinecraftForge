@@ -4,7 +4,7 @@
   }
   boolean makeAllPublic=FMLDeobfuscatingRemapper.INSTANCE.isRemappedClass(name);
   if (DEBUG) {
-    System.out.printf("Considering all methods and fields on %s (%s): %b\n",name,transformedName,makeAllPublic);
+    FMLRelaunchLog.fine("Considering all methods and fields on %s (%s): %b\n",name,transformedName,makeAllPublic);
   }
   if (!makeAllPublic && !modifiers.containsKey(name)) {
     return bytes;

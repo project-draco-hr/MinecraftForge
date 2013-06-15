@@ -1,8 +1,9 @@
 {
-  Pattern binpatchMatcher=Pattern.compile(String.format("binpatch/%s/*.binpatch",side.toString().toLowerCase(Locale.ENGLISH)));
+  Pattern binpatchMatcher=Pattern.compile(String.format("binpatch/%s/.*.binpatch",side.toString().toLowerCase(Locale.ENGLISH)));
   JarFile fmlJar;
   try {
-    File fmlJarFile=new File(fmlLib.getLocation().toURI());
+    FMLRelaunchLog.fine("FML URI is %s",FMLTweaker.getJarLocation());
+    File fmlJarFile=new File(FMLTweaker.getJarLocation());
     fmlJar=new JarFile(fmlJarFile);
   }
  catch (  Exception e) {

@@ -3,6 +3,7 @@
   Logger globalLogger=Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
   globalLogger.setLevel(Level.OFF);
   log.myLog=Logger.getLogger("ForgeModLoader");
+  LogWrapper.retarget(log.myLog);
   Logger stdOut=Logger.getLogger("STDOUT");
   stdOut.setParent(log.myLog);
   Logger stdErr=Logger.getLogger("STDERR");
