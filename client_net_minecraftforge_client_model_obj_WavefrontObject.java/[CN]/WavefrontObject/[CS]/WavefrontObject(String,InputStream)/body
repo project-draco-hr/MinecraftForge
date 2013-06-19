@@ -1,0 +1,4 @@
+{
+  this.fileName=filename;
+  loadObjModel(inputStream);
+}
