@@ -1,7 +1,8 @@
-def post_decompile(mcp_dir, fml_dir):
-    bin_dir = os.path.join(mcp_dir, 'jars', 'bin')
-    back_jar = os.path.join(bin_dir, 'minecraft.jar.backup')
-    src_jar = os.path.join(bin_dir, 'minecraft.jar')
+def post_decompile(mcp_dir, fml_dir, client_jar):
+    dir = os.path.dirname(client_jar)
+    name = os.path.basename(client_jar)
+    back_jar = os.path.join(dir, ('%s.backup' % name))
+    src_jar = client_jar
     if (not os.path.isfile(src_jar)):
         return
     print 'Stripping META-INF from minecraft.jar'

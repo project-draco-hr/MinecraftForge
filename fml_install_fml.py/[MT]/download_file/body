@@ -1,22 +1,29 @@
-def download_file(url, target, md5=None):
+def download_file(url, target, md5=None, root=None, prefix=''):
     name = os.path.basename(target)
+    if (not (root is None)):
+        name = os.path.abspath(target)
+        name = name[(len(os.path.abspath(root)) + 1):]
+    dir = os.path.dirname(target)
+    if (not os.path.isdir(dir)):
+        os.makedirs(dir)
     if (os.path.isfile(target) and (not (md5 == None))):
         if (not (get_md5(target) == md5)):
-            print ('Modified %s detected, removing' % name)
+            print ('%s%s Modified, removing' % (prefix, name))
             os.remove(target)
     if (not os.path.isfile(target)):
         try:
             urllib.urlretrieve(url, target)
             if (not (md5 == None)):
                 if (not (get_md5(target) == md5)):
-                    print ('Download of %s failed md5 check, deleting' % name)
+                    print ('%sDownload of %s failed md5 check, deleting' % (prefix, name))
                     os.remove(target)
                     return False
-            print ('Downloaded %s' % name)
+            if (prefix == ''):
+                print ('Downloaded %s' % name)
+            else:
+                print ('%s%s Done' % (prefix, name))
         except Exception as e:
             print e
-            print ("Download of %s failed, download it manually from '%s' to '%s'" % (target, url, target))
+            print ("%sDownload of %s failed, download it manually from '%s' to '%s'" % (prefix, target, url, target))
             return False
-    else:
-        print ('File Exists: %s' % os.path.basename(target))
     return True

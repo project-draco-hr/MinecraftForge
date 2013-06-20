@@ -12,22 +12,52 @@ def download_minecraft(mcp_dir, fml_dir, version=None):
     if (not os.path.exists(bin_folder)):
         os.makedirs(bin_folder)
     failed = False
-    for lib in default['libraries'].split(' '):
-        failed = ((not download_file((default['base_url'] + lib), os.path.join(bin_folder, lib))) or failed)
-    for native in default['natives'].split(' '):
-        failed = ((not download_native(default['base_url'], os.path.join(bin_folder, 'natives'), native)) or failed)
     if (not config.has_section(version)):
         print ("Error: Invalid minecraft version, could not find '%s' in mc_versions.cfg" % version)
         sys.exit(1)
     mc_info = config_get_section(config, version)
     client_jar = os.path.join(bin_folder, 'minecraft.jar')
     server_jar = os.path.join(mcp_dir, 'jars', 'minecraft_server.jar')
-    file_backup(os.path.join(mcp_dir, 'jars', 'bin'), 'minecraft.jar', mc_info['client_md5'])
-    file_backup(os.path.join(mcp_dir, 'jars'), 'minecraft_server.jar', mc_info['server_md5'])
+    if (not ('client_url' in mc_info.keys())):
+        global uses_new_assets
+        uses_new_assets = True
+        base_url = ('https://s3.amazonaws.com/Minecraft.Download/versions/%s' % version)
+        mc_info['client_url'] = ('%s/%s.jar' % (base_url, version))
+        mc_info['json_url'] = ('%s/%s.json' % (base_url, version))
+        mc_info['server_url'] = ('%s/minecraft_server.%s.jar' % (base_url, version))
+        version_dir = os.path.join(mcp_dir, 'jars', 'versions', version)
+        if (not os.path.isdir(version_dir)):
+            os.makedirs(version_dir)
+        client_jar = os.path.join(version_dir, ('%s.jar' % version))
+        json_file = os.path.join(version_dir, ('%s.json' % version))
+        server_jar = os.path.join(mcp_dir, 'jars', ('minecraft_server.%s.jar' % version))
+        headers = get_headers(mc_info['json_url'])
+        if (not (headers is None)):
+            mc_info['json_md5'] = headers['ETag']
+        else:
+            mc_info['json_md5'] = None
+        if (not download_file(mc_info['json_url'], json_file, mc_info['json_md5'])):
+            print 'Failed to download version json'
+            sys.exit(1)
+        version_json = None
+        try:
+            version_json = json.load(open(json_file))
+        except Exception as e:
+            os.remove(json_file)
+            print 'Failed to download version json'
+            sys.exit(1)
+        failed = (download_libraries(mcp_dir, version_json['libraries']) or failed)
+    else:
+        for lib in default['libraries'].split(' '):
+            failed = ((not download_file((default['base_url'] + lib), os.path.join(bin_folder, lib))) or failed)
+        for native in default['natives'].split(' '):
+            failed = ((not download_native(default['base_url'], os.path.join(bin_folder, 'natives'), native)) or failed)
+    file_backup(client_jar, mc_info['client_md5'])
+    file_backup(server_jar, mc_info['server_md5'])
     failed = ((not download_file(mc_info['client_url'], client_jar, mc_info['client_md5'])) or failed)
     failed = ((not download_file(mc_info['server_url'], server_jar, mc_info['server_md5'])) or failed)
-    file_backup(os.path.join(mcp_dir, 'jars', 'bin'), 'minecraft.jar', mc_info['client_md5'])
-    file_backup(os.path.join(mcp_dir, 'jars'), 'minecraft_server.jar', mc_info['server_md5'])
+    file_backup(client_jar, mc_info['client_md5'])
+    file_backup(server_jar, mc_info['server_md5'])
     if failed:
         print 'Something failed verifying minecraft files, see log for details.'
         sys.exit(1)

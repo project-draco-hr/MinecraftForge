@@ -1,6 +1,8 @@
-def file_backup(base, file, md5):
-    bck_jar = os.path.join(base, (file + '.backup'))
-    src_jar = os.path.join(base, file)
+def file_backup(file, md5):
+    base = os.path.dirname(file)
+    name = os.path.basename(file)
+    bck_jar = os.path.join(base, (name + '.backup'))
+    src_jar = os.path.join(base, name)
     if ((not os.path.isfile(src_jar)) and (not os.path.isfile(bck_jar))):
         return
     if os.path.isfile(bck_jar):

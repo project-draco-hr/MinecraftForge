@@ -7,3 +7,4 @@ disable_merge
 enable_server
 disable_client
 disable_rename
+disable_assets

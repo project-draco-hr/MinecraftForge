@@ -1,4 +1,4 @@
-def setup_fml(fml_dir, mcp_dir, disable_at=False, disable_merge=False, enable_server=False, disable_client=False):
+def setup_fml(fml_dir, mcp_dir, disable_at=False, disable_merge=False, enable_server=False, disable_client=False, disable_assets=False):
     global compile_tools
     sys.path.append(mcp_dir)
     from runtime.decompile import decompile
@@ -16,14 +16,17 @@ def setup_fml(fml_dir, mcp_dir, disable_at=False, disable_merge=False, enable_se
     if (not download_deps(mcp_dir)):
         sys.exit(1)
     compile_tools = True
+    client_jar = None
 
     def applyrg_shunt(self, side, reobf=False, applyrg_real=Commands.applyrg):
         global compile_tools
+        global client_jar
         if ((not self.has_wine) and (not self.has_astyle)):
             self.logger.error('!! Please install either wine or astyle for source cleanup !!')
             self.logger.error('!! This is REQUIRED by FML/Forge Cannot proceed !!')
             sys.exit(1)
         jars = {CLIENT: self.jarclient, SERVER: self.jarserver, }
+        client_jar = os.path.abspath(self.jarclient)
         dir_bin = os.path.join(fml_dir, 'bin')
         if (not os.path.isdir(dir_bin)):
             os.makedirs(dir_bin)
@@ -78,14 +81,14 @@ def setup_fml(fml_dir, mcp_dir, disable_at=False, disable_merge=False, enable_se
         self.jarserver = self.jarserver[:(-7)]
         return ret
     try:
-        pre_decompile(mcp_dir, fml_dir)
+        pre_decompile(mcp_dir, fml_dir, disable_assets=disable_assets)
         os.chdir(mcp_dir)
         Commands.applyrg = applyrg_shunt
         Commands.checkjars = checkjars_shunt
         decompile(None, False, False, True, True, False, True, False, False, False, False, (not disable_client), enable_server)
         reset_logger()
         os.chdir(fml_dir)
-        post_decompile(mcp_dir, fml_dir)
+        post_decompile(mcp_dir, fml_dir, client_jar)
     except SystemExit as e:
         print ('Decompile Exception: %d ' % e.code)
         raise e
