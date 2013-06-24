@@ -6,7 +6,14 @@
       continue;
     }
     String entryName=entry.getName();
-    if (!entryName.endsWith(".class") || entryName.startsWith(".")) {
+    boolean filtered=false;
+    for (    String filter : dontProcess) {
+      if (entryName.startsWith(filter)) {
+        filtered=true;
+        break;
+      }
+    }
+    if (filtered || !entryName.endsWith(".class") || entryName.startsWith(".")) {
       ZipEntry newEntry=new ZipEntry(entry.getName());
       outFile.putNextEntry(newEntry);
       outFile.write(readEntry(inFile,entry));
