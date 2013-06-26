@@ -1,16 +1,13 @@
 {
-  Class<? extends Annotation> annotation=modAnnotationTypes.get(event.getClass());
-  if (annotation == null) {
+  if (!eventMethods.containsKey(event.getClass())) {
     return;
   }
   try {
-    for (    Object o : annotations.get(annotation)) {
-      Method m=(Method)o;
+    for (    Method m : eventMethods.get(event.getClass())) {
       m.invoke(modInstance,event);
     }
   }
  catch (  Throwable t) {
     controller.errorOccurred(this,t);
-    Throwables.propagateIfPossible(t);
   }
 }
