@@ -1,10 +1,10 @@
-def get_merged_info(mcp_dir):
+def get_merged_info(fml_dir, mcp_dir):
     joined = os.path.join(mcp_dir, 'conf', 'joined.srg')
     values = {'PK:': {}, 'CL:': {}, 'FD:': {}, 'MD:': {}, }
     if (not os.path.isfile(joined)):
-        sys.path.append('install')
+        sys.path.append(os.path.join(fml_dir, 'install'))
         from fml import gen_merged_srg
-        values = gen_merged_srg(mcp_dir, None)
+        values = create_merged_srg(mcp_dir, None)
     else:
         with open(joined, 'r') as fh:
             for line in fh:
