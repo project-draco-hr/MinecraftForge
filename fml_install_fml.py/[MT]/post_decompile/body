@@ -1,17 +1,3 @@
-def post_decompile(mcp_dir, fml_dir, client_jar):
-    dir = os.path.dirname(client_jar)
-    name = os.path.basename(client_jar)
-    back_jar = os.path.join(dir, ('%s.backup' % name))
-    src_jar = client_jar
-    if (not os.path.isfile(src_jar)):
-        return
-    print 'Stripping META-INF from minecraft.jar'
-    zip_in = zipfile.ZipFile(back_jar, mode='a')
-    zip_out = zipfile.ZipFile(src_jar, 'w', zipfile.ZIP_DEFLATED)
-    for i in zip_in.filelist:
-        if (not i.filename.startswith('META-INF')):
-            c = zip_in.read(i.filename)
-            zip_out.writestr(i.filename, c)
-        else:
-            print ('Skipping: %s' % i.filename)
-    zip_out.close()
+def post_decompile(mcp_dir, fml_dir):
+    if False:
+        print 'hi'

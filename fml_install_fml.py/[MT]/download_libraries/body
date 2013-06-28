@@ -1,6 +1,6 @@
-def download_libraries(mcp_dir, libraries):
+def download_libraries(mcp_dir, libraries, natives_dir):
     lib_dir = os.path.join(mcp_dir, 'jars', 'libraries')
-    base_url = 'https://s3.amazonaws.com/Minecraft.Download/libraries'
+    default_url = 'https://s3.amazonaws.com/Minecraft.Download/libraries'
     downloads = []
     failed = False
     for lib in libraries:
@@ -10,15 +10,18 @@ def download_libraries(mcp_dir, libraries):
         version = name[2]
         path = (domain + [root, version])
         extract = None
+        root_url = default_url
         if ('extract' in lib.keys()):
             extract = lib['extract']
+        if ('url' in lib.keys()):
+            root_url = lib['url']
         file_names = [('%s-%s.jar' % (root, version))]
         if ('natives' in lib.keys()):
             file_names = []
             for (k, v) in lib['natives'].items():
                 file_names.append(('%s-%s-%s.jar' % (root, version, v)))
         for file_name in file_names:
-            url = ('%s/%s/%s' % (base_url, '/'.join(path), file_name))
+            url = ('%s/%s/%s' % (root_url, '/'.join(path), file_name))
             file_path = os.path.join(lib_dir, os.sep.join(path), file_name)
             headers = get_headers(url)
             if (headers is None):
@@ -26,44 +29,4 @@ def download_libraries(mcp_dir, libraries):
                 failed = True
             else:
                 downloads.append({'url': url, 'file': file_path, 'md5': headers['ETag'], 'size': headers['Content-Length'], 'extract': extract, })
-    natives_dir = os.path.join(lib_dir, 'natives')
-    if (not os.path.isdir(natives_dir)):
-        os.makedirs(natives_dir)
-    missing = []
-    for dl in downloads:
-        if os.path.isfile(dl['file']):
-            if ((dl['md5'] is None) or (not (get_md5(dl['file']) == dl['md5']))):
-                missing.append(dl)
-    if (len(missing) == 0):
-        return failed
-    print ('Downloading %s libraries' % len(missing))
-    for dl in missing:
-        if download_file(dl['url'], dl['file'], dl['md5'], prefix='    '):
-            if (not (dl['extract'] is None)):
-                excludes = []
-                if ('exclude' in dl['extract'].keys()):
-                    excludes = dl['extract']['exclude']
-
-                def is_filtered(name, excludes):
-                    for ex in excludes:
-                        if name.startswith(ex):
-                            return True
-                    return name.endswith('/')
-                zip = ZipFile(dl['file'])
-                for name in zip.namelist():
-                    if is_filtered(name, excludes):
-                        continue
-                    out_file = os.path.join(natives_dir, os.sep.join(name.split('/')))
-                    if (not os.path.isfile(out_file)):
-                        dir = os.path.dirname(out_file)
-                        if (not os.path.isdir(dir)):
-                            os.makedirs(dir)
-                        print ('        Extracting %s' % name)
-                        out = open(out_file, 'wb')
-                        out.write(zip.read(name))
-                        out.flush()
-                        out.close()
-                zip.close()
-        else:
-            failed = True
-    return failed
+    return download_list(downloads, natives_dir)

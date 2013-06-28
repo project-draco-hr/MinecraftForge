@@ -1,0 +1,58 @@
+def read_mc_versions(fml_dir, version=None, work_dir=None):
+    versions_file = os.path.join(fml_dir, 'mc_versions.cfg')
+    if (not os.path.isfile(versions_file)):
+        print 'Could not find mc_versions.cfg in FML directory.'
+        sys.exit(1)
+    config = ConfigParser.ConfigParser()
+    config.read(versions_file)
+    default = config_get_section(config, 'default')
+    if (version is None):
+        version = default['current_ver']
+    if (not config.has_section(version)):
+        print ("Error: Invalid minecraft version, could not find '%s' in mc_versions.cfg" % version)
+        sys.exit(1)
+    mc_info = config_get_section(config, version)
+    mc_info['downloads'] = []
+    mc_info['version'] = version
+    if (not ('client_url' in mc_info.keys())):
+        mc_info['new_launcher'] = True
+        base_url = ('https://s3.amazonaws.com/Minecraft.Download/versions/%s' % version)
+        mc_info['client_url'] = ('%s/%s.jar' % (base_url, version))
+        mc_info['json_url'] = ('%s/%s.json' % (base_url, version))
+        mc_info['server_url'] = ('%s/minecraft_server.%s.jar' % (base_url, version))
+        if (not (work_dir is None)):
+            version_dir = os.path.join(work_dir, 'versions', version)
+            mc_info['natives_dir'] = os.path.join(work_dir, 'libraries', 'natives')
+            mc_info['library_dir'] = os.path.join(work_dir, 'libraries')
+            mc_info['client_file'] = os.path.join(version_dir, ('%s.jar' % version))
+            mc_info['json_file'] = os.path.join(version_dir, ('%s.json' % version))
+            mc_info['server_file'] = os.path.join(work_dir, ('minecraft_server.%s.jar' % version))
+            mc_info['asset_dir'] = os.path.join(work_dir, 'assets')
+    else:
+        mc_info['new_launcher'] = False
+        mc_info['json_url'] = None
+        if (not (work_dir is None)):
+            mc_info['natives_dir'] = os.path.join(work_dir, 'bin', 'natives')
+            mc_info['library_dir'] = os.path.join(work_dir, 'bin')
+            mc_info['client_file'] = os.path.join(work_dir, 'bin', 'minecraft.jar')
+            mc_info['json_file'] = None
+            mc_info['server_file'] = os.path.join(work_dir, 'minecraft_server.jar')
+            mc_info['asset_dir'] = os.path.join(work_dir, 'resources')
+            for lib in default['libraries'].split(' '):
+                mc_info['libraries'].append({'url': (default['base_url'] + lib), 'file': os.path.join(work_dir, 'bin', lib), 'extract': None, 'md5': None, })
+            for native in default['natives'].split(' '):
+                mc_info['libraries'].append({'url_ex': (default['base_url'] + lib), 'file': os.path.join(work_dir, 'bin', lib), 'extract': {'exclude': ['META-INF/'], }, 'md5': None, })
+    if (not mc_info['mcp_url'].startswith('http')):
+        mc_info['mcp_url'] = None
+    mc_info['mcp_file'] = os.path.join(fml_dir, ('mcp%s.zip' % mc_info['mcp_ver']))
+    if (not (work_dir is None)):
+        for x in ['natives_dir', 'library_dir', 'asset_dir']:
+            if (not os.path.isdir(mc_info[x])):
+                os.makedirs(mc_info[x])
+        for x in ['client_file', 'server_file', 'json_file', 'mcp_file']:
+            if (mc_info[x] is None):
+                continue
+            dir = os.path.dirname(mc_info[x])
+            if (not os.path.isdir(dir)):
+                os.makedirs(dir)
+    return mc_info

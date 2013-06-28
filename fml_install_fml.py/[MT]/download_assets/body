@@ -1,6 +1,4 @@
 def download_assets(mcp_dir):
-    if (not uses_new_assets):
-        return
     from xml.dom.minidom import parse
     asset_dir = os.path.join(mcp_dir, 'jars', 'assets')
     base_url = 'https://s3.amazonaws.com/Minecraft.Resources'
@@ -28,11 +26,11 @@ def download_assets(mcp_dir):
         pprint(e)
         sys.exit(1)
     if (len(files) == 0):
-        print 'No new assets need to download'
+        print '    No new assets need to download'
         return
-    print ('Downloading %s assets' % len(files))
+    print ('    Downloading %s assets' % len(files))
     for file in files:
-        failed = ((not download_file(file['url'], file['file'], file['md5'], root=asset_dir, prefix='    ')) or failed)
+        failed = ((not download_file(file['url'], file['file'], file['md5'], root=asset_dir, prefix='        ')) or failed)
     if failed:
-        print 'Downloading assets failed, please review log for more details'
+        print '    Downloading assets failed, please review log for more details'
     sys.exit(1)

@@ -1,0 +1,98 @@
+def decompile_minecraft(fml_dir, mcp_dir, disable_at=False, disable_merge=False, enable_server=False, disable_client=False, disable_assets=False):
+    global compile_tools
+    global client_jar
+    sys.path.append(mcp_dir)
+    from runtime.decompile import decompile
+    from runtime.cleanup import cleanup
+    from runtime.commands import Commands, CLIENT, SERVER
+    fml_dir = os.path.abspath(fml_dir)
+    src_dir = os.path.join(mcp_dir, 'src')
+    if os.path.isdir(src_dir):
+        os.chdir(mcp_dir)
+        cleanup(None, False)
+        reset_logger()
+        os.chdir(fml_dir)
+    if os.path.isdir(src_dir):
+        print 'Please make sure to backup your modified files, and say yes when it asks you to do cleanup.'
+        sys.exit(1)
+    compile_tools = True
+
+    def applyrg_shunt(self, side, reobf=False, applyrg_real=Commands.applyrg):
+        transformers_hook(self, side)
+        self.logger.info('> Really Applying Retroguard')
+        applyrg_real(self, side, reobf)
+
+    def applyss_shunt(self, side, reobf=False, srg_names=False, in_jar=None, out_jar=None, keep_lvt=False, keep_generics=False, applyss_real=Commands.applyss):
+        transformers_hook(self, side)
+        self.logger.info('> Really Applying SpecialSource')
+        applyss_real(self, side, reobf=reobf, srg_names=srg_names, in_jar=in_jar, out_jar=out_jar, keep_lvt=keep_lvt, keep_generics=keep_generics)
+
+    def transformers_hook(self, side):
+        global compile_tools
+        if ((not self.has_wine) and (not self.has_astyle)):
+            self.logger.error('!! Please install either wine or astyle for source cleanup !!')
+            self.logger.error('!! This is REQUIRED by FML/Forge Cannot proceed !!')
+            sys.exit(1)
+        jars = {CLIENT: self.jarclient, SERVER: self.jarserver, }
+        kill_signatures(jars[side])
+        dir_bin = os.path.join(fml_dir, 'bin')
+        if (not os.path.isdir(dir_bin)):
+            os.makedirs(dir_bin)
+        class_path = os.pathsep.join([f for f in (self.cpathclient + [dir_bin]) if (not (f in jars.values()))])
+        dir_common = os.path.join(fml_dir, 'common')
+        dir_trans = os.path.join(dir_common, 'cpw/mods/fml/common/asm/transformers'.replace('/', os.sep))
+        java = self.cmdjava.translate(None, '"')
+        javac = self.cmdjavac.translate(None, '"')
+        cmd_compile = ('"%s" -Xlint:-options -deprecation -g -source 1.6 -target 1.6 -classpath "{classpath}" -sourcepath "{sourcepath}" -d "{outpath}" "{target}"' % javac)
+        cmd_compile = cmd_compile.format(classpath=class_path, sourcepath=dir_common, outpath=dir_bin, target='{target}')
+        if compile_tools:
+            self.logger.info('> Compiling AccessTransformer')
+            if (not runcmd(cmd_compile.format(target=os.path.join(dir_trans, 'AccessTransformer.java')), commands=self, echo=False)):
+                sys.exit(1)
+            self.logger.info('> Compiling MCPMerger')
+            if (not runcmd(cmd_compile.format(target=os.path.join(dir_trans, 'MCPMerger.java')), commands=self, echo=False)):
+                sys.exit(1)
+            compile_tools = False
+        if (side == CLIENT):
+            if (not disable_merge):
+                self.logger.info('> Running MCPMerger')
+                forkcmd = ('"%s" -classpath "{classpath}" cpw.mods.fml.common.asm.transformers.MCPMerger "{mergecfg}" "{client}" "{server}"' % java).format(classpath=class_path, mergecfg=os.path.join(fml_dir, 'mcp_merge.cfg'), client=jars[CLIENT], server=jars[SERVER])
+                if (not runcmd(forkcmd, echo=False, commands=self)):
+                    sys.exit(1)
+            else:
+                self.logger.info('> MCPMerge disabled')
+        apply_ats(fml_dir, mcp_dir, class_path, jars[side], disable_at=disable_at, commands=self)
+
+    def checkjars_shunt(self, side, checkjars_real=Commands.checkjars):
+        self.jarclient = (self.jarclient + '.backup')
+        self.jarserver = (self.jarserver + '.backup')
+        ret = checkjars_real(self, side)
+        self.jarclient = self.jarclient[:(-7)]
+        self.jarserver = self.jarserver[:(-7)]
+        return ret
+    try:
+        pre_decompile(mcp_dir, fml_dir, disable_assets=disable_assets)
+        os.chdir(mcp_dir)
+        Commands.applyrg = applyrg_shunt
+        Commands.applyss = applyss_shunt
+        Commands.checkjars = checkjars_shunt
+        decompile(None, False, False, True, True, False, True, False, False, False, False, (not disable_client), enable_server, False)
+        reset_logger()
+        os.chdir(fml_dir)
+        post_decompile(mcp_dir, fml_dir)
+    except SystemExit as e:
+        print ('Decompile Exception: %d ' % e.code)
+        raise e
+    if (not os.path.isdir(src_dir)):
+        print ('Something went wrong, src folder not found at: %s' % src_dir)
+        sys.exit(1)
+    cleanup_source(src_dir)
+    os.chdir(mcp_dir)
+    commands = Commands(verify=True)
+    if (not disable_client):
+        updatemd5_side(mcp_dir, commands, CLIENT)
+        reset_logger()
+    if enable_server:
+        updatemd5_side(mcp_dir, commands, CLIENT)
+        reset_logger()
+    os.chdir(fml_dir)

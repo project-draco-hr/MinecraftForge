@@ -5,33 +5,13 @@ def download_mcp(mcp_dir, fml_dir, version=None):
     if os.path.isdir(mcp_dir):
         print ("Old MCP Directory exists, but MCP was not detected, please delete MCP directory at '%s'" % mcp_dir)
         sys.exit(1)
-    versions_file = os.path.join(fml_dir, 'mc_versions.cfg')
-    if (not os.path.isfile(versions_file)):
-        print 'Could not find mc_versions.cfg in FML directory.'
-        sys.exit(1)
-    config = ConfigParser.ConfigParser()
-    config.read(versions_file)
-    default = config_get_section(config, 'default')
-    if (version is None):
-        version = default['current_ver']
-    if (not config.has_section(version)):
-        print ("Error: Invalid minecraft version, could not find '%s' in mc_versions.cfg" % version)
-        sys.exit(1)
-    mc_info = config_get_section(config, version)
-    mcp_zip = os.path.join(fml_dir, ('mcp%s.zip' % mc_info['mcp_ver']))
-    if (not download_file(mc_info['mcp_url'], mcp_zip, mc_info['mcp_md5'])):
+    mc_info = read_mc_versions(fml_dir, version=version)
+    if (not download_file(mc_info['mcp_url'], mc_info['mcp_file'], mc_info['mcp_md5'])):
         sys.exit(1)
     if (not os.path.isdir(mcp_dir)):
         _mkdir(mcp_dir)
     print ("Extracting MCP to '%s'" % mcp_dir)
-    zf = ZipFile(mcp_zip)
-    for path in zf.namelist():
-        if (not path.endswith('/')):
-            zf.extract(path, mcp_dir)
-    zf.close()
-    eclipse_dir = os.path.join(mcp_dir, 'eclipse')
-    if os.path.isdir(eclipse_dir):
-        shutil.rmtree(eclipse_dir)
+    extract_zip(mc_info['mcp_file'], mcp_dir, filter=['eclipse'])
     if (os.name != 'nt'):
         for (path, _, filelist) in os.walk(mcp_dir):
             for cur_file in fnmatch.filter(filelist, '*.sh'):
@@ -40,4 +20,8 @@ def download_mcp(mcp_dir, fml_dir, version=None):
                 (output, _) = process.communicate()
         process = subprocess.Popen(cmdsplit(('chmod +x "%s/runtime/bin/astyle-osx"' % mcp_dir)), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=(-1))
         (output, _) = process.communicate()
+    data_dir = os.path.join(fml_dir, 'mcp_data')
+    if os.path.isdir(data_dir):
+        print 'Moving mcp_data to MCP'
+        merge_tree(data_dir, mcp_dir)
     return True

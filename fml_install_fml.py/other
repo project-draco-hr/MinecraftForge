@@ -7,8 +7,7 @@ from hashlib import md5
 from pprint import pprint
 from zipfile import ZipFile
 from pprint import pprint
-mcp_version = '7.42'
-uses_new_assets = False
+from contextlib import closing
 count = 0
 compile_tools = True
-typere = re.compile('([\\[ZBCSIJFDV]|L([\\w\\/]+);)')
+client_jar = None

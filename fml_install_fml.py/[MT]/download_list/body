@@ -1,0 +1,23 @@
+def download_list(list, natives_dir):
+    missing = []
+    for dl in list:
+        if os.path.isfile(dl['file']):
+            if ((dl['md5'] is None) or (not (get_md5(dl['file']) == dl['md5']))):
+                missing.append(dl)
+        else:
+            missing.append(dl)
+    if (len(missing) == 0):
+        return False
+    print ('Downloading %s libraries' % len(missing))
+    failed = False
+    for dl in missing:
+        if download_file(dl['url'], dl['file'], dl['md5'], prefix='    '):
+            if (not (dl['extract'] is None)):
+                excludes = []
+                if ('exclude' in dl['extract'].keys()):
+                    excludes = dl['extract']['exclude']
+                extract_zip(dl['file'], natives_dir, prefix='        ', filter=excludes)
+        else:
+            print ('    Failed to download %s from %s' % (os.path.basename(dl['file']), dl['url']))
+            failed = True
+    return failed

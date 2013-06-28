@@ -1,0 +1,21 @@
+def create_merged_conf(mcp_dir, fml_dir):
+    print 'Creating merged conf'
+    for file in ['version.cfg', 'newids.csv', 'joined.exc']:
+        dst_file = os.path.join(fml_dir, 'conf', file)
+        src_file = os.path.join(mcp_dir, 'conf', file)
+        if (not os.path.isdir(os.path.dirname(dst_file))):
+            os.makedirs(os.path.dirname(dst_file))
+        if os.path.exists(dst_file):
+            os.remove(dst_file)
+        shutil.copy(src_file, dst_file)
+        normaliselines(dst_file)
+        print ('    Copying %s' % os.path.normpath(src_file))
+    print '    Generating merged Retroguard data'
+    common_srg = create_merged_srg(mcp_dir, fml_dir)
+    print '    Reading merged MCInjector config'
+    common_exc = load_merged_exc(mcp_dir, fml_dir)
+    print '    Gathering list of common searge names'
+    common_map = create_shared_searge_names(common_srg, common_exc)
+    for x in [['fields.csv', 'searge'], ['methods.csv', 'searge'], ['params.csv', 'param']]:
+        print ('    Generating merged csv for %s' % x[0])
+        create_merged_csv(common_map, os.path.join(mcp_dir, 'conf', x[0]), os.path.join(fml_dir, 'conf', x[0]), main_key=x[1])

@@ -1,0 +1,14 @@
+def apply_patch(patch, target, mcp_dir):
+    temp = os.path.abspath('temp.patch')
+    cmd = ('patch -i "%s" ' % temp)
+    if (os.name == 'nt'):
+        applydiff = os.path.abspath(os.path.join(mcp_dir, 'runtime', 'bin', 'applydiff.exe'))
+        cmd = ('"%s" -uf -i "%s"' % (applydiff, temp))
+    if (os.sep == '\\'):
+        cmd = cmd.replace('\\', '\\\\')
+    cmd = shlex.split(cmd)
+    fix_patch(patch, temp)
+    process = subprocess.Popen(cmd, cwd=os.path.join(mcp_dir, 'runtime'), bufsize=(-1))
+    process.communicate()
+    if os.path.isfile(temp):
+        os.remove(temp)

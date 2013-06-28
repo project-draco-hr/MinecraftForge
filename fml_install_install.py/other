@@ -1,6 +1,6 @@
 import os, os.path, sys
 from optparse import OptionParser
-from fml import setup_fml, finish_setup_fml, apply_fml_patches, setup_mcp
+from fml import setup_fml, finish_setup_fml, apply_fml_patches, setup_mcp, download_mcp
 if (__name__ == '__main__'):
     parser = OptionParser()
     parser.add_option('-m', '--mcp-dir', action='store', dest='mcp_dir', help='Path to download/extract MCP to', default=None)
@@ -11,6 +11,7 @@ if (__name__ == '__main__'):
     parser.add_option('-e', '--no-merge', action='store_true', dest='no_merge', help='Disable merging server code into client', default=False)
     parser.add_option('-n', '--no-rename', action='store_true', dest='no_rename', help='Disable running updatenames', default=False)
     parser.add_option('-a', '--no-assets', action='store_true', dest='no_assets', help='Disable downloading of assets folder', default=False)
+    parser.add_option('-d', '--decompile', action='store_true', dest='decompile', help='Decompile minecraft and apply patches', default=True)
     (options, _) = parser.parse_args()
     fml_dir = os.path.dirname(os.path.abspath(__file__))
     mcp_dir = os.path.abspath('mcp')
@@ -22,4 +23,4 @@ if (__name__ == '__main__'):
         options.no_patch = True
     if options.no_merge:
         options.no_patch = True
-    fml_main(fml_dir, mcp_dir, disable_patches=options.no_patch, disable_at=options.no_access, disable_merge=options.no_merge, enable_server=options.enable_server, disable_client=options.no_client, disable_rename=options.no_rename, disable_assets=options.assets)
+    fml_main(fml_dir, mcp_dir, disable_patches=options.no_patch, disable_at=options.no_access, disable_merge=options.no_merge, enable_server=options.enable_server, disable_client=options.no_client, disable_rename=options.no_rename, disable_assets=options.assets, decompile=options.decompile, gen_conf=False)

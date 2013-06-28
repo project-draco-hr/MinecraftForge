@@ -1,6 +1,6 @@
 fml_dir
 mcp_dir
-dont_gen_conf
+gen_conf
 disable_patches
 disable_at
 disable_merge
@@ -8,3 +8,4 @@ enable_server
 disable_client
 disable_rename
 disable_assets
+decompile
