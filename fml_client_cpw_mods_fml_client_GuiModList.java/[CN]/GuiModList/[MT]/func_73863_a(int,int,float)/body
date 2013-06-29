@@ -9,7 +9,6 @@
       String logoFile=selectedMod.getMetadata().logoFile;
       if (!logoFile.isEmpty()) {
         GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
-        this.field_73882_e.field_71446_o.func_98187_b(logoFile);
         Dimension dim=TextureFXManager.instance().getTextureDimensions(logoFile);
         double scaleX=dim.width / 200.0;
         double scaleY=dim.height / 65.0;

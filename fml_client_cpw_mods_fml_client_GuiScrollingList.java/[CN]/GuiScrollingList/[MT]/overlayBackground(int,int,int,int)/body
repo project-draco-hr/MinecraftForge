@@ -1,6 +1,6 @@
 {
   Tessellator var5=Tessellator.field_78398_a;
-  this.client.field_71446_o.func_98187_b("/gui/background.png");
+  this.client.field_71446_o.func_110577_a(Gui.field_110325_k);
   GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
   float var6=32.0F;
   var5.func_78382_b();

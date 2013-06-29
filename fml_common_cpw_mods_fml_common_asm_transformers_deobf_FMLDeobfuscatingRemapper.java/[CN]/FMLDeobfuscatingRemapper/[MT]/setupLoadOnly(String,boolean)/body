@@ -1,10 +1,7 @@
 {
   try {
     File mapData=new File(deobfFileName);
-    mapData=mapData.getCanonicalFile();
-    ZipFile mapZip=new ZipFile(mapData);
-    ZipEntry classData=mapZip.getEntry("joined.srg");
-    ZipInputSupplier zis=new ZipInputSupplier(mapZip,classData);
+    LZMAInputSupplier zis=new LZMAInputSupplier(new FileInputStream(mapData));
     InputSupplier<InputStreamReader> srgSupplier=CharStreams.newReaderSupplier(zis,Charsets.UTF_8);
     List<String> srgList=CharStreams.readLines(srgSupplier);
     rawMethodMaps=Maps.newHashMap();

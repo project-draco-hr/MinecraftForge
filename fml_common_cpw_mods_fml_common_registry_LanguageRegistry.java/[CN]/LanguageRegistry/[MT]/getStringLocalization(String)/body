@@ -1,3 +1,3 @@
 {
-  return getStringLocalization(key,StringTranslate.func_74808_a().func_74811_c());
+  return getStringLocalization(key,Minecraft.func_71410_x().func_135016_M().func_135041_c().func_135034_a());
 }

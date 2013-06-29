@@ -1,6 +1,6 @@
 {
   this.args=args;
-  this.gameDir=gameDir;
+  this.gameDir=(gameDir == null ? new File(".") : gameDir);
   this.assetsDir=assetsDir;
   this.profile=profile;
   try {
