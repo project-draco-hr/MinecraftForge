@@ -6,8 +6,6 @@
  else {
     tessellator.startDrawing(GL11.GL_TRIANGLES);
   }
-  for (  GroupObject groupObject : groupObjects) {
-    groupObject.render(tessellator);
-  }
+  tessellateAll(tessellator);
   tessellator.draw();
 }
