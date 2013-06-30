@@ -1,6 +1,6 @@
 def create_merged_conf(mcp_dir, fml_dir):
     print 'Creating merged conf'
-    for file in ['version.cfg', 'newids.csv', 'joined.exc']:
+    for file in ['version.cfg', 'joined.exc']:
         dst_file = os.path.join(fml_dir, 'conf', file)
         src_file = os.path.join(mcp_dir, 'conf', file)
         if (not os.path.isdir(os.path.dirname(dst_file))):

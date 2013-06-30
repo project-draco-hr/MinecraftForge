@@ -19,6 +19,7 @@ def download_minecraft(mcp_dir, fml_dir, version=None):
     else:
         failed = ((not download_list(mc_info['downloads'])) or failed)
     for type in ['client', 'server']:
+        print ('Backing up %s' % type)
         file_backup(mc_info[('%s_file' % type)], mc_info[('%s_md5' % type)])
         failed = ((not download_file(mc_info[('%s_url' % type)], mc_info[('%s_file' % type)], mc_info[('%s_md5' % type)])) or failed)
         file_backup(mc_info[('%s_file' % type)], mc_info[('%s_md5' % type)])
