@@ -1,0 +1,6 @@
+Entity entity
+ItemStack armor
+String _default
+int slot
+int layer
+String type

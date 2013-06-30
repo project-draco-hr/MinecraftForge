@@ -6,7 +6,7 @@
     highlight=false;
   }
   int health=mc.thePlayer.getHealth();
-  int healthLast=mc.thePlayer.prevHealth;
+  float healthLast=mc.thePlayer.prevHealth;
   int left=width / 2 - 91;
   int top=height - 39;
   int regen=-1;

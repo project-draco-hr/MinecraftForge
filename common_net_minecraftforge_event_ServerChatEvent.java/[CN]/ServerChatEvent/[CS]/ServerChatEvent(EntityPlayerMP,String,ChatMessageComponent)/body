@@ -1,0 +1,7 @@
+{
+  super();
+  this.message=message;
+  this.player=player;
+  this.username=player.username;
+  this.component=component;
+}

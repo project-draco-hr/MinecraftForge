@@ -21,7 +21,7 @@
     GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
     zLevel=-90.0F;
     rand.setSeed((long)(updateCounter * 312871));
-    mc.renderEngine.bindTexture("/gui/icons.png");
+    mc.renderEngine.func_110577_a(TextureMap.field_110576_c);
     if (renderCrosshairs)     renderCrosshairs(width,height);
     if (renderBossHealth)     renderBossHealth();
     if (this.mc.playerController.shouldDrawHUD()) {

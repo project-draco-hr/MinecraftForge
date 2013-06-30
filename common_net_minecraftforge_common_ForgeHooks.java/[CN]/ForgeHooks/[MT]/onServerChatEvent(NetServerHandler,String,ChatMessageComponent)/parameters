@@ -1,0 +1,3 @@
+NetServerHandler net
+String raw
+ChatMessageComponent comp
