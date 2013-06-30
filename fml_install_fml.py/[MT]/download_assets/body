@@ -1,0 +1,36 @@
+def download_assets(mcp_dir):
+    from xml.dom.minidom import parse
+    asset_dir = os.path.join(mcp_dir, 'jars', 'assets')
+    base_url = 'https://s3.amazonaws.com/Minecraft.Resources'
+    print ('Gathering assets list from %s' % base_url)
+    files = []
+    failed = False
+    try:
+        url = urllib.urlopen(base_url)
+        xml = parse(url)
+
+        def get(xml, key):
+            return xml.getElementsByTagName(key)[0].firstChild.nodeValue
+        for asset in xml.getElementsByTagName('Contents'):
+            path = get(asset, 'Key')
+            if path.endswith('/'):
+                continue
+            file = os.path.join(asset_dir, os.sep.join(path.split('/')))
+            md5 = get(asset, 'ETag').replace('"', '')
+            if os.path.isfile(file):
+                if (get_md5(file) == md5):
+                    continue
+            files.append({'file': file, 'url': ('%s/%s' % (base_url, path)), 'size': get(asset, 'Size'), 'md5': md5, })
+    except Exception as e:
+        print 'Error gathering asset list:'
+        pprint(e)
+        sys.exit(1)
+    if (len(files) == 0):
+        print '    No new assets need to download'
+        return
+    print ('    Downloading %s assets' % len(files))
+    for file in files:
+        failed = ((not download_file(file['url'], file['file'], file['md5'], root=asset_dir, prefix='        ')) or failed)
+    if failed:
+        print '    Downloading assets failed, please review log for more details'
+    sys.exit(1)

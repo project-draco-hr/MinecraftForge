@@ -1,0 +1,48 @@
+{
+  String sourceJar=args[0];
+  String targetDir=args[1];
+  String deobfData=args[2];
+  String outputDir=args[3];
+  String killTarget=args[4];
+  Logger.getLogger("GENDIFF").log(Level.INFO,String.format("Creating patches at %s for %s from %s",outputDir,sourceJar,targetDir));
+  Delta delta=new Delta();
+  FMLDeobfuscatingRemapper remapper=FMLDeobfuscatingRemapper.INSTANCE;
+  remapper.setupLoadOnly(deobfData,false);
+  JarFile sourceZip=new JarFile(sourceJar);
+  boolean kill=killTarget.equalsIgnoreCase("true");
+  File f=new File(outputDir);
+  f.mkdirs();
+  for (  String name : remapper.getObfedClasses()) {
+    String fileName=name;
+    String jarName=name;
+    if (RESERVED_NAMES.contains(name.toUpperCase(Locale.ENGLISH))) {
+      fileName="_" + name;
+    }
+    File targetFile=new File(targetDir,fileName.replace('/',File.separatorChar) + ".class");
+    jarName=jarName + ".class";
+    if (targetFile.exists()) {
+      String sourceClassName=name.replace('/','.');
+      String targetClassName=remapper.map(name).replace('/','.');
+      JarEntry entry=sourceZip.getJarEntry(jarName);
+      byte[] vanillaBytes=entry != null ? ByteStreams.toByteArray(sourceZip.getInputStream(entry)) : new byte[0];
+      byte[] patchedBytes=Files.toByteArray(targetFile);
+      byte[] diff=delta.compute(vanillaBytes,patchedBytes);
+      ByteArrayDataOutput diffOut=ByteStreams.newDataOutput(diff.length + 50);
+      diffOut.writeUTF(name);
+      diffOut.writeUTF(sourceClassName);
+      diffOut.writeUTF(targetClassName);
+      diffOut.writeBoolean(entry != null);
+      diffOut.writeInt(diff.length);
+      diffOut.write(diff);
+      File target=new File(outputDir,targetClassName + ".binpatch");
+      target.getParentFile().mkdirs();
+      Files.write(diffOut.toByteArray(),target);
+      Logger.getLogger("GENDIFF").info(String.format("Wrote patch for %s (%s) at %s",name,targetClassName,target.getAbsolutePath()));
+      if (kill) {
+        targetFile.delete();
+        Logger.getLogger("GENDIFF").info(String.format("  Deleted target: %s",targetFile.toString()));
+      }
+    }
+  }
+  sourceZip.close();
+}

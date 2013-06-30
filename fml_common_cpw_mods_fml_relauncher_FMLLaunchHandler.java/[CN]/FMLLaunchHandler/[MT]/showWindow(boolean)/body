@@ -1,0 +1,6 @@
+{
+  if (CoreModManager.downloadMonitor != null) {
+    return;
+  }
+  CoreModManager.downloadMonitor=new DummyDownloader();
+}

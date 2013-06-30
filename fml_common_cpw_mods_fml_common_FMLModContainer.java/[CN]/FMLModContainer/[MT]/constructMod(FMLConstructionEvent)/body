@@ -29,9 +29,20 @@
         fingerprintNotPresent=false;
       }
     }
-    annotations=gatherAnnotations(clazz);
+    CustomProperty[] props=(CustomProperty[])descriptor.get("customProperties");
+    if (props != null && props.length > 0) {
+      com.google.common.collect.ImmutableMap.Builder<String,String> builder=ImmutableMap.<String,String>builder();
+      for (      CustomProperty p : props) {
+        builder.put(p.k(),p.v());
+      }
+      customModProperties=builder.build();
+    }
+ else {
+      customModProperties=EMPTY_PROPERTIES;
+    }
+    Method factoryMethod=gatherAnnotations(clazz);
     isNetworkMod=FMLNetworkHandler.instance().registerNetworkMod(this,clazz,event.getASMHarvestedData());
-    modInstance=getLanguageAdapter().getNewInstance(this,clazz,modClassLoader);
+    modInstance=getLanguageAdapter().getNewInstance(this,clazz,modClassLoader,factoryMethod);
     if (fingerprintNotPresent) {
       eventBus.post(new FMLFingerprintViolationEvent(source.isDirectory(),source,ImmutableSet.copyOf(this.sourceFingerprints),expectedFingerprint));
     }

@@ -1,4 +1,0 @@
-{
-  this.zipFile=zip;
-  this.zipEntry=entry;
-}

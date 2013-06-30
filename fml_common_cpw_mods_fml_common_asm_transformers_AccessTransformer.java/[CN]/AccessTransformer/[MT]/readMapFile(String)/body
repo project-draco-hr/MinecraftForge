@@ -42,4 +42,5 @@
     }
   }
 );
+  System.out.printf("Loaded %d rules from AccessTransformer config file %s\n",modifiers.size(),rulesFile);
 }

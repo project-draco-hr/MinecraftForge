@@ -1,6 +1,5 @@
 def apply_patches(mcp_dir, patch_dir, target_dir, find=None, rep=None):
     sys.path.append(mcp_dir)
-    from runtime.commands import cmdsplit
     temp = os.path.abspath('temp.patch')
     cmd = cmdsplit(('patch -p2 -i "%s" ' % temp))
     if (os.name == 'nt'):

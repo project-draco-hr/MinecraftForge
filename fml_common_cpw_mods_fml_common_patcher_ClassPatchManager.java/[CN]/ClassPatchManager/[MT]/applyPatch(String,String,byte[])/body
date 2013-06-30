@@ -1,0 +1,31 @@
+{
+  if (patches == null) {
+    return inputData;
+  }
+  List<ClassPatch> list=patches.get(name);
+  if (list.isEmpty()) {
+    return inputData;
+  }
+  for (  ClassPatch patch : list) {
+    if (!patch.targetClassName.equals(mappedName)) {
+      FMLLog.warning("Binary patch found %s for wrong class %s",patch.targetClassName,mappedName);
+    }
+    if (!patch.existsAtTarget && (inputData == null || inputData.length == 0)) {
+      inputData=new byte[0];
+    }
+ else     if (!patch.existsAtTarget) {
+      FMLLog.warning("Patcher expecting empty class data file for %s, but received non-empty",patch.targetClassName);
+    }
+synchronized (patcher) {
+      try {
+        inputData=patcher.patch(inputData,patch.patch);
+      }
+ catch (      IOException e) {
+        FMLLog.log(Level.SEVERE,e,"Encountered problem runtime patching class %s",name);
+        continue;
+      }
+    }
+  }
+  FMLLog.fine("Successfully applied runtime patches for %s",mappedName);
+  return inputData;
+}

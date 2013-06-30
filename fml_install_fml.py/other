@@ -1,5 +1,5 @@
 import os, os.path, sys
-import urllib, zipfile
+import urllib, zipfile, json, urllib2
 import shutil, glob, fnmatch
 import subprocess, logging, re, shlex
 import csv, ConfigParser
@@ -7,7 +7,7 @@ from hashlib import md5
 from pprint import pprint
 from zipfile import ZipFile
 from pprint import pprint
-mcp_version = '7.42'
+from contextlib import closing
 count = 0
 compile_tools = True
-typere = re.compile('([\\[ZBCSIJFDV]|L([\\w\\/]+);)')
+client_jar = None

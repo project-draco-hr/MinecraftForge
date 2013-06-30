@@ -18,6 +18,9 @@ case '<':
 case '>':
 copyToServer.add(line);
 break;
+case '^':
+dontProcess.add(line);
+break;
 }
 }
 in.close();

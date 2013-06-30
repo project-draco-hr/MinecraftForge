@@ -1,2 +1,4 @@
-def pre_decompile(mcp_dir, fml_dir):
+def pre_decompile(mcp_dir, fml_dir, disable_assets=False):
     download_minecraft(mcp_dir, fml_dir)
+    if (not disable_assets):
+        download_assets(mcp_dir)

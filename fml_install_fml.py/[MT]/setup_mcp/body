@@ -1,35 +1,13 @@
-def setup_mcp(fml_dir, mcp_dir, dont_gen_conf=True):
-    global mcp_version
-    if (not download_mcp(mcp_dir, fml_dir)):
-        sys.exit(1)
-    backup = os.path.join(mcp_dir, 'runtime', 'commands.py.bck')
-    runtime = os.path.join(mcp_dir, 'runtime', 'commands.py')
-    patch = os.path.join(fml_dir, 'commands.patch')
+def setup_mcp(fml_dir, mcp_dir, gen_conf=True):
     print 'Setting up MCP'
-    if os.path.isfile(backup):
-        print 'Restoring commands.py backup'
-        if os.path.exists(runtime):
-            os.remove(runtime)
-        shutil.copy(backup, runtime)
-    else:
-        print 'Backing up commands.py'
-        shutil.copy(runtime, backup)
+    runtime = os.path.join(mcp_dir, 'runtime', 'commands.py')
+    file_backup(runtime)
+    patch = os.path.join(fml_dir, 'commands.patch')
     if (not os.path.isfile(patch)):
         raise Exception(('Commands.py patch not found %s' % patch))
         return
-    temp = os.path.abspath('temp.patch')
-    cmd = ('patch -i "%s" ' % temp)
-    if (os.name == 'nt'):
-        applydiff = os.path.abspath(os.path.join(mcp_dir, 'runtime', 'bin', 'applydiff.exe'))
-        cmd = ('"%s" -uf -i "%s"' % (applydiff, temp))
-    if (os.sep == '\\'):
-        cmd = cmd.replace('\\', '\\\\')
-    cmd = shlex.split(cmd)
-    fix_patch(patch, temp)
-    process = subprocess.Popen(cmd, cwd=os.path.join(mcp_dir, 'runtime'), bufsize=(-1))
-    process.communicate()
-    if os.path.isfile(temp):
-        os.remove(temp)
+    print 'Patching commands.py'
+    apply_patch(patch, runtime, mcp_dir=mcp_dir)
     try:
         sys.path.append(mcp_dir)
         from runtime.commands import commands_sanity_check
@@ -42,19 +20,19 @@ def setup_mcp(fml_dir, mcp_dir, dont_gen_conf=True):
     mcp_conf = os.path.join(mcp_dir, 'conf')
     mcp_conf_bak = os.path.join(mcp_dir, 'conf.bak')
     fml_conf = os.path.join(fml_dir, 'conf')
-    if (not dont_gen_conf):
+    if gen_conf:
         if os.path.isdir(mcp_conf_bak):
             print 'Reverting old conf backup folder'
             shutil.rmtree(mcp_conf)
             os.rename(mcp_conf_bak, mcp_conf)
-        get_conf_copy(mcp_dir, fml_dir)
+        create_merged_conf(mcp_dir, fml_dir)
         print 'Backing up MCP Conf'
         os.rename(mcp_conf, mcp_conf_bak)
     else:
         shutil.rmtree(mcp_conf)
     print 'Copying FML conf'
     shutil.copytree(fml_conf, mcp_conf)
-    gen_renamed_conf(mcp_dir, fml_dir)
+    create_renamed_conf(mcp_dir, fml_dir)
     if (not os.path.isfile(os.path.join(fml_dir, 'fmlbuild.properties-sample'))):
         mcp_eclipse = os.path.join(mcp_dir, 'eclipse')
         if (os.path.isdir(os.path.join(mcp_eclipse, 'Client')) and os.path.isdir(os.path.join(mcp_eclipse, 'Server'))):

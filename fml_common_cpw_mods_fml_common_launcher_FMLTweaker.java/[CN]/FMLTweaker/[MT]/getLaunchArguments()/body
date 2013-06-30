@@ -1,0 +1,20 @@
+{
+  String[] array=args.toArray(new String[args.size()]);
+  if (gameDir != null) {
+    array=ObjectArrays.concat(gameDir.getAbsolutePath(),array);
+    array=ObjectArrays.concat("--gameDir",array);
+  }
+  if (assetsDir != null) {
+    array=ObjectArrays.concat(assetsDir.getAbsolutePath(),array);
+    array=ObjectArrays.concat("--assetsDir",array);
+  }
+  if (profile != null) {
+    array=ObjectArrays.concat(profile,array);
+    array=ObjectArrays.concat("--version",array);
+  }
+ else {
+    array=ObjectArrays.concat("UnknownFMLProfile",array);
+    array=ObjectArrays.concat("--version",array);
+  }
+  return array;
+}

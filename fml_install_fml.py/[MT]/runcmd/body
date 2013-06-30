@@ -1,12 +1,12 @@
-def runcmd(commands, command, echo=True):
-    forklist = cmdsplit(command)
+def runcmd(cmd, echo=True, commands=None):
+    forklist = cmdsplit(cmd)
     process = subprocess.Popen(forklist, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=(-1))
     (output, _) = process.communicate()
-    if echo:
+    if (echo and (not (commands is None))):
         for line in output.splitlines():
             commands.logger.info(line)
     if process.returncode:
-        if (not echo):
+        if ((not echo) and (not (commands is None))):
             for line in output.splitlines():
                 commands.logger.info(line)
         return False

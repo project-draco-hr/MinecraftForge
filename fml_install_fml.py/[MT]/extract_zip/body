@@ -1,0 +1,23 @@
+def extract_zip(src, dst, prefix=None, filter=[]):
+
+    def is_filtered(name, excludes):
+        for ex in excludes:
+            if name.startswith(ex):
+                return True
+        return name.endswith('/')
+    zip = ZipFile(src)
+    for name in zip.namelist():
+        if is_filtered(name, filter):
+            continue
+        out_file = os.path.join(dst, os.sep.join(name.split('/')))
+        if (not os.path.isfile(out_file)):
+            dir = os.path.dirname(out_file)
+            if (not os.path.isdir(dir)):
+                os.makedirs(dir)
+            if (not (prefix is None)):
+                print ('%sExtracting %s' % (prefix, name))
+            out = open(out_file, 'wb')
+            out.write(zip.read(name))
+            out.flush()
+            out.close()
+    zip.close()

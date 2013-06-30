@@ -1,18 +1,20 @@
-def file_backup(base, file, md5):
-    bck_jar = os.path.join(base, (file + '.backup'))
-    src_jar = os.path.join(base, file)
-    if ((not os.path.isfile(src_jar)) and (not os.path.isfile(bck_jar))):
+def file_backup(file, md5=None):
+    base = os.path.dirname(file)
+    name = os.path.basename(file)
+    bck = os.path.join(base, (name + '.backup'))
+    src = os.path.join(base, name)
+    if ((not os.path.isfile(src)) and (not os.path.isfile(bck))):
         return
-    if os.path.isfile(bck_jar):
-        if (get_md5(bck_jar) == md5):
-            if os.path.isfile(src_jar):
-                os.remove(src_jar)
-            shutil.move(bck_jar, src_jar)
+    if os.path.isfile(bck):
+        if ((get_md5(bck) == md5) or (md5 is None)):
+            if os.path.isfile(src):
+                os.remove(src)
+            shutil.move(bck, src)
         else:
-            os.remove(bck_jar)
-    if os.path.isfile(src_jar):
-        if (not (get_md5(src_jar) == md5)):
+            os.remove(bck)
+    if os.path.isfile(src):
+        if ((not (get_md5(src) == md5)) and (not (md5 is None))):
             print ('Modified %s detected, removing' % os.path.basename(src_jar))
-            os.remove(src_jar)
+            os.remove(src)
         else:
-            shutil.copy(src_jar, bck_jar)
+            shutil.copy(src, bck)

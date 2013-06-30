@@ -1,0 +1,8 @@
+def load_merged_exc(mcp_dir, fml_dir):
+    joined = {}
+    with open(os.path.join(mcp_dir, 'conf', 'joined.exc'), 'r') as fh:
+        for line in fh:
+            if (not line.startswith('#')):
+                pts = line.rstrip('\r\n').split('=')
+                joined[pts[0]] = pts[1]
+    return joined

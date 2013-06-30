@@ -1,0 +1,3 @@
+{
+  setChunkSize(DEFAULT_CHUNK_SIZE);
+}

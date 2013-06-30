@@ -1,0 +1,4 @@
+{
+  c=Channels.newChannel(targetIS);
+  tbuf.limit(0);
+}

@@ -1,0 +1,5 @@
+{
+  cur=bb.slice();
+  if (pos > cur.limit())   throw new IOException("pos " + pos + " cannot seek "+ cur.limit());
+  cur.position((int)pos);
+}

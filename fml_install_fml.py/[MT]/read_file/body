@@ -1,0 +1,7 @@
+def read_file(file):
+    if (not os.path.exists(file)):
+        return None
+    buf = None
+    with closing(open(file, 'r')) as fh:
+        buf = fh.read()
+    return buf

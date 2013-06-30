@@ -46,7 +46,7 @@ def process_file(file, srg):
                         newline = ('%s %s.%s #%s' % (action[0], targ, args, '#'.join(parts[1:])))
                         nf.write(newline)
                     elif (name not in srg[typ]):
-                        nf.write(('%s # -- MISSING MAPPING' % line))
+                        nf.write(('%s # -- MISSING MAPPING\n' % line.rstrip()))
                         print ('%s is missing a mapping' % name)
                     else:
                         targ = srg[typ][name]

@@ -1,0 +1,6 @@
+{
+  int c=raf.read(bb.array(),bb.position(),bb.remaining());
+  if (c == -1)   return -1;
+  bb.position(bb.position() + c);
+  return c;
+}

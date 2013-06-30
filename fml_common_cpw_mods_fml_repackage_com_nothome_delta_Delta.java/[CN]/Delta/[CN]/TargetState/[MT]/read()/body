@@ -1,0 +1,18 @@
+{
+  if (tbuf.remaining() <= S) {
+    readMore();
+    if (!tbuf.hasRemaining()) {
+      eof=true;
+      return -1;
+    }
+  }
+  byte b=tbuf.get();
+  if (tbuf.remaining() >= S) {
+    byte nchar=tbuf.get(tbuf.position() + S - 1);
+    hash=Checksum.incrementChecksum(hash,b,nchar,S);
+  }
+ else {
+    debug("out of char");
+  }
+  return b & 0xFF;
+}

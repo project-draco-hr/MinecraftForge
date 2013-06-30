@@ -1,7 +1,7 @@
 def fix_patch(in_file, out_file, find=None, rep=None):
     in_file = os.path.normpath(in_file)
     if (out_file is None):
-        tmp_filename = (in_file + '.tmp')
+        tmp_file = (in_file + '.tmp')
     else:
         out_file = os.path.normpath(out_file)
         tmp_file = out_file

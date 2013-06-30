@@ -1,4 +1,4 @@
 {
   super(new URL[0],null);
-  this.mainClassLoader=(RelaunchClassLoader)parent;
+  this.mainClassLoader=(LaunchClassLoader)parent;
 }

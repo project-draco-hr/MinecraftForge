@@ -1,0 +1,5 @@
+{
+  ByteArrayOutputStream os=new ByteArrayOutputStream();
+  compute(source,target,os);
+  return os.toByteArray();
+}

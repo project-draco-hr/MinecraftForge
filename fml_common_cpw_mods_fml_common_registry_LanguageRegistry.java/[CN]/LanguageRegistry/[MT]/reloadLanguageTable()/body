@@ -1,4 +1,2 @@
 {
-  String lang=StringTranslate.func_74808_a().func_74811_c();
-  StringTranslate.func_74808_a().func_74810_a(lang,true);
 }

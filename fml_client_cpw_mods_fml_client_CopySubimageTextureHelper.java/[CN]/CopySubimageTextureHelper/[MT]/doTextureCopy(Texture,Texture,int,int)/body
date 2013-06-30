@@ -1,9 +1,0 @@
-{
-  if (atlas.func_94282_c() == -1) {
-    return;
-  }
-  atlas.func_94277_a(0);
-  ByteBuffer buffer=source.func_94273_h();
-  buffer.position(0);
-  GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D,0,atlasX,atlasY,source.func_94275_d(),source.func_94276_e(),GL11.GL_RGBA,GL11.GL_UNSIGNED_BYTE,buffer);
-}

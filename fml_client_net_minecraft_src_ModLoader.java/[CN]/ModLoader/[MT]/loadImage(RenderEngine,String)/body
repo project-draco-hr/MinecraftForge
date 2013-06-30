@@ -1,3 +1,0 @@
-{
-  return TextureFXManager.instance().loadImageFromTexturePack(renderEngine,path);
-}

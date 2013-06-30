@@ -3,6 +3,7 @@
   Logger globalLogger=Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
   globalLogger.setLevel(Level.OFF);
   log.myLog=Logger.getLogger("ForgeModLoader");
+  LogWrapper.retarget(log.myLog);
   Logger stdOut=Logger.getLogger("STDOUT");
   stdOut.setParent(log.myLog);
   Logger stdErr=Logger.getLogger("STDERR");
@@ -14,14 +15,15 @@
   consoleLogThread.start();
   formatter=new FMLLogFormatter();
   try {
-    File logPath=new File(minecraftHome,FMLRelauncher.logFileNamePattern);
+    File logPath=new File(minecraftHome,logFileNamePattern);
     fileHandler=new FileHandler(logPath.getPath(),0,3){
       public synchronized void close() throws SecurityException {
       }
     }
 ;
   }
- catch (  Exception e) {
+ catch (  Throwable t) {
+    throw Throwables.propagate(t);
   }
   resetLoggingHandlers();
   errCache=System.err;
