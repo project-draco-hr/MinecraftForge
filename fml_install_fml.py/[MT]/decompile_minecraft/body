@@ -76,7 +76,7 @@ def decompile_minecraft(fml_dir, mcp_dir, disable_at=False, disable_merge=False,
         Commands.applyrg = applyrg_shunt
         Commands.applyss = applyss_shunt
         Commands.checkjars = checkjars_shunt
-        decompile(None, False, False, True, True, False, True, False, False, False, False, (not disable_client), enable_server, False, 'none')
+        decompile(None, False, False, True, True, False, True, False, False, False, False, (not disable_client), enable_server, False, os.path.join(mcp_dir, 'jars'), None, True)
         reset_logger()
         os.chdir(fml_dir)
         post_decompile(mcp_dir, fml_dir)
@@ -88,7 +88,7 @@ def decompile_minecraft(fml_dir, mcp_dir, disable_at=False, disable_merge=False,
         sys.exit(1)
     cleanup_source(src_dir)
     os.chdir(mcp_dir)
-    commands = Commands(verify=True)
+    commands = Commands(verify=True, workdir=os.path.join(mcp_dir, 'jars'))
     if (not disable_client):
         updatemd5_side(mcp_dir, commands, CLIENT)
         reset_logger()

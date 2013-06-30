@@ -14,7 +14,7 @@ def file_backup(file, md5=None):
             os.remove(bck)
     if os.path.isfile(src):
         if ((not (get_md5(src) == md5)) and (not (md5 is None))):
-            print ('Modified %s detected, removing' % os.path.basename(src_jar))
+            print ('Modified %s detected, removing' % os.path.basename(src))
             os.remove(src)
         else:
             shutil.copy(src, bck)

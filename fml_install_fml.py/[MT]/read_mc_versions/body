@@ -22,7 +22,7 @@ def read_mc_versions(fml_dir, version=None, work_dir=None):
         mc_info['server_url'] = ('%s/minecraft_server.%s.jar' % (base_url, version))
         if (not (work_dir is None)):
             version_dir = os.path.join(work_dir, 'versions', version)
-            mc_info['natives_dir'] = os.path.join(work_dir, 'libraries', 'natives')
+            mc_info['natives_dir'] = os.path.join(version_dir, ('%s-natives' % version))
             mc_info['library_dir'] = os.path.join(work_dir, 'libraries')
             mc_info['client_file'] = os.path.join(version_dir, ('%s.jar' % version))
             mc_info['json_file'] = os.path.join(version_dir, ('%s.json' % version))
