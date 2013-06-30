@@ -1,5 +1,0 @@
-{
-  SoundSystemConfig.setCodec("xm",CodecIBXM.class);
-  SoundSystemConfig.setCodec("s3m",CodecIBXM.class);
-  SoundSystemConfig.setCodec("mod",CodecIBXM.class);
-}
