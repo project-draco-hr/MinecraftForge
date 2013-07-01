@@ -1,5 +1,5 @@
 {
-  downloadMonitor.updateProgressString("Discovering coremods");
+  FMLRelaunchLog.fine("Discovering coremods");
   File coreMods=setupCoreModDir(mcDir);
   FilenameFilter ff=new FilenameFilter(){
     @Override public boolean accept(    File dir,    String name){
@@ -10,7 +10,7 @@
   File[] coreModList=coreMods.listFiles(ff);
   Arrays.sort(coreModList);
   for (  File coreMod : coreModList) {
-    downloadMonitor.updateProgressString("Found a candidate coremod %s",coreMod.getName());
+    FMLRelaunchLog.fine("Found a candidate coremod %s",coreMod.getName());
     JarFile jar;
     Attributes mfAttributes;
     try {
@@ -38,7 +38,7 @@
       continue;
     }
     try {
-      downloadMonitor.updateProgressString("Loading coremod %s",coreMod.getName());
+      FMLRelaunchLog.fine("Loading coremod %s",coreMod.getName());
       classLoader.addTransformerExclusion(fmlCorePlugin);
       Class<?> coreModClass=Class.forName(fmlCorePlugin,true,classLoader);
       MCVersion requiredMCVersion=coreModClass.getAnnotation(IFMLLoadingPlugin.MCVersion.class);
@@ -70,7 +70,7 @@
           libraries.add((ILibrarySet)Class.forName(libName,true,classLoader).newInstance());
         }
       }
-      downloadMonitor.updateProgressString("Loaded coremod %s",coreMod.getName());
+      FMLRelaunchLog.fine("Loaded coremod %s",coreMod.getName());
     }
  catch (    ClassNotFoundException cnfe) {
       FMLRelaunchLog.log(Level.SEVERE,cnfe,"Coremod %s: Unable to class load the plugin %s",coreMod.getName(),fmlCorePlugin);

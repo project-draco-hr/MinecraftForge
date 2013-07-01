@@ -1,5 +1,0 @@
-{
-  if (progress != null) {
-    progress.getModel().setValue(fullLength);
-  }
-}

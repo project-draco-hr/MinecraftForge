@@ -1,5 +1,0 @@
-{
-  if (progress != null) {
-    progress.getModel().setRangeProperties(0,0,0,sizeGuess,false);
-  }
-}

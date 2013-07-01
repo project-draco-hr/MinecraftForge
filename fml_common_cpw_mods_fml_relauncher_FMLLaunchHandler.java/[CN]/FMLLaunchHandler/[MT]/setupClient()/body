@@ -1,5 +1,4 @@
 {
-  showWindow(true);
   FMLRelaunchLog.logFileNamePattern="ForgeModLoader-client-%g.log";
   side=Side.CLIENT;
   setupHome();
