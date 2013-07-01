@@ -5,8 +5,10 @@
   if (mc.thePlayer.hurtResistantTime < 10) {
     highlight=false;
   }
-  int health=mc.thePlayer.getHealth();
-  float healthLast=mc.thePlayer.prevHealth;
+  AttributeInstance attrMaxHealth=this.mc.thePlayer.func_110148_a(SharedMonsterAttributes.field_111267_a);
+  float maxHealth=(float)attrMaxHealth.func_111126_e();
+  int health=MathHelper.ceiling_float_int(mc.thePlayer.func_110143_aJ());
+  int healthLast=MathHelper.ceiling_float_int(mc.thePlayer.prevHealth);
   int left=width / 2 - 91;
   int top=height - 39;
   int regen=-1;
