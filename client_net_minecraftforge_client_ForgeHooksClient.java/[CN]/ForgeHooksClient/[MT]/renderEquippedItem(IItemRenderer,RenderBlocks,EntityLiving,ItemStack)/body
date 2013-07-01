@@ -1,3 +1,0 @@
-{
-  renderEquippedItem(ItemRenderType.EQUIPPED,customRenderer,renderBlocks,entity,item);
-}

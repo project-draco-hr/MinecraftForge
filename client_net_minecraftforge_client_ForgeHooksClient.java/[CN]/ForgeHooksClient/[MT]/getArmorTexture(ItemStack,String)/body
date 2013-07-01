@@ -1,7 +1,0 @@
-{
-  String result=null;
-  if (armor.getItem() instanceof IArmorTextureProvider) {
-    result=((IArmorTextureProvider)armor.getItem()).getArmorTextureFile(armor);
-  }
-  return result != null ? result : _default;
-}

@@ -1,4 +1,3 @@
 {
-  super(world);
-  this.username=name;
+  super(world,name);
 }
