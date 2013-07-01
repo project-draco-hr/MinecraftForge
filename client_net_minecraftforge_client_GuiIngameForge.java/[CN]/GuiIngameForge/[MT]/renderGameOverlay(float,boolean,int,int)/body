@@ -3,6 +3,11 @@
   eventParent=new RenderGameOverlayEvent(partialTicks,res,mouseX,mouseY);
   int width=res.getScaledWidth();
   int height=res.getScaledHeight();
+  renderHealthMount=mc.thePlayer.ridingEntity instanceof EntityLivingBase;
+  renderFood=mc.thePlayer.ridingEntity == null;
+  renderJumpBar=mc.thePlayer.func_110317_t();
+  right_height=39;
+  left_height=39;
   if (pre(ALL))   return;
   fontrenderer=mc.fontRenderer;
   mc.entityRenderer.setupOverlayRendering();
@@ -21,18 +26,23 @@
     GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
     zLevel=-90.0F;
     rand.setSeed((long)(updateCounter * 312871));
-    mc.renderEngine.func_110577_a(TextureMap.field_110576_c);
     if (renderCrosshairs)     renderCrosshairs(width,height);
     if (renderBossHealth)     renderBossHealth();
     if (this.mc.playerController.shouldDrawHUD()) {
-      if (renderArmor)       renderArmor(width,height);
       if (renderHealth)       renderHealth(width,height);
+      if (renderArmor)       renderArmor(width,height);
       if (renderFood)       renderFood(width,height);
+      if (renderHealthMount)       renderHealthMount(width,height);
       if (renderAir)       renderAir(width,height);
     }
     if (renderHotbar)     renderHotbar(width,height,partialTicks);
   }
-  if (renderExperiance)   renderExperience(width,height);
+  if (renderJumpBar) {
+    renderJumpBar(width,height);
+  }
+ else   if (renderExperiance) {
+    renderExperience(width,height);
+  }
   renderSleepFade(width,height);
   renderToolHightlight(width,height);
   renderHUDText(width,height);
