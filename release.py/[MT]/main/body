@@ -53,7 +53,7 @@ def main():
         print ('Reobfusicate Exception: %d ' % e.code)
         error_level = e.code
     extract_fml_obfed(fml_dir, mcp_dir, reobf_dir, client_dir)
-    extract_paulscode(mcp_dir, client_dir)
+    gen_bin_patches(mcp_dir, os.path.join(forge_dir, 'fml'), build_num, client_dir)
     version = load_version(build_num)
     version_forge = ('%d.%d.%d.%d' % (version['major'], version['minor'], version['revision'], version['build']))
     version_mc = load_mc_version(fml_dir)
@@ -95,7 +95,7 @@ def main():
     zip_add(version_file)
     if (not options.skip_changelog):
         zip_add(changelog_file, 'MinecraftForge-Changelog.txt')
-    FML_FILES = ['CREDITS-fml.txt', 'LICENSE-fml.txt', 'README-fml.txt', 'common/fml_at.cfg', 'common/fml_marker.cfg', 'common/fmlversion.properties', 'common/mcpmod.info', 'client/mcp.png']
+    FML_FILES = ['CREDITS-fml.txt', 'LICENSE-fml.txt', 'README-fml.txt', 'common/fml_at.cfg', 'common/fml_marker.cfg', 'common/fmlversion.properties', 'common/mcpmod.info', 'client/mcp.png', ('common/deobfuscation_data-%s.lzma' % version_mc)]
     for file in FML_FILES:
         zip_add(os.path.join(fml_dir, file))
     zip_end()
