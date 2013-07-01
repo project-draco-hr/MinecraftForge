@@ -33,4 +33,3 @@ def download_assets(mcp_dir):
         failed = ((not download_file(file['url'], file['file'], file['md5'], root=asset_dir, prefix='        ')) or failed)
     if failed:
         print '    Downloading assets failed, please review log for more details'
-    sys.exit(1)
