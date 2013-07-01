@@ -1,29 +1,43 @@
 {
   Pattern binpatchMatcher=Pattern.compile(String.format("binpatch/%s/.*.binpatch",side.toString().toLowerCase(Locale.ENGLISH)));
-  JarFile fmlJar;
+  JarInputStream jis;
   try {
-    FMLRelaunchLog.fine("FML URI is %s",FMLTweaker.getJarLocation());
-    File fmlJarFile=new File(FMLTweaker.getJarLocation());
-    if (!fmlJarFile.exists() || !fmlJarFile.isFile()) {
-      FMLRelaunchLog.log(Level.INFO,"Not found an FML jar, I assume you're developing FML. Hi cpw or Lex!");
-      patches=ArrayListMultimap.create();
+    InputStream binpatchesCompressed=getClass().getResourceAsStream("/binpatches.pack.lzma");
+    if (binpatchesCompressed == null) {
+      FMLRelaunchLog.log(Level.SEVERE,"The binary patch set is missing. Things are probably about to go very wrong.");
       return;
     }
-    fmlJar=new JarFile(fmlJarFile);
+    LzmaInputStream binpatchesDecompressed=new LzmaInputStream(binpatchesCompressed);
+    ByteArrayOutputStream jarBytes=new ByteArrayOutputStream();
+    JarOutputStream jos=new JarOutputStream(jarBytes);
+    Pack200.newUnpacker().unpack(binpatchesDecompressed,jos);
+    jis=new JarInputStream(new ByteArrayInputStream(jarBytes.toByteArray()));
   }
  catch (  Exception e) {
     FMLRelaunchLog.log(Level.SEVERE,e,"Error occurred reading binary patches. Problems may occur");
     throw Throwables.propagate(e);
   }
   patches=ArrayListMultimap.create();
-  for (  JarEntry entry : Collections.list(fmlJar.entries())) {
-    if (binpatchMatcher.matcher(entry.getName()).matches()) {
-      ClassPatch cp=readPatch(entry,fmlJar);
-      if (cp != null) {
-        patches.put(cp.sourceClassName,cp);
+  do {
+    try {
+      JarEntry entry=jis.getNextJarEntry();
+      if (entry == null) {
+        break;
+      }
+      if (binpatchMatcher.matcher(entry.getName()).matches()) {
+        ClassPatch cp=readPatch(entry,jis);
+        if (cp != null) {
+          patches.put(cp.sourceClassName,cp);
+        }
+      }
+ else {
+        jis.closeEntry();
       }
     }
+ catch (    IOException e) {
+    }
   }
-  FMLLog.fine("Read %d binary patches from %s",patches.size(),fmlJar.getName());
+ while (true);
+  FMLLog.fine("Read %d binary patches",patches.size());
   FMLLog.fine("Patch list :\n\t%s",Joiner.on("\t\n").join(patches.asMap().entrySet()));
 }

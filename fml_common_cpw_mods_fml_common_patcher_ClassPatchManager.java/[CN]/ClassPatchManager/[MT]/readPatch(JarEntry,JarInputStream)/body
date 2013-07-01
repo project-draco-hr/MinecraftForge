@@ -1,8 +1,8 @@
 {
-  FMLLog.finest("Reading patch data from %s in file %s",patchEntry.getName(),jarFile.getName());
+  FMLLog.finest("Reading patch data from %s",patchEntry.getName());
   ByteArrayDataInput input;
   try {
-    input=ByteStreams.newDataInput(ByteStreams.toByteArray(jarFile.getInputStream(patchEntry)));
+    input=ByteStreams.newDataInput(ByteStreams.toByteArray(jis));
   }
  catch (  IOException e) {
     FMLLog.log(Level.WARNING,e,"Unable to read binpatch file %s - ignoring",patchEntry.getName());

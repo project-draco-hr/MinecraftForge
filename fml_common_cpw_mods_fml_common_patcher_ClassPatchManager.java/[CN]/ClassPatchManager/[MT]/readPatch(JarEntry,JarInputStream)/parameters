@@ -1,2 +1,2 @@
 JarEntry patchEntry
-JarFile jarFile
+JarInputStream jis
