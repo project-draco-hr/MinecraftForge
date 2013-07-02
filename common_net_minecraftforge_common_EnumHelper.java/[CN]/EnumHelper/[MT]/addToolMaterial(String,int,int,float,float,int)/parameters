@@ -2,5 +2,5 @@ String name
 int harvestLevel
 int maxUses
 float efficiency
-int damage
+float damage
 int enchantability
