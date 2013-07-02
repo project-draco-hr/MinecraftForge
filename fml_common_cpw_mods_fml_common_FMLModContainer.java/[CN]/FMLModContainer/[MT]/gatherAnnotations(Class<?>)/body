@@ -15,7 +15,7 @@
  else       if (a.annotationType().equals(Mod.EventHandler.class)) {
         if (m.getParameterTypes().length == 1 && modAnnotationTypes.containsKey(m.getParameterTypes()[0])) {
           m.setAccessible(true);
-          eventMethods.put((Class<? extends FMLEvent>)m.getParameterTypes()[1],m);
+          eventMethods.put((Class<? extends FMLEvent>)m.getParameterTypes()[0],m);
         }
  else {
           FMLLog.log(getModId(),Level.SEVERE,"The mod %s appears to have an invalid event annotation %s. This annotation can only apply to methods with recognized event arguments - it will not be called",getModId(),a.annotationType().getSimpleName());
