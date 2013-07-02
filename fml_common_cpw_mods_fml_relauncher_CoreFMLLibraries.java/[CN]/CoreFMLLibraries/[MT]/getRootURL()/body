@@ -1,3 +1,0 @@
-{
-  return System.getProperty("fml.core.libraries.mirror","http://files.minecraftforge.net/fmllibs/%s");
-}

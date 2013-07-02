@@ -43,18 +43,13 @@
       }
       IFMLLoadingPlugin plugin=(IFMLLoadingPlugin)coreModClass.newInstance();
       loadPlugins.add(plugin);
-      if (plugin.getLibraryRequestClass() != null) {
-        for (        String libName : plugin.getLibraryRequestClass()) {
-          libraries.add((ILibrarySet)Class.forName(libName,true,classLoader).newInstance());
-        }
-      }
     }
  catch (    Throwable e) {
       FMLRelaunchLog.log(Level.SEVERE,e,"Exception occured trying to load coremod %s",s);
       throw new RuntimeException(e);
     }
   }
-  discoverCoreMods(mcDir,classLoader,loadPlugins,libraries);
+  discoverCoreMods(mcDir,classLoader,loadPlugins);
   for (  IFMLLoadingPlugin plug : loadPlugins) {
     if (plug.getASMTransformerClass() != null) {
       for (      String xformClass : plug.getASMTransformerClass()) {
