@@ -61,12 +61,12 @@ def main():
     version_str = ('%s-%s' % (version_mc, version_forge))
     if (not (branch == '')):
         version_str = ('%s-%s' % (version_str, branch))
-    out_folder = os.path.join(forge_dir, ('forge-%s' % version_str))
+    out_folder = os.path.join(forge_dir, 'target')
     if os.path.isdir(out_folder):
         shutil.rmtree(out_folder)
     os.makedirs(out_folder)
     if (not options.skip_changelog):
-        changelog_file = ('forge-%s/minecraftforge-changelog-%s.txt' % (version_str, version_str))
+        changelog_file = ('target/minecraftforge-changelog-%s.txt' % version_str)
         try:
             make_changelog('http://jenkins.minecraftforge.net:81/job/minecraftforge/', build_num, changelog_file, version_str)
         except HTTPError as e:
@@ -81,9 +81,9 @@ def main():
         fh.write(('forge.revision.number=%d\n' % version['revision']))
         fh.write(('forge.build.number=%d\n' % version['build']))
     if (not (options.sign_jar is None)):
-        sign_jar(forge_dir, options.sign_jar, client_dir, ('minecraftforge-universal-%s.zip' % version_str))
+        sign_jar(forge_dir, options.sign_jar, client_dir, ('minecraftforge-universal-%s.jar' % version_str))
     else:
-        zip_start(('minecraftforge-universal-%s.zip' % version_str))
+        zip_start(('minecraftforge-universal-%s.jar' % version_str))
         zip_folder(client_dir, '', zip)
         zip_add('MANIFEST.MF', 'META-INF/MANIFEST.MF')
     zip_add('client/forge_logo.png')
@@ -99,6 +99,7 @@ def main():
     for file in FML_FILES:
         zip_add(os.path.join(fml_dir, file))
     zip_end()
+    build_installer(forge_dir, version_str, version_forge, version_mc, out_folder)
     inject_version(os.path.join(forge_dir, 'common/net/minecraftforge/common/ForgeVersion.java'.replace('/', os.sep)), build_num)
     zip_start(('minecraftforge-src-%s.zip' % version_str), 'forge')
     zip_add('client', 'client')
