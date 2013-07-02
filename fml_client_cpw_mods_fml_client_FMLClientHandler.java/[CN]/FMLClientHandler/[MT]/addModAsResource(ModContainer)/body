@@ -1,0 +1,9 @@
+{
+  File modSource=container.getSource();
+  if (modSource.isFile()) {
+    resourcePackList.add(new FileResourcePack(modSource));
+  }
+ else   if (modSource.isDirectory()) {
+    resourcePackList.add(new FolderResourcePack(modSource));
+  }
+}
