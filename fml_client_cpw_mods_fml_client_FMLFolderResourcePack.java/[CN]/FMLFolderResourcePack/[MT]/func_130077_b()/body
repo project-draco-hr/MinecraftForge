@@ -1,0 +1,3 @@
+{
+  return "FMLFileResourcePack:" + container.getName();
+}

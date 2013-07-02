@@ -1,0 +1,12 @@
+{
+  try {
+    return super.func_110591_a(resourceName);
+  }
+ catch (  IOException ioe) {
+    if ("pack.mcmeta".equals(resourceName)) {
+      FMLLog.log(container.getName(),Level.WARNING,"Mod %s is missing a pack.mcmeta file, things may not work well",container.getName());
+      return new ByteArrayInputStream(("{\n" + " \"pack\": {\n" + "   \"description\": \"dummy FML pack for " + container.getName() + "\",\n"+ "   \"pack_format\": 1\n"+ "}\n"+ "}").getBytes(Charsets.UTF_8));
+    }
+ else     throw ioe;
+  }
+}

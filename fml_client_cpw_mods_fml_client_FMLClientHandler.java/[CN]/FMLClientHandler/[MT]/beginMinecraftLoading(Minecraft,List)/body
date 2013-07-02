@@ -22,6 +22,7 @@
   }
   try {
     Loader.instance().loadMods();
+    client.func_110436_a();
   }
  catch (  WrongMinecraftVersionException wrong) {
     wrongMC=wrong;
