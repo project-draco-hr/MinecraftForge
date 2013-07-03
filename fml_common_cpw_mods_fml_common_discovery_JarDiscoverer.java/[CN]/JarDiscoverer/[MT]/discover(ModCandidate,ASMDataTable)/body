@@ -1,9 +1,13 @@
 {
   List<ModContainer> foundMods=Lists.newArrayList();
   FMLLog.fine("Examining file %s for potential mods",candidate.getModContainer().getName());
-  ZipFile jar=null;
+  JarFile jar=null;
   try {
-    jar=new ZipFile(candidate.getModContainer());
+    jar=new JarFile(candidate.getModContainer());
+    if (jar.getManifest() != null && jar.getManifest().getMainAttributes().get("FMLCorePlugin") != null) {
+      FMLLog.finest("Ignoring coremod %s",candidate.getModContainer());
+      return foundMods;
+    }
     ZipEntry modInfo=jar.getEntry("mcmod.info");
     MetadataCollection mc=null;
     if (modInfo != null) {

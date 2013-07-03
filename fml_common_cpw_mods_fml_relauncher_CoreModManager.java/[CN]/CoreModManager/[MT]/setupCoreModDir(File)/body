@@ -1,5 +1,5 @@
 {
-  File coreModDir=new File(mcDir,"coremods");
+  File coreModDir=new File(mcDir,"mods");
   try {
     coreModDir=coreModDir.getCanonicalFile();
   }
