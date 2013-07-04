@@ -1,0 +1,7 @@
+{
+  if (tickRate <= 0) {
+    tickRate=20;
+  }
+  this.tickRate=tickRate;
+  return this;
+}

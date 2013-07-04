@@ -1,0 +1,22 @@
+{
+  int bId=world.getBlockId(x,y,z);
+  if (bId == 0) {
+    return true;
+  }
+  if (bId == blockID) {
+    return false;
+  }
+  if (displacementIds.containsKey(bId)) {
+    if (displacementIds.get(bId)) {
+      Block.blocksList[bId].dropBlockAsItem(world,x,y,z,world.getBlockMetadata(x,y,z),0);
+      return true;
+    }
+    return false;
+  }
+  Material material=Block.blocksList[bId].blockMaterial;
+  if (material.blocksMovement() || material == Material.portal) {
+    return false;
+  }
+  Block.blocksList[bId].dropBlockAsItem(world,x,y,z,world.getBlockMetadata(x,y,z),0);
+  return true;
+}

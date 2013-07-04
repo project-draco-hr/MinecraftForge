@@ -1,0 +1,3 @@
+{
+  this(new FluidStack(fluid,amount),capacity);
+}

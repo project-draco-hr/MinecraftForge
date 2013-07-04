@@ -1,0 +1,6 @@
+{
+  if (!(o instanceof FluidStack)) {
+    return false;
+  }
+  return isFluidEqual((FluidStack)o);
+}

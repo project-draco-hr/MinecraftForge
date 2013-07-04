@@ -1,0 +1,3 @@
+{
+  return stack1 == null && stack2 == null ? true : stack1 == null || stack2 == null ? false : stack1.isFluidStackTagEqual(stack2);
+}

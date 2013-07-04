@@ -1,0 +1,4 @@
+{
+  this.stack=stack;
+  return this;
+}

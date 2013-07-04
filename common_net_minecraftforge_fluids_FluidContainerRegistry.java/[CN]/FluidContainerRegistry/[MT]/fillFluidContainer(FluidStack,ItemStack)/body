@@ -1,0 +1,10 @@
+{
+  if (container == null || fluid == null) {
+    return null;
+  }
+  FluidContainerData data=filledContainerMap.get(Arrays.asList(container.itemID,container.getItemDamage(),fluid.fluidID));
+  if (data != null && fluid.amount >= data.fluid.amount) {
+    return data.filledContainer.copy();
+  }
+  return null;
+}

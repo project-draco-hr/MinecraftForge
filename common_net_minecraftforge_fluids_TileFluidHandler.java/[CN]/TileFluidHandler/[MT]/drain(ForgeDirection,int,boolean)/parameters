@@ -1,0 +1,3 @@
+ForgeDirection from
+int maxDrain
+boolean doDrain

@@ -1,0 +1,4 @@
+{
+  this.maxScaledLight=maxScaledLight;
+  return this;
+}

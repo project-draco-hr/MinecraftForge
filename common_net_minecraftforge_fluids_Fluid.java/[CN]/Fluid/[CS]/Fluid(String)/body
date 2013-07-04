@@ -1,0 +1,4 @@
+{
+  this.fluidName=fluidName.toLowerCase(Locale.ENGLISH);
+  this.unlocalizedName=fluidName;
+}

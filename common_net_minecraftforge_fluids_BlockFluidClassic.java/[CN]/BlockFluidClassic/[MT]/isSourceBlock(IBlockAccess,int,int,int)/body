@@ -1,0 +1,3 @@
+{
+  return world.getBlockId(x,y,z) == blockID && world.getBlockMetadata(x,y,z) == 0;
+}

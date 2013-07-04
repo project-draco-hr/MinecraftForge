@@ -1,0 +1,3 @@
+{
+  return isFluidEqual(other) && amount >= other.amount;
+}
