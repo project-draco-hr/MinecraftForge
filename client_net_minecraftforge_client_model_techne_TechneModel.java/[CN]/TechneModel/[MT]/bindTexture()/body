@@ -1,0 +1,25 @@
+{
+  if (texture != null) {
+    if (!textureNameSet) {
+      try {
+        byte[] textureEntry=zipContents.get(texture);
+        if (textureEntry == null) {
+          throw new ModelFormatException("Model " + fileName + " has no such texture "+ texture);
+        }
+        BufferedImage image=ImageIO.read(new ByteArrayInputStream(textureEntry));
+        textureName=Minecraft.getMinecraft().renderEngine.allocateAndSetupTexture(image);
+        textureNameSet=true;
+      }
+ catch (      ZipException e) {
+        throw new ModelFormatException("Model " + fileName + " is not a valid zip file");
+      }
+catch (      IOException e) {
+        throw new ModelFormatException("Texture for model " + fileName + " could not be read",e);
+      }
+    }
+    if (textureNameSet) {
+      GL11.glBindTexture(GL11.GL_TEXTURE_2D,textureName);
+      Minecraft.getMinecraft().renderEngine.resetBoundTexture();
+    }
+  }
+}
