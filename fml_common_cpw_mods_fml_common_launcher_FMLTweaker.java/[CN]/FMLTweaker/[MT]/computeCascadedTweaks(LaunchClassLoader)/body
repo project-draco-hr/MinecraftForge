@@ -1,0 +1,15 @@
+{
+  if (parsedOptions.has(cascadedTweaksOption)) {
+    for (    String tweaker : cascadedTweaksOption.values(parsedOptions)) {
+      try {
+        classLoader.addClassLoaderExclusion(tweaker.substring(0,tweaker.lastIndexOf('.')));
+        Class<? extends ITweaker> tweakClass=(Class<? extends ITweaker>)Class.forName(tweaker,true,classLoader);
+        ITweaker additionalTweak=tweakClass.newInstance();
+        cascadedTweaks.add(additionalTweak);
+      }
+ catch (      Exception e) {
+        Logger.getLogger("FMLTWEAK").log(Level.INFO,"Missing additional tweak class " + tweaker);
+      }
+    }
+  }
+}

@@ -1,5 +1,4 @@
 {
-  this.args=args;
   this.gameDir=(gameDir == null ? new File(".") : gameDir);
   this.assetsDir=assetsDir;
   this.profile=profile;
@@ -10,4 +9,15 @@
     Logger.getLogger("FMLTWEAK").log(Level.SEVERE,"Missing URI information for FML tweak");
     throw Throwables.propagate(e);
   }
+  OptionParser optionParser=new OptionParser();
+  cascadedTweaksOption=optionParser.accepts("cascadedTweaks","Additional tweaks to be called by FML, implementing ITweaker").withRequiredArg().ofType(String.class).withValuesSeparatedBy(',');
+  ArgumentAcceptingOptionSpec<String> profileNameOption=optionParser.accepts("profileName","A profile name, parsed by FML to control mod loading and such").withRequiredArg().ofType(String.class);
+  optionParser.allowsUnrecognizedOptions();
+  NonOptionArgumentSpec<String> nonOptions=optionParser.nonOptions();
+  parsedOptions=optionParser.parse(args.toArray(new String[args.size()]));
+  if (parsedOptions.has(profileNameOption)) {
+    profileName=profileNameOption.value(parsedOptions);
+  }
+  this.args=parsedOptions.valuesOf(nonOptions);
+  this.cascadedTweaks=Lists.newArrayList();
 }

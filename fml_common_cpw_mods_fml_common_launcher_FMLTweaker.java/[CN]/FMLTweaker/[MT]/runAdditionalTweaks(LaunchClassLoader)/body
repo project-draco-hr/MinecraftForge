@@ -1,0 +1,8 @@
+{
+  List<String> fmlArgs=Lists.newArrayList(args);
+  fmlArgs.add("--fmlIsPresent");
+  for (  ITweaker tweak : cascadedTweaks) {
+    tweak.acceptOptions(fmlArgs,gameDir,assetsDir,profile);
+    tweak.injectIntoClassLoader(classLoader);
+  }
+}
