@@ -1,3 +1,0 @@
-{
-  return liquids.toArray(new LiquidContainerData[liquids.size()]);
-}

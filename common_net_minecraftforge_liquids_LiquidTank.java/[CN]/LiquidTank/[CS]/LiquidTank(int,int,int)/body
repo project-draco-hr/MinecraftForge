@@ -1,3 +1,0 @@
-{
-  this(new LiquidStack(liquidId,quantity),capacity);
-}

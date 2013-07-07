@@ -1,3 +1,0 @@
-{
-  this(block.blockID,amount,0);
-}

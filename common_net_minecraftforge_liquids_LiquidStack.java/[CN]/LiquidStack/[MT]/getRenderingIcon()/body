@@ -1,9 +1,0 @@
-{
-  if (itemID == Block.waterStill.blockID) {
-    return BlockFluid.func_94424_b("water");
-  }
- else   if (itemID == Block.lavaStill.blockID) {
-    return BlockFluid.func_94424_b("lava");
-  }
-  return renderingIcon;
-}

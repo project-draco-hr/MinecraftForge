@@ -1,3 +1,0 @@
-{
-  return isEmptyContainer(container) || isFilledContainer(container);
-}

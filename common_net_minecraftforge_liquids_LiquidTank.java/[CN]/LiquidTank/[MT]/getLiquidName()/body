@@ -1,3 +1,0 @@
-{
-  return liquid != null ? LiquidDictionary.findLiquidName(liquid) : null;
-}

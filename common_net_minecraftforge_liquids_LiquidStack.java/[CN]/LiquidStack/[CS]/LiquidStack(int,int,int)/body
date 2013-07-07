@@ -1,5 +1,0 @@
-{
-  this.itemID=itemID;
-  this.amount=amount;
-  this.itemMeta=itemDamage;
-}
