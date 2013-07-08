@@ -6,6 +6,7 @@
   if (list.isEmpty()) {
     return inputData;
   }
+  FMLLog.fine("Runtime patching class %s (input size %d), found %d patch%s",mappedName,inputData.length,list.size(),list.size() != 1 ? "es" : "");
   for (  ClassPatch patch : list) {
     if (!patch.targetClassName.equals(mappedName)) {
       FMLLog.warning("Binary patch found %s for wrong class %s",patch.targetClassName,mappedName);
@@ -26,6 +27,14 @@ synchronized (patcher) {
       }
     }
   }
-  FMLLog.fine("Successfully applied runtime patches for %s",mappedName);
+  FMLLog.fine("Successfully applied runtime patches for %s (new size %d)",mappedName,inputData.length);
+  if (dumpPatched) {
+    try {
+      Files.write(inputData,new File(tempDir,mappedName));
+    }
+ catch (    IOException e) {
+      FMLLog.log(Level.SEVERE,e,"Failed to write %s to %s",mappedName,tempDir.getAbsolutePath());
+    }
+  }
   return inputData;
 }
