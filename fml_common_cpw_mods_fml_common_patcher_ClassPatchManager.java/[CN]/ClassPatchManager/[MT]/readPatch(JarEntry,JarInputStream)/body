@@ -12,8 +12,12 @@
   String sourceClassName=input.readUTF();
   String targetClassName=input.readUTF();
   boolean exists=input.readBoolean();
+  int inputChecksum=0;
+  if (exists) {
+    inputChecksum=input.readInt();
+  }
   int patchLength=input.readInt();
   byte[] patchBytes=new byte[patchLength];
   input.readFully(patchBytes);
-  return new ClassPatch(name,sourceClassName,targetClassName,exists,patchBytes);
+  return new ClassPatch(name,sourceClassName,targetClassName,exists,inputChecksum,patchBytes);
 }

@@ -32,6 +32,9 @@
       diffOut.writeUTF(sourceClassName);
       diffOut.writeUTF(targetClassName);
       diffOut.writeBoolean(entry != null);
+      if (entry != null) {
+        diffOut.writeInt(Hashing.adler32().hashBytes(vanillaBytes).asInt());
+      }
       diffOut.writeInt(diff.length);
       diffOut.write(diff);
       File target=new File(outputDir,targetClassName + ".binpatch");

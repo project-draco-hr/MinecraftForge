@@ -2,4 +2,5 @@ String name
 String sourceClassName
 String targetClassName
 boolean existsAtTarget
+int inputChecksum
 byte[] patch
