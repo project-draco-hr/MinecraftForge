@@ -25,7 +25,7 @@
  else {
     goodFML=true;
   }
-  boolean goodMC=false;
+  boolean goodMC=FMLLaunchHandler.side() == Side.SERVER;
   try {
     Class cbr=Class.forName("net.minecraft.server.MinecraftServer",false,cl);
     codeSource=cbr.getProtectionDomain().getCodeSource();
