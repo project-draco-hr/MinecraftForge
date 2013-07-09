@@ -33,7 +33,6 @@
  catch (  Exception e) {
     goodMC=true;
   }
-  fmlIsJar=true;
   if (fmlIsJar && !goodMC && codeSource.getLocation().getProtocol().equals("jar")) {
     try {
       String mcPath=codeSource.getLocation().getPath().substring(5);
