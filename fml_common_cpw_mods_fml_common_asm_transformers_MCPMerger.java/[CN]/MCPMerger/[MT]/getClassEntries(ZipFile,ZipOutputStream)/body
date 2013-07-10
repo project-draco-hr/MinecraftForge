@@ -1,6 +1,6 @@
 {
   Hashtable<String,ZipEntry> ret=new Hashtable<String,ZipEntry>();
-  for (  ZipEntry entry : Collections.list((Enumeration<ZipEntry>)inFile.entries())) {
+  for (  ZipEntry entry : Collections.list(inFile.entries())) {
     if (entry.isDirectory()) {
       outFile.putNextEntry(entry);
       continue;
