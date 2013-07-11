@@ -6,7 +6,7 @@
   FMLRelaunchLog.fine("Java classpath at launch is %s",System.getProperty("java.class.path"));
   FMLRelaunchLog.fine("Java library path at launch is %s",System.getProperty("java.library.path"));
   try {
-    CoreModManager.handleLaunch(minecraftHome,classLoader);
+    CoreModManager.handleLaunch(minecraftHome,classLoader,tweaker);
   }
  catch (  Throwable t) {
     t.printStackTrace();

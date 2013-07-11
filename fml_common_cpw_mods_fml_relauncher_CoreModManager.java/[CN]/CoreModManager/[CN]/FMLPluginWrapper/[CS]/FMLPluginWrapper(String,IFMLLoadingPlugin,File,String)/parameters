@@ -1,0 +1,4 @@
+String name
+IFMLLoadingPlugin coreModInstance
+File location
+String predepends

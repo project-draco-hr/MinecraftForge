@@ -1,0 +1,52 @@
+{
+  FMLRelaunchLog.fine("Discovering coremods");
+  File coreMods=setupCoreModDir(mcDir);
+  FilenameFilter ff=new FilenameFilter(){
+    @Override public boolean accept(    File dir,    String name){
+      return name.endsWith(".jar");
+    }
+  }
+;
+  File[] coreModList=coreMods.listFiles(ff);
+  File versionedModDir=new File(coreMods,FMLInjectionData.mccversion);
+  if (versionedModDir.isDirectory()) {
+    File[] versionedCoreMods=versionedModDir.listFiles(ff);
+    coreModList=ObjectArrays.concat(coreModList,versionedCoreMods,File.class);
+  }
+  Arrays.sort(coreModList);
+  for (  File coreMod : coreModList) {
+    FMLRelaunchLog.fine("Examining for coremod candidacy %s",coreMod.getName());
+    JarFile jar;
+    Attributes mfAttributes;
+    try {
+      jar=new JarFile(coreMod);
+      if (jar.getManifest() == null) {
+        continue;
+      }
+      mfAttributes=jar.getManifest().getMainAttributes();
+    }
+ catch (    IOException ioe) {
+      FMLRelaunchLog.log(Level.SEVERE,ioe,"Unable to read the jar file %s - ignoring",coreMod.getName());
+      continue;
+    }
+    String cascadedTweaker=mfAttributes.getValue("TweakClass");
+    if (cascadedTweaker != null) {
+      handleCascadingTweak(coreMod,jar,cascadedTweaker,classLoader);
+      loadedCoremods.add(coreMod.getName());
+      continue;
+    }
+    String fmlCorePlugin=mfAttributes.getValue("FMLCorePlugin");
+    if (fmlCorePlugin == null) {
+      continue;
+    }
+    try {
+      classLoader.addURL(coreMod.toURI().toURL());
+      loadedCoremods.add(coreMod.getName());
+    }
+ catch (    MalformedURLException e) {
+      FMLRelaunchLog.log(Level.SEVERE,e,"Unable to convert file into a URL. weird");
+      continue;
+    }
+    loadCoreMod(classLoader,fmlCorePlugin,coreMod);
+  }
+}

@@ -1,0 +1,59 @@
+{
+  for (  FMLPluginWrapper wrap : loadPlugins) {
+    IFMLLoadingPlugin plug=wrap.coreModInstance;
+    if (plug.getASMTransformerClass() != null) {
+      for (      String xformClass : plug.getASMTransformerClass()) {
+        FMLRelaunchLog.finest("Registering transformer %s",xformClass);
+        classLoader.registerTransformer(xformClass);
+      }
+    }
+  }
+  FMLRelaunchLog.fine("Running coremod plugins");
+  Map<String,Object> data=new HashMap<String,Object>();
+  data.put("mcLocation",mcDir);
+  data.put("coremodList",loadPlugins);
+  data.put("runtimeDeobfuscationEnabled",!deobfuscatedEnvironment);
+  for (  FMLPluginWrapper pluginWrapper : loadPlugins) {
+    IFMLLoadingPlugin plugin=pluginWrapper.coreModInstance;
+    FMLRelaunchLog.fine("Running coremod plugin %s",pluginWrapper.name);
+    data.put("coremodLocation",pluginWrapper.location);
+    plugin.injectData(data);
+    String setupClass=plugin.getSetupClass();
+    if (setupClass != null) {
+      try {
+        IFMLCallHook call=(IFMLCallHook)Class.forName(setupClass,true,classLoader).newInstance();
+        Map<String,Object> callData=new HashMap<String,Object>();
+        callData.put("mcLocation",mcDir);
+        callData.put("classLoader",classLoader);
+        callData.put("coremodLocation",pluginWrapper.location);
+        callData.put("deobfuscationFileName",FMLInjectionData.debfuscationDataName());
+        call.injectData(callData);
+        call.call();
+      }
+ catch (      Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
+    FMLRelaunchLog.fine("Coremod plugin %s run successfully",plugin.getClass().getSimpleName());
+    String modContainer=plugin.getModContainerClass();
+    if (modContainer != null) {
+      FMLInjectionData.containers.add(modContainer);
+    }
+  }
+  if (!deobfuscatedEnvironment) {
+    classLoader.registerTransformer("cpw.mods.fml.common.asm.transformers.DeobfuscationTransformer");
+  }
+  try {
+    FMLRelaunchLog.fine("Validating minecraft");
+    Class<?> loaderClazz=Class.forName("cpw.mods.fml.common.Loader",true,classLoader);
+    Method m=loaderClazz.getMethod("injectData",Object[].class);
+    m.invoke(null,(Object)FMLInjectionData.data());
+    m=loaderClazz.getMethod("instance");
+    m.invoke(null);
+    FMLRelaunchLog.fine("Minecraft validated, launching...");
+  }
+ catch (  Exception e) {
+    System.out.println("A CRITICAL PROBLEM OCCURED INITIALIZING MINECRAFT - LIKELY YOU HAVE AN INCORRECT VERSION FOR THIS FML");
+    throw new RuntimeException(e);
+  }
+}
