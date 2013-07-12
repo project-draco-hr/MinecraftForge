@@ -1,7 +1,7 @@
 def download_assets(mcp_dir):
     from xml.dom.minidom import parse
     asset_dir = os.path.join(mcp_dir, 'jars', 'assets')
-    base_url = 'https://s3.amazonaws.com/Minecraft.Resources'
+    base_url = 'http://s3.amazonaws.com/Minecraft.Resources'
     print ('Gathering assets list from %s' % base_url)
     files = []
     failed = False

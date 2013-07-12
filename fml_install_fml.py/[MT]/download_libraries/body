@@ -1,6 +1,6 @@
 def download_libraries(mcp_dir, libraries, natives_dir):
     lib_dir = os.path.join(mcp_dir, 'jars', 'libraries')
-    default_url = 'https://s3.amazonaws.com/Minecraft.Download/libraries'
+    default_url = 'http://s3.amazonaws.com/Minecraft.Download/libraries'
     downloads = []
     failed = False
     for lib in libraries:
