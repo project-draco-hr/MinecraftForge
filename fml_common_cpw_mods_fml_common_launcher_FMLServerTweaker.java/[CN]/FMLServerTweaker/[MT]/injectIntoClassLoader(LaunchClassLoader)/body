@@ -6,4 +6,5 @@
   classLoader.addClassLoaderExclusion("LZMA.");
   FMLLaunchHandler.configureForServerLaunch(classLoader,this);
   runAdditionalTweaks(classLoader);
+  FMLLaunchHandler.appendCoreMods();
 }
