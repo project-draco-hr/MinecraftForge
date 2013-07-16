@@ -1,7 +1,7 @@
 import os, os.path, sys, glob
-import shutil, fnmatch, time
+import shutil, fnmatch, time, json
 import logging, zipfile, re, subprocess
-from pprint import pformat
+from pprint import pformat, pprint
 from optparse import OptionParser
 from urllib2 import HTTPError
 from contextlib import closing
