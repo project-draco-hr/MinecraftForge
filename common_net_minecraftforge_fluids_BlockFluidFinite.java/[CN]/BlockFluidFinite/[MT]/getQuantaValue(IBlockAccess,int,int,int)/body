@@ -1,5 +1,5 @@
 {
-  if (world.getBlockId(x,y,z) == 0) {
+  if (world.isAirBlock(x,y,z)) {
     return 0;
   }
   if (world.getBlockId(x,y,z) != blockID) {

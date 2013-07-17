@@ -1,6 +1,6 @@
 {
   Block block=Block.blocksList[world.getBlockId(x,y,z)];
-  if (!(Block.blocksList[world.getBlockId(x,y,z)] instanceof BlockFluidBase)) {
+  if (!(block instanceof BlockFluidBase)) {
     return -1000.0;
   }
   Vec3 vec=((BlockFluidBase)block).getFlowVector(world,x,y,z);

@@ -17,18 +17,10 @@
     return;
   }
   int lowerthan=quantaRemaining - 1;
-  if (displaceIfPossible(world,x,y,z - 1)) {
-    world.setBlock(x,y,z - 1,0);
-  }
-  if (displaceIfPossible(world,x,y,z + 1)) {
-    world.setBlock(x,y,z + 1,0);
-  }
-  if (displaceIfPossible(world,x - 1,y,z)) {
-    world.setBlock(x - 1,y,z,0);
-  }
-  if (displaceIfPossible(world,x + 1,y,z)) {
-    world.setBlock(x + 1,y,z,0);
-  }
+  if (displaceIfPossible(world,x,y,z - 1))   world.setBlock(x,y,z - 1,0);
+  if (displaceIfPossible(world,x,y,z + 1))   world.setBlock(x,y,z + 1,0);
+  if (displaceIfPossible(world,x - 1,y,z))   world.setBlock(x - 1,y,z,0);
+  if (displaceIfPossible(world,x + 1,y,z))   world.setBlock(x + 1,y,z,0);
   int north=getQuantaValueBelow(world,x,y,z - 1,lowerthan);
   int south=getQuantaValueBelow(world,x,y,z + 1,lowerthan);
   int west=getQuantaValueBelow(world,x - 1,y,z,lowerthan);
@@ -36,15 +28,15 @@
   int total=quantaRemaining;
   int count=1;
   if (north >= 0) {
-    ++count;
+    count++;
     total+=north;
   }
   if (south >= 0) {
-    ++count;
+    count++;
     total+=south;
   }
   if (west >= 0) {
-    ++count;
+    count++;
     total+=west;
   }
   if (east >= 0) {

@@ -5,5 +5,5 @@
   int lightUpBase=lightUp & 255;
   int lightThisExt=lightThis >> 16 & 255;
   int lightUpExt=lightUp >> 16 & 255;
-  return (lightThisBase > lightUpBase ? lightThisBase : lightUpBase) | (lightThisExt > lightUpExt ? lightThisExt : lightUpExt) << 16;
+  return (lightThisBase > lightUpBase ? lightThisBase : lightUpBase) | ((lightThisExt > lightUpExt ? lightThisExt : lightUpExt) << 16);
 }

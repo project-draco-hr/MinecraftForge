@@ -1,5 +1,3 @@
 {
-  this.stillIcon=stillIcon;
-  this.flowingIcon=flowingIcon;
-  return this;
+  return this.setStillIcon(stillIcon).setFlowingIcon(flowingIcon);
 }
