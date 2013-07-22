@@ -1,0 +1,12 @@
+{
+  if (liquid == null) {
+    throw new NullPointerException("You cannot register a null LiquidStack");
+  }
+  LiquidStack existing=liquids.get(name);
+  if (existing != null) {
+    return existing.copy();
+  }
+  liquids.put(name,liquid.copy());
+  MinecraftForge.EVENT_BUS.post(new LiquidRegisterEvent(name,liquid));
+  return liquid;
+}

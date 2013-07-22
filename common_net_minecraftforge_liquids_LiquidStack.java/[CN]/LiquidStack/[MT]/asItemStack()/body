@@ -1,0 +1,7 @@
+{
+  ItemStack stack=new ItemStack(itemID,1,itemMeta);
+  if (extra != null) {
+    stack.stackTagCompound=(NBTTagCompound)extra.copy();
+  }
+  return stack;
+}

@@ -1,0 +1,4 @@
+{
+  this.renderingIcon=icon;
+  return this;
+}

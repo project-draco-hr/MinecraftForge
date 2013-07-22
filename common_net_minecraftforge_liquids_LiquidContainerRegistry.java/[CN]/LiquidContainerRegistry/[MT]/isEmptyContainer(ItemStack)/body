@@ -1,0 +1,3 @@
+{
+  return emptyContainer != null && setContainerValidation.contains(Arrays.asList(emptyContainer.itemID,emptyContainer.getItemDamage()));
+}

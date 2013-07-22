@@ -1,0 +1,3 @@
+int itemID
+int amount
+int itemDamage

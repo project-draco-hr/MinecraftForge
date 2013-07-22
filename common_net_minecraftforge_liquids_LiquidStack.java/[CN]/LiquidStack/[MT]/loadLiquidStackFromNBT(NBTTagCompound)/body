@@ -1,0 +1,22 @@
+{
+  if (nbt == null) {
+    return null;
+  }
+  String liquidName=nbt.getString("LiquidName");
+  int itemID=nbt.getShort("Id");
+  int itemMeta=nbt.getShort("Meta");
+  LiquidStack liquid=LiquidDictionary.getCanonicalLiquid(liquidName);
+  if (liquid != null) {
+    itemID=liquid.itemID;
+    itemMeta=liquid.itemMeta;
+  }
+ else   if (Item.itemsList[itemID] == null) {
+    return null;
+  }
+  int amount=nbt.getInteger("Amount");
+  LiquidStack liquidstack=new LiquidStack(itemID,amount,itemMeta);
+  if (nbt.hasKey("extra")) {
+    liquidstack.extra=nbt.getCompoundTag("extra");
+  }
+  return liquidstack.itemID == 0 ? null : liquidstack;
+}

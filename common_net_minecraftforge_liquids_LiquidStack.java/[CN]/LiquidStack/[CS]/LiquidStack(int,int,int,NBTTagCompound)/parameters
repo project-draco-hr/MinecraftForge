@@ -1,0 +1,4 @@
+int itemID
+int amount
+int itemDamage
+NBTTagCompound nbt

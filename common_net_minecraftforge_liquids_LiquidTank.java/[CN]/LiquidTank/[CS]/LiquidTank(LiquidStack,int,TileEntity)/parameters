@@ -1,0 +1,3 @@
+LiquidStack liquid
+int capacity
+TileEntity tile

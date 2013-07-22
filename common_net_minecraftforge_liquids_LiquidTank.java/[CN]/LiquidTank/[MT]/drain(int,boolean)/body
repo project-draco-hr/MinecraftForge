@@ -1,0 +1,13 @@
+{
+  if (liquid == null || liquid.itemID <= 0)   return null;
+  if (liquid.amount <= 0)   return null;
+  int used=maxDrain;
+  if (liquid.amount < used)   used=liquid.amount;
+  if (doDrain) {
+    liquid.amount-=used;
+  }
+  LiquidStack drained=new LiquidStack(liquid.itemID,used,liquid.itemMeta);
+  if (liquid.amount <= 0)   liquid=null;
+  if (doDrain && tile != null)   LiquidEvent.fireEvent(new LiquidEvent.LiquidDrainingEvent(drained,tile.worldObj,tile.xCoord,tile.yCoord,tile.zCoord,this));
+  return drained;
+}

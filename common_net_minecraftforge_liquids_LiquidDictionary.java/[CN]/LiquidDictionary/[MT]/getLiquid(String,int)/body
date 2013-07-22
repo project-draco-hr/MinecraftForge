@@ -1,0 +1,7 @@
+{
+  LiquidStack liquid=liquids.get(name);
+  if (liquid == null)   return null;
+  liquid=liquid.copy();
+  liquid.amount=amount;
+  return liquid;
+}

@@ -1,0 +1,6 @@
+{
+  this(itemID,amount,itemDamage);
+  if (nbt != null) {
+    extra=(NBTTagCompound)nbt.copy();
+  }
+}

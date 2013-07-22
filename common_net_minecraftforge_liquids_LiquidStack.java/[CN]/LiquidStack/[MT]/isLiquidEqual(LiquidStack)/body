@@ -1,0 +1,3 @@
+{
+  return other != null && itemID == other.itemID && itemMeta == other.itemMeta && (extra == null ? other.extra == null : extra.equals(other.extra));
+}

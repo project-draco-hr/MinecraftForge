@@ -1,0 +1,3 @@
+{
+  return isLiquidEqual(other) && amount >= other.amount;
+}
