@@ -1,0 +1,4 @@
+{
+  String result=armor.getItem().getArmorTexture(armor,entity,slot,type);
+  return result != null ? result : _default;
+}
