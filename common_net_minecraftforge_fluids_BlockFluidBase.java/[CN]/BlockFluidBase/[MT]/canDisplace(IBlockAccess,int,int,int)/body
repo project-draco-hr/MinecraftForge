@@ -11,5 +11,10 @@
   if (material.blocksMovement() || material == Material.portal) {
     return false;
   }
-  return true;
+  if (this.density > getDensity(world,x,y,z)) {
+    return true;
+  }
+ else {
+    return false;
+  }
 }
