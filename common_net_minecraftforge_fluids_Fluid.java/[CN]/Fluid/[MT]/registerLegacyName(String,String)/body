@@ -1,0 +1,3 @@
+{
+  legacyNames.put(legacyName.toLowerCase(Locale.ENGLISH),canonicalName);
+}
