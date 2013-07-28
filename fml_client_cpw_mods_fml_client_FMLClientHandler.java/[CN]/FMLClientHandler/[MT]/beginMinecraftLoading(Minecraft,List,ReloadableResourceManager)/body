@@ -8,7 +8,6 @@
     haltGame("FML will not run in demo mode",new RuntimeException());
     return;
   }
-  loading=true;
   FMLCommonHandler.instance().beginLoading(this);
   new ModLoaderClientHelper(client);
   try {
