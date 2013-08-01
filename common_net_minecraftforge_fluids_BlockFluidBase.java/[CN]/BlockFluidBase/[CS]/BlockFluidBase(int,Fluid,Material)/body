@@ -5,6 +5,7 @@
   this.disableStats();
   this.fluidName=fluid.getName();
   this.density=fluid.density;
+  this.temperature=fluid.temperature;
   this.maxScaledLight=fluid.luminosity;
   this.tickRate=fluid.viscosity / 200;
   fluid.setBlockID(id);
