@@ -1,6 +1,6 @@
 {
   Block block=Block.blocksList[world.getBlockId(x,y,z)];
-  if (world.getBlockMaterial(x,y,z).isLiquid()) {
+  if (!world.getBlockMaterial(x,y,z).isLiquid()) {
     return -1000.0;
   }
   Vec3 vec=((BlockFluidBase)block).getFlowVector(world,x,y,z);
