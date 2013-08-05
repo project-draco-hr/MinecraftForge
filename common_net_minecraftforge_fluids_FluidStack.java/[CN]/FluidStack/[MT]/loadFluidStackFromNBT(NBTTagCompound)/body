@@ -1,10 +1,21 @@
 {
-  if (nbt == null || FluidRegistry.getFluid(nbt.getString("FluidName")) == null) {
+  if (nbt == null) {
     return null;
   }
-  FluidStack stack=new FluidStack(FluidRegistry.getFluidID(nbt.getString("FluidName")),nbt.getInteger("Amount"));
+  String fluidName=nbt.getString("FluidName");
+  if (fluidName == null) {
+    fluidName=nbt.hasKey("LiquidName") ? nbt.getString("LiquidName").toLowerCase(Locale.ENGLISH) : null;
+    fluidName=Fluid.convertLegacyName(fluidName);
+  }
+  if (fluidName == null || FluidRegistry.getFluid(fluidName) == null) {
+    return null;
+  }
+  FluidStack stack=new FluidStack(FluidRegistry.getFluidID(fluidName),nbt.getInteger("Amount"));
   if (nbt.hasKey("Tag")) {
     stack.tag=nbt.getCompoundTag("Tag");
+  }
+ else   if (nbt.hasKey("extra")) {
+    stack.tag=nbt.getCompoundTag("extra");
   }
   return stack;
 }

@@ -26,8 +26,8 @@
       }
     }
   }
- else   if (quantaRemaining > quantaPerBlock) {
-    world.setBlockMetadataWithNotify(x,y,z,0,3);
+ else   if (quantaRemaining >= quantaPerBlock) {
+    world.setBlockMetadataWithNotify(x,y,z,0,2);
   }
   if (canDisplace(world,x,y + densityDir,z)) {
     flowIntoBlock(world,x,y + densityDir,z,1);
