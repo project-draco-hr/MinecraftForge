@@ -17,8 +17,12 @@
   if (material.blocksMovement() || material == Material.portal) {
     return false;
   }
-  Block.blocksList[bId].dropBlockAsItem(world,x,y,z,world.getBlockMetadata(x,y,z),0);
-  if (this.density > getDensity(world,x,y,z)) {
+  int density=getDensity(world,x,y,z);
+  if (density == Integer.MAX_VALUE) {
+    Block.blocksList[bId].dropBlockAsItem(world,x,y,z,world.getBlockMetadata(x,y,z),0);
+    return true;
+  }
+  if (this.density > density) {
     return true;
   }
  else {
