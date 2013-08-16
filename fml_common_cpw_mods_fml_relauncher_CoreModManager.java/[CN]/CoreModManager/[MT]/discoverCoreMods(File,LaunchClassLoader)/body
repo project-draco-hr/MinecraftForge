@@ -31,6 +31,7 @@
     }
     String cascadedTweaker=mfAttributes.getValue("TweakClass");
     if (cascadedTweaker != null) {
+      FMLRelaunchLog.info("Loading tweaker %s from %s",cascadedTweaker,coreMod.getName());
       handleCascadingTweak(coreMod,jar,cascadedTweaker,classLoader);
       loadedCoremods.add(coreMod.getName());
       continue;
