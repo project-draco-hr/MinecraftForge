@@ -51,7 +51,12 @@
     }
     try {
       classLoader.addURL(coreMod.toURI().toURL());
-      loadedCoremods.add(coreMod.getName());
+      if (!mfAttributes.containsValue("FMLCorePluginContainsFMLMod")) {
+        loadedCoremods.add(coreMod.getName());
+      }
+ else {
+        reparsedCoremods.add(coreMod.getName());
+      }
     }
  catch (    MalformedURLException e) {
       FMLRelaunchLog.log(Level.SEVERE,e,"Unable to convert file into a URL. weird");
