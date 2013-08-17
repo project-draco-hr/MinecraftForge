@@ -47,6 +47,7 @@
     }
     String fmlCorePlugin=mfAttributes.getValue("FMLCorePlugin");
     if (fmlCorePlugin == null) {
+      FMLRelaunchLog.fine("Not found coremod data in %s",coreMod.getName());
       continue;
     }
     try {
