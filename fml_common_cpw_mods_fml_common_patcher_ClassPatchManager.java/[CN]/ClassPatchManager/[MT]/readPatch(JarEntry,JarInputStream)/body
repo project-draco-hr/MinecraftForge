@@ -1,11 +1,11 @@
 {
-  FMLLog.finest("Reading patch data from %s",patchEntry.getName());
+  FMLRelaunchLog.finest("Reading patch data from %s",patchEntry.getName());
   ByteArrayDataInput input;
   try {
     input=ByteStreams.newDataInput(ByteStreams.toByteArray(jis));
   }
  catch (  IOException e) {
-    FMLLog.log(Level.WARNING,e,"Unable to read binpatch file %s - ignoring",patchEntry.getName());
+    FMLRelaunchLog.log(Level.WARNING,e,"Unable to read binpatch file %s - ignoring",patchEntry.getName());
     return null;
   }
   String name=input.readUTF();
