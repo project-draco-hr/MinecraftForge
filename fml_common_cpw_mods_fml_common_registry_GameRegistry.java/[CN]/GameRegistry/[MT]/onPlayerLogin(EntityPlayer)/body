@@ -1,3 +1,8 @@
 {
-  for (  IPlayerTracker tracker : playerTrackers)   tracker.onPlayerLogin(player);
+  for (  IPlayerTracker tracker : playerTrackers)   try {
+    tracker.onPlayerLogin(player);
+  }
+ catch (  Exception e) {
+    FMLLog.log(Level.SEVERE,e,"A critical error occured handling the onPlayerLogin event with player tracker %s",tracker.getClass().getName());
+  }
 }

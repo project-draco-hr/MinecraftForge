@@ -1,3 +1,8 @@
 {
-  for (  IPlayerTracker tracker : playerTrackers)   tracker.onPlayerRespawn(player);
+  for (  IPlayerTracker tracker : playerTrackers)   try {
+    tracker.onPlayerRespawn(player);
+  }
+ catch (  Exception e) {
+    FMLLog.log(Level.SEVERE,e,"A critical error occured handling the onPlayerRespawn event with player tracker %s",tracker.getClass().getName());
+  }
 }
