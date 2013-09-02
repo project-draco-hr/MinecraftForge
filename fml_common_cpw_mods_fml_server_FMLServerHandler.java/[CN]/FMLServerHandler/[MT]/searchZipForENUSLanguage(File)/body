@@ -7,5 +7,5 @@
       StringTranslate.inject(zf.getInputStream(ze));
     }
   }
-  IOUtils.closeQuietly(zf);
+  zf.close();
 }
