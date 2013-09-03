@@ -1,16 +1,16 @@
 {
-  bind(field_110324_m);
+  bind(icons);
   if (pre(HEALTH))   return;
   mc.mcProfiler.startSection("health");
   boolean highlight=mc.thePlayer.hurtResistantTime / 3 % 2 == 1;
   if (mc.thePlayer.hurtResistantTime < 10) {
     highlight=false;
   }
-  AttributeInstance attrMaxHealth=this.mc.thePlayer.func_110148_a(SharedMonsterAttributes.field_111267_a);
-  int health=MathHelper.ceiling_float_int(mc.thePlayer.func_110143_aJ());
+  AttributeInstance attrMaxHealth=this.mc.thePlayer.getEntityAttribute(SharedMonsterAttributes.maxHealth);
+  int health=MathHelper.ceiling_float_int(mc.thePlayer.getHealth());
   int healthLast=MathHelper.ceiling_float_int(mc.thePlayer.prevHealth);
-  float healthMax=(float)attrMaxHealth.func_111126_e();
-  float absorb=this.mc.thePlayer.func_110139_bj();
+  float healthMax=(float)attrMaxHealth.getAttributeValue();
+  float absorb=this.mc.thePlayer.getAbsorptionAmount();
   int healthRows=MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F / 10.0F);
   int rowHeight=Math.max(10 - (healthRows - 2),3);
   this.rand.setSeed((long)(updateCounter * 312871));

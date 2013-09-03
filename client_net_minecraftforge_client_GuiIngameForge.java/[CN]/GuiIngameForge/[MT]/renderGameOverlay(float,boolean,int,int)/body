@@ -5,7 +5,7 @@
   int height=res.getScaledHeight();
   renderHealthMount=mc.thePlayer.ridingEntity instanceof EntityLivingBase;
   renderFood=mc.thePlayer.ridingEntity == null;
-  renderJumpBar=mc.thePlayer.func_110317_t();
+  renderJumpBar=mc.thePlayer.isRidingHorse();
   right_height=39;
   left_height=39;
   if (pre(ALL))   return;

@@ -10,7 +10,7 @@
     GL11.glTranslatef(0.0F,-bobing,0.0F);
   }
   boolean is3D=customRenderer.shouldUseRenderHelper(ENTITY,item,BLOCK_3D);
-  engine.func_110577_a(item.getItemSpriteNumber() == 0 ? TextureMap.field_110575_b : TextureMap.field_110576_c);
+  engine.bindTexture(item.getItemSpriteNumber() == 0 ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
   Block block=(item.itemID < Block.blocksList.length ? Block.blocksList[item.itemID] : null);
   if (is3D || (block != null && RenderBlocks.renderItemIn3d(block.getRenderType()))) {
     int renderType=(block != null ? block.getRenderType() : 1);

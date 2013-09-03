@@ -3,7 +3,7 @@
   if (customRenderer == null) {
     return false;
   }
-  engine.func_110577_a(item.getItemSpriteNumber() == 0 ? TextureMap.field_110575_b : TextureMap.field_110576_c);
+  engine.bindTexture(item.getItemSpriteNumber() == 0 ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
   if (customRenderer.shouldUseRenderHelper(INVENTORY,item,INVENTORY_BLOCK)) {
     GL11.glPushMatrix();
     GL11.glTranslatef(x - 2,y + 3,-3.0F + zLevel);

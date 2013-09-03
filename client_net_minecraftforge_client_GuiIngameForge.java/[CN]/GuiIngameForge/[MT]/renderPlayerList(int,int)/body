@@ -38,7 +38,7 @@
           }
         }
         GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
-        mc.func_110434_K().func_110577_a(Gui.field_110324_m);
+        mc.getTextureManager().bindTexture(Gui.icons);
         int pingIndex=4;
         int ping=player.responseTime;
         if (ping < 0)         pingIndex=5;

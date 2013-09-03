@@ -1,5 +1,5 @@
 {
-  bind(field_110324_m);
+  bind(icons);
   if (pre(EXPERIENCE))   return;
   GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
   if (mc.playerController.func_78763_f()) {

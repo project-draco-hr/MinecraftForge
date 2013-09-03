@@ -1,14 +1,14 @@
 {
   Entity tmp=mc.thePlayer.ridingEntity;
   if (!(tmp instanceof EntityLivingBase))   return;
-  bind(field_110324_m);
+  bind(icons);
   if (pre(HEALTHMOUNT))   return;
   boolean unused=false;
   int left_align=width / 2 + 91;
   mc.mcProfiler.endStartSection("mountHealth");
   EntityLivingBase mount=(EntityLivingBase)tmp;
-  int health=(int)Math.ceil((double)mount.func_110143_aJ());
-  float healthMax=mount.func_110138_aP();
+  int health=(int)Math.ceil((double)mount.getHealth());
+  float healthMax=mount.getMaxHealth();
   int hearts=(int)(healthMax + 0.5F) / 2;
   if (hearts > 30)   hearts=30;
   final int MARGIN=52;

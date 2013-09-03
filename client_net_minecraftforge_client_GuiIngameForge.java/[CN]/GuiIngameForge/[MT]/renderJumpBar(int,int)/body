@@ -1,9 +1,9 @@
 {
-  bind(field_110324_m);
+  bind(icons);
   if (pre(JUMPBAR))   return;
   GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
   mc.mcProfiler.startSection("jumpBar");
-  float charge=mc.thePlayer.func_110319_bJ();
+  float charge=mc.thePlayer.getHorseJumpPower();
   final int barWidth=182;
   int x=(width / 2) - (barWidth / 2);
   int filled=(int)(charge * (float)(barWidth + 1));
