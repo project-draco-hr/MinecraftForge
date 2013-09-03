@@ -17,10 +17,14 @@
     registerOre("oreRedstone",Block.oreRedstone);
     registerOre("oreEmerald",Block.oreEmerald);
     registerOre("oreQuartz",Block.oreNetherQuartz);
+    registerOre("stone",Block.stone);
+    registerOre("cobblestone",Block.cobblestone);
   }
   Map<ItemStack,String> replacements=new HashMap<ItemStack,String>();
   replacements.put(new ItemStack(Block.planks,1,WILDCARD_VALUE),"plankWood");
   replacements.put(new ItemStack(Item.stick),"stickWood");
+  replacements.put(new ItemStack(Block.stone),"stone");
+  replacements.put(new ItemStack(Block.cobblestone),"cobblestone");
   String[] dyes={"dyeBlack","dyeRed","dyeGreen","dyeBrown","dyeBlue","dyePurple","dyeCyan","dyeLightGray","dyeGray","dyePink","dyeLime","dyeYellow","dyeLightBlue","dyeMagenta","dyeOrange","dyeWhite"};
   for (int i=0; i < 16; i++) {
     ItemStack dye=new ItemStack(Item.dyePowder,1,i);
@@ -31,7 +35,7 @@
   }
   hasInit=true;
   ItemStack[] replaceStacks=replacements.keySet().toArray(new ItemStack[replacements.keySet().size()]);
-  ItemStack[] exclusions=new ItemStack[]{new ItemStack(Block.blockLapis),new ItemStack(Item.cookie)};
+  ItemStack[] exclusions=new ItemStack[]{new ItemStack(Block.blockLapis),new ItemStack(Item.cookie),new ItemStack(Block.stoneBrick),new ItemStack(Block.stoneSingleSlab),new ItemStack(Block.stairsCobblestone),new ItemStack(Block.cobblestoneWall)};
   List recipes=CraftingManager.getInstance().getRecipeList();
   List<IRecipe> recipesToRemove=new ArrayList<IRecipe>();
   List<IRecipe> recipesToAdd=new ArrayList<IRecipe>();

@@ -1,3 +1,4 @@
 {
   RUNTIME_DEOBF=(Boolean)data.get("runtimeDeobfuscationEnabled");
+  forgeLocation=(File)data.get("coremodLocation");
 }

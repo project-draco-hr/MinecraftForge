@@ -1,0 +1,7 @@
+World worldObj
+int x
+int y
+int z
+ForgeDirection axis
+int mask
+BlockType blockType

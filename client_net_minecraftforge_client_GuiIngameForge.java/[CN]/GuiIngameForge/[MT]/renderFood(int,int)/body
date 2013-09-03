@@ -2,7 +2,8 @@
   if (pre(FOOD))   return;
   mc.mcProfiler.startSection("food");
   int left=width / 2 + 91;
-  int top=height - 39;
+  int top=height - right_height;
+  right_height+=10;
   boolean unused=false;
   FoodStats stats=mc.thePlayer.getFoodStats();
   int level=stats.getFoodLevel();
@@ -21,21 +22,13 @@
     if (mc.thePlayer.getFoodStats().getSaturationLevel() <= 0.0F && updateCounter % (level * 3 + 1) == 0) {
       y=top + (rand.nextInt(3) - 1);
     }
-    this.drawTexturedModalRect(x,y,16 + backgound * 9,27,9,9);
+    drawTexturedModalRect(x,y,16 + backgound * 9,27,9,9);
     if (unused) {
-      if (idx < levelLast) {
-        drawTexturedModalRect(x,y,icon + 54,27,9,9);
-      }
-      if (idx == levelLast) {
-        drawTexturedModalRect(x,y,icon + 63,27,9,9);
-      }
+      if (idx < levelLast)       drawTexturedModalRect(x,y,icon + 54,27,9,9);
+ else       if (idx == levelLast)       drawTexturedModalRect(x,y,icon + 63,27,9,9);
     }
-    if (idx < level) {
-      drawTexturedModalRect(x,y,icon + 36,27,9,9);
-    }
-    if (idx == level) {
-      drawTexturedModalRect(x,y,icon + 45,27,9,9);
-    }
+    if (idx < level)     drawTexturedModalRect(x,y,icon + 36,27,9,9);
+ else     if (idx == level)     drawTexturedModalRect(x,y,icon + 45,27,9,9);
   }
   mc.mcProfiler.endSection();
   post(FOOD);

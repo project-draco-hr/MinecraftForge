@@ -1,0 +1,3 @@
+ItemStack container
+int maxDrain
+boolean doDrain

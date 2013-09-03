@@ -1,0 +1,41 @@
+{
+  for (int side=0; side < 4; side++) {
+    flowCost[side]=1000;
+    int x2=x;
+    int y2=y;
+    int z2=z;
+switch (side) {
+case 0:
+      --x2;
+    break;
+case 1:
+  ++x2;
+break;
+case 2:
+--z2;
+break;
+case 3:
+++z2;
+break;
+}
+if (!canFlowInto(world,x2,y2,z2) || isSourceBlock(world,x2,y2,z2)) {
+continue;
+}
+if (canFlowInto(world,x2,y2 + densityDir,z2)) {
+flowCost[side]=0;
+}
+ else {
+flowCost[side]=calculateFlowCost(world,x2,y2,z2,1,side);
+}
+}
+int min=flowCost[0];
+for (int side=1; side < 4; side++) {
+if (flowCost[side] < min) {
+min=flowCost[side];
+}
+}
+for (int side=0; side < 4; side++) {
+isOptimalFlowDirection[side]=flowCost[side] == min;
+}
+return isOptimalFlowDirection;
+}

@@ -1,0 +1,3 @@
+{
+  return this.setStillIcon(commonIcon).setFlowingIcon(commonIcon);
+}

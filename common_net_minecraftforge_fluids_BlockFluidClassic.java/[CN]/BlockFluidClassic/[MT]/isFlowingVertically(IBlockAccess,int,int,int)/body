@@ -1,0 +1,3 @@
+{
+  return world.getBlockId(x,y + densityDir,z) == blockID || (world.getBlockId(x,y,z) == blockID && canFlowInto(world,x,y + densityDir,z));
+}

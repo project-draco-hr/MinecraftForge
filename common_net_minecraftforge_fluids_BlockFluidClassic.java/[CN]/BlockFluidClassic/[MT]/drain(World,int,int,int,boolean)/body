@@ -1,0 +1,9 @@
+{
+  if (!isSourceBlock(world,x,y,z)) {
+    return null;
+  }
+  if (doDrain) {
+    world.setBlockToAir(x,y,z);
+  }
+  return stack.copy();
+}

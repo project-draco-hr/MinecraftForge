@@ -1,0 +1,12 @@
+{
+  if (tileEntityTrackingTime == 0) {
+    tileEntityTrackingTime=nanoTime;
+  }
+ else   if (tileEntityTrackingTime + tileEntityTrackingDuration < nanoTime) {
+    tileEntityTracking=false;
+    tileEntityTrackingTime=0;
+    return;
+  }
+  tile=new WeakReference<TileEntity>(tileEntity);
+  timing=nanoTime;
+}

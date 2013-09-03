@@ -1,0 +1,13 @@
+{
+  super(id,material);
+  this.setBlockBounds(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
+  this.setTickRandomly(true);
+  this.disableStats();
+  this.fluidName=fluid.getName();
+  this.density=fluid.density;
+  this.temperature=fluid.temperature;
+  this.maxScaledLight=fluid.luminosity;
+  this.tickRate=fluid.viscosity / 200;
+  fluid.setBlockID(id);
+  displacementIds.putAll(defaultDisplacementIds);
+}

@@ -1,0 +1,3 @@
+{
+  world.scheduleBlockUpdate(x,y,z,blockID,tickRate);
+}

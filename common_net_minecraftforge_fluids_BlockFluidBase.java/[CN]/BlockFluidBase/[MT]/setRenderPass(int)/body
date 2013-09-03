@@ -1,0 +1,4 @@
+{
+  this.renderPass=renderPass;
+  return this;
+}

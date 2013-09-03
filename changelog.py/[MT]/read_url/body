@@ -1,0 +1,7 @@
+def read_url(url):
+    handler = PreemptiveBasicAuthHandler()
+    handler.add_password(None, 'ci.jenkins.minecraftforge.net', 'console_script', 'dc6d48ca20a474beeac280a9a16a926e')
+    file = urllib2.build_opener(handler).open(url)
+    data = file.read()
+    file.close()
+    return data

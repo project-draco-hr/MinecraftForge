@@ -1,9 +1,5 @@
 def getBuildInfo(url, current_version=None):
-    handler = PreemptiveBasicAuthHandler()
-    handler.add_password(None, 'jenkins.minecraftforge.net:81', 'console_script', 'fd584bffa72fcac12181f37f80001200')
-    file = urllib2.build_opener(handler).open(url)
-    data = file.read()
-    file.close()
+    data = read_url(url)
     data = ast.literal_eval(data)['allBuilds']
     data = sorted(data, key=(lambda key: key['number']), reverse=False)
     items = []

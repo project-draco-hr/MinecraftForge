@@ -1,0 +1,3 @@
+{
+  this(stack.fluidID,amount,stack.tag);
+}

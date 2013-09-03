@@ -1,0 +1,17 @@
+def forge_main(forge_dir, fml_dir, mcp_dir):
+    sys.path.append(mcp_dir)
+    sys.path.append(fml_dir)
+    from runtime.updatenames import updatenames
+    from runtime.updatemd5 import updatemd5
+    from forge import apply_forge_patches
+    from fml import reset_logger
+    print '=============================== Minecraft Forge Setup Start ====================================='
+    print 'Applying forge patches'
+    apply_forge_patches(fml_dir, mcp_dir, forge_dir, os.path.join(mcp_dir, 'src'), True)
+    os.chdir(mcp_dir)
+    updatenames(None, True, True, False)
+    reset_logger()
+    updatemd5(None, True, True, False)
+    reset_logger()
+    os.chdir(forge_dir)
+    print '=============================== Minecraft Forge Setup Finished ================================='

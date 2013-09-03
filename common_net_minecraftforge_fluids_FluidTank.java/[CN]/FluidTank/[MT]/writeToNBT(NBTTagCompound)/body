@@ -1,0 +1,9 @@
+{
+  if (fluid != null) {
+    fluid.writeToNBT(nbt);
+  }
+ else {
+    nbt.setString("Empty","");
+  }
+  return nbt;
+}

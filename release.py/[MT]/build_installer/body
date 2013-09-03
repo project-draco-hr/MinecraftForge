@@ -1,0 +1,16 @@
+def build_installer(forge_dir, version_str, version_forge, version_minecraft, out_folder, json_data):
+    file_name = ('minecraftforge-installer-%s.jar' % version_str)
+    universal_name = ('minecraftforge-universal-%s.jar' % version_str)
+    print ('================== %s Start ==================' % file_name)
+    with closing(zipfile.ZipFile(os.path.join(forge_dir, 'fml', 'installer_base.jar'), mode='a')) as zip_in:
+        with closing(zipfile.ZipFile(os.path.join(out_folder, file_name), 'w', zipfile.ZIP_DEFLATED)) as zip_out:
+            for i in zip_in.filelist:
+                if (not (i.filename in ['install_profile.json', 'big_logo.png'])):
+                    zip_out.writestr(i.filename, zip_in.read(i.filename))
+            print ('    %s' % universal_name)
+            zip_out.write(os.path.join(out_folder, universal_name), universal_name)
+            print '    big_logo.png'
+            zip_out.write(os.path.join(forge_dir, 'client', 'forge_logo.png'), 'big_logo.png')
+            print '    install_profile.json'
+            zip_out.writestr('install_profile.json', json_data)
+    print ('================== %s Finished ==================' % file_name)
