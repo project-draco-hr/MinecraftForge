@@ -1,13 +1,14 @@
 {
+  boolean exclude;
   for (  GroupObject groupObject : groupObjects) {
-    boolean skipPart=false;
+    exclude=false;
     for (    String excludedGroupName : excludedGroupNames) {
       if (excludedGroupName.equalsIgnoreCase(groupObject.name)) {
-        skipPart=true;
+        exclude=true;
       }
     }
-    if (!skipPart) {
-      groupObject.render();
+    if (!exclude) {
+      groupObject.render(tessellator);
     }
   }
 }

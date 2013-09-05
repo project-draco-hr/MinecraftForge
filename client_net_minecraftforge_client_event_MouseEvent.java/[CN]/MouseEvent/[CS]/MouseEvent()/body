@@ -1,0 +1,10 @@
+{
+  this.x=Mouse.getEventX();
+  this.y=Mouse.getEventY();
+  this.dx=Mouse.getEventDX();
+  this.dy=Mouse.getEventDY();
+  this.dwheel=Mouse.getEventDWheel();
+  this.button=Mouse.getEventButton();
+  this.buttonstate=Mouse.getEventButtonState();
+  this.nanoseconds=Mouse.getEventNanoseconds();
+}

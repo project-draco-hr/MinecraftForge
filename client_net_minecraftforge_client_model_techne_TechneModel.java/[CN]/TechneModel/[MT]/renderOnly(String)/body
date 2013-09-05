@@ -1,0 +1,10 @@
+{
+  bindTexture();
+  for (  ModelRenderer part : parts.values()) {
+    for (    String groupName : groupNames) {
+      if (groupName.equalsIgnoreCase(part.boxName)) {
+        part.render(1.0f);
+      }
+    }
+  }
+}

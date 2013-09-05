@@ -1,0 +1,10 @@
+{
+  if (fluidBlocks == null) {
+    for (    Fluid fluid : fluids.values()) {
+      if (fluid.canBePlacedInWorld() && Block.blocksList[fluid.getBlockID()] != null) {
+        fluidBlocks.put(Block.blocksList[fluid.getBlockID()],fluid);
+      }
+    }
+  }
+  return fluidBlocks.get(block);
+}

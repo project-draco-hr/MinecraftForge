@@ -1,0 +1,18 @@
+{
+  wrapped.bigMushroomsPerChunk=bigMushroomsPerChunk;
+  wrapped.cactiPerChunk=cactiPerChunk;
+  wrapped.clayPerChunk=clayPerChunk;
+  wrapped.deadBushPerChunk=deadBushPerChunk;
+  wrapped.flowersPerChunk=flowersPerChunk;
+  wrapped.generateLakes=generateLakes;
+  wrapped.grassPerChunk=grassPerChunk;
+  wrapped.mushroomsPerChunk=mushroomsPerChunk;
+  wrapped.reedsPerChunk=reedsPerChunk;
+  wrapped.sandPerChunk=sandPerChunk;
+  wrapped.sandPerChunk2=sandPerChunk2;
+  wrapped.treesPerChunk=treesPerChunk;
+  wrapped.waterlilyPerChunk=waterlilyPerChunk;
+  BiomeEvent.CreateDecorator event=new BiomeEvent.CreateDecorator(biome,wrapped);
+  MinecraftForge.TERRAIN_GEN_BUS.post(event);
+  biome.theBiomeDecorator=event.newBiomeDecorator;
+}

@@ -1,0 +1,12 @@
+{
+  for (int i=0; i < BIOME_LIST_SIZE; i++) {
+    BiomeGenBase biome=BiomeGenBase.biomeList[i];
+    if (biome.theBiomeDecorator instanceof DeferredBiomeDecorator) {
+      DeferredBiomeDecorator decorator=(DeferredBiomeDecorator)biome.theBiomeDecorator;
+      decorator.fireCreateEventAndReplace();
+    }
+    if (biome != null) {
+      checkRegistration(biome);
+    }
+  }
+}
