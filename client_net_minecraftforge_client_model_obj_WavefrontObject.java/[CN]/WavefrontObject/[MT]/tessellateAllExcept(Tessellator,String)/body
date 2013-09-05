@@ -8,7 +8,7 @@
       }
     }
     if (!exclude) {
-      groupObject.render();
+      groupObject.render(tessellator);
     }
   }
 }
