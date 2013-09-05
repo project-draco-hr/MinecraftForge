@@ -1,13 +1,13 @@
 {
-  for (  GroupObject groupObject : groupObjects) {
+  for (  ModelRenderer part : parts.values()) {
     boolean skipPart=false;
     for (    String excludedGroupName : excludedGroupNames) {
-      if (excludedGroupName.equalsIgnoreCase(groupObject.name)) {
+      if (excludedGroupName.equalsIgnoreCase(part.boxName)) {
         skipPart=true;
       }
     }
     if (!skipPart) {
-      groupObject.render();
+      part.render(1.0f);
     }
   }
 }
