@@ -1,3 +1,5 @@
 {
-  return !MinecraftForge.EVENT_BUS.post(new AllowDespawn(entity));
+  AllowDespawn event=new AllowDespawn(entity);
+  MinecraftForge.EVENT_BUS.post(event);
+  return event.getResult();
 }
