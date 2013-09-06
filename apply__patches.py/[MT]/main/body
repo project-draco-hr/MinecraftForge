@@ -1,0 +1,18 @@
+def main():
+    print 'Applying patches'
+    parser = OptionParser()
+    parser.add_option('-m', '--mcp-dir', action='store', dest='mcp_dir', help='Path to MCP', default=None)
+    parser.add_option('-p', '--patch-dir', action='store', dest='patch_dir', help='Patches Directory', default=None)
+    parser.add_option('-t', '--target-dir', action='store', dest='target_dir', help='Target Directory', default=None)
+    (options, _) = parser.parse_args()
+    if (options.mcp_dir is None):
+        print 'Must supply MCP directory with --mcp-dir'
+        return
+    elif (options.patch_dir is None):
+        print 'Must supply patches directory with --patch-dir'
+        return
+    elif (options.target_dir is None):
+        print 'Must supplt target directory with --target-dir'
+        return
+    print ("Applying patches from '%s' to '%s'" % (options.patch_dir, options.target_dir))
+    apply_patches(options.mcp_dir, options.patch_dir, options.target_dir)
