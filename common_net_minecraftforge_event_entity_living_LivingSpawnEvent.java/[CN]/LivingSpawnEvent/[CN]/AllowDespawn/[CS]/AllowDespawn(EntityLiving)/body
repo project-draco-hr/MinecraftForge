@@ -1,0 +1,3 @@
+{
+  super(entity,entity.worldObj,(float)entity.posX,(float)entity.posY,(float)entity.posZ);
+}
