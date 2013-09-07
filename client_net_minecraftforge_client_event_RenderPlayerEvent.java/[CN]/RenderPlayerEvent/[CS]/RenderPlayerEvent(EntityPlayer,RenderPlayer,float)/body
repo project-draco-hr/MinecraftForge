@@ -1,4 +1,5 @@
 {
   super(player);
   this.renderer=renderer;
+  this.partialRenderTick=partialRenderTick;
 }
