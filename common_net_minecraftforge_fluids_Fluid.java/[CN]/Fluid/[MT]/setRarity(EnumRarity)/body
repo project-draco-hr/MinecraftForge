@@ -1,0 +1,4 @@
+{
+  this.rarity=rarity;
+  return this;
+}
