@@ -58,6 +58,9 @@
   if (!forceDuplicateFluidBlockCrash) {
     FMLLog.warning("Disabling forced crashes on duplicate Fluid Blocks - USE AT YOUR OWN RISK");
   }
+  prop=config.get(Configuration.CATEGORY_GENERAL,"biomeSkyBlendRange",new int[]{20,15,10,5});
+  prop.comment="Control the range of sky blending for colored skies in biomes.";
+  blendRanges=prop.getIntList();
   if (config.hasChanged()) {
     config.save();
   }
