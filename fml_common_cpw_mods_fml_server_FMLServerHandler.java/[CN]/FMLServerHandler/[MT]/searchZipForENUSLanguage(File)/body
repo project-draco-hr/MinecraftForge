@@ -1,0 +1,11 @@
+{
+  ZipFile zf=new ZipFile(source);
+  for (  ZipEntry ze : Collections.list(zf.entries())) {
+    Matcher matcher=assetENUSLang.matcher(ze.getName());
+    if (matcher.matches()) {
+      FMLLog.fine("Injecting found translation data in zip file %s at %s into language system",source.getName(),ze.getName());
+      StringTranslate.inject(zf.getInputStream(ze));
+    }
+  }
+  zf.close();
+}
