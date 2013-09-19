@@ -18,7 +18,7 @@ break;
 default :
 throw new RuntimeException("The fuck?");
 }
-if (target.changeFinal && target.desc == "") {
+if (target.changeFinal) {
 if (target.markFinal) {
 ret|=ACC_FINAL;
 }
