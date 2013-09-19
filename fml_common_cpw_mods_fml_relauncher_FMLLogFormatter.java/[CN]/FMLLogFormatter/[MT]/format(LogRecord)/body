@@ -18,7 +18,7 @@
  else {
     msg.append("[] ");
   }
-  msg.append(record.getMessage());
+  msg.append(formatMessage(record));
   msg.append(LINE_SEPARATOR);
   Throwable thr=record.getThrown();
   if (thr != null) {
