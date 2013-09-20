@@ -1,0 +1,5 @@
+{
+  if (!getServer().func_71200_ad()) {
+    ObfuscationReflectionHelper.setPrivateValue(MinecraftServer.class,getServer(),true,"field_71296" + "_Q","serverIs" + "Running");
+  }
+}

@@ -1,5 +1,6 @@
 {
+  sidedDelegate.serverStopped();
   MinecraftServer server=getMinecraftServerInstance();
   Loader.instance().serverStopped();
-  if (server != null)   ObfuscationReflectionHelper.setPrivateValue(MinecraftServer.class,server,false,"field_71316_v","u","serverStopped");
+  if (server != null)   ObfuscationReflectionHelper.setPrivateValue(MinecraftServer.class,server,false,"field_71316" + "_v","u","serverStopped");
 }
