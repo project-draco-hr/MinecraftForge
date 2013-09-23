@@ -1,5 +1,6 @@
 {
-  if (!getServer().func_71200_ad()) {
-    ObfuscationReflectionHelper.setPrivateValue(MinecraftServer.class,getServer(),true,"field_71296" + "_Q","serverIs" + "Running");
+  MinecraftServer server=getServer();
+  if (server != null && !server.func_71200_ad()) {
+    ObfuscationReflectionHelper.setPrivateValue(MinecraftServer.class,server,true,"field_71296" + "_Q","serverIs" + "Running");
   }
 }
