@@ -40,4 +40,5 @@
  while (true);
   FMLRelaunchLog.fine("Read %d binary patches",patches.size());
   FMLRelaunchLog.fine("Patch list :\n\t%s",Joiner.on("\t\n").join(patches.asMap().entrySet()));
+  patchedClasses.clear();
 }

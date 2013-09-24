@@ -4,7 +4,7 @@
   }
 synchronized (fieldDescriptions) {
     try {
-      byte[] classBytes=classLoader.getClassBytes(owner);
+      byte[] classBytes=ClassPatchManager.INSTANCE.getPatchedResource(owner,map(owner).replace('/','.'),classLoader);
       if (classBytes == null) {
         return null;
       }

@@ -1,6 +1,12 @@
 {
-  if (!fieldNameMaps.containsKey(className)) {
+  if (!fieldNameMaps.containsKey(className) && !negativeCacheFields.contains(className)) {
     findAndMergeSuperMaps(className);
+    if (!fieldNameMaps.containsKey(className)) {
+      negativeCacheFields.add(className);
+    }
+    if (DUMP_FIELD_MAPS) {
+      FMLRelaunchLog.finest("Field map for %s : %s",className,fieldNameMaps.get(className));
+    }
   }
   return fieldNameMaps.get(className);
 }

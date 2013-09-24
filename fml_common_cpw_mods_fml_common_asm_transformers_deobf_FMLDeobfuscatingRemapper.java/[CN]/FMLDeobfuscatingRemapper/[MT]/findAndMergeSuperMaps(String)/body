@@ -1,14 +1,12 @@
 {
   try {
-    byte[] classBytes=classLoader.getClassBytes(name);
-    if (classBytes == null) {
-      return;
-    }
-    ClassReader cr=new ClassReader(classBytes);
-    String superName=cr.getSuperName();
-    String[] interfaces=cr.getInterfaces();
-    if (interfaces == null) {
-      interfaces=new String[0];
+    String superName=null;
+    String[] interfaces=new String[0];
+    byte[] classBytes=ClassPatchManager.INSTANCE.getPatchedResource(name,map(name),classLoader);
+    if (classBytes != null) {
+      ClassReader cr=new ClassReader(classBytes);
+      superName=cr.getSuperName();
+      interfaces=cr.getInterfaces();
     }
     mergeSuperMaps(name,superName,interfaces);
   }
