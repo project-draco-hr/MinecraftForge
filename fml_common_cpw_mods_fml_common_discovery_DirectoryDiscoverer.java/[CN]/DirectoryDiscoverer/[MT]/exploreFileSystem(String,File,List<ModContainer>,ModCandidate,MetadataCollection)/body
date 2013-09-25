@@ -27,6 +27,7 @@
         FileInputStream fis=new FileInputStream(file);
         modParser=new ASMModParser(fis);
         fis.close();
+        candidate.addClassEntry(path + file.getName());
       }
  catch (      LoaderException e) {
         FMLLog.log(Level.SEVERE,e,"There was a problem reading the file %s - probably this is a corrupt file",file.getPath());

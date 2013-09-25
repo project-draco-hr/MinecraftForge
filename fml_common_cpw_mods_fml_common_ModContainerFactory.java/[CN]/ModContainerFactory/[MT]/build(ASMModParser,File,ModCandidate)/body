@@ -18,7 +18,7 @@
   for (  ModAnnotation ann : modParser.getAnnotations()) {
     if (ann.getASMType().equals(Type.getType(Mod.class))) {
       FMLLog.fine("Identified an FMLMod type mod %s",className);
-      return new FMLModContainer(className,modSource,ann.getValues());
+      return new FMLModContainer(className,container,ann.getValues());
     }
   }
   return null;

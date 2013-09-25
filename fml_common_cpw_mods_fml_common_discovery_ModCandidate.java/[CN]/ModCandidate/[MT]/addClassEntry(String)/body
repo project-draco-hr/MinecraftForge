@@ -1,0 +1,4 @@
+{
+  String className=name.substring(0,name.lastIndexOf('.')).replace('.','/');
+  foundClasses.add(className);
+}

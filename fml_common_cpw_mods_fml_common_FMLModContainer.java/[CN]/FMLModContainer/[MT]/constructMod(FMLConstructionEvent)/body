@@ -2,6 +2,7 @@
   try {
     ModClassLoader modClassLoader=event.getModClassLoader();
     modClassLoader.addFile(source);
+    modClassLoader.clearNegativeCacheFor(candidate.getClassList());
     Class<?> clazz=Class.forName(className,true,modClassLoader);
     Certificate[] certificates=clazz.getProtectionDomain().getCodeSource().getCertificates();
     int len=0;
