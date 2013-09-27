@@ -1,17 +1,10 @@
 {
-  List<String> blackboardArgs=(List<String>)Launch.blackboard.get("ArgumentList");
-  String[] launchArgsArray=args.toArray(new String[args.size()]);
-  if (gameDir != null && !blackboardArgs.contains("--gameDir")) {
-    launchArgsArray=ObjectArrays.concat(gameDir.getAbsolutePath(),launchArgsArray);
-    launchArgsArray=ObjectArrays.concat("--gameDir",launchArgsArray);
+  List<String> args=Lists.newArrayList();
+  args.addAll(standaloneArgs);
+  for (  Entry<String,String> arg : launchArgs.entrySet()) {
+    args.add(arg.getKey());
+    args.add(arg.getValue());
   }
-  if (assetsDir != null && !blackboardArgs.contains("--assetsDir")) {
-    launchArgsArray=ObjectArrays.concat(assetsDir.getAbsolutePath(),launchArgsArray);
-    launchArgsArray=ObjectArrays.concat("--assetsDir",launchArgsArray);
-  }
-  if (!blackboardArgs.contains("--version")) {
-    launchArgsArray=ObjectArrays.concat(profile != null ? profile : "UnknownFMLProfile",launchArgsArray);
-    launchArgsArray=ObjectArrays.concat("--version",launchArgsArray);
-  }
-  return launchArgsArray;
+  launchArgs.clear();
+  return args.toArray(new String[args.size()]);
 }
