@@ -1,0 +1,11 @@
+{
+  Map<String,String> descriptor=Maps.newHashMap();
+  descriptor.put("modsystem","ModLoader");
+  descriptor.put("id",getModId());
+  descriptor.put("version",getDisplayVersion());
+  descriptor.put("name",getName());
+  descriptor.put("url",metadata.url);
+  descriptor.put("authors",metadata.getAuthorList());
+  descriptor.put("description",metadata.description);
+  return descriptor;
+}

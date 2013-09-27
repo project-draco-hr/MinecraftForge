@@ -1,0 +1,11 @@
+{
+  Map<String,String> descriptor=Maps.newHashMap();
+  descriptor.put("modsystem","FML");
+  descriptor.put("id",getModId());
+  descriptor.put("version",getDisplayVersion());
+  descriptor.put("name",getName());
+  descriptor.put("url",modMetadata.url);
+  descriptor.put("authors",modMetadata.getAuthorList());
+  descriptor.put("description",modMetadata.description);
+  return descriptor;
+}
