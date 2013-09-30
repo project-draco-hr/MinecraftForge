@@ -1,0 +1,6 @@
+{
+  super(entityPlayer);
+  this.itemStack=itemStack;
+  this.toolTip=toolTip;
+  this.showAdvancedItemTooltips=showAdvancedItemTooltips;
+}

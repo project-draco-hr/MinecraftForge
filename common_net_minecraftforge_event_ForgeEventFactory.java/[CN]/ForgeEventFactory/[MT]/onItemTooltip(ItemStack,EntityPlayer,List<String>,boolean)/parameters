@@ -1,0 +1,4 @@
+ItemStack itemStack
+EntityPlayer entityPlayer
+List<String> toolTip
+boolean showAdvancedItemTooltips
