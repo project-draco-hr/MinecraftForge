@@ -1,0 +1,40 @@
+{
+  message=message.trim();
+  if (message.startsWith("/")) {
+    message=message.substring(1);
+  }
+  String[] args=message.split(" ");
+  String commandName=args[0];
+  System.arraycopy(args,1,args,0,args.length - 1);
+  ICommand icommand=(ICommand)getCommands().get(commandName);
+  try {
+    if (icommand == null) {
+      return 0;
+    }
+    if (icommand.canCommandSenderUseCommand(sender)) {
+      CommandEvent event=new CommandEvent(icommand,sender,args);
+      if (MinecraftForge.EVENT_BUS.post(event)) {
+        if (event.exception != null) {
+          throw event.exception;
+        }
+        return 0;
+      }
+      icommand.processCommand(sender,args);
+      return 1;
+    }
+ else {
+      sender.sendChatToPlayer(format("commands.generic.permission").setColor(RED));
+    }
+  }
+ catch (  WrongUsageException wue) {
+    sender.sendChatToPlayer(format("commands.generic.usage",format(wue.getMessage(),wue.getErrorOjbects())).setColor(RED));
+  }
+catch (  CommandException ce) {
+    sender.sendChatToPlayer(format(ce.getMessage(),ce.getErrorOjbects()).setColor(RED));
+  }
+catch (  Throwable t) {
+    sender.sendChatToPlayer(format("commands.generic.exception").setColor(RED));
+    t.printStackTrace();
+  }
+  return 0;
+}
