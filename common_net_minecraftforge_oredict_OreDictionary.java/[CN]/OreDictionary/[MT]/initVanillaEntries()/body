@@ -19,6 +19,18 @@
     registerOre("oreQuartz",Block.oreNetherQuartz);
     registerOre("stone",Block.stone);
     registerOre("cobblestone",Block.cobblestone);
+    registerOre("record",Item.record13);
+    registerOre("record",Item.recordCat);
+    registerOre("record",Item.recordBlocks);
+    registerOre("record",Item.recordChirp);
+    registerOre("record",Item.recordFar);
+    registerOre("record",Item.recordMall);
+    registerOre("record",Item.recordMellohi);
+    registerOre("record",Item.recordStal);
+    registerOre("record",Item.recordStrad);
+    registerOre("record",Item.recordWard);
+    registerOre("record",Item.record11);
+    registerOre("record",Item.recordWait);
   }
   Map<ItemStack,String> replacements=new HashMap<ItemStack,String>();
   replacements.put(new ItemStack(Block.planks,1,WILDCARD_VALUE),"plankWood");
