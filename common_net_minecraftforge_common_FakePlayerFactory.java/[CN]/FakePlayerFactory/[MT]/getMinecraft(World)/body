@@ -1,6 +1,6 @@
 {
   if (MINECRAFT_PLAYER == null) {
-    MINECRAFT_PLAYER=new FakePlayer(world,"[Minecraft]");
+    MINECRAFT_PLAYER=FakePlayerFactory.get(world,"[Minecraft]");
   }
   return MINECRAFT_PLAYER;
 }
