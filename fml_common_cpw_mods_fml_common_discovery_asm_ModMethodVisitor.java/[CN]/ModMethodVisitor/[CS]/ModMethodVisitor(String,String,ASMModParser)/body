@@ -1,0 +1,6 @@
+{
+  super(Opcodes.ASM4);
+  this.methodName=name;
+  this.methodDescriptor=desc;
+  this.discoverer=discoverer;
+}

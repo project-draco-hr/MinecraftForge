@@ -1,0 +1,4 @@
+{
+  registerDataTable(discoverer.getASMTable());
+  transformer=modClassLoader.addModAPITransformer(dataTable);
+}

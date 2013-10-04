@@ -1,0 +1,11 @@
+{
+  for (ListIterator<MethodNode> iterator=classNode.methods.listIterator(); iterator.hasNext(); ) {
+    MethodNode method=iterator.next();
+    if (methodDescriptor.equals(method.name + method.desc)) {
+      iterator.remove();
+      if (logDebugInfo)       FMLRelaunchLog.finest("Optional removal - method %s removed",methodDescriptor);
+      return;
+    }
+  }
+  if (logDebugInfo)   FMLRelaunchLog.finest("Optional removal - method %s NOT removed - not found",methodDescriptor);
+}

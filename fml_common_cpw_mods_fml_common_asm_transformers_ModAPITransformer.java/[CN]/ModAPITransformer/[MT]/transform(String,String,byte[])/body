@@ -1,0 +1,27 @@
+{
+  if (optionals == null || !optionals.containsKey(name)) {
+    return basicClass;
+  }
+  ClassNode classNode=new ClassNode();
+  ClassReader classReader=new ClassReader(basicClass);
+  classReader.accept(classNode,0);
+  if (logDebugInfo)   FMLRelaunchLog.finest("Optional removal - found optionals for class %s - processing",name);
+  for (  ASMData optional : optionals.get(name)) {
+    String modId=(String)optional.getAnnotationInfo().get("modid");
+    if (Loader.isModLoaded(modId)) {
+      if (logDebugInfo)       FMLRelaunchLog.finest("Optional removal skipped - mod present %s",modId);
+      continue;
+    }
+    if (logDebugInfo)     FMLRelaunchLog.finest("Optional on %s triggered - mod missing %s",name,modId);
+    if ("cpw.mods.fml.common.Optional$Interface".equals(optional.getAnnotationName())) {
+      stripInterface(classNode,(String)optional.getAnnotationInfo().get("iface"));
+    }
+ else {
+      stripMethod(classNode,(String)optional.getObjectName());
+    }
+  }
+  if (logDebugInfo)   FMLRelaunchLog.finest("Optional removal - class %s processed",name);
+  ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
+  classNode.accept(writer);
+  return writer.toByteArray();
+}
