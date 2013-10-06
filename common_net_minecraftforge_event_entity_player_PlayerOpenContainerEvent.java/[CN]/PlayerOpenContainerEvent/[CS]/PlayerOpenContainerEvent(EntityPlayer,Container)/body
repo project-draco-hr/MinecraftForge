@@ -1,0 +1,4 @@
+{
+  super(player);
+  this.canInteractWith=openContainer.canInteractWith(player);
+}
