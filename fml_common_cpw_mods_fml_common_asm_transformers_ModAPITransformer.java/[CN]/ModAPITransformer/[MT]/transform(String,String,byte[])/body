@@ -13,7 +13,7 @@
       continue;
     }
     if (logDebugInfo)     FMLRelaunchLog.finest("Optional on %s triggered - mod missing %s",name,modId);
-    if ("cpw.mods.fml.common.Optional$Interface".equals(optional.getAnnotationName())) {
+    if (optional.getAnnotationInfo().containsKey("iface")) {
       stripInterface(classNode,(String)optional.getAnnotationInfo().get("iface"));
     }
  else {
