@@ -1,4 +1,0 @@
-{
-  super(x,y,z,world,block,blockMetadata);
-  this.exp=exp;
-}

@@ -1,0 +1,3 @@
+{
+  return this.isCanceled() ? 0 : exp;
+}

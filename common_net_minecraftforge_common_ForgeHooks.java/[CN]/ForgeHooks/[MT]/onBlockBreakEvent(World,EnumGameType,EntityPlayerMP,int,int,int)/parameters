@@ -1,0 +1,6 @@
+World world
+EnumGameType gameType
+EntityPlayerMP entityPlayer
+int x
+int y
+int z
