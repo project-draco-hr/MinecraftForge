@@ -6,7 +6,7 @@
     }
     ADDURL.invoke(classLoader.getClass().getClassLoader(),coreMod.toURI().toURL());
     classLoader.addURL(coreMod.toURI().toURL());
-    CoreModManager.tweaker.injectCascadingTweak(cascadedTweaker);
+    CoreModManager.tweaker.injectCascadingTweak(cascadedTweaker,sortingOrder);
   }
  catch (  Exception e) {
     FMLRelaunchLog.log(Level.INFO,e,"There was a problem trying to load the mod dir tweaker %s",coreMod.getAbsolutePath());

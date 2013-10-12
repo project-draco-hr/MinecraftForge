@@ -41,7 +41,9 @@
     String cascadedTweaker=mfAttributes.getValue("TweakClass");
     if (cascadedTweaker != null) {
       FMLRelaunchLog.info("Loading tweaker %s from %s",cascadedTweaker,coreMod.getName());
-      handleCascadingTweak(coreMod,jar,cascadedTweaker,classLoader);
+      Integer sortOrder=Ints.tryParse(mfAttributes.getValue("TweakOrder"));
+      sortOrder=(sortOrder == null ? Integer.valueOf(0) : sortOrder);
+      handleCascadingTweak(coreMod,jar,cascadedTweaker,classLoader,sortOrder);
       loadedCoremods.add(coreMod.getName());
       continue;
     }
