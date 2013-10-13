@@ -64,6 +64,9 @@
   prop=config.get(Configuration.CATEGORY_GENERAL,"zombieBaseSummonChance",0.1);
   prop.comment="Base zombie summoning spawn chance. Allows changing the bonus zombie summoning mechanic.";
   zombieSummonBaseChance=prop.getDouble(0.1);
+  prop=config.get(Configuration.CATEGORY_GENERAL,"zombieBabyChance",0.05);
+  prop.comment="Chance that a zombie (or subclass) is a baby. Allows changing the zombie spawning mechanic.";
+  zombieBabyChance=(float)prop.getDouble(0.05);
   if (config.hasChanged()) {
     config.save();
   }
