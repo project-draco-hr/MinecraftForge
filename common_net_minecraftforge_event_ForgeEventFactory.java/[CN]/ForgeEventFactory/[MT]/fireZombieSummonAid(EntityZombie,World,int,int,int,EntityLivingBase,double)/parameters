@@ -1,0 +1,7 @@
+EntityZombie zombie
+World world
+int x
+int y
+int z
+EntityLivingBase attacker
+double summonChance

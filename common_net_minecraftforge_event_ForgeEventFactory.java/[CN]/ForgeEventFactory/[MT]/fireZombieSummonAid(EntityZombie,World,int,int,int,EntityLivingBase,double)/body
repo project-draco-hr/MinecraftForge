@@ -1,0 +1,5 @@
+{
+  SummonAidEvent summonEvent=new SummonAidEvent(zombie,world,x,y,z,attacker,summonChance);
+  MinecraftForge.EVENT_BUS.post(summonEvent);
+  return summonEvent;
+}

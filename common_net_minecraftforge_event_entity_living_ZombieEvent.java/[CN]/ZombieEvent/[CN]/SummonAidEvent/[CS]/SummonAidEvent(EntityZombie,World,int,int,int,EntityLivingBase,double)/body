@@ -1,0 +1,9 @@
+{
+  super(entity);
+  this.world=world;
+  this.x=x;
+  this.y=y;
+  this.z=z;
+  this.attacker=attacker;
+  this.summonChance=summonChance;
+}
