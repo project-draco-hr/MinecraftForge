@@ -8,6 +8,7 @@
   for (  ASMData vch : versionCheckHandlers) {
     if (vch.getClassName().equals(networkModClass.getName())) {
       versionCheckHandlerMethod=vch.getObjectName();
+      versionCheckHandlerMethod=versionCheckHandlerMethod.substring(0,versionCheckHandlerMethod.indexOf('('));
       break;
     }
   }
