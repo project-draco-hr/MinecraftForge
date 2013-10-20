@@ -2,6 +2,10 @@
   this.modList=loader.getIndexedModList();
   Builder<String,EventBus> eventBus=ImmutableMap.builder();
   for (  ModContainer mod : loader.getModList()) {
+    FMLRelaunchLog.makeLog(mod.getModId());
+    Logger modLogger=Logger.getLogger(mod.getModId());
+    Logger eventLog=Logger.getLogger(EventBus.class.getName() + "." + mod.getModId());
+    eventLog.setParent(modLogger);
     EventBus bus=new EventBus(mod.getModId());
     boolean isActive=mod.registerBus(bus,this);
     if (isActive) {
