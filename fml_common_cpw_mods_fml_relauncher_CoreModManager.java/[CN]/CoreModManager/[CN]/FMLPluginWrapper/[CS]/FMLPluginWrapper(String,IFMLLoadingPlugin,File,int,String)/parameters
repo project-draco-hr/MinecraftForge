@@ -1,4 +1,5 @@
 String name
 IFMLLoadingPlugin coreModInstance
 File location
+int sortIndex
 String predepends

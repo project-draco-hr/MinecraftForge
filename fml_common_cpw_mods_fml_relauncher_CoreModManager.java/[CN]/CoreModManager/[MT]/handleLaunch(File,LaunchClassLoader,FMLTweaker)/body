@@ -13,6 +13,7 @@
   if (!deobfuscatedEnvironment) {
     FMLRelaunchLog.fine("Enabling runtime deobfuscation");
   }
+  tweaker.injectCascadingTweak("cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker");
   try {
     classLoader.registerTransformer("cpw.mods.fml.common.asm.transformers.PatchingTransformer");
   }

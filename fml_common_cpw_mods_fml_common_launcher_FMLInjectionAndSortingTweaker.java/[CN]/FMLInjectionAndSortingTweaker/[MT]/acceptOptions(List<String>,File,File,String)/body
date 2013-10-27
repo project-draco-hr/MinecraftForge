@@ -1,0 +1,6 @@
+{
+  if (!run) {
+    CoreModManager.sortTweakList();
+  }
+  run=true;
+}

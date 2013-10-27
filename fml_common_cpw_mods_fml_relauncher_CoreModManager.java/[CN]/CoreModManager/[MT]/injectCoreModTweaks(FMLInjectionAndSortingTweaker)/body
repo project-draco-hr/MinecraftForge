@@ -1,0 +1,7 @@
+{
+  List<ITweaker> tweakers=(List<ITweaker>)Launch.blackboard.get("Tweaks");
+  tweakers.add(0,fmlInjectionAndSortingTweaker);
+  for (  FMLPluginWrapper wrapper : loadPlugins) {
+    tweakers.add(wrapper);
+  }
+}

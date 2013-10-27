@@ -31,10 +31,12 @@
     if (deplist != null) {
       dependencies=deplist.value();
     }
+    SortingIndex index=coreModClazz.getAnnotation(IFMLLoadingPlugin.SortingIndex.class);
+    int sortIndex=index != null ? index.value() : 0;
     IFMLLoadingPlugin plugin=(IFMLLoadingPlugin)coreModClazz.newInstance();
-    FMLPluginWrapper wrap=new FMLPluginWrapper(coreModName,plugin,location,dependencies);
+    FMLPluginWrapper wrap=new FMLPluginWrapper(coreModName,plugin,location,sortIndex,dependencies);
     loadPlugins.add(wrap);
-    FMLRelaunchLog.fine("Loaded coremod %s",coreModName);
+    FMLRelaunchLog.fine("Enqueued coremod %s",coreModName);
     return wrap;
   }
  catch (  ClassNotFoundException cnfe) {

@@ -1,0 +1,35 @@
+{
+  List<ITweaker> tweakers=(List<ITweaker>)Launch.blackboard.get("Tweaks");
+  Collections.sort(tweakers,new Comparator<ITweaker>(){
+    @Override public int compare(    ITweaker o1,    ITweaker o2){
+      Integer first=null;
+      Integer second=null;
+      if (o1 instanceof FMLInjectionAndSortingTweaker) {
+        first=Integer.MIN_VALUE;
+      }
+      if (o2 instanceof FMLInjectionAndSortingTweaker) {
+        second=Integer.MIN_VALUE;
+      }
+      if (o1 instanceof FMLPluginWrapper) {
+        first=((FMLPluginWrapper)o1).sortIndex;
+      }
+ else       if (first == null) {
+        first=tweakSorting.get(o1.getClass().getName());
+      }
+      if (o2 instanceof FMLPluginWrapper) {
+        second=((FMLPluginWrapper)o2).sortIndex;
+      }
+ else       if (second == null) {
+        second=tweakSorting.get(o2.getClass().getName());
+      }
+      if (first == null) {
+        first=0;
+      }
+      if (second == null) {
+        second=0;
+      }
+      return Ints.saturatedCast((long)first - (long)second);
+    }
+  }
+);
+}

@@ -1,0 +1,37 @@
+{
+  FMLRelaunchLog.fine("Injecting coremod %s {%s} class transformers",name,coreModInstance.getClass().getName());
+  if (coreModInstance.getASMTransformerClass() != null)   for (  String transformer : coreModInstance.getASMTransformerClass()) {
+    FMLRelaunchLog.finest("Registering transformer %s",transformer);
+    classLoader.registerTransformer(transformer);
+  }
+  FMLRelaunchLog.fine("Injection complete");
+  FMLRelaunchLog.fine("Running coremod plugin for %s {%s}",name,coreModInstance.getClass().getName());
+  Map<String,Object> data=new HashMap<String,Object>();
+  data.put("mcLocation",mcDir);
+  data.put("coremodList",loadPlugins);
+  data.put("runtimeDeobfuscationEnabled",!deobfuscatedEnvironment);
+  FMLRelaunchLog.fine("Running coremod plugin %s",name);
+  data.put("coremodLocation",location);
+  coreModInstance.injectData(data);
+  String setupClass=coreModInstance.getSetupClass();
+  if (setupClass != null) {
+    try {
+      IFMLCallHook call=(IFMLCallHook)Class.forName(setupClass,true,classLoader).newInstance();
+      Map<String,Object> callData=new HashMap<String,Object>();
+      callData.put("mcLocation",mcDir);
+      callData.put("classLoader",classLoader);
+      callData.put("coremodLocation",location);
+      callData.put("deobfuscationFileName",FMLInjectionData.debfuscationDataName());
+      call.injectData(callData);
+      call.call();
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+  FMLRelaunchLog.fine("Coremod plugin class %s run successfully",coreModInstance.getClass().getSimpleName());
+  String modContainer=coreModInstance.getModContainerClass();
+  if (modContainer != null) {
+    FMLInjectionData.containers.add(modContainer);
+  }
+}
