@@ -1,0 +1,14 @@
+{
+  if (deps.isEmpty())   return;
+  for (  String dep : deps.split(" ")) {
+    if (dep.startsWith("before:")) {
+      before.add(dep.substring(7));
+    }
+ else     if (dep.startsWith("after:")) {
+      after.add(dep.substring(6));
+    }
+ else {
+      throw new IllegalArgumentException("Invalid dependancy: " + dep);
+    }
+  }
+}

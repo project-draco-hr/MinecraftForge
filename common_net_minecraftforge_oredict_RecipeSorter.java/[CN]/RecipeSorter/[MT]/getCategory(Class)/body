@@ -1,0 +1,15 @@
+{
+  Class cls=recipe;
+  Category ret=categories.get(cls);
+  if (ret == null) {
+    cls=cls.getSuperclass();
+    while (cls != Object.class) {
+      ret=categories.get(cls);
+      if (ret != null) {
+        categories.put(recipe,ret);
+        return ret;
+      }
+    }
+  }
+  return ret == null ? UNKNOWN : ret;
+}

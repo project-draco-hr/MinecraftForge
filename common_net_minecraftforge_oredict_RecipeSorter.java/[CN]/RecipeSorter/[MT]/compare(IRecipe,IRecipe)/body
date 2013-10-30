@@ -1,0 +1,9 @@
+{
+  Category c1=getCategory(r1);
+  Category c2=getCategory(r2);
+  if (c1 == SHAPELESS && c2 == SHAPED)   return 1;
+  if (c1 == SHAPED && c2 == SHAPELESS)   return -1;
+  if (r2.getRecipeSize() < r1.getRecipeSize())   return -1;
+  if (r2.getRecipeSize() > r1.getRecipeSize())   return 1;
+  return getPriority(r2) - getPriority(r1);
+}

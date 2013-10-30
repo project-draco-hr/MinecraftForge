@@ -1,0 +1,6 @@
+{
+  this.name=name;
+  this.cls=cls;
+  this.cat=cat;
+  parseDepends(deps);
+}

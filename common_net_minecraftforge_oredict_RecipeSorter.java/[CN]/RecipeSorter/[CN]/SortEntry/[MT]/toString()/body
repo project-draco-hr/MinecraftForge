@@ -1,0 +1,13 @@
+{
+  StringBuilder buf=new StringBuilder();
+  buf.append("RecipeEntry(\"").append(name).append("\", ");
+  buf.append(cat.name()).append(", ");
+  buf.append(cls == null ? "" : cls.getName()).append(")");
+  if (before.size() > 0) {
+    buf.append(" Before: ").append(Joiner.on(", ").join(before));
+  }
+  if (after.size() > 0) {
+    buf.append(" After: ").append(Joiner.on(", ").join(after));
+  }
+  return buf.toString();
+}

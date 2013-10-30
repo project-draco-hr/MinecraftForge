@@ -1,0 +1,37 @@
+{
+  if (!isDirty)   return;
+  FMLLog.fine("Forge RecipeSorter Baking:");
+  DirectedGraph<SortEntry> sorter=new DirectedGraph<SortEntry>();
+  sorter.addNode(before);
+  sorter.addNode(after);
+  sorter.addEdge(before,after);
+  for (  Map.Entry<String,SortEntry> entry : entries.entrySet()) {
+    sorter.addNode(entry.getValue());
+  }
+  for (  Map.Entry<String,SortEntry> e : entries.entrySet()) {
+    SortEntry entry=e.getValue();
+    boolean postAdded=false;
+    sorter.addEdge(before,entry);
+    for (    String dep : entry.after) {
+      if (entries.containsKey(dep)) {
+        sorter.addEdge(entries.get(dep),entry);
+      }
+    }
+    for (    String dep : entry.before) {
+      postAdded=true;
+      sorter.addEdge(entry,after);
+      if (entries.containsKey(dep)) {
+        sorter.addEdge(entry,entries.get(dep));
+      }
+    }
+    if (!postAdded) {
+      sorter.addEdge(entry,after);
+    }
+  }
+  List<SortEntry> sorted=TopologicalSort.topologicalSort(sorter);
+  int x=sorted.size();
+  for (  SortEntry entry : sorted) {
+    FMLLog.fine("  %d: %s",x,entry);
+    priorities.put(entry.cls,x--);
+  }
+}

@@ -1,0 +1,5 @@
+{
+  if (shouldSortRecipies) {
+    RecipeSorter.sortCraftManager();
+  }
+}
