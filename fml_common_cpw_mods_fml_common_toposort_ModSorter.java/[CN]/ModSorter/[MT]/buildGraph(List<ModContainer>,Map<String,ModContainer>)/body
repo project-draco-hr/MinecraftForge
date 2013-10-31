@@ -28,7 +28,7 @@
       }
  else {
         modGraph.addEdge(before,mod);
-        if (Loader.isModLoaded(modid)) {
+        if (nameLookup.containsKey(modid) || Loader.isModLoaded(modid)) {
           modGraph.addEdge(nameLookup.get(modid),mod);
         }
       }

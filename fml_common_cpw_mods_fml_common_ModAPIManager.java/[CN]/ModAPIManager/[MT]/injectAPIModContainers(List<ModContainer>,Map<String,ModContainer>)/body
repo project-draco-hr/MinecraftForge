@@ -1,0 +1,4 @@
+{
+  mods.addAll(apiContainers.values());
+  nameLookup.putAll(apiContainers);
+}

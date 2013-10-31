@@ -8,7 +8,7 @@
   if (logDebugInfo)   FMLRelaunchLog.finest("Optional removal - found optionals for class %s - processing",name);
   for (  ASMData optional : optionals.get(name)) {
     String modId=(String)optional.getAnnotationInfo().get("modid");
-    if (Loader.isModLoaded(modId)) {
+    if (Loader.isModLoaded(modId) || ModAPIManager.INSTANCE.hasAPI(modId)) {
       if (logDebugInfo)       FMLRelaunchLog.finest("Optional removal skipped - mod present %s",modId);
       continue;
     }

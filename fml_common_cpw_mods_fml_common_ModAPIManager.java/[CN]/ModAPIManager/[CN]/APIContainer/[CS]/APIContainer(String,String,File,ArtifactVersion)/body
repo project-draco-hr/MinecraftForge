@@ -1,0 +1,10 @@
+{
+  this.providedAPI=providedAPI;
+  this.version=apiVersion;
+  this.ownerMod=ownerMod;
+  this.ourVersion=new DefaultArtifactVersion(providedAPI,apiVersion);
+  this.referredMods=Lists.newArrayList();
+  this.source=source;
+  this.currentReferents=Sets.newHashSet();
+  this.packages=Sets.newHashSet();
+}
