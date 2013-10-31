@@ -1,4 +1,5 @@
 {
-  currentReferents.add(embedded);
-  referredMods.add(VersionParser.parseVersionReference(embedded));
+  if (currentReferents.add(embedded)) {
+    referredMods.add(VersionParser.parseVersionReference(embedded));
+  }
 }

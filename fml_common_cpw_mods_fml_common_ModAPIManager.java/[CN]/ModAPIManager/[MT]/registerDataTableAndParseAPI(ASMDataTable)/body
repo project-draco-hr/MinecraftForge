@@ -19,6 +19,9 @@
     container.addOwnedPackage(apiPackage);
     for (    ModContainer mc : data.getCandidate().getContainedMods()) {
       String embeddedIn=mc.getModId();
+      if (container.currentReferents.contains(embeddedIn)) {
+        continue;
+      }
       FMLLog.fine("Found API %s (owned by %s providing %s) embedded in %s",apiPackage,apiOwner,providedAPI,embeddedIn);
       if (!embeddedIn.equals(apiOwner)) {
         container.addAPIReference(embeddedIn);
