@@ -1,0 +1,14 @@
+{
+  for (int i=0; i < Item.field_77698_e.length; i++) {
+    if (Item.field_77698_e[i] != null) {
+      ItemData itemData=idMap.get(i);
+      if (itemData == null) {
+        FMLLog.severe("Found completely unknown item of class %s with ID %d, this will NOT work for a 1.7 upgrade",Item.field_77698_e[i].getClass().getName(),i);
+      }
+ else       if (!itemData.isOveridden() && !"Minecraft".equals(itemData.getModId())) {
+        FMLLog.severe("Found anonymous item of class %s with ID %d owned by mod %s, this item will NOT survive a 1.7 upgrade!",Item.field_77698_e[i].getClass().getName(),i,itemData.getModId());
+      }
+    }
+  }
+  validated=true;
+}

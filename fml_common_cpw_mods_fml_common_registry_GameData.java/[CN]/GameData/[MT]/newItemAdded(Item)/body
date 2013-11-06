@@ -2,8 +2,8 @@
   ModContainer mc=Loader.instance().activeModContainer();
   if (mc == null) {
     mc=Loader.instance().getMinecraftModContainer();
-    if (Loader.instance().hasReachedState(LoaderState.AVAILABLE)) {
-      FMLLog.severe("It appears something has tried to allocate an Item outside of the initialization phase of Minecraft, this could be very bad for your network connectivity.");
+    if (Loader.instance().hasReachedState(LoaderState.INITIALIZATION) || validated) {
+      FMLLog.severe("It appears something has tried to allocate an Item or Block outside of the preinitialization phase for mods. This will NOT work in 1.7 and beyond!");
     }
   }
   String itemType=item.getClass().getName();
