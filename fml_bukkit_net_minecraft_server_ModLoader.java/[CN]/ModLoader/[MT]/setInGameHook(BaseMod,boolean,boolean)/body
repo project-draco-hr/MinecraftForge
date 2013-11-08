@@ -1,3 +1,0 @@
-{
-  ModLoaderHelper.updateStandardTicks(mod,enable,useClock);
-}

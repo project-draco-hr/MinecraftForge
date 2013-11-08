@@ -1,4 +1,0 @@
-def main():
-    sys.stdout.flush()
-    for x in range(1, len(sys.argv)):
-        cleanup_source(sys.argv[x])

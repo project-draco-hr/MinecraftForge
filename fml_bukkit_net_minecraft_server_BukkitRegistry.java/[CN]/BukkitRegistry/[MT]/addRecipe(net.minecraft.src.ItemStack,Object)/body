@@ -1,3 +1,0 @@
-{
-  CraftingManager.getInstance().registerShapedRecipe((ItemStack)output,params);
-}

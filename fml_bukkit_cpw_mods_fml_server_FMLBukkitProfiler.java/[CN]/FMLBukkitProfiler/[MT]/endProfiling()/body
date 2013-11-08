@@ -1,4 +1,0 @@
-{
-  FMLBukkitHandler.instance().profiler=null;
-  return endTime - System.currentTimeMillis();
-}

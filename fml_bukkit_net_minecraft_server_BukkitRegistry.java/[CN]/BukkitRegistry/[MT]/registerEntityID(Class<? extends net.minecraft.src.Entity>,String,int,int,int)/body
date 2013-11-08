@@ -1,3 +1,0 @@
-{
-  EntityTypes.addNewEntityListMapping((Class<? extends Entity>)entityClass,entityName,id,backgroundEggColour,foregroundEggColour);
-}

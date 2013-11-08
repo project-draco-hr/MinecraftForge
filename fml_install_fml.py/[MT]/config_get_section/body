@@ -1,9 +1,0 @@
-def config_get_section(config, section):
-    dict = {}
-    options = config.options(section)
-    for option in options:
-        try:
-            dict[option] = config.get(section, option)
-        except:
-            dict[option] = None
-    return dict

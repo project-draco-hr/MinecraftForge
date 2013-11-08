@@ -1,3 +1,0 @@
-{
-  ModLoaderHelper.updateGUITicks(mod,enable,useClock);
-}

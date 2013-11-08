@@ -1,9 +1,0 @@
-{
-  Packet250CustomPayload packet=new Packet250CustomPayload();
-  packet.tag="REGISTER";
-  packet.data=FMLCommonHandler.instance().getPacketRegistry();
-  packet.length=packet.data.length;
-  if (packet.length > 0) {
-    networkManager.queue(packet);
-  }
-}

@@ -1,5 +1,0 @@
-def main():
-    list_file = os.path.abspath(sys.argv[2])
-    with open(list_file, 'w') as fh:
-        write_changed(fh, os.path.join(mcp_root, 'temp', 'client.md5'), os.path.join(mcp_root, 'temp', 'client_reobf.md5'), 'minecraft')
-        write_changed(fh, os.path.join(mcp_root, 'temp', 'server.md5'), os.path.join(mcp_root, 'temp', 'server_reobf.md5'), 'minecraft_server')

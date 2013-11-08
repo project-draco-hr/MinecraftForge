@@ -1,8 +1,0 @@
-{
-  if (tick == TickType.SERVER && tickEnd) {
-    return onTickInGame(FMLServerHandler.instance().getServer());
-  }
- else {
-    return true;
-  }
-}

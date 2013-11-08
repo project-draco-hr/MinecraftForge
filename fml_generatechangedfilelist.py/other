@@ -1,8 +1,0 @@
-import sys
-import os
-import subprocess, shlex
-mcp_root = os.path.abspath(sys.argv[1])
-sys.path.append(os.path.join(mcp_root, 'runtime'))
-from filehandling.srgshandler import parse_srg
-if (__name__ == '__main__'):
-    main()

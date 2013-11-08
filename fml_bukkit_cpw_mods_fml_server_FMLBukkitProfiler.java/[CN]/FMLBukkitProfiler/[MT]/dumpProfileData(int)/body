@@ -1,9 +1,0 @@
-{
-  if (lastInstance == null) {
-    return new String[]{"No profile data available"};
-  }
-  if (endTime > System.currentTimeMillis()) {
-    return new String[]{String.format("Timing is being gathered for another %d seconds",endTime - System.currentTimeMillis())};
-  }
-  return lastInstance.profileData(count);
-}

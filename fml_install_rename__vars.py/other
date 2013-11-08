@@ -1,9 +1,0 @@
-import os, os.path, sys, csv, re, fnmatch, shutil, zipfile, pprint
-from optparse import OptionParser
-from pprint import pprint
-if (__name__ == '__main__'):
-    parser = OptionParser()
-    parser.add_option('-m', '--mcp', action='store_true', dest='mcp', help='Use MCP regexs', default=False)
-    parser.add_option('-i', '--indent', action='store', dest='indent', help='Custom indent to use', default='3')
-    (options, args) = parser.parse_args()
-    main(options, args)

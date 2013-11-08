@@ -1,2 +1,0 @@
-net.minecraft.src.Block block
-Class<? extends net.minecraft.src.ItemBlock> itemclass

@@ -1,4 +1,0 @@
-{
-  profiles.push(profileLabel);
-  timestamp=System.nanoTime();
-}

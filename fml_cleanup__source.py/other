@@ -1,7 +1,0 @@
-import sys
-import os, os.path, shutil
-import fnmatch
-import re
-count = 0
-if (__name__ == '__main__'):
-    main()

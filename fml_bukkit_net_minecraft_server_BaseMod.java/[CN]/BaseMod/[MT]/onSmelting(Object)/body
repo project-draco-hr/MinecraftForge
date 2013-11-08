@@ -1,3 +1,0 @@
-{
-  takenFromFurnace((EntityHuman)smeltingParameters[0],(ItemStack)smeltingParameters[1]);
-}

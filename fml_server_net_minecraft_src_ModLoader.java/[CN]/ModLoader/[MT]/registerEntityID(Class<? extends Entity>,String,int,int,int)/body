@@ -1,3 +1,0 @@
-{
-  EntityRegistry.registerGlobalEntityID(entityClass,entityName,id,background,foreground);
-}

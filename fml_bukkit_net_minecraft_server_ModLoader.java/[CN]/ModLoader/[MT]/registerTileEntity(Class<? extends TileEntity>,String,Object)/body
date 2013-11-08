@@ -1,3 +1,0 @@
-{
-  FMLRegistry.instance().registerTileEntity(tileEntityClass,id);
-}

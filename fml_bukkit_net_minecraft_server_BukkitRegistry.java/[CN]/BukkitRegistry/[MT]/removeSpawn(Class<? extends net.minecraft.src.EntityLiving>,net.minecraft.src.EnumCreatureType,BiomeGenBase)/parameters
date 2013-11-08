@@ -1,3 +1,0 @@
-Class<? extends net.minecraft.src.EntityLiving> entityClass
-net.minecraft.src.EnumCreatureType typeOfCreature
-BiomeGenBase biomesO

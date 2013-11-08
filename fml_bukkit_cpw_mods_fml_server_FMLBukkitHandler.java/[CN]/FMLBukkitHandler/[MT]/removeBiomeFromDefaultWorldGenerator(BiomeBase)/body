@@ -1,3 +1,0 @@
-{
-  WorldType.NORMAL.removeBiome(biome);
-}

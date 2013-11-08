@@ -1,8 +1,0 @@
-import os, os.path, sys, csv, re, fnmatch, shutil
-from optparse import OptionParser
-replaced = 0
-if (__name__ == '__main__'):
-    parser = OptionParser()
-    parser.add_option('-m', '--mcp-dir', action='store', dest='mcp_dir', help='MCP Directory', default='mcp')
-    (options, args) = parser.parse_args()
-    main(os.path.abspath(options.mcp_dir), args)

@@ -1,8 +1,0 @@
-'\nCreated on Fri Apr  8 16:54:36 2011\n\n@author: ProfMobius\n@version: v1.1-cpw\nModified to fix temporary obfuscation issue\n'
-import sys
-import logging
-from optparse import OptionParser
-from commands import Commands, CLIENT, SERVER
-from mcp import reobfuscate_side
-if (__name__ == '__main__'):
-    main()

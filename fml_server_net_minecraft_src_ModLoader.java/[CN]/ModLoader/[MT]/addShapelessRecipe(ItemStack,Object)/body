@@ -1,3 +1,0 @@
-{
-  GameRegistry.addShapelessRecipe(output,params);
-}

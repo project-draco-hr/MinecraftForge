@@ -1,3 +1,0 @@
-{
-  FMLCommonHandler.instance().handleWorldGeneration(chunkX,chunkZ,world.getSeed(),world,generator,chunkProvider);
-}

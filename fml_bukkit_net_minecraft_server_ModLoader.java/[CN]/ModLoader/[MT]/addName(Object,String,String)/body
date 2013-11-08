@@ -1,3 +1,0 @@
-{
-  FMLCommonHandler.instance().addNameForObject(instance,lang,name);
-}

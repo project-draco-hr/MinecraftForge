@@ -1,7 +1,0 @@
-def normaliselines(file):
-    file = os.path.normpath(file)
-    tmp = (file + '.tmp')
-    with open(file, 'rb') as in_file:
-        with open(tmp, 'wb') as out_file:
-            out_file.write(in_file.read().replace('\r\n', '\n'))
-    shutil.move(tmp, file)

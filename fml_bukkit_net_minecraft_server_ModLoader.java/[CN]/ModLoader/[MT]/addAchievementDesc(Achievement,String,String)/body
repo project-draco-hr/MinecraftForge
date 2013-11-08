@@ -1,5 +1,0 @@
-{
-  String achName=achievement.getName();
-  addLocalization(achName,name);
-  addLocalization(achName + ".desc",description);
-}

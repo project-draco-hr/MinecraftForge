@@ -1,8 +1,0 @@
-{
-  if (tick == TickType.GAME && tickEnd) {
-    return onTickInGame((MinecraftServer)minecraftInstance);
-  }
- else {
-    return true;
-  }
-}

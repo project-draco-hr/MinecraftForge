@@ -1,8 +1,0 @@
-{
-  try {
-    return server.a(".").getCanonicalFile();
-  }
- catch (  IOException ioe) {
-    return new File(".");
-  }
-}

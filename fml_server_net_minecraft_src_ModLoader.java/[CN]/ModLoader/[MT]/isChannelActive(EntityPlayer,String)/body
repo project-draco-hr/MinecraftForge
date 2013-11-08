@@ -1,3 +1,0 @@
-{
-  return NetworkRegistry.instance().isChannelActive(channel,(Player)player);
-}

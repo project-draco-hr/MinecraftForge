@@ -1,6 +1,0 @@
-Class<? extends net.minecraft.src.EntityLiving> entityClass
-int weightedProb
-int min
-int max
-net.minecraft.src.EnumCreatureType typeOfCreature
-BiomeGenBase biomes

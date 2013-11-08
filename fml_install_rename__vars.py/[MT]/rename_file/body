@@ -1,7 +1,0 @@
-def rename_file(file, indent='3', MCP=False):
-    tmp = (file + '.tmp')
-    with open(file, 'rb') as in_file:
-        data = rename_class(in_file.read().replace('\r', ''), indent, MCP)
-        with open(tmp, 'wb') as out_file:
-            out_file.write(data)
-    shutil.move(tmp, file)

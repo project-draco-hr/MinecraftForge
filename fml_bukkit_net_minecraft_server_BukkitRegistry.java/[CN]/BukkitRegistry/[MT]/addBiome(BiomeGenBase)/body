@@ -1,3 +1,0 @@
-{
-  FMLBukkitHandler.instance().addBiomeToDefaultWorldGenerator((BiomeBase)biome);
-}

@@ -1,7 +1,0 @@
-conffile
-reobf_all
-keep_lvt
-keep_generics
-only_client
-only_server
-srg_names
