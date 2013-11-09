@@ -1,0 +1,20 @@
+{
+  String ifaceName=interfaceName.replace('.','/');
+  boolean found=classNode.interfaces.remove(ifaceName);
+  if (found && logDebugInfo)   FMLRelaunchLog.finest("Optional removal - interface %s removed",interfaceName);
+  if (!found && logDebugInfo)   FMLRelaunchLog.finest("Optional removal - interface %s NOT removed - not found",interfaceName);
+  if (found && stripRefs) {
+    if (logDebugInfo)     FMLRelaunchLog.finest("Optional removal - interface %s - stripping method signature references",interfaceName);
+    for (Iterator<MethodNode> iterator=classNode.methods.iterator(); iterator.hasNext(); ) {
+      MethodNode node=iterator.next();
+      if (node.desc.contains(ifaceName)) {
+        if (logDebugInfo)         FMLRelaunchLog.finest("Optional removal - interface %s - stripping method containing reference %s",interfaceName,node.name);
+        iterator.remove();
+      }
+    }
+    if (logDebugInfo)     FMLRelaunchLog.finest("Optional removal - interface %s - all method signature references stripped",interfaceName);
+  }
+ else   if (found) {
+    if (logDebugInfo)     FMLRelaunchLog.finest("Optional removal - interface %s - NOT stripping method signature references",interfaceName);
+  }
+}

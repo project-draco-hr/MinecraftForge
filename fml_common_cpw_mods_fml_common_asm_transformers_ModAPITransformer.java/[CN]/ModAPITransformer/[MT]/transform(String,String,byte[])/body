@@ -14,7 +14,9 @@
     }
     if (logDebugInfo)     FMLRelaunchLog.finest("Optional on %s triggered - mod missing %s",name,modId);
     if (optional.getAnnotationInfo().containsKey("iface")) {
-      stripInterface(classNode,(String)optional.getAnnotationInfo().get("iface"));
+      Boolean stripRefs=(Boolean)optional.getAnnotationInfo().get("striprefs");
+      if (stripRefs == null)       stripRefs=Boolean.FALSE;
+      stripInterface(classNode,(String)optional.getAnnotationInfo().get("iface"),stripRefs);
     }
  else {
       stripMethod(classNode,(String)optional.getObjectName());

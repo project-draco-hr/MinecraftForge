@@ -1,6 +1,0 @@
-{
-  String ifaceName=interfaceName.replace('.','/');
-  boolean found=classNode.interfaces.remove(ifaceName);
-  if (found && logDebugInfo)   FMLRelaunchLog.finest("Optional removal - interface %s removed",interfaceName);
-  if (!found && logDebugInfo)   FMLRelaunchLog.finest("Optional removal - interface %s NOT removed - not found",interfaceName);
-}
