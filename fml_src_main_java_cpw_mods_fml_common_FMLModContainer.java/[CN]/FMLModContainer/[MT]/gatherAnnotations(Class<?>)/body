@@ -2,18 +2,8 @@
   Method factoryMethod=null;
   for (  Method m : clazz.getDeclaredMethods()) {
     for (    Annotation a : m.getAnnotations()) {
-      if (modTypeAnnotations.containsKey(a.annotationType())) {
-        Class<?>[] paramTypes=new Class[]{modTypeAnnotations.get(a.annotationType())};
-        if (Arrays.equals(m.getParameterTypes(),paramTypes)) {
-          m.setAccessible(true);
-          eventMethods.put(modTypeAnnotations.get(a.annotationType()),m);
-        }
- else {
-          FMLLog.log(getModId(),Level.SEVERE,"The mod %s appears to have an invalid method annotation %s. This annotation can only apply to methods with argument types %s -it will not be called",getModId(),a.annotationType().getSimpleName(),Arrays.toString(paramTypes));
-        }
-      }
- else       if (a.annotationType().equals(Mod.EventHandler.class)) {
-        if (m.getParameterTypes().length == 1 && modAnnotationTypes.containsKey(m.getParameterTypes()[0])) {
+      if (a.annotationType().equals(Mod.EventHandler.class)) {
+        if (m.getParameterTypes().length == 1 && modEventTypes.contains(m.getParameterTypes()[0])) {
           m.setAccessible(true);
           eventMethods.put((Class<? extends FMLEvent>)m.getParameterTypes()[0],m);
         }
