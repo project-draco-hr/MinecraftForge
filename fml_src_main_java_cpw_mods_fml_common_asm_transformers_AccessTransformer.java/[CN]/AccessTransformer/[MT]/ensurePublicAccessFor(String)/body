@@ -1,6 +1,0 @@
-{
-  Modifier m=new Modifier();
-  m.setTargetAccess("public");
-  m.modifyClassVisibility=true;
-  modifiers.put(modClazzName,m);
-}

@@ -2,34 +2,15 @@
   if (bytes == null) {
     return null;
   }
-  boolean makeAllPublic=FMLDeobfuscatingRemapper.INSTANCE.isRemappedClass(name);
   if (DEBUG) {
-    FMLRelaunchLog.fine("Considering all methods and fields on %s (%s): %b\n",name,transformedName,makeAllPublic);
+    FMLRelaunchLog.fine("Considering all methods and fields on %s (%s)\n",name,transformedName);
   }
-  if (!makeAllPublic && !modifiers.containsKey(name)) {
+  if (!modifiers.containsKey(name)) {
     return bytes;
   }
   ClassNode classNode=new ClassNode();
   ClassReader classReader=new ClassReader(bytes);
   classReader.accept(classNode,0);
-  if (makeAllPublic) {
-    Modifier m=new Modifier();
-    m.targetAccess=ACC_PUBLIC;
-    m.modifyClassVisibility=true;
-    modifiers.put(name,m);
-    m=new Modifier();
-    m.targetAccess=ACC_PUBLIC;
-    m.name="*";
-    modifiers.put(name,m);
-    m=new Modifier();
-    m.targetAccess=ACC_PUBLIC;
-    m.name="*";
-    m.desc="<dummy>";
-    modifiers.put(name,m);
-    if (DEBUG) {
-      System.out.printf("Injected all public modifiers for %s (%s)\n",name,transformedName);
-    }
-  }
   Collection<Modifier> mods=modifiers.get(name);
   for (  Modifier m : mods) {
     if (m.modifyClassVisibility) {
