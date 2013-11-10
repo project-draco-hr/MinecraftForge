@@ -1,3 +1,0 @@
-{
-  mod.onItemPickup(player,item.func_92059_d());
-}

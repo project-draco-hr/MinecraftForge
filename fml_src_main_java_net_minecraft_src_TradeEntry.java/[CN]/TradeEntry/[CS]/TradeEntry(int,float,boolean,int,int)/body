@@ -1,7 +1,0 @@
-{
-  this.id=id;
-  this.chance=chance;
-  this.buying=buying;
-  this.min=min;
-  this.max=max;
-}

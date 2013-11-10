@@ -1,3 +1,0 @@
-{
-  EntityRegistry.removeSpawn(entityClass,spawnList,WorldType.base12Biomes);
-}

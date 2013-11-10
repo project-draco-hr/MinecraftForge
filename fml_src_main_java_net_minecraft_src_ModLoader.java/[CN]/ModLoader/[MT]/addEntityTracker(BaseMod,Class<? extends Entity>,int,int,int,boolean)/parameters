@@ -1,6 +1,0 @@
-BaseMod mod
-Class<? extends Entity> entityClass
-int entityTypeId
-int updateRange
-int updateInterval
-boolean sendVelocityInfo

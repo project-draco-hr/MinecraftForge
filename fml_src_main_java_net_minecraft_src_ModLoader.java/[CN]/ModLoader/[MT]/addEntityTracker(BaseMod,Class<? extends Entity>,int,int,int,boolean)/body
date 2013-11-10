@@ -1,3 +1,0 @@
-{
-  ModLoaderHelper.buildEntityTracker(mod,entityClass,entityTypeId,updateRange,updateInterval,sendVelocityInfo);
-}

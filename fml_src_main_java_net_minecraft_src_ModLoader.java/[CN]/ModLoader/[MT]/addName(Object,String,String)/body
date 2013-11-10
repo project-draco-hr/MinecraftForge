@@ -1,3 +1,0 @@
-{
-  LanguageRegistry.instance().addNameForObject(instance,lang,name);
-}

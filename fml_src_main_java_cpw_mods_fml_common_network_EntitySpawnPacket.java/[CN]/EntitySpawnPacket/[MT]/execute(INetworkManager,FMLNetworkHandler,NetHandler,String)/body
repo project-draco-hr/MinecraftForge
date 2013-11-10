@@ -6,5 +6,5 @@
     FMLLog.log(Level.WARNING,"Missing mod entity information for %s : %d",mc.getModId(),modEntityId);
     return;
   }
-  Entity entity=FMLCommonHandler.instance().spawnEntityIntoClientWorld(registration,this);
+  @SuppressWarnings("unused") Entity entity=FMLCommonHandler.instance().spawnEntityIntoClientWorld(registration,this);
 }

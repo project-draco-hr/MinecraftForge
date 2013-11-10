@@ -1,3 +1,0 @@
-{
-  ((net.minecraft.src.BaseMod)modContainer.getMod()).keyboardEvent(kb);
-}

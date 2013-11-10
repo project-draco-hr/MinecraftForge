@@ -1,5 +1,0 @@
-{
-  if (sidedHelper != null) {
-    sidedHelper.finishModLoading(mc);
-  }
-}

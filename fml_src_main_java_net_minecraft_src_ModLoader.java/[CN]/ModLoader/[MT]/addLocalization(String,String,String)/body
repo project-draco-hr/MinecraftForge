@@ -1,3 +1,0 @@
-{
-  LanguageRegistry.instance().addStringLocalization(key,lang,value);
-}

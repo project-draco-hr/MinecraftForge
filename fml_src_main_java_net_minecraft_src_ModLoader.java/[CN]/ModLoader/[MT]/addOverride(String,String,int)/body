@@ -1,3 +1,0 @@
-{
-  RenderingRegistry.addTextureOverride(path,overlayPath,index);
-}

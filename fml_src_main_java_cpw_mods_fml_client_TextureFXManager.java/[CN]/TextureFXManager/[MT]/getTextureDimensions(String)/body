@@ -1,3 +1,0 @@
-{
-  return texturesByName.containsKey(texture) ? new Dimension(texturesByName.get(texture).x,texturesByName.get(texture).y) : new Dimension(1,1);
-}

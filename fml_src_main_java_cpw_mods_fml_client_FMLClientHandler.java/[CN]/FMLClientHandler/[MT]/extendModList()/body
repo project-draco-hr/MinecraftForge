@@ -1,5 +1,5 @@
 {
-  Map<String,Map<String,String>> modList=(Map<String,Map<String,String>>)Launch.blackboard.get("modList");
+  @SuppressWarnings("unchecked") Map<String,Map<String,String>> modList=(Map<String,Map<String,String>>)Launch.blackboard.get("modList");
   if (modList != null) {
     for (    Entry<String,Map<String,String>> modEntry : modList.entrySet()) {
       String sharedModId=modEntry.getKey();

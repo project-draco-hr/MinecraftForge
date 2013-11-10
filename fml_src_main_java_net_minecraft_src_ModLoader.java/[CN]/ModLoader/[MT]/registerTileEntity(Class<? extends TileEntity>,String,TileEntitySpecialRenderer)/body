@@ -1,3 +1,0 @@
-{
-  ClientRegistry.registerTileEntity(tileEntityClass,id,renderer);
-}

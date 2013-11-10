@@ -1,3 +1,0 @@
-{
-  ModLoaderHelper.openGui(ID,player,container,x,y,z);
-}

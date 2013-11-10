@@ -1,6 +1,0 @@
-{
-  int renderId=RenderingRegistry.getNextAvailableRenderId();
-  ModLoaderBlockRendererHandler bri=new ModLoaderBlockRendererHandler(renderId,inventoryRenderer,mod);
-  RenderingRegistry.registerBlockHandler(bri);
-  return renderId;
-}

@@ -1,5 +1,0 @@
-{
-  if (cst instanceof String && labels.size() == 1) {
-    foundProperties=(String)cst;
-  }
-}

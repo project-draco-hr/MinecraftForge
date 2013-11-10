@@ -1,3 +1,0 @@
-{
-  RenderingRegistry.instance().renderInventoryBlock(renderer,block,metadata,modelID);
-}

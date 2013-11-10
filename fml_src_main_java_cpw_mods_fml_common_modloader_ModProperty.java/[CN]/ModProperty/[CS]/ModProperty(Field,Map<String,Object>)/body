@@ -1,3 +1,0 @@
-{
-  this(field,(String)annotationInfo.get("info"),(Double)annotationInfo.get("min"),(Double)annotationInfo.get("max"),(String)annotationInfo.get("name"));
-}

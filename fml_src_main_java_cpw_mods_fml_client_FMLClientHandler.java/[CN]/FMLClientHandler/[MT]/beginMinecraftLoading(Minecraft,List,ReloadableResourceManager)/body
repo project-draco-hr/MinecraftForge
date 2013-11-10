@@ -9,7 +9,6 @@
     return;
   }
   FMLCommonHandler.instance().beginLoading(this);
-  new ModLoaderClientHelper(client);
   try {
     Class<?> optifineConfig=Class.forName("Config",false,Loader.instance().getModClassLoader());
     String optifineVersion=(String)optifineConfig.getField("VERSION").get(null);

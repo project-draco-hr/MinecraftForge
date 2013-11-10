@@ -1,3 +1,0 @@
-{
-  super(new KeyBinding[0],new boolean[0]);
-}

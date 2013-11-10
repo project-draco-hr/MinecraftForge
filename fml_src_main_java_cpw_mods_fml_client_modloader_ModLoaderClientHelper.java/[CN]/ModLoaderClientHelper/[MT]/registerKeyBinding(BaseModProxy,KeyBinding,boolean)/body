@@ -1,7 +1,0 @@
-{
-  ModLoaderModContainer mlmc=(ModLoaderModContainer)Loader.instance().activeModContainer();
-  ModLoaderKeyBindingHandler handler=Iterables.getOnlyElement(keyBindingContainers.get(mlmc));
-  handler.setModContainer(mlmc);
-  handler.addKeyBinding(keyHandler,allowRepeat);
-  KeyBindingRegistry.registerKeyBinding(handler);
-}

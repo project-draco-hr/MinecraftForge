@@ -1,8 +1,0 @@
-{
-  TextureHolder holder=texturesById.get(index);
-  if (holder == null) {
-    return;
-  }
-  holder.x=j;
-  holder.y=k;
-}

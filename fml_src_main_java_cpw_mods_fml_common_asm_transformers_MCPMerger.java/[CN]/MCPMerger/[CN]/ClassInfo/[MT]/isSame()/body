@@ -1,3 +1,0 @@
-{
-  return (cField.size() == 0 && sField.size() == 0 && cMethods.size() == 0 && sMethods.size() == 0);
-}

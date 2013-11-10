@@ -1,3 +1,0 @@
-{
-  return ((net.minecraft.src.BaseMod)mod).spawnEntity(er.getModEntityId(),client.field_71441_e,input.scaledX,input.scaledY,input.scaledZ);
-}

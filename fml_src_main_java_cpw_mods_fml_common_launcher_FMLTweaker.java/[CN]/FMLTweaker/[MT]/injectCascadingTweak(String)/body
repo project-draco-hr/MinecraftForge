@@ -1,4 +1,4 @@
 {
-  List<String> tweakClasses=(List<String>)Launch.blackboard.get("TweakClasses");
+  @SuppressWarnings("unchecked") List<String> tweakClasses=(List<String>)Launch.blackboard.get("TweakClasses");
   tweakClasses.add(tweakClassName);
 }

@@ -1,6 +1,6 @@
 {
-  Map<String,String> modVersions=(Map<String,String>)data[0];
-  List<String> missingMods=(List<String>)data[1];
+  @SuppressWarnings("unchecked") Map<String,String> modVersions=(Map<String,String>)data[0];
+  @SuppressWarnings("unchecked") List<String> missingMods=(List<String>)data[1];
   ByteArrayDataOutput dat=ByteStreams.newDataOutput();
   dat.writeInt(modVersions.size());
   for (  Entry<String,String> version : modVersions.entrySet()) {

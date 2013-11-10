@@ -1,3 +1,0 @@
-{
-  ModLoaderClientHelper.registerKeyBinding(mod,keyHandler,allowRepeat);
-}

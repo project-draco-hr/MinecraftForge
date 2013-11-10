@@ -28,7 +28,7 @@
   boolean goodMC=FMLLaunchHandler.side() == Side.SERVER;
   int certCount=0;
   try {
-    Class cbr=Class.forName("net.minecraft.client.ClientBrandRetriever",false,cl);
+    Class<?> cbr=Class.forName("net.minecraft.client.ClientBrandRetriever",false,cl);
     codeSource=cbr.getProtectionDomain().getCodeSource();
   }
  catch (  Exception e) {

@@ -1,5 +1,5 @@
 {
-  List<ITweaker> tweakers=(List<ITweaker>)Launch.blackboard.get("Tweaks");
+  @SuppressWarnings("unchecked") List<ITweaker> tweakers=(List<ITweaker>)Launch.blackboard.get("Tweaks");
   Collections.sort(tweakers,new Comparator<ITweaker>(){
     @Override public int compare(    ITweaker o1,    ITweaker o2){
       Integer first=null;

@@ -1,3 +1,0 @@
-{
-  return readFully(inFile.getInputStream(entry));
-}

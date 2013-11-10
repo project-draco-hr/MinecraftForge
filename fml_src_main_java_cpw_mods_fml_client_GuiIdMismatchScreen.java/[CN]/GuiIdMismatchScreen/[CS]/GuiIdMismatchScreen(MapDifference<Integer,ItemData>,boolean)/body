@@ -6,7 +6,6 @@
   }
   for (  Entry<Integer,ValueDifference<ItemData>> entry : idDifferences.entriesDiffering().entrySet()) {
     ItemData world=entry.getValue().leftValue();
-    ItemData game=entry.getValue().rightValue();
     mismatchedIds.add(String.format("ID %d is mismatched between world and game",world.getItemId()));
   }
   this.allowContinue=allowContinue;

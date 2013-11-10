@@ -1,3 +1,0 @@
-EnumSet<TickType> types
-boolean end
-Object tickData

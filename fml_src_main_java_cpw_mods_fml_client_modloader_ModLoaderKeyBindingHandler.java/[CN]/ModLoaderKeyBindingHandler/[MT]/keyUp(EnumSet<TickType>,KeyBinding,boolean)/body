@@ -1,7 +1,0 @@
-{
-  if (!end) {
-    return;
-  }
-  int idx=helper.indexOf(kb);
-  active[idx]=false;
-}

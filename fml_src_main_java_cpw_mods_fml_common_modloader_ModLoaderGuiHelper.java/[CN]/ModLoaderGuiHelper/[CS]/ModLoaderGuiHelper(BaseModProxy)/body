@@ -1,4 +1,0 @@
-{
-  this.mod=mod;
-  this.ids=Sets.newHashSet();
-}

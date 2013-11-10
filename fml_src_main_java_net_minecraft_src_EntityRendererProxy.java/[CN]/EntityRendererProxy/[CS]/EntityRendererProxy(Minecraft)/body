@@ -1,4 +1,0 @@
-{
-  super(minecraft);
-  game=minecraft;
-}

@@ -1,8 +1,3 @@
 {
-  if (discoverer.isBaseMod(Collections.<String>emptyList()) && name.equals("getPriorities") && desc.equals(Type.getMethodDescriptor(Type.getType(String.class)))) {
-    return new ModLoaderPropertiesMethodVisitor(name,discoverer);
-  }
- else {
-    return new ModMethodVisitor(name,desc,discoverer);
-  }
+  return new ModMethodVisitor(name,desc,discoverer);
 }

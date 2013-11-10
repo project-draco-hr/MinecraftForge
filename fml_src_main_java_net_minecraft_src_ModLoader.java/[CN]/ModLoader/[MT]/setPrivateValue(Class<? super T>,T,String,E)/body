@@ -1,3 +1,0 @@
-{
-  ObfuscationReflectionHelper.setPrivateValue(instanceclass,instance,value,field);
-}

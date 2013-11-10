@@ -1,3 +1,0 @@
-{
-  return ((net.minecraft.src.BaseMod)mod).getContainerGUI((EntityClientPlayerMP)player,ID,x,y,z);
-}

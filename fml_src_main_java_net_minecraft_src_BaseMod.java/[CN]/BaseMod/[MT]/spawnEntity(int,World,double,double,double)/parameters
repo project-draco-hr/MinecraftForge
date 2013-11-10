@@ -1,5 +1,0 @@
-int entityId
-World world
-double scaledX
-double scaledY
-double scaledZ

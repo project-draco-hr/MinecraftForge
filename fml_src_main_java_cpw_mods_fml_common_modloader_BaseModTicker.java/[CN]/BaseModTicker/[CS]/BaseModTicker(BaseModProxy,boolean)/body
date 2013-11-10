@@ -1,5 +1,0 @@
-{
-  this.mod=mod;
-  this.ticks=EnumSet.of(TickType.WORLDLOAD);
-  this.sendGuiTicks=guiTicker;
-}

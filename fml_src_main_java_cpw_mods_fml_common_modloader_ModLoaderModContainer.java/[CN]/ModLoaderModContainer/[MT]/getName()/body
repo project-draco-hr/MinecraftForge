@@ -1,3 +1,0 @@
-{
-  return mod != null ? mod.getName() : modId;
-}

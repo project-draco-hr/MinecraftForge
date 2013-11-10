@@ -30,7 +30,7 @@
         fingerprintNotPresent=false;
       }
     }
-    List<Map<String,Object>> props=(List<Map<String,Object>>)descriptor.get("customProperties");
+    @SuppressWarnings("unchecked") List<Map<String,Object>> props=(List<Map<String,Object>>)descriptor.get("customProperties");
     if (props != null) {
       com.google.common.collect.ImmutableMap.Builder<String,String> builder=ImmutableMap.<String,String>builder();
       for (      Map<String,Object> p : props) {

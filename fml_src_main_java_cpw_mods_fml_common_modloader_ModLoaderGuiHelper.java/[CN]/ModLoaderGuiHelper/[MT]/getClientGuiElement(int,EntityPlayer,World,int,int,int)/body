@@ -1,3 +1,0 @@
-{
-  return ModLoaderHelper.getClientSideGui(mod,player,ID,x,y,z);
-}

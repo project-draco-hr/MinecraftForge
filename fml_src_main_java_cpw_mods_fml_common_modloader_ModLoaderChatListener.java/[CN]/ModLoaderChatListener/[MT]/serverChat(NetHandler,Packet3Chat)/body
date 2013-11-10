@@ -1,4 +1,0 @@
-{
-  mod.serverChat((NetServerHandler)handler,message.field_73476_b);
-  return message;
-}

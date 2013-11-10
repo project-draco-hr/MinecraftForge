@@ -1,6 +1,0 @@
-int id
-EntityPlayer player
-Container container
-int x
-int y
-int z

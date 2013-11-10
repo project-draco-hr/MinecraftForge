@@ -1,8 +1,0 @@
-{
-  if (player instanceof EntityPlayerMP) {
-    mod.serverCustomPayload(((EntityPlayerMP)player).field_71135_a,packet);
-  }
- else {
-    ModLoaderHelper.sidedHelper.sendClientPacket(mod,packet);
-  }
-}

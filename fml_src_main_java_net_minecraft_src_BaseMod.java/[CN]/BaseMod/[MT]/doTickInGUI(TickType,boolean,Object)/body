@@ -1,8 +1,0 @@
-{
-  Minecraft mc=FMLClientHandler.instance().getClient();
-  boolean hasWorld=mc.field_71441_e != null;
-  if (tickEnd && (tick == TickType.RENDER || (tick == TickType.CLIENT && hasWorld))) {
-    return onTickInGUI((Float)data[0],mc,mc.field_71462_r);
-  }
-  return true;
-}

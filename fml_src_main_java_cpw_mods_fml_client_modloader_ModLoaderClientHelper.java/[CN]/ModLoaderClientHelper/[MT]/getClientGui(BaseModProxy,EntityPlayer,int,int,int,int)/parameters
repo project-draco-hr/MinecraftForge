@@ -1,6 +1,0 @@
-BaseModProxy mod
-EntityPlayer player
-int ID
-int x
-int y
-int z

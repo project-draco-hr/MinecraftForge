@@ -1,5 +1,4 @@
 {
-  this.modList=loader.getIndexedModList();
   Builder<String,EventBus> eventBus=ImmutableMap.builder();
   for (  ModContainer mod : loader.getModList()) {
     FMLRelaunchLog.makeLog(mod.getModId());

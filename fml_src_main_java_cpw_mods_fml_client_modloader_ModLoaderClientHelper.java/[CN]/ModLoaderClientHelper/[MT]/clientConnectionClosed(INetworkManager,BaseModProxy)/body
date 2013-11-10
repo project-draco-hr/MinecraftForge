@@ -1,7 +1,0 @@
-{
-  if (managerLookups.containsKey(manager)) {
-    ((BaseMod)mod).clientDisconnect((NetClientHandler)managerLookups.get(manager));
-    return true;
-  }
-  return false;
-}

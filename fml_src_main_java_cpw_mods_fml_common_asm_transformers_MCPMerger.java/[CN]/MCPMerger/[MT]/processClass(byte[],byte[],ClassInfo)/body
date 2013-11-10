@@ -1,9 +1,0 @@
-{
-  ClassNode cClassNode=getClassNode(cIn);
-  ClassNode sClassNode=getClassNode(sIn);
-  processFields(cClassNode,sClassNode,info);
-  processMethods(cClassNode,sClassNode,info);
-  ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
-  cClassNode.accept(writer);
-  return writer.toByteArray();
-}

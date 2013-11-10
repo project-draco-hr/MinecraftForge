@@ -1,3 +1,0 @@
-{
-  EntityRegistry.addSpawn(entityName,weightedProb,min,max,spawnList,WorldType.base12Biomes);
-}

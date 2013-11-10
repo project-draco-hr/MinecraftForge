@@ -4,7 +4,6 @@
   String canonicalModsPath;
   String canonicalConfigPath;
   try {
-    canonicalMinecraftDir=minecraftDir.getCanonicalFile();
     canonicalModsPath=modsDir.getCanonicalPath();
     canonicalConfigPath=configDir.getCanonicalPath();
     canonicalConfigDir=configDir.getCanonicalFile();

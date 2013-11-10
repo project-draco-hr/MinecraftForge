@@ -1,5 +1,0 @@
-{
-  this.renderId=renderId;
-  this.render3dInInventory=render3dInInventory;
-  this.mod=mod;
-}

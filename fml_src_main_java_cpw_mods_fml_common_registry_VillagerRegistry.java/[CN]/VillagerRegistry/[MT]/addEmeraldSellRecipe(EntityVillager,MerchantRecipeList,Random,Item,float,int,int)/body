@@ -2,5 +2,5 @@
   if (min > 0 && max > 0) {
     EntityVillager.field_70960_bC.put(item.field_77779_bT,new Tuple(min,max));
   }
-  villager.func_70949_b(list,item.func_77612_l(),random,chance);
+  EntityVillager.func_70949_b(list,item.func_77612_l(),random,chance);
 }

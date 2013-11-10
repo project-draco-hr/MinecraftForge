@@ -1,5 +1,0 @@
-ZipFile inJar
-ZipEntry entry
-ZipOutputStream outJar
-ZipOutputStream outJar2
-boolean isClientOnly
