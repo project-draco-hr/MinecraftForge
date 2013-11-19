@@ -1,7 +1,0 @@
-import os, os.path, sys
-from optparse import OptionParser
-forge_dir = os.path.dirname(os.path.abspath(__file__))
-mcp_dir = os.path.abspath('..')
-from forge import build_forge_dev
-if (__name__ == '__main__'):
-    main()

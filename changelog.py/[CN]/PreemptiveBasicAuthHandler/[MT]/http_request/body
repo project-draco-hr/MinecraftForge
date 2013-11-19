@@ -1,9 +1,0 @@
-def http_request(self, req):
-    uri = req.get_full_url()
-    (user, pw) = self.passwd.find_user_password(None, uri)
-    if (pw is None):
-        return req
-    raw = ('%s:%s' % (user, pw))
-    auth = ('Basic %s' % base64.b64encode(raw).strip())
-    req.add_unredirected_header('Authorization', auth)
-    return req

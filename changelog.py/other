@@ -1,8 +1,0 @@
-import os, os.path, sys, re
-import json, urllib2
-from pprint import pprint
-from urlparse import urlparse
-import base64
-import optparse, ast
-if (__name__ == '__main__'):
-    make_changelog('http://ci.jenkins.minecraftforge.net/job/minecraftforge/', 70000, 'changelog.txt', 'pinecone')

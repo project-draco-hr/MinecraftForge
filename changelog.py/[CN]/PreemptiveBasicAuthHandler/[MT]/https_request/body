@@ -1,2 +1,0 @@
-def https_request(self, req):
-    return self.http_request(req)
