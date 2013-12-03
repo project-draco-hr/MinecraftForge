@@ -1,3 +1,0 @@
-{
-  return NetworkRegistry.instance().handleChat(handler,chat);
-}

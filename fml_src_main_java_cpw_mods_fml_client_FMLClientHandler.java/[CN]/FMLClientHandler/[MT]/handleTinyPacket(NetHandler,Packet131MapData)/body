@@ -1,3 +1,0 @@
-{
-  ((NetClientHandler)handler).fmlPacket131Callback(mapData);
-}

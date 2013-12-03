@@ -1,4 +1,4 @@
-EntityPlayer player
+EntityPlayer entityPlayer
 Object mod
 int modGuiId
 World world

@@ -1,6 +1,0 @@
-{
-  for (  JsonNode node : metadataList.getElements()) {
-    ModMetadata mmd=new ModMetadata(node);
-    metadatas.put(mmd.modId,mmd);
-  }
-}

@@ -1,3 +1,0 @@
-{
-  NetworkRegistry.instance().clientLoggedIn(clientHandler,manager,login);
-}

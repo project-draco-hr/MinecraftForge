@@ -1,0 +1,5 @@
+{
+  NetHandlerPlayServer nethandler=new NetHandlerPlayServer(scm.func_72365_p(),manager,player);
+  player.field_71135_a=null;
+  scm.func_72355_a(manager,player,nethandler);
+}

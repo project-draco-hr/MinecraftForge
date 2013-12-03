@@ -1,5 +1,0 @@
-{
-  int idx=allocatedBlocks.nextSetBit(0);
-  allocatedBlocks.clear(idx);
-  return idx;
-}

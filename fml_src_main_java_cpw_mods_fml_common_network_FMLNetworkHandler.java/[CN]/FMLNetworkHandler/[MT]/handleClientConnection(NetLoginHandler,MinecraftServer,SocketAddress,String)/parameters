@@ -1,4 +1,0 @@
-NetLoginHandler netLoginHandler
-MinecraftServer server
-SocketAddress address
-String userName

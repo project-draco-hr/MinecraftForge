@@ -2,7 +2,7 @@
   Class<?> resourcePackType=container.getCustomResourcePackClass();
   if (resourcePackType != null) {
     try {
-      ResourcePack pack=(ResourcePack)resourcePackType.getConstructor(ModContainer.class).newInstance(container);
+      IResourcePack pack=(IResourcePack)resourcePackType.getConstructor(ModContainer.class).newInstance(container);
       resourcePackList.add(pack);
       resourcePackMap.put(container.getModId(),pack);
     }

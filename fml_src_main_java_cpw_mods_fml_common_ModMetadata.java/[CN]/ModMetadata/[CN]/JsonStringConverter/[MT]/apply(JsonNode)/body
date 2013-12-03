@@ -1,8 +1,0 @@
-{
-  if (arg0.hasElements()) {
-    return Lists.transform(arg0.getElements(),new JsonArrayConverter());
-  }
- else {
-    return arg0.getText();
-  }
-}

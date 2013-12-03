@@ -1,4 +1,4 @@
 {
-  this.func_73873_v_();
-  this.customException.drawScreen(this,field_73886_k,p_73863_1_,p_73863_2_,p_73863_3_);
+  this.func_146276_q_();
+  this.customException.drawScreen(this,field_146289_q,p_73863_1_,p_73863_2_,p_73863_3_);
 }

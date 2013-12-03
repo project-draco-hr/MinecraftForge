@@ -1,8 +1,0 @@
-{
-  if (handler instanceof NetServerHandler || mapData.field_73438_a != Item.field_77744_bd.field_77779_bT) {
-    NetworkRegistry.instance().handleTinyPacket(handler,mapData);
-  }
- else {
-    FMLCommonHandler.instance().handleTinyPacket(handler,mapData);
-  }
-}

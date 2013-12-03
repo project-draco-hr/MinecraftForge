@@ -1,5 +1,5 @@
-int entityId
-EntityPlayerMP player
-int serverX
-int serverY
-int serverZ
+int func_145782_y
+EntityPlayerMP p_73117_1_
+int field_73128_d
+int field_73129_e
+int field_73126_f

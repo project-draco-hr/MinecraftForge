@@ -4,7 +4,7 @@
     listWidth=Math.max(listWidth,getFontRenderer().func_78256_a(mod.getVersion()) + 10);
   }
   listWidth=Math.min(listWidth,150);
-  this.field_73887_h.add(new GuiSmallButton(6,this.field_73880_f / 2 - 75,this.field_73881_g - 38,I18n.func_135053_a("gui.done")));
+  this.field_146292_n.add(new GuiButton(6,this.field_146294_l / 2 - 75,this.field_146295_m - 38,I18n.func_135052_a("gui.done")));
   this.modList=new GuiSlotModList(this,mods,listWidth);
-  this.modList.registerScrollButtons(this.field_73887_h,7,8);
+  this.modList.registerScrollButtons(this.field_146292_n,7,8);
 }

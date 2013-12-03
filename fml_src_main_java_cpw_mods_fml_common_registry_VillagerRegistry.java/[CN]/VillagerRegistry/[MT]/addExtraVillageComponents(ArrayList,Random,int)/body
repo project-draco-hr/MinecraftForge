@@ -1,5 +1,5 @@
 {
-  @SuppressWarnings("unchecked") List<StructureVillagePieceWeight> parts=components;
+  @SuppressWarnings("unchecked") List<StructureVillagePieces.PieceWeight> parts=components;
   for (  IVillageCreationHandler handler : instance().villageCreationHandlers.values()) {
     parts.add(handler.getVillagePieceWeight(random,i));
   }

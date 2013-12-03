@@ -1,5 +1,0 @@
-{
-  if (p_73875_1_.field_73742_g && p_73875_1_.field_73741_f == 1) {
-    FMLClientHandler.instance().getClient().func_71373_a(null);
-  }
-}

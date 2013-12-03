@@ -1,3 +1,0 @@
-{
-  instance().handleClientConnection(netLoginHandler,server,address,userName);
-}

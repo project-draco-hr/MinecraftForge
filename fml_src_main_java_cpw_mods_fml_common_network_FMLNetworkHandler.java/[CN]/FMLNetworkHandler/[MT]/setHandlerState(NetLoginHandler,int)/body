@@ -1,3 +1,0 @@
-{
-  instance().loginStates.put(handler,state);
-}

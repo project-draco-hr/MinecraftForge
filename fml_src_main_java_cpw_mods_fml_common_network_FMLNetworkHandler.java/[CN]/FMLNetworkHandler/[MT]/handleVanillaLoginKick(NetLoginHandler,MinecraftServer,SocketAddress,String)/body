@@ -1,8 +1,0 @@
-{
-  ServerConfigurationManager playerList=server.func_71203_ab();
-  String kickReason=playerList.func_72399_a(address,userName);
-  if (kickReason != null) {
-    netLoginHandler.completeConnection(kickReason);
-  }
-  return kickReason == null;
-}

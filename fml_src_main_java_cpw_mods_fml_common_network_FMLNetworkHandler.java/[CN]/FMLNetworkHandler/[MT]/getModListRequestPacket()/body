@@ -1,3 +1,0 @@
-{
-  return PacketDispatcher.getPacket("FML",FMLPacket.makePacket(MOD_LIST_REQUEST));
-}

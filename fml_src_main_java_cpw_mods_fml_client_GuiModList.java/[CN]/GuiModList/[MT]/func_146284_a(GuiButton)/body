@@ -1,0 +1,10 @@
+{
+  if (button.field_146124_l) {
+switch (button.field_146127_k) {
+case 6:
+      this.field_146297_k.func_147108_a(this.mainMenu);
+    return;
+}
+}
+super.func_146284_a(button);
+}

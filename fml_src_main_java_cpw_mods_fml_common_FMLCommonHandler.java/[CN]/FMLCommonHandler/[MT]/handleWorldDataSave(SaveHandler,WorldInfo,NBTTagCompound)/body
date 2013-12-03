@@ -4,7 +4,7 @@
       WorldAccessContainer wac=((InjectedModContainer)mc).getWrappedWorldAccessContainer();
       if (wac != null) {
         NBTTagCompound dataForWriting=wac.getDataForWriting(handler,worldInfo);
-        tagCompound.func_74766_a(mc.getModId(),dataForWriting);
+        tagCompound.func_74782_a(mc.getModId(),dataForWriting);
       }
     }
   }

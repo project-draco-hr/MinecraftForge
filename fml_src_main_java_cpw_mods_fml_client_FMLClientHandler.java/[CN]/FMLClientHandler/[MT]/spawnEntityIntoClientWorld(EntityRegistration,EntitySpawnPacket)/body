@@ -8,8 +8,8 @@
     }
  else {
       entity=(Entity)(cls.getConstructor(World.class).newInstance(wc));
-      int offset=packet.entityId - entity.field_70157_k;
-      entity.field_70157_k=packet.entityId;
+      int offset=packet.entityId - entity.func_145782_y();
+      entity.func_145769_d(packet.entityId);
       entity.func_70012_b(packet.scaledX,packet.scaledY,packet.scaledZ,packet.scaledYaw,packet.scaledPitch);
       if (entity instanceof EntityLiving) {
         ((EntityLiving)entity).field_70759_as=packet.scaledHeadYaw;
@@ -17,7 +17,7 @@
       Entity parts[]=entity.func_70021_al();
       if (parts != null) {
         for (int j=0; j < parts.length; j++) {
-          parts[j].field_70157_k+=offset;
+          parts[j].func_145769_d(parts[j].func_145782_y() + offset);
         }
       }
     }
@@ -25,7 +25,7 @@
     entity.field_70117_cu=packet.rawY;
     entity.field_70116_cv=packet.rawZ;
     if (entity instanceof IThrowableEntity) {
-      Entity thrower=client.field_71439_g.field_70157_k == packet.throwerId ? client.field_71439_g : wc.func_73045_a(packet.throwerId);
+      Entity thrower=client.field_71439_g.func_145782_y() == packet.throwerId ? client.field_71439_g : wc.func_73045_a(packet.throwerId);
       ((IThrowableEntity)entity).setThrower(thrower);
     }
     if (packet.metadata != null) {

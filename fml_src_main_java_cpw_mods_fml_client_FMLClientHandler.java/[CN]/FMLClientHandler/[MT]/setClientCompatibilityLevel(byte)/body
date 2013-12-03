@@ -1,3 +1,0 @@
-{
-  NetClientHandler.setConnectionCompatibilityLevel(compatibilityLevel);
-}

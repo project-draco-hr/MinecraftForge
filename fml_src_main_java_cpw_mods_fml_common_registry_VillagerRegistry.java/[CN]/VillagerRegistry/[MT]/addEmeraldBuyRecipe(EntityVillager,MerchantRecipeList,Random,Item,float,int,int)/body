@@ -1,6 +1,6 @@
 {
   if (min > 0 && max > 0) {
-    EntityVillager.field_70958_bB.put(item.field_77779_bT,new Tuple(min,max));
+    EntityVillager.field_70958_bB.put(item,new Tuple(min,max));
   }
-  EntityVillager.func_70948_a(list,item.func_77612_l(),random,chance);
+  EntityVillager.func_146091_a(list,item,random,chance);
 }

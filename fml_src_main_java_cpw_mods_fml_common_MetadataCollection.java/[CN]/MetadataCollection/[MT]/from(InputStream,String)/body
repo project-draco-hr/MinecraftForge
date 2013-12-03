@@ -4,15 +4,26 @@
   }
   InputStreamReader reader=new InputStreamReader(inputStream);
   try {
-    JsonRootNode root=parser.parse(reader);
-    if (root.hasElements()) {
-      return parse10ModInfo(root);
+    MetadataCollection collection;
+    Gson gson=new GsonBuilder().create();
+    JsonParser parser=new JsonParser();
+    JsonElement rootElement=parser.parse(reader);
+    if (rootElement.isJsonArray()) {
+      collection=new MetadataCollection();
+      JsonArray jsonList=rootElement.getAsJsonArray();
+      collection.modList=new ModMetadata[jsonList.size()];
+      int i=0;
+      for (      JsonElement mod : jsonList) {
+        collection.modList[i++]=gson.fromJson(mod,ModMetadata.class);
+      }
     }
  else {
-      return parseModInfo(root);
+      collection=gson.fromJson(rootElement,MetadataCollection.class);
     }
+    collection.parseModMetadataList();
+    return collection;
   }
- catch (  InvalidSyntaxException e) {
+ catch (  JsonParseException e) {
     FMLLog.log(Level.SEVERE,e,"The mcmod.info file in %s cannot be parsed as valid JSON. It will be ignored",sourceName);
     return new MetadataCollection();
   }

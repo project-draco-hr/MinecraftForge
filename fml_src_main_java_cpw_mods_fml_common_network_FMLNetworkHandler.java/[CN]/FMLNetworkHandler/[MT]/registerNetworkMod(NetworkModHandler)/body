@@ -1,4 +1,0 @@
-{
-  networkModHandlers.put(handler.getContainer(),handler);
-  networkIdLookup.put(handler.getNetworkId(),handler);
-}

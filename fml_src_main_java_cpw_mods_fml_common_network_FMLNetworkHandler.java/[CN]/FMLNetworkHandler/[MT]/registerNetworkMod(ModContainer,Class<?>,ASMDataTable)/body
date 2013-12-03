@@ -1,7 +1,0 @@
-{
-  NetworkModHandler handler=new NetworkModHandler(container,networkModClass,asmData);
-  if (handler.isNetworkMod()) {
-    registerNetworkMod(handler);
-  }
-  return handler.isNetworkMod();
-}
