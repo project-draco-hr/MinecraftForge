@@ -1,4 +1,0 @@
-ModContainer container
-Class<? extends IPacketHandler> clazz
-String[] channels
-Side side

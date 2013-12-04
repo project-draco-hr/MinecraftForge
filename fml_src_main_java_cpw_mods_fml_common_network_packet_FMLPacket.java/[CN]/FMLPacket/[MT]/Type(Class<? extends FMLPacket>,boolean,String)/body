@@ -1,0 +1,5 @@
+{
+  this.packetType=clazz;
+  this.isMultipart=isMultipart;
+  this.executorClass=executorClass;
+}

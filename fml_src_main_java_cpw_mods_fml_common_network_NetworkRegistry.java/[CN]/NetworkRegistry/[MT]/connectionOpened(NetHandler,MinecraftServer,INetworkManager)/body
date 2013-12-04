@@ -1,5 +1,0 @@
-{
-  for (  IConnectionHandler handler : connectionHandlers) {
-    handler.connectionOpened(netClientHandler,server,networkManager);
-  }
-}

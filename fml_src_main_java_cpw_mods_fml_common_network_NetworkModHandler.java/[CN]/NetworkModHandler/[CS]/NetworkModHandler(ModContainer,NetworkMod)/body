@@ -1,9 +1,0 @@
-{
-  this.container=container;
-  this.mod=modAnnotation;
-  this.localId=assignedIds++;
-  this.networkId=this.localId;
-  if (Item.field_77744_bd.field_77779_bT == assignedIds) {
-    assignedIds++;
-  }
-}

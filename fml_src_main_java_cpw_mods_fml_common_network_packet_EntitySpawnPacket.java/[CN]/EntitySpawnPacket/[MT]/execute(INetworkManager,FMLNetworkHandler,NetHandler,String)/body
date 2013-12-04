@@ -1,5 +1,5 @@
 {
-  NetworkModHandler nmh=handler.findNetworkModHandler(networkId);
+  NetworkModHolder nmh=handler.findNetworkModHandler(networkId);
   ModContainer mc=nmh.getContainer();
   EntityRegistration registration=EntityRegistry.instance().lookupModSpawn(mc,modEntityId);
   if (registration == null || registration.getEntityClass() == null) {

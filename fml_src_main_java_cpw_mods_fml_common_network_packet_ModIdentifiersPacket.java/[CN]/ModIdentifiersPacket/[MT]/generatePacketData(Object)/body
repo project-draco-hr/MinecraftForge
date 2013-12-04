@@ -1,0 +1,10 @@
+{
+  ByteArrayDataOutput dat=ByteStreams.newDataOutput();
+  Collection<NetworkModHolder> networkMods=FMLNetworkHandler.instance().getNetworkIdMap().values();
+  dat.writeInt(networkMods.size());
+  for (  NetworkModHolder handler : networkMods) {
+    dat.writeUTF(handler.getContainer().getModId());
+    dat.writeInt(handler.getNetworkId());
+  }
+  return dat.toByteArray();
+}

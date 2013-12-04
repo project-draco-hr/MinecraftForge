@@ -1,4 +1,0 @@
-{
-  this.packetType=clazz;
-  this.isMultipart=isMultipart;
-}

@@ -1,6 +1,0 @@
-{
-  List<String> channels=extractChannelList(packet);
-  for (  String channel : channels) {
-    activateChannel(player,channel);
-  }
-}

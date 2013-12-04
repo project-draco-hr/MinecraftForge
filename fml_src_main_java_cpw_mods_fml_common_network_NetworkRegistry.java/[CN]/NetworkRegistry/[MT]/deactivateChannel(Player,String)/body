@@ -1,3 +1,0 @@
-{
-  activeChannels.remove(player,channel);
-}

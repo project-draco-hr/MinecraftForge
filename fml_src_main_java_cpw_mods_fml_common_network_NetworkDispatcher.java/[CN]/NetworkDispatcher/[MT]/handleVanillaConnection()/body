@@ -1,0 +1,10 @@
+{
+  state=ConnectionState.CONNECTED;
+  connectionType=ConnectionType.VANILLA;
+  if (side == Side.CLIENT) {
+    completeClientSideConnection();
+  }
+ else {
+    completeServerSideConnection();
+  }
+}

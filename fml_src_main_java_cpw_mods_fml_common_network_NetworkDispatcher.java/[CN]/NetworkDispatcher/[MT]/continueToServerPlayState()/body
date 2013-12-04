@@ -1,0 +1,5 @@
+{
+  this.state=ConnectionState.CONNECTED;
+  this.connectionType=ConnectionType.MODDED;
+  completeServerSideConnection();
+}

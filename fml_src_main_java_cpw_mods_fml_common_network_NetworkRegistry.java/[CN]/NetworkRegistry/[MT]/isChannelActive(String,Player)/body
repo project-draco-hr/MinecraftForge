@@ -1,3 +1,0 @@
-{
-  return activeChannels.containsEntry(player,channel);
-}

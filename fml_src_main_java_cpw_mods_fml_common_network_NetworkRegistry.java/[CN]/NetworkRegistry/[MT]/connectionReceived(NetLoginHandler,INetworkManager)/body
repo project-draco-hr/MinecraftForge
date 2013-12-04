@@ -1,9 +1,0 @@
-{
-  for (  IConnectionHandler handler : connectionHandlers) {
-    String kick=handler.connectionReceived(netHandler,manager);
-    if (!Strings.isNullOrEmpty(kick)) {
-      return kick;
-    }
-  }
-  return null;
-}

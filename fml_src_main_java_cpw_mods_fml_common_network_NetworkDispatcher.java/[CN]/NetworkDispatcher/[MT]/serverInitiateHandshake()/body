@@ -1,0 +1,5 @@
+{
+  this.state=ConnectionState.AWAITING_HANDSHAKE;
+  this.manager.channel().pipeline().addFirst("fml:vanilla_detector",new VanillaTimeoutWaiter());
+  this.manager.func_150725_a(new S3FPacketCustomPayload("FML",new byte[0]));
+}

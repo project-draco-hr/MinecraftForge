@@ -1,0 +1,10 @@
+{
+  this.state=ConnectionState.OPENING;
+  if (side == Side.CLIENT) {
+    clientListenForServerHandshake();
+  }
+ else {
+    serverInitiateHandshake();
+  }
+  this.manager.channel().config().setAutoRead(true);
+}

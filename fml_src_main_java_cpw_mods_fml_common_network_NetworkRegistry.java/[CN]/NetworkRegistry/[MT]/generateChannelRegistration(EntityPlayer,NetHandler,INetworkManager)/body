@@ -1,7 +1,0 @@
-{
-  Packet250CustomPayload pkt=new Packet250CustomPayload();
-  pkt.field_73630_a="REGISTER";
-  pkt.field_73629_c=getPacketRegistry(player instanceof EntityPlayerMP ? Side.SERVER : Side.CLIENT);
-  pkt.field_73628_b=pkt.field_73629_c.length;
-  manager.func_74429_a(pkt);
-}

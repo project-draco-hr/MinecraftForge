@@ -2,7 +2,7 @@
   if (!type.isMultipart()) {
     return new byte[0][];
   }
-  byte[] packetData=type.make().generatePacket(data);
+  byte[] packetData=type.make().generatePacketData(data);
   byte[][] chunks=new byte[packetData.length / 32000 + 1][];
   for (int i=0; i < packetData.length / 32000 + 1; i++) {
     int len=Math.min(32000,packetData.length - i * 32000);

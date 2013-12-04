@@ -1,0 +1,4 @@
+{
+  manager.func_150723_a(EnumConnectionState.PLAY);
+  this.state=ConnectionState.AWAITING_HANDSHAKE;
+}
