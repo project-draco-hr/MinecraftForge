@@ -1,0 +1,5 @@
+{
+  this.state=ConnectionState.OPENING;
+  this.handshakeChannel.pipeline().fireUserEventTriggered(this);
+  this.manager.channel().config().setAutoRead(true);
+}

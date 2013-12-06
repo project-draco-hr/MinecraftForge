@@ -1,6 +1,0 @@
-{
-  if (evt instanceof ConnectionType && side == Side.SERVER) {
-    FMLLog.info("Timeout occurred, assuming a vanilla client");
-    handleVanillaConnection();
-  }
-}

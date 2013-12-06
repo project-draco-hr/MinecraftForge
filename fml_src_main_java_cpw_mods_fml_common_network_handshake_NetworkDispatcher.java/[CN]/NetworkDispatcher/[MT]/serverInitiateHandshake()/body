@@ -1,0 +1,4 @@
+{
+  this.state=ConnectionState.AWAITING_HANDSHAKE;
+  this.manager.channel().pipeline().addFirst("fml:vanilla_detector",new VanillaTimeoutWaiter());
+}

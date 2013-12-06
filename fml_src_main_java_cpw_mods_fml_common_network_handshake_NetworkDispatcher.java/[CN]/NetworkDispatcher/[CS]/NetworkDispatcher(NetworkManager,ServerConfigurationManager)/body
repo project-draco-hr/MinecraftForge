@@ -1,0 +1,9 @@
+{
+  super(Packet.class,false);
+  this.manager=manager;
+  this.scm=scm;
+  this.side=Side.SERVER;
+  this.handshakeChannel=new EmbeddedChannel(new HandshakeInjector(this),new FMLHandshakeCodec(),new HandshakeMessageHandler<FMLHandshakeServerState>(FMLHandshakeServerState.class));
+  this.handshakeChannel.attr(FML_DISPATCHER).set(this);
+  this.handshakeChannel.attr(NetworkRegistry.FML_CHANNEL).set("FML|HS");
+}

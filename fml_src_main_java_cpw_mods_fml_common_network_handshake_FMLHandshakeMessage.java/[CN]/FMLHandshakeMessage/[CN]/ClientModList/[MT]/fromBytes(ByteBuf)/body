@@ -1,0 +1,7 @@
+{
+  super.fromBytes(buffer);
+  int modCount=ByteBufUtils.readVarInt(buffer,2);
+  for (int i=0; i < modCount; i++) {
+    modTags.add(new String[]{ByteBufUtils.readUTF8String(buffer),ByteBufUtils.readUTF8String(buffer)});
+  }
+}

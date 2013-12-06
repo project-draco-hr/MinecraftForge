@@ -1,0 +1,7 @@
+{
+  super.toBytes(buffer);
+  ByteBufUtils.writeVarInt(buffer,modTags.size(),2);
+  for (  String modTag : modTags) {
+    ByteBufUtils.writeUTF8String(buffer,modTag);
+  }
+}

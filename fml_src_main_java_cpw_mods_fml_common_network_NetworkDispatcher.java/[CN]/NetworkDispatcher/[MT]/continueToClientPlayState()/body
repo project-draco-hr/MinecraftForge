@@ -1,6 +1,0 @@
-{
-  this.state=ConnectionState.CONNECTED;
-  this.connectionType=ConnectionType.MODDED;
-  completeClientSideConnection();
-  this.manager.func_150725_a(new C17PacketCustomPayload("FML",new byte[0]));
-}

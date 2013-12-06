@@ -1,0 +1,14 @@
+{
+  String channelName=msg.func_149169_c();
+  if ("FML|HS".equals(channelName)) {
+    FMLProxyPacket proxy=new FMLProxyPacket(msg);
+    handshakeChannel.writeInbound(proxy);
+    return true;
+  }
+ else   if (NetworkRegistry.INSTANCE.hasChannel(channelName)) {
+    FMLProxyPacket proxy=new FMLProxyPacket(msg);
+    context.fireChannelRead(proxy);
+    return true;
+  }
+  return false;
+}

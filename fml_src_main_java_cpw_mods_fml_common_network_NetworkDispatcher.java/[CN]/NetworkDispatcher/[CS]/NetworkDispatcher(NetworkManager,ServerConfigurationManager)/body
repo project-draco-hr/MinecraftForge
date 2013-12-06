@@ -1,6 +1,0 @@
-{
-  super(Packet.class,false);
-  this.manager=manager;
-  this.scm=scm;
-  this.side=Side.SERVER;
-}

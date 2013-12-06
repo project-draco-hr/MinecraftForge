@@ -1,0 +1,7 @@
+{
+  this.netHandler=inethandler;
+  EmbeddedChannel internalChannel=NetworkRegistry.INSTANCE.getChannel(this.channel);
+  if (internalChannel != null) {
+    internalChannel.writeInbound(this);
+  }
+}

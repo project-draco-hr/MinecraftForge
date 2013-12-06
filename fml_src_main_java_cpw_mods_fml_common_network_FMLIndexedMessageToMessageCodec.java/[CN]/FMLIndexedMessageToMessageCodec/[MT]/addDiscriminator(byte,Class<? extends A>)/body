@@ -1,0 +1,5 @@
+{
+  discriminators.put(discriminator,type);
+  types.put(type,discriminator);
+  return this;
+}

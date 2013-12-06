@@ -1,0 +1,15 @@
+{
+  ModContainer mc=FMLCommonHandler.instance().findContainerFor(mod);
+  if (mc == null) {
+    FMLLog.log(Level.SEVERE,"Mod %s attempted to register a gui network handler during a construction phase",mc.getModId());
+    throw new RuntimeException("Invalid attempt to create a GUI during mod construction. Use an EventHandler instead");
+  }
+  NetworkModHolder nmh=mc.getNetworkModHolder();
+  if (nmh == null) {
+    FMLLog.log(Level.FINE,"The mod %s needs to be a @NetworkMod to register a Networked Gui Handler",mc.getModId());
+  }
+ else {
+    serverGuiHandlers.put(mc,handler);
+  }
+  clientGuiHandlers.put(mc,handler);
+}

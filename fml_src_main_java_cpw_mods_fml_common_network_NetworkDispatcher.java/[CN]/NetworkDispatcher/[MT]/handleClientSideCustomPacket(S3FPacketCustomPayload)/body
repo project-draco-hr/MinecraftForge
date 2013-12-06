@@ -1,8 +1,0 @@
-{
-  if ("FML".equals(msg.func_149169_c())) {
-    continueToClientPlayState();
-    FMLLog.info("Client side modded connection established");
-    return true;
-  }
-  return false;
-}

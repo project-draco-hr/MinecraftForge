@@ -23,5 +23,5 @@
   }
   FMLLog.fine("The server has compatibility level %d",compatibilityLevel);
   FMLCommonHandler.instance().getSidedDelegate().setClientCompatibilityLevel(compatibilityLevel);
-  mgr.func_74429_a(PacketDispatcher.getPacket("FML",FMLPacket.makePacket(MOD_LIST_RESPONSE,modVersions,missingMods)));
+  mgr.func_74429_a(PacketDispatcher.getPacket("FML",FMLOldPacket.makePacket(MOD_LIST_RESPONSE,modVersions,missingMods)));
 }

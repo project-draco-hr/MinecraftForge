@@ -1,0 +1,18 @@
+{
+  if (state == ConnectionState.AWAITING_HANDSHAKE) {
+    this.manager.channel().pipeline().remove("fml:vanilla_detector");
+    state=ConnectionState.HANDSHAKING;
+  }
+  String channelName=msg.func_149559_c();
+  if ("FML|HS".equals(channelName)) {
+    FMLProxyPacket proxy=new FMLProxyPacket(msg);
+    handshakeChannel.writeInbound(proxy);
+    return true;
+  }
+ else   if (NetworkRegistry.INSTANCE.hasChannel(channelName)) {
+    FMLProxyPacket proxy=new FMLProxyPacket(msg);
+    context.fireChannelRead(proxy);
+    return true;
+  }
+  return false;
+}
