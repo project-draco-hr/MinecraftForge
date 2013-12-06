@@ -3,8 +3,8 @@
     return "";
   }
   StringBuilder ret=new StringBuilder();
-  List<String> branding=FMLCommonHandler.instance().getBrandings();
-  Joiner.on(' ').skipNulls().appendTo(ret,branding.subList(1,branding.size()));
+  List<String> branding=FMLCommonHandler.instance().getBrandings(false);
+  Joiner.on(' ').skipNulls().appendTo(ret,branding);
   if (modController != null) {
     modController.printModStates(ret);
   }

@@ -1,0 +1,3 @@
+{
+  if (shouldChange)   this.networkConnection=networkManager;
+}
