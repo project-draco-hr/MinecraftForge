@@ -1,0 +1,43 @@
+{
+  this(container);
+  Set<ASMData> versionCheckHandlers=table.getAnnotationsFor(container).get(NetworkCheckHandler.class.getName());
+  String networkCheckHandlerMethod=null;
+  for (  ASMData vch : versionCheckHandlers) {
+    if (vch.getClassName().equals(modClass.getName())) {
+      networkCheckHandlerMethod=vch.getObjectName();
+      networkCheckHandlerMethod=networkCheckHandlerMethod.substring(0,networkCheckHandlerMethod.indexOf('('));
+      break;
+    }
+  }
+  if (networkCheckHandlerMethod != null) {
+    try {
+      Method checkHandlerMethod=modClass.getDeclaredMethod(networkCheckHandlerMethod,Map.class,Side.class);
+      if (checkHandlerMethod.isAnnotationPresent(NetworkCheckHandler.class)) {
+        this.checkHandler=checkHandlerMethod;
+      }
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.WARNING,e,"The declared version check handler method %s on network mod id %s is not accessible",networkCheckHandlerMethod,container.getModId());
+    }
+  }
+  if (this.checkHandler == null) {
+    String versionBounds=acceptableVersionRange;
+    if (!Strings.isNullOrEmpty(versionBounds)) {
+      try {
+        this.acceptableRange=VersionRange.createFromVersionSpec(versionBounds);
+      }
+ catch (      InvalidVersionSpecificationException e) {
+        FMLLog.log(Level.WARNING,e,"Invalid bounded range %s specified for network mod id %s",versionBounds,container.getModId());
+      }
+    }
+  }
+  FMLLog.finest("Testing mod %s to verify it accepts its own version in a remote connection",container.getModId());
+  boolean acceptsSelf=acceptVersion(container.getVersion());
+  if (!acceptsSelf) {
+    FMLLog.severe("The mod %s appears to reject its own version number (%s) in its version handling. This is likely a severe bug in the mod!",container.getModId(),container.getVersion());
+  }
+ else {
+    FMLLog.finest("The mod %s accepts its own version (%s)",container.getModId(),container.getVersion());
+  }
+  this.checker=checkHandler == null ? new DefaultNetworkChecker() : new MethodNetworkChecker();
+}

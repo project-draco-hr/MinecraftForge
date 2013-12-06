@@ -1,0 +1,5 @@
+{
+  this.container=container;
+  this.localId=assignedIds++;
+  this.networkId=this.localId;
+}

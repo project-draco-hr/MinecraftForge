@@ -1,11 +1,3 @@
 {
-  StringBuffer sb=new StringBuffer();
-  sb.append("[ ");
-  for (int i=0; i < modTags.size(); i++) {
-    String[] mod=modTags.get(i);
-    sb.append(mod[0]).append("@").append(mod[1]);
-    if (i < modTags.size() - 1)     sb.append(", ");
-  }
-  sb.append(" ]");
-  return sb.toString();
+  return Joiner.on(',').withKeyValueSeparator("@").join(modTags);
 }

@@ -1,6 +1,0 @@
-{
-  this.container=container;
-  this.mod=modAnnotation;
-  this.localId=assignedIds++;
-  this.networkId=this.localId;
-}
