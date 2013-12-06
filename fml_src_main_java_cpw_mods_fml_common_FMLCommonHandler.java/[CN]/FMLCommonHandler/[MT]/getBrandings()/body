@@ -1,6 +1,0 @@
-{
-  if (brandings == null) {
-    computeBranding();
-  }
-  return ImmutableList.copyOf(brandings);
-}
