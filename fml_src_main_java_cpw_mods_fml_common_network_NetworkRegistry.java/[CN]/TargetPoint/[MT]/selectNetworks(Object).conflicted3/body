@@ -1,11 +1,8 @@
 {
-  int dimension=(Integer)args;
   ImmutableList.Builder<NetworkDispatcher> builder=ImmutableList.<NetworkDispatcher>builder();
   for (  EntityPlayerMP player : (List<EntityPlayerMP>)FMLCommonHandler.instance().getMinecraftServerInstance().func_71203_ab().field_72404_b) {
-    if (dimension == player.field_71093_bK) {
-      NetworkDispatcher dispatcher=player.field_71135_a.field_147371_a.channel().attr(NetworkDispatcher.FML_DISPATCHER).get();
-      builder.add(dispatcher);
-    }
+    NetworkDispatcher dispatcher=player.field_71135_a.field_147371_a.channel().attr(NetworkDispatcher.FML_DISPATCHER).get();
+    builder.add(dispatcher);
   }
   return builder.build();
 }

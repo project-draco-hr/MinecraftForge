@@ -1,5 +1,3 @@
 {
-  if (!(args instanceof Integer)) {
-    throw new RuntimeException("DIMENSION expects an integer argument");
-  }
+  throw new RuntimeException("Cannot set TOSERVER as a target on the server");
 }

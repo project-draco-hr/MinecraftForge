@@ -1,6 +1,3 @@
 {
-  super(handlers);
-  this.attr(FML_CHANNEL).set(channelName);
-  this.attr(CHANNEL_SOURCE).set(source);
-  this.pipeline().addFirst(new FMLOutboundHandler());
+  this(Loader.instance().activeModContainer(),channelName,source,handlers);
 }

@@ -1,4 +1,0 @@
-net.minecraft.block.Block block
-Class<? extends ItemBlock> itemclass
-String name
-String modId

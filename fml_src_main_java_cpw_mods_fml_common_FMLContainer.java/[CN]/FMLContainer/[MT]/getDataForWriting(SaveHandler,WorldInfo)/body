@@ -8,8 +8,7 @@
     list.func_74742_a(mod);
   }
   fmlData.func_74782_a("ModList",list);
-  NBTTagList itemList=new NBTTagList();
-  GameData.writeItemData(itemList);
+  NBTTagCompound nbt=GameData.buildItemDataList();
   fmlData.func_74782_a("ModItemData",itemList);
   return fmlData;
 }

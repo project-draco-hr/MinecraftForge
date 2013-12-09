@@ -1,6 +1,3 @@
 {
-  if (modObjectTable == null || !modObjectTable.contains(modId,name)) {
-    return null;
-  }
-  return Item.field_77698_e[modObjectTable.get(modId,name)];
+  return (Item)itemRegistry.func_82594_a(modId + ":" + name);
 }

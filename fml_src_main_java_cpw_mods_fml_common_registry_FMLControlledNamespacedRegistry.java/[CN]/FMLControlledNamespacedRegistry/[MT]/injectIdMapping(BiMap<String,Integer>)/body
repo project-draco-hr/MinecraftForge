@@ -1,0 +1,19 @@
+{
+  MapDifference<String,Integer> difference=Maps.difference(values,namedIds);
+  for (  Entry<String,Integer> missing : difference.entriesOnlyOnLeft().entrySet()) {
+    String name=missing.getKey();
+    Integer id=missing.getValue();
+    String[] parts=name.split(":");
+    ModContainer modContainer=GameData.findModOwner(parts[0]);
+  }
+  @SuppressWarnings("unchecked") BiMap<String,Object> nameMap=(BiMap<String,Object>)field_82596_a;
+  FMLObjectIntIdentityMap idMap=(FMLObjectIntIdentityMap)field_148759_a;
+  idMap.beginSwap();
+  for (  Entry<String,Integer> entry : values.entrySet()) {
+    String name=entry.getKey();
+    Integer id=entry.getValue();
+    Object item=nameMap.get(name);
+    idMap.putNew(id,item);
+  }
+  idMap.completeSwap();
+}

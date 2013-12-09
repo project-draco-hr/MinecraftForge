@@ -1,4 +1,0 @@
-{
-  shouldContinue=carryOn;
-  clientValidationLatch.countDown();
-}

@@ -1,0 +1,8 @@
+{
+  ModContainer mc=Loader.instance().activeModContainer();
+  if (modId != null) {
+    customOwners.put(new UniqueIdentifier(modId,name),mc);
+  }
+  blockRegistry.func_148756_a(0,name,block);
+  return block;
+}

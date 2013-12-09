@@ -1,0 +1,7 @@
+{
+  field_148749_a=newMap;
+  field_148748_b=newIndex;
+  super.func_148746_a(item,id);
+  field_148749_a=oldMap;
+  field_148748_b=oldIndex;
+}

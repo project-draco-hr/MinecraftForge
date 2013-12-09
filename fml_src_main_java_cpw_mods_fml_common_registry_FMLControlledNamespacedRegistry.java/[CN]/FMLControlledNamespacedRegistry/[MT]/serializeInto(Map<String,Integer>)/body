@@ -1,0 +1,5 @@
+{
+  for (  Entry<String,Integer> id : namedIds.entrySet()) {
+    idMapping.put(id.getKey(),id.getValue());
+  }
+}

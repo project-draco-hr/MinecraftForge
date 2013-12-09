@@ -1,0 +1,7 @@
+{
+  UniqueIdentifier ui=new UniqueIdentifier(string);
+  if (customOwners.containsKey(ui)) {
+    return customOwners.get(ui);
+  }
+  return Loader.instance().getIndexedModList().get(ui.modId);
+}

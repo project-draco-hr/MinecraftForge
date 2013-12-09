@@ -1,0 +1,3 @@
+{
+  NetworkRegistry.INSTANCE.register(this,this.getClass(),null,evt.getASMHarvestedData());
+}

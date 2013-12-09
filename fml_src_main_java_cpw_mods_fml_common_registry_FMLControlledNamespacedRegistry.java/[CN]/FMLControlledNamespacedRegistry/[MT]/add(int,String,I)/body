@@ -1,0 +1,17 @@
+{
+  if (name.equals(optionalDefaultName)) {
+    this.optionalDefaultObject=thing;
+  }
+  int idToUse=id;
+  if (availabilityMap.get(id)) {
+    idToUse=availabilityMap.nextClearBit(minId);
+  }
+  if (idToUse >= maxId) {
+    throw new RuntimeException(String.format("Invalid id %s - not accepted",id));
+  }
+  namedIds.put(name,idToUse);
+  ModContainer mc=Loader.instance().activeModContainer();
+  String prefix=mc.getModId();
+  name=prefix + ":" + name;
+  super.func_148756_a(idToUse,name,thing);
+}

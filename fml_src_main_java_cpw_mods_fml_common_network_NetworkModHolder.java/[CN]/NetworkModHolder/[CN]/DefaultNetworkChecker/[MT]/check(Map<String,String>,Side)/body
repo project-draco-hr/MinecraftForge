@@ -1,3 +1,3 @@
 {
-  return acceptVersion(remoteVersions.get(container.getModId()));
+  return remoteVersions.containsKey(container.getModId()) ? acceptVersion(remoteVersions.get(container.getModId())) : false;
 }

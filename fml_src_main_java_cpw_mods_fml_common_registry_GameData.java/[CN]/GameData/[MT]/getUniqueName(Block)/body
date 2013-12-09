@@ -1,8 +1,9 @@
 {
   if (block == null)   return null;
-  ItemData itemData=idMap.get(block.field_71990_ca);
-  if (itemData == null || !itemData.isOveridden() || customItemStacks.contains(itemData.getModId(),itemData.getItemType())) {
+  String name=blockRegistry.func_148750_c(block);
+  UniqueIdentifier ui=new UniqueIdentifier(name);
+  if (customItemStacks.contains(ui.modId,ui.name)) {
     return null;
   }
-  return new UniqueIdentifier(itemData.getModId(),itemData.getItemType());
+  return ui;
 }
