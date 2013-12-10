@@ -1,0 +1,8 @@
+{
+  for (  Integer id : blockRegistry.usedIds()) {
+    itemRegistry.useSlot(id);
+  }
+  for (  Integer id : itemRegistry.usedIds()) {
+    blockRegistry.useSlot(id);
+  }
+}

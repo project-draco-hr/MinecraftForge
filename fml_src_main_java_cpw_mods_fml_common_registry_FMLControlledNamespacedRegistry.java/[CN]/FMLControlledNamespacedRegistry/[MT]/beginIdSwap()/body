@@ -1,0 +1,4 @@
+{
+  idMap().beginSwap();
+  transactionalNamedIds=Maps.newHashMap();
+}

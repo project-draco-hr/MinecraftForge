@@ -4,5 +4,8 @@
     customOwners.put(new UniqueIdentifier(modId,name),mc);
   }
   int blockId=blockRegistry.add(0,name,block);
-  itemRegistry.useSlot(blockId);
+  int itemId=itemRegistry.add(blockId,name,item);
+  if (itemId != blockId) {
+    throw new RuntimeException();
+  }
 }

@@ -1,0 +1,6 @@
+{
+  idMap().completeSwap();
+  namedIds.clear();
+  namedIds.putAll(transactionalNamedIds);
+  transactionalNamedIds=null;
+}

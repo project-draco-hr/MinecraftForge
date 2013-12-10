@@ -8,7 +8,14 @@
     list.func_74742_a(mod);
   }
   fmlData.func_74782_a("ModList",list);
-  NBTTagCompound nbt=GameData.buildItemDataList();
-  fmlData.func_74782_a("ModItemData",itemList);
+  NBTTagList dataList=new NBTTagList();
+  Map<String,Integer> itemList=GameData.buildItemDataList();
+  for (  Entry<String,Integer> item : itemList.entrySet()) {
+    NBTTagCompound tag=new NBTTagCompound();
+    tag.func_74778_a("K",item.getKey());
+    tag.func_74768_a("V",item.getValue());
+    dataList.func_74742_a(tag);
+  }
+  fmlData.func_74782_a("ItemData",dataList);
   return fmlData;
 }

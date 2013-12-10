@@ -1,4 +1,0 @@
-String optionalDefault
-int maxIdValue
-int minIdValue
-Class<I> type

@@ -1,6 +1,11 @@
 {
   File[] modList=modsDir.listFiles();
-  Arrays.sort(modList);
+  Arrays.sort(modList,new Comparator<File>(){
+    @Override public int compare(    File o1,    File o2){
+      return o1.getName().compareToIgnoreCase(o2.getName());
+    }
+  }
+);
   for (  File modFile : modList) {
     if (CoreModManager.getLoadedCoremods().contains(modFile.getName())) {
       FMLLog.finer("Skipping already parsed coremod or tweaker %s",modFile.getName());

@@ -1,3 +1,4 @@
 {
-  return GameData.registerItem(item,name,modId);
+  GameData.registerItem(item,name,modId);
+  return item;
 }

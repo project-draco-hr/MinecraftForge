@@ -1,0 +1,29 @@
+{
+  blockRegistry.beginIdSwap();
+  itemRegistry.beginIdSwap();
+  for (  Entry<String,Integer> entry : dataList.entrySet()) {
+    String itemName=entry.getKey();
+    char discriminator=itemName.charAt(0);
+    itemName=itemName.substring(1);
+    Integer newId=entry.getValue();
+    int currId;
+    boolean isBlock=discriminator == '\u0001';
+    if (isBlock) {
+      currId=blockRegistry.getId(itemName);
+    }
+ else {
+      currId=itemRegistry.getId(itemName);
+    }
+    if (currId != newId) {
+      FMLLog.info("Found %s id mismatch %s : %d %d",isBlock ? "block" : "item",itemName,currId,newId);
+    }
+    if (isBlock) {
+      blockRegistry.reassignMapping(itemName,newId);
+    }
+ else {
+      itemRegistry.reassignMapping(itemName,newId);
+    }
+  }
+  blockRegistry.completeIdSwap();
+  itemRegistry.completeIdSwap();
+}

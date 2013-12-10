@@ -1,5 +1,5 @@
 {
   for (  Entry<String,Integer> id : namedIds.entrySet()) {
-    idMapping.put(id.getKey(),id.getValue());
+    idMapping.put(discriminator + id.getKey(),id.getValue());
   }
 }

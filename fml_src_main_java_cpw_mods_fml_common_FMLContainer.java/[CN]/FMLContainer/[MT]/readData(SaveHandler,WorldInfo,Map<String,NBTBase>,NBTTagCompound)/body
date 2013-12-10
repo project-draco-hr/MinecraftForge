@@ -18,7 +18,13 @@
   if (tag.func_74764_b("ModItemData")) {
     NBTTagList modList=tag.func_150295_c("ModItemData",(byte)10);
   }
- else {
-    GameData.validateWorldSave(null);
+ else   if (tag.func_74764_b("ItemData")) {
+    NBTTagList list=tag.func_150295_c("ItemData",(byte)10);
+    Map<String,Integer> dataList=Maps.newLinkedHashMap();
+    for (int i=0; i < list.func_74745_c(); i++) {
+      NBTTagCompound dataTag=list.func_150305_b(i);
+      dataList.put(dataTag.func_74779_i("K"),dataTag.func_74762_e("V"));
+    }
+    GameData.injectWorldIDMap(dataList);
   }
 }

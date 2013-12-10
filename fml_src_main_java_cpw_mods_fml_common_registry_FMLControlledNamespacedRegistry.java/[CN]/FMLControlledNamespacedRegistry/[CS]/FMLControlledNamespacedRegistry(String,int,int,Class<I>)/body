@@ -1,8 +1,0 @@
-{
-  this.superType=type;
-  this.optionalDefaultName=optionalDefault;
-  this.availabilityMap=new BitSet(maxIdValue);
-  this.maxId=maxIdValue;
-  this.minId=minIdValue;
-  this.field_148759_a=new FMLObjectIntIdentityMap();
-}

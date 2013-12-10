@@ -1,7 +1,6 @@
 {
   modController.distributeStateMessage(LoaderState.INITIALIZATION);
   modController.transition(LoaderState.POSTINITIALIZATION,false);
-  GameData.buildModObjectTable();
   modController.distributeStateMessage(FMLInterModComms.IMCEvent.class);
   modController.distributeStateMessage(LoaderState.POSTINITIALIZATION);
   modController.transition(LoaderState.AVAILABLE,false);

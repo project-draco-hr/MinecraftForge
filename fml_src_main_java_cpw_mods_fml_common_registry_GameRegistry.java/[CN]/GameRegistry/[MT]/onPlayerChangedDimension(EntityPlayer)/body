@@ -1,8 +1,0 @@
-{
-  for (  IPlayerTracker tracker : playerTrackers)   try {
-    tracker.onPlayerChangedDimension(player);
-  }
- catch (  Exception e) {
-    FMLLog.log(Level.SEVERE,e,"A critical error occured handling the onPlayerChangedDimension event with player tracker %s",tracker.getClass().getName());
-  }
-}

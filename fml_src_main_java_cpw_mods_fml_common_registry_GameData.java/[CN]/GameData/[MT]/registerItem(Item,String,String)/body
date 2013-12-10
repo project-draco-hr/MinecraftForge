@@ -3,8 +3,9 @@
   if (modId != null) {
     customOwners.put(new UniqueIdentifier(modId,name),mc);
   }
-  itemRegistry.add(0,name,item);
-  int itemId=itemRegistry.getId(item);
-  blockRegistry.clearItem(itemId);
-  return item;
+  if (item instanceof ItemBlock) {
+    throw new RuntimeException("Cannot register an itemblock separately from it's block");
+  }
+  int itemId=itemRegistry.add(0,name,item);
+  blockRegistry.useSlot(itemId);
 }

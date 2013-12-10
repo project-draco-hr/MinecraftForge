@@ -1,6 +1,7 @@
 {
   initializeLoader();
   mods=Lists.newArrayList();
+  GameData.fixupRegistries();
   namedMods=Maps.newHashMap();
   modController=new LoadController(this);
   modController.transition(LoaderState.LOADING,false);
@@ -38,5 +39,4 @@
   modController.transition(LoaderState.PREINITIALIZATION,false);
   modController.distributeStateMessage(LoaderState.PREINITIALIZATION,disc.getASMTable(),canonicalConfigDir);
   modController.transition(LoaderState.INITIALIZATION,false);
-  GameData.validateRegistry();
 }
