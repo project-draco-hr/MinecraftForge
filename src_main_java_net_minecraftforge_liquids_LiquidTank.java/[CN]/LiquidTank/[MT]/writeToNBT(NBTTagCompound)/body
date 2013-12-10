@@ -1,9 +1,0 @@
-{
-  if (containsValidLiquid()) {
-    liquid.writeToNBT(nbt);
-  }
- else {
-    nbt.setString("emptyTank","");
-  }
-  return nbt;
-}

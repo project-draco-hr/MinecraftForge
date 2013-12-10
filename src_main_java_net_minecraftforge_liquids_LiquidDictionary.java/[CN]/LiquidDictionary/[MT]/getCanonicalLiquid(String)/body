@@ -1,3 +1,0 @@
-{
-  return liquids.get(name);
-}

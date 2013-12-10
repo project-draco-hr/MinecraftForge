@@ -1,4 +1,0 @@
-{
-  this(liquid,capacity);
-  this.tile=tile;
-}

@@ -1,9 +1,0 @@
-{
-  if (itemID == Block.waterStill.blockID) {
-    return BlockFluid.getFluidIcon("water");
-  }
- else   if (itemID == Block.lavaStill.blockID) {
-    return BlockFluid.getFluidIcon("lava");
-  }
-  return renderingIcon;
-}

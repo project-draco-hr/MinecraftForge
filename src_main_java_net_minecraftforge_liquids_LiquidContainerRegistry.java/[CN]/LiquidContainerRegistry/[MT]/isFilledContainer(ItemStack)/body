@@ -1,3 +1,0 @@
-{
-  return filledContainer != null && getLiquidForFilledItem(filledContainer) != null;
-}
