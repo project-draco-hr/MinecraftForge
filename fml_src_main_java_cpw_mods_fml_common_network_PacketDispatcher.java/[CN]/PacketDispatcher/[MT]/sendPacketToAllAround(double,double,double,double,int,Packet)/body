@@ -1,9 +1,0 @@
-{
-  MinecraftServer server=FMLCommonHandler.instance().getMinecraftServerInstance();
-  if (server != null) {
-    server.func_71203_ab().func_72393_a(X,Y,Z,range,dimensionId,packet);
-  }
- else {
-    FMLLog.fine("Attempt to send packet to all around without a server instance available");
-  }
-}

@@ -1,5 +1,0 @@
-{
-  for (  Entry<String,Integer> idEntry : modIds.entrySet()) {
-    handler.bindNetworkId(idEntry.getKey(),idEntry.getValue());
-  }
-}

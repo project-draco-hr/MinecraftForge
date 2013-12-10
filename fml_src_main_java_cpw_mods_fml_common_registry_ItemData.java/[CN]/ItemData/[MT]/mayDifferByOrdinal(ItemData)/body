@@ -1,3 +1,0 @@
-{
-  return Objects.equal(getItemType(),rightValue.getItemType()) && Objects.equal(getModId(),rightValue.getModId());
-}

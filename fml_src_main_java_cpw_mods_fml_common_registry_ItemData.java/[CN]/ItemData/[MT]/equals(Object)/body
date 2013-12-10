@@ -1,9 +1,0 @@
-{
-  try {
-    ItemData other=(ItemData)obj;
-    return Objects.equal(getModId(),other.getModId()) && Objects.equal(getItemType(),other.getItemType()) && Objects.equal(itemId,other.itemId)&& (isOveridden() || Objects.equal(ordinal,other.ordinal));
-  }
- catch (  ClassCastException cce) {
-    return false;
-  }
-}

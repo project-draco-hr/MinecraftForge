@@ -1,3 +1,0 @@
-{
-  showGuiScreen(new GuiModsMissingForServer(modMissingPacket));
-}

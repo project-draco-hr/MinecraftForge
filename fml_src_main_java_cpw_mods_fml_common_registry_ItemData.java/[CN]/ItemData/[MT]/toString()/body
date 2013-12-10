@@ -1,3 +1,0 @@
-{
-  return String.format("Item %d, Type %s, owned by %s, ordinal %d, name %s, claimedModId %s",itemId,itemType,modId,ordinal,forcedName,forcedModId);
-}

@@ -1,8 +1,0 @@
-{
-  this.modId=tag.func_74779_i("ModId");
-  this.itemType=tag.func_74779_i("ItemType");
-  this.itemId=tag.func_74762_e("ItemId");
-  this.ordinal=tag.func_74762_e("ordinal");
-  this.forcedModId=tag.func_74764_b("ForcedModId") ? tag.func_74779_i("ForcedModId") : null;
-  this.forcedName=tag.func_74764_b("ForcedName") ? tag.func_74779_i("ForcedName") : null;
-}
