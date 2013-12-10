@@ -1,5 +1,3 @@
 {
-  if (!(args instanceof TargetPoint)) {
-    throw new RuntimeException("ALLAROUNDPOINT expects a TargetPoint argument");
-  }
+  throw new RuntimeException("Cannot set TOSERVER as a target on the server");
 }

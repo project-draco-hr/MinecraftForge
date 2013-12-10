@@ -4,7 +4,7 @@
     state=ConnectionState.HANDSHAKING;
   }
   String channelName=msg.func_149559_c();
-  if ("FML|HS".equals(channelName)) {
+  if ("FML|HS".equals(channelName) || "REGISTER".equals(channelName) || "UNREGISTER".equals(channelName)) {
     FMLProxyPacket proxy=new FMLProxyPacket(msg);
     handshakeChannel.writeInbound(proxy);
     return true;

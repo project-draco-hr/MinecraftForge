@@ -1,0 +1,7 @@
+{
+  int length=ByteBufUtils.readVarInt(buffer,3);
+  modIds=Maps.newHashMap();
+  for (int i=0; i < length; i++) {
+    modIds.put(ByteBufUtils.readUTF8String(buffer),ByteBufUtils.readVarInt(buffer,3));
+  }
+}
