@@ -1,7 +1,9 @@
 {
   if (pre(BOSSHEALTH))   return;
   mc.mcProfiler.startSection("bossHealth");
+  GL11.glEnable(GL11.GL_BLEND);
   super.renderBossHealth();
+  GL11.glDisable(GL11.GL_BLEND);
   mc.mcProfiler.endSection();
   post(BOSSHEALTH);
 }

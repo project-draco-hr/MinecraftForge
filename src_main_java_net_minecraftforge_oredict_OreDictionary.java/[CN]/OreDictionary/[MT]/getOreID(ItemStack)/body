@@ -4,7 +4,7 @@
   }
   for (  Entry<Integer,ArrayList<ItemStack>> ore : oreStacks.entrySet()) {
     for (    ItemStack target : ore.getValue()) {
-      if (itemStack.itemID == target.itemID && (target.getItemDamage() == WILDCARD_VALUE || itemStack.getItemDamage() == target.getItemDamage())) {
+      if (itemStack.getItem() == target.getItem() && (target.getItemDamage() == WILDCARD_VALUE || itemStack.getItemDamage() == target.getItemDamage())) {
         return ore.getKey();
       }
     }

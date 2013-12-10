@@ -1,3 +1,0 @@
-{
-  return getBlockInternal(category,key,defaultID,null,256,Block.blocksList.length);
-}

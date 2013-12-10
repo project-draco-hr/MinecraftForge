@@ -1,3 +1,0 @@
-{
-  return getArmorTexture(entity,armor,_default,slot,type);
-}

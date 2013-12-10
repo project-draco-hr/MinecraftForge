@@ -24,17 +24,17 @@
       return 1;
     }
  else {
-      sender.sendChatToPlayer(format("commands.generic.permission").setColor(RED));
+      sender.func_145747_a(format(RED,"commands.generic.permission"));
     }
   }
  catch (  WrongUsageException wue) {
-    sender.sendChatToPlayer(format("commands.generic.usage",format(wue.getMessage(),wue.getErrorOjbects())).setColor(RED));
+    sender.func_145747_a(format(RED,"commands.generic.usage",format(RED,wue.getMessage(),wue.getErrorOjbects())));
   }
 catch (  CommandException ce) {
-    sender.sendChatToPlayer(format(ce.getMessage(),ce.getErrorOjbects()).setColor(RED));
+    sender.func_145747_a(format(RED,ce.getMessage(),ce.getErrorOjbects()));
   }
 catch (  Throwable t) {
-    sender.sendChatToPlayer(format("commands.generic.exception").setColor(RED));
+    sender.func_145747_a(format(RED,"commands.generic.exception"));
     t.printStackTrace();
   }
   return 0;

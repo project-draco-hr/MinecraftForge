@@ -1,3 +1,4 @@
 {
+  setup();
   return addEnum(commonTypes,enumType,enumName,paramValues);
 }

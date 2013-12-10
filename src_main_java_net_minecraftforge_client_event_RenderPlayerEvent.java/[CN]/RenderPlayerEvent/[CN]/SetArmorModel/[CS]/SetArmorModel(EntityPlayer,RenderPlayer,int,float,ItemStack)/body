@@ -1,6 +1,5 @@
 {
   super(player,renderer,partialTick);
   this.slot=slot;
-  this.partialTick=partialTick;
   this.stack=stack;
 }

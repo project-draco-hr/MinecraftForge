@@ -5,10 +5,10 @@
   if (mc.isDemo()) {
     long time=mc.theWorld.getTotalWorldTime();
     if (time >= 120500L) {
-      right.add(StatCollector.translateToLocal("demo.demoExpired"));
+      right.add(I18n.getStringParams("demo.demoExpired"));
     }
  else {
-      right.add(String.format(StatCollector.translateToLocal("demo.remainingTime"),StringUtils.ticksToElapsedTime((int)(120500L - time))));
+      right.add(I18n.getStringParams("demo.remainingTime",StringUtils.ticksToElapsedTime((int)(120500L - time))));
     }
   }
   if (this.mc.gameSettings.showDebugInfo) {
@@ -43,9 +43,12 @@
       left.add(null);
     }
     left.add(String.format("ws: %.3f, fs: %.3f, g: %b, fl: %d",mc.thePlayer.capabilities.getWalkSpeed(),mc.thePlayer.capabilities.getFlySpeed(),mc.thePlayer.onGround,mc.theWorld.getHeightValue(x,z)));
+    if (mc.entityRenderer != null && mc.entityRenderer.func_147702_a()) {
+      left.add(String.format("shader: %s",mc.entityRenderer.func_147706_e().func_148022_b()));
+    }
     right.add(null);
-    for (    String s : FMLCommonHandler.instance().getBrandings().subList(1,FMLCommonHandler.instance().getBrandings().size())) {
-      right.add(s);
+    for (    String brand : FMLCommonHandler.instance().getBrandings(false)) {
+      right.add(brand);
     }
     GL11.glPopMatrix();
     mc.mcProfiler.endSection();

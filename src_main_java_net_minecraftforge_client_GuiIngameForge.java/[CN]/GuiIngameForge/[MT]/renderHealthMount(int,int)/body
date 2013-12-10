@@ -6,6 +6,7 @@
   boolean unused=false;
   int left_align=width / 2 + 91;
   mc.mcProfiler.endStartSection("mountHealth");
+  GL11.glEnable(GL11.GL_BLEND);
   EntityLivingBase mount=(EntityLivingBase)tmp;
   int health=(int)Math.ceil((double)mount.getHealth());
   float healthMax=mount.getMaxHealth();
@@ -27,5 +28,6 @@
     }
     right_height+=10;
   }
+  GL11.glDisable(GL11.GL_BLEND);
   post(HEALTHMOUNT);
 }

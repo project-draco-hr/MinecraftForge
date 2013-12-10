@@ -2,8 +2,9 @@
   if (pre(CROSSHAIRS))   return;
   bind(Gui.icons);
   GL11.glEnable(GL11.GL_BLEND);
-  GL11.glBlendFunc(GL11.GL_ONE_MINUS_DST_COLOR,GL11.GL_ONE_MINUS_SRC_COLOR);
+  OpenGlHelper.func_148821_a(GL11.GL_ONE_MINUS_DST_COLOR,GL11.GL_ONE_MINUS_SRC_COLOR,1,0);
   drawTexturedModalRect(width / 2 - 7,height / 2 - 7,0,0,16,16);
+  OpenGlHelper.func_148821_a(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
   GL11.glDisable(GL11.GL_BLEND);
   post(CROSSHAIRS);
 }

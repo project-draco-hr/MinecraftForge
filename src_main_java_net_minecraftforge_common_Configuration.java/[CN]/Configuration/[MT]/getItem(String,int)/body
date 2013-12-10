@@ -1,3 +1,0 @@
-{
-  return getItem(CATEGORY_ITEM,key,defaultID,null);
-}

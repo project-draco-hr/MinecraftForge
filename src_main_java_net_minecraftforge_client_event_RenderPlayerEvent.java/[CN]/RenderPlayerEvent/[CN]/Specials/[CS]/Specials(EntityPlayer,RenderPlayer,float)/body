@@ -1,4 +1,3 @@
 {
   super(player,renderer,partialTicks);
-  this.partialTicks=partialTicks;
 }

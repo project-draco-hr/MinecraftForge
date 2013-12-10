@@ -1,6 +1,0 @@
-String category
-String key
-int defaultID
-String comment
-int lower
-int upper

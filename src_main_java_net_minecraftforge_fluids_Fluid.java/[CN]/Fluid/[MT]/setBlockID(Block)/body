@@ -1,3 +1,0 @@
-{
-  return setBlockID(block.blockID);
-}

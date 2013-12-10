@@ -1,3 +1,0 @@
-{
-  return getBlockInternal(category,key,defaultID,comment,256,Block.blocksList.length);
-}
