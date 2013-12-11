@@ -1,4 +1,3 @@
 {
-  if (side == Side.CLIENT)   manager.func_150725_a(msg.toC17Packet());
- else   manager.func_150725_a(msg.toS3FPacket());
+  manager.func_150725_a(msg);
 }

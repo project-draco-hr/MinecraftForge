@@ -8,11 +8,15 @@
     outboundTarget=OutboundTarget.TOSERVER;
   }
  else {
-    outboundTarget=ctx.channel().attr(NetworkRegistry.FML_MESSAGETARGET).get();
-    args=ctx.channel().attr(NetworkRegistry.FML_MESSAGETARGETARGS).get();
+    outboundTarget=ctx.channel().attr(FML_MESSAGETARGET).get();
+    args=ctx.channel().attr(FML_MESSAGETARGETARGS).get();
     outboundTarget.validateArgs(args);
   }
   List<NetworkDispatcher> dispatchers=outboundTarget.selectNetworks(args);
+  if (dispatchers == null) {
+    ctx.write(msg,promise);
+    return;
+  }
   for (  NetworkDispatcher dispatcher : dispatchers) {
     dispatcher.sendProxy((FMLProxyPacket)msg);
   }

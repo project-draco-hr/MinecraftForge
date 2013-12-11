@@ -1,0 +1,26 @@
+{
+  super.fromBytes(dat);
+  modId=ByteBufUtils.readUTF8String(dat);
+  modEntityTypeId=dat.readInt();
+  rawX=dat.readInt();
+  rawY=dat.readInt();
+  rawZ=dat.readInt();
+  scaledX=rawX / 32D;
+  scaledY=rawY / 32D;
+  scaledZ=rawZ / 32D;
+  scaledYaw=dat.readByte() * 360F / 256F;
+  scaledPitch=dat.readByte() * 360F / 256F;
+  scaledHeadYaw=dat.readByte() * 360F / 256F;
+  try {
+    dataWatcherList=DataWatcher.func_151508_b(new PacketBuffer(dat));
+  }
+ catch (  IOException e) {
+  }
+  throwerId=dat.readInt();
+  if (throwerId != 0) {
+    speedScaledX=dat.readInt() / 8000D;
+    speedScaledY=dat.readInt() / 8000D;
+    speedScaledZ=dat.readInt() / 8000D;
+  }
+  this.dataStream=dat;
+}

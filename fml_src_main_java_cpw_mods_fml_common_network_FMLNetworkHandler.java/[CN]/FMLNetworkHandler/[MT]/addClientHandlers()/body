@@ -1,0 +1,4 @@
+{
+  channelPair.get(Side.CLIENT).pipeline().addAfter("FMLRuntimeCodec#0","GuiHandler",new OpenGuiHandler());
+  channelPair.get(Side.CLIENT).pipeline().addAfter("FMLRuntimeCodec#0","EntitySpawnHandler",new EntitySpawnHandler());
+}

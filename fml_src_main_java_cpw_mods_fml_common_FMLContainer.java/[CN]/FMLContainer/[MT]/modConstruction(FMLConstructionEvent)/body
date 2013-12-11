@@ -1,3 +1,4 @@
 {
   NetworkRegistry.INSTANCE.register(this,this.getClass(),null,evt.getASMHarvestedData());
+  FMLNetworkHandler.registerChannel(this,evt.getSide());
 }

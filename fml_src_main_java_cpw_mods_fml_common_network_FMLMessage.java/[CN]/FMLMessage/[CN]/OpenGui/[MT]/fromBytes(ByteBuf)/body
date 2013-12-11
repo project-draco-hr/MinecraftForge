@@ -1,0 +1,8 @@
+{
+  windowId=buf.readInt();
+  networkId=buf.readInt();
+  modGuiId=buf.readInt();
+  x=buf.readInt();
+  y=buf.readInt();
+  z=buf.readInt();
+}

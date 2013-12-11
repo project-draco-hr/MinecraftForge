@@ -1,2 +1,0 @@
-Function<EntitySpawnPacket,Entity> callable
-boolean usesVanillaSpawning

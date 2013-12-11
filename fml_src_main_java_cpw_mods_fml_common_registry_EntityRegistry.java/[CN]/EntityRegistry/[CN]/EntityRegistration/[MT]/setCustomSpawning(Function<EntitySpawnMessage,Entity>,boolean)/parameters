@@ -1,0 +1,2 @@
+Function<EntitySpawnMessage,Entity> callable
+boolean usesVanillaSpawning

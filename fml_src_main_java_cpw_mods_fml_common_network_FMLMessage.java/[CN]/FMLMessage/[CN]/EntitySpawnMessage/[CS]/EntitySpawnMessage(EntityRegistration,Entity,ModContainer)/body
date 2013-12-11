@@ -1,0 +1,5 @@
+{
+  super(entity);
+  modId=modContainer.getModId();
+  modEntityTypeId=er.getModEntityId();
+}

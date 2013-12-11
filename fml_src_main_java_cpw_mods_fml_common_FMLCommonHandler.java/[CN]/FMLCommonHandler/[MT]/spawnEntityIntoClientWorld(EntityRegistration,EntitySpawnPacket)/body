@@ -1,3 +1,0 @@
-{
-  return sidedDelegate.spawnEntityIntoClientWorld(registration,entitySpawnPacket);
-}

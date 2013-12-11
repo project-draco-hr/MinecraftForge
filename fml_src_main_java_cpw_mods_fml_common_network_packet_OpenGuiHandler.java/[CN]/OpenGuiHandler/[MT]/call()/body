@@ -1,6 +1,0 @@
-{
-  EntityPlayer player=FMLClientHandler.instance().getClient().field_71439_g;
-  player.openGui(packet.networkId,packet.modGuiId,player.field_70170_p,packet.x,packet.y,packet.z);
-  player.field_71070_bA.field_75152_c=packet.windowId;
-  return null;
-}

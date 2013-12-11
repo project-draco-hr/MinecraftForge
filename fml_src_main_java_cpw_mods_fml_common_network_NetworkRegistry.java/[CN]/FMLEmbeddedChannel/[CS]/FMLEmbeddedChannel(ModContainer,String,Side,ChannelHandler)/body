@@ -3,5 +3,5 @@
   this.attr(FML_CHANNEL).set(channelName);
   this.attr(CHANNEL_SOURCE).set(source);
   this.attr(MOD_CONTAINER).setIfAbsent(container);
-  this.pipeline().addFirst(new FMLOutboundHandler());
+  this.pipeline().addFirst("fml:outbound",new FMLOutboundHandler());
 }
