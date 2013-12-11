@@ -1,0 +1,13 @@
+{
+  List<ModRemapping> remappings=Lists.newArrayList();
+  for (  Entry<String,Integer[]> mapping : mappings.entrySet()) {
+    remappings.add(new ModRemapping(mapping.getValue()[0],mapping.getValue()[1],mapping.getKey()));
+  }
+  Collections.sort(remappings,new Comparator<ModRemapping>(){
+    @Override public int compare(    ModRemapping o1,    ModRemapping o2){
+      return Integer.compare(o1.newId,o2.newId);
+    }
+  }
+);
+  remappedIds=ImmutableList.copyOf(remappings);
+}

@@ -1,4 +1,5 @@
 {
+  Map<String,Integer[]> remaps=Maps.newHashMap();
   blockRegistry.beginIdSwap();
   itemRegistry.beginIdSwap();
   for (  Entry<String,Integer> entry : dataList.entrySet()) {
@@ -16,6 +17,7 @@
     }
     if (currId != newId) {
       FMLLog.info("Found %s id mismatch %s : %d %d",isBlock ? "block" : "item",itemName,currId,newId);
+      remaps.put(itemName,new Integer[]{currId,newId});
     }
     if (isBlock) {
       blockRegistry.reassignMapping(itemName,newId);
@@ -26,4 +28,5 @@
   }
   blockRegistry.completeIdSwap();
   itemRegistry.completeIdSwap();
+  Loader.instance().fireRemapEvent(remaps);
 }
