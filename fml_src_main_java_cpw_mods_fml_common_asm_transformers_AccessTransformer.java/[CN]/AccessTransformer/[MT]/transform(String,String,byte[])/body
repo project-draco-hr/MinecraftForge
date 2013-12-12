@@ -3,15 +3,15 @@
     return null;
   }
   if (DEBUG) {
-    FMLRelaunchLog.fine("Considering all methods and fields on %s (%s)\n",name,transformedName);
+    FMLRelaunchLog.fine("Considering all methods and fields on %s (%s)\n",transformedName,name);
   }
-  if (!modifiers.containsKey(name)) {
+  if (!modifiers.containsKey(transformedName)) {
     return bytes;
   }
   ClassNode classNode=new ClassNode();
   ClassReader classReader=new ClassReader(bytes);
   classReader.accept(classNode,0);
-  Collection<Modifier> mods=modifiers.get(name);
+  Collection<Modifier> mods=modifiers.get(transformedName);
   for (  Modifier m : mods) {
     if (m.modifyClassVisibility) {
       classNode.access=getFixedAccess(classNode.access,m);

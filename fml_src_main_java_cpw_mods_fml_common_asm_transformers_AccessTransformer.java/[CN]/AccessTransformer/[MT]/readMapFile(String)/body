@@ -17,17 +17,16 @@
         return true;
       }
       List<String> parts=Lists.newArrayList(Splitter.on(" ").trimResults().split(line));
-      if (parts.size() > 2) {
+      if (parts.size() > 3) {
         throw new RuntimeException("Invalid config file line " + input);
       }
       Modifier m=new Modifier();
       m.setTargetAccess(parts.get(0));
-      List<String> descriptor=Lists.newArrayList(Splitter.on(".").trimResults().split(parts.get(1)));
-      if (descriptor.size() == 1) {
+      if (parts.size() == 2) {
         m.modifyClassVisibility=true;
       }
  else {
-        String nameReference=descriptor.get(1);
+        String nameReference=parts.get(2);
         int parenIdx=nameReference.indexOf('(');
         if (parenIdx > 0) {
           m.desc=nameReference.substring(parenIdx);
@@ -37,7 +36,9 @@
           m.name=nameReference;
         }
       }
-      modifiers.put(descriptor.get(0).replace('/','.'),m);
+      String className=parts.get(1).replace('/','.');
+      modifiers.put(className,m);
+      if (DEBUG)       System.out.printf("AT RULE: %s %s %s (type %s)\n",toBinary(m.targetAccess),m.name,m.desc,className);
       return true;
     }
   }

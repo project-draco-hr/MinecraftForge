@@ -2,6 +2,7 @@
   if (!(Boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment")) {
     classLoader.registerTransformer("cpw.mods.fml.common.asm.transformers.DeobfuscationTransformer");
   }
+  classLoader.registerTransformer("cpw.mods.fml.common.asm.transformers.AccessTransformer");
   try {
     FMLRelaunchLog.fine("Validating minecraft");
     Class<?> loaderClazz=Class.forName("cpw.mods.fml.common.Loader",true,classLoader);
