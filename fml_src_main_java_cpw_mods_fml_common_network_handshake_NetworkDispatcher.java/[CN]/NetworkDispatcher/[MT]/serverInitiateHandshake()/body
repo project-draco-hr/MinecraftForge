@@ -1,4 +1,7 @@
 {
   this.state=ConnectionState.AWAITING_HANDSHAKE;
   this.manager.channel().pipeline().addFirst("fml:vanilla_detector",new VanillaTimeoutWaiter());
+  serverHandler=new NetHandlerPlayServer(scm.func_72365_p(),manager,player);
+  player.field_71135_a=null;
+  this.manager.func_150723_a(EnumConnectionState.PLAY);
 }

@@ -3,6 +3,15 @@
   if ("FML|HS".equals(channelName) || "REGISTER".equals(channelName) || "UNREGISTER".equals(channelName)) {
     FMLProxyPacket proxy=new FMLProxyPacket(msg);
     handshakeChannel.writeInbound(proxy);
+    for (    Object push : handshakeChannel.inboundMessages()) {
+      List<FMLProxyPacket> messageResult=FMLNetworkHandler.forwardHandshake((FMLMessage.CompleteHandshake)push,this,Side.CLIENT);
+      for (      FMLProxyPacket result : messageResult) {
+        result.setTarget(Side.CLIENT);
+        result.payload().resetReaderIndex();
+        context.fireChannelRead(result);
+      }
+    }
+    handshakeChannel.inboundMessages().clear();
     return true;
   }
  else   if (NetworkRegistry.INSTANCE.hasChannel(channelName,Side.CLIENT)) {

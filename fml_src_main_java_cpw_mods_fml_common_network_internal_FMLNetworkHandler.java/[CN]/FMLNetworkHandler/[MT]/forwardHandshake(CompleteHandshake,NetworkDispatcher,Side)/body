@@ -1,0 +1,10 @@
+{
+  channelPair.get(side).attr(NetworkDispatcher.FML_DISPATCHER).set(target);
+  channelPair.get(side).writeOutbound(push);
+  ArrayList<FMLProxyPacket> list=new ArrayList<FMLProxyPacket>();
+  for (  Object o : channelPair.get(side).outboundMessages()) {
+    list.add((FMLProxyPacket)o);
+  }
+  channelPair.get(side).outboundMessages().clear();
+  return list;
+}

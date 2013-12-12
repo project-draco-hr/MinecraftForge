@@ -1,5 +1,3 @@
 {
-  if (!(args instanceof EntityPlayerMP)) {
-    throw new RuntimeException("PLAYER target expects a Player arg");
-  }
+  throw new RuntimeException("Cannot set TOSERVER as a target on the server");
 }

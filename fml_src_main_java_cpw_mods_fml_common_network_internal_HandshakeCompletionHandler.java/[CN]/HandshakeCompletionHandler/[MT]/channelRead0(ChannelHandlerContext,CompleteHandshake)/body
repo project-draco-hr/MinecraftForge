@@ -1,0 +1,4 @@
+{
+  NetworkDispatcher dispatcher=ctx.channel().attr(NetworkDispatcher.FML_DISPATCHER).getAndRemove();
+  dispatcher.completeHandshake(msg.target);
+}

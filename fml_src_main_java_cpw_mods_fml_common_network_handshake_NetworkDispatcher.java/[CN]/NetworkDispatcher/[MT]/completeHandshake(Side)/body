@@ -1,0 +1,11 @@
+{
+  if (state == ConnectionState.CONNECTED) {
+    throw new FMLNetworkException("Attempt to double complete!");
+  }
+  if (side == Side.CLIENT) {
+    completeClientSideConnection();
+  }
+ else {
+    completeServerSideConnection();
+  }
+}
