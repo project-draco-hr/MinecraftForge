@@ -1,5 +1,0 @@
-{
-  if (msg.getClass().equals(FMLMessage.EntitySpawnMessage.class)) {
-    spawnEntity(msg);
-  }
-}
