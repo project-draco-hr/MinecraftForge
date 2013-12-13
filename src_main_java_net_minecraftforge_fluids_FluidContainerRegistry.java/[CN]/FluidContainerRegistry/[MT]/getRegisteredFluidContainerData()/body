@@ -1,3 +1,0 @@
-{
-  return containerFluidMap.values().toArray(new FluidContainerData[containerFluidMap.size()]);
-}

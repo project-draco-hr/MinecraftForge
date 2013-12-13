@@ -1,7 +1,0 @@
-{
-  if (container == null || fluid == null) {
-    return false;
-  }
-  FluidContainerData data=filledContainerMap.get(Arrays.asList(container.itemID,container.getItemDamage(),fluid.fluidID));
-  return data == null ? false : data.fluid.isFluidEqual(fluid);
-}

@@ -1,4 +1,0 @@
-FluidStack stack
-ItemStack filledContainer
-ItemStack emptyContainer
-boolean nullEmpty

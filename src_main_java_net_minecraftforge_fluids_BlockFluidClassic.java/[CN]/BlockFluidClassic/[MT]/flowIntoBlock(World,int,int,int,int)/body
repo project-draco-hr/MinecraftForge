@@ -1,6 +1,0 @@
-{
-  if (meta < 0)   return;
-  if (displaceIfPossible(world,x,y,z)) {
-    world.setBlock(x,y,z,this.blockID,meta,3);
-  }
-}

@@ -1,4 +1,0 @@
-{
-  this.fluidName=fluidName;
-  this.fluidID=fluidID;
-}

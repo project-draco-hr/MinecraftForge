@@ -1,9 +1,0 @@
-{
-  if (fluidIDs.containsKey(fluid.getName())) {
-    return false;
-  }
-  fluids.put(fluid.getName(),fluid);
-  fluidIDs.put(fluid.getName(),++maxID);
-  MinecraftForge.EVENT_BUS.post(new FluidRegisterEvent(fluid.getName(),maxID));
-  return true;
-}

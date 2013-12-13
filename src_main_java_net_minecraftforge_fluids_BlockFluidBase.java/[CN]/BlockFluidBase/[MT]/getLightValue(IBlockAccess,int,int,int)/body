@@ -1,7 +1,0 @@
-{
-  if (maxScaledLight == 0) {
-    return super.getLightValue(world,x,y,z);
-  }
-  int data=world.getBlockMetadata(x,y,z);
-  return (int)(data / quantaPerBlockFloat * maxScaledLight);
-}

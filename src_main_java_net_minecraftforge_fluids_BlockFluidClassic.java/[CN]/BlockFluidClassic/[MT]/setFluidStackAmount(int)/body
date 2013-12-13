@@ -1,4 +1,0 @@
-{
-  this.stack.amount=amount;
-  return this;
-}

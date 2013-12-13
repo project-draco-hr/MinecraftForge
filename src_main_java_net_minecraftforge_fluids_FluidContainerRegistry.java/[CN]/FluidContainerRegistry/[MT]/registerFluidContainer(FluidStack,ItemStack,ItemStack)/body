@@ -1,3 +1,0 @@
-{
-  return registerFluidContainer(new FluidContainerData(stack,filledContainer,emptyContainer));
-}

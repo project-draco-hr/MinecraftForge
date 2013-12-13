@@ -1,8 +1,0 @@
-{
-  nbt.setString("FluidName",FluidRegistry.getFluidName(fluidID));
-  nbt.setInteger("Amount",amount);
-  if (tag != null) {
-    nbt.setTag("Tag",tag);
-  }
-  return nbt;
-}

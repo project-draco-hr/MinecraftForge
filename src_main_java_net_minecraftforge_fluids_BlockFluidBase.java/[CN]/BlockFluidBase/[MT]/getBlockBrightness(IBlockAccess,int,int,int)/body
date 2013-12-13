@@ -1,5 +1,0 @@
-{
-  float lightThis=world.getLightBrightness(x,y,z);
-  float lightUp=world.getLightBrightness(x,y + 1,z);
-  return lightThis > lightUp ? lightThis : lightUp;
-}

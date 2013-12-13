@@ -1,3 +1,0 @@
-{
-  return new FluidStack(fluidID,amount,tag);
-}

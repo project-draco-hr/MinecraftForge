@@ -1,3 +1,3 @@
 {
-  return new FluidTankInfo[]{tank.getInfo()};
+  return null;
 }

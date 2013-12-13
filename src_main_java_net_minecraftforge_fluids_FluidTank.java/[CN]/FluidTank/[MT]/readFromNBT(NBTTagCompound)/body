@@ -1,9 +1,0 @@
-{
-  if (!nbt.hasKey("Empty")) {
-    FluidStack fluid=FluidStack.loadFluidStackFromNBT(nbt);
-    if (fluid != null) {
-      setFluid(fluid);
-    }
-  }
-  return this;
-}

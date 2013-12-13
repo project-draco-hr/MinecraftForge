@@ -1,4 +1,0 @@
-{
-  super(itemID);
-  this.capacity=capacity;
-}

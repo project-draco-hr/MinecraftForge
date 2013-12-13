@@ -1,6 +1,0 @@
-{
-  if (!FluidRegistry.isFluidRegistered(fluid)) {
-    FluidRegistry.registerFluid(fluid);
-  }
-  return registerFluidContainer(new FluidStack(fluid,BUCKET_VOLUME),filledContainer);
-}

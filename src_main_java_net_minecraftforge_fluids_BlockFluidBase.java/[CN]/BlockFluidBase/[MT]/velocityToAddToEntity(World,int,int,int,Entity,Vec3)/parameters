@@ -1,6 +1,0 @@
-World world
-int x
-int y
-int z
-Entity entity
-Vec3 vec

@@ -1,4 +1,0 @@
-{
-  this.temperature=temperature;
-  return this;
-}

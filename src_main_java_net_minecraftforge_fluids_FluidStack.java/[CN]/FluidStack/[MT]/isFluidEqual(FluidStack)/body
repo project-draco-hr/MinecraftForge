@@ -1,3 +1,0 @@
-{
-  return other != null && fluidID == other.fluidID && isFluidStackTagEqual(other);
-}
