@@ -1,5 +1,3 @@
 {
   MinecraftForge.EVENT_BUS.post(new TextureStitchEvent.Post(map));
-  FluidRegistry.WATER.setIcons(BlockLiquid.func_149803_e("water_still"),BlockLiquid.func_149803_e("water_flow"));
-  FluidRegistry.LAVA.setIcons(BlockLiquid.func_149803_e("lava_still"),BlockLiquid.func_149803_e("lava_flow"));
 }

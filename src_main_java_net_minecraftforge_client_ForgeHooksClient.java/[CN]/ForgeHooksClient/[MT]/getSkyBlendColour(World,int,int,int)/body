@@ -3,7 +3,7 @@
     return skyRGBMultiplier;
   }
   skyInit=true;
-  int distance=Minecraft.getMinecraft().gameSettings.fancyGraphics ? ForgeDummyContainer.blendRanges[Minecraft.getMinecraft().gameSettings.renderDistance] : 0;
+  int distance=Minecraft.getMinecraft().gameSettings.fancyGraphics ? ForgeModContainer.blendRanges[Minecraft.getMinecraft().gameSettings.renderDistance] : 0;
   int r=0;
   int g=0;
   int b=0;

@@ -12,7 +12,7 @@
     packet.metadata=0;
     entityPlayer.playerNetServerHandler.sendPacketToPlayer(packet);
   }
-  Block block=Block.blocksList[world.getBlockId(x,y,z)];
+  Block block=world.func_147439_a(x,y,z);
   int blockMetadata=world.getBlockMetadata(x,y,z);
   BlockEvent.BreakEvent event=new BlockEvent.BreakEvent(x,y,z,world,block,blockMetadata,entityPlayer);
   event.setCanceled(preCancelEvent);
@@ -21,7 +21,7 @@
     entityPlayer.playerNetServerHandler.sendPacketToPlayer(new Packet53BlockChange(x,y,z,world));
     TileEntity tileentity=world.getBlockTileEntity(x,y,z);
     if (tileentity != null) {
-      Packet pkt=tileentity.getDescriptionPacket();
+      Packet pkt=tileentity.func_145844_m();
       if (pkt != null) {
         entityPlayer.playerNetServerHandler.sendPacketToPlayer(pkt);
       }

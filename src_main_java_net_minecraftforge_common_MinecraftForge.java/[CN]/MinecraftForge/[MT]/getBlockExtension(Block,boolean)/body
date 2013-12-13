@@ -1,0 +1,8 @@
+{
+  BlockExtension ret=EXTENSION_BLOCK.get(block);
+  if (ret == null && guarantee) {
+    ret=new BlockExtension(block);
+    EXTENSION_BLOCK.put(block,ret);
+  }
+  return ret;
+}

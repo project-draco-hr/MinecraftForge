@@ -1,0 +1,6 @@
+{
+  if (MinecraftForge.getBlockExtension(owner,false) != null) {
+    throw new IllegalArgumentException(owner + " already has an extension object allocated");
+  }
+  this.owner=owner;
+}

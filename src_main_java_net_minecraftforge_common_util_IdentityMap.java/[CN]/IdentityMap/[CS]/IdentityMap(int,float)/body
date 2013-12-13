@@ -1,0 +1,4 @@
+{
+  keys=new TIntObjectHashMap<K>(initialCapacity,loadFactor,-1);
+  values=new TIntObjectHashMap<V>(initialCapacity,loadFactor,-1);
+}

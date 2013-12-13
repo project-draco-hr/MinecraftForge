@@ -20,9 +20,9 @@
       FMLLog.log(Level.WARNING,e,"Unable to read forced chunk data at %s - it will be ignored",chunkLoaderData.getAbsolutePath());
       return;
     }
-    NBTTagList ticketList=forcedChunkData.getTagList("TicketList");
+    NBTTagList ticketList=forcedChunkData.func_150295_c("TicketList",9);
     for (int i=0; i < ticketList.tagCount(); i++) {
-      NBTTagCompound ticketHolder=(NBTTagCompound)ticketList.tagAt(i);
+      NBTTagCompound ticketHolder=(NBTTagCompound)ticketList.func_150305_b(i);
       String modId=ticketHolder.getString("Owner");
       boolean isPlayer="Forge".equals(modId);
       if (!isPlayer && !Loader.isModLoaded(modId)) {
@@ -33,9 +33,9 @@
         FMLLog.warning("The mod %s has registered persistent chunkloading data but doesn't seem to want to be called back with it - it will be removed from the world save",modId);
         continue;
       }
-      NBTTagList tickets=ticketHolder.getTagList("Tickets");
+      NBTTagList tickets=ticketHolder.func_150295_c("Tickets",9);
       for (int j=0; j < tickets.tagCount(); j++) {
-        NBTTagCompound ticket=(NBTTagCompound)tickets.tagAt(j);
+        NBTTagCompound ticket=(NBTTagCompound)tickets.func_150305_b(j);
         modId=ticket.hasKey("ModId") ? ticket.getString("ModId") : modId;
         Type type=Type.values()[ticket.getByte("Type")];
         byte ticketChunkDepth=ticket.getByte("ChunkListDepth");

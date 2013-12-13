@@ -1,0 +1,5 @@
+{
+  int id=System.identityHashCode(key);
+  keys.put(id,key);
+  return values.put(id,value);
+}

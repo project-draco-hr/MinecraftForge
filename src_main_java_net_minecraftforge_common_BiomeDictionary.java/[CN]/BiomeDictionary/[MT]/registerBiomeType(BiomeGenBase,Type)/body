@@ -1,5 +1,5 @@
 {
-  if (BiomeGenBase.biomeList[biome.biomeID] != null) {
+  if (BiomeGenBase.func_150565_n()[biome.biomeID] != null) {
     for (    Type type : types) {
       if (typeInfoList[type.ordinal()] == null) {
         typeInfoList[type.ordinal()]=new ArrayList<BiomeGenBase>();

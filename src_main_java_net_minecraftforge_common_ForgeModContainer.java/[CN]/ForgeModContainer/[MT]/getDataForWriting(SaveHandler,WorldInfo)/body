@@ -1,0 +1,6 @@
+{
+  NBTTagCompound forgeData=new NBTTagCompound();
+  NBTTagCompound dimData=DimensionManager.saveDimensionDataMap();
+  forgeData.setTag("DimensionData",dimData);
+  return forgeData;
+}

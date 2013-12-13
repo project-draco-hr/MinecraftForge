@@ -1,0 +1,4 @@
+{
+  itr.advance();
+  return new AbstractMap.SimpleEntry<K,V>(itr.value(),values.get(itr.key()));
+}
