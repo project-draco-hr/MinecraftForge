@@ -1,0 +1,5 @@
+{
+  setup();
+  isCancelable=hasAnnotation(Cancelable.class);
+  hasResult=hasAnnotation(HasResult.class);
+}

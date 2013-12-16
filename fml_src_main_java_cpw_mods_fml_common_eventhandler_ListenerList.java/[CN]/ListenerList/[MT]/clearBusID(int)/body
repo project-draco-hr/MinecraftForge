@@ -1,0 +1,5 @@
+{
+  for (  ListenerList list : allLists) {
+    list.lists[id].dispose();
+  }
+}

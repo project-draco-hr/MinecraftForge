@@ -1,0 +1,9 @@
+{
+  if (max <= maxSize) {
+    return;
+  }
+  for (  ListenerList list : allLists) {
+    list.resizeLists(max);
+  }
+  maxSize=max;
+}
