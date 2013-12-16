@@ -5,7 +5,7 @@
       negativeCacheMethods.add(className);
     }
     if (DUMP_METHOD_MAPS) {
-      FMLRelaunchLog.finest("Method map for %s : %s",className,methodNameMaps.get(className));
+      FMLRelaunchLog.finer("Method map for %s : %s",className,methodNameMaps.get(className));
     }
   }
   return methodNameMaps.get(className);

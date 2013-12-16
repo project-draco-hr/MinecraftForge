@@ -11,7 +11,7 @@
       }
     }
  catch (    LoaderException le) {
-      FMLLog.log(Level.WARNING,le,"Identified a problem with the mod candidate %s, ignoring this source",candidate.getModContainer());
+      FMLLog.log(Level.WARN,le,"Identified a problem with the mod candidate %s, ignoring this source",candidate.getModContainer());
     }
 catch (    Throwable t) {
       Throwables.propagate(t);

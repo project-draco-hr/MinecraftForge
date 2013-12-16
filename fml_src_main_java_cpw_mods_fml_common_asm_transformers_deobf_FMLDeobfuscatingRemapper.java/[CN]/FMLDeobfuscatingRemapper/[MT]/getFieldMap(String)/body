@@ -5,7 +5,7 @@
       negativeCacheFields.add(className);
     }
     if (DUMP_FIELD_MAPS) {
-      FMLRelaunchLog.finest("Field map for %s : %s",className,fieldNameMaps.get(className));
+      FMLRelaunchLog.finer("Field map for %s : %s",className,fieldNameMaps.get(className));
     }
   }
   return fieldNameMaps.get(className);

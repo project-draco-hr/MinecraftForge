@@ -5,14 +5,14 @@
   ClassNode classNode=new ClassNode();
   ClassReader classReader=new ClassReader(basicClass);
   classReader.accept(classNode,0);
-  if (logDebugInfo)   FMLRelaunchLog.finest("Optional removal - found optionals for class %s - processing",name);
+  if (logDebugInfo)   FMLRelaunchLog.finer("Optional removal - found optionals for class %s - processing",name);
   for (  ASMData optional : optionals.get(name)) {
     String modId=(String)optional.getAnnotationInfo().get("modid");
     if (Loader.isModLoaded(modId) || ModAPIManager.INSTANCE.hasAPI(modId)) {
-      if (logDebugInfo)       FMLRelaunchLog.finest("Optional removal skipped - mod present %s",modId);
+      if (logDebugInfo)       FMLRelaunchLog.finer("Optional removal skipped - mod present %s",modId);
       continue;
     }
-    if (logDebugInfo)     FMLRelaunchLog.finest("Optional on %s triggered - mod missing %s",name,modId);
+    if (logDebugInfo)     FMLRelaunchLog.finer("Optional on %s triggered - mod missing %s",name,modId);
     if (optional.getAnnotationInfo().containsKey("iface")) {
       Boolean stripRefs=(Boolean)optional.getAnnotationInfo().get("striprefs");
       if (stripRefs == null)       stripRefs=Boolean.FALSE;
@@ -22,7 +22,7 @@
       stripMethod(classNode,(String)optional.getObjectName());
     }
   }
-  if (logDebugInfo)   FMLRelaunchLog.finest("Optional removal - class %s processed",name);
+  if (logDebugInfo)   FMLRelaunchLog.finer("Optional removal - class %s processed",name);
   ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
   classNode.accept(writer);
   return writer.toByteArray();

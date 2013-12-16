@@ -40,7 +40,7 @@
     }
   }
   if (parseFailure) {
-    FMLLog.log(Level.WARNING,"Unable to parse dependency string %s",dependencyString);
+    FMLLog.log(Level.WARN,"Unable to parse dependency string %s",dependencyString);
     throw new LoaderException();
   }
 }

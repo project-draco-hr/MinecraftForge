@@ -57,7 +57,7 @@
       }
     }
  catch (    Throwable e) {
-      FMLRelaunchLog.log(Level.SEVERE,e,"A critical error occurred trying to read the minecraft jar file");
+      FMLRelaunchLog.log(Level.ERROR,e,"A critical error occurred trying to read the minecraft jar file");
     }
  finally {
       if (mcJarFile != null) {

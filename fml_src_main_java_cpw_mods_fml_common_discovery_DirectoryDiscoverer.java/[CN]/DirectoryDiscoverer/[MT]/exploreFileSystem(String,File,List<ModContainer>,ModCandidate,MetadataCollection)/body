@@ -16,7 +16,7 @@
   Arrays.sort(content);
   for (  File file : content) {
     if (file.isDirectory()) {
-      FMLLog.finest("Recursing into package %s",path + file.getName());
+      FMLLog.finer("Recursing into package %s",path + file.getName());
       exploreFileSystem(path + file.getName() + ".",file,harvestedMods,candidate,mc);
       continue;
     }
@@ -30,7 +30,7 @@
         candidate.addClassEntry(path + file.getName());
       }
  catch (      LoaderException e) {
-        FMLLog.log(Level.SEVERE,e,"There was a problem reading the file %s - probably this is a corrupt file",file.getPath());
+        FMLLog.log(Level.ERROR,e,"There was a problem reading the file %s - probably this is a corrupt file",file.getPath());
         throw e;
       }
 catch (      Exception e) {

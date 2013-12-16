@@ -4,7 +4,7 @@
     reader.accept(new ModClassVisitor(this),0);
   }
  catch (  Exception ex) {
-    FMLLog.log(Level.SEVERE,ex,"Unable to read a class file correctly");
+    FMLLog.log(Level.ERROR,ex,"Unable to read a class file correctly");
     throw new LoaderException(ex);
   }
 }

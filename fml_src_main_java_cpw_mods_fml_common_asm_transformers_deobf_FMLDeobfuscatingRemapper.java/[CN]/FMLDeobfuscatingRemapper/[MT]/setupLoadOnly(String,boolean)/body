@@ -27,7 +27,7 @@
     mcpNameBiMap=mcpBuilder.build();
   }
  catch (  IOException ioe) {
-    Logger.getLogger("FML").log(Level.SEVERE,"An error occurred loading the deobfuscation map data",ioe);
+    FMLRelaunchLog.log(Level.ERROR,"An error occurred loading the deobfuscation map data",ioe);
   }
   methodNameMaps=Maps.newHashMapWithExpectedSize(rawMethodMaps.size());
   fieldNameMaps=Maps.newHashMapWithExpectedSize(rawFieldMaps.size());

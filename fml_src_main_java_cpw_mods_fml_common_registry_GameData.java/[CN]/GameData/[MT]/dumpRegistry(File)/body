@@ -14,7 +14,7 @@
       FMLLog.log(Level.INFO,"Dumped item registry data to %s",f.getAbsolutePath());
     }
  catch (    IOException e) {
-      FMLLog.log(Level.SEVERE,e,"Failed to write registry data to %s",f.getAbsolutePath());
+      FMLLog.log(Level.ERROR,e,"Failed to write registry data to %s",f.getAbsolutePath());
     }
   }
 }

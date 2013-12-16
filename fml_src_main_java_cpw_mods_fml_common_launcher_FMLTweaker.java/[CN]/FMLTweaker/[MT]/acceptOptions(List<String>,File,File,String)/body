@@ -44,7 +44,7 @@
     jarLocation=getClass().getProtectionDomain().getCodeSource().getLocation().toURI();
   }
  catch (  URISyntaxException e) {
-    Logger.getLogger("FMLTWEAK").log(Level.SEVERE,"Missing URI information for FML tweak");
+    LogManager.getLogger("FMLTWEAK").log(Level.ERROR,"Missing URI information for FML tweak");
     throw Throwables.propagate(e);
   }
 }

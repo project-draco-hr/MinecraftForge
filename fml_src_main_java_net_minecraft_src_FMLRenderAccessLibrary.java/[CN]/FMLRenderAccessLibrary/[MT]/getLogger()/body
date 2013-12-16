@@ -1,5 +1,4 @@
 {
-  Logger l=Logger.getLogger("FMLRenderAccessLibrary");
-  l.setParent(FMLLog.getLogger());
+  Logger l=LogManager.getLogger("FMLRenderAccessLibrary");
   return l;
 }

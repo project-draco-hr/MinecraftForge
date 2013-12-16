@@ -3,7 +3,7 @@
     return ReflectionHelper.getPrivateValue(classToAccess,instance,fieldIndex);
   }
  catch (  UnableToAccessFieldException e) {
-    FMLLog.log(Level.SEVERE,e,"There was a problem getting field index %d from %s",fieldIndex,classToAccess.getName());
+    FMLLog.log(Level.ERROR,e,"There was a problem getting field index %d from %s",fieldIndex,classToAccess.getName());
     throw e;
   }
 }

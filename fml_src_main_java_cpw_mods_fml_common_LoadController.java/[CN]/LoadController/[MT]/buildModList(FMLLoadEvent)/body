@@ -1,23 +1,16 @@
 {
   Builder<String,EventBus> eventBus=ImmutableMap.builder();
   for (  ModContainer mod : loader.getModList()) {
-    FMLRelaunchLog.makeLog(mod.getModId());
-    Logger modLogger=Logger.getLogger(mod.getModId());
-    Logger eventLog=Logger.getLogger(EventBus.class.getName() + "." + mod.getModId());
-    eventLog.setParent(modLogger);
     EventBus bus=new EventBus(mod.getModId());
     boolean isActive=mod.registerBus(bus,this);
     if (isActive) {
-      Level level=Logger.getLogger(mod.getModId()).getLevel();
-      FMLLog.log(mod.getModId(),Level.FINE,"Mod Logging channel %s configured at %s level.",mod.getModId(),level == null ? "default" : level);
-      FMLLog.log(mod.getModId(),Level.INFO,"Activating mod %s",mod.getModId());
       activeModList.add(mod);
       modStates.put(mod.getModId(),ModState.UNLOADED);
       eventBus.put(mod.getModId(),bus);
       FMLCommonHandler.instance().addModToResourcePack(mod);
     }
  else {
-      FMLLog.log(mod.getModId(),Level.WARNING,"Mod %s has been disabled through configuration",mod.getModId());
+      FMLLog.log(mod.getModId(),Level.WARN,"Mod %s has been disabled through configuration",mod.getModId());
       modStates.put(mod.getModId(),ModState.UNLOADED);
       modStates.put(mod.getModId(),ModState.DISABLED);
     }

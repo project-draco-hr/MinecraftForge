@@ -53,7 +53,7 @@
       for (      ModContainer mc : exceptionData.getVisitedNodes()) {
         FMLLog.severe("%s : before: %s, after: %s",mc.toString(),mc.getDependants(),mc.getDependencies());
       }
-      FMLLog.log(Level.SEVERE,sortException,"The full error");
+      FMLLog.log(Level.ERROR,sortException,"The full error");
       throw sortException;
     }
   }

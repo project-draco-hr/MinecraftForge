@@ -12,7 +12,7 @@
     addStringLocalization(langPack,lang);
   }
  catch (  IOException e) {
-    FMLLog.log(Level.SEVERE,e,"Unable to load localization from file %s",localizationFile);
+    FMLLog.log(Level.ERROR,e,"Unable to load localization from file %s",localizationFile);
   }
  finally {
     try {

@@ -36,7 +36,7 @@ catch (  ModSortingException sorting) {
     modSorting=sorting;
   }
 catch (  CustomModLoadingErrorDisplayException custom) {
-    FMLLog.log(Level.SEVERE,custom,"A custom exception was thrown by a mod, the game will now halt");
+    FMLLog.log(Level.ERROR,custom,"A custom exception was thrown by a mod, the game will now halt");
     customError=custom;
   }
 catch (  LoaderException le) {

@@ -19,7 +19,7 @@ synchronized (fieldDescriptions) {
       return resMap.get(name);
     }
  catch (    IOException e) {
-      FMLLog.log(Level.SEVERE,e,"A critical exception occured reading a class file %s",owner);
+      FMLRelaunchLog.log(Level.ERROR,e,"A critical exception occured reading a class file %s",owner);
     }
     return null;
   }

@@ -1,3 +1,3 @@
 {
-  coreLog.log(logChannel,level,format,data);
+  coreLog.log(targetLog,level,format,data);
 }

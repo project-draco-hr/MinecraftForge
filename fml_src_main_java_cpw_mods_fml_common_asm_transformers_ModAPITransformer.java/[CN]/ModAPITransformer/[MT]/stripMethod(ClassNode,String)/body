@@ -3,9 +3,9 @@
     MethodNode method=iterator.next();
     if (methodDescriptor.equals(method.name + method.desc)) {
       iterator.remove();
-      if (logDebugInfo)       FMLRelaunchLog.finest("Optional removal - method %s removed",methodDescriptor);
+      if (logDebugInfo)       FMLRelaunchLog.finer("Optional removal - method %s removed",methodDescriptor);
       return;
     }
   }
-  if (logDebugInfo)   FMLRelaunchLog.finest("Optional removal - method %s NOT removed - not found",methodDescriptor);
+  if (logDebugInfo)   FMLRelaunchLog.finer("Optional removal - method %s NOT removed - not found",methodDescriptor);
 }

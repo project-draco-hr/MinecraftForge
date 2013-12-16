@@ -6,7 +6,7 @@
     Loader.instance().initializeMods();
   }
  catch (  CustomModLoadingErrorDisplayException custom) {
-    FMLLog.log(Level.SEVERE,custom,"A custom exception was thrown by a mod, the game will now halt");
+    FMLLog.log(Level.ERROR,custom,"A custom exception was thrown by a mod, the game will now halt");
     customError=custom;
     return;
   }
@@ -14,7 +14,6 @@ catch (  LoaderException le) {
     haltGame("There was a severe problem during mod loading that has caused the game to fail",le);
     return;
   }
-  client.func_110436_a();
   RenderingRegistry.instance().loadEntityRenderers((Map<Class<? extends Entity>,Render>)RenderManager.field_78727_a.field_78729_o);
   loading=false;
   KeyBindingRegistry.instance().uploadKeyBindingsToGame(client.field_71474_y);

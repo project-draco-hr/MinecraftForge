@@ -18,7 +18,7 @@
     classLoader.registerTransformer("cpw.mods.fml.common.asm.transformers.PatchingTransformer");
   }
  catch (  Exception e) {
-    FMLRelaunchLog.log(Level.SEVERE,e,"The patch transformer failed to load! This is critical, loading cannot continue!");
+    FMLRelaunchLog.log(Level.ERROR,e,"The patch transformer failed to load! This is critical, loading cannot continue!");
     throw Throwables.propagate(e);
   }
   loadPlugins=new ArrayList<FMLPluginWrapper>();

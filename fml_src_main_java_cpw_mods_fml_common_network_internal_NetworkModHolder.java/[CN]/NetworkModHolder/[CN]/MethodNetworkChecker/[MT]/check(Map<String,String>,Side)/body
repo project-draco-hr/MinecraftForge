@@ -3,7 +3,7 @@
     return (Boolean)checkHandler.invoke(container,remoteVersions,side);
   }
  catch (  Exception e) {
-    FMLLog.log(Level.SEVERE,e,"Error occurred invoking NetworkCheckHandler %s at %s",checkHandler.getName(),container);
+    FMLLog.log(Level.ERROR,e,"Error occurred invoking NetworkCheckHandler %s at %s",checkHandler.getName(),container);
     return false;
   }
 }

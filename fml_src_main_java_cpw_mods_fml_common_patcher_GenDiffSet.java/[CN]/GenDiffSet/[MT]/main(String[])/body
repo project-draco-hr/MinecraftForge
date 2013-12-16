@@ -4,7 +4,7 @@
   String deobfData=args[2];
   String outputDir=args[3];
   String killTarget=args[4];
-  Logger.getLogger("GENDIFF").log(Level.INFO,String.format("Creating patches at %s for %s from %s",outputDir,sourceJar,targetDir));
+  LogManager.getLogger("GENDIFF").log(Level.INFO,String.format("Creating patches at %s for %s from %s",outputDir,sourceJar,targetDir));
   Delta delta=new Delta();
   FMLDeobfuscatingRemapper remapper=FMLDeobfuscatingRemapper.INSTANCE;
   remapper.setupLoadOnly(deobfData,false);

@@ -4,7 +4,7 @@
     modController.transition(LoaderState.SERVER_ABOUT_TO_START,false);
   }
  catch (  Throwable t) {
-    FMLLog.log(Level.SEVERE,t,"A fatal exception occurred during the server about to start event");
+    FMLLog.log(Level.ERROR,t,"A fatal exception occurred during the server about to start event");
     return false;
   }
   return true;

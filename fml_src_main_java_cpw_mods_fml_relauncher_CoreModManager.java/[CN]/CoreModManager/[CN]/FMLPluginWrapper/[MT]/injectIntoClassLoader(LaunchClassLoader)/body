@@ -1,7 +1,7 @@
 {
   FMLRelaunchLog.fine("Injecting coremod %s {%s} class transformers",name,coreModInstance.getClass().getName());
   if (coreModInstance.getASMTransformerClass() != null)   for (  String transformer : coreModInstance.getASMTransformerClass()) {
-    FMLRelaunchLog.finest("Registering transformer %s",transformer);
+    FMLRelaunchLog.finer("Registering transformer %s",transformer);
     classLoader.registerTransformer(transformer);
   }
   FMLRelaunchLog.fine("Injection complete");

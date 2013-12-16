@@ -19,9 +19,9 @@
     fingerprintNotPresent=true;
     if (expectedFingerprint != null && !expectedFingerprint.isEmpty()) {
       if (!sourceFingerprints.contains(expectedFingerprint)) {
-        Level warnLevel=Level.SEVERE;
+        Level warnLevel=Level.ERROR;
         if (source.isDirectory()) {
-          warnLevel=Level.FINER;
+          warnLevel=Level.TRACE;
         }
         FMLLog.log(getModId(),warnLevel,"The mod %s is expecting signature %s for source %s, however there is no signature matching that description",getModId(),expectedFingerprint,source.getName());
       }

@@ -26,7 +26,7 @@
       mfAttributes=jar.getManifest().getMainAttributes();
     }
  catch (    IOException ioe) {
-      FMLRelaunchLog.log(Level.SEVERE,ioe,"Unable to read the jar file %s - ignoring",coreMod.getName());
+      FMLRelaunchLog.log(Level.ERROR,ioe,"Unable to read the jar file %s - ignoring",coreMod.getName());
       continue;
     }
  finally {
@@ -55,16 +55,16 @@
     try {
       classLoader.addURL(coreMod.toURI().toURL());
       if (!mfAttributes.containsKey(COREMODCONTAINSFMLMOD)) {
-        FMLRelaunchLog.finest("Adding %s to the list of known coremods, it will not be examined again",coreMod.getName());
+        FMLRelaunchLog.finer("Adding %s to the list of known coremods, it will not be examined again",coreMod.getName());
         loadedCoremods.add(coreMod.getName());
       }
  else {
-        FMLRelaunchLog.finest("Found FMLCorePluginContainsFMLMod marker in %s, it will be examined later for regular @Mod instances",coreMod.getName());
+        FMLRelaunchLog.finer("Found FMLCorePluginContainsFMLMod marker in %s, it will be examined later for regular @Mod instances",coreMod.getName());
         reparsedCoremods.add(coreMod.getName());
       }
     }
  catch (    MalformedURLException e) {
-      FMLRelaunchLog.log(Level.SEVERE,e,"Unable to convert file into a URL. weird");
+      FMLRelaunchLog.log(Level.ERROR,e,"Unable to convert file into a URL. weird");
       continue;
     }
     loadCoreMod(classLoader,fmlCorePlugin,coreMod);

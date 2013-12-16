@@ -1,4 +1,3 @@
 {
-  makeLog(logChannel);
-  Logger.getLogger(logChannel).log(level,String.format(format,data),ex);
+  LogManager.getLogger(targetLog).log(level,String.format(format,data),ex);
 }

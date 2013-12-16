@@ -10,7 +10,7 @@
     canonicalModsDir=modsDir.getCanonicalFile();
   }
  catch (  IOException ioe) {
-    FMLLog.log(Level.SEVERE,ioe,"Failed to resolve loader directories: mods : %s ; config %s",canonicalModsDir.getAbsolutePath(),configDir.getAbsolutePath());
+    FMLLog.log(Level.ERROR,ioe,"Failed to resolve loader directories: mods : %s ; config %s",canonicalModsDir.getAbsolutePath(),configDir.getAbsolutePath());
     throw new LoaderException(ioe);
   }
   if (!canonicalModsDir.exists()) {
@@ -39,8 +39,4 @@
     FMLLog.severe("Attempting to load configuration from %s, which is not a directory",canonicalConfigPath);
     throw new LoaderException();
   }
-  loggingProperties=new File(canonicalConfigDir,"logging.properties");
-  FMLLog.info("Reading custom logging properties from %s",loggingProperties.getPath());
-  FMLRelaunchLog.loadLogConfiguration(loggingProperties);
-  FMLLog.log(Level.OFF,"Logging level for ForgeModLoader logging is set to %s",FMLRelaunchLog.log.getLogger().getLevel());
 }

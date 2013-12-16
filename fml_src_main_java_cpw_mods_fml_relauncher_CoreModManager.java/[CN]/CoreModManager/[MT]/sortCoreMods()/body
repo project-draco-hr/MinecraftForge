@@ -8,7 +8,7 @@
   for (  FMLPluginWrapper plug : loadPlugins) {
     for (    String dep : plug.predepends) {
       if (!pluginMap.containsKey(dep)) {
-        FMLRelaunchLog.log(Level.SEVERE,"Missing coremod dependency - the coremod %s depends on coremod %s which isn't present.",plug.name,dep);
+        FMLRelaunchLog.log(Level.ERROR,"Missing coremod dependency - the coremod %s depends on coremod %s which isn't present.",plug.name,dep);
         throw new RuntimeException();
       }
       sortGraph.addEdge(plug,pluginMap.get(dep));
@@ -19,7 +19,7 @@
     FMLRelaunchLog.fine("Sorted coremod list %s",loadPlugins);
   }
  catch (  Exception e) {
-    FMLLog.log(Level.SEVERE,e,"There was a problem performing the coremod sort");
+    FMLLog.log(Level.ERROR,e,"There was a problem performing the coremod sort");
     throw Throwables.propagate(e);
   }
 }

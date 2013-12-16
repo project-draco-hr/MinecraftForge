@@ -8,7 +8,7 @@
           eventMethods.put((Class<? extends FMLEvent>)m.getParameterTypes()[0],m);
         }
  else {
-          FMLLog.log(getModId(),Level.SEVERE,"The mod %s appears to have an invalid event annotation %s. This annotation can only apply to methods with recognized event arguments - it will not be called",getModId(),a.annotationType().getSimpleName());
+          FMLLog.log(getModId(),Level.ERROR,"The mod %s appears to have an invalid event annotation %s. This annotation can only apply to methods with recognized event arguments - it will not be called",getModId(),a.annotationType().getSimpleName());
         }
       }
  else       if (a.annotationType().equals(Mod.InstanceFactory.class)) {
@@ -17,10 +17,10 @@
           factoryMethod=m;
         }
  else         if (!(Modifier.isStatic(m.getModifiers()) && m.getParameterTypes().length == 0)) {
-          FMLLog.log(getModId(),Level.SEVERE,"The InstanceFactory annotation can only apply to a static method, taking zero arguments - it will be ignored on %s(%s)",m.getName(),Arrays.asList(m.getParameterTypes()));
+          FMLLog.log(getModId(),Level.ERROR,"The InstanceFactory annotation can only apply to a static method, taking zero arguments - it will be ignored on %s(%s)",m.getName(),Arrays.asList(m.getParameterTypes()));
         }
  else         if (factoryMethod != null) {
-          FMLLog.log(getModId(),Level.SEVERE,"The InstanceFactory annotation can only be used once, the application to %s(%s) will be ignored",m.getName(),Arrays.asList(m.getParameterTypes()));
+          FMLLog.log(getModId(),Level.ERROR,"The InstanceFactory annotation can only be used once, the application to %s(%s) will be ignored",m.getName(),Arrays.asList(m.getParameterTypes()));
         }
       }
     }

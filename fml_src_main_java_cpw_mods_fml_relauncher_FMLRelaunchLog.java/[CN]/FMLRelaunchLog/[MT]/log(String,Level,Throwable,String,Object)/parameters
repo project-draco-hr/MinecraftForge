@@ -1,4 +1,4 @@
-String logChannel
+String targetLog
 Level level
 Throwable ex
 String format

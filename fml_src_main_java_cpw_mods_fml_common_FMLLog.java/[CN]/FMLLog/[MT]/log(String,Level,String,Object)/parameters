@@ -1,4 +1,4 @@
-String logChannel
+String targetLog
 Level level
 String format
 Object data

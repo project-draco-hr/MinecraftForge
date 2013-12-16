@@ -1,5 +1,5 @@
 {
-  FMLLog.log(Level.SEVERE,exception,"Something raised an exception. The message was '%s'. 'stopGame' is %b",message,stopGame);
+  FMLLog.log(Level.ERROR,exception,"Something raised an exception. The message was '%s'. 'stopGame' is %b",message,stopGame);
   if (stopGame) {
     getSidedDelegate().haltGame(message,exception);
   }

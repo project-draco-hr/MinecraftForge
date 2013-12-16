@@ -1,3 +1,3 @@
 {
-  log(Level.SEVERE,format,data);
+  log(Level.ERROR,format,data);
 }

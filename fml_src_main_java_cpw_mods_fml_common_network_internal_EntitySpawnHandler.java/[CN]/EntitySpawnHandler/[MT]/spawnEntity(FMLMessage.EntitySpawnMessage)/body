@@ -45,7 +45,7 @@
     System.out.println("Entity spawned on client");
   }
  catch (  Exception e) {
-    FMLLog.log(Level.SEVERE,e,"A severe problem occurred during the spawning of an entity");
+    FMLLog.log(Level.ERROR,e,"A severe problem occurred during the spawning of an entity");
     throw Throwables.propagate(e);
   }
 }

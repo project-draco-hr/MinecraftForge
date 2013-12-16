@@ -37,7 +37,7 @@
       }
     }
  catch (    Exception e) {
-      FMLLog.log(Level.WARNING,e,"The declared version check handler method %s on network mod id %s is not accessible",networkCheckHandlerMethod,container.getModId());
+      FMLLog.log(Level.WARN,e,"The declared version check handler method %s on network mod id %s is not accessible",networkCheckHandlerMethod,container.getModId());
     }
   }
   if (this.checkHandler != null) {
@@ -48,19 +48,19 @@
       this.acceptableRange=VersionRange.createFromVersionSpec(acceptableVersionRange);
     }
  catch (    InvalidVersionSpecificationException e) {
-      FMLLog.log(Level.WARNING,e,"Invalid bounded range %s specified for network mod id %s",acceptableVersionRange,container.getModId());
+      FMLLog.log(Level.WARN,e,"Invalid bounded range %s specified for network mod id %s",acceptableVersionRange,container.getModId());
     }
     this.checker=new DefaultNetworkChecker();
   }
  else {
     this.checker=new IgnoredChecker();
   }
-  FMLLog.finest("Testing mod %s to verify it accepts its own version in a remote connection",container.getModId());
+  FMLLog.finer("Testing mod %s to verify it accepts its own version in a remote connection",container.getModId());
   boolean acceptsSelf=acceptVersion(container.getVersion());
   if (!acceptsSelf) {
     FMLLog.severe("The mod %s appears to reject its own version number (%s) in its version handling. This is likely a severe bug in the mod!",container.getModId(),container.getVersion());
   }
  else {
-    FMLLog.finest("The mod %s accepts its own version (%s)",container.getModId(),container.getVersion());
+    FMLLog.finer("The mod %s accepts its own version (%s)",container.getModId(),container.getVersion());
   }
 }

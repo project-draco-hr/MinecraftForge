@@ -8,9 +8,6 @@
   ModDiscoverer disc=identifyMods();
   ModAPIManager.INSTANCE.manageAPI(modClassLoader,disc);
   disableRequestedMods();
-  FMLLog.fine("Reloading logging properties from %s",loggingProperties.getPath());
-  FMLRelaunchLog.loadLogConfiguration(loggingProperties);
-  FMLLog.fine("Reloaded logging properties");
   modController.distributeStateMessage(FMLLoadEvent.class);
   sortModList();
   ModAPIManager.INSTANCE.cleanupAPIContainers(modController.getActiveModList());
@@ -23,7 +20,7 @@
         modClassLoader.addFile(nonMod);
       }
  catch (      MalformedURLException e) {
-        FMLLog.log(Level.SEVERE,e,"Encountered a weird problem with non-mod file injection : %s",nonMod.getName());
+        FMLLog.log(Level.ERROR,e,"Encountered a weird problem with non-mod file injection : %s",nonMod.getName());
       }
     }
   }

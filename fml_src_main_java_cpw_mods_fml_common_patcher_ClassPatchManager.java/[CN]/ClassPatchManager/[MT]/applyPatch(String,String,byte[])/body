@@ -41,7 +41,7 @@ synchronized (patcher) {
         inputData=patcher.patch(inputData,patch.patch);
       }
  catch (      IOException e) {
-        FMLRelaunchLog.log(Level.SEVERE,e,"Encountered problem runtime patching class %s",name);
+        FMLRelaunchLog.log(Level.ERROR,e,"Encountered problem runtime patching class %s",name);
         continue;
       }
     }
@@ -54,7 +54,7 @@ synchronized (patcher) {
       Files.write(inputData,new File(tempDir,mappedName));
     }
  catch (    IOException e) {
-      FMLRelaunchLog.log(Level.SEVERE,e,"Failed to write %s to %s",mappedName,tempDir.getAbsolutePath());
+      FMLRelaunchLog.log(Level.ERROR,e,"Failed to write %s to %s",mappedName,tempDir.getAbsolutePath());
     }
   }
   patchedClasses.put(name,inputData);
