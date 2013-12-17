@@ -1,1 +1,2 @@
 IWorldGenerator generator
+int modGenerationWeight
