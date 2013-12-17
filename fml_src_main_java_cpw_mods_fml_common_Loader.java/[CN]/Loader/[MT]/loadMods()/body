@@ -25,7 +25,7 @@
     }
   }
   modController.transition(LoaderState.CONSTRUCTING,false);
-  modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader,disc.getASMTable());
+  modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader,disc.getASMTable(),reverseDependencies);
   FMLLog.fine("Mod signature data");
   for (  ModContainer mod : getActiveModList()) {
     FMLLog.fine("\t%s(%s:%s): %s (%s)",mod.getModId(),mod.getName(),mod.getVersion(),mod.getSource().getName(),CertificateHelper.getFingerprint(mod.getSigningCertificate()));

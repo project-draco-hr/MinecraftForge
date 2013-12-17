@@ -5,6 +5,7 @@
     for (    ModContainer mod : getActiveModList()) {
       modVersions.put(mod.getModId(),mod.getProcessedVersion());
     }
+    ArrayListMultimap<String,String> reqList=ArrayListMultimap.create();
     for (    ModContainer mod : getActiveModList()) {
       if (!mod.acceptableMinecraftVersionRange().containsVersion(minecraft.getProcessedVersion())) {
         FMLLog.severe("The mod %s does not wish to run in Minecraft version %s. You will have to remove it to play.",mod.getModId(),getMCVersionString());
@@ -20,6 +21,7 @@
         }
         throw new MissingModsException(versionMissingMods);
       }
+      reqList.putAll(mod.getModId(),names.keySet());
       ImmutableList<ArtifactVersion> allDeps=ImmutableList.<ArtifactVersion>builder().addAll(mod.getDependants()).addAll(mod.getDependencies()).build();
       for (      ArtifactVersion v : allDeps) {
         if (modVersions.containsKey(v.getLabel())) {
@@ -34,6 +36,7 @@
       }
     }
     FMLLog.finer("All mod requirements are satisfied");
+    reverseDependencies=Multimaps.invertFrom(reqList,ArrayListMultimap.<String,String>create());
     ModSorter sorter=new ModSorter(getActiveModList(),namedMods);
     try {
       FMLLog.finer("Sorting mods into an ordered list");

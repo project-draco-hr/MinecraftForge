@@ -4,7 +4,7 @@
   Map<String,String> sysPropertyStateList=Splitter.on(CharMatcher.anyOf(";:")).omitEmptyStrings().trimResults().withKeyValueSeparator("=").split(forcedModList);
   FMLLog.finer("System property request managing the state of %d mods",sysPropertyStateList.size());
   Map<String,String> modStates=Maps.newHashMap();
-  File forcedModFile=new File(canonicalConfigDir,"fmlModState.properties");
+  forcedModFile=new File(canonicalConfigDir,"fmlModState.properties");
   Properties forcedModListProperties=new Properties();
   if (forcedModFile.exists() && forcedModFile.isFile()) {
     FMLLog.finer("Found a mod state file %s",forcedModFile.getName());

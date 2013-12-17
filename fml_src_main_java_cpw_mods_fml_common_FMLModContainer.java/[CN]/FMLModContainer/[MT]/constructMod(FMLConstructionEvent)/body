@@ -41,6 +41,14 @@
  else {
       customModProperties=EMPTY_PROPERTIES;
     }
+    Boolean hasDisableableFlag=(Boolean)descriptor.get("canBeDeactivated");
+    boolean hasReverseDepends=!event.getReverseDependencies().get(getModId()).isEmpty();
+    if (hasDisableableFlag != null && hasDisableableFlag) {
+      disableability=hasReverseDepends ? Disableable.DEPENDENCIES : Disableable.YES;
+    }
+ else {
+      disableability=hasReverseDepends ? Disableable.DEPENDENCIES : Disableable.RESTART;
+    }
     Method factoryMethod=gatherAnnotations(clazz);
     modInstance=getLanguageAdapter().getNewInstance(this,clazz,modClassLoader,factoryMethod);
     NetworkRegistry.INSTANCE.register(this,clazz,(String)(descriptor.containsKey("acceptableRemoteVersions") ? descriptor.get("acceptableRemoteVersions") : null),event.getASMHarvestedData());
