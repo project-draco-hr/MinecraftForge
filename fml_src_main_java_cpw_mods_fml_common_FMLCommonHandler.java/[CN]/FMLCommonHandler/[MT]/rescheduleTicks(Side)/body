@@ -1,3 +1,0 @@
-{
-  TickRegistry.updateTickQueue(side.isClient() ? scheduledClientTicks : scheduledServerTicks,side);
-}

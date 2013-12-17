@@ -1,3 +1,0 @@
-{
-  next=tickCounter + Math.max(ticker.nextTickSpacing(),1);
-}

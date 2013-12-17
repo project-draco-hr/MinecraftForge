@@ -16,5 +16,4 @@ catch (  LoaderException le) {
   }
   RenderingRegistry.instance().loadEntityRenderers((Map<Class<? extends Entity>,Render>)RenderManager.field_78727_a.field_78729_o);
   loading=false;
-  KeyBindingRegistry.instance().uploadKeyBindingsToGame(client.field_71474_y);
 }

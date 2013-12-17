@@ -1,6 +1,0 @@
-{
-  rescheduleTicks(Side.SERVER);
-  for (  World w : worlds) {
-    tickStart(EnumSet.of(TickType.WORLDLOAD),Side.SERVER,w);
-  }
-}
