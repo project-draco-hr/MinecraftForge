@@ -1,5 +1,0 @@
-{
-  for (  ICraftingHandler handler : craftingHandlers) {
-    handler.onSmelting(player,item);
-  }
-}
