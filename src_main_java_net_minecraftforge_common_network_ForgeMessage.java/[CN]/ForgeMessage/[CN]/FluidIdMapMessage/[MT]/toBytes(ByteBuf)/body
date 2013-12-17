@@ -1,0 +1,7 @@
+{
+  bytes.writeInt(FluidRegistry.maxID);
+  for (  Map.Entry<String,Integer> entry : FluidRegistry.fluidIDs.entrySet()) {
+    ByteBufUtils.writeUTF8String(bytes,entry.getKey());
+    bytes.writeInt(entry.getValue());
+  }
+}

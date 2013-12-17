@@ -1,10 +1,4 @@
 {
-  FMLLog.info("Registering Forge Packet Handler");
-  try {
-    FMLNetworkHandler.instance().registerNetworkMod(new ForgeNetworkHandler(this));
-    FMLLog.info("Succeeded registering Forge Packet Handler");
-  }
- catch (  Exception e) {
-    FMLLog.log(Level.SEVERE,e,"Failed to register packet handler for Forge");
-  }
+  NetworkRegistry.INSTANCE.register(this,this.getClass(),null,evt.getASMHarvestedData());
+  ForgeNetworkHandler.registerChannel(this,evt.getSide());
 }

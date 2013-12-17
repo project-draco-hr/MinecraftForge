@@ -1,0 +1,7 @@
+{
+  if (evt instanceof NetworkHandshakeEstablished) {
+    ctx.writeAndFlush(new ForgeMessage.FluidIdMapMessage());
+    return;
+  }
+  ctx.fireUserEventTriggered(evt);
+}

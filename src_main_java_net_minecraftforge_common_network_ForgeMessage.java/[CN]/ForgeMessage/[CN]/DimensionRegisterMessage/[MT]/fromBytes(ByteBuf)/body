@@ -1,0 +1,4 @@
+{
+  dimensionId=bytes.readInt();
+  providerId=bytes.readInt();
+}

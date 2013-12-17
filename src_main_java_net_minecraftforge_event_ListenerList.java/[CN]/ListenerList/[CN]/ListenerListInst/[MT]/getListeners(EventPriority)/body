@@ -1,7 +1,0 @@
-{
-  ArrayList<IEventListener> ret=new ArrayList<IEventListener>(priorities.get(priority.ordinal()));
-  if (parent != null) {
-    ret.addAll(parent.getListeners(priority));
-  }
-  return ret;
-}

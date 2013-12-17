@@ -1,0 +1,9 @@
+{
+  channelPair=NetworkRegistry.INSTANCE.newChannel(forgeModContainer,"FML",new FMLRuntimeCodec(),new HandshakeCompletionHandler());
+  EmbeddedChannel embeddedChannel=channelPair.get(Side.SERVER);
+  embeddedChannel.attr(FMLOutboundHandler.FML_MESSAGETARGET).set(OutboundTarget.NOWHERE);
+  if (side == Side.CLIENT) {
+    addClientHandlers();
+  }
+  channelPair.get(Side.SERVER).pipeline().addAfter("ForgeRuntimeCodec#0","ServerToClientConnection",new ServerToClientConnectionEstablishedHandler());
+}

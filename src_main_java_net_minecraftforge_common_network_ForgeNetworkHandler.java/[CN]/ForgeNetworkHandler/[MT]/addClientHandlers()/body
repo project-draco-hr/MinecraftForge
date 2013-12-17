@@ -1,0 +1,4 @@
+{
+  channelPair.get(Side.CLIENT).pipeline().addAfter("ForgeRuntimeCodec#0","DimensionHandler",new DimensionMessageHandler());
+  channelPair.get(Side.CLIENT).pipeline().addAfter("ForgeRuntimeCodec#0","FluidIdRegistryHandler",new FluidIdRegistryMessageHandler());
+}

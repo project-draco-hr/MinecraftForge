@@ -1,4 +1,0 @@
-{
-  this.dimensionId=dimensionId;
-  this.providerId=providerId;
-}

@@ -1,4 +1,0 @@
-{
-  allLists.add(this);
-  resizeLists(maxSize);
-}

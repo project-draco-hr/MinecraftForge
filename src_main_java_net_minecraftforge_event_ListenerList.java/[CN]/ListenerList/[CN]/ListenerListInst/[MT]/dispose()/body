@@ -1,8 +1,0 @@
-{
-  for (  ArrayList<IEventListener> listeners : priorities) {
-    listeners.clear();
-  }
-  priorities.clear();
-  parent=null;
-  listeners=null;
-}

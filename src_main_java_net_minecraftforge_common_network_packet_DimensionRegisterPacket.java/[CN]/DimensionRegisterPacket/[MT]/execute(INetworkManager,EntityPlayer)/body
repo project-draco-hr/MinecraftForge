@@ -1,7 +1,0 @@
-{
-  if (!(player instanceof EntityPlayerMP)) {
-    if (!DimensionManager.isDimensionRegistered(dimensionId)) {
-      DimensionManager.registerDimension(dimensionId,providerId);
-    }
-  }
-}

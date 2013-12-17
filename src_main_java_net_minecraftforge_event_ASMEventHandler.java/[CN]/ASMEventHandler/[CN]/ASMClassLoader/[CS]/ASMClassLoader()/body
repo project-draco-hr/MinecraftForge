@@ -1,3 +1,0 @@
-{
-  super(ASMClassLoader.class.getClassLoader());
-}

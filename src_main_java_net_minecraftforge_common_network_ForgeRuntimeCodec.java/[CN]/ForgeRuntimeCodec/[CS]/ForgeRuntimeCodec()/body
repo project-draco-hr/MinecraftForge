@@ -1,0 +1,3 @@
+{
+  addDiscriminator(1,ForgeMessage.DimensionRegisterMessage.class);
+}

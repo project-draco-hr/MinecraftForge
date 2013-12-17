@@ -1,4 +1,0 @@
-{
-  if (shouldRebuild())   buildCache();
-  return listeners;
-}

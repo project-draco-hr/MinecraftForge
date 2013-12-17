@@ -1,0 +1,4 @@
+{
+  bytes.writeInt(this.dimensionId);
+  bytes.writeInt(this.providerId);
+}

@@ -1,6 +1,0 @@
-{
-  ByteArrayDataOutput dat=ByteStreams.newDataOutput();
-  dat.writeInt(this.dimensionId);
-  dat.writeInt(this.providerId);
-  return dat.toByteArray();
-}

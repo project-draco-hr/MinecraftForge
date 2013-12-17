@@ -1,7 +1,0 @@
-{
-  for (  ArrayList<IEventListener> list : priorities) {
-    if (list.remove(listener)) {
-      rebuild=true;
-    }
-  }
-}

@@ -1,7 +1,0 @@
-{
-  if (handler != null) {
-    if (!event.isCancelable() || !event.isCanceled() || subInfo.receiveCanceled()) {
-      handler.invoke(event);
-    }
-  }
-}

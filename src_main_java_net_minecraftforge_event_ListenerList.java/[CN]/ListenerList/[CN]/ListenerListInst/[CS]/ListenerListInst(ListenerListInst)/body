@@ -1,4 +1,0 @@
-{
-  this();
-  this.parent=parent;
-}

@@ -1,4 +1,0 @@
-{
-  super(container,container.getClass().getAnnotation(NetworkMod.class));
-  configureNetworkMod(container);
-}

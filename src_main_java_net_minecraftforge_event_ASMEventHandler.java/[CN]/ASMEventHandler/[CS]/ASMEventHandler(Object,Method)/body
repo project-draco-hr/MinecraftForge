@@ -1,4 +1,0 @@
-{
-  handler=(IEventListener)createWrapper(method).getConstructor(Object.class).newInstance(target);
-  subInfo=method.getAnnotation(ForgeSubscribe.class);
-}
