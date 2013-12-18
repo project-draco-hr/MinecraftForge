@@ -1,6 +1,6 @@
 {
   Map<String,Integer[]> remaps=Maps.newHashMap();
-  Map<String,String> missing=Maps.newHashMap();
+  ArrayListMultimap<String,String> missing=ArrayListMultimap.create();
   blockRegistry.beginIdSwap();
   itemRegistry.beginIdSwap();
   for (  Entry<String,Integer> entry : dataList.entrySet()) {
@@ -31,7 +31,14 @@
       itemRegistry.reassignMapping(itemName,newId);
     }
   }
+  boolean successfullyLoaded=Loader.instance().fireMissingMappingEvent(missing);
+  if (!successfullyLoaded) {
+    blockRegistry.revertSwap();
+    itemRegistry.revertSwap();
+    return false;
+  }
   blockRegistry.completeIdSwap();
   itemRegistry.completeIdSwap();
   Loader.instance().fireRemapEvent(remaps);
+  return true;
 }

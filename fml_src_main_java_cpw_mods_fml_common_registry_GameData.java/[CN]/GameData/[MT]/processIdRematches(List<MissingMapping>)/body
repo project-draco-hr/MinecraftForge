@@ -1,5 +1,21 @@
 {
+  List<String> ignored=Lists.newArrayList();
+  List<String> warned=Lists.newArrayList();
   for (  MissingMapping remap : remaps) {
-    remap.getRemapTarget();
+    FMLMissingMappingsEvent.Action action=remap.getAction();
+    if (action == FMLMissingMappingsEvent.Action.IGNORE) {
+      ignored.add(remap.name);
+    }
+ else {
+      warned.add(remap.name);
+    }
   }
+  if (!warned.isEmpty()) {
+    FMLLog.severe("This world contains block and item mappings that may cause world breakage");
+    return false;
+  }
+ else   if (!ignored.isEmpty()) {
+    FMLLog.fine("There were %d missing mappings that have been ignored",ignored.size());
+  }
+  return true;
 }

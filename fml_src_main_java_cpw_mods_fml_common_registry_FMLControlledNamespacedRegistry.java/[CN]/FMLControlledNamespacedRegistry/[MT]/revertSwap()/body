@@ -1,0 +1,4 @@
+{
+  idMap().revertSwap();
+  transactionalNamedIds=null;
+}

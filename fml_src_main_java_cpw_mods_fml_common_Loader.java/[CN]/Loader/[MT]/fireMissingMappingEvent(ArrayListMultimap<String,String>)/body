@@ -13,6 +13,7 @@
       FMLLog.severe("There are unidentified mappings in this world - it cannot be loaded");
       throw new RuntimeException("Mod IDs are missing");
     }
-    GameData.processIdRematches(remaps);
+    return GameData.processIdRematches(remaps);
   }
+  return true;
 }
