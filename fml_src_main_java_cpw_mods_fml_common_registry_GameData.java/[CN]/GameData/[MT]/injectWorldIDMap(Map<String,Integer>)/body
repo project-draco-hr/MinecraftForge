@@ -1,5 +1,6 @@
 {
   Map<String,Integer[]> remaps=Maps.newHashMap();
+  Map<String,String> missing=Maps.newHashMap();
   blockRegistry.beginIdSwap();
   itemRegistry.beginIdSwap();
   for (  Entry<String,Integer> entry : dataList.entrySet()) {
@@ -15,7 +16,11 @@
  else {
       currId=itemRegistry.getId(itemName);
     }
-    if (currId != newId) {
+    if (currId == -1) {
+      FMLLog.info("Found a missing id from the world %s",itemName);
+      missing.put(itemName.substring(0,itemName.indexOf(':')),itemName);
+    }
+ else     if (currId != newId) {
       FMLLog.info("Found %s id mismatch %s : %d %d",isBlock ? "block" : "item",itemName,currId,newId);
       remaps.put(itemName,new Integer[]{currId,newId});
     }

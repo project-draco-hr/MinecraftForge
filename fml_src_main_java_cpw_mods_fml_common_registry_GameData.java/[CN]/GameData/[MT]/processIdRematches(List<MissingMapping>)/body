@@ -1,0 +1,5 @@
+{
+  for (  MissingMapping remap : remaps) {
+    remap.getRemapTarget();
+  }
+}

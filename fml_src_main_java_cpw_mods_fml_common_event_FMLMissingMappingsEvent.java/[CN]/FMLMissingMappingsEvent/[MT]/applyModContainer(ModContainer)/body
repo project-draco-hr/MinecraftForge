@@ -1,0 +1,5 @@
+{
+  super.applyModContainer(activeContainer);
+  this.activeContainer=activeContainer;
+  this.currentList=null;
+}

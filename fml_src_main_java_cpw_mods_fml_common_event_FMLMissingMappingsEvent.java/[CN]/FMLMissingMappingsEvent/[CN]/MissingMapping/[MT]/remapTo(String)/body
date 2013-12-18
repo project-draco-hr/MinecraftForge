@@ -1,0 +1,4 @@
+{
+  this.remapTarget=target;
+  remaps.add(this);
+}
