@@ -1,0 +1,47 @@
+{
+  IItemRenderer customRenderer=MinecraftForgeClient.getItemRenderer(item,ENTITY);
+  if (customRenderer == null) {
+    return false;
+  }
+  if (customRenderer.shouldUseRenderHelper(ENTITY,item,ENTITY_ROTATION)) {
+    GL11.glRotatef(rotation,0.0F,1.0F,0.0F);
+  }
+  if (!customRenderer.shouldUseRenderHelper(ENTITY,item,ENTITY_BOBBING)) {
+    GL11.glTranslatef(0.0F,-bobing,0.0F);
+  }
+  boolean is3D=customRenderer.shouldUseRenderHelper(ENTITY,item,BLOCK_3D);
+  engine.bindTexture(item.getItemSpriteNumber() == 0 ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
+  Block block=item.getItem() instanceof ItemBlock ? Block.func_149634_a(item.getItem()) : null;
+  if (is3D || (block != null && RenderBlocks.func_147739_a(block.func_149645_b()))) {
+    int renderType=(block != null ? block.func_149645_b() : 1);
+    float scale=(renderType == 1 || renderType == 19 || renderType == 12 || renderType == 2 ? 0.5F : 0.25F);
+    boolean blend=block != null && block.func_149701_w() > 0;
+    if (RenderItem.renderInFrame) {
+      GL11.glScalef(1.25F,1.25F,1.25F);
+      GL11.glTranslatef(0.0F,0.05F,0.0F);
+      GL11.glRotatef(-90.0F,0.0F,1.0F,0.0F);
+    }
+    if (blend) {
+      GL11.glAlphaFunc(GL11.GL_GREATER,0.1F);
+      GL11.glEnable(GL11.GL_BLEND);
+      OpenGlHelper.func_148821_a(770,771,1,0);
+    }
+    GL11.glScalef(scale,scale,scale);
+    for (int j=0; j < count; j++) {
+      GL11.glPushMatrix();
+      if (j > 0) {
+        GL11.glTranslatef(((random.nextFloat() * 2.0F - 1.0F) * 0.2F) / scale,((random.nextFloat() * 2.0F - 1.0F) * 0.2F) / scale,((random.nextFloat() * 2.0F - 1.0F) * 0.2F) / scale);
+      }
+      customRenderer.renderItem(ENTITY,item,renderBlocks,entity);
+      GL11.glPopMatrix();
+    }
+    if (blend) {
+      GL11.glDisable(GL11.GL_BLEND);
+    }
+  }
+ else {
+    GL11.glScalef(0.5F,0.5F,0.5F);
+    customRenderer.renderItem(ENTITY,item,renderBlocks,entity);
+  }
+  return true;
+}

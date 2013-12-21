@@ -13,16 +13,16 @@
     GL11.glRotatef(210F,1.0F,0.0F,0.0F);
     GL11.glRotatef(45F,0.0F,1.0F,0.0F);
     if (inColor) {
-      int color=Item.itemsList[item.itemID].getColorFromItemStack(item,0);
+      int color=item.getItem().getColorFromItemStack(item,0);
       float r=(float)(color >> 16 & 0xff) / 255F;
       float g=(float)(color >> 8 & 0xff) / 255F;
       float b=(float)(color & 0xff) / 255F;
       GL11.glColor4f(r,g,b,1.0F);
     }
     GL11.glRotatef(-90F,0.0F,1.0F,0.0F);
-    renderBlocks.useInventoryTint=inColor;
+    renderBlocks.field_147844_c=inColor;
     customRenderer.renderItem(INVENTORY,item,renderBlocks);
-    renderBlocks.useInventoryTint=true;
+    renderBlocks.field_147844_c=true;
     GL11.glPopMatrix();
   }
  else {
@@ -30,7 +30,7 @@
     GL11.glPushMatrix();
     GL11.glTranslatef(x,y,-3.0F + zLevel);
     if (inColor) {
-      int color=Item.itemsList[item.itemID].getColorFromItemStack(item,0);
+      int color=item.getItem().getColorFromItemStack(item,0);
       float r=(float)(color >> 16 & 255) / 255.0F;
       float g=(float)(color >> 8 & 255) / 255.0F;
       float b=(float)(color & 255) / 255.0F;

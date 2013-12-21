@@ -4,7 +4,7 @@
     this.player=player;
   }
  else {
-    FMLLog.log(Level.SEVERE,"Attempt to create a player ticket without a valid player");
+    FMLLog.log(Level.ERROR,"Attempt to create a player ticket without a valid player");
     throw new RuntimeException();
   }
 }

@@ -1,10 +1,5 @@
 {
-  if (stack == null)   return false;
-  List info=toolClasses.get(stack.getItem());
-  if (info == null)   return false;
-  Object[] tmp=info.toArray();
-  String toolClass=(String)tmp[0];
-  int harvestLevel=(Integer)tmp[1];
-  Integer blockHarvestLevel=toolHarvestLevels.get(Arrays.asList(block,metadata,toolClass));
-  return !(blockHarvestLevel == null || blockHarvestLevel > harvestLevel);
+  String tool=block.getHarvestTool(metadata);
+  if (stack == null || tool == null)   return false;
+  return stack.getItem().getHarvestLevel(stack,tool) >= block.getHarvestLevel(metadata);
 }

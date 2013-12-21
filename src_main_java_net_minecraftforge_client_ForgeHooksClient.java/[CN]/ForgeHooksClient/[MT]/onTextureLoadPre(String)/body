@@ -1,12 +1,11 @@
 {
   if (Tessellator.renderingWorldRenderer) {
-    String msg=String.format("Warning: Texture %s not preloaded, will cause render glitches!",texture);
-    System.out.println(msg);
+    FMLLog.warning("Warning: Texture %s not preloaded, will cause render glitches!",texture);
     if (Tessellator.class.getPackage() != null) {
       if (Tessellator.class.getPackage().getName().startsWith("net.minecraft.")) {
         Minecraft mc=FMLClientHandler.instance().getClient();
         if (mc.ingameGUI != null) {
-          mc.ingameGUI.getChatGUI().printChatMessage(msg);
+          mc.ingameGUI.func_146158_b().func_146227_a(new ChatComponentTranslation("forge.texture.preload.warning",texture));
         }
       }
     }

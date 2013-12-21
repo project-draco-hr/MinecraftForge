@@ -1,24 +1,15 @@
 {
-  if (block.blockMaterial.isToolNotRequired()) {
+  if (block.func_149688_o().isToolNotRequired()) {
     return true;
   }
   ItemStack stack=player.inventory.getCurrentItem();
-  if (stack == null) {
-    return player.canHarvestBlock(block);
+  String tool=block.getHarvestTool(metadata);
+  if (stack == null || tool == null) {
+    return player.func_146099_a(block);
   }
-  List info=toolClasses.get(stack.getItem());
-  if (info == null) {
-    return player.canHarvestBlock(block);
+  int toolLevel=stack.getItem().getHarvestLevel(stack,tool);
+  if (toolLevel < 0) {
+    return player.func_146099_a(block);
   }
-  Object[] tmp=info.toArray();
-  String toolClass=(String)tmp[0];
-  int harvestLevel=(Integer)tmp[1];
-  Integer blockHarvestLevel=toolHarvestLevels.get(Arrays.asList(block,metadata,toolClass));
-  if (blockHarvestLevel == null) {
-    return player.canHarvestBlock(block);
-  }
-  if (blockHarvestLevel > harvestLevel) {
-    return false;
-  }
-  return true;
+  return toolLevel >= block.getHarvestLevel(metadata);
 }

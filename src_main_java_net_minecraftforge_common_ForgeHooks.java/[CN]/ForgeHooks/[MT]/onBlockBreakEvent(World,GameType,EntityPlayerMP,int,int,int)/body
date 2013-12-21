@@ -1,0 +1,31 @@
+{
+  boolean preCancelEvent=false;
+  if (gameType.isAdventure() && !entityPlayer.isCurrentToolAdventureModeExempt(x,y,z)) {
+    preCancelEvent=true;
+  }
+ else   if (gameType.isCreative() && entityPlayer.getHeldItem() != null && entityPlayer.getHeldItem().getItem() instanceof ItemSword) {
+    preCancelEvent=true;
+  }
+  if (world.func_147438_o(x,y,z) == null) {
+    S23PacketBlockChange packet=new S23PacketBlockChange(x,y,z,world);
+    packet.field_148883_d=Blocks.air;
+    packet.field_148884_e=0;
+    entityPlayer.playerNetServerHandler.func_147359_a(packet);
+  }
+  Block block=world.func_147439_a(x,y,z);
+  int blockMetadata=world.getBlockMetadata(x,y,z);
+  BlockEvent.BreakEvent event=new BlockEvent.BreakEvent(x,y,z,world,block,blockMetadata,entityPlayer);
+  event.setCanceled(preCancelEvent);
+  MinecraftForge.EVENT_BUS.post(event);
+  if (event.isCanceled()) {
+    entityPlayer.playerNetServerHandler.func_147359_a(new S23PacketBlockChange(x,y,z,world));
+    TileEntity tileentity=world.func_147438_o(x,y,z);
+    if (tileentity != null) {
+      Packet pkt=tileentity.func_145844_m();
+      if (pkt != null) {
+        entityPlayer.playerNetServerHandler.func_147359_a(pkt);
+      }
+    }
+  }
+  return event;
+}

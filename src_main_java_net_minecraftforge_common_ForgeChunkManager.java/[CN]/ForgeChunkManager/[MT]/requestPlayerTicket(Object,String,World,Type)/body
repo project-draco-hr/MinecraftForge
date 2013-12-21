@@ -1,7 +1,7 @@
 {
   ModContainer mc=getContainer(mod);
   if (mc == null) {
-    FMLLog.log(Level.SEVERE,"Failed to locate the container for mod instance %s (%s : %x)",mod,mod.getClass().getName(),System.identityHashCode(mod));
+    FMLLog.log(Level.ERROR,"Failed to locate the container for mod instance %s (%s : %x)",mod,mod.getClass().getName(),System.identityHashCode(mod));
     return null;
   }
   if (playerTickets.get(player).size() > playerTicketLength) {

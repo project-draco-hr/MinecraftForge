@@ -1,4 +1,0 @@
-{
-  super(biomeGenBase);
-  this.wrapped=wrappedOriginal;
-}

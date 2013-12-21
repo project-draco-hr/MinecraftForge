@@ -1,5 +1,0 @@
-{
-  super(biome);
-  this.original=original;
-  this.replacement=replacement;
-}

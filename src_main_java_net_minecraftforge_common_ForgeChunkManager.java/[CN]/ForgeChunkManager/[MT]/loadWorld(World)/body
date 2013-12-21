@@ -17,7 +17,7 @@
       forcedChunkData=CompressedStreamTools.read(chunkLoaderData);
     }
  catch (    IOException e) {
-      FMLLog.log(Level.WARNING,e,"Unable to read forced chunk data at %s - it will be ignored",chunkLoaderData.getAbsolutePath());
+      FMLLog.log(Level.WARN,e,"Unable to read forced chunk data at %s - it will be ignored",chunkLoaderData.getAbsolutePath());
       return;
     }
     NBTTagList ticketList=forcedChunkData.func_150295_c("TicketList",9);

@@ -1,7 +1,0 @@
-{
-  GrassEntry grass=(GrassEntry)WeightedRandom.getRandomItem(world.rand,grassList);
-  if (grass == null || grass.block == null || !grass.block.canBlockStay(world,x,y,z)) {
-    return;
-  }
-  world.setBlock(x,y,z,grass.block,grass.metadata,3);
-}

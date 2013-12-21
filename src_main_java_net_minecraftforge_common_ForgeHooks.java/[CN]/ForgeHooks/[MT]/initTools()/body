@@ -3,46 +3,26 @@
     return;
   }
   toolInit=true;
-  MinecraftForge.setToolClass(Items.wooden_pickaxe,"pickaxe",0);
-  MinecraftForge.setToolClass(Items.stone_pickaxe,"pickaxe",1);
-  MinecraftForge.setToolClass(Items.iron_pickaxe,"pickaxe",2);
-  MinecraftForge.setToolClass(Items.golden_pickaxe,"pickaxe",0);
-  MinecraftForge.setToolClass(Items.diamond_pickaxe,"pickaxe",3);
-  MinecraftForge.setToolClass(Items.wooden_axe,"axe",0);
-  MinecraftForge.setToolClass(Items.stone_axe,"axe",1);
-  MinecraftForge.setToolClass(Items.iron_axe,"axe",2);
-  MinecraftForge.setToolClass(Items.golden_axe,"axe",0);
-  MinecraftForge.setToolClass(Items.diamond_axe,"axe",3);
-  MinecraftForge.setToolClass(Items.wooden_shovel,"shovel",0);
-  MinecraftForge.setToolClass(Items.stone_shovel,"shovel",1);
-  MinecraftForge.setToolClass(Items.iron_shovel,"shovel",2);
-  MinecraftForge.setToolClass(Items.golden_shovel,"shovel",0);
-  MinecraftForge.setToolClass(Items.diamond_shovel,"shovel",3);
   Set<Block> blocks=ReflectionHelper.getPrivateValue(ItemPickaxe.class,null,0);
   for (  Block block : blocks) {
-    MinecraftForge.setBlockHarvestLevel(block,"pickaxe",0);
+    block.setHarvestLevel("pickaxe",0);
   }
   blocks=ReflectionHelper.getPrivateValue(ItemSpade.class,null,0);
   for (  Block block : blocks) {
-    MinecraftForge.setBlockHarvestLevel(block,"shovel",0);
+    block.setHarvestLevel("shovel",0);
   }
   blocks=ReflectionHelper.getPrivateValue(ItemAxe.class,null,0);
   for (  Block block : blocks) {
-    MinecraftForge.setBlockHarvestLevel(block,"axe",0);
+    block.setHarvestLevel("axe",0);
   }
-  MinecraftForge.setBlockHarvestLevel(Blocks.obsidian,"pickaxe",3);
-  MinecraftForge.setBlockHarvestLevel(Blocks.emerald_ore,"pickaxe",2);
-  MinecraftForge.setBlockHarvestLevel(Blocks.emerald_block,"pickaxe",2);
-  MinecraftForge.setBlockHarvestLevel(Blocks.diamond_ore,"pickaxe",2);
-  MinecraftForge.setBlockHarvestLevel(Blocks.diamond_block,"pickaxe",2);
-  MinecraftForge.setBlockHarvestLevel(Blocks.gold_ore,"pickaxe",2);
-  MinecraftForge.setBlockHarvestLevel(Blocks.gold_block,"pickaxe",2);
-  MinecraftForge.setBlockHarvestLevel(Blocks.iron_ore,"pickaxe",1);
-  MinecraftForge.setBlockHarvestLevel(Blocks.iron_block,"pickaxe",1);
-  MinecraftForge.setBlockHarvestLevel(Blocks.lapis_ore,"pickaxe",1);
-  MinecraftForge.setBlockHarvestLevel(Blocks.lapis_block,"pickaxe",1);
-  MinecraftForge.setBlockHarvestLevel(Blocks.redstone_ore,"pickaxe",2);
-  MinecraftForge.setBlockHarvestLevel(Blocks.lit_redstone_ore,"pickaxe",2);
+  Blocks.obsidian.setHarvestLevel("pickaxe",3);
+  for (  Block block : new Block[]{emerald_ore,emerald_block,diamond_ore,diamond_block,gold_ore,gold_block,redstone_ore,lit_redstone_ore}) {
+    block.setHarvestLevel("pickaxe",2);
+  }
+  Blocks.iron_ore.setHarvestLevel("pickaxe",1);
+  Blocks.iron_block.setHarvestLevel("pickaxe",1);
+  Blocks.lapis_ore.setHarvestLevel("pickaxe",1);
+  Blocks.lapis_block.setHarvestLevel("pickaxe",1);
   MinecraftForge.removeBlockEffectiveness(Blocks.redstone_ore,"pickaxe");
   MinecraftForge.removeBlockEffectiveness(Blocks.obsidian,"pickaxe");
   MinecraftForge.removeBlockEffectiveness(Blocks.lit_redstone_ore,"pickaxe");

@@ -42,7 +42,7 @@
     CompressedStreamTools.write(forcedChunkData,chunkLoaderData);
   }
  catch (  IOException e) {
-    FMLLog.log(Level.WARNING,e,"Unable to write forced chunk data to %s - chunkloading won't work",chunkLoaderData.getAbsolutePath());
+    FMLLog.log(Level.WARN,e,"Unable to write forced chunk data to %s - chunkloading won't work",chunkLoaderData.getAbsolutePath());
     return;
   }
 }

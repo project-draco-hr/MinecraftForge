@@ -1,0 +1,5 @@
+{
+  super(biome);
+  this.original=original;
+  this.type=type;
+}
