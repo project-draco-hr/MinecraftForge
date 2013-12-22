@@ -1,5 +1,5 @@
 {
-  if (!MapGenStronghold.field_151546_e.contains(biome)) {
-    MapGenStronghold.field_151546_e.add(biome);
+  if (!strongHoldBiomes.contains(biome)) {
+    strongHoldBiomes.add(biome);
   }
 }
