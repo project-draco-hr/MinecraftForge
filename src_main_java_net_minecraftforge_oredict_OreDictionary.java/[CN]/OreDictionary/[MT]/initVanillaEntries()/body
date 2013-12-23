@@ -87,6 +87,6 @@
   recipes.removeAll(recipesToRemove);
   recipes.addAll(recipesToAdd);
   if (recipesToRemove.size() > 0) {
-    System.out.println("Replaced " + recipesToRemove.size() + " ore recipies");
+    FMLLog.info("Replaced %d ore recipies",recipesToRemove.size());
   }
 }
