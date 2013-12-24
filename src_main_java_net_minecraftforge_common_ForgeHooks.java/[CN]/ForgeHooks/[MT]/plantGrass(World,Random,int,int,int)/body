@@ -1,9 +1,0 @@
-{
-  BiomeGenBase biome=world.getBiomeGenForCoords(x,z);
-  String flowername=biome.func_150572_a(rand,x,y,z);
-  GrassEntry grass=(GrassEntry)WeightedRandom.getRandomItem(world.rand,grassList);
-  if (grass == null || grass.block == null || !grass.block.func_149718_j(world,x,y,z)) {
-    return;
-  }
-  world.func_147465_d(x,y,z,grass.block,grass.metadata,3);
-}
