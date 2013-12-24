@@ -1,0 +1,4 @@
+{
+  field_82596_a.remove(name);
+  return add(id,name,thing);
+}

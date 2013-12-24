@@ -1,4 +1,5 @@
 {
   fmlHandshakeState=(AttributeKey<S>)((Object)STATE);
   initialState=Enum.valueOf(stateType,"START");
+  this.stateType=stateType;
 }

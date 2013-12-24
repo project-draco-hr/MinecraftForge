@@ -1,3 +1,8 @@
 {
-  return namedIds.get(itemName);
+  if (namedIds.containsKey(itemName)) {
+    return namedIds.get(itemName);
+  }
+ else {
+    return -1;
+  }
 }

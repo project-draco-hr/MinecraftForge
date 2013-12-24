@@ -1,0 +1,5 @@
+{
+  FMLLog.fine("Reverting to frozen data state");
+  blockRegistry.revertToFrozen();
+  itemRegistry.revertToFrozen();
+}

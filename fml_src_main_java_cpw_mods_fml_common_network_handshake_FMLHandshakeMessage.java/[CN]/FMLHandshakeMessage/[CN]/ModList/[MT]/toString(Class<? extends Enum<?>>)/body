@@ -1,0 +1,3 @@
+{
+  return super.toString(side) + ":" + modTags.size()+ " mods";
+}

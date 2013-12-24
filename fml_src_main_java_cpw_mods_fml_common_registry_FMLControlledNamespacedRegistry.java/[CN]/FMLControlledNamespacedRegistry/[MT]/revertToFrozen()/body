@@ -1,0 +1,4 @@
+{
+  namedIds=HashBiMap.create(frozenIds);
+  idMap().revertToFrozen();
+}

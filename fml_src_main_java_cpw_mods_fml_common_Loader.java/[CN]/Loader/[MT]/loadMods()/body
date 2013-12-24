@@ -35,5 +35,6 @@
   }
   modController.transition(LoaderState.PREINITIALIZATION,false);
   modController.distributeStateMessage(LoaderState.PREINITIALIZATION,disc.getASMTable(),canonicalConfigDir);
+  GameData.freezeData();
   modController.transition(LoaderState.INITIALIZATION,false);
 }
