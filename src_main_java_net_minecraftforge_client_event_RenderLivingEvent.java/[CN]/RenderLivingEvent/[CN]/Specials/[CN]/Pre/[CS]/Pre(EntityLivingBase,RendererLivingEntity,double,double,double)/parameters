@@ -1,2 +1,5 @@
 EntityLivingBase entity
 RendererLivingEntity renderer
+double x
+double y
+double z
