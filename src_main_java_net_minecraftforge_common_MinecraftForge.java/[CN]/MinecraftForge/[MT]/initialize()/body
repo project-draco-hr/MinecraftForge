@@ -2,5 +2,8 @@
   FMLLog.info("MinecraftForge v%s Initialized",ForgeVersion.getVersion());
   EVENT_BUS.register(INTERNAL_HANDLER);
   OreDictionary.getOreName(0);
+  if (!ForgeModContainer.disableVersionCheck) {
+    ForgeVersion.startVersionCheck();
+  }
   new CrashReport("ThisIsFake",new Exception("Not real"));
 }
