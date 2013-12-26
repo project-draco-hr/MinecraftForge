@@ -1,0 +1,7 @@
+{
+  for (  Entry<String,Integer> entry : namedIds.entrySet()) {
+    String name=entry.getKey();
+    Object thing=idMap().get(entry.getValue().intValue());
+    FMLLog.info("Registry : %s %d %s",name,entry.getValue(),thing);
+  }
+}

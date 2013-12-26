@@ -1,4 +1,5 @@
 {
   idMap().beginSwap();
   transactionalNamedIds=Maps.newHashMap();
+  transactionalAvailabilityMap=new BitSet();
 }

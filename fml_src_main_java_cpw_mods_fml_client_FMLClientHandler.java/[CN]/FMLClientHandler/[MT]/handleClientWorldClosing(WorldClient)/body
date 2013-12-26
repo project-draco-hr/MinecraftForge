@@ -1,3 +1,6 @@
 {
-  GameData.revertToFrozen();
+  NetworkManager client=getClientToServerNetworkManager();
+  if (client != null && !client.func_150731_c()) {
+    GameData.revertToFrozen();
+  }
 }
