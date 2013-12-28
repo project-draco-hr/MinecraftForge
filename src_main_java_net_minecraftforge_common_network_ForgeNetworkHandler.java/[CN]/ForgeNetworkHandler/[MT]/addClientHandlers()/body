@@ -1,4 +1,4 @@
 {
-  channelPair.get(Side.CLIENT).pipeline().addAfter("ForgeRuntimeCodec#0","DimensionHandler",new DimensionMessageHandler());
-  channelPair.get(Side.CLIENT).pipeline().addAfter("ForgeRuntimeCodec#0","FluidIdRegistryHandler",new FluidIdRegistryMessageHandler());
+  channelPair.get(Side.CLIENT).pipeline().addAfter("net.minecraftforge.common.network.ForgeRuntimeCodec#0","DimensionHandler",new DimensionMessageHandler());
+  channelPair.get(Side.CLIENT).pipeline().addAfter("net.minecraftforge.common.network.ForgeRuntimeCodec#0","FluidIdRegistryHandler",new FluidIdRegistryMessageHandler());
 }
