@@ -1,0 +1,3 @@
+T thing
+Class<T> type
+NetworkManager manager

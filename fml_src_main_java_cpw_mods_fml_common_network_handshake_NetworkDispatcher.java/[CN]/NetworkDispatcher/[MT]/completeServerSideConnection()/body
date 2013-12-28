@@ -2,5 +2,6 @@
   FMLLog.info("[%s] Server side modded connection established",Thread.currentThread().getName());
   this.state=ConnectionState.CONNECTED;
   this.connectionType=ConnectionType.MODDED;
+  FMLCommonHandler.instance().bus().post(new FMLNetworkEvent.ServerConnectionFromClientEvent(manager));
   scm.func_72355_a(manager,player,serverHandler);
 }

@@ -1,3 +1,9 @@
 {
+  if (side == Side.CLIENT) {
+    FMLCommonHandler.instance().bus().post(new FMLNetworkEvent.ClientDisconnectionFromServerEvent(manager));
+  }
+ else {
+    FMLCommonHandler.instance().bus().post(new FMLNetworkEvent.ServerDisconnectionFromClientEvent(manager));
+  }
   ctx.disconnect(promise);
 }
