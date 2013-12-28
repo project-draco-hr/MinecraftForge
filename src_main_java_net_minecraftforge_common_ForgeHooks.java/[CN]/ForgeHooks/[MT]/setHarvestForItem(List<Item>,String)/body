@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < itemList.size(); i++) {
+    Item item=itemList.get(i);
+    item.setHarvestLevel("pickaxe",i);
+  }
+}
