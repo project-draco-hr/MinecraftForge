@@ -1,4 +1,5 @@
 {
+  this.netHandler=netHandler;
   this.dispatcher=dispatcher;
   this.side=origin;
 }

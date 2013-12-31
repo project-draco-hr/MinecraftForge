@@ -1,5 +1,5 @@
 {
-  NetworkHandshakeEstablished handshake=new NetworkHandshakeEstablished(networkDispatcher,origin);
+  NetworkHandshakeEstablished handshake=new NetworkHandshakeEstablished(networkDispatcher,networkDispatcher.getNetHandler(),origin);
   for (  Entry<String,FMLEmbeddedChannel> channel : channels.get(origin).entrySet()) {
     channel.getValue().pipeline().fireUserEventTriggered(handshake);
   }

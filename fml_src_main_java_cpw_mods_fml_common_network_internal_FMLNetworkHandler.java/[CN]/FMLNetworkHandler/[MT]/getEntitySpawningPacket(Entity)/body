@@ -6,9 +6,5 @@
   if (er.usesVanillaSpawning()) {
     return null;
   }
-  EmbeddedChannel embeddedChannel=channelPair.get(Side.SERVER);
-  embeddedChannel.attr(FMLOutboundHandler.FML_MESSAGETARGET).set(OutboundTarget.NOWHERE);
-  embeddedChannel.writeOutbound(new FMLMessage.EntitySpawnMessage(er,entity,er.getContainer()));
-  FMLProxyPacket result=(FMLProxyPacket)embeddedChannel.outboundMessages().poll();
-  return result;
+  return channelPair.get(Side.SERVER).generatePacketFrom(new FMLMessage.EntitySpawnMessage(er,entity,er.getContainer()));
 }

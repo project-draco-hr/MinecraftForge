@@ -1,4 +1,5 @@
 {
   manager.func_150723_a(EnumConnectionState.PLAY);
+  this.netHandler=FMLCommonHandler.instance().getClientPlayHandler();
   this.state=ConnectionState.AWAITING_HANDSHAKE;
 }

@@ -1,0 +1,7 @@
+{
+  super(handlers);
+  this.attr(NetworkRegistry.FML_CHANNEL).set(channelName);
+  this.attr(NetworkRegistry.CHANNEL_SOURCE).set(source);
+  this.attr(NetworkRegistry.MOD_CONTAINER).setIfAbsent(container);
+  this.pipeline().addFirst("fml:outbound",new FMLOutboundHandler());
+}
