@@ -1,0 +1,3 @@
+{
+  showGuiScreen(new GuiIngameModOptions(guiIngameMenu));
+}

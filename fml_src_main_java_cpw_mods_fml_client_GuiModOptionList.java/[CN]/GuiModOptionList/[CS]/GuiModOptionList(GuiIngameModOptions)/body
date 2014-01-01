@@ -1,0 +1,4 @@
+{
+  super(parent.field_146297_k,150,parent.field_146295_m,32,parent.field_146295_m - 65 + 4,10,35);
+  this.parent=parent;
+}

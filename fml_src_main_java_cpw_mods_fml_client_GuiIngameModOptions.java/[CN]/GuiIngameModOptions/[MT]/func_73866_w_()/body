@@ -1,0 +1,5 @@
+{
+  this.optionList=new GuiModOptionList(this);
+  this.optionList.registerScrollButtons(this.field_146292_n,7,8);
+  this.field_146292_n.add(new GuiButton(200,this.field_146294_l / 2 - 100,this.field_146295_m / 6 + 168,I18n.func_135052_a("gui.done",new Object[0])));
+}
