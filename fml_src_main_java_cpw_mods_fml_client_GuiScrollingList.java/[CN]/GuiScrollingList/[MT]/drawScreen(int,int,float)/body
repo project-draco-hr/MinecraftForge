@@ -77,19 +77,24 @@
     this.initialMouseClickY=-1.0F;
   }
   this.applyScrollLimits();
-  GL11.glDisable(GL11.GL_LIGHTING);
-  GL11.glDisable(GL11.GL_FOG);
   Tessellator var18=Tessellator.field_78398_a;
-  this.client.field_71446_o.func_110577_a(Gui.field_110325_k);
-  GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
-  float var17=32.0F;
-  var18.func_78382_b();
-  var18.func_78378_d(2105376);
-  var18.func_78374_a((double)this.left,(double)this.bottom,0.0D,(double)((float)this.left / var17),(double)((float)(this.bottom + (int)this.scrollDistance) / var17));
-  var18.func_78374_a((double)this.right,(double)this.bottom,0.0D,(double)((float)this.right / var17),(double)((float)(this.bottom + (int)this.scrollDistance) / var17));
-  var18.func_78374_a((double)this.right,(double)this.top,0.0D,(double)((float)this.right / var17),(double)((float)(this.top + (int)this.scrollDistance) / var17));
-  var18.func_78374_a((double)this.left,(double)this.top,0.0D,(double)((float)this.left / var17),(double)((float)(this.top + (int)this.scrollDistance) / var17));
-  var18.func_78381_a();
+  if (this.client.field_71441_e != null) {
+    this.drawGradientRect(this.left,this.top,this.right,this.bottom,-1072689136,-804253680);
+  }
+ else {
+    GL11.glDisable(GL11.GL_LIGHTING);
+    GL11.glDisable(GL11.GL_FOG);
+    this.client.field_71446_o.func_110577_a(Gui.field_110325_k);
+    GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
+    float var17=32.0F;
+    var18.func_78382_b();
+    var18.func_78378_d(2105376);
+    var18.func_78374_a((double)this.left,(double)this.bottom,0.0D,(double)((float)this.left / var17),(double)((float)(this.bottom + (int)this.scrollDistance) / var17));
+    var18.func_78374_a((double)this.right,(double)this.bottom,0.0D,(double)((float)this.right / var17),(double)((float)(this.bottom + (int)this.scrollDistance) / var17));
+    var18.func_78374_a((double)this.right,(double)this.top,0.0D,(double)((float)this.right / var17),(double)((float)(this.top + (int)this.scrollDistance) / var17));
+    var18.func_78374_a((double)this.left,(double)this.top,0.0D,(double)((float)this.left / var17),(double)((float)(this.top + (int)this.scrollDistance) / var17));
+    var18.func_78381_a();
+  }
   var10=this.top + 4 - (int)this.scrollDistance;
   if (this.field_27262_q) {
     this.func_27260_a(boxRight,var10,var18);
@@ -123,8 +128,10 @@
   }
   GL11.glDisable(GL11.GL_DEPTH_TEST);
   byte var20=4;
-  this.overlayBackground(0,this.top,255,255);
-  this.overlayBackground(this.bottom,this.listHeight,255,255);
+  if (this.client.field_71441_e == null) {
+    this.overlayBackground(0,this.top,255,255);
+    this.overlayBackground(this.bottom,this.listHeight,255,255);
+  }
   GL11.glEnable(GL11.GL_BLEND);
   GL11.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
   GL11.glDisable(GL11.GL_ALPHA_TEST);
