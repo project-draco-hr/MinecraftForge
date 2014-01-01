@@ -1,3 +1,8 @@
 {
-  return Loader.instance().getReversedModObjectList().get(mod);
+  if (mod instanceof String) {
+    return Loader.instance().getIndexedModList().get(mod);
+  }
+ else {
+    return Loader.instance().getReversedModObjectList().get(mod);
+  }
 }

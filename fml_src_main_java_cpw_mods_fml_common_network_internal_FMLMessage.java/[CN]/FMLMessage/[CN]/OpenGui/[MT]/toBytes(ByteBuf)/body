@@ -1,6 +1,6 @@
 {
   buf.writeInt(windowId);
-  buf.writeInt(networkId);
+  ByteBufUtils.writeUTF8String(buf,modId);
   buf.writeInt(modGuiId);
   buf.writeInt(x);
   buf.writeInt(y);

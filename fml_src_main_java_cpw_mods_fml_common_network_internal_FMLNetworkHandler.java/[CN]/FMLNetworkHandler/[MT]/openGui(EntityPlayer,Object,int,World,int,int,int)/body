@@ -1,2 +1,26 @@
 {
+  ModContainer mc=FMLCommonHandler.instance().findContainerFor(mod);
+  if (entityPlayer instanceof EntityPlayerMP) {
+    EntityPlayerMP entityPlayerMP=(EntityPlayerMP)entityPlayer;
+    Container remoteGuiContainer=NetworkRegistry.INSTANCE.getRemoteGuiContainer(mc,entityPlayerMP,modGuiId,world,x,y,z);
+    if (remoteGuiContainer != null) {
+      entityPlayerMP.func_71117_bO();
+      entityPlayerMP.func_71128_l();
+      int windowId=entityPlayerMP.field_71139_cq;
+      new FMLMessage.OpenGui(windowId,mc.getModId(),modGuiId,x,y,z);
+      EmbeddedChannel embeddedChannel=channelPair.get(Side.SERVER);
+      embeddedChannel.attr(FMLOutboundHandler.FML_MESSAGETARGET).set(OutboundTarget.PLAYER);
+      embeddedChannel.attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(entityPlayerMP);
+      entityPlayerMP.field_71070_bA=remoteGuiContainer;
+      entityPlayerMP.field_71070_bA.field_75152_c=windowId;
+      entityPlayerMP.field_71070_bA.func_75132_a(entityPlayerMP);
+    }
+  }
+ else   if (FMLCommonHandler.instance().getSide().equals(Side.CLIENT)) {
+    Object guiContainer=NetworkRegistry.INSTANCE.getLocalGuiContainer(mc,entityPlayer,modGuiId,world,x,y,z);
+    FMLCommonHandler.instance().showGuiScreen(guiContainer);
+  }
+ else {
+    FMLLog.fine("Invalid attempt to open a local GUI on a dedicated server. This is likely a bug. GUIID: %s,%d",mc.getModId(),modGuiId);
+  }
 }
