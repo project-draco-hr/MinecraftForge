@@ -1,3 +1,14 @@
 {
-  return null;
+  return new RuntimeOptionGuiHandler(){
+    @Override public void paint(    int x,    int y,    int w,    int h){
+    }
+    @Override public void close(){
+    }
+    @Override public void addWidgets(    List<Gui> widgets,    int x,    int y,    int w,    int h){
+      widgets.add(new GuiButton(100,x + 10,y + 10,"HELLO"));
+    }
+    @Override public void actionCallback(    int actionId){
+    }
+  }
+;
 }
