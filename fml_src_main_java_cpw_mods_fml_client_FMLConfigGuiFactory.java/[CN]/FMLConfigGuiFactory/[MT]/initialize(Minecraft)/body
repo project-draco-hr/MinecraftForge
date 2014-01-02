@@ -1,0 +1,3 @@
+{
+  this.minecraft=minecraftInstance;
+}

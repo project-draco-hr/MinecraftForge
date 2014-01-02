@@ -83,6 +83,15 @@
         disableModButton.field_146125_m=true;
         disableModButton.field_146124_l=false;
       }
+      IModGuiFactory guiFactory=FMLClientHandler.instance().getGuiFactoryFor(selectedMod);
+      if (guiFactory == null || guiFactory.mainConfigGuiClass() == null) {
+        configModButton.field_146125_m=true;
+        configModButton.field_146124_l=false;
+      }
+ else {
+        configModButton.field_146125_m=true;
+        configModButton.field_146124_l=true;
+      }
     }
  else {
       offset=(this.listWidth + this.field_146294_l) / 2;

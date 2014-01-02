@@ -15,5 +15,22 @@ catch (  LoaderException le) {
     return;
   }
   RenderingRegistry.instance().loadEntityRenderers((Map<Class<? extends Entity>,Render>)RenderManager.field_78727_a.field_78729_o);
+  guiFactories=HashBiMap.create();
+  for (  ModContainer mc : Loader.instance().getActiveModList()) {
+    String className=mc.getGuiClassName();
+    if (Strings.isNullOrEmpty(className)) {
+      continue;
+    }
+    try {
+      Class<?> clazz=Class.forName(className,true,Loader.instance().getModClassLoader());
+      Class<? extends IModGuiFactory> guiClassFactory=clazz.asSubclass(IModGuiFactory.class);
+      IModGuiFactory guiFactory=guiClassFactory.newInstance();
+      guiFactory.initialize(client);
+      guiFactories.put(mc,guiFactory);
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.ERROR,e,"A critical error occurred instantiating the gui factory for mod %s",mc.getModId());
+    }
+  }
   loading=false;
 }
