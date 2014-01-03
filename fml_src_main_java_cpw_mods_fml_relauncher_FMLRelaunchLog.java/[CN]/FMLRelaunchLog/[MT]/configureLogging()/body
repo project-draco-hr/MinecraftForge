@@ -1,3 +1,4 @@
 {
   log.myLog=LogManager.getLogger("FML");
+  configured=true;
 }
