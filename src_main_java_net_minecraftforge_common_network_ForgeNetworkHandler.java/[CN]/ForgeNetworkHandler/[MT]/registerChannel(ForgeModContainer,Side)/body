@@ -1,9 +1,10 @@
 {
   channelPair=NetworkRegistry.INSTANCE.newChannel(forgeModContainer,"FORGE",new ForgeRuntimeCodec(),new HandshakeCompletionHandler());
-  EmbeddedChannel embeddedChannel=channelPair.get(Side.SERVER);
-  embeddedChannel.attr(FMLOutboundHandler.FML_MESSAGETARGET).set(OutboundTarget.NOWHERE);
   if (side == Side.CLIENT) {
     addClientHandlers();
   }
-  channelPair.get(Side.SERVER).pipeline().addAfter("ForgeRuntimeCodec#0","ServerToClientConnection",new ServerToClientConnectionEstablishedHandler());
+  FMLEmbeddedChannel serverChannel=channelPair.get(Side.SERVER);
+  serverChannel.attr(FMLOutboundHandler.FML_MESSAGETARGET).set(OutboundTarget.NOWHERE);
+  String handlerName=serverChannel.findChannelHandlerNameForType(ForgeRuntimeCodec.class);
+  serverChannel.pipeline().addAfter(handlerName,"ServerToClientConnection",new ServerToClientConnectionEstablishedHandler());
 }

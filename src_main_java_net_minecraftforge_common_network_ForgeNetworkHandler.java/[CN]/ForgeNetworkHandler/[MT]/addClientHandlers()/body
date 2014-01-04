@@ -1,4 +1,6 @@
 {
-  channelPair.get(Side.CLIENT).pipeline().addAfter("ForgeRuntimeCodec#0","DimensionHandler",new DimensionMessageHandler());
-  channelPair.get(Side.CLIENT).pipeline().addAfter("ForgeRuntimeCodec#0","FluidIdRegistryHandler",new FluidIdRegistryMessageHandler());
+  FMLEmbeddedChannel clientChannel=channelPair.get(Side.CLIENT);
+  String handlerName=clientChannel.findChannelHandlerNameForType(ForgeRuntimeCodec.class);
+  clientChannel.pipeline().addAfter(handlerName,"DimensionHandler",new DimensionMessageHandler());
+  clientChannel.pipeline().addAfter(handlerName,"FluidIdRegistryHandler",new FluidIdRegistryMessageHandler());
 }
