@@ -1,9 +1,0 @@
-{
-  this.fileName=fileName;
-  try {
-    loadObjModel(resource.openStream());
-  }
- catch (  IOException e) {
-    throw new ModelFormatException("IO Exception reading model format",e);
-  }
-}

@@ -1,6 +1,6 @@
 {
   try {
-    ZipInputStream zipInput=new ZipInputStream(fileURL.openStream());
+    ZipInputStream zipInput=new ZipInputStream(stream);
     ZipEntry entry;
     while ((entry=zipInput.getNextEntry()) != null) {
       byte[] data=new byte[(int)entry.getSize()];
