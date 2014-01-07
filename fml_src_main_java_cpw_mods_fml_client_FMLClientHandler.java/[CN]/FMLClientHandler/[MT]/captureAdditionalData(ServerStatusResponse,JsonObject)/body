@@ -1,0 +1,6 @@
+{
+  if (jsonobject.has("modinfo")) {
+    JsonObject fmlData=jsonobject.get("modinfo").getAsJsonObject();
+    extraServerListData.put(serverstatusresponse,fmlData);
+  }
+}

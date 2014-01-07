@@ -1,4 +1,5 @@
 {
   super((INetHandlerPlayClient)manager.func_150729_e(),INetHandlerPlayClient.class,manager);
-  isLocal=manager.func_150731_c();
+  this.isLocal=manager.func_150731_c();
+  this.connectionType=connectionType;
 }

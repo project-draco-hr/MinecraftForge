@@ -1,0 +1,3 @@
+{
+  completeClientSideConnection(ConnectionType.valueOf(type));
+}

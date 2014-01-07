@@ -1,0 +1,6 @@
+{
+  this.type=type;
+  this.isCompatible=isCompatible;
+  this.modCount=modCount;
+  this.isBlocked=isBlocked;
+}

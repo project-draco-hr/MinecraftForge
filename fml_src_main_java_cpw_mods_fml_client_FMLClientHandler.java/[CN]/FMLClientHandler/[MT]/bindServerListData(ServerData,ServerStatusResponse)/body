@@ -1,0 +1,17 @@
+{
+  if (extraServerListData.containsKey(originalResponse)) {
+    JsonObject jsonData=extraServerListData.get(originalResponse);
+    String type=jsonData.get("type").getAsString();
+    int modCount=jsonData.get("modList").getAsJsonArray().size();
+    boolean moddedClientAllowed=jsonData.has("clientModsAllowed") ? jsonData.get("clientModsAllowed").getAsBoolean() : true;
+    serverDataTag.put(data,new ExtendedServerListData(type,true,modCount,!moddedClientAllowed));
+  }
+ else {
+    String serverDescription=data.field_78843_d;
+    boolean moddedClientAllowed=true;
+    if (!Strings.isNullOrEmpty(serverDescription)) {
+      moddedClientAllowed=!serverDescription.endsWith(":NOFML??r");
+    }
+    serverDataTag.put(data,new ExtendedServerListData("VANILLA",false,-1,!moddedClientAllowed));
+  }
+}

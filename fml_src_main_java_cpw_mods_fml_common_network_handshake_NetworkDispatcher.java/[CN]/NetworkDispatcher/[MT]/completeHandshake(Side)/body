@@ -4,9 +4,9 @@
     throw new FMLNetworkException("Attempt to double complete!");
   }
   if (side == Side.CLIENT) {
-    completeClientSideConnection();
+    completeClientSideConnection(ConnectionType.MODDED);
   }
  else {
-    completeServerSideConnection();
+    completeServerSideConnection(ConnectionType.MODDED);
   }
 }

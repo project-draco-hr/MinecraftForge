@@ -1,0 +1,38 @@
+{
+  String tooltip;
+  int idx;
+  boolean blocked=false;
+  if (serverDataTag.containsKey(serverEntry)) {
+    ExtendedServerListData extendedData=serverDataTag.get(serverEntry);
+    if ("FML".equals(extendedData.type) && extendedData.isCompatible) {
+      idx=0;
+      tooltip=String.format("Compatible FML modded server\n%d mods present",extendedData.modCount);
+    }
+ else     if ("FML".equals(extendedData.type) && !extendedData.isCompatible) {
+      idx=16;
+      tooltip=String.format("Incompatible FML modded server\n%d mods present",extendedData.modCount);
+    }
+ else     if ("BUKKIT".equals(extendedData.type)) {
+      idx=32;
+      tooltip=String.format("Bukkit modded server");
+    }
+ else     if ("VANILLA".equals(extendedData.type)) {
+      idx=48;
+      tooltip=String.format("Vanilla server");
+    }
+ else {
+      idx=64;
+      tooltip=String.format("Unknown server data");
+    }
+    blocked=extendedData.isBlocked;
+  }
+ else {
+    return null;
+  }
+  this.client.func_110434_K().func_110577_a(iconSheet);
+  Gui.func_146110_a(x + width - 18,y + 10,0,(float)idx,16,16,256.0f,256.0f);
+  if (blocked) {
+    Gui.func_146110_a(x + width - 18,y + 10,0,80,16,16,256.0f,256.0f);
+  }
+  return relativeMouseX > width - 15 && relativeMouseX < width && relativeMouseY > 10 && relativeMouseY < 26 ? tooltip : null;
+}

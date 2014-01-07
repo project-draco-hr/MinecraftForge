@@ -1,0 +1,4 @@
+{
+  extraServerListData=Collections.synchronizedMap(Maps.<ServerStatusResponse,JsonObject>newHashMap());
+  serverDataTag=Collections.synchronizedMap(Maps.<ServerData,ExtendedServerListData>newHashMap());
+}
