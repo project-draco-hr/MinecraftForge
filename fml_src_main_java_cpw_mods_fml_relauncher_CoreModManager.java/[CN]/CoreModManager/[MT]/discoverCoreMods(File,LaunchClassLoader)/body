@@ -13,7 +13,7 @@
     File[] versionedCoreMods=versionedModDir.listFiles(ff);
     coreModList=ObjectArrays.concat(coreModList,versionedCoreMods,File.class);
   }
-  Arrays.sort(coreModList);
+  coreModList=FileListHelper.sortFileList(coreModList);
   for (  File coreMod : coreModList) {
     FMLRelaunchLog.fine("Examining for coremod candidacy %s",coreMod.getName());
     JarFile jar=null;

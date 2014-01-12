@@ -1,0 +1,4 @@
+{
+  Arrays.sort(files,CaseInsensitiveFileComparator.INSTANCE);
+  return files;
+}
