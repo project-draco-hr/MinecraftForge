@@ -1,0 +1,18 @@
+{
+  FMLNetworkEvent.CustomPacketEvent<?> event=null;
+  if (msg.handler() instanceof NetHandlerPlayClient) {
+    NetHandlerPlayClient client=(NetHandlerPlayClient)msg.handler();
+    event=new FMLNetworkEvent.ClientCustomPacketEvent(client.func_147298_b(),msg);
+  }
+ else   if (msg.handler() instanceof NetHandlerPlayServer) {
+    NetHandlerPlayServer server=(NetHandlerPlayServer)msg.handler();
+    event=new FMLNetworkEvent.ServerCustomPacketEvent(server.func_147362_b(),msg);
+  }
+  if (event != null) {
+    this.eventBus.post(event);
+    if (event.reply != null) {
+      ctx.channel().attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.REPLY);
+      ctx.writeAndFlush(event.reply);
+    }
+  }
+}

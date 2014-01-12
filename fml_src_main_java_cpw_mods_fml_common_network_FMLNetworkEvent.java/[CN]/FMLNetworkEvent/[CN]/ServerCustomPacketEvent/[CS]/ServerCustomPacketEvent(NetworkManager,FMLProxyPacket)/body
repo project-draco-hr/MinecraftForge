@@ -1,0 +1,3 @@
+{
+  super((INetHandlerPlayServer)manager.func_150729_e(),INetHandlerPlayServer.class,manager,packet);
+}

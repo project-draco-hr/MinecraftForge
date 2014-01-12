@@ -20,6 +20,7 @@
   }
  else   if (NetworkRegistry.INSTANCE.hasChannel(channelName,Side.SERVER)) {
     FMLProxyPacket proxy=new FMLProxyPacket(msg);
+    proxy.setDispatcher(this);
     context.fireChannelRead(proxy);
     return true;
   }

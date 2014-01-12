@@ -1,0 +1,4 @@
+{
+  this.channels=NetworkRegistry.INSTANCE.newChannel(name,new NetworkEventFiringHandler(this));
+  this.eventBus=new EventBus();
+}

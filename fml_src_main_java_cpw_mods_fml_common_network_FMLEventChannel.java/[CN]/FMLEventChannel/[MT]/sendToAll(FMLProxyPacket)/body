@@ -1,0 +1,4 @@
+{
+  channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.ALL);
+  channels.get(Side.SERVER).writeAndFlush(pkt);
+}

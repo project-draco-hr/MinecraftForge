@@ -1,0 +1,4 @@
+S thing
+Class<S> type
+NetworkManager manager
+FMLProxyPacket packet

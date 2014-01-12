@@ -2,6 +2,7 @@
   if (!(msg instanceof FMLProxyPacket)) {
     return;
   }
+  FMLProxyPacket pkt=(FMLProxyPacket)msg;
   OutboundTarget outboundTarget;
   Object args=null;
   NetworkDispatcher dispatcher=ctx.channel().attr(NetworkDispatcher.FML_DISPATCHER).get();
@@ -17,7 +18,7 @@
     args=ctx.channel().attr(FML_MESSAGETARGETARGS).get();
     outboundTarget.validateArgs(args);
   }
-  List<NetworkDispatcher> dispatchers=outboundTarget.selectNetworks(args);
+  List<NetworkDispatcher> dispatchers=outboundTarget.selectNetworks(args,ctx,pkt);
   if (dispatchers == null) {
     ctx.write(msg,promise);
     return;
