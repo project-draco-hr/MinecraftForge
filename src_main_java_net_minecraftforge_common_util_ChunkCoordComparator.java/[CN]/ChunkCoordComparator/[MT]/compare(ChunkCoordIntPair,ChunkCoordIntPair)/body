@@ -1,0 +1,29 @@
+{
+  if (a.equals(b)) {
+    return 0;
+  }
+  int ax=a.chunkXPos - this.x;
+  int az=a.chunkZPos - this.z;
+  int bx=b.chunkXPos - this.x;
+  int bz=b.chunkZPos - this.z;
+  int result=((ax - bx) * (ax + bx)) + ((az - bz) * (az + bz));
+  if (result != 0) {
+    return result;
+  }
+  if (ax < 0) {
+    if (bx < 0) {
+      return bz - az;
+    }
+ else {
+      return -1;
+    }
+  }
+ else {
+    if (bx < 0) {
+      return 1;
+    }
+ else {
+      return az - bz;
+    }
+  }
+}

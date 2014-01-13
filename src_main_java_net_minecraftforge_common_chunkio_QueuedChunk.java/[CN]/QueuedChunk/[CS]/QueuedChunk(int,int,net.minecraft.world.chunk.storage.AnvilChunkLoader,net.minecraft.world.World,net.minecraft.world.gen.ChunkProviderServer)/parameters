@@ -1,0 +1,5 @@
+int x
+int z
+net.minecraft.world.chunk.storage.AnvilChunkLoader loader
+net.minecraft.world.World world
+net.minecraft.world.gen.ChunkProviderServer provider

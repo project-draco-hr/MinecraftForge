@@ -1,0 +1,4 @@
+{
+  x=(int)entityplayer.posX >> 4;
+  z=(int)entityplayer.posZ >> 4;
+}

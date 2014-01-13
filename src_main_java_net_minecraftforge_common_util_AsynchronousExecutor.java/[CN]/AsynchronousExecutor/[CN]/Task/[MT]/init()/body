@@ -1,0 +1,8 @@
+{
+  try {
+    object=provider.callStage1(parameter);
+  }
+ catch (  final Throwable t) {
+    this.t=(E)t;
+  }
+}

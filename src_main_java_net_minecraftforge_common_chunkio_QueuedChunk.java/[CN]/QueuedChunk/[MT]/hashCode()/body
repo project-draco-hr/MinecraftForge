@@ -1,0 +1,3 @@
+{
+  return (x * 31 + z * 29) ^ world.hashCode();
+}

@@ -1,0 +1,8 @@
+{
+  initSync();
+  if (callbacks.isEmpty()) {
+    callbacks.add((C)this);
+  }
+  finish();
+  return object;
+}
