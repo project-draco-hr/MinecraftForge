@@ -14,4 +14,5 @@
     }
     serverDataTag.put(data,new ExtendedServerListData("VANILLA",false,-1,!moddedClientAllowed));
   }
+  startupConnectionData.countDown();
 }
