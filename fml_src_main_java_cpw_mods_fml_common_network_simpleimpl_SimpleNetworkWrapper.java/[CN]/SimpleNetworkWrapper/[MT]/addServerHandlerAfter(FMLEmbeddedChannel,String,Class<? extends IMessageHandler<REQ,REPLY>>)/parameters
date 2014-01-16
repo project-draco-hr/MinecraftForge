@@ -1,0 +1,3 @@
+FMLEmbeddedChannel channel
+String type
+Class<? extends IMessageHandler<REQ,REPLY>> messageHandler

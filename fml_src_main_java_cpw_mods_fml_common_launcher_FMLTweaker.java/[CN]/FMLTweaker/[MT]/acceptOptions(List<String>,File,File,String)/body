@@ -1,8 +1,5 @@
 {
   this.gameDir=(gameDir == null ? new File(".") : gameDir);
-  this.assetsDir=assetsDir;
-  this.profile=profile;
-  this.args=args;
   this.launchArgs=(Map<String,String>)Launch.blackboard.get("launchArgs");
   this.standaloneArgs=Lists.newArrayList();
   if (this.launchArgs == null) {

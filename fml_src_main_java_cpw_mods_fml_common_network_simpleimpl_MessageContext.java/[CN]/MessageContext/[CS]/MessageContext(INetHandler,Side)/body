@@ -1,0 +1,4 @@
+{
+  this.netHandler=netHandler;
+  this.side=side;
+}

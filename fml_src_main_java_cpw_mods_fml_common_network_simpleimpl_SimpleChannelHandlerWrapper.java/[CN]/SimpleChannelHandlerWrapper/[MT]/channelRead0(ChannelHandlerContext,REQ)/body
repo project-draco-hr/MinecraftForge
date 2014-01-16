@@ -1,0 +1,8 @@
+{
+  INetHandler iNetHandler=ctx.attr(NetworkRegistry.NET_HANDLER).get();
+  MessageContext context=new MessageContext(iNetHandler,side);
+  REPLY result=messageHandler.onMessage(msg,context);
+  if (result != null) {
+    ctx.writeAndFlush(result);
+  }
+}

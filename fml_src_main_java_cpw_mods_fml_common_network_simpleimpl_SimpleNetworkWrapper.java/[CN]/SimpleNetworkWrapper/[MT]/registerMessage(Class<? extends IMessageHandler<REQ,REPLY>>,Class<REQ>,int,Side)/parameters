@@ -1,0 +1,4 @@
+Class<? extends IMessageHandler<REQ,REPLY>> messageHandler
+Class<REQ> message
+int discriminator
+Side side
