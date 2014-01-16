@@ -1,4 +1,0 @@
-{
-  super((File)null);
-  this.name=name;
-}
