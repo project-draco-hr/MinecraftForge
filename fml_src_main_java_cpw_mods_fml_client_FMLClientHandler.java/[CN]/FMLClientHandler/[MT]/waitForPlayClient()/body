@@ -1,0 +1,11 @@
+{
+  boolean gotIt=false;
+  try {
+    gotIt=playClientBlock.await(1,TimeUnit.SECONDS);
+  }
+ catch (  InterruptedException e) {
+  }
+  if (!gotIt) {
+    throw new RuntimeException("Timeout waiting for client thread to catch up!");
+  }
+}
