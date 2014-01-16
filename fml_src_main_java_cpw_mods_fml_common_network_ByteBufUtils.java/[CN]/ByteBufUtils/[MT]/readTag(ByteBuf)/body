@@ -1,0 +1,9 @@
+{
+  PacketBuffer pb=new PacketBuffer(from);
+  try {
+    return pb.func_150793_b();
+  }
+ catch (  IOException e) {
+    throw Throwables.propagate(e);
+  }
+}

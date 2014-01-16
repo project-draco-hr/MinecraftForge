@@ -1,5 +1,5 @@
 {
-  Validate.isTrue(varIntByteCount(toWrite) < maxSize,"Integer is too big for %d bytes",maxSize);
+  Validate.isTrue(varIntByteCount(toWrite) <= maxSize,"Integer is too big for %d bytes",maxSize);
   while ((toWrite & -128) != 0) {
     to.writeByte(toWrite & 127 | 128);
     toWrite>>>=7;

@@ -1,3 +1,0 @@
-{
-  postDeps=Arrays.asList(post);
-}
