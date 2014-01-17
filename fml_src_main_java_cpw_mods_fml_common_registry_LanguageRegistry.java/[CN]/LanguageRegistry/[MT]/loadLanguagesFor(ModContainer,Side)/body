@@ -1,0 +1,13 @@
+{
+  File source=container.getSource();
+  try {
+    if (source.isDirectory()) {
+      searchDirForLanguages(source,"",side);
+    }
+ else {
+      searchZipForLanguages(source,side);
+    }
+  }
+ catch (  IOException ioe) {
+  }
+}

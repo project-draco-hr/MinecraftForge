@@ -1,0 +1,2 @@
+String language
+HashMap<String,String> parsedLangFile
