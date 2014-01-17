@@ -1,0 +1,4 @@
+{
+  FMLLog.log(Level.ERROR,cause,"FluidIdRegistryMessageHandler exception");
+  super.exceptionCaught(ctx,cause);
+}
