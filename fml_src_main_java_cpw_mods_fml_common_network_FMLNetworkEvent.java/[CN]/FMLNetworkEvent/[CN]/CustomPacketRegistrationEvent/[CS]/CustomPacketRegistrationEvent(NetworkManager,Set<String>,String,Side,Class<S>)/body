@@ -1,0 +1,6 @@
+{
+  super(type.cast(manager.func_150729_e()),type,manager);
+  this.registrations=ImmutableSet.copyOf(registrations);
+  this.side=side;
+  this.operation=operation;
+}
