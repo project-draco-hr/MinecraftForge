@@ -1,0 +1,4 @@
+{
+  FMLLog.log(Level.ERROR,cause,"EntitySpawnHandler exception");
+  super.exceptionCaught(ctx,cause);
+}

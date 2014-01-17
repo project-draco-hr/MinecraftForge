@@ -1,5 +1,5 @@
 {
-  Side side=ctx.channel().attr(NetworkRegistry.CHANNEL_SOURCE).get();
+  Side side=msg.getTarget();
   NetworkManager manager=msg.getOrigin();
   if (msg.channel().equals("REGISTER") || msg.channel().equals("UNREGISTER")) {
     byte[] data=new byte[msg.payload().readableBytes()];

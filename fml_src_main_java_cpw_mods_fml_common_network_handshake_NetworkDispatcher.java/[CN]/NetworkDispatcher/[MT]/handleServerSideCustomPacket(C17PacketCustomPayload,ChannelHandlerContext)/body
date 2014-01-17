@@ -6,6 +6,7 @@
   String channelName=msg.func_149559_c();
   if ("FML|HS".equals(channelName) || "REGISTER".equals(channelName) || "UNREGISTER".equals(channelName)) {
     FMLProxyPacket proxy=new FMLProxyPacket(msg);
+    proxy.setDispatcher(this);
     handshakeChannel.writeInbound(proxy);
     for (    Object push : handshakeChannel.inboundMessages()) {
       List<FMLProxyPacket> messageResult=FMLNetworkHandler.forwardHandshake((FMLMessage.CompleteHandshake)push,this,Side.SERVER);
