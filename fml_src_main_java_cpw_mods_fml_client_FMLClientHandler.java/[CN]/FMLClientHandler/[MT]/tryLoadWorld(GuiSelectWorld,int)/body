@@ -1,4 +1,0 @@
-{
-  playClientBlock=new CountDownLatch(1);
-  selectWorldGUI.func_146615_e(selectedIndex);
-}
