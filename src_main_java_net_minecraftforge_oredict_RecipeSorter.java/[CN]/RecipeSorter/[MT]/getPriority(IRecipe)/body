@@ -1,8 +1,8 @@
 {
-  Class cls=recipe.getClass();
+  Class<?> cls=recipe.getClass();
   Integer ret=priorities.get(cls);
   if (ret == null) {
-    if (!INSTANCE.warned.contains(cls)) {
+    if (!warned.contains(cls)) {
       FMLLog.fine("  Unknown recipe class! %s Modder please refer to %s",cls.getName(),RecipeSorter.class.getName());
       warned.add(cls);
     }

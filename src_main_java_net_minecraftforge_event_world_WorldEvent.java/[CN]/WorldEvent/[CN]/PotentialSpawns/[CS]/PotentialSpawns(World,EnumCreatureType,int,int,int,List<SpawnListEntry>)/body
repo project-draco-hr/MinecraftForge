@@ -5,7 +5,7 @@
   this.z=z;
   this.type=type;
   if (oldList != null) {
-    this.list=(List<SpawnListEntry>)oldList;
+    this.list=oldList;
   }
  else {
     this.list=new ArrayList<SpawnListEntry>();

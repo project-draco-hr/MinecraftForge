@@ -38,7 +38,6 @@
         NBTTagCompound ticket=(NBTTagCompound)tickets.func_150305_b(j);
         modId=ticket.hasKey("ModId") ? ticket.getString("ModId") : modId;
         Type type=Type.values()[ticket.getByte("Type")];
-        byte ticketChunkDepth=ticket.getByte("ChunkListDepth");
         Ticket tick=new Ticket(modId,type,world);
         if (ticket.hasKey("ModData")) {
           tick.modData=ticket.getCompoundTag("ModData");

@@ -4,7 +4,7 @@
   if (mc.gameSettings.keyBindPlayerList.func_151470_d() && (!mc.isIntegratedServerRunning() || handler.field_147303_b.size() > 1 || scoreobjective != null)) {
     if (pre(PLAYER_LIST))     return;
     this.mc.mcProfiler.startSection("playerList");
-    List players=handler.field_147303_b;
+    List<GuiPlayerInfo> players=(List<GuiPlayerInfo>)handler.field_147303_b;
     int maxPlayers=handler.field_147304_c;
     int rows=maxPlayers;
     int columns=1;

@@ -1,10 +1,10 @@
 {
-  ArrayList required=new ArrayList(input);
+  ArrayList<Object> required=new ArrayList<Object>(input);
   for (int x=0; x < var1.getSizeInventory(); x++) {
     ItemStack slot=var1.getStackInSlot(x);
     if (slot != null) {
       boolean inRecipe=false;
-      Iterator req=required.iterator();
+      Iterator<Object> req=required.iterator();
       while (req.hasNext()) {
         boolean match=false;
         Object next=req.next();

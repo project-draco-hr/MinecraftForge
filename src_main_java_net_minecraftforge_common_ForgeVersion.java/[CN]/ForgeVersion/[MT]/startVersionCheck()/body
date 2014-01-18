@@ -1,13 +1,12 @@
 {
   new Thread("Forge Version Check"){
-    @Override public void run(){
+    @SuppressWarnings("unchecked") @Override public void run(){
       try {
         URL url=new URL("http://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json");
         InputStream con=url.openStream();
         String data=new String(ByteStreams.toByteArray(con));
         con.close();
         Map<String,Object> json=new Gson().fromJson(data,Map.class);
-        String homepage=(String)json.get("homepage");
         Map<String,String> promos=(Map<String,String>)json.get("promos");
         String rec=promos.get(MinecraftForge.MC_VERSION + "-recommended");
         String lat=promos.get(MinecraftForge.MC_VERSION + "-latest");

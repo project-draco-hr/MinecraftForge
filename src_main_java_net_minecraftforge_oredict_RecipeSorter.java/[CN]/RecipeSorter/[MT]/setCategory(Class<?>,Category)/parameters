@@ -1,2 +1,2 @@
-Class recipe
+Class<?> recipe
 Category category

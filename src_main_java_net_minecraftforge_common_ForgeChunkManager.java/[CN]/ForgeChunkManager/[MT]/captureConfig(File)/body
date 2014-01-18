@@ -38,7 +38,7 @@
     if (mod.equals("Forge") || mod.equals("defaults")) {
       continue;
     }
-    Property modTC=config.get(mod,"maximumTicketCount",200);
-    Property modCPT=config.get(mod,"maximumChunksPerTicket",25);
+    config.get(mod,"maximumTicketCount",200);
+    config.get(mod,"maximumChunksPerTicket",25);
   }
 }
