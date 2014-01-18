@@ -20,7 +20,7 @@
   modStates.putAll(sysPropertyStateList);
   FMLLog.fine("After merging, found state information for %d mods",modStates.size());
   Map<String,Boolean> isEnabled=Maps.transformValues(modStates,new Function<String,Boolean>(){
-    public Boolean apply(    String input){
+    @Override public Boolean apply(    String input){
       return Boolean.parseBoolean(input);
     }
   }
