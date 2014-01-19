@@ -5,7 +5,7 @@
   InputStreamReader reader=new InputStreamReader(inputStream);
   try {
     MetadataCollection collection;
-    Gson gson=new GsonBuilder().create();
+    Gson gson=new GsonBuilder().registerTypeAdapter(ArtifactVersion.class,new ArtifactVersionAdapter()).create();
     JsonParser parser=new JsonParser();
     JsonElement rootElement=parser.parse(reader);
     if (rootElement.isJsonArray()) {
