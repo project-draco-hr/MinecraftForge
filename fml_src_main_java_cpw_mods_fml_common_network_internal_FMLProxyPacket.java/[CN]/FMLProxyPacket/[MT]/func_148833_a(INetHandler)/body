@@ -3,6 +3,16 @@
   EmbeddedChannel internalChannel=NetworkRegistry.INSTANCE.getChannel(this.channel,this.target);
   if (internalChannel != null) {
     internalChannel.attr(NetworkRegistry.NET_HANDLER).set(this.netHandler);
-    internalChannel.writeInbound(this);
+    try {
+      internalChannel.writeInbound(this);
+    }
+ catch (    FMLNetworkException ne) {
+      FMLLog.log(Level.ERROR,ne,"There was a network exception handling a packet on channel %s",channel);
+      dispatcher.rejectHandshake(ne.getMessage());
+    }
+catch (    Throwable t) {
+      FMLLog.log(Level.ERROR,t,"There was a critical exception handling a packet on channel %s",channel);
+      dispatcher.rejectHandshake("A fatal error has occured, this connection is terminated");
+    }
   }
 }

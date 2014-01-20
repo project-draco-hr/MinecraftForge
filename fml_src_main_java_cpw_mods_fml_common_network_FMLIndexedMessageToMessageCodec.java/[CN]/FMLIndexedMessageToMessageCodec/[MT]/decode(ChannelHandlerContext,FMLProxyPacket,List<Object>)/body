@@ -1,4 +1,5 @@
 {
+  testMessageValidity(msg);
   ByteBuf payload=msg.payload();
   byte discriminator=payload.readByte();
   Class<? extends A> clazz=discriminators.get(discriminator);
