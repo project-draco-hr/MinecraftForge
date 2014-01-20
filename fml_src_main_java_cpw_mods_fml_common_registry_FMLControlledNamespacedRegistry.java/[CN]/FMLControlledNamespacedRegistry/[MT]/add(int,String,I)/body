@@ -17,6 +17,6 @@
   namedIds.forcePut(func_148755_c(name),idToUse);
   super.func_148756_a(idToUse,name,thing);
   useSlot(idToUse);
-  FMLLog.info("Add : %s %d %s",name,idToUse,thing);
+  FMLLog.finer("Add : %s %d %s",name,idToUse,thing);
   return idToUse;
 }

@@ -1,5 +1,5 @@
 {
-  FMLLog.info("Swap : %s %d %s",name,id,thing);
+  FMLLog.fine("Swap : %s %d %s",name,id,thing);
   BitSet temporary=availabilityMap;
   availabilityMap=transactionalAvailabilityMap;
   int idToUse=id;
@@ -13,6 +13,6 @@
   reassignMapping(name,idToUse);
   useSlot(idToUse);
   availabilityMap=temporary;
-  FMLLog.info("Swap : %s %d %s",name,idToUse,thing);
+  FMLLog.fine("Swap : %s %d %s",name,idToUse,thing);
   return idToUse;
 }

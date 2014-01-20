@@ -1,4 +1,4 @@
 {
-  FMLLog.info("Add : %s %d %s",name,id,thing);
+  FMLLog.finer("Add : %s %d %s",name,id,thing);
   add(id,name,superType.cast(thing));
 }
