@@ -1,3 +1,5 @@
 {
-  throw new RuntimeException("Cannot set TOSERVER as a target on the server");
+  if (!(args instanceof NetworkDispatcher)) {
+    throw new RuntimeException("DISPATCHER expects a NetworkDispatcher");
+  }
 }

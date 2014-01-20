@@ -10,13 +10,17 @@
     ctx.write(msg,promise);
     return;
   }
-  if (ctx.channel().attr(NetworkRegistry.CHANNEL_SOURCE).get() == Side.CLIENT) {
+  outboundTarget=ctx.channel().attr(FML_MESSAGETARGET).get();
+  Side channelSide=ctx.channel().attr(NetworkRegistry.CHANNEL_SOURCE).get();
+  if (outboundTarget != null && outboundTarget.allowed.contains(channelSide)) {
+    args=ctx.channel().attr(FML_MESSAGETARGETARGS).get();
+    outboundTarget.validateArgs(args);
+  }
+ else   if (channelSide == Side.CLIENT) {
     outboundTarget=OutboundTarget.TOSERVER;
   }
  else {
-    outboundTarget=ctx.channel().attr(FML_MESSAGETARGET).get();
-    args=ctx.channel().attr(FML_MESSAGETARGETARGS).get();
-    outboundTarget.validateArgs(args);
+    throw new FMLNetworkException("Packet arrived at the outbound handler without a valid target!");
   }
   List<NetworkDispatcher> dispatchers=outboundTarget.selectNetworks(args,ctx,pkt);
   if (dispatchers == null) {
