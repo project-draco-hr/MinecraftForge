@@ -1,4 +1,9 @@
 {
+  if (classNode.name.endsWith("$class")) {
+    String subName=classNode.name.substring(0,classNode.name.length() - 6);
+    int pos=methodDescriptor.indexOf('(') + 1;
+    methodDescriptor=methodDescriptor.substring(0,pos) + 'L' + subName+ ';'+ methodDescriptor.substring(pos);
+  }
   for (ListIterator<MethodNode> iterator=classNode.methods.listIterator(); iterator.hasNext(); ) {
     MethodNode method=iterator.next();
     if (methodDescriptor.equals(method.name + method.desc)) {

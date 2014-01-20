@@ -1,12 +1,16 @@
 {
-  if (optionals == null || !optionals.containsKey(name)) {
+  String lookupName=name;
+  if (name.endsWith("$class")) {
+    lookupName=name.substring(0,name.length() - 6);
+  }
+  if (optionals == null || !optionals.containsKey(lookupName)) {
     return basicClass;
   }
   ClassNode classNode=new ClassNode();
   ClassReader classReader=new ClassReader(basicClass);
   classReader.accept(classNode,0);
   if (logDebugInfo)   FMLRelaunchLog.finer("Optional removal - found optionals for class %s - processing",name);
-  for (  ASMData optional : optionals.get(name)) {
+  for (  ASMData optional : optionals.get(lookupName)) {
     String modId=(String)optional.getAnnotationInfo().get("modid");
     if (Loader.isModLoaded(modId) || ModAPIManager.INSTANCE.hasAPI(modId)) {
       if (logDebugInfo)       FMLRelaunchLog.finer("Optional removal skipped - mod present %s",modId);
