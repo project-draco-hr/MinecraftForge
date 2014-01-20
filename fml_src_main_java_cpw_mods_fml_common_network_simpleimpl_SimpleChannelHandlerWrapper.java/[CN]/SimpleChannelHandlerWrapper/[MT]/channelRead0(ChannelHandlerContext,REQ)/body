@@ -3,6 +3,6 @@
   MessageContext context=new MessageContext(iNetHandler,side);
   REPLY result=messageHandler.onMessage(msg,context);
   if (result != null) {
-    ctx.writeAndFlush(result);
+    ctx.writeAndFlush(result).addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
   }
 }
