@@ -2,6 +2,7 @@
   register("minecraft:shaped",ShapedRecipes.class,SHAPED,"before:minecraft:shapeless");
   register("minecraft:mapextending",RecipesMapExtending.class,SHAPED,"after:minecraft:shaped before:minecraft:shapeless");
   register("minecraft:shapeless",ShapelessRecipes.class,SHAPELESS,"after:minecraft:shaped");
+  register("minecraft:bookcloning",RecipeBookCloning.class,SHAPELESS,"after:minecraft:shapeless");
   register("minecraft:fireworks",RecipeFireworks.class,SHAPELESS,"after:minecraft:shapeless");
   register("minecraft:armordyes",RecipesArmorDyes.class,SHAPELESS,"after:minecraft:shapeless");
   register("minecraft:mapcloning",RecipesMapCloning.class,SHAPELESS,"after:minecraft:shapeless");
