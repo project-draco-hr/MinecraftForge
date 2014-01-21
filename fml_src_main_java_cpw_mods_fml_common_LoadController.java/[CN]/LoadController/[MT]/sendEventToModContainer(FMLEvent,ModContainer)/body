@@ -10,9 +10,11 @@
   }
   activeContainer=mc;
   stateEvent.applyModContainer(activeContainer());
+  ThreadContext.put("mod",modId);
   FMLLog.log(modId,Level.TRACE,"Sending event %s to mod %s",stateEvent.getEventType(),modId);
   eventChannels.get(modId).post(stateEvent);
   FMLLog.log(modId,Level.TRACE,"Sent event %s to mod %s",stateEvent.getEventType(),modId);
+  ThreadContext.put("mod","<NONE>");
   activeContainer=null;
   if (stateEvent instanceof FMLStateEvent) {
     if (!errors.containsKey(modId)) {
