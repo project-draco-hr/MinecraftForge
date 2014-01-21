@@ -1,5 +1,5 @@
 {
-  FMLRelaunchLog.logFileNamePattern="ForgeModLoader-server-%g.log";
+  FMLRelaunchLog.side=Side.SERVER;
   side=Side.SERVER;
   setupHome();
 }

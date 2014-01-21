@@ -1,4 +1,5 @@
 {
   log.myLog=LogManager.getLogger("FML");
+  ThreadContext.put("side",side.name().toLowerCase(Locale.ENGLISH));
   configured=true;
 }
