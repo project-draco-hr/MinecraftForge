@@ -1,0 +1,4 @@
+EntityPlayer player
+ItemStack item
+int duration
+ItemStack result
