@@ -1,0 +1,13 @@
+{
+  for (  Class<?> c : getCallingStack()) {
+    int idx=c.getName().lastIndexOf('.');
+    if (idx == -1) {
+      continue;
+    }
+    String pkg=c.getName().substring(0,idx);
+    if (packageOwners.containsKey(pkg)) {
+      return packageOwners.get(pkg).get(0);
+    }
+  }
+  return null;
+}

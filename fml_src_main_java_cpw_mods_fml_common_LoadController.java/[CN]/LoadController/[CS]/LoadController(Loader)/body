@@ -3,4 +3,5 @@
   this.masterChannel=new EventBus("FMLMainChannel");
   this.masterChannel.register(this);
   state=LoaderState.NOINIT;
+  packageOwners=ArrayListMultimap.create();
 }
