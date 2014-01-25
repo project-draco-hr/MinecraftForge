@@ -55,7 +55,7 @@
   }
   hasInit=true;
   ItemStack[] replaceStacks=replacements.keySet().toArray(new ItemStack[replacements.keySet().size()]);
-  ItemStack[] exclusions=new ItemStack[]{new ItemStack(Blocks.lapis_block),new ItemStack(Items.cookie),new ItemStack(Blocks.stonebrick),new ItemStack(Blocks.stone_slab),new ItemStack(Blocks.stone_stairs),new ItemStack(Blocks.cobblestone_wall),new ItemStack(Blocks.oak_stairs),new ItemStack(Blocks.spruce_stairs),new ItemStack(Blocks.birch_stairs),new ItemStack(Blocks.jungle_stairs),new ItemStack(Blocks.acacia_stairs),new ItemStack(Blocks.dark_oak_stairs)};
+  ItemStack[] exclusions=new ItemStack[]{new ItemStack(Blocks.lapis_block),new ItemStack(Items.cookie),new ItemStack(Blocks.stonebrick),new ItemStack(Blocks.stone_slab,1,WILDCARD_VALUE),new ItemStack(Blocks.stone_stairs),new ItemStack(Blocks.cobblestone_wall),new ItemStack(Blocks.oak_stairs),new ItemStack(Blocks.spruce_stairs),new ItemStack(Blocks.birch_stairs),new ItemStack(Blocks.jungle_stairs),new ItemStack(Blocks.acacia_stairs),new ItemStack(Blocks.dark_oak_stairs)};
   List<IRecipe> recipes=CraftingManager.getInstance().getRecipeList();
   List<IRecipe> recipesToRemove=new ArrayList<IRecipe>();
   List<IRecipe> recipesToAdd=new ArrayList<IRecipe>();
