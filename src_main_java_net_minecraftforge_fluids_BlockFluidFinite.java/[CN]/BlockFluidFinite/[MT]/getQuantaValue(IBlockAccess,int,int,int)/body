@@ -1,0 +1,10 @@
+{
+  if (world.func_147439_a(x,y,z).isAir(world,x,y,z)) {
+    return 0;
+  }
+  if (world.func_147439_a(x,y,z) != this) {
+    return -1;
+  }
+  int quantaRemaining=world.getBlockMetadata(x,y,z) + 1;
+  return quantaRemaining;
+}

@@ -1,2 +1,8 @@
 {
+  Map<String,Integer> ids=FluidRegistry.getRegisteredFluidIDs();
+  bytes.writeInt(ids.size());
+  for (  Map.Entry<String,Integer> entry : ids.entrySet()) {
+    ByteBufUtils.writeUTF8String(bytes,entry.getKey());
+    bytes.writeInt(entry.getValue());
+  }
 }

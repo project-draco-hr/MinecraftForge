@@ -1,0 +1,4 @@
+{
+  if (icon != null)   return icon;
+  return ((TextureMap)Minecraft.getMinecraft().getTextureManager().getTexture(TextureMap.locationBlocksTexture)).getAtlasSprite("missingno");
+}

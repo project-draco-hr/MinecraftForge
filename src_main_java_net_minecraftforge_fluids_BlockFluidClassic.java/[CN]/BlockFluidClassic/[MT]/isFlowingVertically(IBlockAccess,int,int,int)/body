@@ -1,0 +1,3 @@
+{
+  return world.func_147439_a(x,y + densityDir,z) == this || (world.func_147439_a(x,y,z) == this && canFlowInto(world,x,y + densityDir,z));
+}

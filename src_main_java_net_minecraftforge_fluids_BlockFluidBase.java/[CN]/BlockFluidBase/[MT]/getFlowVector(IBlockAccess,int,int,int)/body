@@ -1,0 +1,44 @@
+{
+  Vec3 vec=world.getWorldVec3Pool().getVecFromPool(0.0D,0.0D,0.0D);
+  int decay=quantaPerBlock - getQuantaValue(world,x,y,z);
+  for (int side=0; side < 4; ++side) {
+    int x2=x;
+    int z2=z;
+switch (side) {
+case 0:
+      --x2;
+    break;
+case 1:
+  --z2;
+break;
+case 2:
+++x2;
+break;
+case 3:
+++z2;
+break;
+}
+int otherDecay=quantaPerBlock - getQuantaValue(world,x2,y,z2);
+if (otherDecay >= quantaPerBlock) {
+if (!world.func_147439_a(x2,y,z2).func_149688_o().blocksMovement()) {
+otherDecay=quantaPerBlock - getQuantaValue(world,x2,y - 1,z2);
+if (otherDecay >= 0) {
+int power=otherDecay - (decay - quantaPerBlock);
+vec=vec.addVector((x2 - x) * power,(y - y) * power,(z2 - z) * power);
+}
+}
+}
+ else if (otherDecay >= 0) {
+int power=otherDecay - decay;
+vec=vec.addVector((x2 - x) * power,(y - y) * power,(z2 - z) * power);
+}
+}
+if (world.func_147439_a(x,y + 1,z) == this) {
+boolean flag=func_149747_d(world,x,y,z - 1,2) || func_149747_d(world,x,y,z + 1,3) || func_149747_d(world,x - 1,y,z,4)|| func_149747_d(world,x + 1,y,z,5)|| func_149747_d(world,x,y + 1,z - 1,2)|| func_149747_d(world,x,y + 1,z + 1,3)|| func_149747_d(world,x - 1,y + 1,z,4)|| func_149747_d(world,x + 1,y + 1,z,5);
+if (flag) {
+vec=vec.normalize().addVector(0.0D,-6.0D,0.0D);
+}
+}
+vec=vec.normalize();
+return vec;
+}

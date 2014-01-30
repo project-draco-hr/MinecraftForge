@@ -1,0 +1,10 @@
+{
+  if (world.func_147439_a(x,y,z) == Blocks.air) {
+    return 0;
+  }
+  if (world.func_147439_a(x,y,z) != this) {
+    return -1;
+  }
+  int quantaRemaining=quantaPerBlock - world.getBlockMetadata(x,y,z);
+  return quantaRemaining;
+}

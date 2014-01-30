@@ -1,0 +1,6 @@
+{
+  if (meta < 0)   return;
+  if (displaceIfPossible(world,x,y,z)) {
+    world.func_147465_d(x,y,z,this,meta,3);
+  }
+}

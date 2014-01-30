@@ -1,0 +1,10 @@
+{
+  if (container == null || fluid == null) {
+    return null;
+  }
+  FluidContainerData data=filledContainerMap.get(new ContainerKey(container,fluid));
+  if (data != null && fluid.amount >= data.fluid.amount) {
+    return data.filledContainer.copy();
+  }
+  return null;
+}

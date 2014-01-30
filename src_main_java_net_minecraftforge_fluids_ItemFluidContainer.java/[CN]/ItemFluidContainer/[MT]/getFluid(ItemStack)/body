@@ -1,3 +1,6 @@
 {
-  return null;
+  if (container.stackTagCompound == null || !container.stackTagCompound.hasKey("Fluid")) {
+    return null;
+  }
+  return FluidStack.loadFluidStackFromNBT(container.stackTagCompound.getCompoundTag("Fluid"));
 }

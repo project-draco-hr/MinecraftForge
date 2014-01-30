@@ -1,2 +1,3 @@
 {
+  FluidRegistry.initFluidIDs(msg.fluidIds);
 }

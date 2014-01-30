@@ -1,3 +1,20 @@
 {
-  return null;
+  if (fluid == null) {
+    return null;
+  }
+  int drained=maxDrain;
+  if (fluid.amount < drained) {
+    drained=fluid.amount;
+  }
+  FluidStack stack=new FluidStack(fluid,drained);
+  if (doDrain) {
+    fluid.amount-=drained;
+    if (fluid.amount <= 0) {
+      fluid=null;
+    }
+    if (tile != null) {
+      FluidEvent.fireEvent(new FluidEvent.FluidDrainingEvent(fluid,tile.func_145831_w(),tile.field_145851_c,tile.field_145848_d,tile.field_145849_e,this));
+    }
+  }
+  return stack;
 }

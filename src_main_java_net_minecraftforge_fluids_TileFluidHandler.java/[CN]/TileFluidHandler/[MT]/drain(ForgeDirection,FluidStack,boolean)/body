@@ -1,3 +1,6 @@
 {
-  return null;
+  if (resource == null || !resource.isFluidEqual(tank.getFluid())) {
+    return null;
+  }
+  return tank.drain(resource.amount,doDrain);
 }

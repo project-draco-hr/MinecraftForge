@@ -1,0 +1,8 @@
+{
+  this.fluid=stack;
+  this.filledContainer=filledContainer;
+  this.emptyContainer=emptyContainer == null ? NULL_EMPTYCONTAINER : emptyContainer;
+  if (stack == null || filledContainer == null || emptyContainer == null && !nullEmpty) {
+    throw new RuntimeException("Invalid FluidContainerData - a parameter was null.");
+  }
+}

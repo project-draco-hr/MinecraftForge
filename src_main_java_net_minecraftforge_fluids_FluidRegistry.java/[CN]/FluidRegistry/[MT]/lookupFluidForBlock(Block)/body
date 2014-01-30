@@ -1,0 +1,11 @@
+{
+  if (fluidBlocks == null) {
+    fluidBlocks=HashBiMap.create();
+    for (    Fluid fluid : fluids.values()) {
+      if (fluid.canBePlacedInWorld() && fluid.getBlock() != null) {
+        fluidBlocks.put(fluid.getBlock(),fluid);
+      }
+    }
+  }
+  return fluidBlocks.get(block);
+}

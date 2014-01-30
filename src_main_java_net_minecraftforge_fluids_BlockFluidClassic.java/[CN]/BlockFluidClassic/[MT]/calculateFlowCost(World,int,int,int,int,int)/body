@@ -1,0 +1,39 @@
+{
+  int cost=1000;
+  for (int adjSide=0; adjSide < 4; adjSide++) {
+    if ((adjSide == 0 && side == 1) || (adjSide == 1 && side == 0) || (adjSide == 2 && side == 3)|| (adjSide == 3 && side == 2)) {
+      continue;
+    }
+    int x2=x;
+    int y2=y;
+    int z2=z;
+switch (adjSide) {
+case 0:
+      --x2;
+    break;
+case 1:
+  ++x2;
+break;
+case 2:
+--z2;
+break;
+case 3:
+++z2;
+break;
+}
+if (!canFlowInto(world,x2,y2,z2) || isSourceBlock(world,x2,y2,z2)) {
+continue;
+}
+if (canFlowInto(world,x2,y2 + densityDir,z2)) {
+return recurseDepth;
+}
+if (recurseDepth >= 4) {
+continue;
+}
+int min=calculateFlowCost(world,x2,y2,z2,recurseDepth + 1,adjSide);
+if (min < cost) {
+cost=min;
+}
+}
+return cost;
+}

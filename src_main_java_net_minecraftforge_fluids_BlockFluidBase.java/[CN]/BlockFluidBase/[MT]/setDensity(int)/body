@@ -1,0 +1,6 @@
+{
+  if (density == 0)   density=1;
+  this.density=density;
+  this.densityDir=density > 0 ? -1 : 1;
+  return this;
+}

@@ -1,0 +1,14 @@
+{
+  super(material);
+  this.func_149676_a(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
+  this.func_149675_a(true);
+  this.func_149649_H();
+  this.fluidName=fluid.getName();
+  this.density=fluid.density;
+  this.temperature=fluid.temperature;
+  this.maxScaledLight=fluid.luminosity;
+  this.tickRate=fluid.viscosity / 200;
+  this.densityDir=fluid.density > 0 ? -1 : 1;
+  fluid.setBlock(this);
+  displacements.putAll(defaultDisplacements);
+}

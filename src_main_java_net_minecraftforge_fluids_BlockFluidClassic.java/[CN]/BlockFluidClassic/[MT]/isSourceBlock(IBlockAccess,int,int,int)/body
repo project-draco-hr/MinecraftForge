@@ -1,0 +1,3 @@
+{
+  return world.func_147439_a(x,y,z) == this && world.getBlockMetadata(x,y,z) == 0;
+}

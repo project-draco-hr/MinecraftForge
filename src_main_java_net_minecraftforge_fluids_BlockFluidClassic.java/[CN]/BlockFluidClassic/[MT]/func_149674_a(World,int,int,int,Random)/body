@@ -1,0 +1,50 @@
+{
+  int quantaRemaining=quantaPerBlock - world.getBlockMetadata(x,y,z);
+  int expQuanta=-101;
+  if (quantaRemaining < quantaPerBlock) {
+    int y2=y - densityDir;
+    if (world.func_147439_a(x,y2,z) == this || world.func_147439_a(x - 1,y2,z) == this || world.func_147439_a(x + 1,y2,z) == this || world.func_147439_a(x,y2,z - 1) == this || world.func_147439_a(x,y2,z + 1) == this) {
+      expQuanta=quantaPerBlock - 1;
+    }
+ else {
+      int maxQuanta=-100;
+      maxQuanta=getLargerQuanta(world,x - 1,y,z,maxQuanta);
+      maxQuanta=getLargerQuanta(world,x + 1,y,z,maxQuanta);
+      maxQuanta=getLargerQuanta(world,x,y,z - 1,maxQuanta);
+      maxQuanta=getLargerQuanta(world,x,y,z + 1,maxQuanta);
+      expQuanta=maxQuanta - 1;
+    }
+    if (expQuanta != quantaRemaining) {
+      quantaRemaining=expQuanta;
+      if (expQuanta <= 0) {
+        world.func_147449_b(x,y,z,Blocks.air);
+      }
+ else {
+        world.setBlockMetadataWithNotify(x,y,z,quantaPerBlock - expQuanta,3);
+        world.func_147464_a(x,y,z,this,tickRate);
+        world.func_147459_d(x,y,z,this);
+      }
+    }
+  }
+ else   if (quantaRemaining >= quantaPerBlock) {
+    world.setBlockMetadataWithNotify(x,y,z,0,2);
+  }
+  if (canDisplace(world,x,y + densityDir,z)) {
+    flowIntoBlock(world,x,y + densityDir,z,1);
+    return;
+  }
+  int flowMeta=quantaPerBlock - quantaRemaining + 1;
+  if (flowMeta >= quantaPerBlock) {
+    return;
+  }
+  if (isSourceBlock(world,x,y,z) || !isFlowingVertically(world,x,y,z)) {
+    if (world.func_147439_a(x,y - densityDir,z) == this) {
+      flowMeta=1;
+    }
+    boolean flowTo[]=getOptimalFlowDirections(world,x,y,z);
+    if (flowTo[0])     flowIntoBlock(world,x - 1,y,z,flowMeta);
+    if (flowTo[1])     flowIntoBlock(world,x + 1,y,z,flowMeta);
+    if (flowTo[2])     flowIntoBlock(world,x,y,z - 1,flowMeta);
+    if (flowTo[3])     flowIntoBlock(world,x,y,z + 1,flowMeta);
+  }
+}

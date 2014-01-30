@@ -1,0 +1,7 @@
+{
+  if (container == null) {
+    return null;
+  }
+  FluidContainerData data=containerFluidMap.get(new ContainerKey(container));
+  return data == null ? null : data.fluid.copy();
+}

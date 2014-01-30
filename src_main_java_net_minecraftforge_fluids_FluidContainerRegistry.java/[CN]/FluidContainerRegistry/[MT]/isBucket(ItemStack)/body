@@ -1,0 +1,10 @@
+{
+  if (container == null) {
+    return false;
+  }
+  if (container.isItemEqual(EMPTY_BUCKET)) {
+    return true;
+  }
+  FluidContainerData data=containerFluidMap.get(new ContainerKey(container));
+  return data != null && data.emptyContainer.isItemEqual(EMPTY_BUCKET);
+}

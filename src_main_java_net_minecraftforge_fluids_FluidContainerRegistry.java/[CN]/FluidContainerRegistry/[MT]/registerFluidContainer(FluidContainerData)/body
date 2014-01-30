@@ -1,0 +1,12 @@
+{
+  if (isFilledContainer(data.filledContainer)) {
+    return false;
+  }
+  containerFluidMap.put(new ContainerKey(data.filledContainer),data);
+  if (data.emptyContainer != null && data.emptyContainer != NULL_EMPTYCONTAINER) {
+    filledContainerMap.put(new ContainerKey(data.emptyContainer,data.fluid),data);
+    emptyContainers.add(new ContainerKey(data.emptyContainer));
+  }
+  MinecraftForge.EVENT_BUS.post(new FluidContainerRegisterEvent(data));
+  return true;
+}

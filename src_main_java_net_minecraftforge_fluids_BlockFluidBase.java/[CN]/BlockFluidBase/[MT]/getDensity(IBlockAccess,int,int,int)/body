@@ -1,0 +1,7 @@
+{
+  Block block=world.func_147439_a(x,y,z);
+  if (!(block instanceof BlockFluidBase)) {
+    return Integer.MAX_VALUE;
+  }
+  return ((BlockFluidBase)block).density;
+}
