@@ -1,3 +1,4 @@
 {
   addDiscriminator(1,ForgeMessage.DimensionRegisterMessage.class);
+  addDiscriminator(2,ForgeMessage.FluidIdMapMessage.class);
 }

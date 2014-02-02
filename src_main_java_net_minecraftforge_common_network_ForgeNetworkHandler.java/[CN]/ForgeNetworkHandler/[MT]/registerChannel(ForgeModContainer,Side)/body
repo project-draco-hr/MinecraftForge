@@ -1,5 +1,5 @@
 {
-  channelPair=NetworkRegistry.INSTANCE.newChannel(forgeModContainer,"FORGE",new ForgeRuntimeCodec(),new HandshakeCompletionHandler());
+  channelPair=NetworkRegistry.INSTANCE.newChannel(forgeModContainer,"FORGE",new ForgeRuntimeCodec());
   if (side == Side.CLIENT) {
     addClientHandlers();
   }
