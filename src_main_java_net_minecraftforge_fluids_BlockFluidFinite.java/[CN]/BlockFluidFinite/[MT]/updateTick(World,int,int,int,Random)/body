@@ -17,10 +17,10 @@
     return;
   }
   int lowerthan=quantaRemaining - 1;
-  if (displaceIfPossible(world,x,y,z - 1))   world.func_147449_b(x,y,z - 1,Blocks.air);
-  if (displaceIfPossible(world,x,y,z + 1))   world.func_147449_b(x,y,z + 1,Blocks.air);
-  if (displaceIfPossible(world,x - 1,y,z))   world.func_147449_b(x - 1,y,z,Blocks.air);
-  if (displaceIfPossible(world,x + 1,y,z))   world.func_147449_b(x + 1,y,z,Blocks.air);
+  if (displaceIfPossible(world,x,y,z - 1))   world.setBlock(x,y,z - 1,Blocks.air);
+  if (displaceIfPossible(world,x,y,z + 1))   world.setBlock(x,y,z + 1,Blocks.air);
+  if (displaceIfPossible(world,x - 1,y,z))   world.setBlock(x - 1,y,z,Blocks.air);
+  if (displaceIfPossible(world,x + 1,y,z))   world.setBlock(x + 1,y,z,Blocks.air);
   int north=getQuantaValueBelow(world,x,y,z - 1,lowerthan);
   int south=getQuantaValueBelow(world,x,y,z + 1,lowerthan);
   int west=getQuantaValueBelow(world,x - 1,y,z,lowerthan);
@@ -59,12 +59,12 @@
     }
     if (newnorth != north) {
       if (newnorth == 0) {
-        world.func_147449_b(x,y,z - 1,Blocks.air);
+        world.setBlock(x,y,z - 1,Blocks.air);
       }
  else {
-        world.func_147465_d(x,y,z - 1,this,newnorth - 1,2);
+        world.setBlock(x,y,z - 1,this,newnorth - 1,2);
       }
-      world.func_147464_a(x,y,z - 1,this,tickRate);
+      world.scheduleBlockUpdate(x,y,z - 1,this,tickRate);
     }
     --count;
   }
@@ -76,12 +76,12 @@
     }
     if (newsouth != south) {
       if (newsouth == 0) {
-        world.func_147449_b(x,y,z + 1,Blocks.air);
+        world.setBlock(x,y,z + 1,Blocks.air);
       }
  else {
-        world.func_147465_d(x,y,z + 1,this,newsouth - 1,2);
+        world.setBlock(x,y,z + 1,this,newsouth - 1,2);
       }
-      world.func_147464_a(x,y,z + 1,this,tickRate);
+      world.scheduleBlockUpdate(x,y,z + 1,this,tickRate);
     }
     --count;
   }
@@ -93,12 +93,12 @@
     }
     if (newwest != west) {
       if (newwest == 0) {
-        world.func_147449_b(x - 1,y,z,Blocks.air);
+        world.setBlock(x - 1,y,z,Blocks.air);
       }
  else {
-        world.func_147465_d(x - 1,y,z,this,newwest - 1,2);
+        world.setBlock(x - 1,y,z,this,newwest - 1,2);
       }
-      world.func_147464_a(x - 1,y,z,this,tickRate);
+      world.scheduleBlockUpdate(x - 1,y,z,this,tickRate);
     }
     --count;
   }
@@ -110,12 +110,12 @@
     }
     if (neweast != east) {
       if (neweast == 0) {
-        world.func_147449_b(x + 1,y,z,Blocks.air);
+        world.setBlock(x + 1,y,z,Blocks.air);
       }
  else {
-        world.func_147465_d(x + 1,y,z,this,neweast - 1,2);
+        world.setBlock(x + 1,y,z,this,neweast - 1,2);
       }
-      world.func_147464_a(x + 1,y,z,this,tickRate);
+      world.scheduleBlockUpdate(x + 1,y,z,this,tickRate);
     }
     --count;
   }

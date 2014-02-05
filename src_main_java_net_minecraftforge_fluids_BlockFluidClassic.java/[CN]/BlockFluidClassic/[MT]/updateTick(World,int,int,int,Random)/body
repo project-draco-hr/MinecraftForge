@@ -3,7 +3,7 @@
   int expQuanta=-101;
   if (quantaRemaining < quantaPerBlock) {
     int y2=y - densityDir;
-    if (world.func_147439_a(x,y2,z) == this || world.func_147439_a(x - 1,y2,z) == this || world.func_147439_a(x + 1,y2,z) == this || world.func_147439_a(x,y2,z - 1) == this || world.func_147439_a(x,y2,z + 1) == this) {
+    if (world.getBlock(x,y2,z) == this || world.getBlock(x - 1,y2,z) == this || world.getBlock(x + 1,y2,z) == this || world.getBlock(x,y2,z - 1) == this || world.getBlock(x,y2,z + 1) == this) {
       expQuanta=quantaPerBlock - 1;
     }
  else {
@@ -17,12 +17,12 @@
     if (expQuanta != quantaRemaining) {
       quantaRemaining=expQuanta;
       if (expQuanta <= 0) {
-        world.func_147449_b(x,y,z,Blocks.air);
+        world.setBlock(x,y,z,Blocks.air);
       }
  else {
         world.setBlockMetadataWithNotify(x,y,z,quantaPerBlock - expQuanta,3);
-        world.func_147464_a(x,y,z,this,tickRate);
-        world.func_147459_d(x,y,z,this);
+        world.scheduleBlockUpdate(x,y,z,this,tickRate);
+        world.notifyBlocksOfNeighborChange(x,y,z,this);
       }
     }
   }
@@ -38,7 +38,7 @@
     return;
   }
   if (isSourceBlock(world,x,y,z) || !isFlowingVertically(world,x,y,z)) {
-    if (world.func_147439_a(x,y - densityDir,z) == this) {
+    if (world.getBlock(x,y - densityDir,z) == this) {
       flowMeta=1;
     }
     boolean flowTo[]=getOptimalFlowDirections(world,x,y,z);

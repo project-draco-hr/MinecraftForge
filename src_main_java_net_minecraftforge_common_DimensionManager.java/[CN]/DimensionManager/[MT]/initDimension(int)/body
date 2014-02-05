@@ -10,7 +10,7 @@
     System.err.println("Cannot Hotload Dim: " + e.getMessage());
     return;
   }
-  MinecraftServer mcServer=overworld.getMinecraftServer();
+  MinecraftServer mcServer=overworld.func_73046_m();
   ISaveHandler savehandler=overworld.getSaveHandler();
   WorldSettings worldSettings=new WorldSettings(overworld.getWorldInfo());
   WorldServer world=(dim == 0 ? overworld : new WorldServerMulti(mcServer,savehandler,overworld.getWorldInfo().getWorldName(),dim,worldSettings,overworld,mcServer.theProfiler));

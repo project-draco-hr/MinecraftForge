@@ -20,9 +20,9 @@
       GL11.glColor4f(r,g,b,1.0F);
     }
     GL11.glRotatef(-90F,0.0F,1.0F,0.0F);
-    renderBlocks.field_147844_c=inColor;
+    renderBlocks.useInventoryTint=inColor;
     customRenderer.renderItem(INVENTORY,item,renderBlocks);
-    renderBlocks.field_147844_c=true;
+    renderBlocks.useInventoryTint=true;
     GL11.glPopMatrix();
   }
  else {

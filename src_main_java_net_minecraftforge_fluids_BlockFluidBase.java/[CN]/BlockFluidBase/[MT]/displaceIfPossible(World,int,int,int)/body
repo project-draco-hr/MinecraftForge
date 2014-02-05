@@ -1,25 +1,25 @@
 {
-  if (world.func_147439_a(x,y,z).isAir(world,x,y,z)) {
+  if (world.getBlock(x,y,z).isAir(world,x,y,z)) {
     return true;
   }
-  Block block=world.func_147439_a(x,y,z);
+  Block block=world.getBlock(x,y,z);
   if (block == this) {
     return false;
   }
   if (displacements.containsKey(block)) {
     if (displacements.get(block)) {
-      block.func_149697_b(world,x,y,z,world.getBlockMetadata(x,y,z),0);
+      block.dropBlockAsItem(world,x,y,z,world.getBlockMetadata(x,y,z),0);
       return true;
     }
     return false;
   }
-  Material material=block.func_149688_o();
-  if (material.blocksMovement() || material == Material.field_151567_E) {
+  Material material=block.getMaterial();
+  if (material.blocksMovement() || material == Material.portal) {
     return false;
   }
   int density=getDensity(world,x,y,z);
   if (density == Integer.MAX_VALUE) {
-    block.func_149697_b(world,x,y,z,world.getBlockMetadata(x,y,z),0);
+    block.dropBlockAsItem(world,x,y,z,world.getBlockMetadata(x,y,z),0);
     return true;
   }
   if (this.density > density) {

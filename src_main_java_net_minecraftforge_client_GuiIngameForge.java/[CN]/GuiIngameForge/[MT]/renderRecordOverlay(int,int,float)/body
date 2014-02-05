@@ -8,7 +8,7 @@
       GL11.glPushMatrix();
       GL11.glTranslatef((float)(width / 2),(float)(height - 48),0.0F);
       GL11.glEnable(GL11.GL_BLEND);
-      OpenGlHelper.func_148821_a(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
+      OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
       int color=(recordIsPlaying ? Color.HSBtoRGB(hue / 50.0F,0.7F,0.6F) & WHITE : WHITE);
       fontrenderer.drawString(recordPlaying,-fontrenderer.getStringWidth(recordPlaying) / 2,-4,color | (opacity << 24));
       GL11.glDisable(GL11.GL_BLEND);

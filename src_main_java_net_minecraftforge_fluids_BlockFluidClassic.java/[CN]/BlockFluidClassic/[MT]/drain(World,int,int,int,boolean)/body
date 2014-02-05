@@ -3,7 +3,7 @@
     return null;
   }
   if (doDrain) {
-    world.func_147449_b(x,y,z,Blocks.air);
+    world.setBlock(x,y,z,Blocks.air);
   }
   return stack.copy();
 }

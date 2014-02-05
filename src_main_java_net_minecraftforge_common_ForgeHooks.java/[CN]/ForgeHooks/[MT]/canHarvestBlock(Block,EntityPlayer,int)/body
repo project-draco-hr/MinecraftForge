@@ -1,15 +1,15 @@
 {
-  if (block.func_149688_o().isToolNotRequired()) {
+  if (block.getMaterial().isToolNotRequired()) {
     return true;
   }
   ItemStack stack=player.inventory.getCurrentItem();
   String tool=block.getHarvestTool(metadata);
   if (stack == null || tool == null) {
-    return player.func_146099_a(block);
+    return player.canHarvestBlock(block);
   }
   int toolLevel=stack.getItem().getHarvestLevel(stack,tool);
   if (toolLevel < 0) {
-    return player.func_146099_a(block);
+    return player.canHarvestBlock(block);
   }
   return toolLevel >= block.getHarvestLevel(metadata);
 }

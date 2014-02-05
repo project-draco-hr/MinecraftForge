@@ -1,21 +1,21 @@
 {
   int otherY=y + densityDir;
   if (otherY < 0 || otherY >= world.getHeight()) {
-    world.func_147449_b(x,y,z,Blocks.air);
+    world.setBlock(x,y,z,Blocks.air);
     return 0;
   }
   int amt=getQuantaValueBelow(world,x,otherY,z,quantaPerBlock);
   if (amt >= 0) {
     amt+=amtToInput;
     if (amt > quantaPerBlock) {
-      world.func_147465_d(x,otherY,z,this,quantaPerBlock - 1,3);
-      world.func_147464_a(x,otherY,z,this,tickRate);
+      world.setBlock(x,otherY,z,this,quantaPerBlock - 1,3);
+      world.scheduleBlockUpdate(x,otherY,z,this,tickRate);
       return amt - quantaPerBlock;
     }
  else     if (amt > 0) {
-      world.func_147465_d(x,otherY,z,this,amt - 1,3);
-      world.func_147464_a(x,otherY,z,this,tickRate);
-      world.func_147449_b(x,y,z,Blocks.air);
+      world.setBlock(x,otherY,z,this,amt - 1,3);
+      world.scheduleBlockUpdate(x,otherY,z,this,tickRate);
+      world.setBlock(x,y,z,Blocks.air);
       return 0;
     }
     return amtToInput;
@@ -24,9 +24,9 @@
     int density_other=getDensity(world,x,otherY,z);
     if (density_other == Integer.MAX_VALUE) {
       if (displaceIfPossible(world,x,otherY,z)) {
-        world.func_147465_d(x,otherY,z,this,amtToInput - 1,3);
-        world.func_147464_a(x,otherY,z,this,tickRate);
-        world.func_147449_b(x,y,z,Blocks.air);
+        world.setBlock(x,otherY,z,this,amtToInput - 1,3);
+        world.scheduleBlockUpdate(x,otherY,z,this,tickRate);
+        world.setBlock(x,y,z,Blocks.air);
         return 0;
       }
  else {
@@ -35,23 +35,23 @@
     }
     if (densityDir < 0) {
       if (density_other < density) {
-        BlockFluidBase block=(BlockFluidBase)world.func_147439_a(x,otherY,z);
+        BlockFluidBase block=(BlockFluidBase)world.getBlock(x,otherY,z);
         int otherData=world.getBlockMetadata(x,otherY,z);
-        world.func_147465_d(x,otherY,z,this,amtToInput - 1,3);
-        world.func_147465_d(x,y,z,block,otherData,3);
-        world.func_147464_a(x,otherY,z,this,tickRate);
-        world.func_147464_a(x,y,z,block,block.func_149738_a(world));
+        world.setBlock(x,otherY,z,this,amtToInput - 1,3);
+        world.setBlock(x,y,z,block,otherData,3);
+        world.scheduleBlockUpdate(x,otherY,z,this,tickRate);
+        world.scheduleBlockUpdate(x,y,z,block,block.tickRate(world));
         return 0;
       }
     }
  else {
       if (density_other > density) {
-        BlockFluidBase block=(BlockFluidBase)world.func_147439_a(x,otherY,z);
+        BlockFluidBase block=(BlockFluidBase)world.getBlock(x,otherY,z);
         int otherData=world.getBlockMetadata(x,otherY,z);
-        world.func_147465_d(x,otherY,z,this,amtToInput - 1,3);
-        world.func_147465_d(x,y,z,block,otherData,3);
-        world.func_147464_a(x,otherY,z,this,tickRate);
-        world.func_147464_a(x,y,z,block,block.func_149738_a(world));
+        world.setBlock(x,otherY,z,this,amtToInput - 1,3);
+        world.setBlock(x,y,z,block,otherData,3);
+        world.scheduleBlockUpdate(x,otherY,z,this,tickRate);
+        world.scheduleBlockUpdate(x,y,z,block,block.tickRate(world));
         return 0;
       }
     }

@@ -2,7 +2,7 @@
   bind(icons);
   if (pre(EXPERIENCE))   return;
   GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
-  if (mc.playerController.func_78763_f()) {
+  if (mc.playerController.gameIsSurvivalOrAdventure()) {
     mc.mcProfiler.startSection("expBar");
     int cap=this.mc.thePlayer.xpBarCap();
     int left=width / 2 - 91;
@@ -16,7 +16,7 @@
       }
     }
     this.mc.mcProfiler.endSection();
-    if (mc.playerController.func_78763_f() && mc.thePlayer.experienceLevel > 0) {
+    if (mc.playerController.gameIsSurvivalOrAdventure() && mc.thePlayer.experienceLevel > 0) {
       mc.mcProfiler.startSection("expLevel");
       boolean flag1=false;
       int color=flag1 ? 16777215 : 8453920;

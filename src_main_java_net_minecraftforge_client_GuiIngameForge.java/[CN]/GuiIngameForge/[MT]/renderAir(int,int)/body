@@ -4,7 +4,7 @@
   GL11.glEnable(GL11.GL_BLEND);
   int left=width / 2 + 91;
   int top=height - right_height;
-  if (mc.thePlayer.isInsideOfMaterial(Material.field_151586_h)) {
+  if (mc.thePlayer.isInsideOfMaterial(Material.water)) {
     int air=mc.thePlayer.getAir();
     int full=MathHelper.ceiling_double_int((double)(air - 2) * 10.0D / 300.0D);
     int partial=MathHelper.ceiling_double_int((double)air * 10.0D / 300.0D) - full;

@@ -16,7 +16,7 @@
     renderVignette(mc.thePlayer.getBrightness(partialTicks),width,height);
   }
  else {
-    OpenGlHelper.func_148821_a(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
+    OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
   }
   if (renderHelmet)   renderHelmet(res,partialTicks,hasScreen,mouseX,mouseY);
   if (renderPortal && !mc.thePlayer.isPotionActive(Potion.confusion)) {
@@ -52,7 +52,7 @@
     this.func_96136_a(objective,height,width,fontrenderer);
   }
   GL11.glEnable(GL11.GL_BLEND);
-  OpenGlHelper.func_148821_a(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
+  OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
   GL11.glDisable(GL11.GL_ALPHA_TEST);
   renderChat(width,height);
   renderPlayerList(width,height);

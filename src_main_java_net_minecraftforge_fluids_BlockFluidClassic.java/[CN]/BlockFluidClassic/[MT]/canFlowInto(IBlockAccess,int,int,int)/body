@@ -1,14 +1,14 @@
 {
-  if (world.func_147439_a(x,y,z).isAir(world,x,y,z))   return true;
-  Block block=world.func_147439_a(x,y,z);
+  if (world.getBlock(x,y,z).isAir(world,x,y,z))   return true;
+  Block block=world.getBlock(x,y,z);
   if (block == this) {
     return true;
   }
   if (displacements.containsKey(block)) {
     return displacements.get(block);
   }
-  Material material=block.func_149688_o();
-  if (material.blocksMovement() || material == Material.field_151586_h || material == Material.field_151587_i || material == Material.field_151567_E) {
+  Material material=block.getMaterial();
+  if (material.blocksMovement() || material == Material.water || material == Material.lava || material == Material.portal) {
     return false;
   }
   int density=getDensity(world,x,y,z);

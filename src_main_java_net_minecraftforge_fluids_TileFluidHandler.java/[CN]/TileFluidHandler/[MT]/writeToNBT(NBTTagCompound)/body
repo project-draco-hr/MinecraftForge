@@ -1,4 +1,4 @@
 {
-  super.func_145841_b(tag);
+  super.writeToNBT(tag);
   tank.writeToNBT(tag);
 }

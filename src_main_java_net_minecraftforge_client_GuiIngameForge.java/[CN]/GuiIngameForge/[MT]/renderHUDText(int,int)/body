@@ -1,15 +1,15 @@
 {
   mc.mcProfiler.startSection("forgeHudText");
-  OpenGlHelper.func_148821_a(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
+  OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
   ArrayList<String> left=new ArrayList<String>();
   ArrayList<String> right=new ArrayList<String>();
   if (mc.isDemo()) {
     long time=mc.theWorld.getTotalWorldTime();
     if (time >= 120500L) {
-      right.add(I18n.getStringParams("demo.demoExpired"));
+      right.add(I18n.format("demo.demoExpired"));
     }
  else {
-      right.add(I18n.getStringParams("demo.remainingTime",StringUtils.ticksToElapsedTime((int)(120500L - time))));
+      right.add(I18n.format("demo.remainingTime",StringUtils.ticksToElapsedTime((int)(120500L - time))));
     }
   }
   if (this.mc.gameSettings.showDebugInfo) {
@@ -44,8 +44,8 @@
       left.add(null);
     }
     left.add(String.format("ws: %.3f, fs: %.3f, g: %b, fl: %d",mc.thePlayer.capabilities.getWalkSpeed(),mc.thePlayer.capabilities.getFlySpeed(),mc.thePlayer.onGround,mc.theWorld.getHeightValue(x,z)));
-    if (mc.entityRenderer != null && mc.entityRenderer.func_147702_a()) {
-      left.add(String.format("shader: %s",mc.entityRenderer.func_147706_e().func_148022_b()));
+    if (mc.entityRenderer != null && mc.entityRenderer.isShaderActive()) {
+      left.add(String.format("shader: %s",mc.entityRenderer.getShaderGroup().getShaderGroupName()));
     }
     right.add(null);
     for (    String brand : FMLCommonHandler.instance().getBrandings(false)) {

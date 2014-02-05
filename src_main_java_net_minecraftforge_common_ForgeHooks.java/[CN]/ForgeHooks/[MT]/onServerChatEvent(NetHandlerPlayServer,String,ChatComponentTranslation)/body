@@ -1,5 +1,5 @@
 {
-  ServerChatEvent event=new ServerChatEvent(net.field_147369_b,raw,comp);
+  ServerChatEvent event=new ServerChatEvent(net.playerEntity,raw,comp);
   if (MinecraftForge.EVENT_BUS.post(event)) {
     return null;
   }

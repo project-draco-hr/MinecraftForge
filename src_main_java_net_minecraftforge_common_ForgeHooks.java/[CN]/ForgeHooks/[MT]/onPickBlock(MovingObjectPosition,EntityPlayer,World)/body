@@ -5,7 +5,7 @@
     int x=target.blockX;
     int y=target.blockY;
     int z=target.blockZ;
-    Block block=world.func_147439_a(x,y,z);
+    Block block=world.getBlock(x,y,z);
     if (block.isAir(world,x,y,z)) {
       return false;
     }

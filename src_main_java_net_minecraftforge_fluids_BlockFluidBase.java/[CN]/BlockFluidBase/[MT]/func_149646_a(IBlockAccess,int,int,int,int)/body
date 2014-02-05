@@ -1,7 +1,0 @@
-{
-  Block block=world.func_147439_a(x,y,z);
-  if (block != this) {
-    return !block.func_149662_c();
-  }
-  return block.func_149688_o() == this.func_149688_o() ? false : super.func_149646_a(world,x,y,z,side);
-}

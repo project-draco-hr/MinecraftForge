@@ -5,7 +5,7 @@
       if (Tessellator.class.getPackage().getName().startsWith("net.minecraft.")) {
         Minecraft mc=FMLClientHandler.instance().getClient();
         if (mc.ingameGUI != null) {
-          mc.ingameGUI.func_146158_b().func_146227_a(new ChatComponentTranslation("forge.texture.preload.warning",texture));
+          mc.ingameGUI.getChatGUI().printChatMessage(new ChatComponentTranslation("forge.texture.preload.warning",texture));
         }
       }
     }

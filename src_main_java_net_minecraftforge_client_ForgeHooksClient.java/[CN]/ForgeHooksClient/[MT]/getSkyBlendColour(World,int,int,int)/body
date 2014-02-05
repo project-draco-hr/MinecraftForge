@@ -6,8 +6,8 @@
   GameSettings settings=Minecraft.getMinecraft().gameSettings;
   int[] ranges=ForgeModContainer.blendRanges;
   int distance=0;
-  if (settings.fancyGraphics && settings.field_151451_c >= 0 && settings.field_151451_c < ranges.length) {
-    distance=ranges[settings.field_151451_c];
+  if (settings.fancyGraphics && settings.renderDistanceChunks >= 0 && settings.renderDistanceChunks < ranges.length) {
+    distance=ranges[settings.renderDistanceChunks];
   }
   int r=0;
   int g=0;
@@ -16,7 +16,7 @@
   for (int x=-distance; x <= distance; ++x) {
     for (int z=-distance; z <= distance; ++z) {
       BiomeGenBase biome=world.getBiomeGenForCoords(playerX + x,playerZ + z);
-      int colour=biome.getSkyColorByTemp(biome.func_150564_a(playerX + x,playerY,playerZ + z));
+      int colour=biome.getSkyColorByTemp(biome.getFloatTemperature(playerX + x,playerY,playerZ + z));
       r+=(colour & 0xFF0000) >> 16;
       g+=(colour & 0x00FF00) >> 8;
       b+=colour & 0x0000FF;

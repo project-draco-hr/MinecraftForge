@@ -1,6 +1,6 @@
 {
   int metadata=world.getBlockMetadata(x,y,z);
-  float hardness=block.func_149712_f(world,x,y,z);
+  float hardness=block.getBlockHardness(world,x,y,z);
   if (hardness < 0.0F) {
     return 0.0F;
   }

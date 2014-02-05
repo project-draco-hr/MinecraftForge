@@ -1,11 +1,11 @@
 {
-  if (world.func_147439_a(x,y,z) == block) {
-    if (world.func_147439_a(x,y - block.densityDir,z).func_149688_o().isLiquid()) {
+  if (world.getBlock(x,y,z) == block) {
+    if (world.getBlock(x,y - block.densityDir,z).getMaterial().isLiquid()) {
       return 1;
     }
     if (world.getBlockMetadata(x,y,z) == block.getMaxRenderHeightMeta()) {
       return 0.875F;
     }
   }
-  return !world.func_147439_a(x,y,z).func_149688_o().isSolid() && world.func_147439_a(x,y - block.densityDir,z) == block ? 1 : block.getQuantaPercentage(world,x,y,z) * 0.875F;
+  return !world.getBlock(x,y,z).getMaterial().isSolid() && world.getBlock(x,y - block.densityDir,z) == block ? 1 : block.getQuantaPercentage(world,x,y,z) * 0.875F;
 }
