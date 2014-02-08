@@ -1,1 +1,2 @@
 ArrayListMultimap<String,String> missing
+boolean isLocalWorld

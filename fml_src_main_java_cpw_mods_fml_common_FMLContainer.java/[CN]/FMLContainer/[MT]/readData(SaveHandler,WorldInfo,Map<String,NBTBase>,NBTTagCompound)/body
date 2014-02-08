@@ -48,9 +48,9 @@ catch (        ClassCastException ccs) {
         dataList.put(itemLabel,itemId);
       }
     }
-    boolean successfullyInjected=GameData.injectWorldIDMap(dataList,true);
-    if (!successfullyInjected) {
-      throw new RuntimeException("Failed to load the world - there are fatal block and item id issues");
+    List<String> failedElements=GameData.injectWorldIDMap(dataList,true,true);
+    if (!failedElements.isEmpty()) {
+      throw new GameRegistryException("Failed to load the world - there are fatal block and item id issues",failedElements);
     }
   }
  else   if (tag.func_74764_b("ItemData")) {
@@ -60,9 +60,9 @@ catch (        ClassCastException ccs) {
       NBTTagCompound dataTag=list.func_150305_b(i);
       dataList.put(dataTag.func_74779_i("K"),dataTag.func_74762_e("V"));
     }
-    boolean successfullyInjected=GameData.injectWorldIDMap(dataList,true);
-    if (!successfullyInjected) {
-      throw new RuntimeException("Failed to load the world - there are fatal block and item id issues");
+    List<String> failedElements=GameData.injectWorldIDMap(dataList,true,true);
+    if (!failedElements.isEmpty()) {
+      throw new GameRegistryException("Failed to load the world - there are fatal block and item id issues",failedElements);
     }
   }
 }

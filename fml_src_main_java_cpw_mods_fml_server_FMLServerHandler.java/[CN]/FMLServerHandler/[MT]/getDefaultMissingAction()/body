@@ -1,0 +1,3 @@
+{
+  return FMLMissingMappingsEvent.Action.valueOf(System.getProperty("fml.missingBlockAction","FAIL"));
+}

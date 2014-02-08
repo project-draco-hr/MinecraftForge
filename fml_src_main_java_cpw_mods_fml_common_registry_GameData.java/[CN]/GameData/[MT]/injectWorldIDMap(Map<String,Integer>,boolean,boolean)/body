@@ -33,11 +33,11 @@
       itemRegistry.reassignMapping(itemName,newId);
     }
   }
-  boolean successfullyLoaded=Loader.instance().fireMissingMappingEvent(missing);
-  if (!successfullyLoaded) {
+  List<String> missedMappings=Loader.instance().fireMissingMappingEvent(missing,isLocalWorld);
+  if (!missedMappings.isEmpty()) {
     blockRegistry.revertSwap();
     itemRegistry.revertSwap();
-    return false;
+    return missedMappings;
   }
   if (injectFrozenData) {
     FMLLog.info("Injecting new block and item data into this server instance");
@@ -75,5 +75,5 @@
   blockRegistry.dump();
   itemRegistry.dump();
   Loader.instance().fireRemapEvent(remaps);
-  return true;
+  return ImmutableList.of();
 }

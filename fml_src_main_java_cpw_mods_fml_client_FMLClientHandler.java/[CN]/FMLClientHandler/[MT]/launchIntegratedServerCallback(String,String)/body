@@ -1,3 +1,8 @@
 {
-  client.func_71371_a(dirName,saveName,(WorldSettings)null);
+  try {
+    client.func_71371_a(dirName,saveName,(WorldSettings)null);
+  }
+ catch (  GameRegistryException gre) {
+    showGuiScreen(new GuiModItemsMissing(gre.getItems(),gre.getMessage()));
+  }
 }
