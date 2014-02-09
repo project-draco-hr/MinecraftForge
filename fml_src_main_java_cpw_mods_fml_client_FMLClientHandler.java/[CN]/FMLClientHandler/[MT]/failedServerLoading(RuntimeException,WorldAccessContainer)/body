@@ -1,0 +1,24 @@
+{
+  if (wac instanceof FMLContainer && ex instanceof GameRegistryException) {
+    try {
+      gre=(GameRegistryException)ex;
+      Executors.newSingleThreadExecutor().submit(new Callable<Void>(){
+        @Override public Void call() throws Exception {
+          System.err.println("POKE");
+          clientWaiter.interrupt();
+          Thread.sleep(50);
+          System.err.println("POKE");
+          clientWaiter.interrupt();
+          Thread.sleep(50);
+          System.err.println("POKE");
+          clientWaiter.interrupt();
+          return null;
+        }
+      }
+);
+    }
+ catch (    Throwable t) {
+      FMLLog.log(Level.ERROR,t,"stuff");
+    }
+  }
+}

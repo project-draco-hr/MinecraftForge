@@ -1,0 +1,3 @@
+{
+  return report.func_71505_b() instanceof GameRegistryException;
+}
