@@ -4,7 +4,7 @@
     ;
     try {
       NBTTagCompound forcedChunkData=CompressedStreamTools.read(chunkLoaderData);
-      return forcedChunkData.getTagList("TicketList",9).tagCount() > 0;
+      return forcedChunkData.getTagList("TicketList",Constants.NBT.TAG_COMPOUND).tagCount() > 0;
     }
  catch (    IOException e) {
     }
