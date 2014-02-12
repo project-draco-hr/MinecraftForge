@@ -1,0 +1,9 @@
+{
+  Iterator<Entry<GameProfile,FakePlayer>> itr=fakePlayers.entrySet().iterator();
+  while (itr.hasNext()) {
+    Entry<GameProfile,FakePlayer> entry=itr.next();
+    if (entry.getValue().worldObj == world) {
+      itr.remove();
+    }
+  }
+}
