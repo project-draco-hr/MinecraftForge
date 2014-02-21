@@ -1,0 +1,3 @@
+RenderGlobal context
+float partialTicks
+int renderPass
