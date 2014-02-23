@@ -33,4 +33,5 @@ catch (  LoaderException le) {
     }
   }
   loading=false;
+  client.field_71474_y.func_74300_a();
 }
