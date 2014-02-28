@@ -56,7 +56,7 @@
   replacements.put(new ItemStack(Items.diamond),"gemDiamond");
   replacements.put(new ItemStack(Items.emerald),"gemEmerald");
   replacements.put(new ItemStack(Items.redstone),"dustRedstone");
-  replacements.put(new ItemStack(Items.glowstone),"dustGlowstone");
+  replacements.put(new ItemStack(Items.glowstone_dust),"dustGlowstone");
   replacements.put(new ItemStack(Blocks.glowstone),"glowstone");
   String[] dyes={"dyeBlack","dyeRed","dyeGreen","dyeBrown","dyeBlue","dyePurple","dyeCyan","dyeLightGray","dyeGray","dyePink","dyeLime","dyeYellow","dyeLightBlue","dyeMagenta","dyeOrange","dyeWhite"};
   for (int i=0; i < 16; i++) {
