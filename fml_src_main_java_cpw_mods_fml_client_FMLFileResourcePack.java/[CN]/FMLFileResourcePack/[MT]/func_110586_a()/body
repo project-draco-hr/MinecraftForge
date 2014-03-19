@@ -1,3 +1,0 @@
-{
-  return ImageIO.read(func_110591_a(container.getMetadata().logoFile));
-}

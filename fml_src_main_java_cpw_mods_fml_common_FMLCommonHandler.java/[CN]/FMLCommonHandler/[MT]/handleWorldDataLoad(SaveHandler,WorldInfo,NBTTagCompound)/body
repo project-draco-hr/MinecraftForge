@@ -13,7 +13,7 @@
       WorldAccessContainer wac=((InjectedModContainer)mc).getWrappedWorldAccessContainer();
       if (wac != null) {
         try {
-          wac.readData(handler,worldInfo,additionalProperties,tagCompound.func_74775_l(mc.getModId()));
+          wac.readData(handler,worldInfo,additionalProperties,tagCompound.getCompoundTag(mc.getModId()));
         }
  catch (        RuntimeException ex) {
           sidedDelegate.failedServerLoading(ex,wac);

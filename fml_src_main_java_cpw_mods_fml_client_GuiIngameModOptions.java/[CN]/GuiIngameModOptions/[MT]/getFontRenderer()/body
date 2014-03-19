@@ -1,3 +1,3 @@
 {
-  return field_146289_q;
+  return fontRendererObj;
 }

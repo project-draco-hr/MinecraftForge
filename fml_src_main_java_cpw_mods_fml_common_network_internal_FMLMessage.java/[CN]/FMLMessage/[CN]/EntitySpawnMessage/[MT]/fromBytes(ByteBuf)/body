@@ -12,7 +12,7 @@
   scaledPitch=dat.readByte() * 360F / 256F;
   scaledHeadYaw=dat.readByte() * 360F / 256F;
   try {
-    dataWatcherList=DataWatcher.func_151508_b(new PacketBuffer(dat));
+    dataWatcherList=DataWatcher.readWatchedListFromPacketBuffer(new PacketBuffer(dat));
   }
  catch (  IOException e) {
   }

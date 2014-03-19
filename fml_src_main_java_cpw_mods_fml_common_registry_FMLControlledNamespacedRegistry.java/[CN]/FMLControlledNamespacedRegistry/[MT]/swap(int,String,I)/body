@@ -9,7 +9,7 @@
   if (idToUse >= maxId) {
     throw new RuntimeException(String.format("Invalid id %s - not accepted",id));
   }
-  namedIds.forcePut(func_148755_c(name),idToUse);
+  namedIds.forcePut(ensureNamespaced(name),idToUse);
   reassignMapping(name,idToUse);
   useSlot(idToUse);
   availabilityMap=temporary;

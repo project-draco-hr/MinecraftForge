@@ -1,0 +1,4 @@
+{
+  I object=superType.cast(super.getObject(name));
+  return object == null ? this.optionalDefaultObject : object;
+}

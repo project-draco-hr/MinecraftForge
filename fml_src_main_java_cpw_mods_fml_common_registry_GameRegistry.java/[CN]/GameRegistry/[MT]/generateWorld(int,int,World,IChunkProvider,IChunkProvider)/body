@@ -2,7 +2,7 @@
   if (sortedGeneratorList == null) {
     computeSortedGeneratorList();
   }
-  long worldSeed=world.func_72905_C();
+  long worldSeed=world.getSeed();
   Random fmlRandom=new Random(worldSeed);
   long xSeed=fmlRandom.nextLong() >> 2 + 1L;
   long zSeed=fmlRandom.nextLong() >> 2 + 1L;

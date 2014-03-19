@@ -4,10 +4,10 @@
   try {
     entityClassRegistrations.put(entityClass,er);
     entityNames.put(entityName,mc);
-    if (!EntityList.field_75626_c.containsKey(entityClass)) {
+    if (!EntityList.classToStringMapping.containsKey(entityClass)) {
       String entityModName=String.format("%s.%s",mc.getModId(),entityName);
-      EntityList.field_75626_c.put(entityClass,entityModName);
-      EntityList.field_75625_b.put(entityModName,entityClass);
+      EntityList.classToStringMapping.put(entityClass,entityModName);
+      EntityList.stringToClassMapping.put(entityModName,entityClass);
       FMLLog.finer("Automatically registered mod %s entity %s as %s",mc.getModId(),entityName,entityModName);
     }
  else {

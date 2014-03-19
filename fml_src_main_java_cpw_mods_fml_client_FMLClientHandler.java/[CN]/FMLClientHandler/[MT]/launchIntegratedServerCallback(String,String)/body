@@ -4,7 +4,7 @@
       Thread.interrupted();
       gameReleaseLatch=new CountDownLatch(1);
       clientWaiter=Thread.currentThread();
-      client.func_71371_a(dirName,saveName,(WorldSettings)null);
+      client.launchIntegratedServer(dirName,saveName,(WorldSettings)null);
       System.out.printf("POKEE %b\n",Thread.currentThread().isInterrupted());
       gameReleaseLatch.await();
     }
@@ -14,7 +14,7 @@
     }
   }
  catch (  GameRegistryException gre) {
-    client.func_71403_a(null);
+    client.loadWorld(null);
     showGuiScreen(new GuiModItemsMissing(gre.getItems(),gre.getMessage()));
   }
   Thread.interrupted();
