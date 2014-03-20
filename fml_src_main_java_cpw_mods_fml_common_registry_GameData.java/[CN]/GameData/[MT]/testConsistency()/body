@@ -1,0 +1,28 @@
+{
+  for (int i=availabilityMap.nextSetBit(0); i >= 0; i=availabilityMap.nextSetBit(i + 1)) {
+    if (iBlockRegistry.getRaw(i) == null && iItemRegistry.getRaw(i) == null) {
+      throw new IllegalStateException(String.format("availabilityMap references empty entries for id %d.",i));
+    }
+  }
+  for (Iterator<Object> it=iBlockRegistry.iterator(); it.hasNext(); ) {
+    Block block=(Block)it.next();
+    int id=iBlockRegistry.getId(block);
+    if (!availabilityMap.get(id)) {
+      throw new IllegalStateException(String.format("Registry entry for block %s, id %d, marked as empty.",block,id));
+    }
+  }
+  for (Iterator<Object> it=iItemRegistry.iterator(); it.hasNext(); ) {
+    Item item=(Item)it.next();
+    int id=iItemRegistry.getId(item);
+    if (!availabilityMap.get(id)) {
+      throw new IllegalStateException(String.format("Registry entry for item %s, id %d, marked as empty.",item,id));
+    }
+    if (item instanceof ItemBlock) {
+      Block block=((ItemBlock)item).field_150939_a;
+      if (iBlockRegistry.getId(block) != id) {
+        throw new IllegalStateException(String.format("Registry entry for ItemBlock %s, id %d, is missing or uses the non-matching id %d.",item,id,iBlockRegistry.getId(block)));
+      }
+    }
+  }
+  FMLLog.fine("Registry consistency check successful");
+}

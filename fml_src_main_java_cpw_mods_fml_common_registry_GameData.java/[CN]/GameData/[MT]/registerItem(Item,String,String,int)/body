@@ -1,0 +1,28 @@
+{
+  if (modId != null) {
+    ModContainer mc=Loader.instance().activeModContainer();
+    customOwners.put(new UniqueIdentifier(modId,name),mc);
+  }
+  if (item instanceof ItemBlock) {
+    idHint=iBlockRegistry.getId(((ItemBlock)item).field_150939_a);
+    if (idHint == -1) {
+      throw new RuntimeException("Cannot register an itemblock before its block");
+    }
+    if (iItemRegistry.get(idHint) != null) {
+      throw new IllegalStateException(String.format("The Item Registry slot %d is already used by %s",idHint,iItemRegistry.get(idHint)));
+    }
+    if (!freeSlot(idHint)) {
+      throw new IllegalStateException(String.format("The Registry slot %d is supposed to be blocked by the ItemBlock's Block's blockId at this point.",idHint));
+    }
+  }
+  int itemId=iItemRegistry.add(idHint,name,item,availabilityMap);
+  if (item instanceof ItemBlock) {
+    if (itemId != idHint) {
+      throw new IllegalStateException("ItemBlock insertion failed.");
+    }
+  }
+  if (useSlot(itemId)) {
+    throw new IllegalStateException(String.format("Registry slot %d is supposed to be empty when adding a non-ItemBlock with the same id.",itemId));
+  }
+  return itemId;
+}

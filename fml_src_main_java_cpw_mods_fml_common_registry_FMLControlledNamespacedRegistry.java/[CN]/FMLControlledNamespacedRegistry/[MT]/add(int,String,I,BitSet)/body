@@ -1,0 +1,20 @@
+{
+  if (name.equals(optionalDefaultName)) {
+    this.optionalDefaultObject=thing;
+  }
+  int idToUse=id;
+  if (id == 0 || availabilityMap.get(id)) {
+    idToUse=availabilityMap.nextClearBit(minId);
+  }
+  if (idToUse >= maxId) {
+    throw new RuntimeException(String.format("Invalid id %s - not accepted",id));
+  }
+  ModContainer mc=Loader.instance().activeModContainer();
+  if (mc != null) {
+    String prefix=mc.getModId();
+    name=prefix + ":" + name;
+  }
+  super.func_148756_a(idToUse,name,thing);
+  FMLLog.finer("Add : %s %d %s",name,idToUse,thing);
+  return idToUse;
+}

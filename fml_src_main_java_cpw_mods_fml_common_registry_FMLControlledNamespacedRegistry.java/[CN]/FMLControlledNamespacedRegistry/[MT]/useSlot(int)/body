@@ -1,4 +1,0 @@
-{
-  if (id >= maxId)   return;
-  availabilityMap.set(id);
-}

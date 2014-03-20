@@ -1,6 +1,0 @@
-{
-  Object item=nameMap().get(name);
-  idMap().putNew(newId,item);
-  transactionalNamedIds.put(name,newId);
-  transactionalAvailabilityMap.set(newId);
-}

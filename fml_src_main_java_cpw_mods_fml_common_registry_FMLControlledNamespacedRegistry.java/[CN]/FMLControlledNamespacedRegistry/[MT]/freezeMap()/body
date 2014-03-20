@@ -1,6 +1,0 @@
-{
-  if (frozenIds == null) {
-    frozenIds=ImmutableBiMap.copyOf(namedIds);
-    idMap().freezeMap();
-  }
-}

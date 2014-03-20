@@ -1,0 +1,13 @@
+{
+  if (this.superType != registry.superType)   throw new IllegalArgumentException("incompatible registry");
+  this.discriminator=registry.discriminator;
+  this.optionalDefaultName=registry.optionalDefaultName;
+  this.maxId=registry.maxId;
+  this.minId=registry.minId;
+  field_148759_a=new ObjectIntIdentityMap();
+  field_82596_a.clear();
+  for (Iterator<Object> it=registry.iterator(); it.hasNext(); ) {
+    I obj=(I)it.next();
+    super.func_148756_a(registry.getId(obj),registry.func_148750_c(obj),obj);
+  }
+}

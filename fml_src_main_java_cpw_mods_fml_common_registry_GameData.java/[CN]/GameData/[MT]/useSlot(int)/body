@@ -1,0 +1,5 @@
+{
+  boolean oldValue=availabilityMap.get(id);
+  availabilityMap.set(id);
+  return oldValue;
+}

@@ -1,0 +1,8 @@
+{
+  Map<String,Integer> ret=new HashMap<String,Integer>();
+  for (Iterator<Object> it=iterator(); it.hasNext(); ) {
+    I thing=(I)it.next();
+    if (!registry.field_148758_b.containsKey(thing))     ret.put(func_148750_c(thing),getId(thing));
+  }
+  return ret;
+}

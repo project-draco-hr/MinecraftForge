@@ -1,4 +1,0 @@
-{
-  frozenMap=new TIntIntHashMap(field_148749_a);
-  frozenIndex=new ArrayList<Integer>(field_148748_b);
-}

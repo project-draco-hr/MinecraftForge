@@ -1,7 +1,11 @@
 {
-  for (  Entry<String,Integer> entry : namedIds.entrySet()) {
-    String name=entry.getKey();
-    Object thing=idMap().get(entry.getValue().intValue());
-    FMLLog.finer("Registry : %s %d %s",name,entry.getValue(),thing);
+  List<Integer> ids=new ArrayList<Integer>();
+  for (Iterator<Object> it=iterator(); it.hasNext(); ) {
+    ids.add(getId((I)it.next()));
+  }
+  Collections.sort(ids);
+  for (  int id : ids) {
+    I thing=getRaw(id);
+    FMLLog.finer("Registry : %s %d %s",func_148750_c(thing),id,thing);
   }
 }

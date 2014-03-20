@@ -1,0 +1,4 @@
+Block block
+String name
+String modId
+int idHint

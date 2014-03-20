@@ -1,0 +1,3 @@
+{
+  return superType.cast(super.func_148754_a(id));
+}

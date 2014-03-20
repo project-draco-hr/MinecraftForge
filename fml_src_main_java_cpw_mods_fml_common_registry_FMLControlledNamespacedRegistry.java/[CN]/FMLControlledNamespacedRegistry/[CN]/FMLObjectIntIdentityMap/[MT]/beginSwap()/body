@@ -1,6 +1,0 @@
-{
-  oldMap=field_148749_a;
-  newMap=new TIntIntHashMap(256,0.5F,-1,-1);
-  oldIndex=(ArrayList<Integer>)field_148748_b;
-  newIndex=new ArrayList<Integer>(oldIndex.size());
-}

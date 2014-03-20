@@ -1,5 +1,6 @@
 {
-  for (  Entry<String,Integer> id : namedIds.entrySet()) {
-    idMapping.put(discriminator + id.getKey(),id.getValue());
+  for (Iterator<Object> it=iterator(); it.hasNext(); ) {
+    I thing=(I)it.next();
+    idMapping.put(discriminator + func_148750_c(thing),getId(thing));
   }
 }

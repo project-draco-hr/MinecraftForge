@@ -1,3 +1,0 @@
-{
-  return ((FMLObjectIntIdentityMap)field_148759_a).usedIds();
-}

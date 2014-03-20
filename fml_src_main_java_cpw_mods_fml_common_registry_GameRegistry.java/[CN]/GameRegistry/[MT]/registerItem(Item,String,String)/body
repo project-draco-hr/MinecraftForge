@@ -1,4 +1,4 @@
 {
-  GameData.registerItem(item,name,modId);
+  GameData.getMain().registerItem(item,name,modId);
   return item;
 }
