@@ -1,0 +1,39 @@
+{
+  if (missing.isEmpty()) {
+    return ImmutableList.of();
+  }
+  FMLLog.fine("There are %d mappings missing - attempting a mod remap",missing.size());
+  ArrayListMultimap<String,MissingMapping> missingMappings=ArrayListMultimap.create();
+  for (  Map.Entry<String,Integer> mapping : missing.entrySet()) {
+    String itemName=mapping.getKey();
+    int id=mapping.getValue();
+    MissingMapping m=new MissingMapping(itemName,id);
+    missingMappings.put(itemName.substring(0,itemName.indexOf(':')),m);
+  }
+  FMLMissingMappingsEvent missingEvent=new FMLMissingMappingsEvent(missingMappings);
+  modController.propogateStateMessage(missingEvent);
+  if (isLocalWorld) {
+    boolean didWarn=false;
+    for (    MissingMapping mapping : missingMappings.values()) {
+      if (mapping.getAction() == FMLMissingMappingsEvent.Action.DEFAULT) {
+        if (!didWarn) {
+          FMLLog.severe("There are unidentified mappings in this world - we are going to attempt to process anyway");
+          didWarn=true;
+        }
+        FMLLog.severe("Unidentified %s: %s, id %d",mapping.type == Type.BLOCK ? "block" : "item",mapping.name,mapping.id);
+      }
+    }
+  }
+ else {
+    List<String> missedMapping=new ArrayList<String>();
+    for (    MissingMapping mapping : missingMappings.values()) {
+      if (mapping.getAction() == FMLMissingMappingsEvent.Action.DEFAULT) {
+        missedMapping.add(mapping.name);
+      }
+    }
+    if (!missedMapping.isEmpty()) {
+      return ImmutableList.copyOf(missedMapping);
+    }
+  }
+  return GameData.processIdRematches(missingMappings.values(),isLocalWorld,gameData);
+}

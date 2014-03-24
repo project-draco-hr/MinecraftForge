@@ -1,4 +1,4 @@
 {
+  if (target == Action.DEFAULT)   throw new IllegalArgumentException();
   this.action=target;
-  remaps.add(this);
 }

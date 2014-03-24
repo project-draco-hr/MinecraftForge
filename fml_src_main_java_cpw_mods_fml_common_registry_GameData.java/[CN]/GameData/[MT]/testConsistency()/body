@@ -1,6 +1,6 @@
 {
   for (int i=availabilityMap.nextSetBit(0); i >= 0; i=availabilityMap.nextSetBit(i + 1)) {
-    if (iBlockRegistry.getRaw(i) == null && iItemRegistry.getRaw(i) == null) {
+    if (iBlockRegistry.getRaw(i) == null && iItemRegistry.getRaw(i) == null && !blockedIds.contains(i)) {
       throw new IllegalStateException(String.format("availabilityMap references empty entries for id %d.",i));
     }
   }
@@ -10,12 +10,18 @@
     if (!availabilityMap.get(id)) {
       throw new IllegalStateException(String.format("Registry entry for block %s, id %d, marked as empty.",block,id));
     }
+    if (blockedIds.contains(id)) {
+      throw new IllegalStateException(String.format("Registry entry for block %s, id %d, marked as dangling.",block,id));
+    }
   }
   for (Iterator<Object> it=iItemRegistry.iterator(); it.hasNext(); ) {
     Item item=(Item)it.next();
     int id=iItemRegistry.getId(item);
     if (!availabilityMap.get(id)) {
       throw new IllegalStateException(String.format("Registry entry for item %s, id %d, marked as empty.",item,id));
+    }
+    if (blockedIds.contains(id)) {
+      throw new IllegalStateException(String.format("Registry entry for item %s, id %d, marked as dangling.",item,id));
     }
     if (item instanceof ItemBlock) {
       Block block=((ItemBlock)item).field_150939_a;

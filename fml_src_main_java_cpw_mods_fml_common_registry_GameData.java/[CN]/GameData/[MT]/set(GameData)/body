@@ -3,4 +3,5 @@
   iItemRegistry.set(data.iItemRegistry);
   availabilityMap.clear();
   availabilityMap.or(data.availabilityMap);
+  blockedIds.addAll(data.blockedIds);
 }

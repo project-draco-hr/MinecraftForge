@@ -18,5 +18,6 @@
     dataList.func_74742_a(tag);
   }
   fmlData.func_74782_a("ItemData",dataList);
+  fmlData.func_74783_a("BlockedIds",GameData.getBlockedIds());
   return fmlData;
 }

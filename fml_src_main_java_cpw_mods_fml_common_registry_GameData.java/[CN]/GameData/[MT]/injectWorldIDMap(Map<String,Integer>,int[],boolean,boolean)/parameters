@@ -1,0 +1,4 @@
+Map<String,Integer> dataList
+int[] blockedIds
+boolean injectFrozenData
+boolean isLocalWorld
