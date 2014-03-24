@@ -4,6 +4,7 @@
   this.optionalDefaultName=registry.optionalDefaultName;
   this.maxId=registry.maxId;
   this.minId=registry.minId;
+  this.aliases.putAll(registry.aliases);
   field_148759_a=new ObjectIntIdentityMap();
   field_82596_a.clear();
   for (Iterator<Object> it=registry.iterator(); it.hasNext(); ) {

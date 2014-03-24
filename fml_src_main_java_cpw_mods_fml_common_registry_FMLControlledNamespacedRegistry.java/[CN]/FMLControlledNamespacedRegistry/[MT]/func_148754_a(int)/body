@@ -1,4 +1,4 @@
 {
-  I object=superType.cast(super.func_148754_a(id));
+  I object=getRaw(id);
   return object == null ? this.optionalDefaultObject : object;
 }

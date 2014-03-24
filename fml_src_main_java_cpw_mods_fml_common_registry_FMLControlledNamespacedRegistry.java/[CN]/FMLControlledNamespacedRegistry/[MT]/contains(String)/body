@@ -1,3 +1,3 @@
 {
-  return field_82596_a.containsKey(itemName);
+  return func_148741_d(itemName);
 }

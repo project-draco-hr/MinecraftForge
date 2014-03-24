@@ -1,3 +1,3 @@
 {
-  this.action=Action.IGNORE;
+  action=Action.IGNORE;
 }

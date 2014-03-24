@@ -1,3 +1,8 @@
 {
-  return superType.cast(super.func_82594_a(name));
+  I ret=superType.cast(super.func_82594_a(name));
+  if (ret == null) {
+    name=aliases.get(name);
+    if (name != null)     return getRaw(name);
+  }
+  return ret;
 }

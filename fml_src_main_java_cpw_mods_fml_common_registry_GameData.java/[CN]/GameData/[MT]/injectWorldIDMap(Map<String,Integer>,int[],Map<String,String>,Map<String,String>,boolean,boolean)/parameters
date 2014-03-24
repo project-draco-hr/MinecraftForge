@@ -1,4 +1,6 @@
 Map<String,Integer> dataList
 int[] blockedIds
+Map<String,String> blockAliases
+Map<String,String> itemAliases
 boolean injectFrozenData
 boolean isLocalWorld

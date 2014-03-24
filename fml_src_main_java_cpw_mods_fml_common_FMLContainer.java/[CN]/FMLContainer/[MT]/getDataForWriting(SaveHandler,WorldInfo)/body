@@ -18,6 +18,22 @@
     dataList.func_74742_a(tag);
   }
   fmlData.func_74782_a("ItemData",dataList);
-  fmlData.func_74783_a("BlockedIds",GameData.getBlockedIds());
+  fmlData.func_74783_a("BlockedItemIds",GameData.getBlockedIds());
+  NBTTagList blockAliasList=new NBTTagList();
+  for (  Entry<String,String> entry : GameData.getBlockRegistry().getAliases().entrySet()) {
+    NBTTagCompound tag=new NBTTagCompound();
+    tag.func_74778_a("K",entry.getKey());
+    tag.func_74778_a("V",entry.getValue());
+    blockAliasList.func_74742_a(tag);
+  }
+  fmlData.func_74782_a("BlockAliases",blockAliasList);
+  NBTTagList itemAliasList=new NBTTagList();
+  for (  Entry<String,String> entry : GameData.getItemRegistry().getAliases().entrySet()) {
+    NBTTagCompound tag=new NBTTagCompound();
+    tag.func_74778_a("K",entry.getKey());
+    tag.func_74778_a("V",entry.getValue());
+    itemAliasList.func_74742_a(tag);
+  }
+  fmlData.func_74782_a("ItemAliases",itemAliasList);
   return fmlData;
 }

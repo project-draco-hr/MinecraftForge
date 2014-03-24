@@ -1,3 +1,0 @@
-{
-  return (BiMap<String,I>)field_82596_a;
-}

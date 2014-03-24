@@ -9,6 +9,12 @@
   for (  int id : blockedIds) {
     newData.block(id);
   }
+  for (  Map.Entry<String,String> entry : blockAliases.entrySet()) {
+    newData.iBlockRegistry.addAlias(entry.getKey(),entry.getValue());
+  }
+  for (  Map.Entry<String,String> entry : itemAliases.entrySet()) {
+    newData.iItemRegistry.addAlias(entry.getKey(),entry.getValue());
+  }
   for (int pass=0; pass < 2; pass++) {
     boolean isBlock=(pass == 0);
     for (    Entry<String,Integer> entry : dataList.entrySet()) {
@@ -19,7 +25,7 @@
       int currId=isBlock ? getMain().iBlockRegistry.getId(itemName) : getMain().iItemRegistry.getId(itemName);
       if (currId == -1) {
         FMLLog.info("Found a missing id from the world %s",itemName);
-        missingMappings.put(itemName,newId);
+        missingMappings.put(entry.getKey(),newId);
         continue;
       }
  else       if (currId != newId) {
@@ -41,7 +47,7 @@
       }
     }
   }
-  List<String> missedMappings=Loader.instance().fireMissingMappingEvent(missingMappings,isLocalWorld,newData);
+  List<String> missedMappings=Loader.instance().fireMissingMappingEvent(missingMappings,isLocalWorld,newData,remaps);
   if (!missedMappings.isEmpty())   return missedMappings;
   if (injectFrozenData) {
     FMLLog.info("Injecting new block and item data into this server instance");

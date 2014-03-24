@@ -1,0 +1,7 @@
+{
+  if (type != GameRegistry.Type.ITEM)   throw new IllegalArgumentException("Can't remap a block to an item.");
+  if (target == null)   throw new NullPointerException("remap target is null");
+  if (GameData.getItemRegistry().getId(target) < 0)   throw new IllegalArgumentException(String.format("The specified item %s hasn't been registered at startup.",target));
+  action=Action.REMAP;
+  this.target=target;
+}
