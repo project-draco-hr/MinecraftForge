@@ -1,0 +1,19 @@
+{
+  if (p_146284_1_.id == 1) {
+    ObfuscationReflectionHelper.setPrivateValue(GuiSelectWorld.class,(GuiSelectWorld)parentScreen,false,"field_" + "146634_i");
+    FMLClientHandler.instance().showGuiScreen(parentScreen);
+  }
+ else {
+    FMLLog.info("Capturing current state of world %s into file %s",saveName,zip.getAbsolutePath());
+    try {
+      ZipperUtil.zip(new File(FMLClientHandler.instance().getSavesDir(),dirName),zip);
+    }
+ catch (    IOException e) {
+      FMLLog.log(Level.WARN,e,"There was a problem saving the backup %s. Please fix and try again",zip.getName());
+      FMLClientHandler.instance().showGuiScreen(new GuiBackupFailed(parentScreen,zip));
+      return;
+    }
+    FMLClientHandler.instance().showGuiScreen(null);
+    FMLClientHandler.instance().launchIntegratedServerCallback(dirName,saveName);
+  }
+}

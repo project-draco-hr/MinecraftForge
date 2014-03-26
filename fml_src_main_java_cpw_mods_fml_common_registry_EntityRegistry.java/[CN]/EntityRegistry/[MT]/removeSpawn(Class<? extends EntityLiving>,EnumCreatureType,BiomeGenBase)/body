@@ -1,9 +1,9 @@
 {
   for (  BiomeGenBase biome : biomes) {
-    @SuppressWarnings("unchecked") Iterator<SpawnListEntry> spawns=biome.func_76747_a(typeOfCreature).iterator();
+    @SuppressWarnings("unchecked") Iterator<SpawnListEntry> spawns=biome.getSpawnableList(typeOfCreature).iterator();
     while (spawns.hasNext()) {
       SpawnListEntry entry=spawns.next();
-      if (entry.field_76300_b == entityClass) {
+      if (entry.entityClass == entityClass) {
         spawns.remove();
       }
     }

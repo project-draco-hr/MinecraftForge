@@ -1,4 +1,0 @@
-{
-  I object=superType.cast(super.func_148754_a(id));
-  return object == null ? this.optionalDefaultObject : object;
-}

@@ -2,19 +2,19 @@
   File dir=new File(getSavesDir(),dirName);
   NBTTagCompound leveldat;
   try {
-    leveldat=CompressedStreamTools.func_74796_a(new FileInputStream(new File(dir,"level.dat")));
+    leveldat=CompressedStreamTools.readCompressed(new FileInputStream(new File(dir,"level.dat")));
   }
  catch (  Exception e) {
     try {
-      leveldat=CompressedStreamTools.func_74796_a(new FileInputStream(new File(dir,"level.dat_old")));
+      leveldat=CompressedStreamTools.readCompressed(new FileInputStream(new File(dir,"level.dat_old")));
     }
  catch (    Exception e1) {
       FMLLog.warning("There appears to be a problem loading the save %s, both level files are unreadable.",dirName);
       return;
     }
   }
-  NBTTagCompound fmlData=leveldat.func_74775_l("FML");
-  if (fmlData.func_74764_b("ModItemData")) {
+  NBTTagCompound fmlData=leveldat.getCompoundTag("FML");
+  if (fmlData.hasKey("ModItemData")) {
     showGuiScreen(new GuiOldSaveLoadConfirm(dirName,saveName,selectWorldGUI));
   }
  else {

@@ -12,7 +12,7 @@
     serverDataTag.put(data,new ExtendedServerListData(type,true,modListBldr.build(),!moddedClientAllowed));
   }
  else {
-    String serverDescription=data.field_78843_d;
+    String serverDescription=data.serverMOTD;
     boolean moddedClientAllowed=true;
     if (!Strings.isNullOrEmpty(serverDescription)) {
       moddedClientAllowed=!serverDescription.endsWith(":NOFML??r");

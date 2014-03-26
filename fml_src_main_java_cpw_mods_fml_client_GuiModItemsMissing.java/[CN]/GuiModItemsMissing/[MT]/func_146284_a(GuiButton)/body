@@ -1,5 +1,0 @@
-{
-  if (p_73875_1_.field_146124_l && p_73875_1_.field_146127_k == 1) {
-    FMLClientHandler.instance().showGuiScreen(null);
-  }
-}

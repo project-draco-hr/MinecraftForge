@@ -1,4 +1,4 @@
 {
   String key=modId + ":" + name;
-  return blockRegistry.contains(key) ? blockRegistry.func_82594_a(key) : null;
+  return blockRegistry.contains(key) ? blockRegistry.getObject(key) : null;
 }

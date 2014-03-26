@@ -1,5 +1,3 @@
 {
-  EntityPlayerMP player=(EntityPlayerMP)args;
-  NetworkDispatcher dispatcher=player.field_71135_a.field_147371_a.channel().attr(NetworkDispatcher.FML_DISPATCHER).get();
-  return ImmutableList.of(dispatcher);
+  return ImmutableList.of(packet.getDispatcher());
 }

@@ -29,7 +29,7 @@
  else {
     return null;
   }
-  this.client.func_110434_K().func_110577_a(iconSheet);
+  this.client.getTextureManager().bindTexture(iconSheet);
   Gui.func_146110_a(x + width - 18,y + 10,0,(float)idx,16,16,256.0f,256.0f);
   if (blocked) {
     Gui.func_146110_a(x + width - 18,y + 10,0,80,16,16,256.0f,256.0f);

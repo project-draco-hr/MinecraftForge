@@ -1,7 +1,7 @@
 {
   PacketBuffer pb=new PacketBuffer(to);
   try {
-    pb.func_150788_a(stack);
+    pb.writeItemStackToBuffer(stack);
   }
  catch (  IOException e) {
     throw Throwables.propagate(e);

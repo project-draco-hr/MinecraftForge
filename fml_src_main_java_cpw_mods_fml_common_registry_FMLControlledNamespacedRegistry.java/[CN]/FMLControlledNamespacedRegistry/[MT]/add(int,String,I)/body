@@ -14,8 +14,8 @@
     String prefix=mc.getModId();
     name=prefix + ":" + name;
   }
-  namedIds.forcePut(func_148755_c(name),idToUse);
-  super.func_148756_a(idToUse,name,thing);
+  namedIds.forcePut(ensureNamespaced(name),idToUse);
+  super.addObject(idToUse,name,thing);
   useSlot(idToUse);
   FMLLog.finer("Add : %s %d %s",name,idToUse,thing);
   return idToUse;

@@ -1,5 +1,5 @@
 {
   for (  ICrashCallable call : crashCallables) {
-    category.func_71500_a(call.getLabel(),call);
+    category.addCrashSectionCallable(call.getLabel(),call);
   }
 }
