@@ -1,9 +1,9 @@
 {
   if (obj instanceof Block) {
-    registerBlock((Block)obj,name,null,idHint);
+    return registerBlock((Block)obj,name,null,idHint);
   }
  else   if (obj instanceof Item) {
-    registerItem((Item)obj,name,null,idHint);
+    return registerItem((Item)obj,name,null,idHint);
   }
  else {
     throw new IllegalArgumentException("An invalid registry object is to be added, only instances of Block or Item are allowed.");

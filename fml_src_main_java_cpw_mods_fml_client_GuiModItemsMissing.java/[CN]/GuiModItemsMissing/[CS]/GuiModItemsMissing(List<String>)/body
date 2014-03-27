@@ -1,4 +1,3 @@
 {
   this.missingItems=items;
-  this.message=message;
 }

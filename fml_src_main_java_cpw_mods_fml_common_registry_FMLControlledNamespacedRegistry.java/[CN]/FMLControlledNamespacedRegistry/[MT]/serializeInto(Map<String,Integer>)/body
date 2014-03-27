@@ -1,6 +1,5 @@
 {
-  for (Iterator<Object> it=iterator(); it.hasNext(); ) {
-    I thing=(I)it.next();
+  for (  I thing : (Iterable<I>)this) {
     idMapping.put(discriminator + func_148750_c(thing),getId(thing));
   }
 }

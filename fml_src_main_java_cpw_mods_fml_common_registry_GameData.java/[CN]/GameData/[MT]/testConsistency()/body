@@ -4,8 +4,7 @@
       throw new IllegalStateException(String.format("availabilityMap references empty entries for id %d.",i));
     }
   }
-  for (Iterator<Object> it=iBlockRegistry.iterator(); it.hasNext(); ) {
-    Block block=(Block)it.next();
+  for (  Block block : (Iterable<Block>)iBlockRegistry) {
     int id=iBlockRegistry.getId(block);
     if (!availabilityMap.get(id)) {
       throw new IllegalStateException(String.format("Registry entry for block %s, id %d, marked as empty.",block,id));
@@ -14,8 +13,7 @@
       throw new IllegalStateException(String.format("Registry entry for block %s, id %d, marked as dangling.",block,id));
     }
   }
-  for (Iterator<Object> it=iItemRegistry.iterator(); it.hasNext(); ) {
-    Item item=(Item)it.next();
+  for (  Item item : (Iterable<Item>)iItemRegistry) {
     int id=iItemRegistry.getId(item);
     if (!availabilityMap.get(id)) {
       throw new IllegalStateException(String.format("Registry entry for item %s, id %d, marked as empty.",item,id));

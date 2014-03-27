@@ -1,7 +1,7 @@
 {
   List<Integer> ids=new ArrayList<Integer>();
-  for (Iterator<Object> it=iterator(); it.hasNext(); ) {
-    ids.add(getId((I)it.next()));
+  for (  I thing : (Iterable<I>)this) {
+    ids.add(getId(thing));
   }
   Collections.sort(ids);
   for (  int id : ids) {
