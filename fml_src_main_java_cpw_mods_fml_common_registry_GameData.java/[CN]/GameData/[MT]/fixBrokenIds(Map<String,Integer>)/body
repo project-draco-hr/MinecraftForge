@@ -1,0 +1,37 @@
+{
+  BitSet availabilityMap=new BitSet(32000);
+  for (  Entry<String,Integer> entry : dataList.entrySet()) {
+    String itemName=entry.getKey();
+    if (itemName.charAt(0) == '\u0001') {
+      availabilityMap.set(entry.getValue());
+    }
+  }
+  Set<String> itemsToAllocate=new HashSet<String>();
+  for (  Entry<String,Integer> entry : dataList.entrySet()) {
+    String itemName=entry.getKey();
+    if (itemName.charAt(0) != '\u0001') {
+      int oldId=entry.getValue();
+      if (availabilityMap.get(oldId)) {
+        String realName=itemName.substring(1);
+        String blockName='\u0001' + realName;
+        if (!dataList.containsKey(blockName) || !(getMain().iItemRegistry.getRaw(realName) instanceof ItemBlock)) {
+          itemsToAllocate.add(itemName);
+        }
+ else         if (dataList.get(blockName) != oldId) {
+          int newId=dataList.get(blockName);
+          entry.setValue(newId);
+          FMLLog.warning("Fixed ItemBlock %s not using the id of its block, old id %d, new id %d.",realName,oldId,newId);
+        }
+      }
+ else {
+        availabilityMap.set(oldId);
+      }
+    }
+  }
+  for (  String itemName : itemsToAllocate) {
+    int oldId=dataList.get(itemName);
+    int newId=availabilityMap.nextClearBit(4096);
+    dataList.put(itemName,newId);
+    FMLLog.warning("Fixed Item %s conflicting with another block/item, old id %d, new id %d.",itemName.substring(1),oldId,newId);
+  }
+}

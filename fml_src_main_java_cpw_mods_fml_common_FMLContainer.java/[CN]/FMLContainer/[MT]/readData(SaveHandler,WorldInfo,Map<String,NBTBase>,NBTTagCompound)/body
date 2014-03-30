@@ -60,6 +60,9 @@ catch (        ClassCastException ccs) {
       NBTTagCompound dataTag=list.func_150305_b(i);
       dataList.put(dataTag.func_74779_i("K"),dataTag.func_74762_e("V"));
     }
+    if (!tag.func_74764_b("BlockedItemIds")) {
+      GameData.fixBrokenIds(dataList);
+    }
     int[] blockedIds=tag.func_74759_k("BlockedItemIds");
     Map<String,String> blockAliases=new HashMap<String,String>();
     list=tag.func_150295_c("BlockAliases",10);
