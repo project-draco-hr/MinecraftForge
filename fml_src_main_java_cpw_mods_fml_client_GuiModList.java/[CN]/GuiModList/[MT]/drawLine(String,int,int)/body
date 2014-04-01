@@ -1,4 +1,4 @@
 {
-  this.field_146289_q.func_78276_b(line,offset,shifty,0xd7edea);
+  this.fontRendererObj.drawString(line,offset,shifty,0xd7edea);
   return shifty + 10;
 }

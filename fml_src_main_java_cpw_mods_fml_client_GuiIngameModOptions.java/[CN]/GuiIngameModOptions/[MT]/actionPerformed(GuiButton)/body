@@ -1,0 +1,8 @@
+{
+  if (p_146284_1_.enabled) {
+    if (p_146284_1_.id == 200) {
+      this.mc.gameSettings.saveOptions();
+      this.mc.displayGuiScreen(this.parentScreen);
+    }
+  }
+}

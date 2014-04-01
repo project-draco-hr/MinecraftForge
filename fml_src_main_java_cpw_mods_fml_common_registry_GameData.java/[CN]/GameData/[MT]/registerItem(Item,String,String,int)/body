@@ -8,8 +8,8 @@
     if (idHint == -1) {
       throw new RuntimeException("Cannot register an itemblock before its block");
     }
-    if (iItemRegistry.get(idHint) != null) {
-      throw new IllegalStateException(String.format("The Item Registry slot %d is already used by %s",idHint,iItemRegistry.get(idHint)));
+    if (iItemRegistry.getObjectById(idHint) != null) {
+      throw new IllegalStateException(String.format("The Item Registry slot %d is already used by %s",idHint,iItemRegistry.getObjectById(idHint)));
     }
     if (!freeSlot(idHint)) {
       throw new IllegalStateException(String.format("The Registry slot %d is supposed to be blocked by the ItemBlock's Block's blockId at this point.",idHint));

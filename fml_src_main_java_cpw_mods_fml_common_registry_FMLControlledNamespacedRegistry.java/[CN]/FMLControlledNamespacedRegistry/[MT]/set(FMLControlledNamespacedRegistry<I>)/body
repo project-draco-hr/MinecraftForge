@@ -6,9 +6,9 @@
   this.minId=registry.minId;
   this.aliases.clear();
   this.aliases.putAll(registry.aliases);
-  field_148759_a=new ObjectIntIdentityMap();
-  field_82596_a.clear();
+  underlyingIntegerMap=new ObjectIntIdentityMap();
+  registryObjects.clear();
   for (  I thing : (Iterable<I>)registry) {
-    super.func_148756_a(registry.getId(thing),registry.func_148750_c(thing),thing);
+    super.addObject(registry.getId(thing),registry.getNameForObject(thing),thing);
   }
 }

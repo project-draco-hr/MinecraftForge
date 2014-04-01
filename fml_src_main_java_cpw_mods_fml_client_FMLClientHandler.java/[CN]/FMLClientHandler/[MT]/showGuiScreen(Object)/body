@@ -1,4 +1,4 @@
 {
   GuiScreen gui=(GuiScreen)clientGuiElement;
-  client.func_147108_a(gui);
+  client.displayGuiScreen(gui);
 }

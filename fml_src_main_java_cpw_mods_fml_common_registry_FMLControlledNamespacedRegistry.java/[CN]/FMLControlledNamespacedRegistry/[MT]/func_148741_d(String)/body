@@ -1,8 +1,0 @@
-{
-  boolean ret=super.func_148741_d(name);
-  if (!ret) {
-    name=aliases.get(name);
-    if (name != null)     return func_148741_d(name);
-  }
-  return ret;
-}

@@ -1,5 +1,5 @@
 {
-  if (EntityList.field_75626_c.containsKey(entityClass)) {
+  if (EntityList.classToStringMapping.containsKey(entityClass)) {
     ModContainer activeModContainer=Loader.instance().activeModContainer();
     String modId="unknown";
     if (activeModContainer != null) {
@@ -12,5 +12,5 @@
     return;
   }
   id=instance().validateAndClaimId(id);
-  EntityList.func_75618_a(entityClass,entityName,id);
+  EntityList.addMapping(entityClass,entityName,id);
 }

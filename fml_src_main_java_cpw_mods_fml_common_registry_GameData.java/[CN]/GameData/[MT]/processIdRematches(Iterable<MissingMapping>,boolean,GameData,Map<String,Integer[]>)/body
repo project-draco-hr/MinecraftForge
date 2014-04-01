@@ -9,14 +9,14 @@
       String newName;
       if (remap.type == Type.BLOCK) {
         currId=getMain().iBlockRegistry.getId((Block)remap.getTarget());
-        newName=getMain().iBlockRegistry.func_148750_c(remap.getTarget());
+        newName=getMain().iBlockRegistry.getNameForObject(remap.getTarget());
         FMLLog.fine("The Block %s is being remapped to %s.",remap.name,newName);
         newId=gameData.registerBlock((Block)remap.getTarget(),newName,null,remap.id);
         gameData.iBlockRegistry.addAlias(remap.name,newName);
       }
  else {
         currId=getMain().iItemRegistry.getId((Item)remap.getTarget());
-        newName=getMain().iItemRegistry.func_148750_c(remap.getTarget());
+        newName=getMain().iItemRegistry.getNameForObject(remap.getTarget());
         FMLLog.fine("The Item %s is being remapped to %s.",remap.name,newName);
         newId=gameData.registerItem((Item)remap.getTarget(),newName,null,remap.id);
         gameData.iItemRegistry.addAlias(remap.name,newName);

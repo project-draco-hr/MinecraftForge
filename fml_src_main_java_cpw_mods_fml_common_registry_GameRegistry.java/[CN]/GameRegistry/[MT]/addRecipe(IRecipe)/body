@@ -1,3 +1,3 @@
 {
-  CraftingManager.func_77594_a().func_77592_b().add(recipe);
+  CraftingManager.getInstance().getRecipeList().add(recipe);
 }

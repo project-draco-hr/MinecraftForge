@@ -1,5 +1,5 @@
 {
-  Class<? extends Entity> entityClazz=(Class<? extends Entity>)EntityList.field_75625_b.get(entityName);
+  Class<? extends Entity> entityClazz=(Class<? extends Entity>)EntityList.stringToClassMapping.get(entityName);
   if (EntityLiving.class.isAssignableFrom(entityClazz)) {
     removeSpawn((Class<? extends EntityLiving>)entityClazz,spawnList,biomes);
   }

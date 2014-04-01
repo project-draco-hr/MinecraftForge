@@ -1,7 +1,7 @@
 {
   PacketBuffer pb=new PacketBuffer(from);
   try {
-    return pb.func_150793_b();
+    return pb.readNBTTagCompoundFromBuffer();
   }
  catch (  IOException e) {
     throw Throwables.propagate(e);

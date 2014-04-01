@@ -1,3 +1,0 @@
-{
-  this.field_146292_n.add(new GuiButton(1,this.field_146294_l / 2 - 100,this.field_146295_m - 38,I18n.func_135052_a("gui.done")));
-}

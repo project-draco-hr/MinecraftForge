@@ -1,0 +1,3 @@
+{
+  return super.hasResourceName(p_110593_1_);
+}

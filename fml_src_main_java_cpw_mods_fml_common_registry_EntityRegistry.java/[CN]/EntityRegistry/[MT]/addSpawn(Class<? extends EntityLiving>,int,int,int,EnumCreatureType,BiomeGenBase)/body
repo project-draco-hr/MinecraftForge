@@ -1,11 +1,11 @@
 {
   for (  BiomeGenBase biome : biomes) {
-    @SuppressWarnings("unchecked") List<SpawnListEntry> spawns=biome.func_76747_a(typeOfCreature);
+    @SuppressWarnings("unchecked") List<SpawnListEntry> spawns=biome.getSpawnableList(typeOfCreature);
     for (    SpawnListEntry entry : spawns) {
-      if (entry.field_76300_b == entityClass) {
-        entry.field_76292_a=weightedProb;
-        entry.field_76301_c=min;
-        entry.field_76299_d=max;
+      if (entry.entityClass == entityClass) {
+        entry.itemWeight=weightedProb;
+        entry.minGroupCount=min;
+        entry.maxGroupCount=max;
         break;
       }
     }

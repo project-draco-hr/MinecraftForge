@@ -1,5 +1,5 @@
 {
   for (  I thing : (Iterable<I>)this) {
-    idMapping.put(discriminator + func_148750_c(thing),getId(thing));
+    idMapping.put(discriminator + getNameForObject(thing),getId(thing));
   }
 }

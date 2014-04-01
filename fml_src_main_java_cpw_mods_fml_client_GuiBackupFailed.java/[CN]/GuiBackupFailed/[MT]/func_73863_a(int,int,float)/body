@@ -1,8 +1,0 @@
-{
-  this.func_146276_q_();
-  int offset=Math.max(85 - 2 * 10,10);
-  this.func_73732_a(this.field_146289_q,String.format("There was an error saving the archive %s",zipName.getName()),this.field_146294_l / 2,offset,0xFFFFFF);
-  offset+=10;
-  this.func_73732_a(this.field_146289_q,String.format("Please fix the problem and try again"),this.field_146294_l / 2,offset,0xFFFFFF);
-  super.func_73863_a(p_73863_1_,p_73863_2_,p_73863_3_);
-}

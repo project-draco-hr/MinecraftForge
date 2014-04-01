@@ -1,4 +1,4 @@
 {
-  RenderBiped.field_82424_k=ObjectArrays.concat(RenderBiped.field_82424_k,armor);
-  return RenderBiped.field_82424_k.length - 1;
+  RenderBiped.bipedArmorFilenamePrefix=ObjectArrays.concat(RenderBiped.bipedArmorFilenamePrefix,armor);
+  return RenderBiped.bipedArmorFilenamePrefix.length - 1;
 }
