@@ -1,7 +1,3 @@
 {
-  super(player);
-  this.block=block;
-  this.metadata=metadata;
-  this.originalSpeed=original;
-  this.newSpeed=original;
+  this(player,block,metadata,original,0,-1,0);
 }

@@ -1,0 +1,7 @@
+EntityPlayer player
+Block block
+int metadata
+float original
+int x
+int y
+int z
