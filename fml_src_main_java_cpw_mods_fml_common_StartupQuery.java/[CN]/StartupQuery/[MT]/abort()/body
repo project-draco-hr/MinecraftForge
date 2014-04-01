@@ -1,5 +1,6 @@
 {
-  FMLCommonHandler.instance().getMinecraftServerInstance().initiateShutdown();
+  MinecraftServer server=FMLCommonHandler.instance().getMinecraftServerInstance();
+  if (server != null)   server.initiateShutdown();
   aborted=true;
   throw new AbortedException();
 }

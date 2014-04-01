@@ -5,4 +5,11 @@
  else {
     client.displayGuiScreen(new GuiConfirmation(query));
   }
+  if (query.isSynchronous()) {
+    while (!(client.currentScreen instanceof GuiMainMenu)) {
+      if (Thread.interrupted())       throw new InterruptedException();
+      client.loadingScreen.resetProgresAndWorkingMessage("");
+      Thread.sleep(50);
+    }
+  }
 }

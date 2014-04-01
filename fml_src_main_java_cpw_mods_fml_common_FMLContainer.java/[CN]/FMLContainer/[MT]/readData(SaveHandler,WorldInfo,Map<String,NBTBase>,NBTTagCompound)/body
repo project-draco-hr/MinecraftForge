@@ -77,7 +77,7 @@ catch (        ClassCastException ccs) {
     failedElements=GameData.injectWorldIDMap(dataList,blockedIds,blockAliases,itemAliases,true,true);
   }
   if (failedElements != null && !failedElements.isEmpty()) {
-    String text="Forge Mod Loader could not load this save\n\n" + "There are " + failedElements.size() + " unassigned blocks and items in this save\n"+ "You will not be able to load until they are present again\n\n"+ "Missing Blocks/Items:\n";
+    String text="Forge Mod Loader could not load this save.\n\n" + "There are " + failedElements.size() + " unassigned blocks and items in this save.\n"+ "You will not be able to load until they are present again.\n\n"+ "Missing Blocks/Items:\n";
     for (    String s : failedElements)     text+=s + "\n";
     StartupQuery.notify(text);
     StartupQuery.abort();

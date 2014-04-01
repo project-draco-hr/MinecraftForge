@@ -12,10 +12,15 @@
     }
     FMLLog.warning("Invalid value for fml.queryResult: %s, expected confirm or cancel",prop);
   }
+  synchronous=false;
   pending=this;
-  if (FMLCommonHandler.instance().getSide().isServer())   check();
+  if (FMLCommonHandler.instance().getSide().isServer() || FMLCommonHandler.instance().getEffectiveSide().isClient()) {
+    synchronous=true;
+    check();
+  }
   try {
     signal.await();
+    reset();
   }
  catch (  InterruptedException e) {
     FMLLog.warning("query interrupted");

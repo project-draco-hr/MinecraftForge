@@ -6,6 +6,7 @@
  else {
     String text=query.getText() + "\n\nRun the command /fml confirm or or /fml cancel to proceed." + "\nAlternatively start the server with -Dfml.queryResult=confirm or -Dfml.queryResult=cancel to preselect the answer.";
     FMLLog.warning("%s",text);
+    if (!query.isSynchronous())     return;
     boolean done=false;
     while (!done && server.isServerRunning()) {
       if (Thread.interrupted())       throw new InterruptedException();
