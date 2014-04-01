@@ -15,6 +15,7 @@
       }
     }
   }
+  List<String> failedElements=null;
   if (tag.hasKey("ModItemData")) {
     FMLLog.info("Attempting to convert old world data to new system. This may be trouble!");
     NBTTagList modList=tag.getTagList("ModItemData",(byte)10);
@@ -48,10 +49,7 @@ catch (        ClassCastException ccs) {
         dataList.put(itemLabel,itemId);
       }
     }
-    List<String> failedElements=GameData.injectWorldIDMap(dataList,true,true);
-    if (!failedElements.isEmpty()) {
-      throw new GameRegistryException("Failed to load the world - there are fatal block and item id issues",failedElements);
-    }
+    failedElements=GameData.injectWorldIDMap(dataList,true,true);
   }
  else   if (tag.hasKey("ItemData")) {
     NBTTagList list=tag.getTagList("ItemData",10);
@@ -76,9 +74,12 @@ catch (        ClassCastException ccs) {
       NBTTagCompound dataTag=list.getCompoundTagAt(i);
       itemAliases.put(dataTag.getString("K"),dataTag.getString("V"));
     }
-    List<String> failedElements=GameData.injectWorldIDMap(dataList,blockedIds,blockAliases,itemAliases,true,true);
-    if (!failedElements.isEmpty()) {
-      throw new GameRegistryException("Failed to load the world - there are fatal block and item id issues",failedElements);
-    }
+    failedElements=GameData.injectWorldIDMap(dataList,blockedIds,blockAliases,itemAliases,true,true);
+  }
+  if (failedElements != null && !failedElements.isEmpty()) {
+    String text="Forge Mod Loader could not load this save\n\n" + "There are " + failedElements.size() + " unassigned blocks and items in this save\n"+ "You will not be able to load until they are present again\n\n"+ "Missing Blocks/Items:\n";
+    for (    String s : failedElements)     text+=s + "\n";
+    StartupQuery.notify(text);
+    StartupQuery.abort();
   }
 }

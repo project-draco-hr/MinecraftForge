@@ -1,0 +1,5 @@
+{
+  StartupQuery query=new StartupQuery(text,new AtomicBoolean());
+  query.execute();
+  return query.getResult();
+}

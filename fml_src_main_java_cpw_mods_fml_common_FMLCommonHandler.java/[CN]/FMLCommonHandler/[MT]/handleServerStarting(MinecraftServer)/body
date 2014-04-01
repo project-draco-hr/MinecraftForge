@@ -1,4 +1,3 @@
 {
-  sidedDelegate.serverLoadedSuccessfully();
   return Loader.instance().serverStarting(server);
 }

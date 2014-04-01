@@ -1,0 +1,8 @@
+{
+  if (query.getResult() == null) {
+    client.displayGuiScreen(new GuiNotification(query));
+  }
+ else {
+    client.displayGuiScreen(new GuiConfirmation(query));
+  }
+}

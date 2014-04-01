@@ -1,0 +1,24 @@
+{
+  String prop=System.getProperty("fml.queryResult");
+  if (result != null && prop != null) {
+    FMLLog.info("Using fml.queryResult %s to answer the following query:\n%s",prop,text);
+    if (prop.equalsIgnoreCase("confirm")) {
+      setResult(true);
+      return;
+    }
+ else     if (prop.equalsIgnoreCase("cancel")) {
+      setResult(false);
+      return;
+    }
+    FMLLog.warning("Invalid value for fml.queryResult: %s, expected confirm or cancel",prop);
+  }
+  pending=this;
+  if (FMLCommonHandler.instance().getSide().isServer())   check();
+  try {
+    signal.await();
+  }
+ catch (  InterruptedException e) {
+    FMLLog.warning("query interrupted");
+    abort();
+  }
+}

@@ -1,0 +1,6 @@
+{
+  if (button.enabled && button.id == 0) {
+    FMLClientHandler.instance().showGuiScreen(null);
+    query.finish();
+  }
+}

@@ -1,0 +1,5 @@
+{
+  FMLCommonHandler.instance().getMinecraftServerInstance().initiateShutdown();
+  aborted=true;
+  throw new AbortedException();
+}

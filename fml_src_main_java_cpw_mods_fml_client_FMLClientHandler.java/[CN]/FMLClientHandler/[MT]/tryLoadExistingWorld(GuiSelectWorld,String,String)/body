@@ -18,6 +18,6 @@
     showGuiScreen(new GuiOldSaveLoadConfirm(dirName,saveName,selectWorldGUI));
   }
  else {
-    launchIntegratedServerCallback(dirName,saveName);
+    client.launchIntegratedServer(dirName,saveName,(WorldSettings)null);
   }
 }

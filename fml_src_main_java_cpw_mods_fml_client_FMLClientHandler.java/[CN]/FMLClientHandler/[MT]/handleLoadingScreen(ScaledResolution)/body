@@ -1,0 +1,14 @@
+{
+  if (client.currentScreen instanceof GuiMainMenu) {
+    return false;
+  }
+ else {
+    int width=scaledResolution.getScaledWidth();
+    int height=scaledResolution.getScaledHeight();
+    int mouseX=Mouse.getX() * width / client.displayWidth;
+    int mouseZ=height - Mouse.getY() * height / client.displayHeight - 1;
+    client.currentScreen.drawScreen(mouseX,mouseZ,0);
+    client.currentScreen.handleInput();
+    return true;
+  }
+}
