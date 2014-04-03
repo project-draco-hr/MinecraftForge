@@ -1,0 +1,6 @@
+{
+  super(manager);
+  this.sound=sound;
+  this.name=sound.getPositionedSoundLocation().getResourcePath();
+  this.result=sound;
+}

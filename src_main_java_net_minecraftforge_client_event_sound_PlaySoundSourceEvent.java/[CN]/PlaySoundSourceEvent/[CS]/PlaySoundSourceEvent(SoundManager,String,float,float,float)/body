@@ -1,4 +1,5 @@
 {
+  super(manager,null,null);
   this.manager=manager;
   this.name=name;
   this.x=x;
