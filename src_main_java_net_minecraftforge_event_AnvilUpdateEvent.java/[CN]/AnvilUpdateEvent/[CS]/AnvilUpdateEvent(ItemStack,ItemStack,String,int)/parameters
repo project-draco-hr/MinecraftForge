@@ -1,0 +1,4 @@
+ItemStack left
+ItemStack right
+String name
+int cost

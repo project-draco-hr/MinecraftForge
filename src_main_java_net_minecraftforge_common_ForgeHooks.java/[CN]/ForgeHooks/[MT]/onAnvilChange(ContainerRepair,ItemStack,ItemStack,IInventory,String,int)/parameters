@@ -1,0 +1,6 @@
+ContainerRepair container
+ItemStack left
+ItemStack right
+IInventory outputSlot
+String name
+int baseCost

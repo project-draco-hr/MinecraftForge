@@ -1,0 +1,6 @@
+{
+  this.left=left;
+  this.right=right;
+  this.name=name;
+  this.cost=cost;
+}
