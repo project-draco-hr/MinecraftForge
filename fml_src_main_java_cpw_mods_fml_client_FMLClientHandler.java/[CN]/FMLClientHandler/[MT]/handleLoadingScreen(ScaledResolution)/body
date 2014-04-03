@@ -1,8 +1,5 @@
 {
-  if (client.currentScreen instanceof GuiMainMenu) {
-    return false;
-  }
- else {
+  if (client.currentScreen instanceof GuiNotification) {
     int width=scaledResolution.getScaledWidth();
     int height=scaledResolution.getScaledHeight();
     int mouseX=Mouse.getX() * width / client.displayWidth;
@@ -10,5 +7,8 @@
     client.currentScreen.drawScreen(mouseX,mouseZ,0);
     client.currentScreen.handleInput();
     return true;
+  }
+ else {
+    return false;
   }
 }

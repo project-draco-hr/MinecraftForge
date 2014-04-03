@@ -6,7 +6,7 @@
     client.displayGuiScreen(new GuiConfirmation(query));
   }
   if (query.isSynchronous()) {
-    while (!(client.currentScreen instanceof GuiMainMenu)) {
+    while (client.currentScreen instanceof GuiNotification) {
       if (Thread.interrupted())       throw new InterruptedException();
       client.loadingScreen.resetProgresAndWorkingMessage("");
       Thread.sleep(50);
