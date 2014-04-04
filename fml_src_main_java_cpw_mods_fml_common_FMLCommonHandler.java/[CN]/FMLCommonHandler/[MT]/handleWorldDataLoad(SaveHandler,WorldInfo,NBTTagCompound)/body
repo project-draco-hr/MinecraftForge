@@ -6,6 +6,7 @@
     return;
   }
   handlerSet.add(handler);
+  handlerToCheck=new WeakReference<SaveHandler>(handler);
   Map<String,NBTBase> additionalProperties=Maps.newHashMap();
   worldInfo.setAdditionalProperties(additionalProperties);
   for (  ModContainer mc : Loader.instance().getModList()) {

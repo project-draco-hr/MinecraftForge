@@ -58,10 +58,13 @@ catch (        ClassCastException ccs) {
       NBTTagCompound dataTag=list.getCompoundTagAt(i);
       dataList.put(dataTag.getString("K"),dataTag.getInteger("V"));
     }
+    Set<Integer> blockedIds=new HashSet<Integer>();
     if (!tag.hasKey("BlockedItemIds")) {
-      GameData.fixBrokenIds(dataList);
+      GameData.fixBrokenIds(dataList,blockedIds);
     }
-    int[] blockedIds=tag.getIntArray("BlockedItemIds");
+    for (    int id : tag.getIntArray("BlockedItemIds")) {
+      blockedIds.add(id);
+    }
     Map<String,String> blockAliases=new HashMap<String,String>();
     list=tag.getTagList("BlockAliases",10);
     for (int i=0; i < list.tagCount(); i++) {

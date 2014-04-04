@@ -1,0 +1,3 @@
+{
+  return ((SaveFormatOld)client.getSaveLoader()).savesDirectory;
+}

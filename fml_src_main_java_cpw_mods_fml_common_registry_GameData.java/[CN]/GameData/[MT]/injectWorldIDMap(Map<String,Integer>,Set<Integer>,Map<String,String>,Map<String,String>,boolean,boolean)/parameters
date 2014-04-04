@@ -1,5 +1,5 @@
 Map<String,Integer> dataList
-int[] blockedIds
+Set<Integer> blockedIds
 Map<String,String> blockAliases
 Map<String,String> itemAliases
 boolean injectFrozenData
