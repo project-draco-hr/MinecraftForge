@@ -4,8 +4,6 @@
     customOwners.put(new UniqueIdentifier(modId,name),mc);
   }
   int blockId=iBlockRegistry.add(idHint,name,block,availabilityMap);
-  if (useSlot(blockId)) {
-    throw new IllegalStateException(String.format("Registry slot %d is supposed to be empty when adding a Block with the same id.",blockId));
-  }
+  useSlot(blockId);
   return blockId;
 }

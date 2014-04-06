@@ -9,6 +9,6 @@
   underlyingIntegerMap=new ObjectIntIdentityMap();
   registryObjects.clear();
   for (  I thing : (Iterable<I>)registry) {
-    super.addObject(registry.getId(thing),registry.getNameForObject(thing),thing);
+    addObjectRaw(registry.getId(thing),registry.getNameForObject(thing),thing);
   }
 }

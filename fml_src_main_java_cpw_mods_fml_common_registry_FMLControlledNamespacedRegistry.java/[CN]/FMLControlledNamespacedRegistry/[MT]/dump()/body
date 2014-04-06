@@ -6,6 +6,6 @@
   Collections.sort(ids);
   for (  int id : ids) {
     I thing=getRaw(id);
-    FMLLog.finer("Registry : %s %d %s",getNameForObject(thing),id,thing);
+    FMLLog.finer("Registry: %s %d %s",getNameForObject(thing),id,thing);
   }
 }

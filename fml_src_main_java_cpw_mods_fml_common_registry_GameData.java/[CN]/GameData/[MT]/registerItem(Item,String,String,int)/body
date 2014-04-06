@@ -11,9 +11,7 @@
     if (iItemRegistry.getObjectById(idHint) != null) {
       throw new IllegalStateException(String.format("The Item Registry slot %d is already used by %s",idHint,iItemRegistry.getObjectById(idHint)));
     }
-    if (!freeSlot(idHint)) {
-      throw new IllegalStateException(String.format("The Registry slot %d is supposed to be blocked by the ItemBlock's Block's blockId at this point.",idHint));
-    }
+    freeSlot(idHint);
   }
   int itemId=iItemRegistry.add(idHint,name,item,availabilityMap);
   if (item instanceof ItemBlock) {
@@ -21,8 +19,6 @@
       throw new IllegalStateException("ItemBlock insertion failed.");
     }
   }
-  if (useSlot(itemId)) {
-    throw new IllegalStateException(String.format("Registry slot %d is supposed to be empty when adding a non-ItemBlock with the same id.",itemId));
-  }
+  useSlot(itemId);
   return itemId;
 }
