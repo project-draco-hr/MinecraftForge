@@ -58,6 +58,20 @@
   String text="Forge Mod Loader detected that this save is damaged.\n\n" + "It's likely that an automatic repair can successfully restore\n" + "most of it, except some items which may get swapped with others.\n\n"+ "A world backup will be created as a zip file in your saves\n"+ "directory automatically.\n\n" + itemsToRemove.size() + " items need to be removed.\n"+ itemsToRelocate.size()+ " items need to be relocated.";
   boolean confirmed=StartupQuery.confirm(text);
   if (!confirmed)   StartupQuery.abort();
+  Set<String> modsMissing=new HashSet<String>();
+  for (  String itemName : itemsToRemove) {
+    modsMissing.add(itemName.substring(1,itemName.indexOf(':')));
+  }
+  for (Iterator<String> it=modsMissing.iterator(); it.hasNext(); ) {
+    String mod=it.next();
+    if (mod.equals("minecraft") || Loader.instance().isModLoaded(mod))     it.remove();
+  }
+  if (!modsMissing.isEmpty()) {
+    text="Forge Mod Loader detected that " + modsMissing.size() + " mods are missing.\n\n"+ "If you continue items previously provided by those mods will be\n"+ "removed while repairing this world save.\n\n"+ "Missing mods:\n";
+    for (    String mod : modsMissing)     text+=mod + "\n";
+    confirmed=StartupQuery.confirm(text);
+    if (!confirmed)     StartupQuery.abort();
+  }
   try {
     ZipperUtil.backupWorld();
   }

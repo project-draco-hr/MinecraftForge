@@ -11,5 +11,6 @@
       client.loadingScreen.resetProgresAndWorkingMessage("");
       Thread.sleep(50);
     }
+    client.loadingScreen.resetProgresAndWorkingMessage("");
   }
 }

@@ -29,7 +29,7 @@
         continue;
       }
  else       if (currId != newId) {
-        FMLLog.info("Found %s id mismatch %s : %d (was %d)",isBlock ? "block" : "item",itemName,currId,newId);
+        FMLLog.fine("Found %s id mismatch %s : %d (was %d)",isBlock ? "block" : "item",itemName,currId,newId);
         remaps.put(itemName,new Integer[]{currId,newId});
       }
       FMLControlledNamespacedRegistry<?> srcRegistry=isBlock ? getMain().iBlockRegistry : getMain().iItemRegistry;
@@ -42,25 +42,27 @@
   List<String> missedMappings=Loader.instance().fireMissingMappingEvent(missingMappings,isLocalWorld,newData,remaps);
   if (!missedMappings.isEmpty())   return missedMappings;
   if (injectFrozenData) {
-    FMLLog.info("Injecting new block and item data into this server instance");
     Map<String,Integer> missingBlocks=frozen.iBlockRegistry.getEntriesNotIn(newData.iBlockRegistry);
     Map<String,Integer> missingItems=frozen.iItemRegistry.getEntriesNotIn(newData.iItemRegistry);
-    for (int pass=0; pass < 2; pass++) {
-      boolean isBlock=pass == 0;
-      Map<String,Integer> missing=(pass == 0) ? missingBlocks : missingItems;
-      for (      Entry<String,Integer> entry : missing.entrySet()) {
-        String itemName=entry.getKey();
-        int currId=entry.getValue();
-        int newId;
-        if (isBlock) {
-          newId=newData.registerBlock(frozen.iBlockRegistry.getRaw(itemName),itemName,null,currId);
-        }
+    if (!missingBlocks.isEmpty() || !missingItems.isEmpty()) {
+      FMLLog.info("Injecting new block and item data into this server instance");
+      for (int pass=0; pass < 2; pass++) {
+        boolean isBlock=pass == 0;
+        Map<String,Integer> missing=(pass == 0) ? missingBlocks : missingItems;
+        for (        Entry<String,Integer> entry : missing.entrySet()) {
+          String itemName=entry.getKey();
+          int currId=entry.getValue();
+          int newId;
+          if (isBlock) {
+            newId=newData.registerBlock(frozen.iBlockRegistry.getRaw(itemName),itemName,null,currId);
+          }
  else {
-          newId=newData.registerItem(frozen.iItemRegistry.getRaw(itemName),itemName,null,currId);
-        }
-        FMLLog.info("Injected new block/item %s : %d (was %d)",itemName,newId,currId);
-        if (newId != currId) {
-          remaps.put(itemName,new Integer[]{entry.getValue(),newId});
+            newId=newData.registerItem(frozen.iItemRegistry.getRaw(itemName),itemName,null,currId);
+          }
+          FMLLog.info("Injected new block/item %s : %d (was %d)",itemName,newId,currId);
+          if (newId != currId) {
+            remaps.put(itemName,new Integer[]{entry.getValue(),newId});
+          }
         }
       }
     }
