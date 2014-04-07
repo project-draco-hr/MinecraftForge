@@ -1,8 +1,3 @@
 {
-  ModContainer mc=Loader.instance().activeModContainer();
-  if (modId != null) {
-    customOwners.put(new UniqueIdentifier(modId,name),mc);
-  }
-  int blockId=blockRegistry.add(0,name,block);
-  itemRegistry.useSlot(blockId);
+  return registerBlock(block,name,modId,0);
 }

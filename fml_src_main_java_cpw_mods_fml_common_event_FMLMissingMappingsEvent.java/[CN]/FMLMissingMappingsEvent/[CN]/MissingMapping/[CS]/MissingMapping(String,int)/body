@@ -1,0 +1,5 @@
+{
+  this.type=name.charAt(0) == '\u0001' ? GameRegistry.Type.BLOCK : GameRegistry.Type.ITEM;
+  this.name=name.substring(1);
+  this.id=id;
+}

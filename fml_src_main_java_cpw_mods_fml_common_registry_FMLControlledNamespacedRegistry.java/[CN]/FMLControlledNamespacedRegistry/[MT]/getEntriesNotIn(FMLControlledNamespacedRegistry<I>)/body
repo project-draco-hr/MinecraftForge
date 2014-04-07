@@ -1,0 +1,7 @@
+{
+  Map<String,Integer> ret=new HashMap<String,Integer>();
+  for (  I thing : (Iterable<I>)this) {
+    if (!registry.field_148758_b.containsKey(thing))     ret.put(getNameForObject(thing),getId(thing));
+  }
+  return ret;
+}

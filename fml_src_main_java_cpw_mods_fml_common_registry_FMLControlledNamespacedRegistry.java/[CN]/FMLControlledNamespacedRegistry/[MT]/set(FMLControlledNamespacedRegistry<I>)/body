@@ -1,0 +1,14 @@
+{
+  if (this.superType != registry.superType)   throw new IllegalArgumentException("incompatible registry");
+  this.discriminator=registry.discriminator;
+  this.optionalDefaultName=registry.optionalDefaultName;
+  this.maxId=registry.maxId;
+  this.minId=registry.minId;
+  this.aliases.clear();
+  this.aliases.putAll(registry.aliases);
+  underlyingIntegerMap=new ObjectIntIdentityMap();
+  registryObjects.clear();
+  for (  I thing : (Iterable<I>)registry) {
+    addObjectRaw(registry.getId(thing),registry.getNameForObject(thing),thing);
+  }
+}

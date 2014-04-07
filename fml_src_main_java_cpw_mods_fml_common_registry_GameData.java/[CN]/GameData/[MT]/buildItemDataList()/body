@@ -1,6 +1,6 @@
 {
   Map<String,Integer> idMapping=Maps.newHashMap();
-  blockRegistry.serializeInto(idMapping);
-  itemRegistry.serializeInto(idMapping);
+  getMain().iBlockRegistry.serializeInto(idMapping);
+  getMain().iItemRegistry.serializeInto(idMapping);
   return idMapping;
 }

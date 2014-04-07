@@ -1,5 +1,5 @@
 {
   FMLLog.fine("Freezing block and item id maps");
-  blockRegistry.freezeMap();
-  itemRegistry.freezeMap();
+  frozen=new GameData(getMain());
+  frozen.testConsistency();
 }

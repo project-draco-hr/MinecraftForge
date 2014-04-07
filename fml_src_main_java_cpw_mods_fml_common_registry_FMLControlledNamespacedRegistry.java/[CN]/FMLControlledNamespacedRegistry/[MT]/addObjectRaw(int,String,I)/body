@@ -1,0 +1,6 @@
+{
+  if (name == null)   throw new NullPointerException();
+  if (thing == null)   throw new NullPointerException();
+  underlyingIntegerMap.func_148746_a(thing,id);
+  super.putObject(ensureNamespaced(name),thing);
+}

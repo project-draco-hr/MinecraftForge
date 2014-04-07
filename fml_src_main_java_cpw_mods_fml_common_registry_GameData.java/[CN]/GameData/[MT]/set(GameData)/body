@@ -1,0 +1,8 @@
+{
+  iBlockRegistry.set(data.iBlockRegistry);
+  iItemRegistry.set(data.iItemRegistry);
+  availabilityMap.clear();
+  availabilityMap.or(data.availabilityMap);
+  blockedIds.clear();
+  blockedIds.addAll(data.blockedIds);
+}

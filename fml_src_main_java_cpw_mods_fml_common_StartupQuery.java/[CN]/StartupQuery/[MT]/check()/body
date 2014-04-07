@@ -1,0 +1,13 @@
+{
+  if (pending != null) {
+    try {
+      FMLCommonHandler.instance().queryUser(pending);
+    }
+ catch (    InterruptedException e) {
+      FMLLog.warning("query interrupted");
+      abort();
+    }
+    pending=null;
+  }
+  return !aborted;
+}

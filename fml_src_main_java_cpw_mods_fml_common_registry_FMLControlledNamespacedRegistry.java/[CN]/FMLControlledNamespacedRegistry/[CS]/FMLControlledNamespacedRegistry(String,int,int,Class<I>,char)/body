@@ -2,8 +2,6 @@
   this.superType=type;
   this.discriminator=discriminator;
   this.optionalDefaultName=optionalDefault;
-  this.availabilityMap=new BitSet(maxIdValue);
   this.maxId=maxIdValue;
   this.minId=minIdValue;
-  this.underlyingIntegerMap=new FMLObjectIntIdentityMap();
 }

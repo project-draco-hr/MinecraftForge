@@ -1,6 +1,0 @@
-{
-  this.type=name.charAt(0) == '\u0001' ? GameRegistry.Type.BLOCK : GameRegistry.Type.ITEM;
-  this.name=name;
-  this.remaps=remaps;
-  this.action=FMLCommonHandler.instance().getDefaultMissingAction();
-}

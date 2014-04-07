@@ -18,6 +18,10 @@
     showGuiScreen(new GuiOldSaveLoadConfirm(dirName,saveName,selectWorldGUI));
   }
  else {
-    launchIntegratedServerCallback(dirName,saveName);
+    try {
+      client.launchIntegratedServer(dirName,saveName,(WorldSettings)null);
+    }
+ catch (    StartupQuery.AbortedException e) {
+    }
   }
 }

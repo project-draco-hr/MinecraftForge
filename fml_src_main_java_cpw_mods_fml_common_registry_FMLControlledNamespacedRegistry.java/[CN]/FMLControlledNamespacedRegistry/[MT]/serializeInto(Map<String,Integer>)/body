@@ -1,5 +1,5 @@
 {
-  for (  Entry<String,Integer> id : namedIds.entrySet()) {
-    idMapping.put(discriminator + id.getKey(),id.getValue());
+  for (  I thing : (Iterable<I>)this) {
+    idMapping.put(discriminator + getNameForObject(thing),getId(thing));
   }
 }

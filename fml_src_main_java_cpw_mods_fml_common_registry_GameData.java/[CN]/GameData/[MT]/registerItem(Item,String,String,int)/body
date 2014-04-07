@@ -1,0 +1,25 @@
+{
+  if (modId != null) {
+    ModContainer mc=Loader.instance().activeModContainer();
+    customOwners.put(new UniqueIdentifier(modId,name),mc);
+  }
+  if (item instanceof ItemBlock) {
+    Block block=((ItemBlock)item).field_150939_a;
+    idHint=iBlockRegistry.getId(block);
+    if (idHint == -1) {
+      idHint=availabilityMap.nextClearBit(MIN_BLOCK_ID);
+      if (idHint > MAX_BLOCK_ID)       throw new RuntimeException(String.format("Invalid id %d - maximum id range exceeded.",idHint));
+    }
+ else {
+      FMLLog.fine("Found matching Block %s for ItemBlock %s at id %d",block,item,idHint);
+      freeSlot(idHint,item);
+    }
+  }
+  int itemId=iItemRegistry.add(idHint,name,item,availabilityMap);
+  if (item instanceof ItemBlock) {
+    if (itemId != idHint)     throw new IllegalStateException("Block -> ItemBlock insertion failed.");
+    verifyItemBlockName((ItemBlock)item);
+  }
+  useSlot(itemId);
+  return itemId;
+}

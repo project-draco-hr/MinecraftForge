@@ -1,5 +1,0 @@
-{
-  if (gameReleaseLatch != null) {
-    gameReleaseLatch.countDown();
-  }
-}

@@ -1,0 +1,8 @@
+{
+  I ret=superType.cast(super.getObject(name));
+  if (ret == null) {
+    name=aliases.get(name);
+    if (name != null)     return getRaw(name);
+  }
+  return ret;
+}

@@ -1,8 +1,5 @@
 {
-  if (namedIds.containsKey(itemName)) {
-    return namedIds.get(itemName);
-  }
- else {
-    return -1;
-  }
+  I obj=getRaw(itemName);
+  if (obj == null)   return -1;
+  return getId(obj);
 }

@@ -6,19 +6,14 @@
     return;
   }
   handlerSet.add(handler);
+  handlerToCheck=new WeakReference<SaveHandler>(handler);
   Map<String,NBTBase> additionalProperties=Maps.newHashMap();
   worldInfo.setAdditionalProperties(additionalProperties);
   for (  ModContainer mc : Loader.instance().getModList()) {
     if (mc instanceof InjectedModContainer) {
       WorldAccessContainer wac=((InjectedModContainer)mc).getWrappedWorldAccessContainer();
       if (wac != null) {
-        try {
-          wac.readData(handler,worldInfo,additionalProperties,tagCompound.getCompoundTag(mc.getModId()));
-        }
- catch (        RuntimeException ex) {
-          sidedDelegate.failedServerLoading(ex,wac);
-          throw ex;
-        }
+        wac.readData(handler,worldInfo,additionalProperties,tagCompound.getCompoundTag(mc.getModId()));
       }
     }
   }

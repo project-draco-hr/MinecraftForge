@@ -1,0 +1,46 @@
+{
+  for (int i=availabilityMap.nextSetBit(0); i >= 0; i=availabilityMap.nextSetBit(i + 1)) {
+    if (iBlockRegistry.getRaw(i) == null && iItemRegistry.getRaw(i) == null && !blockedIds.contains(i)) {
+      throw new IllegalStateException(String.format("availabilityMap references empty entries for id %d.",i));
+    }
+  }
+  for (  Block block : (Iterable<Block>)iBlockRegistry) {
+    int id=iBlockRegistry.getId(block);
+    String name=iBlockRegistry.getNameForObject(block);
+    if (id < 0) {
+      throw new IllegalStateException(String.format("Registry entry for block %s, name %s, doesn't yield an id",block,name));
+    }
+    if (name == null) {
+      throw new IllegalStateException(String.format("Registry entry for block %s, id %d, doesn't yield a name",block,id));
+    }
+    if (!availabilityMap.get(id)) {
+      throw new IllegalStateException(String.format("Registry entry for block %s, id %d, name %s, marked as empty.",block,id,name));
+    }
+    if (blockedIds.contains(id)) {
+      throw new IllegalStateException(String.format("Registry entry for block %s, id %d, name %s, marked as dangling.",block,id,name));
+    }
+  }
+  for (  Item item : (Iterable<Item>)iItemRegistry) {
+    int id=iItemRegistry.getId(item);
+    String name=iItemRegistry.getNameForObject(item);
+    if (id < 0) {
+      throw new IllegalStateException(String.format("Registry entry for item %s, name %s, doesn't yield an id",item,name));
+    }
+    if (name == null) {
+      throw new IllegalStateException(String.format("Registry entry for item %s, id %d, doesn't yield a name",item,id));
+    }
+    if (!availabilityMap.get(id)) {
+      throw new IllegalStateException(String.format("Registry entry for item %s, id %d, name %s, marked as empty.",item,id,name));
+    }
+    if (blockedIds.contains(id)) {
+      throw new IllegalStateException(String.format("Registry entry for item %s, id %d, name %s, marked as dangling.",item,id,name));
+    }
+    if (item instanceof ItemBlock) {
+      Block block=((ItemBlock)item).field_150939_a;
+      if (iBlockRegistry.getId(block) != id) {
+        throw new IllegalStateException(String.format("Registry entry for ItemBlock %s, id %d, is missing or uses the non-matching id %d.",item,id,iBlockRegistry.getId(block)));
+      }
+    }
+  }
+  FMLLog.fine("Registry consistency check successful");
+}

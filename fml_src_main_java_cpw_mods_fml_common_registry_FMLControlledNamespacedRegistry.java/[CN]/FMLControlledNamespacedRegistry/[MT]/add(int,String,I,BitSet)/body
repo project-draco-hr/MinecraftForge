@@ -1,0 +1,36 @@
+{
+  if (name == null)   throw new NullPointerException("Can't use a null-name for the registry.");
+  if (name.isEmpty())   throw new IllegalArgumentException("Can't use an empty name for the registry.");
+  if (thing == null)   throw new NullPointerException("Can't add null-object to the registry.");
+  if (name.equals(optionalDefaultName)) {
+    this.optionalDefaultObject=thing;
+  }
+  int idToUse=id;
+  if (id == 0 || availabilityMap.get(id)) {
+    idToUse=availabilityMap.nextClearBit(minId);
+  }
+  if (idToUse > maxId) {
+    throw new RuntimeException(String.format("Invalid id %d - maximum id range exceeded.",id));
+  }
+  ModContainer mc=Loader.instance().activeModContainer();
+  if (mc != null) {
+    String prefix=mc.getModId();
+    name=prefix + ":" + name;
+  }
+  if (getRaw(name) == thing) {
+    FMLLog.bigWarning("The object %s has been registered twice for the same name %s.",thing,name);
+    return getId(thing);
+  }
+  if (getRaw(name) != null) {
+    FMLLog.bigWarning("The name %s has been registered twice, for %s and %s.",name,getRaw(name),thing);
+  }
+  if (getId(thing) >= 0) {
+    FMLLog.bigWarning("The object %s has been registered twice, using the names %s and %s.",thing,getNameForObject(thing),name);
+  }
+  if (GameData.isFrozen(this)) {
+    FMLLog.bigWarning("The object %s (name %s) is being added too late.",thing,name);
+  }
+  addObjectRaw(idToUse,name,thing);
+  FMLLog.finer("Registry add: %s %d %s",name,idToUse,thing);
+  return idToUse;
+}
