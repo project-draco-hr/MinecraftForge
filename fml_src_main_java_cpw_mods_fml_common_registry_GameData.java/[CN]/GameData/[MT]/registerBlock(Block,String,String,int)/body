@@ -3,7 +3,23 @@
     ModContainer mc=Loader.instance().activeModContainer();
     customOwners.put(new UniqueIdentifier(modId,name),mc);
   }
+  ItemBlock itemBlock=null;
+  for (  Item item : (Iterable<Item>)iItemRegistry) {
+    if (item instanceof ItemBlock && ((ItemBlock)item).field_150939_a == block) {
+      itemBlock=(ItemBlock)item;
+      break;
+    }
+  }
+  if (itemBlock != null) {
+    idHint=iItemRegistry.getId(itemBlock);
+    FMLLog.fine("Found matching ItemBlock %s for Block %s at id %d",itemBlock,block,idHint);
+    freeSlot(idHint,block);
+  }
   int blockId=iBlockRegistry.add(idHint,name,block,availabilityMap);
+  if (itemBlock != null) {
+    if (blockId != idHint)     throw new IllegalStateException("ItemBlock -> Block insertion failed.");
+    verifyItemBlockName(itemBlock);
+  }
   useSlot(blockId);
   return blockId;
 }

@@ -1,5 +1,5 @@
 {
-  BitSet availabilityMap=new BitSet(32000);
+  BitSet availabilityMap=new BitSet(MAX_ITEM_ID + 1);
   for (  Entry<String,Integer> entry : dataList.entrySet()) {
     String itemName=entry.getKey();
     String realName=itemName.substring(1);

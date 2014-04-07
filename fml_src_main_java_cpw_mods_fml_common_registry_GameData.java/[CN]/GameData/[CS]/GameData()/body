@@ -1,6 +1,6 @@
 {
-  iBlockRegistry=new FMLControlledNamespacedRegistry<Block>("air",4095,0,Block.class,'\u0001');
-  iItemRegistry=new FMLControlledNamespacedRegistry<Item>(null,32000,4096,Item.class,'\u0002');
-  availabilityMap=new BitSet(32000);
+  iBlockRegistry=new FMLControlledNamespacedRegistry<Block>("air",MAX_BLOCK_ID,MIN_BLOCK_ID,Block.class,'\u0001');
+  iItemRegistry=new FMLControlledNamespacedRegistry<Item>(null,MAX_ITEM_ID,MIN_ITEM_ID,Item.class,'\u0002');
+  availabilityMap=new BitSet(MAX_ITEM_ID + 1);
   blockedIds=new HashSet<Integer>();
 }

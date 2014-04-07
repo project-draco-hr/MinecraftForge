@@ -9,8 +9,8 @@
   if (id == 0 || availabilityMap.get(id)) {
     idToUse=availabilityMap.nextClearBit(minId);
   }
-  if (idToUse >= maxId) {
-    throw new RuntimeException(String.format("Invalid id %s - not accepted",id));
+  if (idToUse > maxId) {
+    throw new RuntimeException(String.format("Invalid id %d - maximum id range exceeded.",id));
   }
   ModContainer mc=Loader.instance().activeModContainer();
   if (mc != null) {

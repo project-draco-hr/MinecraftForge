@@ -1,0 +1,7 @@
+{
+  String blockName=iBlockRegistry.getNameForObject(item.field_150939_a);
+  String itemName=iItemRegistry.getNameForObject(item);
+  if (blockName != null && !blockName.equals(itemName)) {
+    FMLLog.bigWarning("Block <-> ItemBlock name mismatch, block name %s, item name %s",blockName,itemName);
+  }
+}

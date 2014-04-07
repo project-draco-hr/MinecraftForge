@@ -1,0 +1,8 @@
+{
+  FMLControlledNamespacedRegistry<?> registry=(obj instanceof Block) ? iBlockRegistry : iItemRegistry;
+  Object thing=registry.getRaw(id);
+  if (thing != null && thing != obj) {
+    throw new IllegalStateException(String.format("Can't free registry slot %d occupied by %s",id,thing));
+  }
+  availabilityMap.clear(id);
+}
