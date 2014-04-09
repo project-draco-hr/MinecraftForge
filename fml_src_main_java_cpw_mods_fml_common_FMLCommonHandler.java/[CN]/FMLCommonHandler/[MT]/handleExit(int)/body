@@ -1,0 +1,18 @@
+{
+  CountDownLatch latch=exitLatch;
+  if (latch != null) {
+    try {
+      FMLLog.info("Waiting for the server to terminate/save.");
+      if (!latch.await(10,TimeUnit.SECONDS)) {
+        FMLLog.warning("The server didn't stop within 10 seconds, exiting anyway.");
+      }
+ else {
+        FMLLog.info("Server terminated.");
+      }
+    }
+ catch (    InterruptedException e) {
+      FMLLog.warning("Interrupted wait, exiting.");
+    }
+  }
+  System.exit(retVal);
+}
