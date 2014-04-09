@@ -17,7 +17,7 @@
   }
   int blockId=iBlockRegistry.add(idHint,name,block,availabilityMap);
   if (itemBlock != null) {
-    if (blockId != idHint)     throw new IllegalStateException("ItemBlock -> Block insertion failed.");
+    if (blockId != idHint)     throw new IllegalStateException(String.format("Block at itemblock id %d insertion failed, got id %d.",idHint,blockId));
     verifyItemBlockName(itemBlock);
   }
   useSlot(blockId);

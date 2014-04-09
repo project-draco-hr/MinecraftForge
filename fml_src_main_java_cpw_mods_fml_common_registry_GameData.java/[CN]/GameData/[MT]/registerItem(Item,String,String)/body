@@ -1,3 +1,3 @@
 {
-  return registerItem(item,name,modId,0);
+  return registerItem(item,name,modId,-1);
 }

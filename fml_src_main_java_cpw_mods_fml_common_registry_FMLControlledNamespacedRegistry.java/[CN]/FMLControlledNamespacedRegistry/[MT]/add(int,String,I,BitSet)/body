@@ -6,15 +6,16 @@
     this.optionalDefaultObject=thing;
   }
   int idToUse=id;
-  if (id == 0 || availabilityMap.get(id)) {
+  if (idToUse < 0 || availabilityMap.get(idToUse)) {
     idToUse=availabilityMap.nextClearBit(minId);
   }
   if (idToUse > maxId) {
-    throw new RuntimeException(String.format("Invalid id %d - maximum id range exceeded.",id));
+    throw new RuntimeException(String.format("Invalid id %d - maximum id range exceeded.",idToUse));
   }
   ModContainer mc=Loader.instance().activeModContainer();
   if (mc != null) {
     String prefix=mc.getModId();
+    if (name.contains(":"))     FMLLog.bigWarning("Illegal extra prefix %s for name %s, invalid registry invocation/invalid name?",prefix,name);
     name=prefix + ":" + name;
   }
   if (getRaw(name) == thing) {
@@ -31,6 +32,6 @@
     FMLLog.bigWarning("The object %s (name %s) is being added too late.",thing,name);
   }
   addObjectRaw(idToUse,name,thing);
-  FMLLog.finer("Registry add: %s %d %s",name,idToUse,thing);
+  FMLLog.finer("Registry add: %s %d %s (req. id %d)",name,idToUse,thing,id);
   return idToUse;
 }

@@ -29,7 +29,7 @@
         continue;
       }
  else       if (currId != newId) {
-        FMLLog.fine("Found %s id mismatch %s : %d (was %d)",isBlock ? "block" : "item",itemName,currId,newId);
+        FMLLog.fine("Fixed %s id mismatch %s: %d (init) -> %d (map).",isBlock ? "block" : "item",itemName,currId,newId);
         remaps.put(itemName,new Integer[]{currId,newId});
       }
       FMLControlledNamespacedRegistry<?> srcRegistry=isBlock ? getMain().iBlockRegistry : getMain().iItemRegistry;
@@ -45,7 +45,7 @@
     Map<String,Integer> missingBlocks=frozen.iBlockRegistry.getEntriesNotIn(newData.iBlockRegistry);
     Map<String,Integer> missingItems=frozen.iItemRegistry.getEntriesNotIn(newData.iItemRegistry);
     if (!missingBlocks.isEmpty() || !missingItems.isEmpty()) {
-      FMLLog.info("Injecting new block and item data into this server instance");
+      FMLLog.info("Injecting new block and item data into this server instance.");
       for (int pass=0; pass < 2; pass++) {
         boolean isBlock=pass == 0;
         Map<String,Integer> missing=(pass == 0) ? missingBlocks : missingItems;
@@ -59,7 +59,7 @@
  else {
             newId=newData.registerItem(frozen.iItemRegistry.getRaw(itemName),itemName,null,currId);
           }
-          FMLLog.info("Injected new block/item %s : %d (was %d)",itemName,newId,currId);
+          FMLLog.info("Injected new block/item %s: %d (init) -> %d (map).",itemName,currId,newId);
           if (newId != currId) {
             remaps.put(itemName,new Integer[]{entry.getValue(),newId});
           }
