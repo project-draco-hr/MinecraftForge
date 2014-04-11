@@ -23,10 +23,10 @@
     return getId(thing);
   }
   if (getRaw(name) != null) {
-    FMLLog.bigWarning("The name %s has been registered twice, for %s and %s.",name,getRaw(name),thing);
+    throw new IllegalArgumentException(String.format("The name %s has been registered twice, for %s and %s.",name,getRaw(name),thing));
   }
   if (getId(thing) >= 0) {
-    FMLLog.bigWarning("The object %s has been registered twice, using the names %s and %s.",thing,getNameForObject(thing),name);
+    throw new IllegalArgumentException(String.format("The object %s has been registered twice, using the names %s and %s.",thing,getNameForObject(thing),name));
   }
   if (GameData.isFrozen(this)) {
     FMLLog.bigWarning("The object %s (name %s) is being added too late.",thing,name);
