@@ -2,8 +2,8 @@
   Class<?> cls=recipe;
   Category ret=categories.get(cls);
   if (ret == null) {
-    cls=cls.getSuperclass();
     while (cls != Object.class) {
+      cls=cls.getSuperclass();
       ret=categories.get(cls);
       if (ret != null) {
         categories.put(recipe,ret);
