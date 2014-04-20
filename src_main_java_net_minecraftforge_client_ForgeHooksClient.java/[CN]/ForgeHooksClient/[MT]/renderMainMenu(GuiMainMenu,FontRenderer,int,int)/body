@@ -10,7 +10,7 @@
 switch (status) {
 case OUTDATED:
 case BETA_OUTDATED:
-    line="New Forge version avalible: " + ForgeVersion.getTarget();
+    line="New Forge version available: " + ForgeVersion.getTarget();
   break;
 default :
 break;
