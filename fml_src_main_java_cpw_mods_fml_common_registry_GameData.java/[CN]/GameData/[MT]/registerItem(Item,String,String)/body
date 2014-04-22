@@ -1,3 +1,0 @@
-{
-  return registerItem(item,name,modId,-1);
-}

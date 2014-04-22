@@ -1,3 +1,3 @@
 {
-  return registerBlock(block,itemclass,name,null);
+  return registerBlock(block,itemclass,name,new Object[]{});
 }

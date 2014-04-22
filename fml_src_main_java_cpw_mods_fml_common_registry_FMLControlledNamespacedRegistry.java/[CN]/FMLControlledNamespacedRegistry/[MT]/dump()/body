@@ -1,6 +1,6 @@
 {
   List<Integer> ids=new ArrayList<Integer>();
-  for (  I thing : (Iterable<I>)this) {
+  for (  I thing : this.typeSafeIterable()) {
     ids.add(getId(thing));
   }
   Collections.sort(ids);

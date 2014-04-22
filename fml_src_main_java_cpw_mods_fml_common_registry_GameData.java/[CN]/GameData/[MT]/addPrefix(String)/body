@@ -1,0 +1,16 @@
+{
+  int index=name.lastIndexOf(':');
+  String oldPrefix=index == -1 ? "" : name.substring(0,index);
+  String prefix;
+  ModContainer mc=Loader.instance().activeModContainer();
+  if (mc != null) {
+    prefix=mc.getModId();
+  }
+ else {
+    prefix="minecraft";
+  }
+  if (!oldPrefix.equals(prefix)) {
+    name=prefix + ":" + name;
+  }
+  return name;
+}

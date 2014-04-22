@@ -32,8 +32,12 @@
         FMLLog.fine("Fixed %s id mismatch %s: %d (init) -> %d (map).",isBlock ? "block" : "item",itemName,currId,newId);
         remaps.put(itemName,new Integer[]{currId,newId});
       }
-      FMLControlledNamespacedRegistry<?> srcRegistry=isBlock ? getMain().iBlockRegistry : getMain().iItemRegistry;
-      currId=newData.register(srcRegistry.getRaw(itemName),itemName,newId);
+      if (isBlock) {
+        currId=newData.registerBlock(getMain().iBlockRegistry.getRaw(itemName),itemName,newId);
+      }
+ else {
+        currId=newData.registerItem(getMain().iItemRegistry.getRaw(itemName),itemName,newId);
+      }
       if (currId != newId) {
         throw new IllegalStateException(String.format("Can't map %s %s to id %d, already occupied by %s, blocked %b, ItemBlock %b",isBlock ? "block" : "item",itemName,newId,isBlock ? newData.iBlockRegistry.getRaw(newId) : newData.iItemRegistry.getRaw(newId),newData.blockedIds.contains(newId),isBlock ? false : (getMain().iItemRegistry.getRaw(currId) instanceof ItemBlock)));
       }
@@ -54,10 +58,10 @@
           int currId=entry.getValue();
           int newId;
           if (isBlock) {
-            newId=newData.registerBlock(frozen.iBlockRegistry.getRaw(itemName),itemName,null,currId);
+            newId=newData.registerBlock(frozen.iBlockRegistry.getRaw(itemName),itemName,currId);
           }
  else {
-            newId=newData.registerItem(frozen.iItemRegistry.getRaw(itemName),itemName,null,currId);
+            newId=newData.registerItem(frozen.iItemRegistry.getRaw(itemName),itemName,currId);
           }
           FMLLog.info("Injected new block/item %s: %d (init) -> %d (map).",itemName,currId,newId);
           if (newId != currId) {

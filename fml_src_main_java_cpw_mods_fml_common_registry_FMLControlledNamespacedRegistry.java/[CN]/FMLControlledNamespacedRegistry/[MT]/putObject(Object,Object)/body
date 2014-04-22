@@ -1,9 +1,10 @@
 {
   String name=(String)objName;
-  I thing=(I)obj;
+  I thing=superType.cast(obj);
   if (name == null)   throw new NullPointerException("Can't use a null-name for the registry.");
   if (name.isEmpty())   throw new IllegalArgumentException("Can't use an empty name for the registry.");
   if (thing == null)   throw new NullPointerException("Can't add null-object to the registry.");
+  name=ensureNamespaced(name);
   String existingName=getNameForObject(thing);
   if (existingName == null) {
     FMLLog.bigWarning("Ignoring putObject(%s, %s), not resolvable",name,thing);

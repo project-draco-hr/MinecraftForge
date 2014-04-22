@@ -1,3 +1,0 @@
-{
-  return registerBlock(block,name,modId,-1);
-}

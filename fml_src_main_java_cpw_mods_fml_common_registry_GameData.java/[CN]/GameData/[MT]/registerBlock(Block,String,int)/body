@@ -1,10 +1,6 @@
 {
-  if (modId != null) {
-    ModContainer mc=Loader.instance().activeModContainer();
-    customOwners.put(new UniqueIdentifier(modId,name),mc);
-  }
   ItemBlock itemBlock=null;
-  for (  Item item : (Iterable<Item>)iItemRegistry) {
+  for (  Item item : iItemRegistry.typeSafeIterable()) {
     if (item instanceof ItemBlock && ((ItemBlock)item).field_150939_a == block) {
       itemBlock=(ItemBlock)item;
       break;

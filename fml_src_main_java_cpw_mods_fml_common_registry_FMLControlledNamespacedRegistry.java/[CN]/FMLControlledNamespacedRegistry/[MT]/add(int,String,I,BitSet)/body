@@ -1,7 +1,8 @@
 {
-  if (name == null)   throw new NullPointerException("Can't use a null-name for the registry.");
-  if (name.isEmpty())   throw new IllegalArgumentException("Can't use an empty name for the registry.");
-  if (thing == null)   throw new NullPointerException("Can't add null-object to the registry.");
+  if (name == null)   throw new NullPointerException(String.format("Can't use a null-name for the registry, object %s.",thing));
+  if (name.isEmpty())   throw new IllegalArgumentException(String.format("Can't use an empty name for the registry, object %s.",thing));
+  if (name.indexOf(':') == -1)   throw new IllegalArgumentException(String.format("Can't add the name (%s) without a prefix, object %s",name,thing));
+  if (thing == null)   throw new NullPointerException(String.format("Can't add null-object to the registry, name %s.",name));
   if (name.equals(optionalDefaultName)) {
     this.optionalDefaultObject=thing;
   }
@@ -11,12 +12,6 @@
   }
   if (idToUse > maxId) {
     throw new RuntimeException(String.format("Invalid id %d - maximum id range exceeded.",idToUse));
-  }
-  ModContainer mc=Loader.instance().activeModContainer();
-  if (mc != null) {
-    String prefix=mc.getModId();
-    if (name.contains(":"))     FMLLog.bigWarning("Illegal extra prefix %s for name %s, invalid registry invocation/invalid name?",prefix,name);
-    name=prefix + ":" + name;
   }
   if (getRaw(name) == thing) {
     FMLLog.bigWarning("The object %s has been registered twice for the same name %s.",thing,name);

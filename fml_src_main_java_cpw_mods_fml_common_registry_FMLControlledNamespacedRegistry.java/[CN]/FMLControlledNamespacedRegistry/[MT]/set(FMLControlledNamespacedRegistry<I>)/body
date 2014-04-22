@@ -8,7 +8,7 @@
   this.aliases.putAll(registry.aliases);
   underlyingIntegerMap=new ObjectIntIdentityMap();
   registryObjects.clear();
-  for (  I thing : (Iterable<I>)registry) {
+  for (  I thing : registry.typeSafeIterable()) {
     addObjectRaw(registry.getId(thing),registry.getNameForObject(thing),thing);
   }
 }

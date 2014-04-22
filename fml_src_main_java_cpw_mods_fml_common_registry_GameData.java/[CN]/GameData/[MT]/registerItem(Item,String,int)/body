@@ -1,8 +1,4 @@
 {
-  if (modId != null) {
-    ModContainer mc=Loader.instance().activeModContainer();
-    customOwners.put(new UniqueIdentifier(modId,name),mc);
-  }
   if (item instanceof ItemBlock) {
     Block block=((ItemBlock)item).field_150939_a;
     int id=iBlockRegistry.getId(block);
