@@ -32,20 +32,7 @@
         FMLLog.warning("Found unlabelled item in world save, this may cause problems. The item type %s:%d will not be present",itemType,ordinal);
       }
  else {
-        boolean isItem;
-        try {
-          Class<?> clazz=Class.forName(itemType);
-          clazz.asSubclass(Item.class);
-          isItem=true;
-        }
- catch (        ClassNotFoundException cnfs) {
-          FMLLog.warning("The old item %s is not present in this game, it's type cannot be inferred - it will be skipped",itemType);
-          continue;
-        }
-catch (        ClassCastException ccs) {
-          isItem=false;
-        }
-        String itemLabel=String.format("%c%s:%s",isItem ? '\u0002' : '\u0001',forcedModId != null ? forcedModId : modId,forcedName);
+        String itemLabel=String.format("%c%s:%s",'\u0002',forcedModId != null ? forcedModId : modId,forcedName);
         dataList.put(itemLabel,itemId);
       }
     }
