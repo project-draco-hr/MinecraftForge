@@ -4,5 +4,5 @@
   this.chunkZ=chunkZ;
   this.blockArray=blockArray;
   this.biomeArray=biomeArray;
-  metaArray=new byte[256];
+  this.metaArray=metaArray;
 }

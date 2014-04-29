@@ -1,0 +1,6 @@
+IChunkProvider chunkProvider
+int chunkX
+int chunkZ
+Block[] blockArray
+byte[] metaArray
+BiomeGenBase[] biomeArray
