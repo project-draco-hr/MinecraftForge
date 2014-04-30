@@ -2,7 +2,7 @@
   BitSet availabilityMap=new BitSet(MAX_ITEM_ID + 1);
   for (  Entry<String,Integer> entry : dataList.entrySet()) {
     String itemName=entry.getKey();
-    String realName=itemName.substring(1);
+    @SuppressWarnings("unused") String realName=itemName.substring(1);
     if (itemName.charAt(0) == '\u0001') {
       availabilityMap.set(entry.getValue());
     }
@@ -64,7 +64,7 @@
   }
   for (Iterator<String> it=modsMissing.iterator(); it.hasNext(); ) {
     String mod=it.next();
-    if (mod.equals("minecraft") || Loader.instance().isModLoaded(mod))     it.remove();
+    if (mod.equals("minecraft") || Loader.isModLoaded(mod))     it.remove();
   }
   if (!modsMissing.isEmpty()) {
     text="Forge Mod Loader detected that " + modsMissing.size() + " mods are missing.\n\n"+ "If you continue items previously provided by those mods will be\n"+ "removed while repairing this world save.\n\n"+ "Missing mods:\n";
