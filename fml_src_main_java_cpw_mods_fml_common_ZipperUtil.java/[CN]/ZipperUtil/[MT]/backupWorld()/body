@@ -1,11 +1,4 @@
 {
   String dirName=FMLCommonHandler.instance().getMinecraftServerInstance().getFolderName();
-  String saveName;
-  if (FMLCommonHandler.instance().getSide().isClient()) {
-    saveName=FMLCommonHandler.instance().getMinecraftServerInstance().getWorldName();
-  }
- else {
-    saveName=dirName;
-  }
-  backupWorld(dirName,saveName);
+  backupWorld(dirName);
 }
