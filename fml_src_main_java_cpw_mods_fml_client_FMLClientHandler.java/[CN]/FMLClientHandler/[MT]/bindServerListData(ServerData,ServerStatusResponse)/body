@@ -9,7 +9,8 @@
       JsonObject modObj=obj.getAsJsonObject();
       modListBldr.put(modObj.get("modid").getAsString(),modObj.get("version").getAsString());
     }
-    serverDataTag.put(data,new ExtendedServerListData(type,true,modListBldr.build(),!moddedClientAllowed));
+    Map<String,String> modListMap=modListBldr.build();
+    serverDataTag.put(data,new ExtendedServerListData(type,FMLNetworkHandler.checkModList(modListMap,Side.CLIENT) == null,modListMap,!moddedClientAllowed));
   }
  else {
     String serverDescription=data.serverMOTD;
