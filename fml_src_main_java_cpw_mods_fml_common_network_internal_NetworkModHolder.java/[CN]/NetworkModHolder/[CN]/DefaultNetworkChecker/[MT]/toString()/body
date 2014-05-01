@@ -1,0 +1,3 @@
+{
+  return acceptableRange != null ? String.format("Accepting range %s",acceptableRange) : String.format("Accepting version %s",container.getVersion());
+}

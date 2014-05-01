@@ -43,7 +43,10 @@
   if (this.checkHandler != null) {
     this.checker=new MethodNetworkChecker();
   }
- else   if (!Strings.isNullOrEmpty(acceptableVersionRange) && !acceptableVersionRange.equals('*')) {
+ else   if (!Strings.isNullOrEmpty(acceptableVersionRange) && acceptableVersionRange.equals("*")) {
+    this.checker=new IgnoredChecker();
+  }
+ else {
     try {
       this.acceptableRange=VersionRange.createFromVersionSpec(acceptableVersionRange);
     }
@@ -52,9 +55,7 @@
     }
     this.checker=new DefaultNetworkChecker();
   }
- else {
-    this.checker=new IgnoredChecker();
-  }
+  FMLLog.finer("Mod %s is using network checker : %s",container.getModId(),this.checker);
   FMLLog.finer("Testing mod %s to verify it accepts its own version in a remote connection",container.getModId());
   boolean acceptsSelf=acceptVersion(container.getVersion());
   if (!acceptsSelf) {
