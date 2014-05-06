@@ -1,4 +1,4 @@
 {
   playClientBlock.countDown();
-  this.currentPlayClient=netHandlerPlayClient;
+  this.currentPlayClient=new WeakReference(netHandlerPlayClient);
 }

@@ -5,7 +5,8 @@
   buffer.writeByte(discriminator);
   encodeInto(ctx,msg,buffer);
   FMLProxyPacket proxy=new FMLProxyPacket(buffer.copy(),ctx.channel().attr(NetworkRegistry.FML_CHANNEL).get());
-  FMLProxyPacket old=ctx.attr(INBOUNDPACKETTRACKER).get().get();
+  WeakReference<FMLProxyPacket> ref=ctx.attr(INBOUNDPACKETTRACKER).get().get();
+  FMLProxyPacket old=ref == null ? null : ref.get();
   if (old != null) {
     proxy.setDispatcher(old.getDispatcher());
   }
