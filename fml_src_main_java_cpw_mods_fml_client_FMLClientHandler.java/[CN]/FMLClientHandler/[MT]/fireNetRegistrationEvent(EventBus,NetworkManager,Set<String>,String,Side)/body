@@ -1,6 +1,6 @@
 {
-  waitForPlayClient();
   if (side == Side.CLIENT) {
+    waitForPlayClient();
     bus.post(new FMLNetworkEvent.CustomPacketRegistrationEvent<NetHandlerPlayClient>(manager,channelSet,channel,side,NetHandlerPlayClient.class));
   }
  else {
