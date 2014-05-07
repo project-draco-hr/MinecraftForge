@@ -1,0 +1,6 @@
+{
+  super(gui);
+  this.mouseX=mouseX;
+  this.mouseY=mouseY;
+  this.renderPartialTicks=renderPartialTicks;
+}

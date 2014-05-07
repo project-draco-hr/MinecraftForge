@@ -1,0 +1,4 @@
+GuiScreen gui
+int mouseX
+int mouseY
+float renderPartialTicks
