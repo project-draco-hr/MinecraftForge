@@ -1,4 +1,4 @@
 {
-  FMLClientHandler.instance().waitForPlayClient();
+  FMLCommonHandler.instance().waitForPlayClient();
   completeClientSideConnection(ConnectionType.valueOf(type));
 }
