@@ -16,4 +16,5 @@
     }
   }
   eventChannels=eventBus.build();
+  FMLCommonHandler.instance().updateResourcePackList();
 }

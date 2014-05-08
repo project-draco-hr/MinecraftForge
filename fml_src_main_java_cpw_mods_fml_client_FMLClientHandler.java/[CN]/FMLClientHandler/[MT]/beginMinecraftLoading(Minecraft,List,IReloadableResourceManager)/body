@@ -43,9 +43,6 @@ catch (  LoaderException le) {
     haltGame("There was a severe problem during mod loading that has caused the game to fail",le);
     return;
   }
- finally {
-    client.refreshResources();
-  }
   Map<String,Map<String,String>> sharedModList=(Map<String,Map<String,String>>)Launch.blackboard.get("modList");
   if (sharedModList == null) {
     sharedModList=Maps.newHashMap();
