@@ -1,0 +1,4 @@
+{
+  modController.distributeStateMessage(LoaderState.PREINITIALIZATION,discoverer.getASMTable(),canonicalConfigDir);
+  modController.transition(LoaderState.INITIALIZATION,false);
+}

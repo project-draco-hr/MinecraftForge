@@ -4,15 +4,15 @@
   namedMods=Maps.newHashMap();
   modController=new LoadController(this);
   modController.transition(LoaderState.LOADING,false);
-  ModDiscoverer disc=identifyMods();
-  ModAPIManager.INSTANCE.manageAPI(modClassLoader,disc);
+  discoverer=identifyMods();
+  ModAPIManager.INSTANCE.manageAPI(modClassLoader,discoverer);
   disableRequestedMods();
   modController.distributeStateMessage(FMLLoadEvent.class);
   sortModList();
   ModAPIManager.INSTANCE.cleanupAPIContainers(modController.getActiveModList());
   ModAPIManager.INSTANCE.cleanupAPIContainers(mods);
   mods=ImmutableList.copyOf(mods);
-  for (  File nonMod : disc.getNonModLibs()) {
+  for (  File nonMod : discoverer.getNonModLibs()) {
     if (nonMod.isFile()) {
       FMLLog.info("FML has found a non-mod file %s in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.",nonMod.getName());
       try {
@@ -24,7 +24,7 @@
     }
   }
   modController.transition(LoaderState.CONSTRUCTING,false);
-  modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader,disc.getASMTable(),reverseDependencies);
+  modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader,discoverer.getASMTable(),reverseDependencies);
   FMLLog.fine("Mod signature data");
   for (  ModContainer mod : getActiveModList()) {
     FMLLog.fine("\t%s(%s:%s): %s (%s)",mod.getModId(),mod.getName(),mod.getVersion(),mod.getSource().getName(),CertificateHelper.getFingerprint(mod.getSigningCertificate()));
@@ -33,6 +33,4 @@
     FMLLog.fine("No user mod signature data found");
   }
   modController.transition(LoaderState.PREINITIALIZATION,false);
-  modController.distributeStateMessage(LoaderState.PREINITIALIZATION,disc.getASMTable(),canonicalConfigDir);
-  modController.transition(LoaderState.INITIALIZATION,false);
 }
