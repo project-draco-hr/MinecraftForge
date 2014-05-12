@@ -1,6 +1,6 @@
 {
+  dimensionMap.clear();
   if (compoundTag == null) {
-    dimensionMap.clear();
     for (    Integer id : dimensions.keySet()) {
       if (id >= 0) {
         dimensionMap.set(id);
