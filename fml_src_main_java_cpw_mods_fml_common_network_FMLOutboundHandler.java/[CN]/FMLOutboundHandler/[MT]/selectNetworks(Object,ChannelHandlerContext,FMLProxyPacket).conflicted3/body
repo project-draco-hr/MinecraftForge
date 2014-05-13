@@ -4,7 +4,7 @@
   for (  EntityPlayerMP player : (List<EntityPlayerMP>)FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().playerEntityList) {
     if (dimension == player.dimension) {
       NetworkDispatcher dispatcher=player.playerNetServerHandler.netManager.channel().attr(NetworkDispatcher.FML_DISPATCHER).get();
-      builder.add(dispatcher);
+      if (dispatcher != null)       builder.add(dispatcher);
     }
   }
   return builder.build();

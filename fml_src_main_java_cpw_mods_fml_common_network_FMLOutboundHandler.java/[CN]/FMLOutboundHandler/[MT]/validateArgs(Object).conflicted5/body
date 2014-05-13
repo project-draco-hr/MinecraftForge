@@ -1,5 +1,2 @@
 {
-  if (!(args instanceof TargetPoint)) {
-    throw new RuntimeException("ALLAROUNDPOINT expects a TargetPoint argument");
-  }
 }
