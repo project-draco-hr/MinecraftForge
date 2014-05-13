@@ -1,4 +1,4 @@
 {
-  allLists.add(this);
+  extendMasterList(this);
   resizeLists(maxSize);
 }

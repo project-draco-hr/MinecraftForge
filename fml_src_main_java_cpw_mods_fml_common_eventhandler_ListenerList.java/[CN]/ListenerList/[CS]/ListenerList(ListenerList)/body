@@ -1,5 +1,4 @@
 {
-  allLists.add(this);
+  this();
   this.parent=parent;
-  resizeLists(maxSize);
 }

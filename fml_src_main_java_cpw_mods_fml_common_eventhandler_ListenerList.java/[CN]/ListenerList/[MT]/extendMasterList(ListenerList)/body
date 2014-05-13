@@ -1,0 +1,6 @@
+{
+  ImmutableList.Builder<ListenerList> builder=ImmutableList.builder();
+  builder.addAll(allLists);
+  builder.add(inst);
+  allLists=builder.build();
+}
