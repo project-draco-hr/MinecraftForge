@@ -1,4 +1,3 @@
 {
-  extendMasterList(this);
-  resizeLists(maxSize);
+  this(null);
 }

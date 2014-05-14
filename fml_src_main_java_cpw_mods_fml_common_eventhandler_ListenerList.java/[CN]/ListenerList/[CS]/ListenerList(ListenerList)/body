@@ -1,4 +1,5 @@
 {
-  this();
   this.parent=parent;
+  extendMasterList(this);
+  resizeLists(maxSize);
 }
