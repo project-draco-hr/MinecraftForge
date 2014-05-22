@@ -14,7 +14,7 @@
   if (fluid == null) {
     fluid=new FluidStack(resource,Math.min(capacity,resource.amount));
     if (tile != null) {
-      FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid,tile.getWorldObj(),tile.xCoord,tile.yCoord,tile.zCoord,this));
+      FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid,tile.getWorldObj(),tile.xCoord,tile.yCoord,tile.zCoord,this,fluid.amount));
     }
     return fluid.amount;
   }
@@ -30,7 +30,7 @@
     fluid.amount=capacity;
   }
   if (tile != null) {
-    FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid,tile.getWorldObj(),tile.xCoord,tile.yCoord,tile.zCoord,this));
+    FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid,tile.getWorldObj(),tile.xCoord,tile.yCoord,tile.zCoord,this,filled));
   }
   return filled;
 }

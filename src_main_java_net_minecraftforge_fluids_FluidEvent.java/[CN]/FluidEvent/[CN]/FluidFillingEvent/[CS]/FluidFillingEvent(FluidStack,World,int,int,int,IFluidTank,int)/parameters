@@ -1,0 +1,7 @@
+FluidStack fluid
+World world
+int x
+int y
+int z
+IFluidTank tank
+int amount
