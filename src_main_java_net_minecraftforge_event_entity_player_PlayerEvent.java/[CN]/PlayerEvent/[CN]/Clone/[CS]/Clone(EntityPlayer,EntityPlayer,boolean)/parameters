@@ -1,0 +1,3 @@
+EntityPlayer _new
+EntityPlayer oldPlayer
+boolean wasDeath
