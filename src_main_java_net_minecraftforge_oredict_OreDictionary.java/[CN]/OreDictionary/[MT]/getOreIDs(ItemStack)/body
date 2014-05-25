@@ -3,7 +3,7 @@
   List<Integer> ids=new ArrayList<Integer>();
   for (  Entry<Integer,ArrayList<ItemStack>> ore : oreStacks.entrySet()) {
     for (    ItemStack target : ore.getValue()) {
-      if (itemMatches(itemStack,target,false)) {
+      if (itemMatches(target,itemStack,false)) {
         ids.add(ore.getKey());
       }
     }
