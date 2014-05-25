@@ -1,5 +1,6 @@
 {
   ArrayList<ItemStack> ores=getOres(id);
+  if (containsMatch(false,ores,ore))   return;
   ore=ore.copy();
   ores.add(ore);
   MinecraftForge.EVENT_BUS.post(new OreRegisterEvent(name,ore));

@@ -1,0 +1,10 @@
+{
+  for (  ItemStack input : inputs) {
+    for (    ItemStack target : targets) {
+      if (itemMatches(target,input,strict)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

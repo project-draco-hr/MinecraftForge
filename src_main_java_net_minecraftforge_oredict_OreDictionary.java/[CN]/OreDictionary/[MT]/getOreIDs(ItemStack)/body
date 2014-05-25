@@ -1,0 +1,14 @@
+{
+  if (itemStack == null)   return new int[0];
+  List<Integer> ids=new ArrayList<Integer>();
+  for (  Entry<Integer,ArrayList<ItemStack>> ore : oreStacks.entrySet()) {
+    for (    ItemStack target : ore.getValue()) {
+      if (itemMatches(itemStack,target,false)) {
+        ids.add(ore.getKey());
+      }
+    }
+  }
+  int[] ret=new int[ids.size()];
+  for (int x=0; x < ids.size(); x++)   ret[x]=ids.get(x);
+  return ret;
+}
