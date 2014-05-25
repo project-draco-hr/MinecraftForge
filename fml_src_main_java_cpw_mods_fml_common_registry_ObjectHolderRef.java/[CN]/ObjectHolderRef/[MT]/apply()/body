@@ -1,0 +1,12 @@
+{
+  Object thing;
+  if (isBlock)   thing=GameData.getBlockRegistry().getObject(injectedObject);
+ else   thing=GameData.getItemRegistry().getObject(injectedObject);
+  try {
+    Object fieldAccessor=newFieldAccessor.invoke(reflectionFactory,field,false);
+    fieldAccessorSet.invoke(fieldAccessor,null,thing);
+  }
+ catch (  Exception e) {
+    FMLLog.log(Level.WARN,e,"Unable to set %s with value %s (%s)",this.field,thing,this.injectedObject);
+  }
+}

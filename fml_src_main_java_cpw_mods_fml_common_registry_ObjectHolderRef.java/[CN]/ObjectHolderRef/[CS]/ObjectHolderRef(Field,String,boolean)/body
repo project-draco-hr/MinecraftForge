@@ -1,0 +1,21 @@
+{
+  this.field=field;
+  this.isBlock=Block.class.isAssignableFrom(field.getType());
+  this.isItem=Item.class.isAssignableFrom(field.getType());
+  if (extractFromExistingValues) {
+    try {
+      Object existing=field.get(null);
+      this.injectedObject=isBlock ? GameData.getBlockRegistry().getNameForObject(existing) : isItem ? GameData.getItemRegistry().getNameForObject(existing) : null;
+    }
+ catch (    Exception e) {
+      throw Throwables.propagate(e);
+    }
+  }
+ else {
+    this.injectedObject=injectedObject;
+  }
+  if (this.injectedObject == null || !isValid()) {
+    throw new IllegalStateException("The ObjectHolder annotation cannot apply to a field that is not an Item or Block");
+  }
+  makeWritable(field);
+}
