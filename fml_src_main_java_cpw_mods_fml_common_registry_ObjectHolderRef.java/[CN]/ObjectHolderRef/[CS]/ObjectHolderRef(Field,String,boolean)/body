@@ -5,7 +5,16 @@
   if (extractFromExistingValues) {
     try {
       Object existing=field.get(null);
-      this.injectedObject=isBlock ? GameData.getBlockRegistry().getNameForObject(existing) : isItem ? GameData.getItemRegistry().getNameForObject(existing) : null;
+      if (existing == null || existing == GameData.getBlockRegistry().getDefaultValue()) {
+        this.injectedObject=null;
+        this.field=null;
+        this.isBlock=false;
+        this.isItem=false;
+        return;
+      }
+ else {
+        this.injectedObject=isBlock ? GameData.getBlockRegistry().getNameForObject(existing) : isItem ? GameData.getItemRegistry().getNameForObject(existing) : null;
+      }
     }
  catch (    Exception e) {
       throw Throwables.propagate(e);
