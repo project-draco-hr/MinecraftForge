@@ -4,7 +4,10 @@
   if (internalChannel != null) {
     internalChannel.attr(NetworkRegistry.NET_HANDLER).set(this.netHandler);
     try {
-      internalChannel.writeInbound(this);
+      if (internalChannel.writeInbound(this)) {
+        FMLLog.severe("A packet for channel %s for side %s was not processed by the embedded channel - it has been dropped. Payload\n%s",this.channel,this.target,ByteBufUtils.getContentDump(this.payload));
+      }
+      internalChannel.inboundMessages().clear();
     }
  catch (    FMLNetworkException ne) {
       FMLLog.log(Level.ERROR,ne,"There was a network exception handling a packet on channel %s",channel);
