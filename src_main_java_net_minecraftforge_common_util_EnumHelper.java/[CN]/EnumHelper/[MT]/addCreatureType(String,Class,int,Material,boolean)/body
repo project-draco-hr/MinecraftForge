@@ -1,3 +1,0 @@
-{
-  return addEnum(EnumCreatureType.class,name,typeClass,maxNumber,material,peaceful);
-}
