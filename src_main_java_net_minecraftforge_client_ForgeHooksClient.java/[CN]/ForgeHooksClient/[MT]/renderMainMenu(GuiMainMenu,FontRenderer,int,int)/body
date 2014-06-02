@@ -1,16 +1,16 @@
 {
   Status status=ForgeVersion.getStatus();
   if (status == BETA || status == BETA_OUTDATED) {
-    String line=EnumChatFormatting.RED + "WARNING:" + EnumChatFormatting.RESET+ " Forge Beta,";
+    String line=I18n.format("forge.update.beta.1",EnumChatFormatting.RED,EnumChatFormatting.RESET);
     gui.drawString(font,line,(width - font.getStringWidth(line)) / 2,4 + (0 * (font.FONT_HEIGHT + 1)),-1);
-    line="Major issues may arise, verify before reporting.";
+    line=I18n.format("forge.update.beta.2");
     gui.drawString(font,line,(width - font.getStringWidth(line)) / 2,4 + (1 * (font.FONT_HEIGHT + 1)),-1);
   }
   String line=null;
 switch (status) {
 case OUTDATED:
 case BETA_OUTDATED:
-    line="New Forge version available: " + ForgeVersion.getTarget();
+    line=I18n.format("forge.update.newversion",ForgeVersion.getTarget());
   break;
 default :
 break;
