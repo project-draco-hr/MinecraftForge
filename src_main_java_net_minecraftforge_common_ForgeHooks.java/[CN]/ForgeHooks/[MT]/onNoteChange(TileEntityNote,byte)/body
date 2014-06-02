@@ -1,0 +1,9 @@
+{
+  NoteBlockEvent.Change e=new NoteBlockEvent.Change(te.getWorldObj(),te.xCoord,te.yCoord,te.zCoord,te.getBlockMetadata(),old,te.note);
+  if (MinecraftForge.EVENT_BUS.post(e)) {
+    te.note=old;
+    return false;
+  }
+  te.note=(byte)e.getVanillaNoteId();
+  return true;
+}

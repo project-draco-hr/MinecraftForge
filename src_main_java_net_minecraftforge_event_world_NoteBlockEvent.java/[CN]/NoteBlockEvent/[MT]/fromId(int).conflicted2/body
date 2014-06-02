@@ -1,0 +1,3 @@
+{
+  return id < 12 ? LOW : id == 24 ? HIGH : MID;
+}

@@ -1,0 +1,4 @@
+{
+  super(x,y,z,world,Blocks.noteblock,meta);
+  this.noteId=note;
+}

@@ -1,0 +1,4 @@
+{
+  Preconditions.checkArgument(octave != Octave.HIGH || note == Note.F_SHARP,"Octave.HIGH is only valid for Note.F_SHARP!");
+  this.noteId=note.ordinal() + octave.ordinal() * 12;
+}
