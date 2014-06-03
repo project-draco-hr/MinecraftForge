@@ -1,5 +1,2 @@
 {
-  if (!(args instanceof NetworkDispatcher)) {
-    throw new RuntimeException("DISPATCHER expects a NetworkDispatcher");
-  }
 }

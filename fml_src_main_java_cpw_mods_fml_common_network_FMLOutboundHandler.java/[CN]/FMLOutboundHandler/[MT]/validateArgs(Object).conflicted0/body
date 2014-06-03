@@ -1,2 +1,5 @@
 {
+  if (!(args instanceof EntityPlayerMP)) {
+    throw new RuntimeException("PLAYER target expects a Player arg");
+  }
 }
