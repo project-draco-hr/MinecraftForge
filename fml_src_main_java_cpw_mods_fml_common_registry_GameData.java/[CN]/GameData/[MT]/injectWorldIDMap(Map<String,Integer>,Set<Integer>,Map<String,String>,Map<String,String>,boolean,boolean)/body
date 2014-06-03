@@ -76,5 +76,6 @@
   getMain().iBlockRegistry.dump();
   getMain().iItemRegistry.dump();
   Loader.instance().fireRemapEvent(remaps);
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
   return ImmutableList.of();
 }

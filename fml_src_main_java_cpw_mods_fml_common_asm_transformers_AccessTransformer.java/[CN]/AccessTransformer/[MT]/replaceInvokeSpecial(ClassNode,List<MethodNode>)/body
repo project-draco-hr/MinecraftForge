@@ -1,0 +1,16 @@
+{
+  for (  MethodNode method : clazz.methods) {
+    for (Iterator<AbstractInsnNode> it=method.instructions.iterator(); it.hasNext(); ) {
+      AbstractInsnNode insn=it.next();
+      if (insn.getOpcode() == INVOKESPECIAL) {
+        MethodInsnNode mInsn=(MethodInsnNode)insn;
+        for (        MethodNode n : toReplace) {
+          if (n.name.equals(mInsn.name) && n.desc.equals(mInsn.desc)) {
+            mInsn.setOpcode(INVOKEVIRTUAL);
+            break;
+          }
+        }
+      }
+    }
+  }
+}

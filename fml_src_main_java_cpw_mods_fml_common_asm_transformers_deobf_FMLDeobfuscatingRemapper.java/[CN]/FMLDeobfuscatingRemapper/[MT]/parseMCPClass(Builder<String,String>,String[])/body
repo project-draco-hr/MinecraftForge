@@ -1,4 +1,0 @@
-{
-  int clIdx=parts[2].lastIndexOf('/');
-  builder.put("net/minecraft/src/" + parts[2].substring(clIdx + 1),parts[2]);
-}

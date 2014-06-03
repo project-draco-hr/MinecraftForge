@@ -5,10 +5,9 @@
   if (classNameBiMap.containsKey(typeName)) {
     return classNameBiMap.get(typeName);
   }
-  int dollarIdx=typeName.indexOf('$');
-  String realType=dollarIdx > -1 ? typeName.substring(0,dollarIdx) : typeName;
-  String subType=dollarIdx > -1 ? typeName.substring(dollarIdx + 1) : "";
-  String result=classNameBiMap.containsKey(realType) ? classNameBiMap.get(realType) : mcpNameBiMap.containsKey(realType) ? mcpNameBiMap.get(realType) : realType;
-  result=dollarIdx > -1 ? result + "$" + subType : result;
-  return result;
+  int dollarIdx=typeName.lastIndexOf('$');
+  if (dollarIdx > -1) {
+    return map(typeName.substring(0,dollarIdx)) + "$" + typeName.substring(dollarIdx + 1);
+  }
+  return typeName;
 }

@@ -34,9 +34,17 @@
       }
     }
  else {
+      List<MethodNode> nowOverridable=Lists.newArrayList();
       for (      MethodNode n : classNode.methods) {
         if ((n.name.equals(m.name) && n.desc.equals(m.desc)) || m.name.equals("*")) {
           n.access=getFixedAccess(n.access,m);
+          if (!n.name.equals("<init>")) {
+            boolean wasPrivate=(m.oldAccess & ACC_PRIVATE) == ACC_PRIVATE;
+            boolean isNowPrivate=(m.newAccess & ACC_PRIVATE) == ACC_PRIVATE;
+            if (wasPrivate && !isNowPrivate) {
+              nowOverridable.add(n);
+            }
+          }
           if (DEBUG) {
             System.out.println(String.format("Method: %s.%s%s %s -> %s",name,n.name,n.desc,toBinary(m.oldAccess),toBinary(m.newAccess)));
           }
@@ -45,6 +53,7 @@
           }
         }
       }
+      replaceInvokeSpecial(classNode,nowOverridable);
     }
   }
   ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
