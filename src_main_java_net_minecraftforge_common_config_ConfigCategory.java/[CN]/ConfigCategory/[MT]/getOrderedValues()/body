@@ -1,0 +1,8 @@
+{
+  if (this.propertyOrder != null) {
+    ArrayList<Property> set=new ArrayList<Property>();
+    for (    String key : this.propertyOrder)     if (properties.containsKey(key))     set.add(properties.get(key));
+    return ImmutableList.copyOf(set);
+  }
+ else   return ImmutableList.copyOf(properties.values());
+}

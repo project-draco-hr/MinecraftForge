@@ -1,0 +1,3 @@
+{
+  return getStringList(name,category,defaultValue,comment,validValues,name);
+}

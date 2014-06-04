@@ -1,0 +1,5 @@
+{
+  Map<Object,String> selectableValues=new TreeMap<Object,String>();
+  for (  ModContainer mod : Loader.instance().getActiveModList())   if (!mod.isImmutable() && mod.getMod() != null)   selectableValues.put(mod.getModId(),mod.getName());
+  return selectableValues;
+}

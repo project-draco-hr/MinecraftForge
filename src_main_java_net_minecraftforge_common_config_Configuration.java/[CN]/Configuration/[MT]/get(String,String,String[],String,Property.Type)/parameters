@@ -1,5 +1,5 @@
 String category
 String key
-String[] defaultValue
+String[] defaultValues
 String comment
 Property.Type type

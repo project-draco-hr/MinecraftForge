@@ -1,0 +1,3 @@
+{
+  super(owningScreen,owningEntryList,prop);
+}

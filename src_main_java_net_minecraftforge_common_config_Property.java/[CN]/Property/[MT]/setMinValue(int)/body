@@ -1,0 +1,4 @@
+{
+  this.minValue=Integer.toString(minValue);
+  return this;
+}

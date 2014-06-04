@@ -1,0 +1,8 @@
+{
+  if (ctgys == null)   ctgys=this.getCategoryNames().toArray(new String[this.getCategoryNames().size()]);
+  for (  String ctgy : ctgys)   if (fromConfig.hasCategory(ctgy) && this.hasCategory(ctgy)) {
+    ConfigCategory thiscc=this.getCategory(ctgy);
+    ConfigCategory fromcc=fromConfig.getCategory(ctgy);
+    for (    Entry<String,Property> entry : thiscc.getValues().entrySet())     if (fromcc.containsKey(entry.getKey()))     thiscc.put(entry.getKey(),fromcc.get(entry.getKey()));
+  }
+}

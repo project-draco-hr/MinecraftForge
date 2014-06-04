@@ -1,0 +1,11 @@
+{
+  if (getMetadata().modId.equals(event.modID) && !event.isWorldRunning) {
+    if (Configuration.CATEGORY_GENERAL.equals(event.configID)) {
+      syncConfig(false);
+    }
+ else     if ("chunkLoader".equals(event.configID)) {
+      ForgeChunkManager.syncConfigDefaults();
+      ForgeChunkManager.loadConfiguration();
+    }
+  }
+}

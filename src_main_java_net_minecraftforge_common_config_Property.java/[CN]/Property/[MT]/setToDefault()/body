@@ -1,0 +1,5 @@
+{
+  this.value=this.defaultValue;
+  this.values=Arrays.copyOf(this.defaultValues,this.defaultValues.length);
+  return this;
+}

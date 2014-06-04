@@ -1,0 +1,7 @@
+String category
+String key
+String[] defaultValues
+String comment
+boolean isListLengthFixed
+int maxListLength
+Pattern validationPattern

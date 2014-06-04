@@ -1,0 +1,6 @@
+{
+  List<IConfigElement> list=new ArrayList<IConfigElement>();
+  list.add(new DummyCategoryElement("forgeChunkLoadingModCfg","forge.configgui.ctgy.forgeChunkLoadingModConfig",ModOverridesEntry.class));
+  list.addAll((new ConfigElement(ForgeChunkManager.getDefaultsCategory())).getChildElements());
+  return new GuiConfig(this.owningScreen,list,this.owningScreen.modID,"chunkLoader",this.configElement.requiresWorldRestart() || this.owningScreen.allRequireWorldRestart,this.configElement.requiresMcRestart() || this.owningScreen.allRequireMcRestart,GuiConfig.getAbridgedConfigPath(ForgeChunkManager.getConfig().toString()),I18n.format("forge.configgui.ctgy.forgeChunkLoadingConfig"));
+}

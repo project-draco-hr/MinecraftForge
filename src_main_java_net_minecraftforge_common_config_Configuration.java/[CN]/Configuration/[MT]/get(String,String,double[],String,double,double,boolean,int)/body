@@ -1,0 +1,16 @@
+{
+  String[] values=new String[defaultValues.length];
+  for (int i=0; i < defaultValues.length; i++) {
+    values[i]=Double.toString(defaultValues[i]);
+  }
+  Property prop=get(category,key,values,comment,DOUBLE);
+  prop.setDefaultValues(values);
+  prop.setMinValue(minValue);
+  prop.setMaxValue(maxValue);
+  prop.setIsListLengthFixed(isListLengthFixed);
+  prop.setMaxListLength(maxListLength);
+  if (!prop.isDoubleList()) {
+    prop.setValues(values);
+  }
+  return prop;
+}

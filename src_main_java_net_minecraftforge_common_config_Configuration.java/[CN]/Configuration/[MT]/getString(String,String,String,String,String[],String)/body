@@ -1,0 +1,7 @@
+{
+  Property prop=this.get(category,name,defaultValue);
+  prop.setValidValues(validValues);
+  prop.setLanguageKey(langKey);
+  prop.comment=comment + " [default: " + defaultValue+ "]";
+  return prop.getString();
+}

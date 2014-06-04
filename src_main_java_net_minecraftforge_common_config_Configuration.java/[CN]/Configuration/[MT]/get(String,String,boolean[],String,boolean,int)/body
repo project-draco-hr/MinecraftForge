@@ -1,0 +1,14 @@
+{
+  String[] values=new String[defaultValues.length];
+  for (int i=0; i < defaultValues.length; i++) {
+    values[i]=Boolean.toString(defaultValues[i]);
+  }
+  Property prop=get(category,key,values,comment,BOOLEAN);
+  prop.setDefaultValues(values);
+  prop.setIsListLengthFixed(isListLengthFixed);
+  prop.setMaxListLength(maxListLength);
+  if (!prop.isBooleanList()) {
+    prop.setValues(values);
+  }
+  return prop;
+}

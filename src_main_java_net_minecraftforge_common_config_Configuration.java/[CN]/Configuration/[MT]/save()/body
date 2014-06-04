@@ -14,6 +14,7 @@
       FileOutputStream fos=new FileOutputStream(file);
       BufferedWriter buffer=new BufferedWriter(new OutputStreamWriter(fos,defaultEncoding));
       buffer.write("# Configuration file" + NEW_LINE + NEW_LINE);
+      if (this.definedConfigVersion != null)       buffer.write(CONFIG_VERSION_MARKER + ": " + this.definedConfigVersion+ NEW_LINE+ NEW_LINE);
       if (children.isEmpty()) {
         save(buffer);
       }

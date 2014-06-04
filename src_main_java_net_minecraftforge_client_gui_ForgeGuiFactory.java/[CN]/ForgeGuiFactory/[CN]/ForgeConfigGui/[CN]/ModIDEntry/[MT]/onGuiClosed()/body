@@ -1,0 +1,23 @@
+{
+  Object modObject=Loader.instance().getModObjectList().get(Loader.instance().getIndexedModList().get(currentValue));
+  int maxTickets=200;
+  int maxChunks=25;
+  if (modObject != null) {
+    this.owningEntryList.saveConfigElements();
+    for (    IConfigElement ice : this.owningScreen.configElements)     if ("maximumTicketCount".equals(ice.getName()))     maxTickets=Integer.valueOf(ice.get().toString());
+ else     if ("maximumChunksPerTicket".equals(ice.getName()))     maxChunks=Integer.valueOf(ice.get().toString());
+    ForgeChunkManager.addConfigProperty(modObject,"maximumTicketCount",String.valueOf(maxTickets),Property.Type.INTEGER);
+    ForgeChunkManager.addConfigProperty(modObject,"maximumChunksPerTicket",String.valueOf(maxChunks),Property.Type.INTEGER);
+    if (this.owningScreen.parentScreen instanceof GuiConfig) {
+      GuiConfig superParent=(GuiConfig)this.owningScreen.parentScreen;
+      ConfigCategory modCtgy=ForgeChunkManager.getConfigFor(modObject);
+      modCtgy.setPropertyOrder(ForgeChunkManager.MOD_PROP_ORDER);
+      ConfigElement modConfig=new ConfigElement(modCtgy);
+      boolean found=false;
+      for (      IConfigElement ice : superParent.configElements)       if (ice.getName().equals(currentValue))       found=true;
+      if (!found)       superParent.configElements.add(modConfig);
+      superParent.needsRefresh=true;
+      superParent.initGui();
+    }
+  }
+}

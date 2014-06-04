@@ -1,0 +1,4 @@
+{
+  this.maxValue=Integer.toString(maxValue);
+  return this;
+}

@@ -1,5 +1,5 @@
 {
-  for (  String value : values) {
+  if (isList && type == Type.DOUBLE)   for (  String value : values) {
     try {
       Double.parseDouble(value);
     }
@@ -7,5 +7,5 @@
       return false;
     }
   }
-  return true;
+  return isList && type == Type.DOUBLE;
 }

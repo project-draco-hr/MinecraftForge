@@ -1,7 +1,7 @@
 {
-  for (int x=0; x < values.length; x++) {
-    if (values[x].getID() == id) {
-      return values[x];
+  for (int x=0; x < values().length; x++) {
+    if (values()[x].getID() == id) {
+      return values()[x];
     }
   }
   return STRING;

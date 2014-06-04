@@ -1,0 +1,5 @@
+{
+  this.prop=prop;
+  this.type=prop.getType();
+  this.isProperty=true;
+}
