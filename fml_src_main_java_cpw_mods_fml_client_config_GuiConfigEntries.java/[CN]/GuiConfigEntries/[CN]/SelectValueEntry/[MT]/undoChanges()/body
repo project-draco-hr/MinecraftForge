@@ -1,0 +1,6 @@
+{
+  if (enabled()) {
+    currentValue=beforeValue;
+    updateValueButtonText();
+  }
+}

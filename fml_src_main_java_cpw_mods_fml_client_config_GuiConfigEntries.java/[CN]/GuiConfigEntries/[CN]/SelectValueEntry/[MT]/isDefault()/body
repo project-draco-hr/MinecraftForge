@@ -1,0 +1,4 @@
+{
+  if (configElement.getDefault() != null)   return configElement.getDefault().equals(currentValue);
+ else   return currentValue == null;
+}

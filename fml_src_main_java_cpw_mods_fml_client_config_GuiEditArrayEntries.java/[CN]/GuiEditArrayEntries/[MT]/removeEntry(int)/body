@@ -1,0 +1,5 @@
+{
+  this.listEntries.remove(index);
+  this.canAddMoreEntries=!configElement.isListLengthFixed() && (configElement.getMaxListLength() == -1 || this.listEntries.size() - 1 < configElement.getMaxListLength());
+  keyTyped((char)Keyboard.CHAR_NONE,Keyboard.KEY_END);
+}

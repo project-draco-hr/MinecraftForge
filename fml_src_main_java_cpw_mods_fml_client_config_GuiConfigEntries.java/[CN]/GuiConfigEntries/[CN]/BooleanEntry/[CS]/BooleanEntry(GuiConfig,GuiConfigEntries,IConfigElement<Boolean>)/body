@@ -1,0 +1,7 @@
+{
+  super(owningScreen,owningEntryList,configElement);
+  this.beforeValue=Boolean.valueOf(configElement.get().toString());
+  this.currentValue=beforeValue;
+  this.btnValue.enabled=enabled();
+  updateValueButtonText();
+}

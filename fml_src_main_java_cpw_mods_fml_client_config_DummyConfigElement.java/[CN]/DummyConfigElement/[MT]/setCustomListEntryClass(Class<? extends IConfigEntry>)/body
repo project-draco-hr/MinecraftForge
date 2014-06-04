@@ -1,0 +1,4 @@
+{
+  this.configEntryClass=clazz;
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  Minecraft.getMinecraft().getTextureManager().bindTexture(res);
+  drawContinuousTexturedBox(x,y,u,v,width,height,textureWidth,textureHeight,topBorder,bottomBorder,leftBorder,rightBorder,zLevel);
+}

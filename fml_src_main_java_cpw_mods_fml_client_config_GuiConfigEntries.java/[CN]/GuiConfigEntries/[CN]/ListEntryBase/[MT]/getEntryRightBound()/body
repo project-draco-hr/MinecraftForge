@@ -1,0 +1,3 @@
+{
+  return this.owningEntryList.resetX + 40;
+}

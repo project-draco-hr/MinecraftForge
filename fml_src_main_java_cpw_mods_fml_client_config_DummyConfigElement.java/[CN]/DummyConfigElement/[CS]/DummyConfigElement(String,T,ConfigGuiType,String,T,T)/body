@@ -1,0 +1,3 @@
+{
+  this(name,defaultValue,type,langKey,(String[])null,(Pattern)null,minValue,maxValue);
+}

@@ -1,0 +1,6 @@
+{
+  if (enabled()) {
+    if (++this.currentIndex >= configElement.getValidValues().length)     this.currentIndex=0;
+    updateValueButtonText();
+  }
+}

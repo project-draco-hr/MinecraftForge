@@ -1,0 +1,6 @@
+GuiScreen parentScreen
+IConfigElement configElement
+int slotIndex
+Map<Object,String> selectableValues
+Object currentValue
+boolean enabled

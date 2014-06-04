@@ -1,0 +1,5 @@
+String name
+T defaultValue
+ConfigGuiType type
+String langKey
+String[] validValues

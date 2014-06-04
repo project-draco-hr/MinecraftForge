@@ -1,0 +1,4 @@
+{
+  for (  IArrayEntry entry : this.listEntries)   entry.keyTyped(eventChar,eventKey);
+  recalculateState();
+}

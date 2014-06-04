@@ -1,0 +1,8 @@
+String name
+T[] defaultValues
+ConfigGuiType type
+String langKey
+boolean isListFixedLength
+int maxListLength
+T minValue
+T maxValue

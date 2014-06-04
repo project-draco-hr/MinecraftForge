@@ -1,0 +1,8 @@
+{
+  super(owningScreen,owningEntryList,configElement);
+  beforeIndex=getIndex(configElement.get().toString());
+  defaultIndex=getIndex(configElement.getDefault().toString());
+  currentIndex=beforeIndex;
+  this.btnValue.enabled=enabled();
+  updateValueButtonText();
+}

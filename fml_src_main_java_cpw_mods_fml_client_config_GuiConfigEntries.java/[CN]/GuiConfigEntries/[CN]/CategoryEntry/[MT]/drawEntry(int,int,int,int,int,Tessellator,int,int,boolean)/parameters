@@ -1,0 +1,9 @@
+int slotIndex
+int x
+int y
+int listWidth
+int slotHeight
+Tessellator tessellator
+int mouseX
+int mouseY
+boolean isSelected

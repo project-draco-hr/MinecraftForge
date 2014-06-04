@@ -1,0 +1,12 @@
+{
+  if (this.button != null) {
+    this.top=button.yPosition;
+    this.bottom=button.yPosition + button.height;
+    this.left=button.xPosition;
+    this.right=button.xPosition + button.width;
+    canHover=canHover && button.visible;
+  }
+  if (canHover && hoverStart == -1 && mouseY >= top && mouseY <= bottom && mouseX >= left && mouseX <= right)   hoverStart=System.currentTimeMillis();
+ else   if (!canHover || mouseY < top || mouseY > bottom || mouseX < left || mouseX > right)   resetHoverTimer();
+  return canHover && hoverStart != -1 && System.currentTimeMillis() - hoverStart >= threshold;
+}

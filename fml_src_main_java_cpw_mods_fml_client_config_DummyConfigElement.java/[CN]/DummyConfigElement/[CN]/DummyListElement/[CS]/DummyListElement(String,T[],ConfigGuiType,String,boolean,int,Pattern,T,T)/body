@@ -1,0 +1,9 @@
+{
+  super(name,(T)null,type,langKey,minValue,maxValue);
+  this.defaultValues=defaultValues;
+  this.values=defaultValues;
+  this.isListFixedLength=isListFixedLength;
+  this.maxListLength=maxListLength;
+  this.validStringPattern=validStringPattern;
+  isList=true;
+}

@@ -1,0 +1,5 @@
+{
+  super(owningScreen,owningEntryList,configElement);
+  this.btnValue.enabled=enabled();
+  updateValueButtonText();
+}

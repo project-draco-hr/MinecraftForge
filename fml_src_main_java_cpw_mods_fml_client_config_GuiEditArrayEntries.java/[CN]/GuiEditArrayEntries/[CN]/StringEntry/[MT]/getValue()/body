@@ -1,0 +1,3 @@
+{
+  return this.textFieldValue.getText().trim();
+}
