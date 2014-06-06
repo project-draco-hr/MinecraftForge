@@ -1,0 +1,4 @@
+Random rand
+float chance
+int luck
+int speed
