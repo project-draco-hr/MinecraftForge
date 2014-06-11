@@ -1,0 +1,7 @@
+EntityRenderer renderer
+EntityLivingBase entity
+Block block
+double renderPartialTicks
+float red
+float green
+float blue
