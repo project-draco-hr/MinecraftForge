@@ -1,0 +1,9 @@
+{
+  while (idToName.size() < id + 1) {
+    String name="Filler: " + idToName.size();
+    idToName.add(name);
+    nameToId.put(name,idToName.size() - 1);
+    idToStack.add(null);
+  }
+  return new UnmodifiableArrayList(idToStack.size() > id ? idToStack.get(id) : new ArrayList<ItemStack>());
+}

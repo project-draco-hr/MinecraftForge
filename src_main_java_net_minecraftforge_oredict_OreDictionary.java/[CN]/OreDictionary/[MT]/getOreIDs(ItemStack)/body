@@ -1,14 +1,13 @@
 {
-  if (itemStack == null)   return new int[0];
-  List<Integer> ids=new ArrayList<Integer>();
-  for (  Entry<Integer,ArrayList<ItemStack>> ore : oreStacks.entrySet()) {
-    for (    ItemStack target : ore.getValue()) {
-      if (itemMatches(target,itemStack,false)) {
-        ids.add(ore.getKey());
-      }
-    }
-  }
-  int[] ret=new int[ids.size()];
-  for (int x=0; x < ids.size(); x++)   ret[x]=ids.get(x);
+  if (stack == null)   return new int[0];
+  Set<Integer> set=new HashSet<Integer>();
+  int id=Item.getIdFromItem(stack.getItem());
+  List<Integer> ids=stackToId.get(id);
+  if (ids != null)   set.addAll(ids);
+  ids=stackToId.get(id | (stack.getItemDamage() << 16));
+  if (ids != null)   set.addAll(ids);
+  Integer[] tmp=set.toArray(new Integer[set.size()]);
+  int[] ret=new int[tmp.length];
+  for (int x=0; x < tmp.length; x++)   ret[x]=tmp[x];
   return ret;
 }

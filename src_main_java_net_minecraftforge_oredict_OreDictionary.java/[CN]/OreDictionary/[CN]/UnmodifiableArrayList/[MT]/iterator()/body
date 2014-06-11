@@ -1,0 +1,15 @@
+{
+  return new Iterator<E>(){
+    private final Iterator<? extends E> i=list.iterator();
+    public boolean hasNext(){
+      return i.hasNext();
+    }
+    public E next(){
+      return i.next();
+    }
+    public void remove(){
+      throw new UnsupportedOperationException();
+    }
+  }
+;
+}

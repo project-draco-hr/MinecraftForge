@@ -1,9 +1,10 @@
 {
-  Integer val=oreIDs.get(name);
+  Integer val=nameToId.get(name);
   if (val == null) {
-    val=maxID++;
-    oreIDs.put(name,val);
-    oreStacks.put(val,new ArrayList<ItemStack>());
+    idToName.add(name);
+    val=idToName.size() - 1;
+    nameToId.put(name,val);
+    idToStack.add(new ArrayList<ItemStack>());
   }
   return val;
 }

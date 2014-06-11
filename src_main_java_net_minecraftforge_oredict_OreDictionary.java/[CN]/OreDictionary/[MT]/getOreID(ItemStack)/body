@@ -1,13 +1,9 @@
 {
-  if (itemStack == null) {
-    return -1;
+  if (stack == null)   return -1;
+  int id=Item.getIdFromItem(stack.getItem());
+  List<Integer> ids=stackToId.get(id);
+  if (ids == null || ids.size() == 0) {
+    ids=stackToId.get(id | ((stack.getItemDamage() + 1) << 16));
   }
-  for (  Entry<Integer,ArrayList<ItemStack>> ore : oreStacks.entrySet()) {
-    for (    ItemStack target : ore.getValue()) {
-      if (itemMatches(target,itemStack,false)) {
-        return ore.getKey();
-      }
-    }
-  }
-  return -1;
+  return (ids != null && ids.size() > 0) ? ids.get(0) : -1;
 }

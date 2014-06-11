@@ -1,8 +1,3 @@
 {
-  ArrayList<ItemStack> val=oreStacks.get(id);
-  if (val == null) {
-    val=new ArrayList<ItemStack>();
-    oreStacks.put(id,val);
-  }
-  return val;
+  return getOres((int)id.intValue());
 }

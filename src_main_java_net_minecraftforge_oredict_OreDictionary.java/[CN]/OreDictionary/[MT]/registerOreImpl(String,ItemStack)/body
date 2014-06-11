@@ -1,0 +1,18 @@
+{
+  if ("Unknown".equals(name))   return;
+  int oreID=getOreID(name);
+  int hash=Item.getIdFromItem(ore.getItem());
+  if (ore.getItemDamage() != WILDCARD_VALUE) {
+    hash|=((ore.getItemDamage() + 1) << 16);
+  }
+  List<Integer> ids=stackToId.get(hash);
+  if (ids != null && ids.contains(oreID))   return;
+  if (ids == null) {
+    ids=Lists.newArrayList();
+    stackToId.put(hash,ids);
+  }
+  ids.add(oreID);
+  ore=ore.copy();
+  idToStack.get(oreID).add(ore);
+  MinecraftForge.EVENT_BUS.post(new OreRegisterEvent(name,ore));
+}

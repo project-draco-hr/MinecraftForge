@@ -1,0 +1,19 @@
+{
+  stackToId.clear();
+  for (int id=0; id < idToStack.size(); id++) {
+    List<ItemStack> ores=idToStack.get(id);
+    if (ores == null)     continue;
+    for (    ItemStack ore : ores) {
+      int hash=Item.getIdFromItem(ore.getItem());
+      if (ore.getItemDamage() != WILDCARD_VALUE) {
+        hash|=((ore.getItemDamage() + 1) << 16);
+      }
+      List<Integer> ids=stackToId.get(hash);
+      if (ids == null) {
+        ids=Lists.newArrayList();
+        stackToId.put(hash,ids);
+      }
+      ids.add(id);
+    }
+  }
+}
