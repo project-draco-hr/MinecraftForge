@@ -4,6 +4,7 @@
     idToName.add(name);
     nameToId.put(name,idToName.size() - 1);
     idToStack.add(null);
+    idToStackUn.add(EMPTY_LIST);
   }
-  return new UnmodifiableArrayList(idToStack.size() > id ? idToStack.get(id) : new ArrayList<ItemStack>());
+  return idToStackUn.size() > id ? idToStackUn.get(id) : EMPTY_LIST;
 }

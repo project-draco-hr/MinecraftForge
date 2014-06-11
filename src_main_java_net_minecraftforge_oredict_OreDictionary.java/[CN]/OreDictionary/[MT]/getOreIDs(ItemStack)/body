@@ -4,7 +4,7 @@
   int id=Item.getIdFromItem(stack.getItem());
   List<Integer> ids=stackToId.get(id);
   if (ids != null)   set.addAll(ids);
-  ids=stackToId.get(id | (stack.getItemDamage() << 16));
+  ids=stackToId.get(id | ((stack.getItemDamage() + 1) << 16));
   if (ids != null)   set.addAll(ids);
   Integer[] tmp=set.toArray(new Integer[set.size()]);
   int[] ret=new int[tmp.length];
