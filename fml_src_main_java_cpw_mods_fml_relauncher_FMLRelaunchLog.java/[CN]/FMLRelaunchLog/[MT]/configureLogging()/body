@@ -2,4 +2,7 @@
   log.myLog=LogManager.getLogger("FML");
   ThreadContext.put("side",side.name().toLowerCase(Locale.ENGLISH));
   configured=true;
+  FMLRelaunchLog.fine("Injecting tracing printstreams for STDOUT/STDERR.");
+  System.setOut(new TracingPrintStream(LogManager.getLogger("STDOUT"),System.out));
+  System.setErr(new TracingPrintStream(LogManager.getLogger("STDERR"),System.err));
 }
