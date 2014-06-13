@@ -1,0 +1,3 @@
+{
+  return instance.getSkipQueue(new QueuedChunk(x,z,loader,world,provider));
+}

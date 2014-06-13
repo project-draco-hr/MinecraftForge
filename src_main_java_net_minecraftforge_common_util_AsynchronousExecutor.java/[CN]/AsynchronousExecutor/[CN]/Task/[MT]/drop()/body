@@ -1,0 +1,9 @@
+{
+  if (set(this,PENDING,FINISHED)) {
+    tasks.remove(parameter);
+    return true;
+  }
+ else {
+    return false;
+  }
+}

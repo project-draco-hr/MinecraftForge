@@ -1,0 +1,7 @@
+{
+  final Task task=tasks.get(parameter);
+  if (task == null) {
+    throw new IllegalStateException("Unknown " + parameter);
+  }
+  return task.get();
+}
