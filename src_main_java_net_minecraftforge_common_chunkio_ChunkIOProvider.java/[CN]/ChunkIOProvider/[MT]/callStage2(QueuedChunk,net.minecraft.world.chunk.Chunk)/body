@@ -4,6 +4,7 @@
     return;
   }
   queuedChunk.loader.loadEntities(queuedChunk.world,queuedChunk.compound.getCompoundTag("Level"),chunk);
+  MinecraftForge.EVENT_BUS.post(new ChunkDataEvent.Load(chunk,queuedChunk.compound));
   chunk.lastSaveTime=queuedChunk.provider.worldObj.getTotalWorldTime();
   queuedChunk.provider.loadedChunkHashMap.add(ChunkCoordIntPair.chunkXZ2Int(queuedChunk.x,queuedChunk.z),chunk);
   queuedChunk.provider.loadedChunks.add(chunk);
