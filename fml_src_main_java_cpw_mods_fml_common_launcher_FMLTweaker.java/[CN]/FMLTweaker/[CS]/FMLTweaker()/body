@@ -1,0 +1,8 @@
+{
+  try {
+    System.setSecurityManager(new FMLSecurityManager());
+  }
+ catch (  SecurityException se) {
+    throw new RuntimeException("FML was unable to install the security manager. The game will not start",se);
+  }
+}
