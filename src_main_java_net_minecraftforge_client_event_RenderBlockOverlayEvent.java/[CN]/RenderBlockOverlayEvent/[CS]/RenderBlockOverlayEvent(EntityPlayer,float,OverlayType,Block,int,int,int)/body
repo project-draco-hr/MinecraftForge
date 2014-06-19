@@ -1,0 +1,10 @@
+{
+  this.player=player;
+  this.renderPartialTicks=renderPartialTicks;
+  this.overlayType=type;
+  if (this.overlayType == OverlayType.BLOCK)   this.blockForOverlay=block;
+ else   this.blockForOverlay=null;
+  this.blockX=blockX;
+  this.blockY=blockY;
+  this.blockZ=blockZ;
+}
