@@ -1,5 +1,5 @@
 {
-  if (stack == null)   return new int[0];
+  if (stack == null || stack.getItem() == null)   return new int[0];
   Set<Integer> set=new HashSet<Integer>();
   int id=Item.getIdFromItem(stack.getItem());
   List<Integer> ids=stackToId.get(id);

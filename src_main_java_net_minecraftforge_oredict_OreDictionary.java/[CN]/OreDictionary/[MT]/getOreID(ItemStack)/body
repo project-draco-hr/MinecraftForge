@@ -1,5 +1,5 @@
 {
-  if (stack == null)   return -1;
+  if (stack == null || stack.getItem() == null)   return -1;
   int id=Item.getIdFromItem(stack.getItem());
   List<Integer> ids=stackToId.get(id);
   if (ids == null || ids.size() == 0) {
