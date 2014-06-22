@@ -1,3 +1,3 @@
 {
-  MinecraftForge.EVENT_BUS.post(new PlayerEvent.SaveToFile(player,playerDirectory,uuidString));
+  MinecraftForge.EVENT_BUS.post(new PlayerEvent.LoadFromFile(player,playerDirectory,uuidString));
 }
