@@ -1,0 +1,13 @@
+{
+  String permName=perm.getName() != null ? perm.getName() : "missing";
+  if (permName.startsWith("exitVM")) {
+    String callingClass=getClassContext()[4].getName();
+    if (!callingClass.startsWith("cpw.mods.fml.")) {
+      throw new ExitTrappedException();
+    }
+  }
+ else   if ("setSecurityManager".equals(permName)) {
+    throw new SecurityException("Cannot replace the FML security manager");
+  }
+  return;
+}

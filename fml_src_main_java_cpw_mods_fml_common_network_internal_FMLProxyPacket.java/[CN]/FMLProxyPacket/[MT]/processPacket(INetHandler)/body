@@ -5,7 +5,15 @@
     internalChannel.attr(NetworkRegistry.NET_HANDLER).set(this.netHandler);
     try {
       if (internalChannel.writeInbound(this)) {
-        FMLLog.severe("Messages for channel %s for side %s were not processed by the embedded channel %s.\n They have been dropped.\n%s",this.channel,this.target,internalChannel.inboundMessages(),ByteBufUtils.getContentDump(this.payload));
+        badPackets.add(this.channel);
+        if (badPackets.size() % packetCountWarning == 0) {
+          FMLLog.severe("Detected ongoing potential memory leak. %d packets have leaked. Top offenders",badPackets.size());
+          int i=0;
+          for (          Entry<String> s : Multisets.copyHighestCountFirst(badPackets).entrySet()) {
+            if (i++ > 10)             break;
+            FMLLog.severe("\t %s : %d",s.getElement(),s.getCount());
+          }
+        }
       }
       internalChannel.inboundMessages().clear();
     }

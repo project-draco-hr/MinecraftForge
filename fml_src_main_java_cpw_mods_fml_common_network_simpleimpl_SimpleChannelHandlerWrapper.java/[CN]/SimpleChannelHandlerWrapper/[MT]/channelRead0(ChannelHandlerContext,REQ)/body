@@ -3,6 +3,7 @@
   MessageContext context=new MessageContext(iNetHandler,side);
   REPLY result=messageHandler.onMessage(msg,context);
   if (result != null) {
+    ctx.channel().attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.REPLY);
     ctx.writeAndFlush(result).addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
   }
 }
