@@ -1,0 +1,5 @@
+{
+  SaveHandler sh=(SaveHandler)playerFileData;
+  File dir=ObfuscationReflectionHelper.getPrivateValue(SaveHandler.class,sh,"playersDirectory","field_" + "75771_c");
+  MinecraftForge.EVENT_BUS.post(new PlayerEvent.LoadFromFile(player,dir,uuidString));
+}
