@@ -2,8 +2,8 @@
   try {
     File mapData=new File(deobfFileName);
     LZMAInputSupplier zis=new LZMAInputSupplier(new FileInputStream(mapData));
-    InputSupplier<InputStreamReader> srgSupplier=CharStreams.newReaderSupplier(zis,Charsets.UTF_8);
-    List<String> srgList=CharStreams.readLines(srgSupplier);
+    CharSource srgSource=zis.asCharSource(Charsets.UTF_8);
+    List<String> srgList=srgSource.readLines();
     rawMethodMaps=Maps.newHashMap();
     rawFieldMaps=Maps.newHashMap();
     Builder<String,String> builder=ImmutableBiMap.<String,String>builder();
