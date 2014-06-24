@@ -1,0 +1,14 @@
+{
+  String type=remapper.mapType(originalType);
+  String fieldName=remapper.mapFieldName(originalType,originalName,desc);
+  String newDesc=remapper.mapDesc(desc);
+  if (opcode == Opcodes.GETSTATIC && type.startsWith("net/minecraft/") && newDesc.startsWith("Lnet/minecraft/")) {
+    String replDesc=FMLDeobfuscatingRemapper.INSTANCE.getStaticFieldType(originalType,originalName,type,fieldName);
+    if (replDesc != null) {
+      newDesc=remapper.mapDesc(replDesc);
+    }
+  }
+  if (mv != null) {
+    mv.visitFieldInsn(opcode,type,fieldName,newDesc);
+  }
+}
