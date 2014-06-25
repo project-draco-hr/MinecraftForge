@@ -1,0 +1,8 @@
+{
+  try {
+    return this.beforeValue != Integer.parseInt(textFieldValue.getText().trim());
+  }
+ catch (  Throwable e) {
+    return true;
+  }
+}

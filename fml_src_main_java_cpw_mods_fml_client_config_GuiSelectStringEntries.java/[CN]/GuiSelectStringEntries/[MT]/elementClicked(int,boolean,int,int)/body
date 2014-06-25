@@ -1,0 +1,4 @@
+{
+  selectedIndex=index;
+  owningScreen.currentValue=listEntries.get(index).getValue();
+}

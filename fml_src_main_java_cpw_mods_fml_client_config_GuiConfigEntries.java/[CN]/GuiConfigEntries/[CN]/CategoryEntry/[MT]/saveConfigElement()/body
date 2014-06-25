@@ -1,0 +1,8 @@
+{
+  boolean requiresRestart=false;
+  if (childScreen instanceof GuiConfig && ((GuiConfig)childScreen).entryList != null) {
+    requiresRestart=configElement.requiresMcRestart() && ((GuiConfig)childScreen).entryList.hasChangedEntry(true);
+    if (((GuiConfig)childScreen).entryList.saveConfigElements())     requiresRestart=true;
+  }
+  return requiresRestart;
+}

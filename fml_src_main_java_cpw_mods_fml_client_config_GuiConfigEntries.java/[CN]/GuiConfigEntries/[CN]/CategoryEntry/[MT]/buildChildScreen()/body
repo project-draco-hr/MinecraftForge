@@ -1,0 +1,3 @@
+{
+  return new GuiConfig(this.owningScreen,this.configElement.getChildElements(),this.owningScreen.modID,owningScreen.allRequireWorldRestart || this.configElement.requiresWorldRestart(),owningScreen.allRequireMcRestart || this.configElement.requiresMcRestart(),this.owningScreen.title,((this.owningScreen.titleLine2 == null ? "" : this.owningScreen.titleLine2) + " > " + this.name));
+}

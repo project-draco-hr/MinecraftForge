@@ -1,5 +1,0 @@
-{
-  if (p_73875_1_.enabled && p_73875_1_.id == 1) {
-    FMLClientHandler.instance().showGuiScreen(parent);
-  }
-}

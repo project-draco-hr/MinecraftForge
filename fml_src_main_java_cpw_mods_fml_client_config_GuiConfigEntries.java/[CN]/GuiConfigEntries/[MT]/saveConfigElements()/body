@@ -1,0 +1,5 @@
+{
+  boolean requiresRestart=false;
+  for (  IConfigEntry entry : this.listEntries)   if (entry.saveConfigElement())   requiresRestart=true;
+  return requiresRestart;
+}

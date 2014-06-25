@@ -1,0 +1,6 @@
+{
+  super(owningScreen,owningEntryList,configElement);
+  beforeValues=configElement.getList();
+  currentValues=configElement.getList();
+  updateValueButtonText();
+}

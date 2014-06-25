@@ -1,0 +1,3 @@
+{
+  return I18n.format(langKey + ".tooltip");
+}

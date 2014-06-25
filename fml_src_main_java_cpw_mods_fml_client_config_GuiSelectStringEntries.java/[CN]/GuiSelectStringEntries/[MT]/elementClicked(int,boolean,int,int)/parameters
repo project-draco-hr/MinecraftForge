@@ -1,0 +1,4 @@
+int index
+boolean doubleClick
+int mouseX
+int mouseY

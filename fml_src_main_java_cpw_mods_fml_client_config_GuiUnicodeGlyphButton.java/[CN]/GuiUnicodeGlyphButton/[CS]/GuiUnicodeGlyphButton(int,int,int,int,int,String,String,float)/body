@@ -1,0 +1,5 @@
+{
+  super(id,xPos,yPos,width,height,displayString);
+  this.glyph=glyph;
+  this.glyphScale=glyphScale;
+}

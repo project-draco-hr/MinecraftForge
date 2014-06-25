@@ -1,0 +1,6 @@
+{
+  if (enabled() && currentValue != null ? !currentValue.equals(newValue) : newValue != null) {
+    currentValue=newValue;
+    updateValueButtonText();
+  }
+}

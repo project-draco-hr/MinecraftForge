@@ -1,0 +1,7 @@
+{
+  super(owningScreen,owningEntryList,configElement);
+  beforeValue=configElement.get().toString();
+  currentValue=configElement.get().toString();
+  this.selectableValues=selectableValues;
+  updateValueButtonText();
+}

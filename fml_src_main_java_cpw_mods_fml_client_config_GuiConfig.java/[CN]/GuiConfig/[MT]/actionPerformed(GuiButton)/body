@@ -1,0 +1,30 @@
+{
+  if (button.id == 2000) {
+    boolean flag=true;
+    try {
+      if ((configID != null || this.parentScreen == null || !(this.parentScreen instanceof GuiConfig)) && (this.entryList.hasChangedEntry(true))) {
+        boolean requiresMcRestart=this.entryList.saveConfigElements();
+        if (Loader.isModLoaded(modID)) {
+          ConfigChangedEvent event=new OnConfigChangedEvent(modID,configID,isWorldRunning,requiresMcRestart);
+          FMLCommonHandler.instance().bus().post(event);
+          if (!event.getResult().equals(Result.DENY))           FMLCommonHandler.instance().bus().post(new PostConfigChangedEvent(modID,configID,isWorldRunning,requiresMcRestart));
+          if (requiresMcRestart) {
+            flag=false;
+            mc.displayGuiScreen(new GuiMessageDialog(parentScreen,"fml.configgui.gameRestartTitle",new ChatComponentText(I18n.format("fml.configgui.gameRestartRequired")),"fml.configgui.confirmRestartMessage"));
+          }
+          if (this.parentScreen instanceof GuiConfig)           ((GuiConfig)this.parentScreen).needsRefresh=true;
+        }
+      }
+    }
+ catch (    Throwable e) {
+      e.printStackTrace();
+    }
+    if (flag)     this.mc.displayGuiScreen(this.parentScreen);
+  }
+ else   if (button.id == 2001) {
+    this.entryList.setAllToDefault(this.chkApplyGlobally.isChecked());
+  }
+ else   if (button.id == 2002) {
+    this.entryList.undoAllChanges(this.chkApplyGlobally.isChecked());
+  }
+}

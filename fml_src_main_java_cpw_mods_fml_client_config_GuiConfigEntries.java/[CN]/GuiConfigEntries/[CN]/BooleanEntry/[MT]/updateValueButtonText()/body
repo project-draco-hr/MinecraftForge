@@ -1,0 +1,4 @@
+{
+  this.btnValue.displayString=I18n.format(String.valueOf(currentValue));
+  btnValue.packedFGColour=currentValue ? GuiUtils.getColorCode('2',true) : GuiUtils.getColorCode('4',true);
+}

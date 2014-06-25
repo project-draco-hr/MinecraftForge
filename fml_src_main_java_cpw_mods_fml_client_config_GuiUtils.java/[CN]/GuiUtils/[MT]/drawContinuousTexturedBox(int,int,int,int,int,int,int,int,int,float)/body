@@ -1,0 +1,3 @@
+{
+  drawContinuousTexturedBox(x,y,u,v,width,height,textureWidth,textureHeight,borderSize,borderSize,borderSize,borderSize,zLevel);
+}

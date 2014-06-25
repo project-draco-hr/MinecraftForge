@@ -1,0 +1,5 @@
+{
+  this.btnValue.displayString="";
+  for (  Object o : currentValues)   this.btnValue.displayString+=", [" + o + "]";
+  this.btnValue.displayString=this.btnValue.displayString.replaceFirst(", ","");
+}

@@ -1,0 +1,7 @@
+{
+  super(owningScreen,owningEntryList,configElement);
+  this.value=value;
+  this.btnValue=new GuiButtonExt(0,0,0,owningEntryList.controlWidth,18,I18n.format(String.valueOf(value)));
+  this.btnValue.enabled=owningScreen.enabled;
+  this.isValidated=false;
+}

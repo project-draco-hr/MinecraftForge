@@ -1,0 +1,31 @@
+{
+  super(mc,parent.width,parent.height,parent.titleLine2 != null ? (parent.titleLine3 != null ? 43 : 33) : 23,parent.height - 32,20);
+  this.owningGui=parent;
+  this.mc=mc;
+  this.configElement=configElement;
+  this.beforeValues=beforeValues;
+  this.currentValues=currentValues;
+  this.setShowSelectionBox(false);
+  this.isChanged=!Arrays.deepEquals(beforeValues,currentValues);
+  this.isDefault=Arrays.deepEquals(currentValues,configElement.getDefaults());
+  this.canAddMoreEntries=!configElement.isListLengthFixed() && (configElement.getMaxListLength() == -1 || currentValues.length < configElement.getMaxListLength());
+  listEntries=new ArrayList<IArrayEntry>();
+  controlWidth=(parent.width / 2) - (configElement.isListLengthFixed() ? 0 : 48);
+  if (configElement.isList() && configElement.getArrayEntryClass() != null) {
+    Class<? extends IArrayEntry> clazz=configElement.getArrayEntryClass();
+    for (    Object value : currentValues) {
+      try {
+        listEntries.add(clazz.getConstructor(GuiEditArray.class,GuiEditArrayEntries.class,IConfigElement.class,Object.class).newInstance(this.owningGui,this,configElement,value.toString()));
+      }
+ catch (      Throwable e) {
+        FMLLog.severe("There was a critical error instantiating the custom IGuiEditListEntry for property %s.",configElement.getName());
+        e.printStackTrace();
+      }
+    }
+  }
+ else   if (configElement.isList() && configElement.getType().equals(ConfigGuiType.BOOLEAN))   for (  Object value : currentValues)   listEntries.add(new BooleanEntry(this.owningGui,this,configElement,Boolean.valueOf(value.toString())));
+ else   if (configElement.isList() && configElement.getType().equals(ConfigGuiType.INTEGER))   for (  Object value : currentValues)   listEntries.add(new IntegerEntry(this.owningGui,this,configElement,Integer.parseInt(value.toString())));
+ else   if (configElement.isList() && configElement.getType().equals(ConfigGuiType.DOUBLE))   for (  Object value : currentValues)   listEntries.add(new DoubleEntry(this.owningGui,this,configElement,Double.parseDouble(value.toString())));
+ else   if (configElement.isList())   for (  Object value : currentValues)   listEntries.add(new StringEntry(this.owningGui,this,configElement,value.toString()));
+  if (!configElement.isListLengthFixed())   listEntries.add(new BaseEntry(this.owningGui,this,configElement));
+}

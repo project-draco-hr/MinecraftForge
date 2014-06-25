@@ -1,0 +1,4 @@
+GuiConfig owningScreen
+GuiConfigEntries owningEntryList
+IConfigElement<String> configElement
+Map<Object,String> selectableValues

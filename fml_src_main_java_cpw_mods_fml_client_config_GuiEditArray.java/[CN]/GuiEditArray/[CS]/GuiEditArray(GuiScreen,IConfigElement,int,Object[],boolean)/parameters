@@ -1,0 +1,5 @@
+GuiScreen parentScreen
+IConfigElement configElement
+int slotIndex
+Object[] currentValues
+boolean enabled

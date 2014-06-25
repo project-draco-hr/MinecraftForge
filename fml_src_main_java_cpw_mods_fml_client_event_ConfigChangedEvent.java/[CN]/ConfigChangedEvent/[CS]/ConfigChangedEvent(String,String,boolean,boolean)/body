@@ -1,0 +1,6 @@
+{
+  this.modID=modID;
+  this.configID=configID;
+  this.isWorldRunning=isWorldRunning;
+  this.requiresMcRestart=requiresMcRestart;
+}

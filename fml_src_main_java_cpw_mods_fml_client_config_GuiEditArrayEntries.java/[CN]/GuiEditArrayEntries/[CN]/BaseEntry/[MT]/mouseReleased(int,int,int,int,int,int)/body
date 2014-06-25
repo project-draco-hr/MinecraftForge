@@ -1,0 +1,4 @@
+{
+  this.btnAddNewEntryAbove.mouseReleased(x,y);
+  this.btnRemoveEntry.mouseReleased(x,y);
+}

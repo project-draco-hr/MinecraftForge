@@ -1,0 +1,3 @@
+{
+  return colorCodes[isLighter ? "0123456789abcdef".indexOf(c) : "0123456789abcdef".indexOf(c) + 16];
+}
