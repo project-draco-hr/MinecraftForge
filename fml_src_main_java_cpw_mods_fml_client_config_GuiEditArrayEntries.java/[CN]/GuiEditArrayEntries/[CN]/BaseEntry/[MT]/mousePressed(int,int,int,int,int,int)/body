@@ -1,0 +1,15 @@
+{
+  if (this.btnAddNewEntryAbove.mousePressed(owningEntryList.mc,x,y)) {
+    btnAddNewEntryAbove.func_146113_a(owningEntryList.mc.getSoundHandler());
+    owningEntryList.addNewEntry(index);
+    owningEntryList.recalculateState();
+    return true;
+  }
+ else   if (this.btnRemoveEntry.mousePressed(owningEntryList.mc,x,y)) {
+    btnRemoveEntry.func_146113_a(owningEntryList.mc.getSoundHandler());
+    owningEntryList.removeEntry(index);
+    owningEntryList.recalculateState();
+    return true;
+  }
+  return false;
+}

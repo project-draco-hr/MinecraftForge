@@ -1,0 +1,6 @@
+int id
+int xPos
+int yPos
+int width
+int height
+String displayString

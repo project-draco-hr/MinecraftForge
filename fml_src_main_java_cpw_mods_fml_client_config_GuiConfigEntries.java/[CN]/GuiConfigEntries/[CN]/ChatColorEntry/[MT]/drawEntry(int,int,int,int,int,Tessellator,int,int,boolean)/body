@@ -1,0 +1,4 @@
+{
+  this.btnValue.packedFGColour=GuiUtils.getColorCode(this.configElement.getValidValues()[currentIndex].charAt(0),true);
+  super.drawEntry(slotIndex,x,y,listWidth,slotHeight,tessellator,mouseX,mouseY,isSelected);
+}

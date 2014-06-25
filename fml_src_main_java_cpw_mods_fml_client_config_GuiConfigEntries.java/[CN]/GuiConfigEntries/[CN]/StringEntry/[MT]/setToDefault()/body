@@ -1,0 +1,6 @@
+{
+  if (enabled()) {
+    this.textFieldValue.setText(this.configElement.getDefault().toString());
+    keyTyped((char)Keyboard.CHAR_NONE,Keyboard.KEY_HOME);
+  }
+}

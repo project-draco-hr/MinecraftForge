@@ -1,0 +1,13 @@
+{
+  isDefault=true;
+  isChanged=false;
+  int listLength=configElement.isListLengthFixed() ? listEntries.size() : listEntries.size() - 1;
+  if (listLength != configElement.getDefaults().length) {
+    isDefault=false;
+  }
+  if (listLength != beforeValues.length) {
+    isChanged=true;
+  }
+  if (isDefault)   for (int i=0; i < listLength; i++)   if (!configElement.getDefaults()[i].equals(listEntries.get(i).getValue()))   isDefault=false;
+  if (!isChanged)   for (int i=0; i < listLength; i++)   if (!beforeValues[i].equals(listEntries.get(i).getValue()))   isChanged=true;
+}

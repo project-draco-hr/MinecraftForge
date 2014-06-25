@@ -1,0 +1,19 @@
+{
+  this.drawDefaultBackground();
+  this.entryList.drawScreen(mouseX,mouseY,partialTicks);
+  this.drawCenteredString(this.fontRendererObj,this.title,this.width / 2,8,16777215);
+  String title2=this.titleLine2;
+  if (title2 != null) {
+    int strWidth=mc.fontRenderer.getStringWidth(title2);
+    int elipsisWidth=mc.fontRenderer.getStringWidth("...");
+    if (strWidth > width - 6 && strWidth > elipsisWidth)     title2=mc.fontRenderer.trimStringToWidth(title2,width - 6 - elipsisWidth).trim() + "...";
+    this.drawCenteredString(this.fontRendererObj,title2,this.width / 2,18,16777215);
+  }
+  this.btnUndoAll.enabled=this.entryList.areAnyEntriesEnabled(this.chkApplyGlobally.isChecked()) && this.entryList.hasChangedEntry(this.chkApplyGlobally.isChecked());
+  this.btnDefaultAll.enabled=this.entryList.areAnyEntriesEnabled(this.chkApplyGlobally.isChecked()) && !this.entryList.areAllEntriesDefault(this.chkApplyGlobally.isChecked());
+  super.drawScreen(mouseX,mouseY,partialTicks);
+  this.entryList.drawScreenPost(mouseX,mouseY,partialTicks);
+  if (this.undoHoverChecker.checkHover(mouseX,mouseY))   this.drawToolTip(this.mc.fontRenderer.listFormattedStringToWidth(I18n.format("fml.configgui.tooltip.undoAll"),300),mouseX,mouseY);
+  if (this.resetHoverChecker.checkHover(mouseX,mouseY))   this.drawToolTip(this.mc.fontRenderer.listFormattedStringToWidth(I18n.format("fml.configgui.tooltip.resetAll"),300),mouseX,mouseY);
+  if (this.checkBoxHoverChecker.checkHover(mouseX,mouseY))   this.drawToolTip(this.mc.fontRenderer.listFormattedStringToWidth(I18n.format("fml.configgui.tooltip.applyGlobally"),300),mouseX,mouseY);
+}

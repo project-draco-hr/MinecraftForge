@@ -1,0 +1,22 @@
+{
+  if (enabled()) {
+    if (isChanged() && this.isValidValue)     try {
+      double value=Double.parseDouble(textFieldValue.getText().trim());
+      this.configElement.set(value);
+      return configElement.requiresMcRestart();
+    }
+ catch (    Throwable e) {
+      this.configElement.setToDefault();
+    }
+ else     if (isChanged() && !this.isValidValue)     try {
+      double value=Double.parseDouble(textFieldValue.getText().trim());
+      if (value < Double.valueOf(configElement.getMinValue().toString()))       this.configElement.set(configElement.getMinValue());
+ else       this.configElement.set(configElement.getMaxValue());
+    }
+ catch (    Throwable e) {
+      this.configElement.setToDefault();
+    }
+    return configElement.requiresMcRestart() && beforeValue != Double.parseDouble(configElement.get().toString());
+  }
+  return false;
+}

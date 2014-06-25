@@ -1,0 +1,4 @@
+String name
+String langKey
+List<IConfigElement> childElements
+Class<? extends IConfigEntry> customListEntryClass

@@ -1,0 +1,18 @@
+{
+  if (owningScreen.enabled || eventKey == Keyboard.KEY_LEFT || eventKey == Keyboard.KEY_RIGHT || eventKey == Keyboard.KEY_HOME || eventKey == Keyboard.KEY_END) {
+    String validChars="0123456789";
+    String before=this.textFieldValue.getText();
+    if (validChars.contains(String.valueOf(eventChar)) || (!before.startsWith("-") && this.textFieldValue.getCursorPosition() == 0 && eventChar == '-') || (!before.contains(".") && eventChar == '.')|| eventKey == Keyboard.KEY_BACK || eventKey == Keyboard.KEY_DELETE || eventKey == Keyboard.KEY_LEFT || eventKey == Keyboard.KEY_RIGHT || eventKey == Keyboard.KEY_HOME || eventKey == Keyboard.KEY_END)     this.textFieldValue.textboxKeyTyped((owningScreen.enabled ? eventChar : Keyboard.CHAR_NONE),eventKey);
+    if (!textFieldValue.getText().trim().isEmpty() && !textFieldValue.getText().trim().equals("-")) {
+      try {
+        double value=Double.parseDouble(textFieldValue.getText().trim());
+        if (value < Double.valueOf(configElement.getMinValue().toString()) || value > Double.valueOf(configElement.getMaxValue().toString()))         this.isValidValue=false;
+ else         this.isValidValue=true;
+      }
+ catch (      Throwable e) {
+        this.isValidValue=false;
+      }
+    }
+ else     this.isValidValue=false;
+  }
+}

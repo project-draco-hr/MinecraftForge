@@ -1,0 +1,4 @@
+{
+  super(owningScreen,owningEntryList,configElement);
+  this.beforeValue=Integer.valueOf(configElement.get().toString());
+}

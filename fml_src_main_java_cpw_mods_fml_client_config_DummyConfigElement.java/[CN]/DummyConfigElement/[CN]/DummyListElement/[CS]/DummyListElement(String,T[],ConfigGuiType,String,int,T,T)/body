@@ -1,0 +1,3 @@
+{
+  this(name,defaultValues,type,langKey,false,maxListLength,(Pattern)null,minValue,maxValue);
+}

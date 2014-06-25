@@ -1,0 +1,3 @@
+{
+  return owningScreen.currentValue != null ? owningScreen.currentValue.equals(configElement.getDefault()) : configElement.getDefault() == null;
+}

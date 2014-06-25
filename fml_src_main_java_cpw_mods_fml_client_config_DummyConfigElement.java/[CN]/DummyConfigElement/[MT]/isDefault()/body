@@ -1,0 +1,12 @@
+{
+  if (isProperty) {
+    if (!isList) {
+      if (value != null)       return value.equals(defaultValue);
+ else       return defaultValue == null;
+    }
+ else {
+      return Arrays.deepEquals(values,defaultValues);
+    }
+  }
+  return true;
+}

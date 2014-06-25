@@ -1,0 +1,7 @@
+{
+  if (this.enabled && this.visible && p_146116_2_ >= this.xPosition && p_146116_3_ >= this.yPosition && p_146116_2_ < this.xPosition + this.width && p_146116_3_ < this.yPosition + this.height) {
+    this.isChecked=!this.isChecked;
+    return true;
+  }
+  return false;
+}

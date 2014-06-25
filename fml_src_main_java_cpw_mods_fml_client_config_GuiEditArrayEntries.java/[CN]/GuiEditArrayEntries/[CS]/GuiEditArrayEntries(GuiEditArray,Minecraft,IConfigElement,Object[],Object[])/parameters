@@ -1,0 +1,5 @@
+GuiEditArray parent
+Minecraft mc
+IConfigElement configElement
+Object[] beforeValues
+Object[] currentValues

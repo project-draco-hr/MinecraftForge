@@ -1,0 +1,17 @@
+{
+  this.owningScreen=owningScreen;
+  this.owningEntryList=owningEntryList;
+  this.configElement=configElement;
+  this.btnAddNewEntryAbove=new GuiButtonExt(0,0,0,18,18,"+");
+  this.btnAddNewEntryAbove.packedFGColour=GuiUtils.getColorCode('2',true);
+  this.btnAddNewEntryAbove.enabled=owningScreen.enabled;
+  this.btnRemoveEntry=new GuiButtonExt(0,0,0,18,18,"x");
+  this.btnRemoveEntry.packedFGColour=GuiUtils.getColorCode('c',true);
+  this.btnRemoveEntry.enabled=owningScreen.enabled;
+  this.addNewEntryAboveHoverChecker=new HoverChecker(this.btnAddNewEntryAbove,800);
+  this.removeEntryHoverChecker=new HoverChecker(this.btnRemoveEntry,800);
+  this.addNewToolTip=new ArrayList();
+  this.removeToolTip=new ArrayList();
+  addNewToolTip.add(I18n.format("fml.configgui.tooltip.addNewEntryAbove"));
+  removeToolTip.add(I18n.format("fml.configgui.tooltip.removeEntry"));
+}

@@ -1,0 +1,3 @@
+{
+  return this.owningEntryList.width / 2 + 155 + 22 + 18;
+}

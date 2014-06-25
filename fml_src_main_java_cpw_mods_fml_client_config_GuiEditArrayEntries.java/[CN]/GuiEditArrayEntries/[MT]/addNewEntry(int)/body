@@ -1,0 +1,8 @@
+{
+  if (configElement.isList() && configElement.getType() == ConfigGuiType.BOOLEAN)   listEntries.add(index,new BooleanEntry(this.owningGui,this,this.configElement,Boolean.valueOf(true)));
+ else   if (configElement.isList() && configElement.getType() == ConfigGuiType.INTEGER)   listEntries.add(index,new IntegerEntry(this.owningGui,this,this.configElement,0));
+ else   if (configElement.isList() && configElement.getType() == ConfigGuiType.DOUBLE)   listEntries.add(index,new DoubleEntry(this.owningGui,this,this.configElement,0.0D));
+ else   if (configElement.isList())   listEntries.add(index,new StringEntry(this.owningGui,this,this.configElement,""));
+  this.canAddMoreEntries=!configElement.isListLengthFixed() && (configElement.getMaxListLength() == -1 || this.listEntries.size() - 1 < configElement.getMaxListLength());
+  keyTyped((char)Keyboard.CHAR_NONE,Keyboard.KEY_END);
+}

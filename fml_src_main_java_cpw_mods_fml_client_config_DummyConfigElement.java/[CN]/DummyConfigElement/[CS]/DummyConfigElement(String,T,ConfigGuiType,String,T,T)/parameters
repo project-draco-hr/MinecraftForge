@@ -1,0 +1,6 @@
+String name
+T defaultValue
+ConfigGuiType type
+String langKey
+T minValue
+T maxValue

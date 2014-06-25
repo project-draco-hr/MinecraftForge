@@ -1,0 +1,3 @@
+{
+  return owningScreen.beforeValue != null ? !owningScreen.beforeValue.equals(owningScreen.currentValue) : owningScreen.currentValue != null;
+}
