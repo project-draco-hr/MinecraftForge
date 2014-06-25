@@ -5,6 +5,7 @@
   for (  String transformer : CoreModManager.getAccessTransformers()) {
     classLoader.registerTransformer(transformer);
   }
+  classLoader.registerTransformer("cpw.mods.fml.common.asm.transformers.ModAccessTransformer");
   try {
     FMLRelaunchLog.fine("Validating minecraft");
     Class<?> loaderClazz=Class.forName("cpw.mods.fml.common.Loader",true,classLoader);

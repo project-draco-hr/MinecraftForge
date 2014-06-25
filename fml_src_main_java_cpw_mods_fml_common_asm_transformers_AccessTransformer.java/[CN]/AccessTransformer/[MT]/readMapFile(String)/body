@@ -7,41 +7,6 @@
  else {
     rulesResource=Resources.getResource(rulesFile);
   }
-  Resources.readLines(rulesResource,Charsets.UTF_8,new LineProcessor<Void>(){
-    @Override public Void getResult(){
-      return null;
-    }
-    @Override public boolean processLine(    String input) throws IOException {
-      String line=Iterables.getFirst(Splitter.on('#').limit(2).split(input),"").trim();
-      if (line.length() == 0) {
-        return true;
-      }
-      List<String> parts=Lists.newArrayList(Splitter.on(" ").trimResults().split(line));
-      if (parts.size() > 3) {
-        throw new RuntimeException("Invalid config file line " + input);
-      }
-      Modifier m=new Modifier();
-      m.setTargetAccess(parts.get(0));
-      if (parts.size() == 2) {
-        m.modifyClassVisibility=true;
-      }
- else {
-        String nameReference=parts.get(2);
-        int parenIdx=nameReference.indexOf('(');
-        if (parenIdx > 0) {
-          m.desc=nameReference.substring(parenIdx);
-          m.name=nameReference.substring(0,parenIdx);
-        }
- else {
-          m.name=nameReference;
-        }
-      }
-      String className=parts.get(1).replace('/','.');
-      modifiers.put(className,m);
-      if (DEBUG)       System.out.printf("AT RULE: %s %s %s (type %s)\n",toBinary(m.targetAccess),m.name,m.desc,className);
-      return true;
-    }
-  }
-);
+  processATFile(Resources.asCharSource(rulesResource,Charsets.UTF_8));
   FMLRelaunchLog.fine("Loaded %d rules from AccessTransformer config file %s\n",modifiers.size(),rulesFile);
 }

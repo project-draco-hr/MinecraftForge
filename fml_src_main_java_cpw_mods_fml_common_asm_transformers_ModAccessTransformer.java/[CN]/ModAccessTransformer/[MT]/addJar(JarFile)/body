@@ -1,0 +1,6 @@
+{
+  AccessTransformer at=new AccessTransformer(jar);
+  if (!at.isEmpty()) {
+    embedded.add(at);
+  }
+}

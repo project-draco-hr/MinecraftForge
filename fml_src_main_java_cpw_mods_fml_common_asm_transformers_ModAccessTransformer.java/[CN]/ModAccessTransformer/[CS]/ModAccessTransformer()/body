@@ -1,0 +1,6 @@
+{
+  super(ModAccessTransformer.class);
+  for (  AccessTransformer at : embedded) {
+    mergeModifiers(at.getModifiers());
+  }
+}

@@ -23,6 +23,7 @@
       if (jar.getManifest() == null) {
         continue;
       }
+      ModAccessTransformer.addJar(jar);
       mfAttributes=jar.getManifest().getMainAttributes();
     }
  catch (    IOException ioe) {
