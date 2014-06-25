@@ -1,0 +1,3 @@
+{
+  return configElement.getDefault() != null ? configElement.getDefault().toString().equals(this.textFieldValue.getText()) : this.textFieldValue.getText().trim().isEmpty();
+}

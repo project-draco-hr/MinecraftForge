@@ -1,0 +1,3 @@
+{
+  return currentValue == Boolean.valueOf(configElement.getDefault().toString());
+}

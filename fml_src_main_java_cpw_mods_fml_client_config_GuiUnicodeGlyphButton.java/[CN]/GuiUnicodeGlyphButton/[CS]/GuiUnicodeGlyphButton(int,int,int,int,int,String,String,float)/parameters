@@ -1,0 +1,8 @@
+int id
+int xPos
+int yPos
+int width
+int height
+String displayString
+String glyph
+float glyphScale

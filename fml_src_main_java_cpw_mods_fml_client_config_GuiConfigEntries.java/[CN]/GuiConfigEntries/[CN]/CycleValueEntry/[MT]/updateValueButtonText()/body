@@ -1,0 +1,3 @@
+{
+  this.btnValue.displayString=I18n.format(configElement.getValidValues()[currentIndex]);
+}

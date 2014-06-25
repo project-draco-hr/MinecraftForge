@@ -1,0 +1,13 @@
+{
+  if (enabled()) {
+    if (isChanged() && this.isValidValue) {
+      this.configElement.set(this.textFieldValue.getText());
+      return configElement.requiresMcRestart();
+    }
+ else     if (isChanged() && !this.isValidValue) {
+      this.configElement.setToDefault();
+      return configElement.requiresMcRestart() && beforeValue != null ? beforeValue.equals(configElement.getDefault()) : configElement.getDefault() == null;
+    }
+  }
+  return false;
+}

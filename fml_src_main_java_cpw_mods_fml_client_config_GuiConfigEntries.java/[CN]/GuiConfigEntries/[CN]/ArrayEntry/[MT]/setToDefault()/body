@@ -1,0 +1,6 @@
+{
+  if (enabled()) {
+    this.currentValues=configElement.getDefaults();
+    updateValueButtonText();
+  }
+}

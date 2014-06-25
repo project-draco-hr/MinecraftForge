@@ -1,0 +1,4 @@
+GuiScreen nextScreen
+String title
+IChatComponent message
+String buttonText

@@ -1,0 +1,3 @@
+{
+  this(parentScreen,configElements,modID,configID,allRequireWorldRestart,allRequireMcRestart,title,null);
+}

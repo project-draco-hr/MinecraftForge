@@ -1,0 +1,4 @@
+String modID
+String configID
+boolean isWorldRunning
+boolean requiresMcRestart

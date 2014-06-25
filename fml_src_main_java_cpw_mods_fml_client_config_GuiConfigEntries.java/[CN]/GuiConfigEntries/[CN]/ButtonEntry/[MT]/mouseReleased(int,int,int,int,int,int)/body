@@ -1,0 +1,4 @@
+{
+  super.mouseReleased(index,x,y,mouseEvent,relativeX,relativeY);
+  this.btnValue.mouseReleased(x,y);
+}

@@ -1,0 +1,3 @@
+{
+  if (childScreen instanceof GuiConfig && ((GuiConfig)childScreen).entryList != null)   ((GuiConfig)childScreen).entryList.setAllToDefault(true);
+}

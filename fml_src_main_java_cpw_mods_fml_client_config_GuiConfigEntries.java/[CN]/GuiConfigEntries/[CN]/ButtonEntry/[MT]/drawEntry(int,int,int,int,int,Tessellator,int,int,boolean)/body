@@ -1,0 +1,8 @@
+{
+  super.drawEntry(slotIndex,x,y,listWidth,slotHeight,tessellator,mouseX,mouseY,isSelected);
+  this.btnValue.width=this.owningEntryList.controlWidth;
+  this.btnValue.xPosition=this.owningScreen.entryList.controlX;
+  this.btnValue.yPosition=y;
+  this.btnValue.enabled=enabled();
+  this.btnValue.drawButton(this.mc,mouseX,mouseY);
+}

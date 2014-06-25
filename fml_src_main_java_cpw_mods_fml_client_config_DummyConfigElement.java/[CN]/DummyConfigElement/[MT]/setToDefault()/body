@@ -1,0 +1,4 @@
+{
+  if (isList)   this.values=Arrays.copyOf(this.defaultValues,this.defaultValues.length);
+ else   this.value=defaultValue;
+}
