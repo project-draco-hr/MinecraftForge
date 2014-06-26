@@ -3,5 +3,4 @@
     children.remove(child);
     changed=true;
   }
-  return this;
 }
