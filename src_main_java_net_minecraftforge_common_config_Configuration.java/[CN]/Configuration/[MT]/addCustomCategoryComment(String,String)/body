@@ -1,4 +1,3 @@
 {
-  if (!caseSensitiveCustomCategories)   category=category.toLowerCase(Locale.ENGLISH);
-  getCategory(category).setComment(comment);
+  this.setCategoryComment(category,comment);
 }

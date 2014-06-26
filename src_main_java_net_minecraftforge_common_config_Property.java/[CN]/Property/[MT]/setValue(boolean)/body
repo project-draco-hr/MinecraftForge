@@ -1,0 +1,4 @@
+{
+  setValue(Boolean.toString(value));
+  return this;
+}

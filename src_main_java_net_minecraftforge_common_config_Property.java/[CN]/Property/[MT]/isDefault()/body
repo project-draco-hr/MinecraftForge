@@ -1,0 +1,34 @@
+{
+  if (this.isBooleanList()) {
+    if (values.length == defaultValues.length) {
+      for (int i=0; i < values.length; i++)       if (Boolean.parseBoolean(values[i]) != Boolean.parseBoolean(defaultValues[i]))       return false;
+      return true;
+    }
+ else     return false;
+  }
+  if (this.isIntList()) {
+    if (values.length == defaultValues.length) {
+      for (int i=0; i < values.length; i++)       if (Integer.parseInt(values[i]) != Integer.parseInt(defaultValues[i]))       return false;
+      return true;
+    }
+ else     return false;
+  }
+  if (this.isDoubleList()) {
+    if (values.length == defaultValues.length) {
+      for (int i=0; i < values.length; i++)       if (Double.parseDouble(values[i]) != Double.parseDouble(defaultValues[i]))       return false;
+      return true;
+    }
+ else     return false;
+  }
+  if (this.isList()) {
+    if (values.length == defaultValues.length) {
+      for (int i=0; i < values.length; i++)       if (!values[i].equals(defaultValues[i]))       return false;
+      return true;
+    }
+ else     return false;
+  }
+  if (this.type == Type.BOOLEAN && this.isBooleanValue())   return Boolean.parseBoolean(value) == Boolean.parseBoolean(defaultValue);
+  if (this.type == Type.INTEGER && this.isIntValue())   return Integer.parseInt(value) == Integer.parseInt(defaultValue);
+  if (this.type == Type.DOUBLE && this.isDoubleValue())   return Double.parseDouble(value) == Double.parseDouble(defaultValue);
+  return value.equals(defaultValue);
+}

@@ -1,0 +1,6 @@
+String name
+String category
+int defaultValue
+int minValue
+int maxValue
+String comment

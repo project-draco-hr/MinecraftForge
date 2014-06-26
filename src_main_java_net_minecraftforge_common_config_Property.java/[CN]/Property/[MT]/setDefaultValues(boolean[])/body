@@ -1,0 +1,6 @@
+{
+  String[] temp=new String[defaultValues.length];
+  for (int i=0; i < defaultValues.length; i++)   temp[i]=Boolean.toString(defaultValues[i]);
+  setDefaultValues(temp);
+  return this;
+}

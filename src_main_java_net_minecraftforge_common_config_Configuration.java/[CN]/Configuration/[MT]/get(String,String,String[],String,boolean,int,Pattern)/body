@@ -1,0 +1,7 @@
+{
+  Property prop=get(category,key,defaultValues,comment,STRING);
+  prop.setIsListLengthFixed(isListLengthFixed);
+  prop.setMaxListLength(maxListLength);
+  prop.setValidationPattern(validationPattern);
+  return prop;
+}

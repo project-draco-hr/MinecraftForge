@@ -1,4 +1,5 @@
 {
   changed=true;
+  if (this.propertyOrder != null && !this.propertyOrder.contains(key))   this.propertyOrder.add(key);
   return properties.put(key,value);
 }

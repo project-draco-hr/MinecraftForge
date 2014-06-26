@@ -9,13 +9,15 @@
       prop=new Property(prop.getName(),prop.getString(),type);
       cat.put(key,prop);
     }
+    prop.setDefaultValue(defaultValue);
     prop.comment=comment;
     return prop;
   }
  else   if (defaultValue != null) {
     Property prop=new Property(key,defaultValue,type);
-    prop.set(defaultValue);
+    prop.setValue(defaultValue);
     cat.put(key,prop);
+    prop.setDefaultValue(defaultValue);
     prop.comment=comment;
     return prop;
   }

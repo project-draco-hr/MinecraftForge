@@ -1,0 +1,4 @@
+{
+  this(file,configVersion);
+  this.caseSensitiveCustomCategories=caseSensitiveCustomCategories;
+}

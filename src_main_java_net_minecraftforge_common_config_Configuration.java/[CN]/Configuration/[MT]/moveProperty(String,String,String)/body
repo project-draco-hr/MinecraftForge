@@ -1,0 +1,7 @@
+{
+  if (!oldCategory.equals(newCategory))   if (hasCategory(oldCategory))   if (getCategory(oldCategory).containsKey(propName)) {
+    getCategory(newCategory).put(propName,getCategory(oldCategory).remove(propName));
+    return true;
+  }
+  return false;
+}

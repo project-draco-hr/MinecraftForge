@@ -1,0 +1,5 @@
+String name
+String[] values
+Type type
+boolean read
+String langKey

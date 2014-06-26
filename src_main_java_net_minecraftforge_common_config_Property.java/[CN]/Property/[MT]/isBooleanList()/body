@@ -1,8 +1,8 @@
 {
-  for (  String value : values) {
+  if (isList && type == Type.BOOLEAN)   for (  String value : values) {
     if (!"true".equalsIgnoreCase(value) && !"false".equalsIgnoreCase(value)) {
       return false;
     }
   }
-  return true;
+  return isList && type == Type.BOOLEAN;
 }

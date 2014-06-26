@@ -1,0 +1,4 @@
+{
+  this.requiresWorldRestart=requiresWorldRestart;
+  return this;
+}

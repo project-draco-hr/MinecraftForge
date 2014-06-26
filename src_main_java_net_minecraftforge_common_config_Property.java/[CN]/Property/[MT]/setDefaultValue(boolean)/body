@@ -1,0 +1,4 @@
+{
+  setDefaultValue(Boolean.toString(defaultValue));
+  return this;
+}

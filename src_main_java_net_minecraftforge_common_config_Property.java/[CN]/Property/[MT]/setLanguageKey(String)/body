@@ -1,0 +1,4 @@
+{
+  this.langKey=langKey;
+  return this;
+}

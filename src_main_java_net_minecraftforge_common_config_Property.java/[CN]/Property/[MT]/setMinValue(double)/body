@@ -1,0 +1,4 @@
+{
+  this.minValue=Double.toString(minValue);
+  return this;
+}

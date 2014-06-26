@@ -1,0 +1,3 @@
+{
+  super(parentScreen,getConfigElements(),"Forge",false,false,I18n.format("forge.configgui.forgeConfigTitle"));
+}

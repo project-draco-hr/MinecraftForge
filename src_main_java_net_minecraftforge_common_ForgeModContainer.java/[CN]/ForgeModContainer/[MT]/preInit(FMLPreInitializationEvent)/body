@@ -1,4 +1,5 @@
 {
   MinecraftForge.EVENT_BUS.register(MinecraftForge.INTERNAL_HANDLER);
   ForgeChunkManager.captureConfig(evt.getModConfigurationDirectory());
+  FMLCommonHandler.instance().bus().register(this);
 }

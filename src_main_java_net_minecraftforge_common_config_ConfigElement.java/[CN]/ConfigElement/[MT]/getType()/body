@@ -1,0 +1,3 @@
+{
+  return isProperty ? getType(this.prop) : ConfigGuiType.CONFIG_CATEGORY;
+}

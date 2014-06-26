@@ -1,0 +1,4 @@
+{
+  this.validationPattern=validationPattern;
+  return this;
+}

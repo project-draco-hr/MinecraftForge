@@ -1,0 +1,7 @@
+{
+  if (childScreen instanceof GuiConfig) {
+    GuiConfig child=(GuiConfig)childScreen;
+    for (    IConfigEntry ice : child.entryList.listEntries)     if (!child.initEntries.contains(ice) && ForgeChunkManager.getConfig().hasCategory(ice.getName()))     ForgeChunkManager.getConfig().removeCategory(ForgeChunkManager.getConfig().getCategory(ice.getName()));
+    child.entryList.listEntries=new ArrayList<IConfigEntry>(child.initEntries);
+  }
+}

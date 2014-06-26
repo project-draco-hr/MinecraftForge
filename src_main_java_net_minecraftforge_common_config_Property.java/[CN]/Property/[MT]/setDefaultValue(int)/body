@@ -1,0 +1,4 @@
+{
+  setDefaultValue(Integer.toString(defaultValue));
+  return this;
+}

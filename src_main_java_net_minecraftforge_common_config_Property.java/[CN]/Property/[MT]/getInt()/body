@@ -1,3 +1,8 @@
 {
-  return getInt(-1);
+  try {
+    return Integer.parseInt(value);
+  }
+ catch (  NumberFormatException e) {
+    return Integer.parseInt(defaultValue);
+  }
 }

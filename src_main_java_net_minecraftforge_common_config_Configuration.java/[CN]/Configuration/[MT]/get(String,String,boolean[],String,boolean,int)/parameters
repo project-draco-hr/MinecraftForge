@@ -1,0 +1,6 @@
+String category
+String key
+boolean[] defaultValues
+String comment
+boolean isListLengthFixed
+int maxListLength

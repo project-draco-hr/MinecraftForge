@@ -1,4 +1,6 @@
 {
+  ticketConstraints.clear();
+  chunkConstraints.clear();
   for (  String mod : config.getCategoryNames()) {
     if (mod.equals("Forge") || mod.equals("defaults")) {
       continue;

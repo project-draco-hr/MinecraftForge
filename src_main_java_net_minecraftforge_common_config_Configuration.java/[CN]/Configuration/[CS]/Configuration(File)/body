@@ -1,13 +1,3 @@
 {
-  this.file=file;
-  String basePath=((File)(FMLInjectionData.data()[6])).getAbsolutePath().replace(File.separatorChar,'/').replace("/.","");
-  String path=file.getAbsolutePath().replace(File.separatorChar,'/').replace("/./","/").replace(basePath,"");
-  if (PARENT != null) {
-    PARENT.setChild(path,this);
-    isChild=true;
-  }
- else {
-    fileName=path;
-    load();
-  }
+  this(file,null);
 }

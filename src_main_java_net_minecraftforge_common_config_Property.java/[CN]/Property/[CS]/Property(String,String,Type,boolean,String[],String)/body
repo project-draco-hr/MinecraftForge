@@ -1,0 +1,17 @@
+{
+  setName(name);
+  this.value=value;
+  this.values=new String[0];
+  this.type=type;
+  wasRead=read;
+  isList=false;
+  this.defaultValue=value;
+  this.defaultValues=new String[0];
+  this.validValues=validValues;
+  this.isListLengthFixed=false;
+  this.maxListLength=-1;
+  this.minValue=String.valueOf(Integer.MIN_VALUE);
+  this.maxValue=String.valueOf(Integer.MAX_VALUE);
+  this.langKey=langKey;
+  this.comment="";
+}

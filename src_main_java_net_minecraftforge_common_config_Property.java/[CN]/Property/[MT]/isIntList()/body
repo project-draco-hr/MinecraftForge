@@ -1,5 +1,5 @@
 {
-  for (  String value : values) {
+  if (isList && type == Type.INTEGER)   for (  String value : values) {
     try {
       Integer.parseInt(value);
     }
@@ -7,5 +7,5 @@
       return false;
     }
   }
-  return true;
+  return isList && type == Type.INTEGER;
 }
