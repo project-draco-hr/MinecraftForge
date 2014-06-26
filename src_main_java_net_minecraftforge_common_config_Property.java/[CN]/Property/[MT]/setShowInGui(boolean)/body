@@ -1,0 +1,4 @@
+{
+  this.showInGui=showInGui;
+  return this;
+}

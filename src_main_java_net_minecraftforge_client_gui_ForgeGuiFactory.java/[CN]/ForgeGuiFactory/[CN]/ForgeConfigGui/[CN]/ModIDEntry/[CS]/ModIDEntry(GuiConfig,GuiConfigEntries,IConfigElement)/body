@@ -1,0 +1,4 @@
+{
+  super(owningScreen,owningEntryList,prop,getSelectableValues());
+  if (this.selectableValues.size() == 0)   this.btnValue.enabled=false;
+}

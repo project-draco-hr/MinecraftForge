@@ -2,24 +2,24 @@
   String pad0=getIndent(indent);
   String pad1=getIndent(indent + 1);
   String pad2=getIndent(indent + 2);
-  write(out,pad0,"####################");
-  write(out,pad0,"# ",name);
-  if (comment != null) {
-    write(out,pad0,"#===================");
+  if (comment != null && !comment.isEmpty()) {
+    write(out,pad0,COMMENT_SEPARATOR);
+    write(out,pad0,"# ",name);
+    write(out,pad0,"#--------------------------------------------------------------------------------------------------------#");
     Splitter splitter=Splitter.onPattern("\r?\n");
     for (    String line : splitter.split(comment)) {
       write(out,pad0,"# ",line);
     }
+    write(out,pad0,COMMENT_SEPARATOR,NEW_LINE);
   }
-  write(out,pad0,"####################",NEW_LINE);
   if (!allowedProperties.matchesAllOf(name)) {
     name='"' + name + '"';
   }
   write(out,pad0,name," {");
-  Property[] props=properties.values().toArray(new Property[properties.size()]);
+  Property[] props=getOrderedValues().toArray(new Property[]{});
   for (int x=0; x < props.length; x++) {
     Property prop=props[x];
-    if (prop.comment != null) {
+    if (prop.comment != null && !prop.comment.isEmpty()) {
       if (x != 0) {
         out.newLine();
       }
@@ -48,6 +48,7 @@
       write(out,pad1,String.valueOf(type),":",propName,"=",prop.getString());
     }
   }
+  if (children.size() > 0)   out.newLine();
   for (  ConfigCategory child : children) {
     child.write(out,indent + 1);
   }

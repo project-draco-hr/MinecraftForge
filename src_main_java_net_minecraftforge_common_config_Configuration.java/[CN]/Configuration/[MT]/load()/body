@@ -8,8 +8,10 @@
     if (file.getParentFile() != null) {
       file.getParentFile().mkdirs();
     }
-    if (!file.exists() && !file.createNewFile()) {
-      return;
+    if (!file.exists()) {
+      categories.clear();
+      children.clear();
+      if (!file.createNewFile())       return;
     }
     if (file.canRead()) {
       input=new UnicodeInputStreamReader(new FileInputStream(file),defaultEncoding);
@@ -21,10 +23,12 @@
       ArrayList<String> tmpList=null;
       int lineNum=0;
       String name=null;
+      loadedConfigVersion=null;
       while (true) {
         lineNum++;
         line=buffer.readLine();
         if (line == null) {
+          if (lineNum == 1)           loadedConfigVersion=definedConfigVersion;
           break;
         }
         Matcher start=CONFIG_START.matcher(line);
@@ -44,31 +48,36 @@
         int nameStart=-1, nameEnd=-1;
         boolean skip=false;
         boolean quoted=false;
+        boolean isFirstNonWhitespaceCharOnLine=true;
         for (int i=0; i < line.length() && !skip; ++i) {
           if (Character.isLetterOrDigit(line.charAt(i)) || ALLOWED_CHARS.indexOf(line.charAt(i)) != -1 || (quoted && line.charAt(i) != '"')) {
             if (nameStart == -1) {
               nameStart=i;
             }
             nameEnd=i;
+            isFirstNonWhitespaceCharOnLine=false;
           }
  else           if (Character.isWhitespace(line.charAt(i))) {
           }
  else {
 switch (line.charAt(i)) {
 case '#':
-              skip=true;
-            continue;
+              if (tmpList != null)               break;
+            skip=true;
+          continue;
 case '"':
-          if (quoted) {
-            quoted=false;
-          }
-        if (!quoted && nameStart == -1) {
-          quoted=true;
-        }
-      break;
+        if (tmpList != null)         break;
+      if (quoted) {
+        quoted=false;
+      }
+    if (!quoted && nameStart == -1) {
+      quoted=true;
+    }
+  break;
 case '{':
-    name=line.substring(nameStart,nameEnd + 1);
-  String qualifiedName=ConfigCategory.getQualifiedName(name,currentCat);
+if (tmpList != null) break;
+name=line.substring(nameStart,nameEnd + 1);
+String qualifiedName=ConfigCategory.getQualifiedName(name,currentCat);
 ConfigCategory cat=categories.get(qualifiedName);
 if (cat == null) {
 currentCat=new ConfigCategory(name,currentCat);
@@ -80,12 +89,14 @@ currentCat=cat;
 name=null;
 break;
 case '}':
+if (tmpList != null) break;
 if (currentCat == null) {
 throw new RuntimeException(String.format("Config file corrupt, attepted to close to many categories '%s:%d'",fileName,lineNum));
 }
 currentCat=currentCat.parent;
 break;
 case '=':
+if (tmpList != null) break;
 name=line.substring(nameStart,nameEnd + 1);
 if (currentCat == null) {
 throw new RuntimeException(String.format("'%s' has no scope in '%s:%d'",name,fileName,lineNum));
@@ -95,32 +106,47 @@ i=line.length();
 currentCat.put(name,prop);
 break;
 case ':':
+if (tmpList != null) break;
 type=Property.Type.tryParse(line.substring(nameStart,nameEnd + 1).charAt(0));
 nameStart=nameEnd=-1;
 break;
 case '<':
-if (tmpList != null) {
+if ((tmpList != null && i + 1 == line.length()) || (tmpList == null && i + 1 != line.length())) {
 throw new RuntimeException(String.format("Malformed list property \"%s:%d\"",fileName,lineNum));
 }
+ else if (i + 1 == line.length()) {
 name=line.substring(nameStart,nameEnd + 1);
 if (currentCat == null) {
 throw new RuntimeException(String.format("'%s' has no scope in '%s:%d'",name,fileName,lineNum));
 }
 tmpList=new ArrayList<String>();
 skip=true;
+}
 break;
 case '>':
 if (tmpList == null) {
 throw new RuntimeException(String.format("Malformed list property \"%s:%d\"",fileName,lineNum));
 }
+if (isFirstNonWhitespaceCharOnLine) {
 currentCat.put(name,new Property(name,tmpList.toArray(new String[tmpList.size()]),type));
 name=null;
 tmpList=null;
 type=null;
+}
+break;
+case '~':
+if (tmpList != null) break;
+if (line.startsWith(CONFIG_VERSION_MARKER)) {
+int colon=line.indexOf(':');
+if (colon != -1) loadedConfigVersion=line.substring(colon + 1).trim();
+skip=true;
+}
 break;
 default :
+if (tmpList != null) break;
 throw new RuntimeException(String.format("Unknown character '%s' in '%s:%d'",line.charAt(i),fileName,lineNum));
 }
+isFirstNonWhitespaceCharOnLine=false;
 }
 }
 if (quoted) {

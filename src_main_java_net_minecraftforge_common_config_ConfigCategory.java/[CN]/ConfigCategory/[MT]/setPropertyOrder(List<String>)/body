@@ -1,0 +1,5 @@
+{
+  this.propertyOrder=propertyOrder;
+  for (  String s : properties.keySet())   if (!propertyOrder.contains(s))   propertyOrder.add(s);
+  return this;
+}

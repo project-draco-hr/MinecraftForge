@@ -1,4 +1,4 @@
 String category
 String key
-boolean[] defaultValue
+boolean[] defaultValues
 String comment

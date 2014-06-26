@@ -1,0 +1,5 @@
+String category
+String key
+String[] defaultValues
+String comment
+Pattern validationPattern

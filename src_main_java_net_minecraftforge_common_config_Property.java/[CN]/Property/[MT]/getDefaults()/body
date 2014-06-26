@@ -1,0 +1,3 @@
+{
+  return Arrays.copyOf(this.defaultValues,this.defaultValues.length);
+}

@@ -1,0 +1,24 @@
+{
+  if (isProperty) {
+    if (type == Property.Type.BOOLEAN) {
+      boolean[] ba=new boolean[aVal.length];
+      for (int i=0; i < aVal.length; i++)       ba[i]=Boolean.valueOf(aVal[i].toString());
+      prop.set(ba);
+    }
+ else     if (type == Property.Type.DOUBLE) {
+      double[] da=new double[aVal.length];
+      for (int i=0; i < aVal.length; i++)       da[i]=Double.valueOf(aVal[i].toString());
+      prop.set(da);
+    }
+ else     if (type == Property.Type.INTEGER) {
+      int[] ia=new int[aVal.length];
+      for (int i=0; i < aVal.length; i++)       ia[i]=Integer.valueOf(aVal[i].toString());
+      prop.set(ia);
+    }
+ else {
+      String[] is=new String[aVal.length];
+      for (int i=0; i < aVal.length; i++)       is[i]=aVal[i].toString();
+      prop.set(is);
+    }
+  }
+}

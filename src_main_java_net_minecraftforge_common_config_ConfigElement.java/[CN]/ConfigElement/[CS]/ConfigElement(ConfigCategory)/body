@@ -1,0 +1,4 @@
+{
+  this.ctgy=ctgy;
+  isProperty=false;
+}

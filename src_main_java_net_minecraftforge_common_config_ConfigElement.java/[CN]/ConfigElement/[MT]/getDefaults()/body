@@ -1,0 +1,22 @@
+{
+  if (isProperty) {
+    String[] aVal=prop.getDefaults();
+    if (type == Property.Type.BOOLEAN) {
+      Boolean[] ba=new Boolean[aVal.length];
+      for (int i=0; i < aVal.length; i++)       ba[i]=Boolean.valueOf(aVal[i]);
+      return ba;
+    }
+ else     if (type == Property.Type.DOUBLE) {
+      Double[] da=new Double[aVal.length];
+      for (int i=0; i < aVal.length; i++)       da[i]=Double.valueOf(aVal[i].toString());
+      return da;
+    }
+ else     if (type == Property.Type.INTEGER) {
+      Integer[] ia=new Integer[aVal.length];
+      for (int i=0; i < aVal.length; i++)       ia[i]=Integer.valueOf(aVal[i].toString());
+      return ia;
+    }
+ else     return aVal;
+  }
+  return null;
+}

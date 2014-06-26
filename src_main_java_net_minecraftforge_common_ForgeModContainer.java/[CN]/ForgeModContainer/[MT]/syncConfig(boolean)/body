@@ -1,0 +1,77 @@
+{
+  List<String> propOrder=new ArrayList<String>();
+  if (!config.isChild) {
+    if (load) {
+      config.load();
+    }
+    Property enableGlobalCfg=config.get(Configuration.CATEGORY_GENERAL,"enableGlobalConfig",false).setShowInGui(false);
+    if (enableGlobalCfg.getBoolean(false)) {
+      Configuration.enableGlobalConfig();
+    }
+  }
+  Property prop;
+  prop=config.get(CATEGORY_GENERAL,"disableVersionCheck",false);
+  prop.comment="Set to true to disable Forge's version check mechanics. Forge queries a small json file on our server for version information. For more details see the ForgeVersion class in our github.";
+  prop.setLanguageKey("forge.configgui.disableVersionCheck");
+  disableVersionCheck=prop.getBoolean(disableVersionCheck);
+  propOrder.add(prop.getName());
+  prop=config.get(Configuration.CATEGORY_GENERAL,"clumpingThreshold",64,"Controls the number threshold at which Packet51 is preferred over Packet52, default and minimum 64, maximum 1024",64,1024);
+  prop.setLanguageKey("forge.configgui.clumpingThreshold").setRequiresWorldRestart(true);
+  clumpingThreshold=prop.getInt(64);
+  if (clumpingThreshold > 1024 || clumpingThreshold < 64) {
+    clumpingThreshold=64;
+    prop.set(64);
+  }
+  propOrder.add(prop.getName());
+  prop=config.get(CATEGORY_GENERAL,"sortRecipies",true);
+  prop.comment="Set to true to enable the post initialization sorting of crafting recipes using Forge's sorter. May cause desyncing on conflicting recipies. MUST RESTART MINECRAFT IF CHANGED FROM THE CONFIG GUI.";
+  prop.setLanguageKey("forge.configgui.sortRecipies").setRequiresMcRestart(true);
+  shouldSortRecipies=prop.getBoolean(shouldSortRecipies);
+  propOrder.add(prop.getName());
+  prop=config.get(Configuration.CATEGORY_GENERAL,"forceDuplicateFluidBlockCrash",true);
+  prop.comment="Set this to true to force a crash if more than one block attempts to link back to the same Fluid. Enabled by default.";
+  prop.setLanguageKey("forge.configgui.forceDuplicateFluidBlockCrash").setRequiresMcRestart(true);
+  forceDuplicateFluidBlockCrash=prop.getBoolean(true);
+  propOrder.add(prop.getName());
+  if (!forceDuplicateFluidBlockCrash) {
+    FMLLog.warning("Disabling forced crashes on duplicate Fluid Blocks - USE AT YOUR OWN RISK");
+  }
+  prop=config.get(Configuration.CATEGORY_GENERAL,"removeErroringEntities",false);
+  prop.comment="Set this to true to remove any Entity that throws an error in its update method instead of closing the server and reporting a crash log. BE WARNED THIS COULD SCREW UP EVERYTHING USE SPARINGLY WE ARE NOT RESPONSIBLE FOR DAMAGES.";
+  prop.setLanguageKey("forge.configgui.removeErroringEntities").setRequiresWorldRestart(true);
+  removeErroringEntities=prop.getBoolean(false);
+  propOrder.add(prop.getName());
+  if (removeErroringEntities) {
+    FMLLog.warning("Enabling removal of erroring Entities - USE AT YOUR OWN RISK");
+  }
+  prop=config.get(Configuration.CATEGORY_GENERAL,"removeErroringTileEntities",false);
+  prop.comment="Set this to true to remove any TileEntity that throws an error in its update method instead of closing the server and reporting a crash log. BE WARNED THIS COULD SCREW UP EVERYTHING USE SPARINGLY WE ARE NOT RESPONSIBLE FOR DAMAGES.";
+  prop.setLanguageKey("forge.configgui.removeErroringTileEntities").setRequiresWorldRestart(true);
+  removeErroringTileEntities=prop.getBoolean(false);
+  propOrder.add(prop.getName());
+  if (removeErroringTileEntities) {
+    FMLLog.warning("Enabling removal of erroring Tile Entities - USE AT YOUR OWN RISK");
+  }
+  prop=config.get(Configuration.CATEGORY_GENERAL,"fullBoundingBoxLadders",false);
+  prop.comment="Set this to true to check the entire entity's collision bounding box for ladders instead of just the block they are in. Causes noticable differences in mechanics so default is vanilla behavior. Default: false";
+  prop.setLanguageKey("forge.configgui.fullBoundingBoxLadders").setRequiresWorldRestart(true);
+  fullBoundingBoxLadders=prop.getBoolean(false);
+  propOrder.add(prop.getName());
+  prop=config.get(Configuration.CATEGORY_GENERAL,"biomeSkyBlendRange",new int[]{2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34});
+  prop.comment="Control the range of sky blending for colored skies in biomes.";
+  prop.setLanguageKey("forge.configgui.biomeSkyBlendRange");
+  blendRanges=prop.getIntList();
+  propOrder.add(prop.getName());
+  prop=config.get(Configuration.CATEGORY_GENERAL,"zombieBaseSummonChance",0.1,"Base zombie summoning spawn chance. Allows changing the bonus zombie summoning mechanic.",0.0D,1.0D);
+  prop.setLanguageKey("forge.configgui.zombieBaseSummonChance").setRequiresWorldRestart(true);
+  zombieSummonBaseChance=prop.getDouble(0.1);
+  propOrder.add(prop.getName());
+  prop=config.get(Configuration.CATEGORY_GENERAL,"zombieBabyChance",0.05,"Chance that a zombie (or subclass) is a baby. Allows changing the zombie spawning mechanic.",0.0D,1.0D);
+  prop.setLanguageKey("forge.configgui.zombieBabyChance").setRequiresWorldRestart(true);
+  zombieBabyChance=(float)prop.getDouble(0.05);
+  propOrder.add(prop.getName());
+  config.setCategoryPropertyOrder(CATEGORY_GENERAL,propOrder);
+  if (config.hasChanged()) {
+    config.save();
+  }
+}

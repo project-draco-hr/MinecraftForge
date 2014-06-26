@@ -1,7 +1,3 @@
 {
-  Property prop=get(category,key,Double.toString(defaultValue),comment,DOUBLE);
-  if (!prop.isDoubleValue()) {
-    prop.set(defaultValue);
-  }
-  return prop;
+  return get(category,key,defaultValue,comment,-Double.MAX_VALUE,Double.MAX_VALUE);
 }

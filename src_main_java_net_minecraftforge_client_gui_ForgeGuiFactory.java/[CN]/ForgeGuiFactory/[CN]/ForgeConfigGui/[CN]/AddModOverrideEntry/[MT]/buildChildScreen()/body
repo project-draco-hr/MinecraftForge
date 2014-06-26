@@ -1,0 +1,7 @@
+{
+  List<IConfigElement> list=new ArrayList<IConfigElement>();
+  list.add(new DummyConfigElement("modID","",ConfigGuiType.STRING,"forge.configgui.modID").setCustomListEntryClass(ModIDEntry.class));
+  list.add(new ConfigElement<Integer>(new Property("maximumTicketCount","200",Property.Type.INTEGER,"forge.configgui.maximumTicketCount")));
+  list.add(new ConfigElement<Integer>(new Property("maximumChunksPerTicket","25",Property.Type.INTEGER,"forge.configgui.maximumChunksPerTicket")));
+  return new GuiConfig(this.owningScreen,list,this.owningScreen.modID,this.configElement.requiresWorldRestart() || this.owningScreen.allRequireWorldRestart,this.configElement.requiresMcRestart() || this.owningScreen.allRequireMcRestart,this.owningScreen.title,I18n.format("forge.configgui.ctgy.forgeChunkLoadingAddModConfig"));
+}

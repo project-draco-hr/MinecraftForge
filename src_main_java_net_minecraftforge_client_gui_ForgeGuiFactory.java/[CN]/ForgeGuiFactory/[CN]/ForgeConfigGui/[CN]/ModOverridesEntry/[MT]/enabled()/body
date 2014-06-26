@@ -1,0 +1,8 @@
+{
+  for (  IConfigEntry entry : this.owningEntryList.listEntries) {
+    if (entry.getName().equals("enabled") && entry instanceof BooleanEntry) {
+      return Boolean.valueOf(entry.getCurrentValue().toString());
+    }
+  }
+  return true;
+}

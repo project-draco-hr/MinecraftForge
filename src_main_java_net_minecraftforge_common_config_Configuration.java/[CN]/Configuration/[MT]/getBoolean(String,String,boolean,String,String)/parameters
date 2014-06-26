@@ -1,0 +1,5 @@
+String name
+String category
+boolean defaultValue
+String comment
+String langKey

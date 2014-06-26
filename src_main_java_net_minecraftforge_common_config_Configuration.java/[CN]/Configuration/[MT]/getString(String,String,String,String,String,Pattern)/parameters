@@ -1,0 +1,6 @@
+String name
+String category
+String defaultValue
+String comment
+String langKey
+Pattern pattern

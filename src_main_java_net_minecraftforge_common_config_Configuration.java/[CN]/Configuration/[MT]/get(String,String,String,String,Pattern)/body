@@ -1,0 +1,5 @@
+{
+  Property prop=get(category,key,defaultValue,comment,STRING);
+  prop.setValidationPattern(validationPattern);
+  return prop;
+}

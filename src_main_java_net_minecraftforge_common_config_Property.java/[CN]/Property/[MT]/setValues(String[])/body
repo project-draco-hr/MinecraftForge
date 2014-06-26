@@ -1,0 +1,5 @@
+{
+  this.values=Arrays.copyOf(values,values.length);
+  changed=true;
+  return this;
+}
