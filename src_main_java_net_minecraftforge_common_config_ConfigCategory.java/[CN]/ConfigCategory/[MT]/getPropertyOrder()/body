@@ -1,0 +1,4 @@
+{
+  if (this.propertyOrder != null)   return ImmutableList.copyOf(this.propertyOrder);
+ else   return ImmutableList.copyOf(properties.keySet());
+}

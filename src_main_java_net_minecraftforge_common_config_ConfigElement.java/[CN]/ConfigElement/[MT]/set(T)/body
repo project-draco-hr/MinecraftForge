@@ -1,0 +1,8 @@
+{
+  if (isProperty) {
+    if (type == Property.Type.BOOLEAN)     prop.set(Boolean.parseBoolean(value.toString()));
+ else     if (type == Property.Type.DOUBLE)     prop.set(Double.parseDouble(value.toString()));
+ else     if (type == Property.Type.INTEGER)     prop.set(Integer.parseInt(value.toString()));
+ else     prop.set(value.toString());
+  }
+}

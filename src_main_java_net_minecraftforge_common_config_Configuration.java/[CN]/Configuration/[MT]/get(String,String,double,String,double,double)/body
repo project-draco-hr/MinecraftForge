@@ -1,0 +1,10 @@
+{
+  Property prop=get(category,key,Double.toString(defaultValue),comment,DOUBLE);
+  prop.setDefaultValue(Double.toString(defaultValue));
+  prop.setMinValue(minValue);
+  prop.setMaxValue(maxValue);
+  if (!prop.isDoubleValue()) {
+    prop.setValue(defaultValue);
+  }
+  return prop;
+}

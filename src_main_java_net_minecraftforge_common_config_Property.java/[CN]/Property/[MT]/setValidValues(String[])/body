@@ -1,0 +1,4 @@
+{
+  this.validValues=validValues;
+  return this;
+}

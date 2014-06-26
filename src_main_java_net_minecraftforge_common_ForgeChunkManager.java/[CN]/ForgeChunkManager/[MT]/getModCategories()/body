@@ -1,0 +1,10 @@
+{
+  List<ConfigCategory> list=new ArrayList<ConfigCategory>();
+  for (  String mod : config.getCategoryNames()) {
+    if (mod.equals("Forge") || mod.equals("defaults")) {
+      continue;
+    }
+    list.add(config.getCategory(mod));
+  }
+  return list;
+}

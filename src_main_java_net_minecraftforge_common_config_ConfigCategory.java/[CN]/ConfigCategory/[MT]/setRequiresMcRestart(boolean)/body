@@ -1,0 +1,4 @@
+{
+  this.requiresMcRestart=this.requiresWorldRestart=requiresMcRestart;
+  return this;
+}

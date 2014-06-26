@@ -1,0 +1,7 @@
+{
+  this.defaultValue="";
+  for (  String s : defaultValues)   this.defaultValue+=", [" + s + "]";
+  this.defaultValue=this.defaultValue.replaceFirst(", ","");
+  this.defaultValues=Arrays.copyOf(defaultValues,defaultValues.length);
+  return this;
+}

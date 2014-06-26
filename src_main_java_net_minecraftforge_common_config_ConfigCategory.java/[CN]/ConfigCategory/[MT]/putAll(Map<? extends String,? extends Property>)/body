@@ -1,4 +1,5 @@
 {
   changed=true;
+  if (this.propertyOrder != null)   for (  String key : m.keySet())   if (!this.propertyOrder.contains(key))   this.propertyOrder.add(key);
   properties.putAll(m);
 }

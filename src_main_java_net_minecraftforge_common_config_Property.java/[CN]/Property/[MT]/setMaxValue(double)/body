@@ -1,0 +1,4 @@
+{
+  this.maxValue=Double.toString(maxValue);
+  return this;
+}

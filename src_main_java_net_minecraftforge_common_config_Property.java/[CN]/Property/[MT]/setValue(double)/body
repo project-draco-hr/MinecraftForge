@@ -1,0 +1,4 @@
+{
+  setValue(Double.toString(value));
+  return this;
+}

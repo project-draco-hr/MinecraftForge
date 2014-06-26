@@ -1,0 +1,3 @@
+{
+  return "net.minecraftforge.client.gui.ForgeGuiFactory";
+}

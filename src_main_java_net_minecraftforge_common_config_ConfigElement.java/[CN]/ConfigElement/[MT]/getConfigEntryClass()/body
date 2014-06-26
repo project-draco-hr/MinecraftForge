@@ -1,0 +1,3 @@
+{
+  return isProperty ? prop.getConfigEntryClass() : ctgy.getConfigEntryClass();
+}

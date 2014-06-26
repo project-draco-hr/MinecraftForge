@@ -1,0 +1,6 @@
+String name
+String category
+float defaultValue
+float minValue
+float maxValue
+String comment

@@ -1,0 +1,3 @@
+{
+  return isProperty ? prop.getValidationPattern() : null;
+}

@@ -1,0 +1,3 @@
+{
+  return getInt(name,category,defaultValue,minValue,maxValue,comment,name);
+}

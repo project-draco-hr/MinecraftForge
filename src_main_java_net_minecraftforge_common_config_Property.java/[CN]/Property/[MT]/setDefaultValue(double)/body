@@ -1,0 +1,4 @@
+{
+  setDefaultValue(Double.toString(defaultValue));
+  return this;
+}

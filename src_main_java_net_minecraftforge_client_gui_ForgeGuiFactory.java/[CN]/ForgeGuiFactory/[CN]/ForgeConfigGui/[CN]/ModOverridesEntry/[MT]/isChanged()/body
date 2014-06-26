@@ -1,0 +1,7 @@
+{
+  if (childScreen instanceof GuiConfig) {
+    GuiConfig child=(GuiConfig)childScreen;
+    return child.entryList.listEntries.size() != child.initEntries.size() || child.entryList.hasChangedEntry(true);
+  }
+  return false;
+}

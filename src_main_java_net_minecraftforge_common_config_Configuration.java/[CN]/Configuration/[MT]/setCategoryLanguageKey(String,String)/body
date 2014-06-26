@@ -1,0 +1,5 @@
+{
+  if (!caseSensitiveCustomCategories)   category=category.toLowerCase(Locale.ENGLISH);
+  getCategory(category).setLanguageKey(langKey);
+  return this;
+}

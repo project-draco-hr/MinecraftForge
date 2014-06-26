@@ -1,0 +1,19 @@
+{
+  setName(name);
+  this.type=type;
+  this.values=Arrays.copyOf(values,values.length);
+  wasRead=read;
+  isList=true;
+  this.value="";
+  this.defaultValue="";
+  for (  String s : values)   this.defaultValue+=", [" + s + "]";
+  this.defaultValue=this.defaultValue.replaceFirst(", ","");
+  this.defaultValues=Arrays.copyOf(values,values.length);
+  this.validValues=validValues;
+  this.isListLengthFixed=false;
+  this.maxListLength=-1;
+  this.minValue=String.valueOf(Integer.MIN_VALUE);
+  this.maxValue=String.valueOf(Integer.MAX_VALUE);
+  this.langKey=langKey;
+  this.comment="";
+}
