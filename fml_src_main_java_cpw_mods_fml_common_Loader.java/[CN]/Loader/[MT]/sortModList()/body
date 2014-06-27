@@ -2,7 +2,7 @@
   FMLLog.finer("Verifying mod requirements are satisfied");
   try {
     BiMap<String,ArtifactVersion> modVersions=HashBiMap.create();
-    for (    ModContainer mod : getActiveModList()) {
+    for (    ModContainer mod : Iterables.concat(getActiveModList(),ModAPIManager.INSTANCE.getAPIList())) {
       modVersions.put(mod.getModId(),mod.getProcessedVersion());
     }
     ArrayListMultimap<String,String> reqList=ArrayListMultimap.create();

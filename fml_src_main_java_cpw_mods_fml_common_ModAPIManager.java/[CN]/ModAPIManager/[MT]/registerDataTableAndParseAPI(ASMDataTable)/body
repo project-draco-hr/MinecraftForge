@@ -43,6 +43,11 @@
       ArtifactVersion owner=container.ownerMod;
       do {
         APIContainer parent=apiContainers.get(owner.getLabel());
+        if (parent == container) {
+          FMLLog.finer("APIContainer %s is it's own parent. skipping",owner);
+          container.markSelfReferenced();
+          break;
+        }
         FMLLog.finer("Removing upstream parent %s from %s",parent.ownerMod.getLabel(),container);
         container.currentReferents.remove(parent.ownerMod.getLabel());
         container.referredMods.remove(parent.ownerMod);
