@@ -1,6 +1,6 @@
 {
   if (chunk == null) {
-    queuedChunk.provider.loadChunk(queuedChunk.x,queuedChunk.z);
+    queuedChunk.provider.originalLoadChunk(queuedChunk.x,queuedChunk.z);
     return;
   }
   queuedChunk.loader.loadEntities(queuedChunk.world,queuedChunk.compound.getCompoundTag("Level"),chunk);
