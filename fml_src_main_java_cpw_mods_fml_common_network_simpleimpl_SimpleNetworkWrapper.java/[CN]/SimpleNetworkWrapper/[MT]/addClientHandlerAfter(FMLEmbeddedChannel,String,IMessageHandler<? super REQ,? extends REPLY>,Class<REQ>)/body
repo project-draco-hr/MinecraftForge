@@ -1,4 +1,4 @@
 {
   SimpleChannelHandlerWrapper<REQ,REPLY> handler=getHandlerWrapper(messageHandler,Side.CLIENT,requestType);
-  channel.pipeline().addAfter(type,messageHandler.getName(),handler);
+  channel.pipeline().addAfter(type,messageHandler.getClass().getName(),handler);
 }
