@@ -75,6 +75,10 @@
   prop.setLanguageKey("forge.configgui.stencilbits").setRequiresWorldRestart(true);
   enableStencilBits=prop.getBoolean(true);
   propOrder.add(prop.getName());
+  prop=config.get(Configuration.CATEGORY_GENERAL,"defaultSpawnFuzz",20,"The spawn fuzz when a player respawns in the world, this is controlable by WorldType, this config option is for the default overworld.",1,Integer.MAX_VALUE);
+  prop.setLanguageKey("forge.configgui.spawnfuzz").setRequiresWorldRestart(false);
+  defaultSpawnFuzz=prop.getInt(20);
+  propOrder.add(prop.getName());
   config.setCategoryPropertyOrder(CATEGORY_GENERAL,propOrder);
   if (config.hasChanged()) {
     config.save();
