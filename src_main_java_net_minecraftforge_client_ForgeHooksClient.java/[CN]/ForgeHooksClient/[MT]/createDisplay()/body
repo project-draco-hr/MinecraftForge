@@ -1,6 +1,11 @@
 {
   ImageIO.setUseCache(false);
   PixelFormat format=new PixelFormat().withDepthBits(24);
+  if (!ForgeModContainer.enableStencilBits) {
+    Display.create(format);
+    stencilBits=0;
+    return;
+  }
   try {
     Display.create(format.withStencilBits(8));
     stencilBits=8;

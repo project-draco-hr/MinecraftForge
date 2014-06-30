@@ -70,6 +70,11 @@
   prop.setLanguageKey("forge.configgui.zombieBabyChance").setRequiresWorldRestart(true);
   zombieBabyChance=(float)prop.getDouble(0.05);
   propOrder.add(prop.getName());
+  prop=config.get(Configuration.CATEGORY_GENERAL,"enableStencilBits",true);
+  prop.comment="Set to false to attempt to allocate 8 stencil bits when starting the GL display context.";
+  prop.setLanguageKey("forge.configgui.stencilbits").setRequiresWorldRestart(true);
+  enableStencilBits=prop.getBoolean(true);
+  propOrder.add(prop.getName());
   config.setCategoryPropertyOrder(CATEGORY_GENERAL,propOrder);
   if (config.hasChanged()) {
     config.save();
