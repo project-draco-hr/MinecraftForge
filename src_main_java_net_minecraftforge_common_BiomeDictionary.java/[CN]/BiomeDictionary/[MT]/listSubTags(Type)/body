@@ -1,0 +1,8 @@
+{
+  List<Type> subTags=new ArrayList<Type>();
+  for (  Type type : types) {
+    if (type.hasSubTags())     subTags.addAll(type.subTags);
+ else     subTags.add(type);
+  }
+  return subTags.toArray(new Type[subTags.size()]);
+}

@@ -1,4 +1,5 @@
 {
+  types=listSubTags(types);
   if (BiomeGenBase.getBiomeGenArray()[biome.biomeID] != null) {
     for (    Type type : types) {
       if (typeInfoList[type.ordinal()] == null) {

@@ -1,0 +1,3 @@
+{
+  this.subTags=Arrays.asList(subTags);
+}
