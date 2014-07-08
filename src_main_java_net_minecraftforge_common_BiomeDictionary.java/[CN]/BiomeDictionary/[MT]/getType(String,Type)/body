@@ -1,0 +1,7 @@
+{
+  name=name.toUpperCase();
+  for (  Type t : values()) {
+    if (t.name().equals(name))     return t;
+  }
+  return EnumHelper.addEnum(Type.class,name,new Class[]{Type[].class},new Object[]{subTypes});
+}
