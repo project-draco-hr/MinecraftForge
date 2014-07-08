@@ -1,0 +1,5 @@
+{
+  super(owningScreen,owningEntryList,configElement,new GuiSlider(0,owningEntryList.controlX,0,owningEntryList.controlWidth,18,"","",Double.valueOf(configElement.getMinValue().toString()),Double.valueOf(configElement.getMaxValue().toString()),Double.valueOf(configElement.get().toString()),configElement.getType() == ConfigGuiType.DOUBLE,true));
+  if (configElement.getType() == ConfigGuiType.INTEGER)   this.beforeValue=Integer.valueOf(configElement.get().toString());
+ else   this.beforeValue=Double.valueOf(configElement.get().toString());
+}

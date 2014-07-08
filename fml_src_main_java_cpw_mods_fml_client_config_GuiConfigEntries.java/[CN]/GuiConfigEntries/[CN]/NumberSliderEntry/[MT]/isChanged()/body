@@ -1,0 +1,4 @@
+{
+  if (configElement.getType() == ConfigGuiType.INTEGER)   return (int)((GuiSlider)this.btnValue).getValue() != (int)beforeValue;
+ else   return ((GuiSlider)this.btnValue).getValue() != beforeValue;
+}
