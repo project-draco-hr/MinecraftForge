@@ -1,3 +1,9 @@
 {
+  if (type.hasSubTags()) {
+    for (    Type remappedType : listSubTags(type)) {
+      if (info.typeList.contains(remappedType))       return true;
+    }
+    return false;
+  }
   return info.typeList.contains(type);
 }
