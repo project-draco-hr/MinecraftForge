@@ -1,0 +1,6 @@
+{
+  if (this.enabled()) {
+    ((GuiSlider)this.btnValue).setValue(Double.valueOf(configElement.getDefault().toString()));
+    ((GuiSlider)this.btnValue).updateSlider();
+  }
+}

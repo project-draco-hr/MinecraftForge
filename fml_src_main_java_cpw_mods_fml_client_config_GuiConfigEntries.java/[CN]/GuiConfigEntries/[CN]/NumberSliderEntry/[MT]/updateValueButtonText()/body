@@ -1,0 +1,3 @@
+{
+  ((GuiSlider)this.btnValue).updateSlider();
+}

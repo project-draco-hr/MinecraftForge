@@ -1,0 +1,24 @@
+{
+  super(id,xPos,yPos,width,height,prefix);
+  minValue=minVal;
+  maxValue=maxVal;
+  sliderValue=(currentVal - minValue) / (maxValue - minValue);
+  dispString=prefix;
+  parent=par;
+  suffix=suf;
+  showDecimal=showDec;
+  String val;
+  if (showDecimal) {
+    val=Double.toString(sliderValue * (maxValue - minValue) + minValue);
+    precision=Math.min(val.substring(val.indexOf(".") + 1).length(),4);
+  }
+ else {
+    val=Integer.toString((int)Math.round(sliderValue * (maxValue - minValue) + minValue));
+    precision=0;
+  }
+  displayString=dispString + val + suffix;
+  drawString=drawStr;
+  if (!drawString) {
+    displayString="";
+  }
+}

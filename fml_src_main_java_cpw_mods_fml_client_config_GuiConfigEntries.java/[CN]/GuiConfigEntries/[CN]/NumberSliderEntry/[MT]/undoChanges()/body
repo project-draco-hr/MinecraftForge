@@ -1,0 +1,6 @@
+{
+  if (this.enabled()) {
+    ((GuiSlider)this.btnValue).setValue(beforeValue);
+    ((GuiSlider)this.btnValue).updateSlider();
+  }
+}

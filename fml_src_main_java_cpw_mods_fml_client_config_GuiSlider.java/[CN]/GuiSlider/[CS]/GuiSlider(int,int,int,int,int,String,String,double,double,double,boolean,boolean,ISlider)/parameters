@@ -1,0 +1,13 @@
+int id
+int xPos
+int yPos
+int width
+int height
+String prefix
+String suf
+double minVal
+double maxVal
+double currentVal
+boolean showDec
+boolean drawStr
+ISlider par
