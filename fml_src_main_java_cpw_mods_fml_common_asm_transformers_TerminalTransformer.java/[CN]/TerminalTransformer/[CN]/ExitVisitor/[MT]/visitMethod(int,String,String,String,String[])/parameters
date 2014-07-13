@@ -1,0 +1,5 @@
+int mAccess
+String mName
+String mDesc
+String mSignature
+String[] mExceptions

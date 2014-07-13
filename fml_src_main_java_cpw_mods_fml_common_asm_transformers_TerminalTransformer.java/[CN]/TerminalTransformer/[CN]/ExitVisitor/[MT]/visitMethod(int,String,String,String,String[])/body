@@ -1,0 +1,31 @@
+{
+  final boolean warn=!clsName.equals("net/minecraft/client/Minecraft") && !clsName.equals("net/minecraft/server/dedicated/DedicatedServer") && !clsName.equals("cpw/mods/fml/common/FMLCommonHandler");
+  return new MethodVisitor(Opcodes.ASM4,super.visitMethod(mAccess,mName,mDesc,mSignature,mExceptions)){
+    public void visitMethodInsn(    int opcode,    String owner,    String name,    String desc){
+      if (opcode == Opcodes.INVOKESTATIC && owner.equals("java/lang/System") && name.equals("exit") && desc.equals("(I)V")) {
+        if (warn) {
+          FMLRelaunchLog.warning("=============================================================");
+          FMLRelaunchLog.warning("MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!");
+          FMLRelaunchLog.warning("Offendor: %s.%s%s",ExitVisitor.this.clsName,mName,mDesc);
+          FMLRelaunchLog.warning("=============================================================");
+        }
+        owner=ExitVisitor.callbackOwner;
+        name="systemExitCalled";
+      }
+ else       if (opcode == Opcodes.INVOKEVIRTUAL && owner.equals("java/lang/Runtime") && name.equals("exit") && desc.equals("(I)V")) {
+        if (warn) {
+          FMLRelaunchLog.warning("=============================================================");
+          FMLRelaunchLog.warning("MOD HAS DIRECT REFERENCE Runtime.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!");
+          FMLRelaunchLog.warning("Offendor: %s.%s%s",ExitVisitor.this.clsName,mName,mDesc);
+          FMLRelaunchLog.warning("=============================================================");
+        }
+        opcode=Opcodes.INVOKESTATIC;
+        owner=ExitVisitor.callbackOwner;
+        name="runtimeExitCalled";
+        desc="(Ljava/lang/Runtime;I)V";
+      }
+      super.visitMethodInsn(opcode,owner,name,desc);
+    }
+  }
+;
+}
