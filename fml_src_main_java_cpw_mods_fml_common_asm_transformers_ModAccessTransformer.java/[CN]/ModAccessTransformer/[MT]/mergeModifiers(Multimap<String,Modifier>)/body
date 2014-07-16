@@ -1,3 +1,0 @@
-{
-  getModifiers().putAll(modifiers);
-}
