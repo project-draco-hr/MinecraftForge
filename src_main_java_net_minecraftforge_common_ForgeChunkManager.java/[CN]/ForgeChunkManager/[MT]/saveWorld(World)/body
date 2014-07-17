@@ -9,6 +9,7 @@
   NBTTagList ticketList=new NBTTagList();
   forcedChunkData.setTag("TicketList",ticketList);
   Multimap<String,Ticket> ticketSet=tickets.get(worldServer);
+  if (ticketSet == null)   return;
   for (  String modId : ticketSet.keySet()) {
     NBTTagCompound ticketHolder=new NBTTagCompound();
     ticketList.appendTag(ticketHolder);
