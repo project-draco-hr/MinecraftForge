@@ -1,0 +1,3 @@
+{
+  remove(fish.iterator(),test);
+}
