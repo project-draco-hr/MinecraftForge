@@ -1,0 +1,5 @@
+{
+  super(renderer,entity,block,renderPartialTicks);
+  this.fogMode=fogMode;
+  this.farPlaneDistance=farPlaneDistance;
+}
