@@ -1,0 +1,5 @@
+{
+  StackTraceElement[] elems=Thread.currentThread().getStackTrace();
+  StackTraceElement elem=elems[3];
+  return "[" + elem.getClassName() + ":"+ elem.getMethodName()+ ":"+ elem.getLineNumber()+ "]: ";
+}
