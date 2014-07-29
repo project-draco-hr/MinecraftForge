@@ -4,8 +4,6 @@
   this.setShowSelectionBox(false);
   this.mc=mc;
   this.listEntries=new ArrayList<IConfigEntry>();
-  int i=0;
-  String s=null;
   for (  IConfigElement configElement : parent.configElements) {
     if (configElement != null) {
       if (configElement.isProperty() && configElement.showInGui()) {
