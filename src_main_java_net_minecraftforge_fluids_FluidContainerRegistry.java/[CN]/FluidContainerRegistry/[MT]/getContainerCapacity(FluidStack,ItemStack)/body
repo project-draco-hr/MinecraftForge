@@ -1,0 +1,16 @@
+{
+  if (container == null) {
+    return 0;
+  }
+  FluidContainerData data=containerFluidMap.get(new ContainerKey(container));
+  if (data != null) {
+    return data.fluid.amount;
+  }
+  if (fluid != null) {
+    data=filledContainerMap.get(new ContainerKey(container,fluid));
+    if (data != null) {
+      return data.fluid.amount;
+    }
+  }
+  return 0;
+}
