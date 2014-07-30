@@ -1,8 +1,8 @@
 {
-  if (owner != null) {
+  if (owner != null && GETCONTEXT) {
     ThreadContext.put("mod",owner.getName());
   }
- else {
+ else   if (GETCONTEXT) {
     ThreadContext.put("mod","");
   }
   if (handler != null) {
@@ -10,5 +10,5 @@
       handler.invoke(event);
     }
   }
-  ThreadContext.remove("mod");
+  if (GETCONTEXT)   ThreadContext.remove("mod");
 }
