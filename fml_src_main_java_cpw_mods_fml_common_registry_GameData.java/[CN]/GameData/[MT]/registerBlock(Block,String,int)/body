@@ -17,5 +17,6 @@
     verifyItemBlockName(itemBlock);
   }
   useSlot(blockId);
+  ((RegistryDelegate.Delegate<Block>)block.delegate).setName(name);
   return blockId;
 }

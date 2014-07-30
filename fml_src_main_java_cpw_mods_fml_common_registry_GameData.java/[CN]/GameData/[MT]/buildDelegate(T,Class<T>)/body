@@ -1,0 +1,3 @@
+{
+  return new RegistryDelegate.Delegate<T>(referant,type);
+}
