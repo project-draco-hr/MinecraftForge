@@ -1,0 +1,3 @@
+{
+  DedicatedServer.allowPlayerLogins=true;
+}

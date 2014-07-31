@@ -1,3 +1,4 @@
 {
   Loader.instance().serverStarted();
+  sidedDelegate.allowLogins();
 }
