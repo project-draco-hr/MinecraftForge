@@ -1,0 +1,6 @@
+{
+  if (persistentAliases.containsKey(fromName) || persistentAliases.containsKey(toName) || persistentAliases.containsValue(fromName)|| persistentAliases.containsValue(toName)) {
+    throw new ExistingAliasException(fromName,toName);
+  }
+  persistentAliases.put(fromName,toName);
+}

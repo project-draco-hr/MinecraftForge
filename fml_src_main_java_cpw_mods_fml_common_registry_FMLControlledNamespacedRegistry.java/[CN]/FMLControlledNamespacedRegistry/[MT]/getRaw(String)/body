@@ -1,4 +1,6 @@
 {
+  String aliasName=persistentAliases.get(name);
+  name=aliasName != null ? aliasName : name;
   I ret=superType.cast(super.getObject(name));
   if (ret == null) {
     name=aliases.get(name);

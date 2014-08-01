@@ -58,11 +58,27 @@
       NBTTagCompound dataTag=list.getCompoundTagAt(i);
       blockAliases.put(dataTag.getString("K"),dataTag.getString("V"));
     }
+    BiMap<String,String> blockPersistentAliases=HashBiMap.create();
+    if (tag.hasKey("BlockPersistentAliases",10)) {
+      list=tag.getTagList("BlockPersistentAliases",10);
+      for (int i=0; i < list.tagCount(); i++) {
+        NBTTagCompound dataTag=list.getCompoundTagAt(i);
+        blockPersistentAliases.put(dataTag.getString("K"),dataTag.getString("V"));
+      }
+    }
     Map<String,String> itemAliases=new HashMap<String,String>();
     list=tag.getTagList("ItemAliases",10);
     for (int i=0; i < list.tagCount(); i++) {
       NBTTagCompound dataTag=list.getCompoundTagAt(i);
       itemAliases.put(dataTag.getString("K"),dataTag.getString("V"));
+    }
+    BiMap<String,String> itemPersistentAliases=HashBiMap.create();
+    if (tag.hasKey("ItemPersistentAliases",10)) {
+      list=tag.getTagList("ItemPersistentAliases",10);
+      for (int i=0; i < list.tagCount(); i++) {
+        NBTTagCompound dataTag=list.getCompoundTagAt(i);
+        itemPersistentAliases.put(dataTag.getString("K"),dataTag.getString("V"));
+      }
     }
     failedElements=GameData.injectWorldIDMap(dataList,blockedIds,blockAliases,itemAliases,true,true);
   }

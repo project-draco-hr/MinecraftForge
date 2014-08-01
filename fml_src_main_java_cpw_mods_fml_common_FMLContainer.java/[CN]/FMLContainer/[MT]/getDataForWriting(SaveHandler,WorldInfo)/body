@@ -27,6 +27,14 @@
     blockAliasList.appendTag(tag);
   }
   fmlData.setTag("BlockAliases",blockAliasList);
+  NBTTagList blockPersistentAliasList=new NBTTagList();
+  for (  Entry<String,String> entry : GameData.getBlockRegistry().getPersistentAliases().entrySet()) {
+    NBTTagCompound tag=new NBTTagCompound();
+    tag.setString("K",entry.getKey());
+    tag.setString("V",entry.getValue());
+    blockPersistentAliasList.appendTag(tag);
+  }
+  fmlData.setTag("PersistentBlockAliases",blockPersistentAliasList);
   NBTTagList itemAliasList=new NBTTagList();
   for (  Entry<String,String> entry : GameData.getItemRegistry().getAliases().entrySet()) {
     NBTTagCompound tag=new NBTTagCompound();
@@ -35,5 +43,13 @@
     itemAliasList.appendTag(tag);
   }
   fmlData.setTag("ItemAliases",itemAliasList);
+  NBTTagList itemPersistentAliasList=new NBTTagList();
+  for (  Entry<String,String> entry : GameData.getItemRegistry().getPersistentAliases().entrySet()) {
+    NBTTagCompound tag=new NBTTagCompound();
+    tag.setString("K",entry.getKey());
+    tag.setString("V",entry.getValue());
+    itemPersistentAliasList.appendTag(tag);
+  }
+  fmlData.setTag("ItemPersistentAliases",itemPersistentAliasList);
   return fmlData;
 }
