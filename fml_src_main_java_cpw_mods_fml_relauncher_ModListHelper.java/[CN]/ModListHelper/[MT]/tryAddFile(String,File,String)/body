@@ -1,0 +1,10 @@
+{
+  File modFile=repoRoot != null ? new File(repoRoot,modFileName) : new File(modFileName);
+  if (!modFile.exists()) {
+    FMLRelaunchLog.info("Failed to find mod file %s (%s)",descriptor,modFile.getAbsolutePath());
+  }
+ else {
+    FMLRelaunchLog.fine("Adding ;%s (%s) to the mod list",descriptor,modFile.getAbsolutePath());
+    additionalMods.add(modFile);
+  }
+}
