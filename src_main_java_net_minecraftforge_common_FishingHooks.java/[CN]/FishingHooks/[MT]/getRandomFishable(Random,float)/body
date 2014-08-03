@@ -1,0 +1,3 @@
+{
+  return getRandomFishable(rand,chance,0,0);
+}
