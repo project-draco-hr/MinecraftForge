@@ -1,0 +1,4 @@
+EntityPlayer player
+ItemStack output
+ItemStack left
+ItemStack right

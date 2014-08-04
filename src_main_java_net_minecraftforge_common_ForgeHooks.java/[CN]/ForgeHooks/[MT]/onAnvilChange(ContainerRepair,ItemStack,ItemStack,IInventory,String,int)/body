@@ -4,5 +4,6 @@
   if (e.output == null)   return true;
   outputSlot.setInventorySlotContents(0,e.output);
   container.maximumCost=e.cost;
+  container.stackSizeToBeUsedInRepair=e.materialCost;
   return false;
 }
