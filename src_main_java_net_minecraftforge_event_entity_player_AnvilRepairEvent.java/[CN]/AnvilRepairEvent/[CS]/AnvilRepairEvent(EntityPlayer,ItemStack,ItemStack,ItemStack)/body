@@ -1,0 +1,7 @@
+{
+  super(player);
+  this.output=output;
+  this.left=left;
+  this.right=right;
+  this.breakChance=0.12f;
+}

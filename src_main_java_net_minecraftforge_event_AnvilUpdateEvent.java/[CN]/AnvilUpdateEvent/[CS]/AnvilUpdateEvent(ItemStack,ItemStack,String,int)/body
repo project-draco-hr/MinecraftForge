@@ -3,4 +3,5 @@
   this.right=right;
   this.name=name;
   this.cost=cost;
+  this.materialCost=0;
 }
