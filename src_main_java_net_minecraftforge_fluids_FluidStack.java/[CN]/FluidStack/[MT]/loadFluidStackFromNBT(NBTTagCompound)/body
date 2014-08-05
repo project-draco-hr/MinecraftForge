@@ -3,7 +3,7 @@
     return null;
   }
   String fluidName=nbt.getString("FluidName");
-  if (fluidName == null) {
+  if (Strings.isNullOrEmpty(fluidName)) {
     fluidName=nbt.hasKey("LiquidName") ? nbt.getString("LiquidName").toLowerCase(Locale.ENGLISH) : null;
     fluidName=Fluid.convertLegacyName(fluidName);
   }
