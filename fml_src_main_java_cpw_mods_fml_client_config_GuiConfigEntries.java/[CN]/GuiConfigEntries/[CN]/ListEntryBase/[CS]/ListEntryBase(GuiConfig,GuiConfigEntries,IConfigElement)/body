@@ -14,7 +14,7 @@
   this.defaultToolTip=Arrays.asList(new String[]{I18n.format("fml.configgui.tooltip.resetToDefault")});
   this.drawLabel=true;
   String comment;
-  comment=I18n.format(configElement.getLanguageKey() + ".tooltip");
+  comment=I18n.format(configElement.getLanguageKey() + ".tooltip").replace("\\n","\n");
   if (!comment.equals(configElement.getLanguageKey() + ".tooltip"))   toolTip=new ArrayList<String>(this.mc.fontRenderer.listFormattedStringToWidth(EnumChatFormatting.GREEN + name + "\n"+ EnumChatFormatting.YELLOW+ comment,300));
  else   if (configElement.getComment() != null && !configElement.getComment().trim().isEmpty())   toolTip=new ArrayList<String>(this.mc.fontRenderer.listFormattedStringToWidth(EnumChatFormatting.GREEN + name + "\n"+ EnumChatFormatting.YELLOW+ configElement.getComment(),300));
  else   toolTip=new ArrayList<String>(this.mc.fontRenderer.listFormattedStringToWidth(EnumChatFormatting.GREEN + name + "\n"+ EnumChatFormatting.RED+ "No tooltip defined.",300));

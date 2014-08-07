@@ -1,6 +1,6 @@
 {
   if (this.enabled() && this.isChanged()) {
-    if (configElement.getType() == ConfigGuiType.INTEGER)     configElement.set((int)((GuiSlider)this.btnValue).getValue());
+    if (configElement.getType() == ConfigGuiType.INTEGER)     configElement.set(((GuiSlider)this.btnValue).getValueInt());
  else     configElement.set(((GuiSlider)this.btnValue).getValue());
     return configElement.requiresMcRestart();
   }
