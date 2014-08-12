@@ -1,3 +1,4 @@
 {
   super.initGui();
+  this.buttonList.clear();
 }
