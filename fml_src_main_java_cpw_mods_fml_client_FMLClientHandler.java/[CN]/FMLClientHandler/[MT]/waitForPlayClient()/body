@@ -1,7 +1,7 @@
 {
   boolean gotIt=false;
   try {
-    gotIt=playClientBlock.await(1,TimeUnit.SECONDS);
+    gotIt=playClientBlock.await(5,TimeUnit.SECONDS);
   }
  catch (  InterruptedException e) {
   }
