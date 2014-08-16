@@ -1,7 +1,7 @@
 {
   final boolean warn=!(clsName.equals("net/minecraft/client/Minecraft") || clsName.equals("net/minecraft/server/dedicated/DedicatedServer") || clsName.equals("cpw/mods/fml/common/FMLCommonHandler")|| clsName.startsWith("com/jcraft/jogg/")|| clsName.startsWith("scala/sys/"));
   return new MethodVisitor(Opcodes.ASM4,super.visitMethod(mAccess,mName,mDesc,mSignature,mExceptions)){
-    @Override public void visitMethodInsn(    int opcode,    String owner,    String name,    String desc){
+    @Override public void visitMethodInsn(    int opcode,    String owner,    String name,    String desc,    boolean isIntf){
       if (opcode == Opcodes.INVOKESTATIC && owner.equals("java/lang/System") && name.equals("exit") && desc.equals("(I)V")) {
         if (warn) {
           FMLRelaunchLog.warning("=============================================================");
@@ -39,7 +39,7 @@
         name="runtimeHaltCalled";
         desc="(Ljava/lang/Runtime;I)V";
       }
-      super.visitMethodInsn(opcode,owner,name,desc);
+      super.visitMethodInsn(opcode,owner,name,desc,isIntf);
     }
   }
 ;
