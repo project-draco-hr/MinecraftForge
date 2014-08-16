@@ -25,7 +25,7 @@
  else {
     goodFML=true;
   }
-  boolean goodMC=FMLLaunchHandler.side() == Side.SERVER;
+  boolean goodMC=FMLLaunchHandler.side() == Side.SERVER || !liveEnv;
   int certCount=0;
   try {
     Class<?> cbr=Class.forName("net.minecraft.client.ClientBrandRetriever",false,cl);
@@ -77,7 +77,7 @@
     if (!Boolean.parseBoolean(System.getProperty("fml.ignoreInvalidMinecraftCertificates","false"))) {
       FMLRelaunchLog.severe("For your safety, FML will not launch minecraft. You will need to fetch a clean version of the minecraft jar file");
       FMLRelaunchLog.severe("Technical information: The class net.minecraft.client.ClientBrandRetriever should have been associated with the minecraft jar file, " + "and should have returned us a valid, intact minecraft jar location. This did not work. Either you have modified the minecraft jar file (if so " + "run the forge installer again), or you are using a base editing jar that is changing this class (and likely others too). If you REALLY "+ "want to run minecraft in this configuration, add the flag -Dfml.ignoreInvalidMinecraftCertificates=true to the 'JVM settings' in your launcher profile.");
-      System.exit(1);
+      FMLCommonHandler.instance().exitJava(1,false);
     }
  else {
       FMLRelaunchLog.severe("FML has been ordered to ignore the invalid or missing minecraft certificate. This is very likely to cause a problem!");
