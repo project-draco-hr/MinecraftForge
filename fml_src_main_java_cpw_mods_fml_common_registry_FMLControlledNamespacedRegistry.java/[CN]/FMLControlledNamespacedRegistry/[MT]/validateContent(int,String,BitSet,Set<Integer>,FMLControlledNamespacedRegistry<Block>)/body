@@ -8,8 +8,8 @@
     if (name.isEmpty())     throw new IllegalStateException(String.format("Registry entry for %s %s, id %d, yields an empty name.",type,obj,id));
     if (name.indexOf(':') == -1)     throw new IllegalStateException(String.format("Registry entry for %s %s, id %d, has the non-prefixed name %s.",type,obj,id,name));
     if (getRaw(id) != obj)     throw new IllegalStateException(String.format("Registry entry for id %d, name %s, doesn't yield the expected %s %s.",id,name,type,obj));
-    if (getRaw(name) != obj)     throw new IllegalStateException(String.format("Registry entry for name %s, id %d, doesn't yield the expected %s %s.",name,id,type,obj));
-    if (getId(name) != id)     throw new IllegalStateException(String.format("Registry entry for name %s doesn't yield the expected id %d.",name,id));
+    if (!(activeSubstitutions.containsKey(name) || activeSubstitutions.containsValue(name)) && getRaw(name) != obj)     throw new IllegalStateException(String.format("Registry entry for name %s, id %d, doesn't yield the expected %s %s.",name,id,type,obj));
+    if (!(activeSubstitutions.containsKey(name) || activeSubstitutions.containsValue(name)) && getId(name) != id)     throw new IllegalStateException(String.format("Registry entry for name %s doesn't yield the expected id %d.",name,id));
     if (!availabilityMap.get(id))     throw new IllegalStateException(String.format("Registry entry for %s %s, id %d, name %s, marked as empty.",type,obj,id,name));
     if (blockedIds.contains(id))     throw new IllegalStateException(String.format("Registry entry for %s %s, id %d, name %s, marked as dangling.",type,obj,id,name));
     if (obj instanceof ItemBlock) {

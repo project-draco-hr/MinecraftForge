@@ -36,7 +36,7 @@
         dataList.put(itemLabel,itemId);
       }
     }
-    failedElements=GameData.injectWorldIDMap(dataList,true,true);
+    failedElements=GameData.injectWorldIDMap(dataList,ImmutableSet.<String>of(),ImmutableSet.<String>of(),true,true);
   }
  else   if (tag.hasKey("ItemData")) {
     NBTTagList list=tag.getTagList("ItemData",10);
@@ -58,12 +58,12 @@
       NBTTagCompound dataTag=list.getCompoundTagAt(i);
       blockAliases.put(dataTag.getString("K"),dataTag.getString("V"));
     }
-    BiMap<String,String> blockPersistentAliases=HashBiMap.create();
-    if (tag.hasKey("BlockPersistentAliases",10)) {
-      list=tag.getTagList("BlockPersistentAliases",10);
+    Set<String> blockSubstitutions=Sets.newHashSet();
+    if (tag.hasKey("BlockSubstitutions",9)) {
+      list=tag.getTagList("BlockSubstitutions",10);
       for (int i=0; i < list.tagCount(); i++) {
         NBTTagCompound dataTag=list.getCompoundTagAt(i);
-        blockPersistentAliases.put(dataTag.getString("K"),dataTag.getString("V"));
+        blockSubstitutions.add(dataTag.getString("K"));
       }
     }
     Map<String,String> itemAliases=new HashMap<String,String>();
@@ -72,15 +72,15 @@
       NBTTagCompound dataTag=list.getCompoundTagAt(i);
       itemAliases.put(dataTag.getString("K"),dataTag.getString("V"));
     }
-    BiMap<String,String> itemPersistentAliases=HashBiMap.create();
-    if (tag.hasKey("ItemPersistentAliases",10)) {
-      list=tag.getTagList("ItemPersistentAliases",10);
+    Set<String> itemSubstitutions=Sets.newHashSet();
+    if (tag.hasKey("ItemSubstitutions",9)) {
+      list=tag.getTagList("ItemSubstitutions",10);
       for (int i=0; i < list.tagCount(); i++) {
         NBTTagCompound dataTag=list.getCompoundTagAt(i);
-        itemPersistentAliases.put(dataTag.getString("K"),dataTag.getString("V"));
+        itemSubstitutions.add(dataTag.getString("K"));
       }
     }
-    failedElements=GameData.injectWorldIDMap(dataList,blockedIds,blockAliases,itemAliases,true,true);
+    failedElements=GameData.injectWorldIDMap(dataList,blockedIds,blockAliases,itemAliases,blockSubstitutions,itemSubstitutions,true,true);
   }
   if (failedElements != null && !failedElements.isEmpty()) {
     String text="Forge Mod Loader could not load this save.\n\n" + "There are " + failedElements.size() + " unassigned blocks and items in this save.\n"+ "You will not be able to load until they are present again.\n\n"+ "Missing Blocks/Items:\n";

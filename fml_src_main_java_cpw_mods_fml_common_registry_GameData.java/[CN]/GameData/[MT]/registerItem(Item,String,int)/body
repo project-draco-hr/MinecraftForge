@@ -1,6 +1,9 @@
 {
   if (item instanceof ItemBlock) {
     Block block=((ItemBlock)item).field_150939_a;
+    if (idHint != -1 && getMain().blockSubstitutions.containsKey(name)) {
+      block=getMain().blockSubstitutions.get(name);
+    }
     int id=iBlockRegistry.getId(block);
     if (id == -1) {
       if (idHint < 0 || availabilityMap.get(idHint) || idHint > MAX_BLOCK_ID) {

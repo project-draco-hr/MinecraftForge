@@ -1,0 +1,3 @@
+String nameToSubstitute
+GameRegistry.Type type
+Object object

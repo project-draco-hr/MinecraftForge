@@ -1,0 +1,3 @@
+{
+  type.getRegistry().addSubstitutionAlias(Loader.instance().activeModContainer().getModId(),nameToSubstitute,toReplace);
+}

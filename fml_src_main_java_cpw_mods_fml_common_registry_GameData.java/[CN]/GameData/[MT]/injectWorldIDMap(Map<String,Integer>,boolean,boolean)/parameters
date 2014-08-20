@@ -1,3 +1,0 @@
-Map<String,Integer> dataList
-boolean injectFrozenData
-boolean isLocalWorld

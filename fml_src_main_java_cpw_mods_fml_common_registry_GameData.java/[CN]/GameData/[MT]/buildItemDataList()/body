@@ -2,5 +2,9 @@
   Map<String,Integer> idMapping=Maps.newHashMap();
   getMain().iBlockRegistry.serializeInto(idMapping);
   getMain().iItemRegistry.serializeInto(idMapping);
-  return idMapping;
+  Set<String> blockSubs=Sets.newHashSet();
+  getMain().iBlockRegistry.serializeSubstitutions(blockSubs);
+  Set<String> itemSubs=Sets.newHashSet();
+  getMain().iItemRegistry.serializeSubstitutions(itemSubs);
+  return new GameDataSnapshot(idMapping,blockSubs,itemSubs);
 }

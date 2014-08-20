@@ -6,6 +6,9 @@
   if (name.equals(optionalDefaultName) && this.optionalDefaultObject == null) {
     this.optionalDefaultObject=thing;
   }
+  if (getPersistentSubstitutions().containsValue(thing)) {
+    throw new IllegalArgumentException(String.format("The object %s (%s) cannot be added to the registry. It is already being used as a substitute for %s",thing.getClass(),name,getPersistentSubstitutions().inverse().get(thing)));
+  }
   int idToUse=id;
   if (idToUse < 0 || availabilityMap.get(idToUse)) {
     idToUse=availabilityMap.nextClearBit(minId);
@@ -27,6 +30,9 @@
   }
   if (GameData.isFrozen(this)) {
     FMLLog.bigWarning("The object %s (name %s) is being added too late.",thing,name);
+  }
+  if (activeSubstitutions.containsKey(name)) {
+    thing=activeSubstitutions.get(name);
   }
   addObjectRaw(idToUse,name,thing);
   FMLLog.finer("Registry add: %s %d %s (req. id %d)",name,idToUse,thing,id);

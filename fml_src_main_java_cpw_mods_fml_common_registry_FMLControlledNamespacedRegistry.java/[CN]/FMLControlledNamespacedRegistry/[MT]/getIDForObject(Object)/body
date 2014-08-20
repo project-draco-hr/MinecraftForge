@@ -1,0 +1,4 @@
+{
+  int id=super.getIDForObject(p_148757_1_);
+  return id;
+}

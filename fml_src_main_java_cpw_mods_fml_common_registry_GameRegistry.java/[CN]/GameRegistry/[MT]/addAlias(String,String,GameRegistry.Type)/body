@@ -1,3 +1,0 @@
-{
-  GameData.getMain().registerPersistentAlias(fromName,toName,type);
-}

@@ -1,6 +1,0 @@
-Map<String,Integer> dataList
-Set<Integer> blockedIds
-Map<String,String> blockAliases
-Map<String,String> itemAliases
-boolean injectFrozenData
-boolean isLocalWorld

@@ -10,8 +10,8 @@
   fmlData.setTag("ModList",list);
   NBTTagList dataList=new NBTTagList();
   FMLLog.fine("Gathering id map for writing to world save %s",info.getWorldName());
-  Map<String,Integer> itemList=GameData.buildItemDataList();
-  for (  Entry<String,Integer> item : itemList.entrySet()) {
+  GameData.GameDataSnapshot dataSnapshot=GameData.buildItemDataList();
+  for (  Entry<String,Integer> item : dataSnapshot.idMap.entrySet()) {
     NBTTagCompound tag=new NBTTagCompound();
     tag.setString("K",item.getKey());
     tag.setInteger("V",item.getValue());
@@ -27,14 +27,13 @@
     blockAliasList.appendTag(tag);
   }
   fmlData.setTag("BlockAliases",blockAliasList);
-  NBTTagList blockPersistentAliasList=new NBTTagList();
-  for (  Entry<String,String> entry : GameData.getBlockRegistry().getPersistentAliases().entrySet()) {
+  NBTTagList blockSubstitutionsList=new NBTTagList();
+  for (  String entry : dataSnapshot.blockSubstitutions) {
     NBTTagCompound tag=new NBTTagCompound();
-    tag.setString("K",entry.getKey());
-    tag.setString("V",entry.getValue());
-    blockPersistentAliasList.appendTag(tag);
+    tag.setString("K",entry);
+    blockSubstitutionsList.appendTag(tag);
   }
-  fmlData.setTag("PersistentBlockAliases",blockPersistentAliasList);
+  fmlData.setTag("BlockSubstitutions",blockSubstitutionsList);
   NBTTagList itemAliasList=new NBTTagList();
   for (  Entry<String,String> entry : GameData.getItemRegistry().getAliases().entrySet()) {
     NBTTagCompound tag=new NBTTagCompound();
@@ -43,13 +42,12 @@
     itemAliasList.appendTag(tag);
   }
   fmlData.setTag("ItemAliases",itemAliasList);
-  NBTTagList itemPersistentAliasList=new NBTTagList();
-  for (  Entry<String,String> entry : GameData.getItemRegistry().getPersistentAliases().entrySet()) {
+  NBTTagList itemSubstitutionsList=new NBTTagList();
+  for (  String entry : dataSnapshot.itemSubstitutions) {
     NBTTagCompound tag=new NBTTagCompound();
-    tag.setString("K",entry.getKey());
-    tag.setString("V",entry.getValue());
-    itemPersistentAliasList.appendTag(tag);
+    tag.setString("K",entry);
+    itemSubstitutionsList.appendTag(tag);
   }
-  fmlData.setTag("ItemPersistentAliases",itemPersistentAliasList);
+  fmlData.setTag("ItemSubstitutions",itemSubstitutionsList);
   return fmlData;
 }
