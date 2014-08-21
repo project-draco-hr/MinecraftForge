@@ -25,9 +25,11 @@
   List<NetworkDispatcher> dispatchers=outboundTarget.selectNetworks(args,ctx,pkt);
   if (dispatchers == null) {
     ctx.write(msg,promise);
+    promise.setSuccess();
     return;
   }
   for (  NetworkDispatcher targetDispatcher : dispatchers) {
     targetDispatcher.sendProxy((FMLProxyPacket)msg);
   }
+  promise.setSuccess();
 }
