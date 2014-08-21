@@ -5,6 +5,9 @@
   }
   I replacement=superType.cast(toReplace);
   I original=getRaw(nameToReplace);
+  if (original == null) {
+    throw new NullPointerException("The replacement target is not present. This won't work");
+  }
   if (!original.getClass().isAssignableFrom(replacement.getClass())) {
     FMLLog.severe("The substitute %s for %s (type %s) is type incompatible. This won't work",replacement.getClass().getName(),nameToReplace,original.getClass().getName());
     throw new IncompatibleSubstitutionException(nameToReplace,replacement,original);
