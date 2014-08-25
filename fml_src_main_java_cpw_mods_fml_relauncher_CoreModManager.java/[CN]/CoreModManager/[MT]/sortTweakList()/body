@@ -1,6 +1,7 @@
 {
   @SuppressWarnings("unchecked") List<ITweaker> tweakers=(List<ITweaker>)Launch.blackboard.get("Tweaks");
-  Collections.sort(tweakers,new Comparator<ITweaker>(){
+  ITweaker[] toSort=tweakers.toArray(new ITweaker[tweakers.size()]);
+  Arrays.sort(toSort,new Comparator<ITweaker>(){
     @Override public int compare(    ITweaker o1,    ITweaker o2){
       Integer first=null;
       Integer second=null;
@@ -32,4 +33,7 @@
     }
   }
 );
+  for (int j=0; j < toSort.length; j++) {
+    tweakers.set(j,toSort[j]);
+  }
 }
