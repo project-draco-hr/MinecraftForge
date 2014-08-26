@@ -1,0 +1,6 @@
+{
+  int idx=type.ordinal();
+  TrackedList<BiomeEntry> list=idx > biomes.length ? null : biomes[idx];
+  if (list != null)   return list.isModded();
+  return false;
+}

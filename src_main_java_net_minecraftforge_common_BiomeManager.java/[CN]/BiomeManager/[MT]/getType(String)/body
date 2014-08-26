@@ -1,0 +1,11 @@
+{
+  name=name.toUpperCase();
+  for (  BiomeType t : values()) {
+    if (t.name().equals(name))     return t;
+  }
+  BiomeType ret=EnumHelper.addEnum(BiomeType.class,name,BiomeType.class);
+  if (ret.ordinal() >= biomes.length) {
+    biomes=Arrays.copyOf(biomes,ret.ordinal());
+  }
+  return ret;
+}
