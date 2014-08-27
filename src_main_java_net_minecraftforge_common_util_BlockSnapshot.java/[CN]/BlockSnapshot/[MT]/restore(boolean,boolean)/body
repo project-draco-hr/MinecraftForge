@@ -1,0 +1,23 @@
+{
+  if (getCurrentBlock() != getReplacedBlock() || world.getBlockMetadata(x & 15,y,z & 15) != meta) {
+    if (force) {
+      world.setBlock(x,y,z,getReplacedBlock(),meta,applyPhysics ? 3 : 2);
+    }
+ else {
+      return false;
+    }
+  }
+  world.setBlockMetadataWithNotify(x,y,z,meta,applyPhysics ? 3 : 2);
+  world.markBlockForUpdate(x,y,z);
+  TileEntity te=null;
+  if (nbt != null) {
+    te=world.getTileEntity(x,y,z);
+    if (te != null) {
+      te.readFromNBT(nbt);
+    }
+  }
+  if (DEBUG) {
+    System.out.printf("Restored BlockSnapshot with data [World: %s ][Location: %d,%d,%d ][Meta: %d ][Block: %s ][TileEntity: %s ][force: %s ][applyPhysics: %s]",world.getWorldInfo().getWorldName(),x,y,z,meta,getReplacedBlock(),te,force,applyPhysics);
+  }
+  return true;
+}

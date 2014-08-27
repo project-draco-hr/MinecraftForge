@@ -1,0 +1,4 @@
+{
+  this(world,x,y,z,block,meta);
+  this.flag=flag;
+}

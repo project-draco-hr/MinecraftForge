@@ -1,0 +1,12 @@
+{
+  int hash=7;
+  hash=73 * hash + this.x;
+  hash=73 * hash + this.y;
+  hash=73 * hash + this.z;
+  hash=73 * hash + this.meta;
+  hash=73 * hash + this.dimId;
+  hash=73 * hash + (this.nbt != null ? this.nbt.hashCode() : 0);
+  hash=73 * hash + (this.world != null ? this.world.hashCode() : 0);
+  hash=73 * hash + (this.blockIdentifier != null ? this.blockIdentifier.hashCode() : 0);
+  return hash;
+}

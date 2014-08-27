@@ -1,0 +1,4 @@
+{
+  if (nbt != null)   return TileEntity.createAndLoadEntity(nbt);
+ else   return null;
+}

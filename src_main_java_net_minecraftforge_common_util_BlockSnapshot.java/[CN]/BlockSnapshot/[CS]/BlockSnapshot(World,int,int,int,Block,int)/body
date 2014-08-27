@@ -1,0 +1,20 @@
+{
+  this.world=world;
+  this.dimId=world.provider.dimensionId;
+  this.x=x;
+  this.y=y;
+  this.z=z;
+  this.replacedBlock=block;
+  this.blockIdentifier=GameRegistry.findUniqueIdentifierFor(block);
+  this.meta=meta;
+  this.flag=3;
+  TileEntity te=world.getTileEntity(x,y,z);
+  if (te != null) {
+    nbt=new NBTTagCompound();
+    te.writeToNBT(nbt);
+  }
+ else   nbt=null;
+  if (DEBUG) {
+    System.out.printf("Created BlockSnapshot - [World: %s ][Location: %d,%d,%d ][Block: %s ][Meta: %d ]",world.getWorldInfo().getWorldName(),x,y,z,block,meta);
+  }
+}

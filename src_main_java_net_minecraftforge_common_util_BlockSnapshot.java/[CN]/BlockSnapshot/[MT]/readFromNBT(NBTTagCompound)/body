@@ -1,0 +1,4 @@
+{
+  NBTTagCompound nbt=tag.getBoolean("hasTE") ? null : tag.getCompoundTag("tileEntity");
+  return new BlockSnapshot(tag.getInteger("dimension"),tag.getInteger("posX"),tag.getInteger("posY"),tag.getInteger("posZ"),tag.getString("blockMod"),tag.getString("blockName"),tag.getInteger("metadata"),tag.getInteger("flag"),nbt);
+}

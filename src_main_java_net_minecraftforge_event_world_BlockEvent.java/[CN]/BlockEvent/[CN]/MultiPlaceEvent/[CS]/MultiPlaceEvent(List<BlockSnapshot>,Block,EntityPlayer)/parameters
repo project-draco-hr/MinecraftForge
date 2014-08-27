@@ -1,0 +1,3 @@
+List<BlockSnapshot> blockSnapshots
+Block placedAgainst
+EntityPlayer player

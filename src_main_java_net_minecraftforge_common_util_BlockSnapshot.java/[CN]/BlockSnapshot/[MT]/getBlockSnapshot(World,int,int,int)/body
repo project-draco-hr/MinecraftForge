@@ -1,0 +1,3 @@
+{
+  return new BlockSnapshot(world,x,y,z,world.getBlock(x,y,z),world.getBlockMetadata(x,y,z));
+}
