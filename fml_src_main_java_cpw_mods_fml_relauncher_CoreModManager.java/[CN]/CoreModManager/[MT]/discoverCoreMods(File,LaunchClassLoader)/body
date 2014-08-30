@@ -68,6 +68,10 @@
       FMLRelaunchLog.fine("Not found coremod data in %s",coreMod.getName());
       continue;
     }
+ else     if (mfAttributes.containsKey(MODTYPE) && !"FML".equals(mfAttributes.getValue(MODTYPE))) {
+      FMLRelaunchLog.fine("Adding %s to the list of things to skip. It is not an FML mod,  it is type %s",coreMod.getName(),mfAttributes.getValue(MODTYPE));
+      loadedCoremods.add(coreMod.getName());
+    }
     try {
       classLoader.addURL(coreMod.toURI().toURL());
       if (!mfAttributes.containsKey(COREMODCONTAINSFMLMOD)) {
