@@ -1,7 +1,14 @@
 {
-  File f=new File(listFile);
+  File f;
+  try {
+    f=new File(mcDirectory,listFile).getCanonicalFile();
+  }
+ catch (  IOException e2) {
+    FMLRelaunchLog.log(Level.INFO,e2,"Unable to canonicalize path %s relative to %s",listFile,mcDirectory.getAbsolutePath());
+    return;
+  }
   if (!f.exists()) {
-    FMLRelaunchLog.info("Failed to find modList file %s",listFile);
+    FMLRelaunchLog.info("Failed to find modList file %s",f.getAbsolutePath());
     return;
   }
   if (visitedFiles.contains(f)) {

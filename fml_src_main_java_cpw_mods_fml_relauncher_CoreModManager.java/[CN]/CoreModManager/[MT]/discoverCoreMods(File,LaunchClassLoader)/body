@@ -1,5 +1,5 @@
 {
-  ModListHelper.parseModList();
+  ModListHelper.parseModList(mcDir);
   FMLRelaunchLog.fine("Discovering coremods");
   File coreMods=setupCoreModDir(mcDir);
   FilenameFilter ff=new FilenameFilter(){

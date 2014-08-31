@@ -1,5 +1,5 @@
 {
-  File modFile=repoRoot != null ? new File(repoRoot,modFileName) : new File(modFileName);
+  File modFile=repoRoot != null ? new File(repoRoot,modFileName) : new File(mcDirectory,modFileName);
   if (!modFile.exists()) {
     FMLRelaunchLog.info("Failed to find mod file %s (%s)",descriptor,modFile.getAbsolutePath());
   }
