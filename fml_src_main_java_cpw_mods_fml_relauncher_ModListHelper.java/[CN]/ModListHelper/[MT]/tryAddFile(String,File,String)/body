@@ -4,7 +4,7 @@
     FMLRelaunchLog.info("Failed to find mod file %s (%s)",descriptor,modFile.getAbsolutePath());
   }
  else {
-    FMLRelaunchLog.fine("Adding ;%s (%s) to the mod list",descriptor,modFile.getAbsolutePath());
-    additionalMods.add(modFile);
+    FMLRelaunchLog.fine("Adding %s (%s) to the mod list",descriptor,modFile.getAbsolutePath());
+    additionalMods.put(descriptor,modFile);
   }
 }

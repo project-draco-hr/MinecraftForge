@@ -27,7 +27,7 @@
     File[] versionedCoreMods=versionedModDir.listFiles(ff);
     coreModList=ObjectArrays.concat(coreModList,versionedCoreMods,File.class);
   }
-  ObjectArrays.concat(coreModList,ModListHelper.additionalMods.toArray(new File[0]),File.class);
+  ObjectArrays.concat(coreModList,ModListHelper.additionalMods.values().toArray(new File[0]),File.class);
   coreModList=FileListHelper.sortFileList(coreModList);
   for (  File coreMod : coreModList) {
     FMLRelaunchLog.fine("Examining for coremod candidacy %s",coreMod.getName());
@@ -66,6 +66,12 @@
     List<String> modTypes=mfAttributes.containsKey(MODTYPE) ? Arrays.asList(mfAttributes.getValue(MODTYPE).split(",")) : Collections.<String>emptyList();
     if (!modTypes.contains("FML")) {
       FMLRelaunchLog.fine("Adding %s to the list of things to skip. It is not an FML mod,  it has types %s",coreMod.getName(),modTypes);
+      loadedCoremods.add(coreMod.getName());
+      continue;
+    }
+    String modSide=mfAttributes.containsKey(MODSIDE) ? mfAttributes.getValue(MODSIDE) : "BOTH";
+    if (!("BOTH".equals(modSide) || FMLLaunchHandler.side.name().equals(modSide))) {
+      FMLRelaunchLog.fine("Mod %s has ModSide meta-inf value %s, and we're %s. It will be ignored",coreMod.getName(),modSide,FMLLaunchHandler.side.name());
       loadedCoremods.add(coreMod.getName());
       continue;
     }
