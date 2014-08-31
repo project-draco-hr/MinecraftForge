@@ -4,7 +4,6 @@
   String listFile=args.get("--modListFile");
   if (listFile != null) {
     parseListFile(listFile);
-    args.remove("--modListFile");
   }
   String extraMods=args.get("--mods");
   if (extraMods != null) {
@@ -12,6 +11,5 @@
     for (    String modFile : split) {
       tryAddFile(modFile,null,modFile);
     }
-    args.remove("--mods");
   }
 }

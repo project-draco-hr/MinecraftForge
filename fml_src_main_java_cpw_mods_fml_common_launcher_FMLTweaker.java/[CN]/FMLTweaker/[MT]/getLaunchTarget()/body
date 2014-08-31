@@ -1,3 +1,6 @@
 {
+  @SuppressWarnings("unchecked") Map<String,String> args=(Map<String,String>)Launch.blackboard.get("launchArgs");
+  args.remove("--modListFile");
+  args.remove("--mods");
   return "net.minecraft.client.main.Main";
 }
