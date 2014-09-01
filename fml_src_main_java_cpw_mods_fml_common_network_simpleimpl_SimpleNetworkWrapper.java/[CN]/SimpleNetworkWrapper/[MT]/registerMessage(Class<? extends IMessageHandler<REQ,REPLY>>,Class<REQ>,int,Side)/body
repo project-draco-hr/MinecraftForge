@@ -1,11 +1,3 @@
 {
-  packetCodec.addDiscriminator(discriminator,requestMessageType);
-  FMLEmbeddedChannel channel=channels.get(side);
-  String type=channel.findChannelHandlerNameForType(SimpleIndexedCodec.class);
-  if (side == Side.SERVER) {
-    addServerHandlerAfter(channel,type,messageHandler,requestMessageType);
-  }
- else {
-    addClientHandlerAfter(channel,type,messageHandler,requestMessageType);
-  }
+  registerMessage(instantiate(messageHandler),requestMessageType,discriminator,side);
 }
