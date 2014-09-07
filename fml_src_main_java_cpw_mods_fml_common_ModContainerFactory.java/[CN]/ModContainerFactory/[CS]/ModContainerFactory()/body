@@ -1,0 +1,3 @@
+{
+  registerContainerType(Type.getType(Mod.class),FMLModContainer.class);
+}

@@ -1,0 +1,10 @@
+{
+  try {
+    Constructor<? extends ModContainer> constructor=container.getConstructor(new Class<?>[]{String.class,ModCandidate.class,Map.class});
+    modTypes.put(type,constructor);
+  }
+ catch (  Exception e) {
+    FMLLog.log(Level.ERROR,e,"Critical error : cannot register mod container type %s, it has an invalid constructor");
+    Throwables.propagate(e);
+  }
+}
