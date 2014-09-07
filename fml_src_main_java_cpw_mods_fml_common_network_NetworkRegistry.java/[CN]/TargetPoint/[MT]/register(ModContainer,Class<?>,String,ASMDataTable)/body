@@ -1,4 +1,5 @@
 {
   NetworkModHolder networkModHolder=new NetworkModHolder(fmlModContainer,clazz,remoteVersionRange,asmHarvestedData);
   registry.put(fmlModContainer,networkModHolder);
+  networkModHolder.testVanillaAcceptance();
 }
