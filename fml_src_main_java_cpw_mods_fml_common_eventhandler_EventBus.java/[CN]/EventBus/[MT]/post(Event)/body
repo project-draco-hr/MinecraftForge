@@ -1,7 +1,14 @@
 {
   IEventListener[] listeners=event.getListenerList().getListeners(busID);
-  for (  IEventListener listener : listeners) {
-    listener.invoke(event);
+  int index=0;
+  try {
+    for (; index < listeners.length; index++) {
+      listeners[index].invoke(event);
+    }
+  }
+ catch (  Throwable throwable) {
+    exceptionHandler.handleException(this,event,listeners,index,throwable);
+    Throwables.propagate(throwable);
   }
   return (event.isCancelable() ? event.isCanceled() : false);
 }

@@ -1,0 +1,7 @@
+{
+  FMLLog.log(Level.ERROR,throwable,"Exception caught during firing event %s:",event);
+  FMLLog.log(Level.ERROR,"Index: %d Listeners:",index);
+  for (int x=0; x < listeners.length; x++) {
+    FMLLog.log(Level.ERROR,"%d: %s",x,listeners[x]);
+  }
+}
