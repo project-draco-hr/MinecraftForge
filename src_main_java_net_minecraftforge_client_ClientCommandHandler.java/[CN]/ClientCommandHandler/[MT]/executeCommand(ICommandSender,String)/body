@@ -37,5 +37,5 @@ catch (  Throwable t) {
     sender.addChatMessage(format(RED,"commands.generic.exception"));
     t.printStackTrace();
   }
-  return 0;
+  return -1;
 }
