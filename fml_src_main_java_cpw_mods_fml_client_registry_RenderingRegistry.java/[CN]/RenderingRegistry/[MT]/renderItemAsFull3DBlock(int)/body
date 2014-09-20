@@ -1,4 +1,0 @@
-{
-  ISimpleBlockRenderingHandler bri=blockRenderers.get(modelId);
-  return bri != null && bri.shouldRender3DInInventory(modelId);
-}

@@ -1,6 +1,6 @@
 {
   if (this.btnSelectCategory.mousePressed(this.mc,x,y)) {
-    btnSelectCategory.func_146113_a(mc.getSoundHandler());
+    btnSelectCategory.playPressSound(mc.getSoundHandler());
     Minecraft.getMinecraft().displayGuiScreen(childScreen);
     return true;
   }

@@ -1,0 +1,8 @@
+int slotIndex
+int x
+int y
+int listWidth
+int slotHeight
+int mouseX
+int mouseY
+boolean isSelected

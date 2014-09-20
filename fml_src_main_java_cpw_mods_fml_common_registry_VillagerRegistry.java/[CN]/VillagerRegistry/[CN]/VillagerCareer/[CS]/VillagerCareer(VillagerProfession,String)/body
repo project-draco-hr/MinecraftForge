@@ -1,0 +1,5 @@
+{
+  this.profession=parent;
+  this.name=name;
+  parent.register(this);
+}

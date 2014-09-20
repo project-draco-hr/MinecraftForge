@@ -4,7 +4,7 @@
     manager.closeChannel(chatcomponenttext);
   }
  else {
-    manager.scheduleOutboundPacket(new S40PacketDisconnect(chatcomponenttext),new GenericFutureListener<Future<?>>(){
+    manager.func_179288_a(new S40PacketDisconnect(chatcomponenttext),new GenericFutureListener<Future<?>>(){
       @Override public void operationComplete(      Future<?> result){
         manager.closeChannel(chatcomponenttext);
       }

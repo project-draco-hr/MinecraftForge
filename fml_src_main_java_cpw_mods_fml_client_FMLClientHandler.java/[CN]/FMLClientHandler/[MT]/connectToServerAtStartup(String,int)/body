@@ -3,7 +3,7 @@
   OldServerPinger osp=new OldServerPinger();
   ServerData serverData=new ServerData("Command Line",host + ":" + port);
   try {
-    osp.func_147224_a(serverData);
+    osp.ping(serverData);
     startupConnectionData.await(30,TimeUnit.SECONDS);
   }
  catch (  Exception e) {

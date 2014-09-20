@@ -1,5 +1,3 @@
 {
-  if (playClientBlock == null)   playClientBlock=new CountDownLatch(1);
-  playClientBlock.countDown();
   this.currentPlayClient=new WeakReference<NetHandlerPlayClient>(netHandlerPlayClient);
 }

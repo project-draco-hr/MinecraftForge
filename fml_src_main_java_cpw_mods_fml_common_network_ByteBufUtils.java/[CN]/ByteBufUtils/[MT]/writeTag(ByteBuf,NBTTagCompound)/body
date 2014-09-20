@@ -1,9 +1,4 @@
 {
   PacketBuffer pb=new PacketBuffer(to);
-  try {
-    pb.writeNBTTagCompoundToBuffer(tag);
-  }
- catch (  IOException e) {
-    throw Throwables.propagate(e);
-  }
+  pb.writeNBTTagCompoundToBuffer(tag);
 }

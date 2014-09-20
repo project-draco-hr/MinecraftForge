@@ -2,8 +2,8 @@
   Map<String,Integer> ret=new HashMap<String,Integer>();
   for (  I thing : this.typeSafeIterable()) {
     if (!registry.field_148758_b.containsKey(thing)) {
-      if (!registry.activeSubstitutions.containsKey(getNameForObject(thing))) {
-        ret.put(getNameForObject(thing),getId(thing));
+      if (!registry.activeSubstitutions.containsKey(func_177774_c(thing).toString())) {
+        ret.put(func_177774_c(thing).toString(),getId(thing));
       }
     }
   }

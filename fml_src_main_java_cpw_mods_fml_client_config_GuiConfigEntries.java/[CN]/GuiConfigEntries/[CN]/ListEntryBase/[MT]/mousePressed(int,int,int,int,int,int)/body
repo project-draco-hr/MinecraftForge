@@ -1,11 +1,11 @@
 {
   if (this.btnDefault.mousePressed(this.mc,x,y)) {
-    btnDefault.func_146113_a(mc.getSoundHandler());
+    btnDefault.playPressSound(mc.getSoundHandler());
     setToDefault();
     return true;
   }
  else   if (this.btnUndoChanges.mousePressed(this.mc,x,y)) {
-    btnUndoChanges.func_146113_a(mc.getSoundHandler());
+    btnUndoChanges.playPressSound(mc.getSoundHandler());
     undoChanges();
     return true;
   }

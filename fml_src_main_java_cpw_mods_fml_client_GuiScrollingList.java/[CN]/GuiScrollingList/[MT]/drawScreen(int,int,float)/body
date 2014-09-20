@@ -77,7 +77,8 @@
     this.initialMouseClickY=-1.0F;
   }
   this.applyScrollLimits();
-  Tessellator var18=Tessellator.instance;
+  Tessellator tess=Tessellator.func_178181_a();
+  WorldRenderer worldr=tess.func_178180_c();
   if (this.client.theWorld != null) {
     this.drawGradientRect(this.left,this.top,this.right,this.bottom,-1072689136,-804253680);
   }
@@ -87,17 +88,17 @@
     this.client.renderEngine.bindTexture(Gui.optionsBackground);
     GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
     float var17=32.0F;
-    var18.startDrawingQuads();
-    var18.setColorOpaque_I(2105376);
-    var18.addVertexWithUV((double)this.left,(double)this.bottom,0.0D,(double)((float)this.left / var17),(double)((float)(this.bottom + (int)this.scrollDistance) / var17));
-    var18.addVertexWithUV((double)this.right,(double)this.bottom,0.0D,(double)((float)this.right / var17),(double)((float)(this.bottom + (int)this.scrollDistance) / var17));
-    var18.addVertexWithUV((double)this.right,(double)this.top,0.0D,(double)((float)this.right / var17),(double)((float)(this.top + (int)this.scrollDistance) / var17));
-    var18.addVertexWithUV((double)this.left,(double)this.top,0.0D,(double)((float)this.left / var17),(double)((float)(this.top + (int)this.scrollDistance) / var17));
-    var18.draw();
+    worldr.func_178970_b();
+    worldr.func_178991_c(2105376);
+    worldr.func_178985_a((double)this.left,(double)this.bottom,0.0D,(double)((float)this.left / var17),(double)((float)(this.bottom + (int)this.scrollDistance) / var17));
+    worldr.func_178985_a((double)this.right,(double)this.bottom,0.0D,(double)((float)this.right / var17),(double)((float)(this.bottom + (int)this.scrollDistance) / var17));
+    worldr.func_178985_a((double)this.right,(double)this.top,0.0D,(double)((float)this.right / var17),(double)((float)(this.top + (int)this.scrollDistance) / var17));
+    worldr.func_178985_a((double)this.left,(double)this.top,0.0D,(double)((float)this.left / var17),(double)((float)(this.top + (int)this.scrollDistance) / var17));
+    tess.draw();
   }
   var10=this.top + 4 - (int)this.scrollDistance;
   if (this.field_27262_q) {
-    this.func_27260_a(boxRight,var10,var18);
+    this.func_27260_a(boxRight,var10,tess);
   }
   int var14;
   for (var11=0; var11 < listLength; ++var11) {
@@ -109,21 +110,21 @@
         int var15=boxRight;
         GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
         GL11.glDisable(GL11.GL_TEXTURE_2D);
-        var18.startDrawingQuads();
-        var18.setColorOpaque_I(8421504);
-        var18.addVertexWithUV((double)var14,(double)(var19 + var13 + 2),0.0D,0.0D,1.0D);
-        var18.addVertexWithUV((double)var15,(double)(var19 + var13 + 2),0.0D,1.0D,1.0D);
-        var18.addVertexWithUV((double)var15,(double)(var19 - 2),0.0D,1.0D,0.0D);
-        var18.addVertexWithUV((double)var14,(double)(var19 - 2),0.0D,0.0D,0.0D);
-        var18.setColorOpaque_I(0);
-        var18.addVertexWithUV((double)(var14 + 1),(double)(var19 + var13 + 1),0.0D,0.0D,1.0D);
-        var18.addVertexWithUV((double)(var15 - 1),(double)(var19 + var13 + 1),0.0D,1.0D,1.0D);
-        var18.addVertexWithUV((double)(var15 - 1),(double)(var19 - 1),0.0D,1.0D,0.0D);
-        var18.addVertexWithUV((double)(var14 + 1),(double)(var19 - 1),0.0D,0.0D,0.0D);
-        var18.draw();
+        worldr.func_178970_b();
+        worldr.func_178991_c(8421504);
+        worldr.func_178985_a((double)var14,(double)(var19 + var13 + 2),0.0D,0.0D,1.0D);
+        worldr.func_178985_a((double)var15,(double)(var19 + var13 + 2),0.0D,1.0D,1.0D);
+        worldr.func_178985_a((double)var15,(double)(var19 - 2),0.0D,1.0D,0.0D);
+        worldr.func_178985_a((double)var14,(double)(var19 - 2),0.0D,0.0D,0.0D);
+        worldr.func_178991_c(0);
+        worldr.func_178985_a((double)(var14 + 1),(double)(var19 + var13 + 1),0.0D,0.0D,1.0D);
+        worldr.func_178985_a((double)(var15 - 1),(double)(var19 + var13 + 1),0.0D,1.0D,1.0D);
+        worldr.func_178985_a((double)(var15 - 1),(double)(var19 - 1),0.0D,1.0D,0.0D);
+        worldr.func_178985_a((double)(var14 + 1),(double)(var19 - 1),0.0D,0.0D,0.0D);
+        tess.draw();
         GL11.glEnable(GL11.GL_TEXTURE_2D);
       }
-      this.drawSlot(var11,boxRight,var19,var13,var18);
+      this.drawSlot(var11,boxRight,var19,var13,tess);
     }
   }
   GL11.glDisable(GL11.GL_DEPTH_TEST);
@@ -137,22 +138,22 @@
   GL11.glDisable(GL11.GL_ALPHA_TEST);
   GL11.glShadeModel(GL11.GL_SMOOTH);
   GL11.glDisable(GL11.GL_TEXTURE_2D);
-  var18.startDrawingQuads();
-  var18.setColorRGBA_I(0,0);
-  var18.addVertexWithUV((double)this.left,(double)(this.top + var20),0.0D,0.0D,1.0D);
-  var18.addVertexWithUV((double)this.right,(double)(this.top + var20),0.0D,1.0D,1.0D);
-  var18.setColorRGBA_I(0,255);
-  var18.addVertexWithUV((double)this.right,(double)this.top,0.0D,1.0D,0.0D);
-  var18.addVertexWithUV((double)this.left,(double)this.top,0.0D,0.0D,0.0D);
-  var18.draw();
-  var18.startDrawingQuads();
-  var18.setColorRGBA_I(0,255);
-  var18.addVertexWithUV((double)this.left,(double)this.bottom,0.0D,0.0D,1.0D);
-  var18.addVertexWithUV((double)this.right,(double)this.bottom,0.0D,1.0D,1.0D);
-  var18.setColorRGBA_I(0,0);
-  var18.addVertexWithUV((double)this.right,(double)(this.bottom - var20),0.0D,1.0D,0.0D);
-  var18.addVertexWithUV((double)this.left,(double)(this.bottom - var20),0.0D,0.0D,0.0D);
-  var18.draw();
+  worldr.func_178970_b();
+  worldr.func_178974_a(0,0);
+  worldr.func_178985_a((double)this.left,(double)(this.top + var20),0.0D,0.0D,1.0D);
+  worldr.func_178985_a((double)this.right,(double)(this.top + var20),0.0D,1.0D,1.0D);
+  worldr.func_178974_a(0,255);
+  worldr.func_178985_a((double)this.right,(double)this.top,0.0D,1.0D,0.0D);
+  worldr.func_178985_a((double)this.left,(double)this.top,0.0D,0.0D,0.0D);
+  tess.draw();
+  worldr.func_178970_b();
+  worldr.func_178974_a(0,255);
+  worldr.func_178985_a((double)this.left,(double)this.bottom,0.0D,0.0D,1.0D);
+  worldr.func_178985_a((double)this.right,(double)this.bottom,0.0D,1.0D,1.0D);
+  worldr.func_178974_a(0,0);
+  worldr.func_178985_a((double)this.right,(double)(this.bottom - var20),0.0D,1.0D,0.0D);
+  worldr.func_178985_a((double)this.left,(double)(this.bottom - var20),0.0D,0.0D,0.0D);
+  tess.draw();
   var19=this.getContentHeight() - (this.bottom - this.top - 4);
   if (var19 > 0) {
     var13=(this.bottom - this.top) * (this.bottom - this.top) / this.getContentHeight();
@@ -166,27 +167,27 @@
     if (var14 < this.top) {
       var14=this.top;
     }
-    var18.startDrawingQuads();
-    var18.setColorRGBA_I(0,255);
-    var18.addVertexWithUV((double)scrollBarXStart,(double)this.bottom,0.0D,0.0D,1.0D);
-    var18.addVertexWithUV((double)scrollBarXEnd,(double)this.bottom,0.0D,1.0D,1.0D);
-    var18.addVertexWithUV((double)scrollBarXEnd,(double)this.top,0.0D,1.0D,0.0D);
-    var18.addVertexWithUV((double)scrollBarXStart,(double)this.top,0.0D,0.0D,0.0D);
-    var18.draw();
-    var18.startDrawingQuads();
-    var18.setColorRGBA_I(8421504,255);
-    var18.addVertexWithUV((double)scrollBarXStart,(double)(var14 + var13),0.0D,0.0D,1.0D);
-    var18.addVertexWithUV((double)scrollBarXEnd,(double)(var14 + var13),0.0D,1.0D,1.0D);
-    var18.addVertexWithUV((double)scrollBarXEnd,(double)var14,0.0D,1.0D,0.0D);
-    var18.addVertexWithUV((double)scrollBarXStart,(double)var14,0.0D,0.0D,0.0D);
-    var18.draw();
-    var18.startDrawingQuads();
-    var18.setColorRGBA_I(12632256,255);
-    var18.addVertexWithUV((double)scrollBarXStart,(double)(var14 + var13 - 1),0.0D,0.0D,1.0D);
-    var18.addVertexWithUV((double)(scrollBarXEnd - 1),(double)(var14 + var13 - 1),0.0D,1.0D,1.0D);
-    var18.addVertexWithUV((double)(scrollBarXEnd - 1),(double)var14,0.0D,1.0D,0.0D);
-    var18.addVertexWithUV((double)scrollBarXStart,(double)var14,0.0D,0.0D,0.0D);
-    var18.draw();
+    worldr.func_178970_b();
+    worldr.func_178974_a(0,255);
+    worldr.func_178985_a((double)scrollBarXStart,(double)this.bottom,0.0D,0.0D,1.0D);
+    worldr.func_178985_a((double)scrollBarXEnd,(double)this.bottom,0.0D,1.0D,1.0D);
+    worldr.func_178985_a((double)scrollBarXEnd,(double)this.top,0.0D,1.0D,0.0D);
+    worldr.func_178985_a((double)scrollBarXStart,(double)this.top,0.0D,0.0D,0.0D);
+    tess.draw();
+    worldr.func_178970_b();
+    worldr.func_178974_a(8421504,255);
+    worldr.func_178985_a((double)scrollBarXStart,(double)(var14 + var13),0.0D,0.0D,1.0D);
+    worldr.func_178985_a((double)scrollBarXEnd,(double)(var14 + var13),0.0D,1.0D,1.0D);
+    worldr.func_178985_a((double)scrollBarXEnd,(double)var14,0.0D,1.0D,0.0D);
+    worldr.func_178985_a((double)scrollBarXStart,(double)var14,0.0D,0.0D,0.0D);
+    tess.draw();
+    worldr.func_178970_b();
+    worldr.func_178974_a(12632256,255);
+    worldr.func_178985_a((double)scrollBarXStart,(double)(var14 + var13 - 1),0.0D,0.0D,1.0D);
+    worldr.func_178985_a((double)(scrollBarXEnd - 1),(double)(var14 + var13 - 1),0.0D,1.0D,1.0D);
+    worldr.func_178985_a((double)(scrollBarXEnd - 1),(double)var14,0.0D,1.0D,0.0D);
+    worldr.func_178985_a((double)scrollBarXStart,(double)var14,0.0D,0.0D,0.0D);
+    tess.draw();
   }
   this.func_27257_b(mouseX,mouseY);
   GL11.glEnable(GL11.GL_TEXTURE_2D);

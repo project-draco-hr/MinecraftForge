@@ -2,7 +2,7 @@
   BitSet availabilityMap=new BitSet(MAX_ITEM_ID + 1);
   for (  Entry<String,Integer> entry : dataList.entrySet()) {
     String itemName=entry.getKey();
-    @SuppressWarnings("unused") String realName=itemName.substring(1);
+    String realName=itemName.substring(1);
     if (itemName.charAt(0) == '\u0001') {
       availabilityMap.set(entry.getValue());
     }

@@ -8,9 +8,9 @@
   if (query.isSynchronous()) {
     while (client.currentScreen instanceof GuiNotification) {
       if (Thread.interrupted())       throw new InterruptedException();
-      client.loadingScreen.resetProgresAndWorkingMessage("");
+      client.loadingScreen.displayLoadingString("");
       Thread.sleep(50);
     }
-    client.loadingScreen.resetProgresAndWorkingMessage("");
+    client.loadingScreen.displayLoadingString("");
   }
 }

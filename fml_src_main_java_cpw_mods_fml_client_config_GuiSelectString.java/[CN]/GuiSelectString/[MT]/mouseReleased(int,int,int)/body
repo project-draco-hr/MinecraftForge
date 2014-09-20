@@ -1,0 +1,5 @@
+{
+  if (mouseEvent != 0 || !this.entriesList.func_148181_b(x,y,mouseEvent)) {
+    super.mouseReleased(x,y,mouseEvent);
+  }
+}

@@ -1,0 +1,6 @@
+{
+  if (o == this)   return true;
+  if (!(o instanceof VillagerCareer))   return false;
+  VillagerCareer oc=(VillagerCareer)o;
+  return name.equals(oc.name) && profession == oc.profession;
+}

@@ -1,6 +1,6 @@
 {
   if (this.btnValue.mousePressed(this.mc,x,y)) {
-    btnValue.func_146113_a(mc.getSoundHandler());
+    btnValue.playPressSound(mc.getSoundHandler());
     valueButtonPressed(index);
     updateValueButtonText();
     return true;

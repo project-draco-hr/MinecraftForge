@@ -1,3 +1,0 @@
-{
-  return instance().villageCreationHandlers.get(villagePiece.villagePieceClass).buildComponent(villagePiece,startPiece,pieces,random,p1,p2,p3,p4,p5);
-}

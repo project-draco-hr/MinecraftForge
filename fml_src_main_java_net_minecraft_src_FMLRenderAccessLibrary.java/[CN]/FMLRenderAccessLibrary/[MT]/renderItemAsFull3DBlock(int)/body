@@ -1,3 +1,0 @@
-{
-  return RenderingRegistry.instance().renderItemAsFull3DBlock(modelId);
-}

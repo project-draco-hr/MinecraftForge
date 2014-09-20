@@ -1,7 +1,7 @@
 {
   ItemBlock itemBlock=null;
   for (  Item item : iItemRegistry.typeSafeIterable()) {
-    if (item instanceof ItemBlock && ((ItemBlock)item).field_150939_a == block) {
+    if (item instanceof ItemBlock && ((ItemBlock)item).blockInstance == block) {
       itemBlock=(ItemBlock)item;
       break;
     }

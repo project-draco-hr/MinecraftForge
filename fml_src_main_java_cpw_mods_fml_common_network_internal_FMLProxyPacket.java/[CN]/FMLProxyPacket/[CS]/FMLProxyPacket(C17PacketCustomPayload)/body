@@ -1,4 +1,4 @@
 {
-  this(original.func_149558_e(),original.func_149559_c());
+  this(original.func_180760_b(),original.func_149559_c());
   this.target=Side.SERVER;
 }

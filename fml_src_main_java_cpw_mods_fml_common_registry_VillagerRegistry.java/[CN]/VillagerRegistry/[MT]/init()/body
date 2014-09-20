@@ -1,0 +1,34 @@
+{
+  if (hasInit)   return;
+  VillagerProfession prof=new VillagerProfession("minecraft:farmer","minecraft:textures/entity/villager/farmer.png");
+{
+    register(prof);
+    (new VillagerCareer(prof,"farmer")).init(vanillaTrades[0][0]);
+    (new VillagerCareer(prof,"fisherman")).init(vanillaTrades[0][1]);
+    (new VillagerCareer(prof,"shepherd")).init(vanillaTrades[0][2]);
+    (new VillagerCareer(prof,"fletcher")).init(vanillaTrades[0][3]);
+  }
+  prof=new VillagerProfession("minecraft:librarian","minecraft:textures/entity/villager/librarian.png");
+{
+    register(prof);
+    (new VillagerCareer(prof,"librarian")).init(vanillaTrades[1][0]);
+  }
+  prof=new VillagerProfession("minecraft:priest","minecraft:textures/entity/villager/priest.png");
+{
+    register(prof);
+    (new VillagerCareer(prof,"cleric")).init(vanillaTrades[2][0]);
+  }
+  prof=new VillagerProfession("minecraft:smith","minecraft:textures/entity/villager/smith.png");
+{
+    register(prof);
+    (new VillagerCareer(prof,"armor")).init(vanillaTrades[3][0]);
+    (new VillagerCareer(prof,"weapon")).init(vanillaTrades[3][1]);
+    (new VillagerCareer(prof,"tool")).init(vanillaTrades[3][2]);
+  }
+  prof=new VillagerProfession("minecraft:butcher","minecraft:textures/entity/villager/butcher.png");
+{
+    register(prof);
+    (new VillagerCareer(prof,"butcher")).init(vanillaTrades[4][0]);
+    (new VillagerCareer(prof,"leather")).init(vanillaTrades[4][1]);
+  }
+}

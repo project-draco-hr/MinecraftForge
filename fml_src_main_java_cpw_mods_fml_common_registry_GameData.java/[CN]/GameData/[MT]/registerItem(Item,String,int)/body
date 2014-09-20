@@ -1,6 +1,6 @@
 {
   if (item instanceof ItemBlock) {
-    Block block=((ItemBlock)item).field_150939_a;
+    Block block=((ItemBlock)item).blockInstance;
     if (idHint != -1 && getMain().blockSubstitutions.containsKey(name)) {
       block=getMain().blockSubstitutions.get(name);
     }

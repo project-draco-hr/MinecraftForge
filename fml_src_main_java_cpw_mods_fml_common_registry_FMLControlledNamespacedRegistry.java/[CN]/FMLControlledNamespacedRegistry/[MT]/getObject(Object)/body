@@ -1,0 +1,6 @@
+{
+  I object=null;
+  if (name instanceof ResourceLocation)   object=getRaw((ResourceLocation)name);
+  if (name instanceof String)   object=getRaw((String)name);
+  return object == null ? this.optionalDefaultObject : object;
+}

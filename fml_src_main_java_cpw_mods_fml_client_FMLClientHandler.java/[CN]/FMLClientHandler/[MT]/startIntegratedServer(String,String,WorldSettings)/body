@@ -1,3 +1,2 @@
 {
-  playClientBlock=new CountDownLatch(1);
 }

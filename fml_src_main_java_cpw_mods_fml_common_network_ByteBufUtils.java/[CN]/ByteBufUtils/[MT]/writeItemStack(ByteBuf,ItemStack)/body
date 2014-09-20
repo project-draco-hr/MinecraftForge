@@ -1,9 +1,4 @@
 {
   PacketBuffer pb=new PacketBuffer(to);
-  try {
-    pb.writeItemStackToBuffer(stack);
-  }
- catch (  IOException e) {
-    throw Throwables.propagate(e);
-  }
+  pb.writeItemStackToBuffer(stack);
 }

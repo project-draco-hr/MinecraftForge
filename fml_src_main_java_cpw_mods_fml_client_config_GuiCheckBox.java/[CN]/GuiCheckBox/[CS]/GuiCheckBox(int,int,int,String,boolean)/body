@@ -3,5 +3,5 @@
   this.isChecked=isChecked;
   this.boxWidth=11;
   this.height=11;
-  this.width=this.boxWidth + 2 + Minecraft.getMinecraft().fontRenderer.getStringWidth(displayString);
+  this.width=this.boxWidth + 2 + Minecraft.getMinecraft().fontRendererObj.getStringWidth(displayString);
 }

@@ -1,3 +1,0 @@
-{
-  instance().blockRenderers.put(renderId,handler);
-}

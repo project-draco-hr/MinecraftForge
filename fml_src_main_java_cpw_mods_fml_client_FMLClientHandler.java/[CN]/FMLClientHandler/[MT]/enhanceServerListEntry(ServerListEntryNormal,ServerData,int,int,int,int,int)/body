@@ -30,9 +30,9 @@
     return null;
   }
   this.client.getTextureManager().bindTexture(iconSheet);
-  Gui.func_146110_a(x + width - 18,y + 10,0,(float)idx,16,16,256.0f,256.0f);
+  Gui.drawModalRectWithCustomSizedTexture(x + width - 18,y + 10,0,(float)idx,16,16,256.0f,256.0f);
   if (blocked) {
-    Gui.func_146110_a(x + width - 18,y + 10,0,80,16,16,256.0f,256.0f);
+    Gui.drawModalRectWithCustomSizedTexture(x + width - 18,y + 10,0,80,16,16,256.0f,256.0f);
   }
   return relativeMouseX > width - 15 && relativeMouseX < width && relativeMouseY > 10 && relativeMouseY < 26 ? tooltip : null;
 }

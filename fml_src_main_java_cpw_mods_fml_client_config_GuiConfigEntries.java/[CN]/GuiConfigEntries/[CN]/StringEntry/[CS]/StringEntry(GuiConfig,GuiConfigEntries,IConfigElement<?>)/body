@@ -1,7 +1,7 @@
 {
   super(owningScreen,owningEntryList,configElement);
   beforeValue=configElement.get().toString();
-  this.textFieldValue=new GuiTextField(this.mc.fontRenderer,this.owningEntryList.controlX + 1,0,this.owningEntryList.controlWidth - 3,16);
+  this.textFieldValue=new GuiTextField(10,this.mc.fontRendererObj,this.owningEntryList.controlX + 1,0,this.owningEntryList.controlWidth - 3,16);
   this.textFieldValue.setMaxStringLength(10000);
   this.textFieldValue.setText(configElement.get().toString());
 }

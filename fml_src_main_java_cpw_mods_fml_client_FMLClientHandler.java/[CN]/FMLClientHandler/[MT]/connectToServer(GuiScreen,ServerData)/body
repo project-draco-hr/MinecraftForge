@@ -6,5 +6,4 @@
  else {
     showGuiScreen(new GuiConnecting(guiMultiplayer,client,serverEntry));
   }
-  playClientBlock=new CountDownLatch(1);
 }

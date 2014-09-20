@@ -1,3 +1,0 @@
-{
-  this(Unpooled.wrappedBuffer(payload),channel);
-}
