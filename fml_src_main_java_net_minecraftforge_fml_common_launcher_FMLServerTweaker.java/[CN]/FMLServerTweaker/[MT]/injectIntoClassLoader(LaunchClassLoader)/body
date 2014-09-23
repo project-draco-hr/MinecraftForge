@@ -1,0 +1,9 @@
+{
+  classLoader.addClassLoaderExclusion("com.mojang.");
+  classLoader.addTransformerExclusion("net.minecraftforge.fml.repackage.");
+  classLoader.addTransformerExclusion("net.minecraftforge.fml.relauncher.");
+  classLoader.addTransformerExclusion("net.minecraftforge.fml.common.asm.transformers.");
+  classLoader.addClassLoaderExclusion("LZMA.");
+  FMLLaunchHandler.configureForServerLaunch(classLoader,this);
+  FMLLaunchHandler.appendCoreMods();
+}

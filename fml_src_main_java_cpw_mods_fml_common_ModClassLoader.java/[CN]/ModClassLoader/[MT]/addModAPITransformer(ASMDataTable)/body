@@ -1,7 +1,0 @@
-{
-  mainClassLoader.registerTransformer("cpw.mods.fml.common.asm.transformers.ModAPITransformer");
-  List<IClassTransformer> transformers=mainClassLoader.getTransformers();
-  ModAPITransformer modAPI=(ModAPITransformer)transformers.get(transformers.size() - 1);
-  modAPI.initTable(dataTable);
-  return modAPI;
-}
