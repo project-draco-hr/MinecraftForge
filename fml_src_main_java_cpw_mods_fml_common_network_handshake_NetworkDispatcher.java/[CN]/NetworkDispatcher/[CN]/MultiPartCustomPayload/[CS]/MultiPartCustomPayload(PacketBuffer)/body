@@ -1,0 +1,10 @@
+{
+  channel=preamble.readStringFromBuffer(20);
+  part_count=preamble.readUnsignedByte();
+  int length=preamble.readInt();
+  if (length <= 0 || length >= FMLProxyPacket.MAX_LENGTH) {
+    throw new IOException("The received FML MultiPart packet outside of valid length bounds, Max: " + FMLProxyPacket.MAX_LENGTH + ", Received: "+ length);
+  }
+  data=new byte[length];
+  data_buf=new PacketBuffer(Unpooled.wrappedBuffer(data));
+}

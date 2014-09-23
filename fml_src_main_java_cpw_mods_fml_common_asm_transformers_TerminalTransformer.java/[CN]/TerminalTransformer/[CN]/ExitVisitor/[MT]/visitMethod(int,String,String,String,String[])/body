@@ -1,5 +1,5 @@
 {
-  final boolean warn=!(clsName.equals("net/minecraft/client/Minecraft") || clsName.equals("net/minecraft/server/dedicated/DedicatedServer") || clsName.equals("cpw/mods/fml/common/FMLCommonHandler")|| clsName.startsWith("com/jcraft/jogg/")|| clsName.startsWith("scala/sys/"));
+  final boolean warn=!(clsName.equals("net/minecraft/client/Minecraft") || clsName.equals("net/minecraft/server/dedicated/DedicatedServer") || clsName.equals("net/minecraft/server/dedicated/ServerHangWatchdog")|| clsName.equals("net/minecraft/server/dedicated/ServerHangWatchdog$1")|| clsName.equals("cpw/mods/fml/common/FMLCommonHandler")|| clsName.startsWith("com/jcraft/jogg/")|| clsName.startsWith("scala/sys/")|| clsName.startsWith("net/minecraft/server/gui/MinecraftServerGui"));
   return new MethodVisitor(Opcodes.ASM4,super.visitMethod(mAccess,mName,mDesc,mSignature,mExceptions)){
     @Override public void visitMethodInsn(    int opcode,    String owner,    String name,    String desc,    boolean isIntf){
       if (opcode == Opcodes.INVOKESTATIC && owner.equals("java/lang/System") && name.equals("exit") && desc.equals("(I)V")) {

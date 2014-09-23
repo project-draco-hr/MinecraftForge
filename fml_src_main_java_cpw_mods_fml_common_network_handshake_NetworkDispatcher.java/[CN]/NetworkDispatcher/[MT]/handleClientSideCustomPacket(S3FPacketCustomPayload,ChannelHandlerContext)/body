@@ -1,5 +1,28 @@
 {
   String channelName=msg.func_149169_c();
+  if ("FML|MP".equals(channelName)) {
+    try {
+      if (multipart == null) {
+        multipart=new MultiPartCustomPayload(msg.func_180735_b());
+      }
+ else {
+        multipart.processPart(msg.func_180735_b());
+      }
+    }
+ catch (    IOException e) {
+      this.kickWithMessage(e.getMessage());
+      multipart=null;
+      return true;
+    }
+    if (multipart.isComplete()) {
+      msg=multipart;
+      channelName=msg.func_149169_c();
+      multipart=null;
+    }
+ else {
+      return true;
+    }
+  }
   if ("FML|HS".equals(channelName) || "REGISTER".equals(channelName) || "UNREGISTER".equals(channelName)) {
     FMLProxyPacket proxy=new FMLProxyPacket(msg);
     proxy.setDispatcher(this);

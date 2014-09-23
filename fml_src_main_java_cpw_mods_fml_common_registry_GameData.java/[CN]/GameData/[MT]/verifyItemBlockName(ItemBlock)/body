@@ -1,7 +1,7 @@
 {
   Object blockName=iBlockRegistry.func_177774_c(item.blockInstance);
   Object itemName=iItemRegistry.func_177774_c(item);
-  if (blockName != null && !blockName.equals(itemName)) {
+  if (blockName != null && !blockName.equals(itemName) && !"minecraft:standing_banner".equals(blockName.toString())) {
     FMLLog.bigWarning("Block <-> ItemBlock name mismatch, block name %s, item name %s",blockName,itemName);
   }
 }

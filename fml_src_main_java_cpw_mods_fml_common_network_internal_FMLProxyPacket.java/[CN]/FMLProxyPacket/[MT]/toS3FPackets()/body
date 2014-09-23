@@ -1,0 +1,28 @@
+{
+  List<Packet> ret=Lists.newArrayList();
+  byte[] data=payload.array();
+  if (data.length < PART_SIZE) {
+    ret.add(new S3FPacketCustomPayload(channel,payload));
+  }
+ else {
+    int parts=(int)Math.ceil(data.length / (double)(PART_SIZE - 1));
+    if (parts > 255) {
+      throw new IllegalArgumentException("Payload may not be larger than " + MAX_LENGTH + " bytes");
+    }
+    PacketBuffer preamble=new PacketBuffer(Unpooled.buffer());
+    preamble.func_180714_a(channel);
+    preamble.writeByte(parts);
+    preamble.writeInt(data.length);
+    ret.add(new S3FPacketCustomPayload("FML|MP",preamble));
+    int offset=0;
+    for (int x=0; x < parts; x++) {
+      int length=Math.min(PART_SIZE,data.length - offset + 1);
+      byte[] tmp=new byte[length];
+      tmp[0]=(byte)(x & 0xFF);
+      System.arraycopy(data,offset,tmp,1,tmp.length - 1);
+      offset+=tmp.length - 1;
+      ret.add(new S3FPacketCustomPayload("FML|MP",new PacketBuffer(Unpooled.wrappedBuffer(tmp))));
+    }
+  }
+  return ret;
+}

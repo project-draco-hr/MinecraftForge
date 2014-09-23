@@ -1,6 +1,5 @@
 {
   if (state == ConnectionState.AWAITING_HANDSHAKE) {
-    this.manager.channel().pipeline().remove("fml:vanilla_detector");
     state=ConnectionState.HANDSHAKING;
   }
   String channelName=msg.func_149559_c();

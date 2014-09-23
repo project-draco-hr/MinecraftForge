@@ -1,5 +1,7 @@
 {
   S state=ctx.attr(fmlHandshakeState).get();
+  FMLLog.fine(stateType.getSimpleName() + ": null->" + state.getClass().getName().substring(state.getClass().getName().lastIndexOf('.') + 1)+ ":"+ state);
   S newState=state.accept(ctx,null);
+  FMLLog.fine("  Next: " + newState.name());
   ctx.attr(fmlHandshakeState).set(newState);
 }
