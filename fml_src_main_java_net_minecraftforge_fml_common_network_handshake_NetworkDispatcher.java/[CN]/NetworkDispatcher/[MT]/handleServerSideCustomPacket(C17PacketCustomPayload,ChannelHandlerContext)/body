@@ -2,7 +2,7 @@
   if (state == ConnectionState.AWAITING_HANDSHAKE) {
     state=ConnectionState.HANDSHAKING;
   }
-  String channelName=msg.func_149559_c();
+  String channelName=msg.getChannelName();
   if ("FML|HS".equals(channelName) || "REGISTER".equals(channelName) || "UNREGISTER".equals(channelName)) {
     FMLProxyPacket proxy=new FMLProxyPacket(msg);
     proxy.setDispatcher(this);

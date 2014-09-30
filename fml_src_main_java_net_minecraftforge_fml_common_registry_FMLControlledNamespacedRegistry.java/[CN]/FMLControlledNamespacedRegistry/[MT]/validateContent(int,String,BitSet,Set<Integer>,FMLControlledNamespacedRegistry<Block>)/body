@@ -1,7 +1,7 @@
 {
   for (  I obj : typeSafeIterable()) {
     int id=getId(obj);
-    Object name=func_177774_c(obj);
+    Object name=getNameForObject(obj);
     if (name == null)     throw new IllegalStateException(String.format("Registry entry for %s %s, id %d, doesn't yield a name.",type,obj,id));
     ResourceLocation loc=(name instanceof ResourceLocation) ? (ResourceLocation)name : null;
     String nameS=(name instanceof String) ? (String)name : (loc != null ? name.toString() : null);
@@ -16,7 +16,7 @@
     if (!availabilityMap.get(id))     throw new IllegalStateException(String.format("Registry entry for %s %s, id %d, name %s, marked as empty.",type,obj,id,name));
     if (blockedIds.contains(id))     throw new IllegalStateException(String.format("Registry entry for %s %s, id %d, name %s, marked as dangling.",type,obj,id,name));
     if (obj instanceof ItemBlock) {
-      Block block=((ItemBlock)obj).blockInstance;
+      Block block=((ItemBlock)obj).block;
       if (iBlockRegistry.getId(block) != id) {
         throw new IllegalStateException(String.format("Registry entry for ItemBlock %s, id %d, is missing or uses the non-matching id %d.",obj,id,iBlockRegistry.getId(block)));
       }

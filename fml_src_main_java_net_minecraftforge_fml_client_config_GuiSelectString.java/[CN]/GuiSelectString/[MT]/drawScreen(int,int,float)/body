@@ -1,12 +1,12 @@
 {
   this.drawDefaultBackground();
-  this.entriesList.drawScreen(par1,par2,par3);
+  this.entryList.drawScreen(par1,par2,par3);
   this.drawCenteredString(this.fontRendererObj,this.title,this.width / 2,8,16777215);
   if (this.titleLine2 != null)   this.drawCenteredString(this.fontRendererObj,this.titleLine2,this.width / 2,18,16777215);
   if (this.titleLine3 != null)   this.drawCenteredString(this.fontRendererObj,this.titleLine3,this.width / 2,28,16777215);
   this.btnDone.enabled=currentValue != null;
-  this.btnDefault.enabled=enabled && !this.entriesList.isDefault();
-  this.btnUndoChanges.enabled=enabled && this.entriesList.isChanged();
+  this.btnDefault.enabled=enabled && !this.entryList.isDefault();
+  this.btnUndoChanges.enabled=enabled && this.entryList.isChanged();
   super.drawScreen(par1,par2,par3);
   if (this.tooltipHoverChecker != null && this.tooltipHoverChecker.checkHover(par1,par2))   drawToolTip(this.toolTip,par1,par2);
 }

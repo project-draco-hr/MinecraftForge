@@ -10,7 +10,7 @@
       throw new IllegalArgumentException("Payload may not be larger than " + MAX_LENGTH + " bytes");
     }
     PacketBuffer preamble=new PacketBuffer(Unpooled.buffer());
-    preamble.func_180714_a(channel);
+    preamble.writeString(channel);
     preamble.writeByte(parts);
     preamble.writeInt(data.length);
     ret.add(new S3FPacketCustomPayload("FML|MP",preamble));

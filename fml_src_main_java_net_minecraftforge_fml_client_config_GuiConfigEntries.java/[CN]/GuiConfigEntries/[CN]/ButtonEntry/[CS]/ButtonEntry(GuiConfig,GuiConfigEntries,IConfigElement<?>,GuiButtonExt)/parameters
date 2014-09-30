@@ -1,4 +1,0 @@
-GuiConfig owningScreen
-GuiConfigEntries owningEntryList
-IConfigElement<?> configElement
-GuiButtonExt button
