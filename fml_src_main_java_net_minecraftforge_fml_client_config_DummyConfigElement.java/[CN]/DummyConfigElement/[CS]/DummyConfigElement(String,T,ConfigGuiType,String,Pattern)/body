@@ -1,3 +1,0 @@
-{
-  this(name,defaultValue,type,langKey,(String[])null,validStringPattern,(T)null,(T)null);
-}

@@ -1,3 +1,0 @@
-GuiConfig owningScreen
-GuiConfigEntries owningEntryList
-IConfigElement<String> configElement

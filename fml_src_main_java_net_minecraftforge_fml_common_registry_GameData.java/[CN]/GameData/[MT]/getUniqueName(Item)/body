@@ -1,6 +1,6 @@
 {
   if (item == null)   return null;
-  Object name=getMain().iItemRegistry.func_177774_c(item);
+  Object name=getMain().iItemRegistry.getNameForObject(item);
   UniqueIdentifier ui=new UniqueIdentifier(name);
   if (customItemStacks.contains(ui.modId,ui.name)) {
     return null;

@@ -1,5 +1,5 @@
 {
-  this.entriesList=new GuiSelectStringEntries(this,this.mc,this.configElement,this.selectableValues);
+  this.entryList=new GuiSelectStringEntries(this,this.mc,this.configElement,this.selectableValues);
   int undoGlyphWidth=mc.fontRendererObj.getStringWidth(UNDO_CHAR) * 2;
   int resetGlyphWidth=mc.fontRendererObj.getStringWidth(RESET_CHAR) * 2;
   int doneWidth=Math.max(mc.fontRendererObj.getStringWidth(I18n.format("gui.done")) + 20,100);

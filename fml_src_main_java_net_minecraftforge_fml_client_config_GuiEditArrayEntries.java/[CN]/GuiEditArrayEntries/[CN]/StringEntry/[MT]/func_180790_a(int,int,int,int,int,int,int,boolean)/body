@@ -1,9 +1,0 @@
-{
-  super.func_180790_a(slotIndex,x,y,listWidth,slotHeight,mouseX,mouseY,isSelected);
-  if (configElement.isListLengthFixed() || slotIndex != owningEntryList.listEntries.size() - 1) {
-    this.textFieldValue.setVisible(true);
-    this.textFieldValue.yPosition=y + 1;
-    this.textFieldValue.drawTextBox();
-  }
- else   this.textFieldValue.setVisible(false);
-}

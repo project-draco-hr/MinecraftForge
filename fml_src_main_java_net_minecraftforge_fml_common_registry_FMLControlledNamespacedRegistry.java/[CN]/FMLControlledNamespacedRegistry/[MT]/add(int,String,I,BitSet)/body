@@ -26,7 +26,7 @@
   if (getId(thing) >= 0) {
     int foundId=getId(thing);
     Object otherThing=getRaw(foundId);
-    throw new IllegalArgumentException(String.format("The object %s{%x} has been registered twice, using the names %s and %s. (Other object at this id is %s{%x})",thing,System.identityHashCode(thing),func_177774_c(thing),name,otherThing,System.identityHashCode(otherThing)));
+    throw new IllegalArgumentException(String.format("The object %s{%x} has been registered twice, using the names %s and %s. (Other object at this id is %s{%x})",thing,System.identityHashCode(thing),getNameForObject(thing),name,otherThing,System.identityHashCode(otherThing)));
   }
   if (GameData.isFrozen(this)) {
     FMLLog.bigWarning("The object %s (name %s) is being added too late.",thing,name);

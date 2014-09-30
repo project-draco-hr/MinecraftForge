@@ -31,22 +31,22 @@
       }
  else       if (configElement.isProperty()) {
         if (configElement.isList())         this.listEntries.add(new GuiConfigEntries.ArrayEntry(this.owningScreen,this,configElement));
- else         if (configElement.getType() == ConfigGuiType.BOOLEAN)         this.listEntries.add(new GuiConfigEntries.BooleanEntry(this.owningScreen,this,(IConfigElement<Boolean>)configElement));
- else         if (configElement.getType() == ConfigGuiType.INTEGER)         this.listEntries.add(new GuiConfigEntries.IntegerEntry(this.owningScreen,this,(IConfigElement<Integer>)configElement));
- else         if (configElement.getType() == ConfigGuiType.DOUBLE)         this.listEntries.add(new GuiConfigEntries.DoubleEntry(this.owningScreen,this,(IConfigElement<Double>)configElement));
+ else         if (configElement.getType() == ConfigGuiType.BOOLEAN)         this.listEntries.add(new GuiConfigEntries.BooleanEntry(this.owningScreen,this,configElement));
+ else         if (configElement.getType() == ConfigGuiType.INTEGER)         this.listEntries.add(new GuiConfigEntries.IntegerEntry(this.owningScreen,this,configElement));
+ else         if (configElement.getType() == ConfigGuiType.DOUBLE)         this.listEntries.add(new GuiConfigEntries.DoubleEntry(this.owningScreen,this,configElement));
  else         if (configElement.getType() == ConfigGuiType.COLOR) {
-          if (configElement.getValidValues() != null && configElement.getValidValues().length > 0)           this.listEntries.add(new GuiConfigEntries.ChatColorEntry(this.owningScreen,this,(IConfigElement<String>)configElement));
- else           this.listEntries.add(new GuiConfigEntries.StringEntry(this.owningScreen,this,(IConfigElement<String>)configElement));
+          if (configElement.getValidValues() != null && configElement.getValidValues().length > 0)           this.listEntries.add(new GuiConfigEntries.ChatColorEntry(this.owningScreen,this,configElement));
+ else           this.listEntries.add(new GuiConfigEntries.StringEntry(this.owningScreen,this,configElement));
         }
  else         if (configElement.getType() == ConfigGuiType.MOD_ID) {
           Map<Object,String> values=new TreeMap<Object,String>();
           for (          ModContainer mod : Loader.instance().getActiveModList())           values.put(mod.getModId(),mod.getName());
           values.put("minecraft","Minecraft");
-          this.listEntries.add(new SelectValueEntry(this.owningScreen,this,(IConfigElement<String>)configElement,values));
+          this.listEntries.add(new SelectValueEntry(this.owningScreen,this,configElement,values));
         }
  else         if (configElement.getType() == ConfigGuiType.STRING) {
-          if (configElement.getValidValues() != null && configElement.getValidValues().length > 0)           this.listEntries.add(new GuiConfigEntries.CycleValueEntry(this.owningScreen,this,(IConfigElement<String>)configElement));
- else           this.listEntries.add(new GuiConfigEntries.StringEntry(this.owningScreen,this,(IConfigElement<String>)configElement));
+          if (configElement.getValidValues() != null && configElement.getValidValues().length > 0)           this.listEntries.add(new GuiConfigEntries.CycleValueEntry(this.owningScreen,this,configElement));
+ else           this.listEntries.add(new GuiConfigEntries.StringEntry(this.owningScreen,this,configElement));
         }
       }
  else       if (configElement.getType() == ConfigGuiType.CONFIG_CATEGORY)       this.listEntries.add(new CategoryEntry(this.owningScreen,this,configElement));

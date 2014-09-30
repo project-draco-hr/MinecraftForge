@@ -1,0 +1,3 @@
+{
+  this(name,defaultValue,type,langKey,(String[])null,validStringPattern,(Object)null,(Object)null);
+}

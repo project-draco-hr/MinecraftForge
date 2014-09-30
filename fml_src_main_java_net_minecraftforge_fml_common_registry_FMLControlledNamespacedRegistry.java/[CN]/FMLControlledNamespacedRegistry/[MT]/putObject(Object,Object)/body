@@ -5,7 +5,7 @@
   if (name.isEmpty())   throw new IllegalArgumentException("Can't use an empty name for the registry.");
   if (thing == null)   throw new NullPointerException("Can't add null-object to the registry.");
   name=new ResourceLocation(name).toString();
-  Object existingName=func_177774_c(thing);
+  Object existingName=getNameForObject(thing);
   if (existingName == null) {
     FMLLog.bigWarning("Ignoring putObject(%s, %s), not resolvable",name,thing);
   }

@@ -1,9 +1,0 @@
-String name
-T[] defaultValues
-ConfigGuiType type
-String langKey
-boolean isListFixedLength
-int maxListLength
-Pattern validStringPattern
-T minValue
-T maxValue

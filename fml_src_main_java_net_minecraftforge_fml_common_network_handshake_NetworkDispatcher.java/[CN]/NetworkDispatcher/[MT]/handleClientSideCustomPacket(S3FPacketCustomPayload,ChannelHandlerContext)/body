@@ -1,12 +1,12 @@
 {
-  String channelName=msg.func_149169_c();
+  String channelName=msg.getChannelName();
   if ("FML|MP".equals(channelName)) {
     try {
       if (multipart == null) {
-        multipart=new MultiPartCustomPayload(msg.func_180735_b());
+        multipart=new MultiPartCustomPayload(msg.getBufferData());
       }
  else {
-        multipart.processPart(msg.func_180735_b());
+        multipart.processPart(msg.getBufferData());
       }
     }
  catch (    IOException e) {
@@ -16,7 +16,7 @@
     }
     if (multipart.isComplete()) {
       msg=multipart;
-      channelName=msg.func_149169_c();
+      channelName=msg.getChannelName();
       multipart=null;
     }
  else {

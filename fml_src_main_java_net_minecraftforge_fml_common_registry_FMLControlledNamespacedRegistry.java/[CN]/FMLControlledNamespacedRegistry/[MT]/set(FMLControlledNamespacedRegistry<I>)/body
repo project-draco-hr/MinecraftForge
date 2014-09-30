@@ -9,6 +9,6 @@
   underlyingIntegerMap=new ObjectIntIdentityMap();
   registryObjects.clear();
   for (  I thing : registry.typeSafeIterable()) {
-    addObjectRaw(registry.getId(thing),registry.func_177774_c(thing),thing);
+    addObjectRaw(registry.getId(thing),registry.getNameForObject(thing),thing);
   }
 }
