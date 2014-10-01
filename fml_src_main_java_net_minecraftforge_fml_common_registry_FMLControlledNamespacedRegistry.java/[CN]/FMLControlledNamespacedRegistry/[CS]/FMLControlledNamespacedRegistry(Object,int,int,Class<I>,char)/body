@@ -1,8 +1,0 @@
-{
-  super(defaultKey);
-  this.superType=type;
-  this.discriminator=discriminator;
-  this.optionalDefaultKey=defaultKey;
-  this.maxId=maxIdValue;
-  this.minId=minIdValue;
-}

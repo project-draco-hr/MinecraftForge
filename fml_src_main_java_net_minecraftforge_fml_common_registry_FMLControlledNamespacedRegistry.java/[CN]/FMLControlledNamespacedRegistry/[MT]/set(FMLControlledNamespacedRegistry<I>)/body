@@ -1,6 +1,5 @@
 {
   if (this.superType != registry.superType)   throw new IllegalArgumentException("incompatible registry");
-  this.discriminator=registry.discriminator;
   this.optionalDefaultKey=registry.optionalDefaultKey;
   this.maxId=registry.maxId;
   this.minId=registry.minId;

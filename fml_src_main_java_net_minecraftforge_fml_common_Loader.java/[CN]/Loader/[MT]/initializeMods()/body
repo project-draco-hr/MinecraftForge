@@ -6,6 +6,5 @@
   modController.transition(LoaderState.AVAILABLE,false);
   modController.distributeStateMessage(LoaderState.AVAILABLE);
   GameData.freezeData();
-  GameData.dumpRegistry(minecraftDir);
   FMLLog.info("Forge Mod Loader has successfully loaded %d mod%s",mods.size(),mods.size() == 1 ? "" : "s");
 }

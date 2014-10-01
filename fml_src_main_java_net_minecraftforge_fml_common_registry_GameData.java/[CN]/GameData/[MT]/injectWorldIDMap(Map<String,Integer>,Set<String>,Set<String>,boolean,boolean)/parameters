@@ -1,5 +1,0 @@
-Map<String,Integer> dataList
-Set<String> blockSubstitutions
-Set<String> itemSubstitutions
-boolean injectFrozenData
-boolean isLocalWorld

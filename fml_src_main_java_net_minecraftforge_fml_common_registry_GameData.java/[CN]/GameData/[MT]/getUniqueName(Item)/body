@@ -1,9 +1,5 @@
 {
   if (item == null)   return null;
   Object name=getMain().iItemRegistry.getNameForObject(item);
-  UniqueIdentifier ui=new UniqueIdentifier(name);
-  if (customItemStacks.contains(ui.modId,ui.name)) {
-    return null;
-  }
-  return ui;
+  return new UniqueIdentifier(name);
 }

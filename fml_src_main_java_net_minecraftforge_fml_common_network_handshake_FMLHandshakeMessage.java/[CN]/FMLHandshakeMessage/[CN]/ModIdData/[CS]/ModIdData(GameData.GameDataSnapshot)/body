@@ -1,5 +1,0 @@
-{
-  this.modIds=snapshot.idMap;
-  this.blockSubstitutions=snapshot.blockSubstitutions;
-  this.itemSubstitutions=snapshot.itemSubstitutions;
-}

@@ -1,5 +1,5 @@
 {
   for (  I thing : this.typeSafeIterable()) {
-    idMapping.put(discriminator + getNameForObject(thing).toString(),getId(thing));
+    idMapping.put(getNameForObject(thing).toString(),getId(thing));
   }
 }

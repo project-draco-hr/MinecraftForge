@@ -1,0 +1,3 @@
+boolean hasMore
+String name
+GameData.GameDataSnapshot.Entry entry

@@ -1,0 +1,100 @@
+{
+  FMLLog.info("Injecting existing block and item data into this %s instance",FMLCommonHandler.instance().getEffectiveSide().isServer() ? "server" : "client");
+  Map<String,Integer[]> remaps=Maps.newHashMap();
+  LinkedHashMap<String,Integer> missingMappings=new LinkedHashMap<String,Integer>();
+  getMain().testConsistency();
+  getMain().iBlockRegistry.dump();
+  getMain().iItemRegistry.dump();
+  GameDataSnapshot.Entry blocks=snapshot.entries.get("fml:blocks");
+  GameDataSnapshot.Entry items=snapshot.entries.get("fml:items");
+  GameData newData=new GameData();
+  for (  int id : blocks.blocked) {
+    newData.block(id);
+  }
+  for (  Map.Entry<String,String> entry : blocks.aliases.entrySet()) {
+    newData.iBlockRegistry.addAlias(entry.getKey(),entry.getValue());
+  }
+  for (  Map.Entry<String,String> entry : items.aliases.entrySet()) {
+    newData.iItemRegistry.addAlias(entry.getKey(),entry.getValue());
+  }
+  for (  String entry : blocks.substitutions) {
+    newData.iBlockRegistry.activateSubstitution(entry);
+  }
+  for (  String entry : items.substitutions) {
+    newData.iItemRegistry.activateSubstitution(entry);
+  }
+  if (injectFrozenData) {
+    for (    String newBlockSubstitution : getMain().blockSubstitutions.keySet()) {
+      if (!blocks.substitutions.contains(newBlockSubstitution)) {
+        newData.iBlockRegistry.activateSubstitution(newBlockSubstitution);
+      }
+    }
+    for (    String newItemSubstitution : getMain().itemSubstitutions.keySet()) {
+      if (!items.substitutions.contains(newItemSubstitution)) {
+        newData.iItemRegistry.activateSubstitution(newItemSubstitution);
+      }
+    }
+  }
+  for (int pass=0; pass < 2; pass++) {
+    boolean isBlock=(pass == 0);
+    Map<String,Integer> ids=(isBlock ? blocks.ids : items.ids);
+    for (    Entry<String,Integer> entry : ids.entrySet()) {
+      String itemName=entry.getKey();
+      int newId=entry.getValue();
+      int currId=isBlock ? getMain().iBlockRegistry.getId(itemName) : getMain().iItemRegistry.getId(itemName);
+      if (currId == -1) {
+        FMLLog.info("Found a missing id from the world %s",itemName);
+        missingMappings.put(entry.getKey(),newId);
+        continue;
+      }
+ else       if (currId != newId) {
+        FMLLog.fine("Fixed %s id mismatch %s: %d (init) -> %d (map).",isBlock ? "block" : "item",itemName,currId,newId);
+        remaps.put(itemName,new Integer[]{currId,newId});
+      }
+      if (isBlock) {
+        currId=newData.registerBlock(getMain().iBlockRegistry.getRaw(itemName),itemName,newId);
+      }
+ else {
+        currId=newData.registerItem(getMain().iItemRegistry.getRaw(itemName),itemName,newId);
+      }
+      if (currId != newId) {
+        throw new IllegalStateException(String.format("Can't map %s %s to id %d (seen at: %d), already occupied by %s, blocked %b, ItemBlock %b",isBlock ? "block" : "item",itemName,newId,currId,isBlock ? newData.iBlockRegistry.getRaw(newId) : newData.iItemRegistry.getRaw(newId),newData.blockedIds.contains(newId),isBlock ? false : (getMain().iItemRegistry.getRaw(currId) instanceof ItemBlock)));
+      }
+    }
+  }
+  List<String> missedMappings=Loader.instance().fireMissingMappingEvent(missingMappings,isLocalWorld,newData,remaps);
+  if (!missedMappings.isEmpty())   return missedMappings;
+  if (injectFrozenData) {
+    Map<String,Integer> missingBlocks=frozen.iBlockRegistry.getEntriesNotIn(newData.iBlockRegistry);
+    Map<String,Integer> missingItems=frozen.iItemRegistry.getEntriesNotIn(newData.iItemRegistry);
+    if (!missingBlocks.isEmpty() || !missingItems.isEmpty()) {
+      FMLLog.info("Injecting new block and item data into this server instance.");
+      for (int pass=0; pass < 2; pass++) {
+        boolean isBlock=pass == 0;
+        Map<String,Integer> missing=(pass == 0) ? missingBlocks : missingItems;
+        for (        Entry<String,Integer> entry : missing.entrySet()) {
+          String itemName=entry.getKey();
+          int currId=entry.getValue();
+          int newId;
+          if (isBlock) {
+            newId=newData.registerBlock(frozen.iBlockRegistry.getRaw(itemName),itemName,currId);
+          }
+ else {
+            newId=newData.registerItem(frozen.iItemRegistry.getRaw(itemName),itemName,currId);
+          }
+          FMLLog.info("Injected new block/item %s: %d (init) -> %d (map).",itemName,currId,newId);
+          if (newId != currId) {
+            remaps.put(itemName,new Integer[]{entry.getValue(),newId});
+          }
+        }
+      }
+    }
+  }
+  newData.testConsistency();
+  getMain().set(newData);
+  getMain().iBlockRegistry.dump();
+  getMain().iItemRegistry.dump();
+  Loader.instance().fireRemapEvent(remaps);
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  return ImmutableList.of();
+}

@@ -1,0 +1,13 @@
+{
+  buffer.writeBoolean(this.hasMore);
+  ByteBufUtils.writeUTF8String(buffer,this.name);
+  ByteBufUtils.writeVarInt(buffer,ids.size(),3);
+  for (  Entry<String,Integer> entry : ids.entrySet()) {
+    ByteBufUtils.writeUTF8String(buffer,entry.getKey());
+    ByteBufUtils.writeVarInt(buffer,entry.getValue(),3);
+  }
+  ByteBufUtils.writeVarInt(buffer,substitutions.size(),3);
+  for (  String entry : substitutions) {
+    ByteBufUtils.writeUTF8String(buffer,entry);
+  }
+}

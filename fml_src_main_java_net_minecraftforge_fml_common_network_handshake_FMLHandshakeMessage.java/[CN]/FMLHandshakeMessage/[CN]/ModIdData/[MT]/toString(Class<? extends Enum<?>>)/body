@@ -1,3 +1,0 @@
-{
-  return super.toString(side) + ":" + modIds.size()+ " mappings";
-}
