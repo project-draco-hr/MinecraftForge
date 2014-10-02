@@ -1,0 +1,9 @@
+int dimension
+int x
+int y
+int z
+String modid
+String blockName
+int meta
+int flag
+NBTTagCompound nbt

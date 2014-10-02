@@ -1,0 +1,7 @@
+World world
+int x
+int y
+int z
+Block block
+int meta
+NBTTagCompound nbt

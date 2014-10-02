@@ -1,0 +1,11 @@
+{
+  super(blockSnapshot.x,blockSnapshot.y,blockSnapshot.z,blockSnapshot.world,blockSnapshot.getCurrentBlock(),blockSnapshot.meta);
+  this.player=player;
+  this.itemInHand=player.getCurrentEquippedItem();
+  this.blockSnapshot=blockSnapshot;
+  this.placedBlock=blockSnapshot.getCurrentBlock();
+  this.placedAgainst=placedAgainst;
+  if (DEBUG) {
+    System.out.printf("Created PlaceEvent - [PlacedBlock: %s ][PlacedAgainst: %s ][ItemStack: %s ][Player: %s ]\n",placedBlock,placedAgainst,player.getCurrentEquippedItem(),player);
+  }
+}

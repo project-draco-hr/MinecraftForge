@@ -1,0 +1,7 @@
+{
+  super(blockSnapshots.get(0),placedAgainst,player);
+  this.blockSnapshots=ImmutableList.copyOf(blockSnapshots);
+  if (DEBUG) {
+    System.out.printf("Created MultiPlaceEvent - [PlacedAgainst: %s ][ItemInHand: %s ][Player: %s ]\n",placedAgainst,this.itemInHand,player);
+  }
+}

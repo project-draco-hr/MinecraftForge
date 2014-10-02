@@ -1,0 +1,6 @@
+{
+  if (this.replacedBlock == null) {
+    this.replacedBlock=GameRegistry.findBlock(this.blockIdentifier.modId,this.blockIdentifier.name);
+  }
+  return this.replacedBlock;
+}

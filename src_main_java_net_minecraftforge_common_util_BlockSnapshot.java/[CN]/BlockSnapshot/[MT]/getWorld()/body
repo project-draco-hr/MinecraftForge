@@ -1,0 +1,6 @@
+{
+  if (this.world == null) {
+    this.world=DimensionManager.getWorld(dimId);
+  }
+  return this.world;
+}

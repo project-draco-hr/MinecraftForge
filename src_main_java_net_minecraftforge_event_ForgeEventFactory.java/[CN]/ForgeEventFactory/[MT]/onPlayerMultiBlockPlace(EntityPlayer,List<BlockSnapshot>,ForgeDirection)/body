@@ -1,0 +1,6 @@
+{
+  Block placedAgainst=blockSnapshots.get(0).world.getBlock(blockSnapshots.get(0).x + direction.getOpposite().offsetX,blockSnapshots.get(0).y + direction.getOpposite().offsetY,blockSnapshots.get(0).z + direction.getOpposite().offsetZ);
+  MultiPlaceEvent event=new MultiPlaceEvent(blockSnapshots,placedAgainst,player);
+  MinecraftForge.EVENT_BUS.post(event);
+  return event;
+}
