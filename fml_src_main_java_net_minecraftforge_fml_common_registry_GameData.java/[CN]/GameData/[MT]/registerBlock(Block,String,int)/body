@@ -18,5 +18,8 @@
   }
   useSlot(blockId);
   ((RegistryDelegate.Delegate<Block>)block.delegate).setName(name);
+  for (  IBlockState state : ((List<IBlockState>)block.getBlockState().getValidStates())) {
+    GameData.BLOCKSTATE_TO_ID.put(state,blockId << 4 | block.getMetaFromState(state));
+  }
   return blockId;
 }
