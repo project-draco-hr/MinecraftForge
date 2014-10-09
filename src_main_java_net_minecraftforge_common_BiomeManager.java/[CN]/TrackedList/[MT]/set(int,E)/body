@@ -1,0 +1,4 @@
+{
+  isModded=true;
+  return super.set(index,element);
+}

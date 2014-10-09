@@ -1,0 +1,8 @@
+{
+  isModded=true;
+  int idx=type.ordinal();
+  List<BiomeEntry> list=idx > biomes.length ? null : biomes[idx];
+  if (list != null && list.contains(entry)) {
+    list.remove(entry);
+  }
+}
