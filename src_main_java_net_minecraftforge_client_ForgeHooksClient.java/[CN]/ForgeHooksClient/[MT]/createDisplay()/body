@@ -3,7 +3,7 @@
   PixelFormat format=new PixelFormat().withDepthBits(24);
   if (!Boolean.parseBoolean(System.getProperty("forge.forceDisplayStencil","false"))) {
     Display.create(format);
-    stencilBits=8;
+    stencilBits=0;
     return;
   }
   try {
