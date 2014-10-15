@@ -1,0 +1,3 @@
+{
+  UsernameCache.setUsername(event.player.getGameProfile().getId(),event.player.getGameProfile().getName());
+}

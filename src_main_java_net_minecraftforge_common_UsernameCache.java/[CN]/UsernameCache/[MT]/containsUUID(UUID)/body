@@ -1,0 +1,4 @@
+{
+  checkNotNull(uuid);
+  return map.containsKey(uuid);
+}

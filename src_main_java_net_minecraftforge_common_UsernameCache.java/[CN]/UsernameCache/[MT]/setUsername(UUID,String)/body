@@ -1,0 +1,7 @@
+{
+  checkNotNull(uuid);
+  checkNotNull(username);
+  if (username.equals(map.get(uuid)))   return;
+  map.put(uuid,username);
+  save();
+}

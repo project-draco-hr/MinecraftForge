@@ -1,0 +1,3 @@
+{
+  new SaveThread(gson.toJson(map)).start();
+}
