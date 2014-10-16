@@ -1,0 +1,8 @@
+{
+  checkNotNull(uuid);
+  if (map.remove(uuid) != null) {
+    save();
+    return true;
+  }
+  return false;
+}

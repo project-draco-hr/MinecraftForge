@@ -1,0 +1,10 @@
+{
+  try {
+synchronized (saveFile) {
+      Files.write(data,saveFile,charset);
+    }
+  }
+ catch (  IOException e) {
+    log.error("Failed to save username cache to file!",e);
+  }
+}

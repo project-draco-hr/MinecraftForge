@@ -5,4 +5,5 @@
     ForgeVersion.startVersionCheck();
   }
   new CrashReport("ThisIsFake",new Exception("Not real"));
+  UsernameCache.load();
 }
