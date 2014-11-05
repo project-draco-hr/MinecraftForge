@@ -9,7 +9,7 @@
     if (block.isAir(world,x,y,z)) {
       return false;
     }
-    result=block.getPickBlock(target,world,x,y,z);
+    result=block.getPickBlock(target,world,x,y,z,player);
   }
  else {
     if (target.typeOfHit != MovingObjectType.ENTITY || target.entityHit == null || !isCreative) {
