@@ -7,13 +7,13 @@
     }
  else     if (modFile.isDirectory()) {
       FMLLog.fine("Found a candidate mod directory %s",modFile.getName());
-      candidates.add(new ModCandidate(modFile,modFile,ContainerType.DIR));
+      addCandidate(new ModCandidate(modFile,modFile,ContainerType.DIR));
     }
  else {
       Matcher matcher=zipJar.matcher(modFile.getName());
       if (matcher.matches()) {
         FMLLog.fine("Found a candidate zip or jar file %s",matcher.group(0));
-        candidates.add(new ModCandidate(modFile,modFile,ContainerType.JAR));
+        addCandidate(new ModCandidate(modFile,modFile,ContainerType.JAR));
       }
  else {
         FMLLog.fine("Ignoring unknown file %s in mods directory",modFile.getName());
