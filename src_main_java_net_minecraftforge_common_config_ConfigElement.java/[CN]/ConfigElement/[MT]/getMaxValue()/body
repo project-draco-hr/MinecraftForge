@@ -1,3 +1,3 @@
 {
-  return isProperty ? (T)prop.getMaxValue() : null;
+  return isProperty ? prop.getMaxValue() : null;
 }

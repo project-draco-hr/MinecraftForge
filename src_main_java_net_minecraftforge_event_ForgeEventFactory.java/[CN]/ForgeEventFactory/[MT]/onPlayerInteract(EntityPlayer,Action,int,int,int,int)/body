@@ -1,3 +1,0 @@
-{
-  return onPlayerInteract(player,action,x,y,z,face,null);
-}

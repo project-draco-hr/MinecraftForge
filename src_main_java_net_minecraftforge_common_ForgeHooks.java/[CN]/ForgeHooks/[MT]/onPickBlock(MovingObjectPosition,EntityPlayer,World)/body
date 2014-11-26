@@ -1,15 +1,14 @@
 {
   ItemStack result=null;
   boolean isCreative=player.capabilities.isCreativeMode;
+  TileEntity te=null;
   if (target.typeOfHit == MovingObjectType.BLOCK) {
-    int x=target.blockX;
-    int y=target.blockY;
-    int z=target.blockZ;
-    Block block=world.getBlock(x,y,z);
-    if (block.isAir(world,x,y,z)) {
+    IBlockState state=world.getBlockState(target.func_178782_a());
+    if (state.getBlock().isAir(world,target.func_178782_a())) {
       return false;
     }
-    result=block.getPickBlock(target,world,x,y,z,player);
+    if (isCreative && GuiScreen.isCtrlKeyDown())     te=world.getTileEntity(target.func_178782_a());
+    result=state.getBlock().getPickBlock(target,world,target.func_178782_a());
   }
  else {
     if (target.typeOfHit != MovingObjectType.ENTITY || target.entityHit == null || !isCreative) {
@@ -19,6 +18,16 @@
   }
   if (result == null) {
     return false;
+  }
+  if (te != null) {
+    NBTTagCompound nbt=new NBTTagCompound();
+    te.writeToNBT(nbt);
+    result.setTagInfo("BlockEntityTag",nbt);
+    NBTTagCompound display=new NBTTagCompound();
+    result.setTagInfo("display",display);
+    NBTTagList lore=new NBTTagList();
+    display.setTag("Lore",lore);
+    lore.appendTag(new NBTTagString("(+NBT)"));
   }
   for (int x=0; x < 9; x++) {
     ItemStack stack=player.inventory.getStackInSlot(x);

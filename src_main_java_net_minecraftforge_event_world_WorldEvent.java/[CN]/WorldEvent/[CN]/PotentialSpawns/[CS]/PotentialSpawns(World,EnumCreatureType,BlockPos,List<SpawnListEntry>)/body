@@ -1,0 +1,11 @@
+{
+  super(world);
+  this.pos=pos;
+  this.type=type;
+  if (oldList != null) {
+    this.list=oldList;
+  }
+ else {
+    this.list=new ArrayList<SpawnListEntry>();
+  }
+}

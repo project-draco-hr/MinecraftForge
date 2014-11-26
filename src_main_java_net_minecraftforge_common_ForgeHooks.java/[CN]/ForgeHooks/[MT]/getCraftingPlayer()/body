@@ -1,0 +1,3 @@
+{
+  return craftingPlayer.get();
+}

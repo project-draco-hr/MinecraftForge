@@ -1,3 +1,0 @@
-{
-  return isSourceBlock(world,x,y,z);
-}

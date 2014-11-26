@@ -11,4 +11,5 @@
   this.densityDir=fluid.density > 0 ? -1 : 1;
   fluid.setBlock(this);
   displacements.putAll(defaultDisplacements);
+  this.setDefaultState(blockState.getBaseState().withProperty(LEVEL,0));
 }

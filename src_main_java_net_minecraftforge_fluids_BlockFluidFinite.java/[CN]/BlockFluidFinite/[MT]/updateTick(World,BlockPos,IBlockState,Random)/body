@@ -1,0 +1,64 @@
+{
+  boolean changed=false;
+  int quantaRemaining=((Integer)state.getValue(LEVEL)) + 1;
+  int prevRemaining=quantaRemaining;
+  quantaRemaining=tryToFlowVerticallyInto(world,pos,quantaRemaining);
+  if (quantaRemaining < 1) {
+    return;
+  }
+ else   if (quantaRemaining != prevRemaining) {
+    changed=true;
+    if (quantaRemaining == 1) {
+      world.setBlockState(pos,state.withProperty(LEVEL,quantaRemaining - 1),2);
+      return;
+    }
+  }
+ else   if (quantaRemaining == 1) {
+    return;
+  }
+  int lowerthan=quantaRemaining - 1;
+  int total=quantaRemaining;
+  int count=1;
+  for (  EnumFacing side : EnumFacing.Plane.HORIZONTAL) {
+    BlockPos off=pos.offset(side);
+    if (displaceIfPossible(world,off))     world.setBlockToAir(off);
+    int quanta=getQuantaValueBelow(world,off,lowerthan);
+    if (quanta >= 0) {
+      count++;
+      total+=quanta;
+    }
+  }
+  if (count == 1) {
+    if (changed) {
+      world.setBlockState(pos,state.withProperty(LEVEL,quantaRemaining - 1),2);
+    }
+    return;
+  }
+  int each=total / count;
+  int rem=total % count;
+  for (  EnumFacing side : EnumFacing.Plane.HORIZONTAL) {
+    BlockPos off=pos.offset(side);
+    int quanta=getQuantaValueBelow(world,off,lowerthan);
+    if (quanta >= 0) {
+      int newquanta=each;
+      if (rem == count || rem > 1 && rand.nextInt(count - rem) != 0) {
+        ++newquanta;
+        --rem;
+      }
+      if (newquanta != quanta) {
+        if (newquanta == 0) {
+          world.setBlockToAir(off);
+        }
+ else {
+          world.setBlockState(off,getDefaultState().withProperty(LEVEL,newquanta - 1),2);
+        }
+        world.scheduleUpdate(off,this,tickRate);
+      }
+      --count;
+    }
+  }
+  if (rem > 0) {
+    ++each;
+  }
+  world.setBlockState(pos,state.withProperty(LEVEL,each - 1),2);
+}

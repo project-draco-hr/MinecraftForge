@@ -1,8 +1,0 @@
-{
-  if (faces.size() > 0) {
-    Tessellator tessellator=Tessellator.instance;
-    tessellator.startDrawing(glDrawingMode);
-    render(tessellator);
-    tessellator.draw();
-  }
-}

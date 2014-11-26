@@ -1,6 +1,0 @@
-{
-  for (  String type : stack.getItem().getToolClasses(stack)) {
-    if (block.isToolEffective(type,metadata))     return true;
-  }
-  return false;
-}

@@ -2,7 +2,7 @@
   bind(icons);
   if (pre(JUMPBAR))   return;
   GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
-  GL11.glDisable(GL11.GL_BLEND);
+  GlStateManager.disableBlend();
   mc.mcProfiler.startSection("jumpBar");
   float charge=mc.thePlayer.getHorseJumpPower();
   final int barWidth=182;
@@ -13,7 +13,7 @@
   if (filled > 0) {
     this.drawTexturedModalRect(x,top,0,89,filled,5);
   }
-  GL11.glEnable(GL11.GL_BLEND);
+  GlStateManager.enableBlend();
   mc.mcProfiler.endSection();
   GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
   post(JUMPBAR);

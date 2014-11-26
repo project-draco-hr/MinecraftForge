@@ -1,72 +1,39 @@
 {
   mc.mcProfiler.startSection("forgeHudText");
   OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
-  ArrayList<String> left=new ArrayList<String>();
-  ArrayList<String> right=new ArrayList<String>();
+  ArrayList<String> listL=new ArrayList<String>();
+  ArrayList<String> listR=new ArrayList<String>();
   if (mc.isDemo()) {
     long time=mc.theWorld.getTotalWorldTime();
     if (time >= 120500L) {
-      right.add(I18n.format("demo.demoExpired"));
+      listR.add(I18n.format("demo.demoExpired"));
     }
  else {
-      right.add(I18n.format("demo.remainingTime",StringUtils.ticksToElapsedTime((int)(120500L - time))));
+      listR.add(I18n.format("demo.remainingTime",StringUtils.ticksToElapsedTime((int)(120500L - time))));
     }
   }
   if (this.mc.gameSettings.showDebugInfo && !pre(DEBUG)) {
-    mc.mcProfiler.startSection("debug");
-    GL11.glPushMatrix();
-    left.add("Minecraft " + MC_VERSION + " ("+ this.mc.debug+ ")");
-    left.add(mc.debugInfoRenders());
-    left.add(mc.getEntityDebug());
-    left.add(mc.debugInfoEntities());
-    left.add(mc.getWorldProviderName());
-    left.add(null);
-    long max=Runtime.getRuntime().maxMemory();
-    long total=Runtime.getRuntime().totalMemory();
-    long free=Runtime.getRuntime().freeMemory();
-    long used=total - free;
-    right.add("Used memory: " + used * 100L / max + "% (" + used / 1024L / 1024L + "MB) of " + max / 1024L / 1024L + "MB");
-    right.add("Allocated memory: " + total * 100L / max + "% (" + total / 1024L / 1024L + "MB)");
-    int x=MathHelper.floor_double(mc.thePlayer.posX);
-    int y=MathHelper.floor_double(mc.thePlayer.posY);
-    int z=MathHelper.floor_double(mc.thePlayer.posZ);
-    float yaw=mc.thePlayer.rotationYaw;
-    int heading=MathHelper.floor_double((double)(mc.thePlayer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-    left.add(String.format("x: %.5f (%d) // c: %d (%d)",mc.thePlayer.posX,x,x >> 4,x & 15));
-    left.add(String.format("y: %.3f (feet pos, %.3f eyes pos)",mc.thePlayer.boundingBox.minY,mc.thePlayer.posY));
-    left.add(String.format("z: %.5f (%d) // c: %d (%d)",mc.thePlayer.posZ,z,z >> 4,z & 15));
-    left.add(String.format("f: %d (%s) / %f",heading,Direction.directions[heading],MathHelper.wrapAngleTo180_float(yaw)));
-    if (mc.theWorld != null && mc.theWorld.blockExists(x,y,z)) {
-      Chunk chunk=this.mc.theWorld.getChunkFromBlockCoords(x,z);
-      left.add(String.format("lc: %d b: %s bl: %d sl: %d rl: %d",chunk.getTopFilledSegment() + 15,chunk.getBiomeGenForWorldCoords(x & 15,z & 15,mc.theWorld.getWorldChunkManager()).biomeName,chunk.getSavedLightValue(EnumSkyBlock.Block,x & 15,y,z & 15),chunk.getSavedLightValue(EnumSkyBlock.Sky,x & 15,y,z & 15),chunk.getBlockLightValue(x & 15,y,z & 15,0)));
-    }
- else {
-      left.add(null);
-    }
-    left.add(String.format("ws: %.3f, fs: %.3f, g: %b, fl: %d",mc.thePlayer.capabilities.getWalkSpeed(),mc.thePlayer.capabilities.getFlySpeed(),mc.thePlayer.onGround,mc.theWorld.getHeightValue(x,z)));
-    if (mc.entityRenderer != null && mc.entityRenderer.isShaderActive()) {
-      left.add(String.format("shader: %s",mc.entityRenderer.getShaderGroup().getShaderGroupName()));
-    }
-    right.add(null);
-    for (    String brand : FMLCommonHandler.instance().getBrandings(false)) {
-      right.add(brand);
-    }
-    GL11.glPopMatrix();
-    mc.mcProfiler.endSection();
+    listL.addAll(debugOverlay.getLeft());
+    listR.addAll(debugOverlay.getRight());
     post(DEBUG);
   }
-  RenderGameOverlayEvent.Text event=new RenderGameOverlayEvent.Text(eventParent,left,right);
+  RenderGameOverlayEvent.Text event=new RenderGameOverlayEvent.Text(eventParent,listL,listR);
   if (!MinecraftForge.EVENT_BUS.post(event)) {
-    for (int x=0; x < left.size(); x++) {
-      String msg=left.get(x);
+    int top=2;
+    for (    String msg : listL) {
+      top+=fontrenderer.FONT_HEIGHT;
       if (msg == null)       continue;
-      fontrenderer.drawStringWithShadow(msg,2,2 + x * 10,WHITE);
+      drawRect(1,top - 1,2 + fontrenderer.getStringWidth(msg) + 1,top - 1,-1873784752);
+      fontrenderer.drawString(msg,2,top,14737632);
     }
-    for (int x=0; x < right.size(); x++) {
-      String msg=right.get(x);
+    top=2;
+    for (    String msg : listR) {
+      top+=fontrenderer.FONT_HEIGHT;
       if (msg == null)       continue;
       int w=fontrenderer.getStringWidth(msg);
-      fontrenderer.drawStringWithShadow(msg,width - w - 10,2 + x * 10,WHITE);
+      int left=width - 2 - w;
+      drawRect(left - 1,top - 1,left + w + 1,top - 1,-1873784752);
+      fontrenderer.drawString(msg,left,top,14737632);
     }
   }
   mc.mcProfiler.endSection();

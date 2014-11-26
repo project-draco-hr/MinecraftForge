@@ -1,0 +1,5 @@
+{
+  super(world);
+  this.rand=rand;
+  this.pos=pos;
+}

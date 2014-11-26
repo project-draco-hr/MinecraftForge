@@ -1,0 +1,3 @@
+{
+  chestInfo.put(category,new ChestGenHooks(category,(List<WeightedRandomChestContent>)items,min,max));
+}

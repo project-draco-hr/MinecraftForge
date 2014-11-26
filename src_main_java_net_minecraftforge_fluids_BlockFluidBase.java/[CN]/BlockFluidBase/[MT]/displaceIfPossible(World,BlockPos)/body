@@ -1,0 +1,32 @@
+{
+  if (world.isAirBlock(pos)) {
+    return true;
+  }
+  IBlockState state=world.getBlockState(pos);
+  Block block=state.getBlock();
+  if (block == this) {
+    return false;
+  }
+  if (displacements.containsKey(block)) {
+    if (displacements.get(block)) {
+      block.dropBlockAsItem(world,pos,state,0);
+      return true;
+    }
+    return false;
+  }
+  Material material=block.getMaterial();
+  if (material.blocksMovement() || material == Material.portal) {
+    return false;
+  }
+  int density=getDensity(world,pos);
+  if (density == Integer.MAX_VALUE) {
+    block.dropBlockAsItem(world,pos,state,0);
+    return true;
+  }
+  if (this.density > density) {
+    return true;
+  }
+ else {
+    return false;
+  }
+}

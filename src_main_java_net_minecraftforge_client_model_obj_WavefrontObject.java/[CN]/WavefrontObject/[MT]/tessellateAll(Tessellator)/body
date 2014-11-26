@@ -1,5 +1,0 @@
-{
-  for (  GroupObject groupObject : groupObjects) {
-    groupObject.render(tessellator);
-  }
-}

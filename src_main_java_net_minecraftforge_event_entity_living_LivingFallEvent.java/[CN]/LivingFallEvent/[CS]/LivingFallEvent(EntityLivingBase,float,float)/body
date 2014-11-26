@@ -1,0 +1,5 @@
+{
+  super(entity);
+  this.distance=distance;
+  this.damageMultiplier=damageMultiplier;
+}

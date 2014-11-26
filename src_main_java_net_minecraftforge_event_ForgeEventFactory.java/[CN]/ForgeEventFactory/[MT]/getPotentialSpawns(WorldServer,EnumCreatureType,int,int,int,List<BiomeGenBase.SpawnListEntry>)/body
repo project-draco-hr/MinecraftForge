@@ -1,7 +1,0 @@
-{
-  WorldEvent.PotentialSpawns event=new WorldEvent.PotentialSpawns(world,type,x,y,z,oldList);
-  if (MinecraftForge.EVENT_BUS.post(event)) {
-    return null;
-  }
-  return event.list;
-}

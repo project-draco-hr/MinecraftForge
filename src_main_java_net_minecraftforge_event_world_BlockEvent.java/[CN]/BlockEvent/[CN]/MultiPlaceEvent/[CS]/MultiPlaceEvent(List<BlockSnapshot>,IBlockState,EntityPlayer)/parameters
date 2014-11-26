@@ -1,0 +1,3 @@
+List<BlockSnapshot> blockSnapshots
+IBlockState placedAgainst
+EntityPlayer player

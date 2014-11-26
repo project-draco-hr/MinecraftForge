@@ -1,3 +1,0 @@
-{
-  super(fluid,world,x,y,z);
-}

@@ -1,0 +1,7 @@
+{
+  super(chunkProvider);
+  this.x=x;
+  this.z=z;
+  this.primer=primer;
+  this.world=world;
+}

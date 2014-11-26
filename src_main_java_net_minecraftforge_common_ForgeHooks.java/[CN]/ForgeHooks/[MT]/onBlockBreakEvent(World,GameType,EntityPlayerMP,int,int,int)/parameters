@@ -1,6 +1,0 @@
-World world
-GameType gameType
-EntityPlayerMP entityPlayer
-int x
-int y
-int z

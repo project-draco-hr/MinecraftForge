@@ -1,10 +1,13 @@
 {
   if (pre(CROSSHAIRS))   return;
-  bind(Gui.icons);
-  GL11.glEnable(GL11.GL_BLEND);
-  OpenGlHelper.glBlendFunc(GL11.GL_ONE_MINUS_DST_COLOR,GL11.GL_ONE_MINUS_SRC_COLOR,1,0);
-  drawTexturedModalRect(width / 2 - 7,height / 2 - 7,0,0,16,16);
-  OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
-  GL11.glDisable(GL11.GL_BLEND);
+  if (this.func_175183_b()) {
+    bind(Gui.icons);
+    GlStateManager.enableBlend();
+    GlStateManager.tryBlendFuncSeparate(GL11.GL_ONE_MINUS_DST_COLOR,GL11.GL_ONE_MINUS_SRC_COLOR,1,0);
+    GlStateManager.enableAlpha();
+    drawTexturedModalRect(width / 2 - 7,height / 2 - 7,0,0,16,16);
+    GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
+    GL11.glDisable(GL11.GL_BLEND);
+  }
   post(CROSSHAIRS);
 }

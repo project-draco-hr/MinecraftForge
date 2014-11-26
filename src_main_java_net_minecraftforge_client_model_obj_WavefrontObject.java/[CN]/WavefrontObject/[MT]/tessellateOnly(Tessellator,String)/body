@@ -1,9 +1,0 @@
-{
-  for (  GroupObject groupObject : groupObjects) {
-    for (    String groupName : groupNames) {
-      if (groupName.equalsIgnoreCase(groupObject.name)) {
-        groupObject.render(tessellator);
-      }
-    }
-  }
-}

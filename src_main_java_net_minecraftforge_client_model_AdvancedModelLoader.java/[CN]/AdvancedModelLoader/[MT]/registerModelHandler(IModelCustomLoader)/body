@@ -1,5 +1,0 @@
-{
-  for (  String suffix : modelHandler.getSuffixes()) {
-    instances.put(suffix,modelHandler);
-  }
-}

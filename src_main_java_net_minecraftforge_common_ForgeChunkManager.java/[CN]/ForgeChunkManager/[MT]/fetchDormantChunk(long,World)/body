@@ -5,9 +5,10 @@
   }
   Chunk chunk=cache.getIfPresent(coords);
   if (chunk != null) {
-    for (    List<Entity> eList : (List<Entity>[])chunk.entityLists) {
-      for (      Entity e : eList) {
-        e.resetEntityId();
+    for (    ClassInheritanceMultiMap eList : chunk.getEntityLists()) {
+      Iterator<Entity> itr=(Iterator<Entity>)eList.iterator();
+      while (itr.hasNext()) {
+        (itr.next()).resetEntityId();
       }
     }
   }

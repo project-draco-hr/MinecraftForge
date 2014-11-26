@@ -1,6 +1,0 @@
-{
-  this.world=world;
-  this.rand=rand;
-  this.chunkX=worldX;
-  this.chunkZ=worldZ;
-}

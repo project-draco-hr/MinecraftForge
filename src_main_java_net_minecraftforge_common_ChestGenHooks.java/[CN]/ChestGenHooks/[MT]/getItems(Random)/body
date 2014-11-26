@@ -9,5 +9,5 @@
       }
     }
   }
-  return ret.toArray(new WeightedRandomChestContent[ret.size()]);
+  return ret;
 }

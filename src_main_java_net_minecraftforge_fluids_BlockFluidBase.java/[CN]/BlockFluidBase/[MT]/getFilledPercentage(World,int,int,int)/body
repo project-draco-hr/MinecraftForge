@@ -1,6 +1,0 @@
-{
-  int quantaRemaining=getQuantaValue(world,x,y,z) + 1;
-  float remaining=quantaRemaining / quantaPerBlockFloat;
-  if (remaining > 1)   remaining=1.0f;
-  return remaining * (density > 0 ? 1 : -1);
-}

@@ -1,4 +1,0 @@
-{
-  super(world,x,y,z,meta,note);
-  this.instrument=Instrument.fromId(instrument);
-}

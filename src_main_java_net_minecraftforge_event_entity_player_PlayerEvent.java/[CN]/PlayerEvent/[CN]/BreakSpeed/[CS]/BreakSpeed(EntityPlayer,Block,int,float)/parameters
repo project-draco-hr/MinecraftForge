@@ -1,4 +1,0 @@
-EntityPlayer player
-Block block
-int metadata
-float original

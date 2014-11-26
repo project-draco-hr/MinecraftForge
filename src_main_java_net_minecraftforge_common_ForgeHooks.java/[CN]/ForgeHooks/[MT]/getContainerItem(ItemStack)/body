@@ -1,0 +1,12 @@
+{
+  if (stack == null)   return null;
+  if (stack.getItem().hasContainerItem(stack)) {
+    stack=stack.getItem().getContainerItem(stack);
+    if (stack != null && stack.isItemStackDamageable() && stack.getMetadata() > stack.getMaxDamage()) {
+      MinecraftForge.EVENT_BUS.post(new PlayerDestroyItemEvent(craftingPlayer.get(),stack));
+      return null;
+    }
+    return stack;
+  }
+  return null;
+}

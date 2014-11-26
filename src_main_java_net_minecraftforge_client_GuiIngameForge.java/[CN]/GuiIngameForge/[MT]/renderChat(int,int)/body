@@ -2,10 +2,10 @@
   mc.mcProfiler.startSection("chat");
   RenderGameOverlayEvent.Chat event=new RenderGameOverlayEvent.Chat(eventParent,0,height - 48);
   if (MinecraftForge.EVENT_BUS.post(event))   return;
-  GL11.glPushMatrix();
-  GL11.glTranslatef((float)event.posX,(float)event.posY,0.0F);
+  GlStateManager.pushMatrix();
+  GlStateManager.translate((float)event.posX,(float)event.posY,0.0F);
   persistantChatGUI.drawChat(updateCounter);
-  GL11.glPopMatrix();
+  GlStateManager.popMatrix();
   post(CHAT);
   mc.mcProfiler.endSection();
 }

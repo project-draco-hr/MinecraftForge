@@ -1,5 +1,0 @@
-{
-  Decorate event=new Decorate(world,rand,chunkX,chunkZ,type);
-  MinecraftForge.TERRAIN_GEN_BUS.post(event);
-  return event.getResult() != Result.DENY;
-}

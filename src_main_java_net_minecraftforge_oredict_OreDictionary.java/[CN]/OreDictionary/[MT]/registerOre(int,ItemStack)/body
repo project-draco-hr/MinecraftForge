@@ -1,3 +1,0 @@
-{
-  registerOreImpl(getOreName(id),ore);
-}

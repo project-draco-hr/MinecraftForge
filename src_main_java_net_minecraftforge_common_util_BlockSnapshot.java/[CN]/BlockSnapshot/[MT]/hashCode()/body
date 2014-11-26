@@ -1,8 +1,8 @@
 {
   int hash=7;
-  hash=73 * hash + this.x;
-  hash=73 * hash + this.y;
-  hash=73 * hash + this.z;
+  hash=73 * hash + this.pos.getX();
+  hash=73 * hash + this.pos.getY();
+  hash=73 * hash + this.pos.getZ();
   hash=73 * hash + this.meta;
   hash=73 * hash + this.dimId;
   hash=73 * hash + (this.nbt != null ? this.nbt.hashCode() : 0);

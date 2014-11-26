@@ -1,0 +1,4 @@
+{
+  this(world,pos,state);
+  this.flag=flag;
+}

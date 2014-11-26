@@ -1,3 +1,0 @@
-{
-  this(player,action,x,y,z,face,player.worldObj);
-}

@@ -1,8 +1,0 @@
-{
-  if (pre(PORTAL))   return;
-  float f1=mc.thePlayer.prevTimeInPortal + (mc.thePlayer.timeInPortal - mc.thePlayer.prevTimeInPortal) * partialTicks;
-  if (f1 > 0.0F) {
-    func_130015_b(f1,width,height);
-  }
-  post(PORTAL);
-}

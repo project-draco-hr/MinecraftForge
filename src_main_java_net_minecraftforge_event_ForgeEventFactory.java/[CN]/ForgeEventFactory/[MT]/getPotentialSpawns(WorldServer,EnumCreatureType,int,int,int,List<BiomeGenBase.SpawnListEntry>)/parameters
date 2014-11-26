@@ -1,6 +1,0 @@
-WorldServer world
-EnumCreatureType type
-int x
-int y
-int z
-List<BiomeGenBase.SpawnListEntry> oldList

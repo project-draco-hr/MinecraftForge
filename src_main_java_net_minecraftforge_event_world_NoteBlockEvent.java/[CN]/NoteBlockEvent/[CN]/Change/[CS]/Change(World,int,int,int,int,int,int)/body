@@ -1,5 +1,0 @@
-{
-  super(world,x,y,z,meta,newNote);
-  this.oldNote=Note.fromId(oldNote);
-  this.oldOctave=Octave.fromId(oldNote);
-}

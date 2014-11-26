@@ -1,0 +1,6 @@
+{
+  IBlockState placedAgainst=blockSnapshot.world.getBlockState(blockSnapshot.pos.offset(direction.getOpposite()));
+  PlaceEvent event=new PlaceEvent(blockSnapshot,placedAgainst,player);
+  MinecraftForge.EVENT_BUS.post(event);
+  return event;
+}

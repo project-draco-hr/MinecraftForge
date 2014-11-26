@@ -1,0 +1,4 @@
+World world
+GameType gameType
+EntityPlayerMP entityPlayer
+BlockPos pos

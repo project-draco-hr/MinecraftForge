@@ -1,3 +1,0 @@
-{
-  return isValidFace_V_VT_VN_Line(line) || isValidFace_V_VT_Line(line) || isValidFace_V_VN_Line(line)|| isValidFace_V_Line(line);
-}

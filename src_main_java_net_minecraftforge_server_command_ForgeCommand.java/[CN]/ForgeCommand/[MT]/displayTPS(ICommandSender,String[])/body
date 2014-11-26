@@ -2,7 +2,7 @@
   int dim=0;
   boolean summary=true;
   if (args.length > 1) {
-    dim=parseInt(sender,args[1]);
+    dim=parseInt(args[1]);
     summary=false;
   }
   if (summary) {

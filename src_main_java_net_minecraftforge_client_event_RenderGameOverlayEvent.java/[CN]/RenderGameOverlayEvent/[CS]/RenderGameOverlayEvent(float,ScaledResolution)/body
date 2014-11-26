@@ -1,0 +1,5 @@
+{
+  this.partialTicks=partialTicks;
+  this.resolution=resolution;
+  this.type=null;
+}

@@ -1,0 +1,4 @@
+{
+  int quantaRemaining=getQuantaValue(world,pos);
+  return quantaRemaining / quantaPerBlockFloat;
+}

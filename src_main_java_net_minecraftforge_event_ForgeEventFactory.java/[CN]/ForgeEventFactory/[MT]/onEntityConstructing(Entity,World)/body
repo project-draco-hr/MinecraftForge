@@ -1,0 +1,8 @@
+{
+  HashMap<String,IExtendedEntityProperties> ret=new HashMap<String,IExtendedEntityProperties>();
+  MinecraftForge.EVENT_BUS.post(new EntityEvent.EntityConstructing(entity));
+  for (  IExtendedEntityProperties props : ret.values()) {
+    props.init(entity,world);
+  }
+  return ret;
+}

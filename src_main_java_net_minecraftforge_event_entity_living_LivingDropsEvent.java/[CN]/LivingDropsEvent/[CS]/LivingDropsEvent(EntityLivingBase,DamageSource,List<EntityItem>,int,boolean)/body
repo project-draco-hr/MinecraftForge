@@ -1,0 +1,7 @@
+{
+  super(entity);
+  this.source=source;
+  this.drops=drops;
+  this.lootingLevel=lootingLevel;
+  this.recentlyHit=recentlyHit;
+}

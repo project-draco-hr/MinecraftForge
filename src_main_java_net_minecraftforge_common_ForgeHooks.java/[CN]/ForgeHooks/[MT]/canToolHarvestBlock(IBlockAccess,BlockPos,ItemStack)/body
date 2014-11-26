@@ -1,0 +1,7 @@
+{
+  IBlockState state=world.getBlockState(pos);
+  state=state.getBlock().getActualState(state,world,pos);
+  String tool=state.getBlock().getHarvestTool(state);
+  if (stack == null || tool == null)   return false;
+  return stack.getItem().getHarvestLevel(stack,tool) >= state.getBlock().getHarvestLevel(state);
+}

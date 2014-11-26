@@ -1,0 +1,4 @@
+Block block
+EntityPlayer player
+IBlockAccess world
+BlockPos pos

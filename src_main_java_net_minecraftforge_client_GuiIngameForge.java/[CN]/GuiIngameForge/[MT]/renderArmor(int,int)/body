@@ -1,7 +1,7 @@
 {
   if (pre(ARMOR))   return;
   mc.mcProfiler.startSection("armor");
-  GL11.glEnable(GL11.GL_BLEND);
+  GlStateManager.enableBlend();
   int left=width / 2 - 91;
   int top=height - left_height;
   int level=ForgeHooks.getTotalArmorValue(mc.thePlayer);
@@ -18,7 +18,7 @@
     left+=8;
   }
   left_height+=10;
-  GL11.glDisable(GL11.GL_BLEND);
+  GlStateManager.disableBlend();
   mc.mcProfiler.endSection();
   post(ARMOR);
 }

@@ -4,14 +4,14 @@
   junkChance=MathHelper.clamp_float(junkChance,0.0F,1.0F);
   treasureChance=MathHelper.clamp_float(treasureChance,0.0F,1.0F);
   if (chance < junkChance) {
-    return ((WeightedRandomFishable)WeightedRandom.getRandomItem(rand,junk)).func_150708_a(rand);
+    return ((WeightedRandomFishable)WeightedRandom.getRandomItem(rand,junk)).getItemStack(rand);
   }
   chance-=junkChance;
   if (chance < treasureChance) {
-    return ((WeightedRandomFishable)WeightedRandom.getRandomItem(rand,treasure)).func_150708_a(rand);
+    return ((WeightedRandomFishable)WeightedRandom.getRandomItem(rand,treasure)).getItemStack(rand);
   }
   chance-=treasureChance;
 {
-    return ((WeightedRandomFishable)WeightedRandom.getRandomItem(rand,fish)).func_150708_a(rand);
+    return ((WeightedRandomFishable)WeightedRandom.getRandomItem(rand,fish)).getItemStack(rand);
   }
 }

@@ -1,0 +1,7 @@
+{
+  int quantaRemaining=getQuantaValue(world,pos);
+  if (quantaRemaining <= aboveThis) {
+    return -1;
+  }
+  return quantaRemaining;
+}

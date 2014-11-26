@@ -1,0 +1,5 @@
+{
+  this.pos=pos;
+  this.world=world;
+  this.state=state;
+}

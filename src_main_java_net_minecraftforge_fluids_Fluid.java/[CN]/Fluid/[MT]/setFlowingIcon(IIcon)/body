@@ -1,4 +1,0 @@
-{
-  this.flowingIcon=flowingIcon;
-  return this;
-}

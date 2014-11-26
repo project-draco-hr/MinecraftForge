@@ -1,7 +1,0 @@
-World world
-int x
-int y
-int z
-int meta
-int oldNote
-int newNote

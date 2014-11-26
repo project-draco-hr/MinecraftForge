@@ -1,9 +1,9 @@
 {
   compound.setString("blockMod",blockIdentifier.modId);
   compound.setString("blockName",blockIdentifier.name);
-  compound.setInteger("posX",x);
-  compound.setInteger("posY",y);
-  compound.setInteger("posZ",z);
+  compound.setInteger("posX",pos.getX());
+  compound.setInteger("posY",pos.getY());
+  compound.setInteger("posZ",pos.getZ());
   compound.setInteger("flag",flag);
   compound.setInteger("dimension",dimId);
   compound.setInteger("metadata",meta);

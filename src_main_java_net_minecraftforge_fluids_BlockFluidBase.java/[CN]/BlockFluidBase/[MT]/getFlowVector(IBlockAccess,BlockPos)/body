@@ -1,0 +1,45 @@
+{
+  Vec3 vec=new Vec3(0.0D,0.0D,0.0D);
+  int decay=quantaPerBlock - getQuantaValue(world,pos);
+  for (int side=0; side < 4; ++side) {
+    int x2=pos.getX();
+    int z2=pos.getZ();
+switch (side) {
+case 0:
+      --x2;
+    break;
+case 1:
+  --z2;
+break;
+case 2:
+++x2;
+break;
+case 3:
+++z2;
+break;
+}
+BlockPos pos2=new BlockPos(x2,pos.getY(),z2);
+int otherDecay=quantaPerBlock - getQuantaValue(world,pos2);
+if (otherDecay >= quantaPerBlock) {
+if (!world.getBlockState(pos2).getBlock().getMaterial().blocksMovement()) {
+otherDecay=quantaPerBlock - getQuantaValue(world,pos2.offsetDown());
+if (otherDecay >= 0) {
+int power=otherDecay - (decay - quantaPerBlock);
+vec=vec.addVector((pos2.getX() - pos.getX()) * power,0,(pos2.getZ() - pos.getZ()) * power);
+}
+}
+}
+ else if (otherDecay >= 0) {
+int power=otherDecay - decay;
+vec=vec.addVector((pos2.getX() - pos.getX()) * power,0,(pos2.getZ() - pos.getZ()) * power);
+}
+}
+if (world.getBlockState(pos.offsetUp()).getBlock() == this) {
+boolean flag=isBlockSolid(world,pos.add(0,0,-1),EnumFacing.NORTH) || isBlockSolid(world,pos.add(0,0,1),EnumFacing.SOUTH) || isBlockSolid(world,pos.add(-1,0,0),EnumFacing.WEST)|| isBlockSolid(world,pos.add(1,0,0),EnumFacing.EAST)|| isBlockSolid(world,pos.add(0,1,-1),EnumFacing.NORTH)|| isBlockSolid(world,pos.add(0,1,1),EnumFacing.SOUTH)|| isBlockSolid(world,pos.add(-1,1,0),EnumFacing.WEST)|| isBlockSolid(world,pos.add(1,1,0),EnumFacing.EAST);
+if (flag) {
+vec=vec.normalize().addVector(0.0D,-6.0D,0.0D);
+}
+}
+vec=vec.normalize();
+return vec;
+}
