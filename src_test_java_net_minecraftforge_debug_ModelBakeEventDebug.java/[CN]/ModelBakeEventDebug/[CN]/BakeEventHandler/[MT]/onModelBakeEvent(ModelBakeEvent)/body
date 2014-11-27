@@ -1,0 +1,5 @@
+{
+  TextureAtlasSprite base=Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite("minecraft:blocks/slime");
+  TextureAtlasSprite overlay=Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite("minecraft:blocks/redstone_block");
+  event.modelRegistry.putObject(ClientProxy.modelLocation,new CustomModel(base,overlay));
+}

@@ -1,0 +1,4 @@
+{
+  GameRegistry.registerBlock(CustomModelBlock.instance,CustomModelBlock.name);
+  GameRegistry.registerTileEntity(CustomTileEntity.class,MODID.toLowerCase() + ":custom_tile_entity");
+}

@@ -1,0 +1,13 @@
+{
+  super.postInit(event);
+  Item item=Item.getItemFromBlock(CustomModelBlock.instance);
+  RenderItem renderItem=Minecraft.getMinecraft().getRenderItem();
+  if (renderItem != null) {
+    renderItem.getItemModelMesher().register(item,new ItemMeshDefinition(){
+      public ModelResourceLocation getModelLocation(      ItemStack stack){
+        return modelLocation;
+      }
+    }
+);
+  }
+}
