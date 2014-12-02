@@ -15,10 +15,10 @@
   Tessellator tessellator=Tessellator.getInstance();
   WorldRenderer worldrenderer=tessellator.getWorldRenderer();
   worldrenderer.startDrawingQuads();
-  worldrenderer.func_178960_a(f1,f2,f3,f);
+  worldrenderer.setColorRGBA_F(f1,f2,f3,f);
   worldrenderer.addVertex((double)par3,(double)par2,0.0D);
   worldrenderer.addVertex((double)par1,(double)par2,0.0D);
-  worldrenderer.func_178960_a(f5,f6,f7,f4);
+  worldrenderer.setColorRGBA_F(f5,f6,f7,f4);
   worldrenderer.addVertex((double)par1,(double)par4,0.0D);
   worldrenderer.addVertex((double)par3,(double)par4,0.0D);
   tessellator.draw();
