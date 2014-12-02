@@ -1,6 +1,6 @@
 {
   if (pre(CROSSHAIRS))   return;
-  if (this.func_175183_b()) {
+  if (this.showCrosshair()) {
     bind(Gui.icons);
     GlStateManager.enableBlend();
     GlStateManager.tryBlendFuncSeparate(GL11.GL_ONE_MINUS_DST_COLOR,GL11.GL_ONE_MINUS_SRC_COLOR,1,0);

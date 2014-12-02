@@ -1,6 +1,6 @@
 {
   int lightThis=world.getCombinedLight(pos,0);
-  int lightUp=world.getCombinedLight(pos.offsetUp(),0);
+  int lightUp=world.getCombinedLight(pos.up(),0);
   int lightThisBase=lightThis & 255;
   int lightUpBase=lightUp & 255;
   int lightThisExt=lightThis >> 16 & 255;

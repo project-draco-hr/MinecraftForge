@@ -1,4 +1,0 @@
-{
-  fireCreateEventAndReplace(biome);
-  biome.theBiomeDecorator.func_180292_a(par1World,par2Random,biome,pos);
-}

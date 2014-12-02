@@ -3,7 +3,7 @@
   if (gameType.isCreative() && entityPlayer.getHeldItem() != null && entityPlayer.getHeldItem().getItem() instanceof ItemSword)   preCancelEvent=true;
   if (gameType.isAdventure()) {
     if (gameType == WorldSettings.GameType.SPECTATOR)     preCancelEvent=true;
-    if (!entityPlayer.func_175142_cm()) {
+    if (!entityPlayer.isAllowEdit()) {
       ItemStack itemstack=entityPlayer.getCurrentEquippedItem();
       if (itemstack == null || !itemstack.canDestroy(world.getBlockState(pos).getBlock()))       preCancelEvent=true;
     }

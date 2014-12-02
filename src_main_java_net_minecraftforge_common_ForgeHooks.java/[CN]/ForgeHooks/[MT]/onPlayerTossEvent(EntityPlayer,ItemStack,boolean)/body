@@ -1,6 +1,6 @@
 {
   player.captureDrops=true;
-  EntityItem ret=player.func_146097_a(item,false,includeName);
+  EntityItem ret=player.dropItem(item,false,includeName);
   player.capturedDrops.clear();
   player.captureDrops=false;
   if (ret == null) {

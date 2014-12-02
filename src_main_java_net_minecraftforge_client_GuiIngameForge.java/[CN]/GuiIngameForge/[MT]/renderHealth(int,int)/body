@@ -3,21 +3,21 @@
   if (pre(HEALTH))   return;
   mc.mcProfiler.startSection("health");
   GlStateManager.enableBlend();
-  EntityPlayer player=(EntityPlayer)this.mc.func_175606_aa();
+  EntityPlayer player=(EntityPlayer)this.mc.getRenderViewEntity();
   int health=MathHelper.ceiling_float_int(player.getHealth());
   boolean highlight=field_175191_F > (long)updateCounter && (field_175191_F - (long)updateCounter) / 3L % 2L == 1L;
   if (health < this.field_175194_C && player.hurtResistantTime > 0) {
-    this.field_175190_E=Minecraft.getSystemTime();
+    this.lastSystemTime=Minecraft.getSystemTime();
     this.field_175191_F=(long)(this.updateCounter + 20);
   }
  else   if (health > this.field_175194_C && player.hurtResistantTime > 0) {
-    this.field_175190_E=Minecraft.getSystemTime();
+    this.lastSystemTime=Minecraft.getSystemTime();
     this.field_175191_F=(long)(this.updateCounter + 10);
   }
-  if (Minecraft.getSystemTime() - this.field_175190_E > 1000L) {
+  if (Minecraft.getSystemTime() - this.lastSystemTime > 1000L) {
     this.field_175194_C=health;
     this.field_175189_D=health;
-    this.field_175190_E=Minecraft.getSystemTime();
+    this.lastSystemTime=Minecraft.getSystemTime();
   }
   this.field_175194_C=health;
   int healthLast=this.field_175189_D;

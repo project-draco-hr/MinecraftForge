@@ -1,7 +1,7 @@
 {
   if (pre(AIR))   return;
   mc.mcProfiler.startSection("air");
-  EntityPlayer player=(EntityPlayer)this.mc.func_175606_aa();
+  EntityPlayer player=(EntityPlayer)this.mc.getRenderViewEntity();
   GlStateManager.enableBlend();
   int left=width / 2 + 91;
   int top=height - right_height;

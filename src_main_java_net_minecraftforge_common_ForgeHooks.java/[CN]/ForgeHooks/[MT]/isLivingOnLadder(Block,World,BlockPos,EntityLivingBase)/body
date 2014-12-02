@@ -1,5 +1,5 @@
 {
-  boolean isSpectator=(entity instanceof EntityPlayer && ((EntityPlayer)entity).func_175149_v());
+  boolean isSpectator=(entity instanceof EntityPlayer && ((EntityPlayer)entity).isSpectator());
   if (isSpectator)   return false;
   if (!ForgeModContainer.fullBoundingBoxLadders) {
     return block != null && block.isLadder(world,pos,entity);

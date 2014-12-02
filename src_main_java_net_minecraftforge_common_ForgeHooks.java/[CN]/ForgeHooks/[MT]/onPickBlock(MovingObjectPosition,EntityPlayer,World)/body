@@ -3,12 +3,12 @@
   boolean isCreative=player.capabilities.isCreativeMode;
   TileEntity te=null;
   if (target.typeOfHit == MovingObjectType.BLOCK) {
-    IBlockState state=world.getBlockState(target.func_178782_a());
-    if (state.getBlock().isAir(world,target.func_178782_a())) {
+    IBlockState state=world.getBlockState(target.getBlockPos());
+    if (state.getBlock().isAir(world,target.getBlockPos())) {
       return false;
     }
-    if (isCreative && GuiScreen.isCtrlKeyDown())     te=world.getTileEntity(target.func_178782_a());
-    result=state.getBlock().getPickBlock(target,world,target.func_178782_a());
+    if (isCreative && GuiScreen.isCtrlKeyDown())     te=world.getTileEntity(target.getBlockPos());
+    result=state.getBlock().getPickBlock(target,world,target.getBlockPos());
   }
  else {
     if (target.typeOfHit != MovingObjectType.ENTITY || target.entityHit == null || !isCreative) {

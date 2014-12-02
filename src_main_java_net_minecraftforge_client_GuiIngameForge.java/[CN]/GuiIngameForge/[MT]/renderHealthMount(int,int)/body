@@ -1,5 +1,5 @@
 {
-  EntityPlayer player=(EntityPlayer)mc.func_175606_aa();
+  EntityPlayer player=(EntityPlayer)mc.getRenderViewEntity();
   Entity tmp=player.ridingEntity;
   if (!(tmp instanceof EntityLivingBase))   return;
   bind(icons);

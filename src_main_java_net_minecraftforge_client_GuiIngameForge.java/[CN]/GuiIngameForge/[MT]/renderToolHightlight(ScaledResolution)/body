@@ -1,5 +1,5 @@
 {
-  if (this.mc.gameSettings.heldItemTooltips && !this.mc.playerController.enableEverythingIsScrewedUpMode()) {
+  if (this.mc.gameSettings.heldItemTooltips && !this.mc.playerController.isSpectator()) {
     mc.mcProfiler.startSection("toolHighlight");
     if (this.remainingHighlightTicks > 0 && this.highlightingItemStack != null) {
       String name=this.highlightingItemStack.getDisplayName();
@@ -15,11 +15,11 @@
         FontRenderer font=highlightingItemStack.getItem().getFontRenderer(highlightingItemStack);
         if (font != null) {
           int x=(res.getScaledWidth() - font.getStringWidth(name)) / 2;
-          font.func_175063_a(name,x,y,WHITE | (opacity << 24));
+          font.drawStringWithShadow(name,x,y,WHITE | (opacity << 24));
         }
  else {
           int x=(res.getScaledWidth() - fontrenderer.getStringWidth(name)) / 2;
-          fontrenderer.func_175063_a(name,x,y,WHITE | (opacity << 24));
+          fontrenderer.drawStringWithShadow(name,x,y,WHITE | (opacity << 24));
         }
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
@@ -27,7 +27,7 @@
     }
     mc.mcProfiler.endSection();
   }
- else   if (this.mc.thePlayer.func_175149_v()) {
-    this.field_175197_u.func_175263_a(res);
+ else   if (this.mc.thePlayer.isSpectator()) {
+    this.spectatorGui.func_175263_a(res);
   }
 }

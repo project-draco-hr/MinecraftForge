@@ -22,13 +22,13 @@
   if (renderPortal && !mc.thePlayer.isPotionActive(Potion.confusion)) {
     renderPortal(res,partialTicks);
   }
-  if (renderHotbar)   func_180479_a(res,partialTicks);
+  if (renderHotbar)   renderTooltip(res,partialTicks);
   GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
   zLevel=-90.0F;
   rand.setSeed((long)(updateCounter * 312871));
   if (renderCrosshairs)   renderCrosshairs(width,height);
   if (renderBossHealth)   renderBossHealth();
-  if (this.mc.playerController.shouldDrawHUD() && this.mc.func_175606_aa() instanceof EntityPlayer) {
+  if (this.mc.playerController.shouldDrawHUD() && this.mc.getRenderViewEntity() instanceof EntityPlayer) {
     if (renderHealth)     renderHealth(width,height);
     if (renderArmor)     renderArmor(width,height);
     if (renderFood)     renderFood(width,height);
@@ -50,7 +50,7 @@
   ScoreObjective objective=null;
   ScorePlayerTeam scoreplayerteam=scoreboard.getPlayersTeam(mc.thePlayer.getName());
   if (scoreplayerteam != null) {
-    int slot=scoreplayerteam.func_178775_l().func_175746_b();
+    int slot=scoreplayerteam.func_178775_l().getColorIndex();
     if (slot >= 0)     objective=scoreboard.getObjectiveInDisplaySlot(3 + slot);
   }
   ScoreObjective scoreobjective1=objective != null ? objective : scoreboard.getObjectiveInDisplaySlot(1);
