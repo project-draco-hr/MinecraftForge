@@ -15,7 +15,7 @@
     if (!(activeSubstitutions.containsKey(name) || activeSubstitutions.containsValue(name)) && getId(nameS) != id)     throw new IllegalStateException(String.format("Registry entry for name %s doesn't yield the expected id %d.",name,id));
     if (!availabilityMap.get(id))     throw new IllegalStateException(String.format("Registry entry for %s %s, id %d, name %s, marked as empty.",type,obj,id,name));
     if (blockedIds.contains(id))     throw new IllegalStateException(String.format("Registry entry for %s %s, id %d, name %s, marked as dangling.",type,obj,id,name));
-    if (obj instanceof ItemBlock) {
+    if (obj instanceof ItemBlock && !(obj instanceof ItemBanner)) {
       Block block=((ItemBlock)obj).block;
       if (iBlockRegistry.getId(block) != id) {
         throw new IllegalStateException(String.format("Registry entry for ItemBlock %s, id %d, is missing or uses the non-matching id %d.",obj,id,iBlockRegistry.getId(block)));
