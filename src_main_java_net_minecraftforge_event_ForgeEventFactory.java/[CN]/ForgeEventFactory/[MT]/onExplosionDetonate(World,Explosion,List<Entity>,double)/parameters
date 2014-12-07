@@ -1,0 +1,4 @@
+World world
+Explosion explosion
+List<Entity> list
+double diameter
