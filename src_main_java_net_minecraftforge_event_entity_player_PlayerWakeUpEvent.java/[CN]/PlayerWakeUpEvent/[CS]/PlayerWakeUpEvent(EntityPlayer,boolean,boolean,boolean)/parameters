@@ -1,0 +1,4 @@
+EntityPlayer player
+boolean wakeImmediatly
+boolean updateWorld
+boolean setSpawn
