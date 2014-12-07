@@ -1,0 +1,4 @@
+{
+  if (index >= stacks.length)   return null;
+  return stacks[index];
+}
