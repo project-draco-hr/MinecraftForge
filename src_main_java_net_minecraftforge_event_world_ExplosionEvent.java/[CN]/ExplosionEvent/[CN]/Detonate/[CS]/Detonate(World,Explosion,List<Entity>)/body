@@ -1,0 +1,4 @@
+{
+  super(world,explosion);
+  this.entityList=entityList;
+}
