@@ -74,6 +74,7 @@
   replacements.put(new ItemStack(Items.stick),"stickWood");
   replacements.put(new ItemStack(Blocks.planks),"plankWood");
   replacements.put(new ItemStack(Blocks.planks,1,WILDCARD_VALUE),"plankWood");
+  replacements.put(new ItemStack(Blocks.wooden_slab,1,WILDCARD_VALUE),"slabWood");
   replacements.put(new ItemStack(Blocks.stone),"stone");
   replacements.put(new ItemStack(Blocks.stone,1,WILDCARD_VALUE),"stone");
   replacements.put(new ItemStack(Blocks.cobblestone),"cobblestone");
@@ -103,7 +104,7 @@
   }
   hasInit=true;
   ItemStack[] replaceStacks=replacements.keySet().toArray(new ItemStack[replacements.keySet().size()]);
-  ItemStack[] exclusions=new ItemStack[]{new ItemStack(Blocks.lapis_block),new ItemStack(Items.cookie),new ItemStack(Blocks.stonebrick),new ItemStack(Blocks.stone_slab,1,WILDCARD_VALUE),new ItemStack(Blocks.stone_stairs),new ItemStack(Blocks.cobblestone_wall),new ItemStack(Blocks.oak_stairs),new ItemStack(Blocks.spruce_stairs),new ItemStack(Blocks.birch_stairs),new ItemStack(Blocks.jungle_stairs),new ItemStack(Blocks.acacia_stairs),new ItemStack(Blocks.dark_oak_stairs),new ItemStack(Blocks.glass_pane),new ItemStack(Blocks.stained_glass)};
+  ItemStack[] exclusions=new ItemStack[]{new ItemStack(Blocks.lapis_block),new ItemStack(Items.cookie),new ItemStack(Blocks.stonebrick),new ItemStack(Blocks.stone_slab,1,WILDCARD_VALUE),new ItemStack(Blocks.stone_stairs),new ItemStack(Blocks.cobblestone_wall),new ItemStack(Blocks.oak_stairs),new ItemStack(Blocks.spruce_stairs),new ItemStack(Blocks.birch_stairs),new ItemStack(Blocks.jungle_stairs),new ItemStack(Blocks.acacia_stairs),new ItemStack(Blocks.dark_oak_stairs),new ItemStack(Blocks.wooden_slab),new ItemStack(Blocks.glass_pane),new ItemStack(Blocks.stained_glass)};
   List<IRecipe> recipes=CraftingManager.getInstance().getRecipeList();
   List<IRecipe> recipesToRemove=new ArrayList<IRecipe>();
   List<IRecipe> recipesToAdd=new ArrayList<IRecipe>();
