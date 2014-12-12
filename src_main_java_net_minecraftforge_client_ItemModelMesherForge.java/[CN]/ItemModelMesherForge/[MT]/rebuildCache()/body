@@ -1,0 +1,21 @@
+{
+  final ModelManager manager=this.getModelManager();
+  for (  Map.Entry<Item,TIntObjectHashMap<ModelResourceLocation>> e : locations.entrySet()) {
+    TIntObjectHashMap<IBakedModel> mods=models.get(e.getKey());
+    if (mods != null) {
+      mods.clear();
+    }
+ else {
+      mods=new TIntObjectHashMap();
+      models.put(e.getKey(),mods);
+    }
+    final TIntObjectHashMap<IBakedModel> map=mods;
+    e.getValue().forEachEntry(new TIntObjectProcedure<ModelResourceLocation>(){
+      @Override public boolean execute(      int meta,      ModelResourceLocation location){
+        map.put(meta,manager.getModel(location));
+        return true;
+      }
+    }
+);
+  }
+}

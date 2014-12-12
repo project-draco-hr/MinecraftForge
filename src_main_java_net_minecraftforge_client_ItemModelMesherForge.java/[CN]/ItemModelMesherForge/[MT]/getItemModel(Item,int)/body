@@ -1,0 +1,4 @@
+{
+  TIntObjectHashMap<IBakedModel> map=models.get(item);
+  return map == null ? null : map.get(meta);
+}
