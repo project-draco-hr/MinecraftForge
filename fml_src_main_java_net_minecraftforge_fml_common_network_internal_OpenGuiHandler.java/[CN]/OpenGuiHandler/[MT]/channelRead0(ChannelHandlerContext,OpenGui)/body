@@ -1,5 +1,14 @@
 {
-  EntityPlayer player=FMLClientHandler.instance().getClient().thePlayer;
-  player.openGui(msg.modId,msg.modGuiId,player.worldObj,msg.x,msg.y,msg.z);
-  player.openContainer.windowId=msg.windowId;
+  IThreadListener thread=FMLCommonHandler.instance().getWorldThread(ctx.channel().attr(NetworkRegistry.NET_HANDLER).get());
+  if (thread.isCallingFromMinecraftThread()) {
+    process(msg);
+  }
+ else {
+    thread.addScheduledTask(new Runnable(){
+      public void run(){
+        OpenGuiHandler.this.process(msg);
+      }
+    }
+);
+  }
 }
