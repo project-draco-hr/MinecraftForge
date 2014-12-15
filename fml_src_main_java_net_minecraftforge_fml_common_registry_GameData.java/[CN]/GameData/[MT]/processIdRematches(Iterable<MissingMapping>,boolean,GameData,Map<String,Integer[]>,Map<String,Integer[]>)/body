@@ -25,7 +25,7 @@
       if (newId != remap.id)       throw new IllegalStateException();
       if (currId != newId) {
         FMLLog.info("Fixed %s id mismatch %s: %d (init) -> %d (map).",remap.type == Type.BLOCK ? "block" : "item",newName,currId,newId);
-        remaps.put(newName,new Integer[]{currId,newId});
+        (remap.type == Type.BLOCK ? remapBlocks : remapItems).put(newName,new Integer[]{currId,newId});
       }
     }
  else {

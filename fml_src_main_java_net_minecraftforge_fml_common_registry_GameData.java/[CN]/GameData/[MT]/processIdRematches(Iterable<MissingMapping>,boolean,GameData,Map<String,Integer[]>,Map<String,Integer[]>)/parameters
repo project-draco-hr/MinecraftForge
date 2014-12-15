@@ -1,4 +1,5 @@
 Iterable<MissingMapping> missedMappings
 boolean isLocalWorld
 GameData gameData
-Map<String,Integer[]> remaps
+Map<String,Integer[]> remapBlocks
+Map<String,Integer[]> remapItems

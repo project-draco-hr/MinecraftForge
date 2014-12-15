@@ -1,12 +1,15 @@
 {
-  if (missing.isEmpty()) {
+  if (missingBlocks.isEmpty() && missingItems.isEmpty()) {
     return ImmutableList.of();
   }
-  FMLLog.fine("There are %d mappings missing - attempting a mod remap",missing.size());
+  FMLLog.fine("There are %d mappings missing - attempting a mod remap",missingBlocks.size() + missingItems.size());
   ArrayListMultimap<String,MissingMapping> missingMappings=ArrayListMultimap.create();
-  for (  Map.Entry<String,Integer> mapping : missing.entrySet()) {
-    int id=mapping.getValue();
-    MissingMapping m=new MissingMapping(mapping.getKey(),id);
+  for (  Map.Entry<String,Integer> mapping : missingBlocks.entrySet()) {
+    MissingMapping m=new MissingMapping(GameRegistry.Type.BLOCK,mapping.getKey(),mapping.getValue());
+    missingMappings.put(m.name.substring(0,m.name.indexOf(':')),m);
+  }
+  for (  Map.Entry<String,Integer> mapping : missingItems.entrySet()) {
+    MissingMapping m=new MissingMapping(GameRegistry.Type.ITEM,mapping.getKey(),mapping.getValue());
     missingMappings.put(m.name.substring(0,m.name.indexOf(':')),m);
   }
   FMLMissingMappingsEvent missingEvent=new FMLMissingMappingsEvent(missingMappings);
@@ -34,5 +37,5 @@
       return ImmutableList.copyOf(missedMapping);
     }
   }
-  return GameData.processIdRematches(missingMappings.values(),isLocalWorld,gameData,remaps);
+  return GameData.processIdRematches(missingMappings.values(),isLocalWorld,gameData,remapBlocks,remapItems);
 }

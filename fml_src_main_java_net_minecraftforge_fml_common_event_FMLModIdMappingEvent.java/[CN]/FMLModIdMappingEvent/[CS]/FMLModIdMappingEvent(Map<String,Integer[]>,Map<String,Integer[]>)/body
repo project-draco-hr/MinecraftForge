@@ -1,0 +1,16 @@
+{
+  List<ModRemapping> remappings=Lists.newArrayList();
+  for (  Entry<String,Integer[]> mapping : blocks.entrySet()) {
+    remappings.add(new ModRemapping(mapping.getValue()[0],mapping.getValue()[1],mapping.getKey(),RemapTarget.BLOCK));
+  }
+  for (  Entry<String,Integer[]> mapping : items.entrySet()) {
+    remappings.add(new ModRemapping(mapping.getValue()[0],mapping.getValue()[1],mapping.getKey(),RemapTarget.ITEM));
+  }
+  Collections.sort(remappings,new Comparator<ModRemapping>(){
+    @Override public int compare(    ModRemapping o1,    ModRemapping o2){
+      return (o1.newId < o2.newId) ? -1 : ((o1.newId == o2.newId) ? 0 : 1);
+    }
+  }
+);
+  remappedIds=ImmutableList.copyOf(remappings);
+}
