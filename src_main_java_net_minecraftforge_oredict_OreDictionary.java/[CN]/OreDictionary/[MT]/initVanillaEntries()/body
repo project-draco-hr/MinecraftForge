@@ -69,6 +69,12 @@
     registerOre("record",Items.record_ward);
     registerOre("record",Items.record_11);
     registerOre("record",Items.record_wait);
+    registerOre("chest",Blocks.chest);
+    registerOre("chest",Blocks.ender_chest);
+    registerOre("chest",Blocks.trapped_chest);
+    registerOre("chestWood",Blocks.chest);
+    registerOre("chestEnder",Blocks.ender_chest);
+    registerOre("chestTrapped",Blocks.trapped_chest);
   }
   Map<ItemStack,String> replacements=new HashMap<ItemStack,String>();
   replacements.put(new ItemStack(Items.stick),"stickWood");
@@ -88,6 +94,9 @@
   replacements.put(new ItemStack(Blocks.glowstone),"glowstone");
   replacements.put(new ItemStack(Items.slime_ball),"slimeball");
   replacements.put(new ItemStack(Blocks.glass),"blockGlassColorless");
+  replacements.put(new ItemStack(Blocks.chest),"chestWood");
+  replacements.put(new ItemStack(Blocks.ender_chest),"chestEnder");
+  replacements.put(new ItemStack(Blocks.trapped_chest),"chestTrapped");
   String[] dyes={"Black","Red","Green","Brown","Blue","Purple","Cyan","LightGray","Gray","Pink","Lime","Yellow","LightBlue","Magenta","Orange","White"};
   for (int i=0; i < 16; i++) {
     ItemStack dye=new ItemStack(Items.dye,1,i);
