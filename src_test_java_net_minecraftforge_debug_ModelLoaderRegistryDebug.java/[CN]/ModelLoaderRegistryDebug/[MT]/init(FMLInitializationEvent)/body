@@ -1,0 +1,4 @@
+{
+  Item item=Item.getItemFromBlock(CustomModelBlock.instance);
+  Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item,0,new ModelResourceLocation(MODID.toLowerCase() + ":untitled2.b3d","inventory"));
+}

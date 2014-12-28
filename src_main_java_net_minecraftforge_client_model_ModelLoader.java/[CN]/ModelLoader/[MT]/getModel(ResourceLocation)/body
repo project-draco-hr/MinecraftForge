@@ -1,0 +1,4 @@
+{
+  if (!ModelLoaderRegistry.loaded(location))   loadAnyModel(location);
+  return ModelLoaderRegistry.getModel(location);
+}

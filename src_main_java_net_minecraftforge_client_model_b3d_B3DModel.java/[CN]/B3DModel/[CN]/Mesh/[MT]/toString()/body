@@ -1,0 +1,3 @@
+{
+  return String.format("Mesh [pivot=%s, brush=%s, data=...]",super.toString(),brush);
+}

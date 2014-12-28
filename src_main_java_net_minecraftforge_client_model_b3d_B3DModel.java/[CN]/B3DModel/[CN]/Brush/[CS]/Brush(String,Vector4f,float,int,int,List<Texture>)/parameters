@@ -1,0 +1,6 @@
+String name
+Vector4f color
+float shininess
+int blend
+int fx
+List<Texture> textures

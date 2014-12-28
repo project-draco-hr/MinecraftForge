@@ -1,0 +1,8 @@
+{
+  float f2=.5f * f;
+  int i=Float.floatToIntBits(f);
+  i=0x5f3759df - (i >> 1);
+  f=Float.intBitsToFloat(i);
+  f*=1.5f - f2 * f * f;
+  return f;
+}

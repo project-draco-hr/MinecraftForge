@@ -1,0 +1,3 @@
+{
+  return new B3DState(getNode().getAnimation(),1);
+}

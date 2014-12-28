@@ -1,0 +1,6 @@
+{
+  if (!(part instanceof PartWrapper<?>)) {
+    throw new IllegalArgumentException("B3DState can only be applied to b3d models");
+  }
+  return getNodeMatrix(((PartWrapper<?>)part).getNode());
+}

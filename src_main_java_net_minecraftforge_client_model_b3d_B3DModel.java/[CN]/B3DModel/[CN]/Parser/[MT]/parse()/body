@@ -1,0 +1,6 @@
+{
+  if (res != null)   return res;
+  readHeader();
+  res=bb3d();
+  return res;
+}

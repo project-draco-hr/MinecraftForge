@@ -1,0 +1,8 @@
+{
+  ImmutableMap.Builder<String,TextureAtlasSprite> builder=ImmutableMap.builder();
+  for (  String path : textures.keySet()) {
+    builder.put(path,bakedTextureGetter.apply(textures.get(path)));
+  }
+  builder.put("missingno",bakedTextureGetter.apply(new ResourceLocation("missingno")));
+  return new BakedWrapper(this,state,format,builder.build());
+}

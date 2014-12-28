@@ -1,0 +1,7 @@
+{
+  ImmutableTable.Builder<Integer,Node<?>,Key> builder=ImmutableTable.builder();
+  for (  Table.Cell<Integer,Optional<Node<?>>,Key> key : keyData.cellSet()) {
+    builder.put(key.getRowKey(),key.getColumnKey().or(this),key.getValue());
+  }
+  setAnimation(new Animation(animData.getLeft(),animData.getMiddle(),animData.getRight(),builder.build()));
+}

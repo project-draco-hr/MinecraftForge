@@ -1,0 +1,4 @@
+Vector3f translation
+Quat4f leftRot
+Vector3f scale
+Quat4f rightRot

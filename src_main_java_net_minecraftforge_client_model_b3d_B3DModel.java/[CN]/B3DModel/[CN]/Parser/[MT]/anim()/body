@@ -1,0 +1,8 @@
+{
+  chunk("ANIM");
+  int flags=buf.getInt();
+  int frames=buf.getInt();
+  float fps=buf.getFloat();
+  popLimit();
+  return Triple.of(flags,frames,fps);
+}

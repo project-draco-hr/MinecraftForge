@@ -1,0 +1,3 @@
+{
+  enabledDomains.add(domain.toLowerCase());
+}

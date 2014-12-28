@@ -1,0 +1,31 @@
+{
+  Float totalWeight=0f;
+  Matrix4f t=new Matrix4f();
+  if (mesh.getWeightMap().get(this).isEmpty()) {
+    t.setIdentity();
+  }
+ else {
+    for (    Pair<Float,Node<Bone>> bone : mesh.getWeightMap().get(this)) {
+      totalWeight+=bone.getLeft();
+      Matrix4f bm=animator.apply(bone.getRight());
+      logger.debug("w:" + totalWeight + " bone: "+ bone.getRight().getName()+ " bm: \n"+ bm);
+      bm.mul(bone.getLeft());
+      t.add(bm);
+      logger.debug("t: \n" + t);
+    }
+    if (totalWeight != 0)     t.mul(1f / totalWeight);
+  }
+  logger.debug("t: \n" + t);
+  Vector4f pos=new Vector4f(this.pos), newPos=new Vector4f();
+  pos.w=1;
+  t.transform(pos,newPos);
+  Vector3f rPos=new Vector3f(newPos.x / newPos.w,newPos.y / newPos.w,newPos.z / newPos.w);
+  t.invert();
+  t.transpose();
+  Vector4f normal=new Vector4f(this.normal), newNormal=new Vector4f();
+  normal.w=1;
+  t.transform(normal,newNormal);
+  Vector3f rNormal=new Vector3f(newNormal.x / newNormal.w,newNormal.y / newNormal.w,newNormal.z / newNormal.w);
+  rNormal.normalize();
+  return new Vertex(rPos,rNormal,color,texCoords);
+}

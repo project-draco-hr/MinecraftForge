@@ -1,0 +1,3 @@
+{
+  buf.limit(limitStack.pop());
+}

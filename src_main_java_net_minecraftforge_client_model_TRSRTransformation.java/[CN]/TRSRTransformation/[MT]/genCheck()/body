@@ -1,0 +1,11 @@
+{
+  if (!full) {
+    Pair<Matrix3f,Vector3f> pair=toAffine(matrix);
+    Triple<Quat4f,Vector3f,Quat4f> triple=svdDecompose(pair.getLeft());
+    this.translation=pair.getRight();
+    this.leftRot=triple.getLeft();
+    this.scale=triple.getMiddle();
+    this.rightRot=triple.getRight();
+    full=true;
+  }
+}

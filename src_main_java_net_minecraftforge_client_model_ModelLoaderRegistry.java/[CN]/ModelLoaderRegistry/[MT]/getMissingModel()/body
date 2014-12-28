@@ -1,0 +1,3 @@
+{
+  return ModelLoader.VanillaLoader.instance.getLoader().getMissingModel();
+}

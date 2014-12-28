@@ -1,0 +1,7 @@
+{
+  float w=buf.getFloat();
+  float x=buf.getFloat();
+  float y=buf.getFloat();
+  float z=buf.getFloat();
+  return new Quat4f(x,y,z,w);
+}

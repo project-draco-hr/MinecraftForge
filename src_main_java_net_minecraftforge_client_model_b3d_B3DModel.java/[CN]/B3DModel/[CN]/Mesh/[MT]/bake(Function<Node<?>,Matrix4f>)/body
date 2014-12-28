@@ -1,0 +1,10 @@
+{
+  ImmutableList.Builder<Face> builder=ImmutableList.builder();
+  for (  Face f : getFaces()) {
+    Vertex v1=f.getV1().bake(this,animator);
+    Vertex v2=f.getV2().bake(this,animator);
+    Vertex v3=f.getV3().bake(this,animator);
+    builder.add(new Face(v1,v2,v3,f.getBrush()));
+  }
+  return builder.build();
+}

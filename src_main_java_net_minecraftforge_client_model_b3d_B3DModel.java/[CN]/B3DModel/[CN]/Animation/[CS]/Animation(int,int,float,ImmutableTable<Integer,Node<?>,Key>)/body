@@ -1,0 +1,6 @@
+{
+  this.flags=flags;
+  this.frames=frames;
+  this.fps=fps;
+  this.keys=keys;
+}

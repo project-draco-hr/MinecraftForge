@@ -1,0 +1,10 @@
+{
+  chunk("TRIS");
+  List<Face> ret=new ArrayList<Face>();
+  int brush_id=buf.getInt();
+  while (buf.hasRemaining()) {
+    ret.add(new Face(getVertex(buf.getInt()),getVertex(buf.getInt()),getVertex(buf.getInt()),getBrush(brush_id)));
+  }
+  popLimit();
+  return ret;
+}

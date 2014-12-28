@@ -1,0 +1,8 @@
+{
+  this.name=name;
+  this.color=color;
+  this.shininess=shininess;
+  this.blend=blend;
+  this.fx=fx;
+  this.textures=textures;
+}

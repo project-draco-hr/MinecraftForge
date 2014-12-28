@@ -1,0 +1,4 @@
+{
+  if (model.getParentLocation() == null || model.getParentLocation().getResourcePath().startsWith("builtin/"))   return Collections.emptyList();
+  return Collections.singletonList(model.getParentLocation());
+}

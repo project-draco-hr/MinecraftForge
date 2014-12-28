@@ -1,0 +1,42 @@
+{
+  chunk("VRTS");
+  List<Vertex> ret=new ArrayList<Vertex>();
+  int flags=buf.getInt();
+  int tex_coord_sets=buf.getInt();
+  int tex_coord_set_size=buf.getInt();
+  while (buf.hasRemaining()) {
+    Vector3f v=new Vector3f(buf.getFloat(),buf.getFloat(),buf.getFloat()), n=null;
+    Vector4f color=null;
+    if ((flags & 1) != 0) {
+      n=new Vector3f(buf.getFloat(),buf.getFloat(),buf.getFloat());
+    }
+    if ((flags & 2) != 0) {
+      color=new Vector4f(buf.getFloat(),buf.getFloat(),buf.getFloat(),buf.getFloat());
+    }
+    Vector4f[] tex_coords=new Vector4f[tex_coord_sets];
+    for (int i=0; i < tex_coord_sets; i++) {
+switch (tex_coord_set_size) {
+case 1:
+        tex_coords[i]=new Vector4f(buf.getFloat(),0,0,1);
+      break;
+case 2:
+    tex_coords[i]=new Vector4f(buf.getFloat(),buf.getFloat(),0,1);
+  break;
+case 3:
+tex_coords[i]=new Vector4f(buf.getFloat(),buf.getFloat(),buf.getFloat(),1);
+break;
+case 4:
+tex_coords[i]=new Vector4f(buf.getFloat(),buf.getFloat(),buf.getFloat(),buf.getFloat());
+break;
+default :
+logger.error(String.format("Unsupported number of texture coords: ",tex_coord_set_size));
+tex_coords[i]=new Vector4f(0,0,0,1);
+}
+}
+ret.add(new Vertex(v,n,color,tex_coords));
+}
+popLimit();
+this.vertices.clear();
+this.vertices.addAll(ret);
+return ret;
+}

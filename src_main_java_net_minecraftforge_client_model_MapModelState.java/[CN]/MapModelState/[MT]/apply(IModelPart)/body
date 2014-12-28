@@ -1,0 +1,4 @@
+{
+  if (!map.containsKey(part))   return def;
+  return map.get(part);
+}

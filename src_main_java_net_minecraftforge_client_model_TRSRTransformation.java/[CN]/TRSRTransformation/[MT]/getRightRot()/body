@@ -1,0 +1,4 @@
+{
+  genCheck();
+  return (Quat4f)rightRot.clone();
+}

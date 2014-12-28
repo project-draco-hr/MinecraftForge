@@ -1,0 +1,4 @@
+List<Texture> textures
+List<Brush> brushes
+Node<?> root
+ImmutableMap<String,Node<Mesh>> meshes

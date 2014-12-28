@@ -1,0 +1,19 @@
+{
+  this.parent=parent;
+  Deque<Node<?>> queue=new ArrayDeque<Node<?>>(parent.getNodes().values());
+  while (!queue.isEmpty()) {
+    Node<?> node=queue.pop();
+    if (node.getKind() instanceof Bone) {
+      bones.add((Node<Bone>)node);
+      queue.addAll(node.getNodes().values());
+    }
+  }
+  ImmutableMultimap.Builder<Vertex,Pair<Float,Node<Bone>>> builder=ImmutableMultimap.builder();
+  for (  Node<Bone> bone : getBones()) {
+    for (    Pair<Vertex,Float> b : bone.getKind().getData()) {
+      builder.put(b.getLeft(),Pair.of(b.getRight(),bone));
+      logger.debug("Weight: " + b.getRight() + " "+ bone.getName()+ " "+ b.getLeft().getPos());
+    }
+  }
+  weightMap=builder.build();
+}

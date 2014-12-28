@@ -1,0 +1,3 @@
+{
+  return getModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath()));
+}

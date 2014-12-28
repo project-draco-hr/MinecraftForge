@@ -1,0 +1,4 @@
+{
+  if (!isChunk(tag))   throw new IOException("Expected chunk " + tag + ", got "+ new String(this.tag,"US-ASCII"));
+  pushLimit();
+}

@@ -1,0 +1,9 @@
+{
+  loaders.add(loader);
+  ((IReloadableResourceManager)Minecraft.getMinecraft().getResourceManager()).registerReloadListener(new IResourceManagerReloadListener(){
+    public void onResourceManagerReload(    IResourceManager manager){
+      for (      ICustomModelLoader loader : loaders)       loader.onResourceManagerReload(manager);
+    }
+  }
+);
+}
