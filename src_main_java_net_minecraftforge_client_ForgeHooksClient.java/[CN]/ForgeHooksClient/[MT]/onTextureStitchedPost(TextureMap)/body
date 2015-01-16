@@ -1,3 +1,5 @@
 {
   MinecraftForge.EVENT_BUS.post(new TextureStitchEvent.Post(map));
+  FluidRegistry.WATER.setIcons(map.getAtlasSprite("minecraft:blocks/water_still"),map.getAtlasSprite("minecraft:blocks/water_flow"));
+  FluidRegistry.LAVA.setIcons(map.getAtlasSprite("minecraft:blocks/lava_still"),map.getAtlasSprite("minecraft:blocks/lava_flow"));
 }

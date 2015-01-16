@@ -1,0 +1,4 @@
+{
+  this.stillIcon=stillIcon;
+  return this;
+}
