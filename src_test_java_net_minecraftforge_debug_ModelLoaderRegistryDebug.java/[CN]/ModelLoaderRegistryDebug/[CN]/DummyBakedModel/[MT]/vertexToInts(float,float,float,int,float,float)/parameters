@@ -1,0 +1,6 @@
+float x
+float y
+float z
+int color
+float u
+float v

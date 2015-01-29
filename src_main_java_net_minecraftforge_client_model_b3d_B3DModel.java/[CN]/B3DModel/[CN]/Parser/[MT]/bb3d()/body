@@ -1,0 +1,18 @@
+{
+  chunk("BB3D");
+  int version=buf.getInt();
+  if (version / 100 > this.version / 100)   throw new IOException("Unsupported major model version: " + ((float)version / 100));
+  if (version % 100 > this.version % 100)   logger.warn(String.format("Minor version differnce in model: ",((float)version / 100)));
+  List<Texture> textures=null;
+  List<Brush> brushes=null;
+  Node<?> root=null;
+  while (buf.hasRemaining()) {
+    readHeader();
+    if (isChunk("TEXS"))     textures=texs();
+ else     if (isChunk("BRUS"))     brushes=brus();
+ else     if (isChunk("NODE"))     root=node();
+ else     skip();
+  }
+  popLimit();
+  return new B3DModel(textures,brushes,root,meshes.build());
+}

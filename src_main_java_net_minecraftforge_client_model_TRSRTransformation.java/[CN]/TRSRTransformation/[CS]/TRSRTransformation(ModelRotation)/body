@@ -1,0 +1,3 @@
+{
+  this(new Matrix4f(rotation.getMatrix4d()));
+}

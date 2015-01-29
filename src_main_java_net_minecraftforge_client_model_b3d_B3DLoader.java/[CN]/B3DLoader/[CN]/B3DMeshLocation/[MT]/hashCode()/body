@@ -1,0 +1,6 @@
+{
+  final int prime=31;
+  int result=super.hashCode();
+  result=prime * result + ((mesh == null) ? 0 : mesh.hashCode());
+  return result;
+}

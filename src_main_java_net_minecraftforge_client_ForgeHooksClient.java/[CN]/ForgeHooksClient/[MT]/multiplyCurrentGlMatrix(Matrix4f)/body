@@ -1,0 +1,10 @@
+{
+  matrixBuf.clear();
+  float[] t=new float[4];
+  for (int i=0; i < 4; i++) {
+    matrix.getColumn(i,t);
+    matrixBuf.put(t);
+  }
+  matrixBuf.flip();
+  GL11.glMultMatrix(matrixBuf);
+}

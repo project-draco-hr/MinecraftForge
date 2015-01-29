@@ -1,0 +1,4 @@
+{
+  if (location.getResourcePath().startsWith("builtin/"))   return location;
+  return new ResourceLocation(location.getResourceDomain(),"models/" + location.getResourcePath());
+}

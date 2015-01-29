@@ -1,0 +1,3 @@
+{
+  return String.format("Face [v1=%s, v2=%s, v3=%s]",v1,v2,v3);
+}

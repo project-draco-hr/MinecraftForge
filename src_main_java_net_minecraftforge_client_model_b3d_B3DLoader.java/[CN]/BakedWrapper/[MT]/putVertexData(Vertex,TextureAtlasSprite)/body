@@ -1,0 +1,37 @@
+{
+  int oldPos=buf.position();
+  Number[] ns=new Number[16];
+  for (int i=0; i < ns.length; i++)   ns[i]=0f;
+  for (  VertexFormatElement e : (List<VertexFormatElement>)format.getElements()) {
+switch (e.getUsage()) {
+case POSITION:
+      put(e,v.getPos().x,v.getPos().y,v.getPos().z,1);
+    break;
+case COLOR:
+  if (v.getColor() != null) {
+    put(e,v.getColor().x,v.getColor().y,v.getColor().z,v.getColor().w);
+  }
+ else {
+    put(e,1,1,1,0);
+  }
+break;
+case UV:
+if (e.getIndex() < v.getTexCoords().length) {
+put(e,sprite.getInterpolatedU(v.getTexCoords()[0].x * 16),sprite.getInterpolatedV(v.getTexCoords()[0].y * 16),0,1);
+}
+ else {
+put(e,0,0,0,1);
+}
+break;
+case NORMAL:
+put(e,0,1,0,1);
+break;
+case GENERIC:
+put(e,0,0,0,1);
+break;
+default :
+break;
+}
+}
+buf.position(oldPos + format.getNextOffset());
+}

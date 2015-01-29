@@ -1,0 +1,3 @@
+{
+  return quatFromYXZ(yxz.y,yxz.x,yxz.z);
+}

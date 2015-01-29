@@ -1,0 +1,14 @@
+{
+  float p=(float)Math.sqrt(a1 * a1 + a2 * a2);
+  float sh=p > eps ? a2 : 0;
+  float ch=Math.abs(a1) + Math.max(p,eps);
+  if (a1 < 0) {
+    float f=sh;
+    sh=ch;
+    ch=f;
+  }
+  float w=rsqrt(ch * ch + sh * sh);
+  ch*=w;
+  sh*=w;
+  return Pair.of(sh,ch);
+}

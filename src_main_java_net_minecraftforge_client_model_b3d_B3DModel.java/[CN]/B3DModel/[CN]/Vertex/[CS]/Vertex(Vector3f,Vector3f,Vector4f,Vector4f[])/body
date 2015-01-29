@@ -1,0 +1,6 @@
+{
+  this.pos=pos;
+  this.normal=normal;
+  this.color=color;
+  this.texCoords=texCoords;
+}

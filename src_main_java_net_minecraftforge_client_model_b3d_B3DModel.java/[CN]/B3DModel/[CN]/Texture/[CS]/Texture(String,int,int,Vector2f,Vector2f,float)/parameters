@@ -1,0 +1,6 @@
+String path
+int flags
+int blend
+Vector2f pos
+Vector2f scale
+float rot

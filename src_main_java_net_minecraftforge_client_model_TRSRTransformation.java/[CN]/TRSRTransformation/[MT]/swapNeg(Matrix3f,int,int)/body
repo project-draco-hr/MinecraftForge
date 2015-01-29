@@ -1,0 +1,8 @@
+{
+  float[] t=new float[3];
+  m.getColumn(j,t);
+  for (int k=0; k < 3; k++) {
+    m.setElement(k,j,-m.getElement(k,i));
+  }
+  m.setColumn(i,t);
+}

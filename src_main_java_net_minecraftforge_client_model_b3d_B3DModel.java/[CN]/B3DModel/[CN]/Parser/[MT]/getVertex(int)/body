@@ -1,0 +1,7 @@
+{
+  if (vertex > vertices.size()) {
+    logger.error(String.format("vertex %s is out of range",vertex));
+    return null;
+  }
+  return vertices.get(vertex);
+}

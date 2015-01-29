@@ -1,0 +1,12 @@
+{
+  this.name=name;
+  this.pos=pos;
+  this.scale=scale;
+  this.rot=rot;
+  this.nodes=buildNodeMap(nodes);
+  this.kind=kind;
+  kind.setParent(this);
+  for (  Node<?> child : this.nodes.values()) {
+    child.setParent(this);
+  }
+}

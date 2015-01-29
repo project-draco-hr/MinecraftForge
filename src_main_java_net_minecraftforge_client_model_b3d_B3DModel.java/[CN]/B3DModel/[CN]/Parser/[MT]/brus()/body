@@ -1,0 +1,18 @@
+{
+  chunk("BRUS");
+  List<Brush> ret=new ArrayList<Brush>();
+  int n_texs=buf.getInt();
+  while (buf.hasRemaining()) {
+    String name=readString();
+    Vector4f color=new Vector4f(buf.getFloat(),buf.getFloat(),buf.getFloat(),buf.getFloat());
+    float shininess=buf.getFloat();
+    int blend=buf.getInt();
+    int fx=buf.getInt();
+    List<Texture> textures=new ArrayList<Texture>();
+    for (int i=0; i < n_texs; i++)     textures.add(getTexture(buf.getInt()));
+    ret.add(new Brush(name,color,shininess,blend,fx,textures));
+  }
+  popLimit();
+  this.brushes.addAll(ret);
+  return ret;
+}

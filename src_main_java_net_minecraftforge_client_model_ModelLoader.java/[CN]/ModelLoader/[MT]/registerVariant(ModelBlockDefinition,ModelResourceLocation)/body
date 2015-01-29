@@ -1,0 +1,20 @@
+{
+  Variants variants=null;
+  try {
+    variants=definition.getVariants(location.getVariant());
+  }
+ catch (  MissingVariantException e) {
+  }
+  if (variants == null) {
+    ResourceLocation loc=new ResourceLocation(location.getResourceDomain(),"block/" + location.getResourcePath());
+    variants=new Variants("normal",Lists.newArrayList(new Variant(loc,ModelRotation.X0_Y0,false,1)));
+  }
+  if (!variants.getVariants().isEmpty()) {
+    try {
+      stateModels.put(location,new WeightedRandomModel(variants));
+    }
+ catch (    Throwable e) {
+      throw new RuntimeException(e);
+    }
+  }
+}

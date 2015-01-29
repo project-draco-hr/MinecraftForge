@@ -1,0 +1,39 @@
+{
+  chunk("KEYS");
+  Map<Integer,Key> ret=new HashMap<Integer,Key>();
+  int flags=buf.getInt();
+  Vector3f pos=null, scale=null;
+  Quat4f rot=null;
+  while (buf.hasRemaining()) {
+    int frame=buf.getInt();
+    if ((flags & 1) != 0) {
+      pos=new Vector3f(buf.getFloat(),buf.getFloat(),buf.getFloat());
+    }
+    if ((flags & 2) != 0) {
+      scale=new Vector3f(buf.getFloat(),buf.getFloat(),buf.getFloat());
+    }
+    if ((flags & 4) != 0) {
+      rot=readQuat();
+    }
+    Key key=new Key(pos,scale,rot);
+    Key oldKey=animations.peek().get(frame,null);
+    if (oldKey != null) {
+      if (pos != null) {
+        if (oldKey.getPos() != null)         logger.error("Duplicate keys: %s and %s (ignored)",oldKey,key);
+ else         key=new Key(oldKey.getPos(),key.getScale(),key.getRot());
+      }
+      if (scale != null) {
+        if (oldKey.getScale() != null)         logger.error("Duplicate keys: %s and %s (ignored)",oldKey,key);
+ else         key=new Key(key.getPos(),oldKey.getScale(),key.getRot());
+      }
+      if (rot != null) {
+        if (oldKey.getRot() != null)         logger.error("Duplicate keys: %s and %s (ignored)",oldKey,key);
+ else         key=new Key(key.getPos(),key.getScale(),oldKey.getRot());
+      }
+    }
+    animations.peek().put(frame,Optional.<Node<?>>absent(),key);
+    ret.put(frame,key);
+  }
+  popLimit();
+  return ret;
+}

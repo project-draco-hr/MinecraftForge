@@ -1,0 +1,33 @@
+{
+  if (model.getParentLocation() != null) {
+    IModel parent=getModel(model.getParentLocation());
+    if (parent instanceof VanillaModelWrapper) {
+      model.parent=((VanillaModelWrapper)parent).model;
+    }
+ else {
+      throw new IllegalStateException("vanilla model" + model + "can't have non-vanilla parent");
+    }
+  }
+  if (!resolveTextures.contains(location))   return Collections.emptyList();
+  ImmutableSet.Builder<ResourceLocation> builder=ImmutableSet.builder();
+  builder.add(new ResourceLocation(model.resolveTextureName("particle")));
+  if (hasItemModel(model)) {
+    for (    String s : (List<String>)ItemModelGenerator.LAYERS) {
+      String r=model.resolveTextureName(s);
+      ResourceLocation loc=new ResourceLocation(r);
+      if (!r.equals(s)) {
+        builder.add(loc);
+      }
+      if (model.getRootModel() == MODEL_COMPASS && !loc.equals(TextureMap.LOCATION_MISSING_TEXTURE)) {
+        TextureAtlasSprite.setLocationNameCompass(loc.toString());
+      }
+ else       if (model.getRootModel() == MODEL_CLOCK && !loc.equals(TextureMap.LOCATION_MISSING_TEXTURE)) {
+        TextureAtlasSprite.setLocationNameClock(loc.toString());
+      }
+    }
+  }
+  if (location.getResourcePath().startsWith("models/block/") || !ModelLoader.this.isBuiltinModel(model.getRootModel())) {
+    builder.addAll(ModelLoader.this.getTextureLocations(model));
+  }
+  return builder.build();
+}

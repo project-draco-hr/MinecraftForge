@@ -1,0 +1,21 @@
+{
+  Matrix4f res=new Matrix4f(), t=new Matrix4f();
+  res.setIdentity();
+  if (translation != null)   res.setTranslation(translation);
+  if (leftRot != null) {
+    t.set(leftRot);
+    res.mul(t);
+  }
+  if (scale != null) {
+    t.setIdentity();
+    t.m00=scale.x;
+    t.m11=scale.y;
+    t.m22=scale.z;
+    res.mul(t);
+  }
+  if (rightRot != null) {
+    t.set(rightRot);
+    res.mul(t);
+  }
+  return res;
+}

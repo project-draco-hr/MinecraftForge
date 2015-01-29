@@ -1,0 +1,6 @@
+{
+  if (!cache.containsKey(frame)) {
+    cache.put(frame,new BakedWrapper(model,new B3DState(model.getNode().getAnimation(),frame),format,textures));
+  }
+  return cache.get(frame);
+}

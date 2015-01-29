@@ -1,0 +1,11 @@
+{
+  logger.debug("setAnimation " + animation + " "+ this);
+  this.animation=animation;
+  Deque<Node<?>> q=new ArrayDeque<Node<?>>(nodes.values());
+  while (!q.isEmpty()) {
+    Node<?> node=q.pop();
+    if (node.getAnimation() != null)     continue;
+    node.setAnimation(animation);
+    q.addAll(node.getNodes().values());
+  }
+}

@@ -1,0 +1,6 @@
+{
+  this.textures=textures;
+  this.brushes=brushes;
+  this.root=root;
+  this.meshes=meshes;
+}

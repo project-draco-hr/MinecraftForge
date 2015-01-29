@@ -1,0 +1,43 @@
+{
+  chunk("NODE");
+  animations.push(HashBasedTable.<Integer,Optional<Node<?>>,Key>create());
+  Triple<Integer,Integer,Float> animData=null;
+  Animation animation=null;
+  Pair<Brush,List<Face>> mesh=null;
+  List<Pair<Vertex,Float>> bone=null;
+  Map<Integer,Key> keys=new HashMap<Integer,Key>();
+  List<Node<?>> nodes=new ArrayList<Node<?>>();
+  String name=readString();
+  Vector3f pos=new Vector3f(buf.getFloat(),buf.getFloat(),buf.getFloat());
+  Vector3f scale=new Vector3f(buf.getFloat(),buf.getFloat(),buf.getFloat());
+  Quat4f rot=readQuat();
+  while (buf.hasRemaining()) {
+    readHeader();
+    if (isChunk("MESH"))     mesh=mesh();
+ else     if (isChunk("BONE"))     bone=bone();
+ else     if (isChunk("KEYS"))     keys.putAll(keys());
+ else     if (isChunk("NODE"))     nodes.add(node());
+ else     if (isChunk("ANIM"))     animData=anim();
+ else     skip();
+  }
+  popLimit();
+  Table<Integer,Optional<Node<?>>,Key> keyData=animations.pop();
+  Node<?> node;
+  if (mesh != null) {
+    Node<Mesh> mNode=Node.create(name,pos,scale,rot,nodes,new Mesh(mesh));
+    meshes.put(name,mNode);
+    node=mNode;
+  }
+ else   if (bone != null)   node=Node.create(name,pos,scale,rot,nodes,new Bone(bone));
+ else   node=Node.create(name,pos,scale,rot,nodes,new Pivot());
+  if (animData == null) {
+    for (    Table.Cell<Integer,Optional<Node<?>>,Key> key : keyData.cellSet()) {
+      logger.debug("KEY1: " + key + " "+ node);
+      animations.peek().put(key.getRowKey(),key.getColumnKey().or(Optional.of(node)),key.getValue());
+    }
+  }
+ else {
+    node.setAnimation(animData,keyData);
+  }
+  return node;
+}

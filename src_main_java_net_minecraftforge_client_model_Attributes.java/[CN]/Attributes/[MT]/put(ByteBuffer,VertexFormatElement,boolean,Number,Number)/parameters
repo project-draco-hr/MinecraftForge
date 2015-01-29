@@ -1,0 +1,5 @@
+ByteBuffer buf
+VertexFormatElement e
+boolean normalize
+Number fill
+Number ns

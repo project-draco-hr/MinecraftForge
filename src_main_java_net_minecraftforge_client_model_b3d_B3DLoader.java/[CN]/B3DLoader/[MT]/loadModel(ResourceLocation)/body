@@ -1,0 +1,38 @@
+{
+  ResourceLocation file=new ResourceLocation(modelLocation.getResourceDomain(),modelLocation.getResourcePath());
+  if (!cache.containsKey(file)) {
+    try {
+      IResource resource=null;
+      try {
+        resource=manager.getResource(file);
+      }
+ catch (      FileNotFoundException e) {
+        if (modelLocation.getResourcePath().startsWith("models/block/"))         resource=manager.getResource(new ResourceLocation(file.getResourceDomain(),"models/item/" + file.getResourcePath().substring("models/block/".length())));
+ else         if (modelLocation.getResourcePath().startsWith("models/item/"))         resource=manager.getResource(new ResourceLocation(file.getResourceDomain(),"models/block/" + file.getResourcePath().substring("models/item/".length())));
+ else         throw e;
+      }
+      B3DModel.Parser parser=new B3DModel.Parser(resource.getInputStream());
+      B3DModel model=parser.parse();
+      cache.put(modelLocation,model);
+    }
+ catch (    IOException e) {
+      FMLLog.log(Level.ERROR,e,"Exception loading model %s with B3D loader, skipping",modelLocation);
+      cache.put(modelLocation,null);
+    }
+  }
+  B3DModel model=cache.get(file);
+  if (model == null)   return ModelLoaderRegistry.getMissingModel();
+  if (modelLocation instanceof B3DMeshLocation) {
+    String mesh=((B3DMeshLocation)modelLocation).getMesh();
+    if (!model.getMeshes().containsKey(mesh)) {
+      FMLLog.severe("No mesh named %s in model %s, skipping",mesh,modelLocation);
+      return ModelLoaderRegistry.getMissingModel();
+    }
+    return new Wrapper(modelLocation,model.getTextures(),model.getMeshes().get(mesh));
+  }
+  if (!(model.getRoot().getKind() instanceof Mesh)) {
+    FMLLog.severe("No root mesh in model %s and no mesh name in location, skipping",modelLocation);
+    return ModelLoaderRegistry.getMissingModel();
+  }
+  return new Wrapper(modelLocation,model.getTextures(),(Node<Mesh>)model.getRoot());
+}

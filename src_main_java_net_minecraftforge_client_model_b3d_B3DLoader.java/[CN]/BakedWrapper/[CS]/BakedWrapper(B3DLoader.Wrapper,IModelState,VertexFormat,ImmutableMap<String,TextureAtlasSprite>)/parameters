@@ -1,0 +1,4 @@
+B3DLoader.Wrapper model
+IModelState state
+VertexFormat format
+ImmutableMap<String,TextureAtlasSprite> textures

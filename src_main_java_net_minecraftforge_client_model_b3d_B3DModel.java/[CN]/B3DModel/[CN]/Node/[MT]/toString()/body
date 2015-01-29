@@ -1,0 +1,3 @@
+{
+  return String.format("Node [name=%s, kind=%s, pos=%s, scale=%s, rot=%s, keys=..., nodes=..., animation=%s]",name,kind,pos,scale,rot,animation);
+}

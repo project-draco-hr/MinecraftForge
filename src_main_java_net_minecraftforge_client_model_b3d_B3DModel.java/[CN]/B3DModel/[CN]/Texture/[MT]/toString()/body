@@ -1,0 +1,3 @@
+{
+  return String.format("Texture [path=%s, flags=%s, blend=%s, pos=%s, scale=%s, rot=%s]",path,flags,blend,pos,scale,rot);
+}

@@ -1,0 +1,8 @@
+{
+  this.matrix=mul(translation,leftRot,scale,rightRot);
+  this.translation=translation != null ? translation : new Vector3f();
+  this.leftRot=leftRot != null ? leftRot : new Quat4f(0,0,0,1);
+  this.scale=scale != null ? scale : new Vector3f(1,1,1);
+  this.rightRot=rightRot != null ? rightRot : new Quat4f(0,0,0,1);
+  full=true;
+}

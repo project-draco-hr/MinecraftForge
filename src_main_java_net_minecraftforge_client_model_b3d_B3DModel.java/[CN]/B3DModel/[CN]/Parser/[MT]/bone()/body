@@ -1,0 +1,9 @@
+{
+  chunk("BONE");
+  List<Pair<Vertex,Float>> ret=new ArrayList<Pair<Vertex,Float>>();
+  while (buf.hasRemaining()) {
+    ret.add(Pair.of(getVertex(buf.getInt()),buf.getFloat()));
+  }
+  popLimit();
+  return ret;
+}

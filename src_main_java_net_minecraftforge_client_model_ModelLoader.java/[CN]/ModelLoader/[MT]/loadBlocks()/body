@@ -1,0 +1,4 @@
+{
+  Map<IBlockState,ModelResourceLocation> stateMap=blockModelShapes.getBlockStateMapper().putAllStateModelLocations();
+  loadVariants(stateMap.values());
+}
