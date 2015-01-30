@@ -8,14 +8,11 @@
     for (    Pair<Float,Node<Bone>> bone : mesh.getWeightMap().get(this)) {
       totalWeight+=bone.getLeft();
       Matrix4f bm=animator.apply(bone.getRight());
-      logger.debug("w:" + totalWeight + " bone: "+ bone.getRight().getName()+ " bm: \n"+ bm);
       bm.mul(bone.getLeft());
       t.add(bm);
-      logger.debug("t: \n" + t);
     }
     if (totalWeight != 0)     t.mul(1f / totalWeight);
   }
-  logger.debug("t: \n" + t);
   Vector4f pos=new Vector4f(this.pos), newPos=new Vector4f();
   pos.w=1;
   t.transform(pos,newPos);

@@ -12,7 +12,6 @@
   for (  Node<Bone> bone : getBones()) {
     for (    Pair<Vertex,Float> b : bone.getKind().getData()) {
       builder.put(b.getLeft(),Pair.of(b.getRight(),bone));
-      logger.debug("Weight: " + b.getRight() + " "+ bone.getName()+ " "+ b.getLeft().getPos());
     }
   }
   weightMap=builder.build();

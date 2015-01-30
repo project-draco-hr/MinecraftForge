@@ -1,5 +1,4 @@
 {
-  logger.debug("setAnimation " + animation + " "+ this);
   this.animation=animation;
   Deque<Node<?>> q=new ArrayDeque<Node<?>>(nodes.values());
   while (!q.isEmpty()) {

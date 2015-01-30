@@ -4,7 +4,6 @@
     String path=t.getPath();
     if (path.endsWith(".png"))     path=path.substring(0,path.length() - ".png".length());
     builder.put(t.getPath(),new ResourceLocation(location.getResourceDomain(),path));
-    System.out.println("Texture: " + path);
   }
   return builder.build();
 }

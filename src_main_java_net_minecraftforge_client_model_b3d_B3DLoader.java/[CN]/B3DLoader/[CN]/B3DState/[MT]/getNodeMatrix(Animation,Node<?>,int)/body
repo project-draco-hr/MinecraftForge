@@ -5,14 +5,12 @@
  else   if (key == null && node.getAnimation() != null && node.getAnimation() != animation)   key=node.getAnimation().getKeys().get(frame,node);
   if (key == null) {
     FMLLog.severe("invalid key index: " + frame);
-    logger.debug(String.format("getMatrix: %s %s\n%s %s %s\n%s",frame,node,node.getPos(),node.getScale(),node.getRot(),ret));
   }
  else {
     ret=ret.compose(new TRSRTransformation(key.getPos(),key.getRot(),key.getScale(),null));
     Matrix4f rm=new TRSRTransformation(node.getPos(),node.getRot(),node.getScale(),null).getMatrix();
     rm.invert();
     ret=ret.compose(new TRSRTransformation(rm));
-    logger.debug(String.format("getMatrix: %s %s\n%s %s %s\n%s %s %s\n%s",frame,node,node.getPos(),node.getScale(),node.getRot(),key.getPos(),key.getScale(),key.getRot(),ret));
   }
   return ret;
 }

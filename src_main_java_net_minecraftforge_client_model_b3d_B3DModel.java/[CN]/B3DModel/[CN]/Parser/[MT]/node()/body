@@ -32,7 +32,6 @@
  else   node=Node.create(name,pos,scale,rot,nodes,new Pivot());
   if (animData == null) {
     for (    Table.Cell<Integer,Optional<Node<?>>,Key> key : keyData.cellSet()) {
-      logger.debug("KEY1: " + key + " "+ node);
       animations.peek().put(key.getRowKey(),key.getColumnKey().or(Optional.of(node)),key.getValue());
     }
   }

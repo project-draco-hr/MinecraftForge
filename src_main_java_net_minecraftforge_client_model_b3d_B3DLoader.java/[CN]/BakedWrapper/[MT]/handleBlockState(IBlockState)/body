@@ -1,5 +1,4 @@
 {
-  System.out.println("handleBlockState " + state);
   if (state instanceof IExtendedBlockState) {
     IExtendedBlockState exState=(IExtendedBlockState)state;
     if (exState.getUnlistedNames().contains(B3DFrameProperty.instance)) {
