@@ -1,9 +1,10 @@
 {
   if (pre(BOSSHEALTH))   return;
+  GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
   mc.mcProfiler.startSection("bossHealth");
-  GL11.glEnable(GL11.GL_BLEND);
+  GlStateManager.enableBlend();
   super.renderBossHealth();
-  GL11.glDisable(GL11.GL_BLEND);
+  GlStateManager.disableBlend();
   mc.mcProfiler.endSection();
   post(BOSSHEALTH);
 }

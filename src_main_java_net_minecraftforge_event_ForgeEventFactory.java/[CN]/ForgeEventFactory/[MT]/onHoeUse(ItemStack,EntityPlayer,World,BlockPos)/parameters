@@ -1,0 +1,4 @@
+ItemStack stack
+EntityPlayer player
+World worldIn
+BlockPos pos

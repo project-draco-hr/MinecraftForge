@@ -1,4 +1,0 @@
-{
-  ModelBiped modelbiped=itemStack.getItem().getArmorModel(entityLiving,itemStack,slotID);
-  return modelbiped == null ? _default : modelbiped;
-}

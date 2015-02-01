@@ -1,0 +1,3 @@
+{
+  return String.format("Brush [name=%s, color=%s, shininess=%s, blend=%s, fx=%s, textures=%s]",name,color,shininess,blend,fx,textures);
+}

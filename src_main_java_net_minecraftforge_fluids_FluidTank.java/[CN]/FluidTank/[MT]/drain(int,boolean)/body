@@ -13,7 +13,7 @@
       fluid=null;
     }
     if (tile != null) {
-      FluidEvent.fireEvent(new FluidEvent.FluidDrainingEvent(fluid,tile.getWorldObj(),tile.xCoord,tile.yCoord,tile.zCoord,this,drained));
+      FluidEvent.fireEvent(new FluidEvent.FluidDrainingEvent(fluid,tile.getWorld(),tile.getPos(),this,drained));
     }
   }
   return stack;

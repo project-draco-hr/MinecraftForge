@@ -1,5 +1,0 @@
-{
-  super(fluid,world,x,y,z);
-  this.tank=tank;
-  this.amount=amount;
-}

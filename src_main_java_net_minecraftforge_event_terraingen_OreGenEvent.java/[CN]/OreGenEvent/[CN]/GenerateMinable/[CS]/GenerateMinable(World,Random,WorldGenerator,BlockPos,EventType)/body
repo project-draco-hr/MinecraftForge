@@ -1,0 +1,5 @@
+{
+  super(world,rand,pos);
+  this.generator=generator;
+  this.type=type;
+}

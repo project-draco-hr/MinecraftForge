@@ -1,0 +1,7 @@
+{
+  super(manager);
+  this.sound=sound;
+  this.category=category;
+  this.name=sound.getSoundLocation().getResourcePath();
+  this.result=sound;
+}

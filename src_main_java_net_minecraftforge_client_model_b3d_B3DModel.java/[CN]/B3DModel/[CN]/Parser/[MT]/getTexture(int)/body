@@ -1,0 +1,8 @@
+{
+  if (texture > textures.size()) {
+    logger.error(String.format("texture %s is out of range",texture));
+    return null;
+  }
+ else   if (texture == -1)   return null;
+  return textures.get(texture);
+}

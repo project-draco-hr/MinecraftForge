@@ -1,0 +1,9 @@
+{
+  if (world.isRemote) {
+    System.out.println("click " + counter);
+    if (player.isSneaking())     counter--;
+ else     counter++;
+    world.markBlockRangeForRenderUpdate(pos,pos);
+  }
+  return false;
+}

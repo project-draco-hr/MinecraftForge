@@ -1,3 +1,0 @@
-{
-  this(chunkProvider,chunkZ,chunkZ,blockArray,metaArray,biomeArray,null);
-}

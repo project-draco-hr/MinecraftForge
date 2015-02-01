@@ -1,0 +1,4 @@
+EntityPlayer player
+World world
+BlockPos pos
+IBlockState block

@@ -1,0 +1,4 @@
+World world
+EnumCreatureType type
+BlockPos pos
+List<SpawnListEntry> oldList

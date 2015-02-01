@@ -1,7 +1,0 @@
-{
-  if (textureCoordinateMatcher != null) {
-    textureCoordinateMatcher.reset();
-  }
-  textureCoordinateMatcher=textureCoordinatePattern.matcher(line);
-  return textureCoordinateMatcher.matches();
-}

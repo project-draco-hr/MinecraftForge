@@ -1,0 +1,6 @@
+{
+  if (state == null) {
+    state=(IExtendedBlockState)getBlockType().getDefaultState();
+  }
+  return state;
+}

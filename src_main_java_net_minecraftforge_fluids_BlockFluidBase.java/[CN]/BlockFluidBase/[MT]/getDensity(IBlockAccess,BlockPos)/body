@@ -1,0 +1,7 @@
+{
+  Block block=world.getBlockState(pos).getBlock();
+  if (!(block instanceof BlockFluidBase)) {
+    return Integer.MAX_VALUE;
+  }
+  return ((BlockFluidBase)block).density;
+}

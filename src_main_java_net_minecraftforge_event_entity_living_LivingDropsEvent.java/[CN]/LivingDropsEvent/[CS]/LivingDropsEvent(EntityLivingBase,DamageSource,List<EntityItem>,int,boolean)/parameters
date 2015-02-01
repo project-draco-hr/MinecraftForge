@@ -1,0 +1,5 @@
+EntityLivingBase entity
+DamageSource source
+List<EntityItem> drops
+int lootingLevel
+boolean recentlyHit

@@ -1,6 +1,0 @@
-{
-  bindTexture();
-  for (  ModelRenderer part : parts.values()) {
-    part.renderWithRotation(1.0F);
-  }
-}

@@ -1,0 +1,69 @@
+{
+  res=new ScaledResolution(mc,mc.displayWidth,mc.displayHeight);
+  eventParent=new RenderGameOverlayEvent(partialTicks,res);
+  int width=res.getScaledWidth();
+  int height=res.getScaledHeight();
+  renderHealthMount=mc.thePlayer.ridingEntity instanceof EntityLivingBase;
+  renderFood=mc.thePlayer.ridingEntity == null;
+  renderJumpBar=mc.thePlayer.isRidingHorse();
+  right_height=39;
+  left_height=39;
+  if (pre(ALL))   return;
+  fontrenderer=mc.fontRendererObj;
+  mc.entityRenderer.setupOverlayRendering();
+  GlStateManager.enableBlend();
+  if (Minecraft.isFancyGraphicsEnabled()) {
+    func_180480_a(mc.thePlayer.getBrightness(partialTicks),res);
+  }
+ else {
+    GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
+  }
+  if (renderHelmet)   renderHelmet(res,partialTicks);
+  if (renderPortal && !mc.thePlayer.isPotionActive(Potion.confusion)) {
+    renderPortal(res,partialTicks);
+  }
+  if (renderHotbar)   renderTooltip(res,partialTicks);
+  GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
+  zLevel=-90.0F;
+  rand.setSeed((long)(updateCounter * 312871));
+  if (renderCrosshairs)   renderCrosshairs(width,height);
+  if (renderBossHealth)   renderBossHealth();
+  if (this.mc.playerController.shouldDrawHUD() && this.mc.getRenderViewEntity() instanceof EntityPlayer) {
+    if (renderHealth)     renderHealth(width,height);
+    if (renderArmor)     renderArmor(width,height);
+    if (renderFood)     renderFood(width,height);
+    if (renderHealthMount)     renderHealthMount(width,height);
+    if (renderAir)     renderAir(width,height);
+  }
+  renderSleepFade(width,height);
+  if (renderJumpBar) {
+    renderJumpBar(width,height);
+  }
+ else   if (renderExperiance) {
+    renderExperience(width,height);
+  }
+  renderToolHightlight(res);
+  renderHUDText(width,height);
+  renderRecordOverlay(width,height,partialTicks);
+  renderTitle(width,height,partialTicks);
+  Scoreboard scoreboard=this.mc.theWorld.getScoreboard();
+  ScoreObjective objective=null;
+  ScorePlayerTeam scoreplayerteam=scoreboard.getPlayersTeam(mc.thePlayer.getName());
+  if (scoreplayerteam != null) {
+    int slot=scoreplayerteam.func_178775_l().getColorIndex();
+    if (slot >= 0)     objective=scoreboard.getObjectiveInDisplaySlot(3 + slot);
+  }
+  ScoreObjective scoreobjective1=objective != null ? objective : scoreboard.getObjectiveInDisplaySlot(1);
+  if (renderObjective && scoreobjective1 != null) {
+    this.func_180475_a(scoreobjective1,res);
+  }
+  GlStateManager.enableBlend();
+  GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
+  GlStateManager.disableAlpha();
+  renderChat(width,height);
+  renderPlayerList(width,height);
+  GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
+  GlStateManager.disableLighting();
+  GlStateManager.enableAlpha();
+  post(ALL);
+}

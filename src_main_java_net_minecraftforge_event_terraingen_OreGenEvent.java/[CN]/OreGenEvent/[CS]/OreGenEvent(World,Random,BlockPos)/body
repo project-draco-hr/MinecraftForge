@@ -1,0 +1,5 @@
+{
+  this.world=world;
+  this.rand=rand;
+  this.pos=pos;
+}

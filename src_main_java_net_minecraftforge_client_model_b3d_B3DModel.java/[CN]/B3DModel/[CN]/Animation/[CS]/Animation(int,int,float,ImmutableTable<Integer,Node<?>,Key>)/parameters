@@ -1,0 +1,4 @@
+int flags
+int frames
+float fps
+ImmutableTable<Integer,Node<?>,Key> keys

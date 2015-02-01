@@ -1,0 +1,4 @@
+{
+  genCheck();
+  return (Vector3f)scale.clone();
+}

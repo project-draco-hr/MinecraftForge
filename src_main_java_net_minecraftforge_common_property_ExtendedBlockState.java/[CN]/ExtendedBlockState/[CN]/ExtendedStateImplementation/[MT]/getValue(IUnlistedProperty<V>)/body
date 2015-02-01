@@ -1,0 +1,6 @@
+{
+  if (!this.unlistedProperties.containsKey(property)) {
+    throw new IllegalArgumentException("Cannot get unlisted property " + property + " as it does not exist in "+ getBlock().getBlockState());
+  }
+  return property.getType().cast(this.unlistedProperties.get(property).orNull());
+}

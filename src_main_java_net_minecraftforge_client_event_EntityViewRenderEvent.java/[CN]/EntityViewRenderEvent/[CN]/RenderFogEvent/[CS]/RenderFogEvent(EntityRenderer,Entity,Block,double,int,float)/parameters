@@ -1,0 +1,6 @@
+EntityRenderer renderer
+Entity entity
+Block block
+double renderPartialTicks
+int fogMode
+float farPlaneDistance

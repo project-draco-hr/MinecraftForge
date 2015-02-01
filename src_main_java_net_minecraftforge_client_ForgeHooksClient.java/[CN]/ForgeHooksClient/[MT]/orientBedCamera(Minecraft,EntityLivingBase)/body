@@ -1,9 +1,0 @@
-{
-  int x=MathHelper.floor_double(entity.posX);
-  int y=MathHelper.floor_double(entity.posY);
-  int z=MathHelper.floor_double(entity.posZ);
-  Block block=mc.theWorld.getBlock(x,y,z);
-  if (block != null && block.isBed(mc.theWorld,x,y,z,entity)) {
-    GL11.glRotatef((float)(block.getBedDirection(mc.theWorld,x,y,z) * 90),0.0F,1.0F,0.0F);
-  }
-}

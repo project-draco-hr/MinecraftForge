@@ -1,6 +1,0 @@
-{
-  if (worldRendererRB != null) {
-    worldRenderPass=pass;
-    MinecraftForge.EVENT_BUS.post(new RenderWorldEvent.Pre(worldRenderer,(ChunkCache)worldRendererRB.blockAccess,worldRendererRB,pass));
-  }
-}

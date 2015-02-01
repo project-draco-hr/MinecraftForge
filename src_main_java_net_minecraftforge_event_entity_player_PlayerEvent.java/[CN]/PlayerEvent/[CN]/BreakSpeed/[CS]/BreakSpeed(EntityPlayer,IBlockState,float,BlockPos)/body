@@ -1,0 +1,7 @@
+{
+  super(player);
+  this.state=state;
+  this.originalSpeed=original;
+  this.newSpeed=original;
+  this.pos=pos;
+}

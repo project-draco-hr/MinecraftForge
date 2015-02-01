@@ -1,0 +1,14 @@
+{
+  TIntObjectHashMap<ModelResourceLocation> locs=locations.get(item);
+  TIntObjectHashMap<IBakedModel> mods=models.get(item);
+  if (locs == null) {
+    locs=new TIntObjectHashMap();
+    locations.put(item,locs);
+  }
+  if (mods == null) {
+    mods=new TIntObjectHashMap();
+    models.put(item,mods);
+  }
+  locs.put(meta,location);
+  mods.put(meta,getModelManager().getModel(location));
+}

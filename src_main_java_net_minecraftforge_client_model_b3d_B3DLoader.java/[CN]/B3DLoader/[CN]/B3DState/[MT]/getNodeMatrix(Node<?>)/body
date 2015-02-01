@@ -1,0 +1,3 @@
+{
+  return cache.getUnchecked(Triple.<Animation,Node<?>,Integer>of(animation,node,frame));
+}

@@ -1,0 +1,5 @@
+{
+  super(block,properties);
+  this.unlistedProperties=unlistedProperties;
+  this.propertyValueTable=table;
+}

@@ -1,0 +1,3 @@
+{
+  return String.format("Key [pos=%s, scale=%s, rot=%s]",pos,scale,rot);
+}

@@ -1,0 +1,7 @@
+{
+  Block block=world.getBlockState(pos).getBlock();
+  if (block != this) {
+    return !block.isOpaqueCube();
+  }
+  return block.getMaterial() == this.getMaterial() ? false : super.shouldSideBeRendered(world,pos,side);
+}

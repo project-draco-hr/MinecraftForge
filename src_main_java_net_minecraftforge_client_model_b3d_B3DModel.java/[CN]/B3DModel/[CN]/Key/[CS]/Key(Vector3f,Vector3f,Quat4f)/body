@@ -1,0 +1,5 @@
+{
+  this.pos=pos;
+  this.scale=scale;
+  this.rot=rot;
+}

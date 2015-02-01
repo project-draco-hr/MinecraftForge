@@ -1,0 +1,26 @@
+{
+  int size=first.getNextOffset();
+  if (size != second.getNextOffset())   return false;
+  int padding=0;
+  int j=0;
+  for (  VertexFormatElement firstAttr : (List<VertexFormatElement>)first.getElements()) {
+    while (j < second.getElementCount() && second.getElement(j).getUsage() == EnumUsage.PADDING) {
+      padding+=second.getElement(j++).getSize();
+    }
+    if (j >= second.getElementCount() && padding == 0) {
+      return false;
+    }
+    if (padding == 0) {
+      VertexFormatElement secondAttr=second.getElement(j++);
+      if (firstAttr.getIndex() != secondAttr.getIndex() || firstAttr.getElementCount() != secondAttr.getElementCount() || firstAttr.getType() != secondAttr.getType() || firstAttr.getUsage() != secondAttr.getUsage()) {
+        return false;
+      }
+    }
+ else {
+      padding-=firstAttr.getSize();
+      if (padding < 0)       return false;
+    }
+  }
+  if (padding != 0 || j != second.getElementCount())   return false;
+  return true;
+}

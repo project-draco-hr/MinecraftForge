@@ -1,4 +1,0 @@
-{
-  fireCreateEventAndReplace(biome);
-  biome.theBiomeDecorator.decorateChunk(par1World,par2Random,biome,par3,par4);
-}

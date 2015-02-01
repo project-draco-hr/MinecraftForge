@@ -1,0 +1,4 @@
+{
+  super(world,rand,pos);
+  this.type=type;
+}

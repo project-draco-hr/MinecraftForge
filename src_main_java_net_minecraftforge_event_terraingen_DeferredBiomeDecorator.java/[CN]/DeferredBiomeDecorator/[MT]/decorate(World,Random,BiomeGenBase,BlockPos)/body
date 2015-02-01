@@ -1,0 +1,4 @@
+{
+  fireCreateEventAndReplace(biome);
+  biome.theBiomeDecorator.decorate(par1World,par2Random,biome,pos);
+}

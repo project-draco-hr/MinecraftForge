@@ -1,0 +1,3 @@
+{
+  return new ItemTransformVec3f(getTranslation(),toYXZ(getLeftRot()),getScale());
+}

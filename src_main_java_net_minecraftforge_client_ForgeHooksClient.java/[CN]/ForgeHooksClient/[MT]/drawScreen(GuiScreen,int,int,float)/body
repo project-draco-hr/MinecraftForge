@@ -1,0 +1,4 @@
+{
+  if (!MinecraftForge.EVENT_BUS.post(new GuiScreenEvent.DrawScreenEvent.Pre(screen,mouseX,mouseY,partialTicks)))   screen.drawScreen(mouseX,mouseY,partialTicks);
+  MinecraftForge.EVENT_BUS.post(new GuiScreenEvent.DrawScreenEvent.Post(screen,mouseX,mouseY,partialTicks));
+}

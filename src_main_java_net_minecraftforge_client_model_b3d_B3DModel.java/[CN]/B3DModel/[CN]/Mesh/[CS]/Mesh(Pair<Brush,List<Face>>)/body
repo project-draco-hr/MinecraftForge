@@ -1,0 +1,4 @@
+{
+  this.brush=data.getLeft();
+  this.faces=ImmutableList.copyOf(data.getRight());
+}

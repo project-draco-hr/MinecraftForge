@@ -1,0 +1,11 @@
+{
+  int start=buf.position();
+  while (buf.get() != 0)   ;
+  int end=buf.position();
+  byte[] tmp=new byte[end - start - 1];
+  buf.position(start);
+  buf.get(tmp);
+  buf.get();
+  String ret=new String(tmp,"UTF8");
+  return ret;
+}

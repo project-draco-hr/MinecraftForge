@@ -1,7 +1,0 @@
-{
-  for (  GroupObject groupObject : groupObjects) {
-    if (partName.equalsIgnoreCase(groupObject.name)) {
-      groupObject.render();
-    }
-  }
-}

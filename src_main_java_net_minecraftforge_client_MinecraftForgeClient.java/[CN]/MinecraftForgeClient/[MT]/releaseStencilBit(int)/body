@@ -1,5 +1,5 @@
 {
-  if (bit >= 0 && bit < getStencilBits()) {
+  if (bit >= 0 && bit < stencilBits.length()) {
     stencilBits.set(bit);
   }
 }

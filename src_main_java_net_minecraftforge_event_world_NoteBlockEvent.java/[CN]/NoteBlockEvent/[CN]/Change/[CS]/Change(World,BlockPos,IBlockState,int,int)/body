@@ -1,0 +1,5 @@
+{
+  super(world,pos,state,newNote);
+  this.oldNote=Note.fromId(oldNote);
+  this.oldOctave=Octave.fromId(oldNote);
+}

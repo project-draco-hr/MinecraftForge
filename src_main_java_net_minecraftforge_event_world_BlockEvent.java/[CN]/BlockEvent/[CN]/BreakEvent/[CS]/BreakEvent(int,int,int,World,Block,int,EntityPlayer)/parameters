@@ -1,7 +1,0 @@
-int x
-int y
-int z
-World world
-Block block
-int blockMetadata
-EntityPlayer player

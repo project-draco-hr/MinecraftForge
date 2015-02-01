@@ -1,0 +1,9 @@
+{
+  float ch=2f * (a11 - a22);
+  float sh=a12;
+  boolean b=g * sh * sh < ch * ch;
+  float w=rsqrt(sh * sh + ch * ch);
+  ch=b ? w * ch : cs;
+  sh=b ? w * sh : ss;
+  return Pair.of(sh,ch);
+}

@@ -1,8 +1,0 @@
-{
-  super(x,y,z,world,block,blockMetadata);
-  this.fortuneLevel=fortuneLevel;
-  this.dropChance=dropChance;
-  this.drops=drops;
-  this.isSilkTouching=isSilkTouching;
-  this.harvester=harvester;
-}

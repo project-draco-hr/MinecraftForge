@@ -1,0 +1,3 @@
+{
+  return model == MODEL_GENERATED || model == MODEL_COMPASS || model == MODEL_CLOCK || model == MODEL_ENTITY;
+}

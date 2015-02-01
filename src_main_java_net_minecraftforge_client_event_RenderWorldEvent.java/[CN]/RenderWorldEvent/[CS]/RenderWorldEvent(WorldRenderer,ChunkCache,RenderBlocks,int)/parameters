@@ -1,4 +1,0 @@
-WorldRenderer renderer
-ChunkCache chunkCache
-RenderBlocks renderBlocks
-int pass

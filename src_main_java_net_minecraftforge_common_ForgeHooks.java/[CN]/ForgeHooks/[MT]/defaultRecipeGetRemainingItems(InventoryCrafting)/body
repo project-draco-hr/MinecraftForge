@@ -1,0 +1,7 @@
+{
+  ItemStack[] ret=new ItemStack[inv.getSizeInventory()];
+  for (int i=0; i < ret.length; i++) {
+    ret[i]=getContainerItem(inv.getStackInSlot(i));
+  }
+  return ret;
+}

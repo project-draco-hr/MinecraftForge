@@ -1,0 +1,8 @@
+{
+  this.path=path;
+  this.flags=flags;
+  this.blend=blend;
+  this.pos=pos;
+  this.scale=scale;
+  this.rot=rot;
+}

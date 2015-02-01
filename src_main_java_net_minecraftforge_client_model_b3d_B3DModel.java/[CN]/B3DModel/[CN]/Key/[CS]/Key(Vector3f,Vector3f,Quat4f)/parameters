@@ -1,0 +1,3 @@
+Vector3f pos
+Vector3f scale
+Quat4f rot

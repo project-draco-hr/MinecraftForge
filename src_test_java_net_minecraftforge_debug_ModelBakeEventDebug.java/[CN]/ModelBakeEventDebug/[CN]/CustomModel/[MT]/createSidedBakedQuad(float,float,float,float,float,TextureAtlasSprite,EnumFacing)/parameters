@@ -1,0 +1,7 @@
+float x1
+float x2
+float z1
+float z2
+float y
+TextureAtlasSprite texture
+EnumFacing side

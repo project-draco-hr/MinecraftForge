@@ -1,8 +1,0 @@
-SoundManager manager
-SoundPoolEntry source
-String name
-float x
-float y
-float z
-float volume
-float pitch

@@ -1,0 +1,7 @@
+{
+  ImmutableMap.Builder<String,Node<?>> builder=ImmutableMap.builder();
+  for (  Node<?> node : nodes) {
+    builder.put(node.getName(),node);
+  }
+  return builder.build();
+}

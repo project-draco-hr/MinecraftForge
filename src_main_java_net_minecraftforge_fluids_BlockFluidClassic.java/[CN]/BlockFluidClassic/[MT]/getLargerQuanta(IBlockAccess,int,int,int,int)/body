@@ -1,7 +1,0 @@
-{
-  int quantaRemaining=getQuantaValue(world,x,y,z);
-  if (quantaRemaining <= 0) {
-    return compare;
-  }
-  return quantaRemaining >= compare ? quantaRemaining : compare;
-}

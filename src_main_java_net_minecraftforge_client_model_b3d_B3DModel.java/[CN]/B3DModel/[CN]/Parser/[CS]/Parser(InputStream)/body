@@ -1,0 +1,19 @@
+{
+  if (in instanceof FileInputStream) {
+    FileChannel channel=((FileInputStream)in).getChannel();
+    buf=channel.map(FileChannel.MapMode.READ_ONLY,0,channel.size()).order(ByteOrder.LITTLE_ENDIAN);
+  }
+ else {
+    IOUtils.readFully(in,tag);
+    byte[] tmp=new byte[4];
+    IOUtils.readFully(in,tmp);
+    int l=ByteBuffer.wrap(tmp).order(ByteOrder.LITTLE_ENDIAN).getInt();
+    if (l < 0 || l + 8 < 0)     throw new IOException("File is too large");
+    buf=ByteBuffer.allocate(l + 8).order(ByteOrder.LITTLE_ENDIAN);
+    buf.clear();
+    buf.put(tag);
+    buf.put(tmp);
+    buf.put(IOUtils.toByteArray(in,l));
+    buf.flip();
+  }
+}

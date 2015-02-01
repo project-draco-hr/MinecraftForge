@@ -2,16 +2,28 @@
   bind(icons);
   if (pre(HEALTH))   return;
   mc.mcProfiler.startSection("health");
-  GL11.glEnable(GL11.GL_BLEND);
-  boolean highlight=mc.thePlayer.hurtResistantTime / 3 % 2 == 1;
-  if (mc.thePlayer.hurtResistantTime < 10) {
-    highlight=false;
+  GlStateManager.enableBlend();
+  EntityPlayer player=(EntityPlayer)this.mc.getRenderViewEntity();
+  int health=MathHelper.ceiling_float_int(player.getHealth());
+  boolean highlight=field_175191_F > (long)updateCounter && (field_175191_F - (long)updateCounter) / 3L % 2L == 1L;
+  if (health < this.field_175194_C && player.hurtResistantTime > 0) {
+    this.lastSystemTime=Minecraft.getSystemTime();
+    this.field_175191_F=(long)(this.updateCounter + 20);
   }
-  IAttributeInstance attrMaxHealth=this.mc.thePlayer.getEntityAttribute(SharedMonsterAttributes.maxHealth);
-  int health=MathHelper.ceiling_float_int(mc.thePlayer.getHealth());
-  int healthLast=MathHelper.ceiling_float_int(mc.thePlayer.prevHealth);
+ else   if (health > this.field_175194_C && player.hurtResistantTime > 0) {
+    this.lastSystemTime=Minecraft.getSystemTime();
+    this.field_175191_F=(long)(this.updateCounter + 10);
+  }
+  if (Minecraft.getSystemTime() - this.lastSystemTime > 1000L) {
+    this.field_175194_C=health;
+    this.field_175189_D=health;
+    this.lastSystemTime=Minecraft.getSystemTime();
+  }
+  this.field_175194_C=health;
+  int healthLast=this.field_175189_D;
+  IAttributeInstance attrMaxHealth=player.getEntityAttribute(SharedMonsterAttributes.maxHealth);
   float healthMax=(float)attrMaxHealth.getAttributeValue();
-  float absorb=this.mc.thePlayer.getAbsorptionAmount();
+  float absorb=player.getAbsorptionAmount();
   int healthRows=MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F / 10.0F);
   int rowHeight=Math.max(10 - (healthRows - 2),3);
   this.rand.setSeed((long)(updateCounter * 312871));
@@ -20,14 +32,14 @@
   left_height+=(healthRows * rowHeight);
   if (rowHeight != 10)   left_height+=10 - rowHeight;
   int regen=-1;
-  if (mc.thePlayer.isPotionActive(Potion.regeneration)) {
+  if (player.isPotionActive(Potion.regeneration)) {
     regen=updateCounter % 25;
   }
   final int TOP=9 * (mc.theWorld.getWorldInfo().isHardcoreModeEnabled() ? 5 : 0);
   final int BACKGROUND=(highlight ? 25 : 16);
   int MARGIN=16;
-  if (mc.thePlayer.isPotionActive(Potion.poison))   MARGIN+=36;
- else   if (mc.thePlayer.isPotionActive(Potion.wither))   MARGIN+=72;
+  if (player.isPotionActive(Potion.poison))   MARGIN+=36;
+ else   if (player.isPotionActive(Potion.wither))   MARGIN+=72;
   float absorbRemaining=absorb;
   for (int i=MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F) - 1; i >= 0; --i) {
     int row=MathHelper.ceiling_float_int((float)(i + 1) / 10.0F) - 1;
@@ -50,7 +62,7 @@
  else       if (i * 2 + 1 == health)       drawTexturedModalRect(x,y,MARGIN + 45,TOP,9,9);
     }
   }
-  GL11.glDisable(GL11.GL_BLEND);
+  GlStateManager.disableBlend();
   mc.mcProfiler.endSection();
   post(HEALTH);
 }

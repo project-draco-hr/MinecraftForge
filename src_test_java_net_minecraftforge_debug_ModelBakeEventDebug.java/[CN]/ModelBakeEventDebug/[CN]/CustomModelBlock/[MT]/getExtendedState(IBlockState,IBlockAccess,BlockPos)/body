@@ -1,0 +1,8 @@
+{
+  TileEntity te=world.getTileEntity(pos);
+  if (te instanceof CustomTileEntity) {
+    CustomTileEntity cte=(CustomTileEntity)te;
+    return cte.getState();
+  }
+  return state;
+}

@@ -1,0 +1,21 @@
+{
+  loadBlocks();
+  loadItems();
+  stateModels.put(MODEL_MISSING,getModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath())));
+  textures.remove(TextureMap.LOCATION_MISSING_TEXTURE);
+  textures.addAll(LOCATIONS_BUILTIN_TEXTURES);
+  textureMap.loadSprites(resourceManager,new IIconCreator(){
+    public void registerSprites(    TextureMap map){
+      for (      ResourceLocation t : textures) {
+        sprites.put(t,map.registerSprite(t));
+      }
+    }
+  }
+);
+  sprites.put(new ResourceLocation("missingno"),textureMap.getMissingSprite());
+  Function<ResourceLocation,TextureAtlasSprite> textureGetter=Functions.forMap(sprites,textureMap.getMissingSprite());
+  for (  Entry<ModelResourceLocation,IModel> e : stateModels.entrySet()) {
+    bakedRegistry.putObject(e.getKey(),e.getValue().bake(e.getValue().getDefaultState(),Attributes.DEFAULT_BAKED_FORMAT,textureGetter));
+  }
+  return bakedRegistry;
+}

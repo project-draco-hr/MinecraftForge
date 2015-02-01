@@ -1,5 +1,0 @@
-{
-  super(world,rand,worldX,worldZ);
-  this.generator=generator;
-  this.type=type;
-}

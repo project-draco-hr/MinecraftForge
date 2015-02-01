@@ -1,0 +1,19 @@
+{
+  IBlockState state=entity.worldObj.getBlockState(pos);
+  Block block=state.getBlock();
+  double eyes=entity.posY + (double)entity.getEyeHeight();
+  double filled=1.0f;
+  if (block instanceof IFluidBlock) {
+    filled=((IFluidBlock)block).getFilledPercentage(entity.worldObj,pos);
+  }
+ else   if (block instanceof BlockLiquid) {
+    filled=BlockLiquid.getLiquidHeightPercent(block.getMetaFromState(state));
+  }
+  if (filled < 0) {
+    filled*=-1;
+    return eyes > (double)(pos.getY() + 1 + (1 - filled));
+  }
+ else {
+    return eyes < (double)(pos.getY() + 1 + filled);
+  }
+}

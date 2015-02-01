@@ -1,7 +1,0 @@
-{
-  Block block=world.getBlock(x,y,z);
-  if (!(block instanceof BlockFluidBase)) {
-    return Integer.MAX_VALUE;
-  }
-  return ((BlockFluidBase)block).temperature;
-}

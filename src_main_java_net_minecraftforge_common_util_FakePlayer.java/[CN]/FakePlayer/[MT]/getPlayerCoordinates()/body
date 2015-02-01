@@ -1,3 +1,0 @@
-{
-  return new ChunkCoordinates(0,0,0);
-}

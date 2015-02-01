@@ -1,6 +1,0 @@
-{
-  if (doDrain) {
-    world.setBlock(x,y,z,Blocks.air);
-  }
-  return new FluidStack(getFluid(),MathHelper.floor_float(getQuantaPercentage(world,x,y,z) * FluidContainerRegistry.BUCKET_VOLUME));
-}

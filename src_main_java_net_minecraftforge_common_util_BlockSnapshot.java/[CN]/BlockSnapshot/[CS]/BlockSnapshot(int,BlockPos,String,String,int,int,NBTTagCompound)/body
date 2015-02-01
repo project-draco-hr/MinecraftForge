@@ -1,0 +1,8 @@
+{
+  this.dimId=dimension;
+  this.pos=pos;
+  this.flag=flag;
+  this.blockIdentifier=new UniqueIdentifier(modid + ":" + blockName);
+  this.meta=meta;
+  this.nbt=nbt;
+}

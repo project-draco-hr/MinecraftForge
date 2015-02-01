@@ -1,0 +1,3 @@
+{
+  craftingPlayer.set(player);
+}

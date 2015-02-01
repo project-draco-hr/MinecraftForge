@@ -1,5 +1,5 @@
 {
-  NoteBlockEvent.Change e=new NoteBlockEvent.Change(te.getWorldObj(),te.xCoord,te.yCoord,te.zCoord,te.getBlockMetadata(),old,te.note);
+  NoteBlockEvent.Change e=new NoteBlockEvent.Change(te.getWorld(),te.getPos(),te.getWorld().getBlockState(te.getPos()),old,te.note);
   if (MinecraftForge.EVENT_BUS.post(e)) {
     te.note=old;
     return false;

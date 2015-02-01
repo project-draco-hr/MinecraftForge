@@ -1,7 +1,0 @@
-{
-  if (vertexNormalMatcher != null) {
-    vertexNormalMatcher.reset();
-  }
-  vertexNormalMatcher=vertexNormalPattern.matcher(line);
-  return vertexNormalMatcher.matches();
-}

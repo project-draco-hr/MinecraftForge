@@ -9,7 +9,7 @@
       if (temp.showInGui())       elements.add(temp);
     }
     while (pI.hasNext()) {
-      ConfigElement<?> temp=getTypedElement(pI.next());
+      ConfigElement temp=new ConfigElement(pI.next());
       if (temp.showInGui())       elements.add(temp);
     }
     if (!categoriesFirst)     while (ccI.hasNext()) {

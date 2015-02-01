@@ -1,0 +1,3 @@
+WorldRenderer renderer
+ChunkCache chunkCache
+int pass

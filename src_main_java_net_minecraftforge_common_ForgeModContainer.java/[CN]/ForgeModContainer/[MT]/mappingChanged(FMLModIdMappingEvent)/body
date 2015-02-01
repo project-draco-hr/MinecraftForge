@@ -1,4 +1,3 @@
 {
-  Blocks.fire.rebuildFireInfo();
   OreDictionary.rebakeMap();
 }

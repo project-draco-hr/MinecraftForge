@@ -1,4 +1,4 @@
 {
   super(world);
-  this.settings=ws;
+  this.settings=settings;
 }

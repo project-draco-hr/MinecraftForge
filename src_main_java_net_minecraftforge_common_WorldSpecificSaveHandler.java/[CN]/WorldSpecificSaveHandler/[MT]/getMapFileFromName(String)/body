@@ -1,3 +1,7 @@
 {
+  if (dataDir == null) {
+    dataDir=new File(world.getChunkSaveLocation(),"data");
+    dataDir.mkdirs();
+  }
   return new File(dataDir,name + ".dat");
 }

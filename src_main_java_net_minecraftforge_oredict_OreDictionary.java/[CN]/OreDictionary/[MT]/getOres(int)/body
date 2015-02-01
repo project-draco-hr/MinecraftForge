@@ -1,10 +1,3 @@
 {
-  while (idToName.size() < id + 1) {
-    String name="Filler: " + idToName.size();
-    idToName.add(name);
-    nameToId.put(name,idToName.size() - 1);
-    idToStack.add(null);
-    idToStackUn.add(EMPTY_LIST);
-  }
   return idToStackUn.size() > id ? idToStackUn.get(id) : EMPTY_LIST;
 }

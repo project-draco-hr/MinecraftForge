@@ -1,0 +1,4 @@
+{
+  limitStack.push(buf.limit());
+  buf.limit(buf.position() + length);
+}

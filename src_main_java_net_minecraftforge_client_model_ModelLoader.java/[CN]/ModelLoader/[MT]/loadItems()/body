@@ -1,0 +1,12 @@
+{
+  registerVariantNames();
+  for (  Item item : GameData.getItemRegistry().typeSafeIterable()) {
+    for (    String s : (List<String>)getVariantNames(item)) {
+      ResourceLocation file=getItemLocation(s);
+      ModelResourceLocation memory=new ModelResourceLocation(s,"inventory");
+      resolveTextures.add(ModelLoaderRegistry.getActualLocation(file));
+      IModel model=getModel(file);
+      if (model != null)       stateModels.put(memory,model);
+    }
+  }
+}

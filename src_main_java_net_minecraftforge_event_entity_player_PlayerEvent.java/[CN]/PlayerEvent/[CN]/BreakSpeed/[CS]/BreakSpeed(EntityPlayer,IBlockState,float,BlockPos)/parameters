@@ -1,0 +1,4 @@
+EntityPlayer player
+IBlockState state
+float original
+BlockPos pos

@@ -1,0 +1,6 @@
+{
+  if (meta < 0)   return;
+  if (displaceIfPossible(world,pos)) {
+    world.setBlockState(pos,this.getBlockState().getBaseState().withProperty(LEVEL,meta),3);
+  }
+}

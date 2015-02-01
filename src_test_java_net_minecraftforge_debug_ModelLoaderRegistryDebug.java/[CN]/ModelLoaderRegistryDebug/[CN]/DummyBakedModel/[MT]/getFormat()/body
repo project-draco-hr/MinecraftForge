@@ -1,0 +1,3 @@
+{
+  return Attributes.DEFAULT_BAKED_FORMAT;
+}

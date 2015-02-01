@@ -1,6 +1,0 @@
-EntityLivingBase entity
-DamageSource source
-ArrayList<EntityItem> drops
-int lootingLevel
-boolean recentlyHit
-int specialDropValue

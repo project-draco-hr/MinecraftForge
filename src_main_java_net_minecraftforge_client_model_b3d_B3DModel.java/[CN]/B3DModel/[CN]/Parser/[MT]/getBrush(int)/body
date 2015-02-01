@@ -1,0 +1,8 @@
+{
+  if (brush > brushes.size()) {
+    logger.error(String.format("brush %s is out of range",brush));
+    return null;
+  }
+ else   if (brush == -1)   return null;
+  return brushes.get(brush);
+}

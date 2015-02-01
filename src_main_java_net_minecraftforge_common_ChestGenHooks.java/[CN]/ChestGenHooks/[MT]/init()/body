@@ -3,23 +3,14 @@
     return;
   }
   hasInit=true;
-  addInfo(MINESHAFT_CORRIDOR,StructureMineshaftPieces.mineshaftChestContents,3,7);
-  addInfo(PYRAMID_DESERT_CHEST,DesertPyramid.itemsToGenerateInTemple,2,7);
-  addInfo(PYRAMID_JUNGLE_CHEST,JunglePyramid.junglePyramidsChestContents,2,7);
-  addInfo(PYRAMID_JUNGLE_DISPENSER,JunglePyramid.junglePyramidsDispenserContents,2,2);
-  addInfo(STRONGHOLD_CORRIDOR,ChestCorridor.strongholdChestContents,2,4);
-  addInfo(STRONGHOLD_LIBRARY,Library.strongholdLibraryChestContents,1,5);
-  addInfo(STRONGHOLD_CROSSING,RoomCrossing.strongholdRoomCrossingChestContents,1,5);
-  addInfo(VILLAGE_BLACKSMITH,House2.villageBlacksmithChestContents,3,9);
-  addInfo(BONUS_CHEST,WorldServer.bonusChestContent,10,10);
-  addInfo(DUNGEON_CHEST,WorldGenDungeons.field_111189_a,8,8);
-  ItemStack book=new ItemStack(Items.enchanted_book,1,0);
-  WeightedRandomChestContent tmp=new WeightedRandomChestContent(book,1,1,1);
-  getInfo(MINESHAFT_CORRIDOR).addItem(tmp);
-  getInfo(PYRAMID_DESERT_CHEST).addItem(tmp);
-  getInfo(PYRAMID_JUNGLE_CHEST).addItem(tmp);
-  getInfo(STRONGHOLD_CORRIDOR).addItem(tmp);
-  getInfo(STRONGHOLD_LIBRARY).addItem(new WeightedRandomChestContent(book,1,5,2));
-  getInfo(STRONGHOLD_CROSSING).addItem(tmp);
-  getInfo(DUNGEON_CHEST).addItem(tmp);
+  new WorldGenDungeons();
+  new DesertPyramid();
+  new JunglePyramid();
+  new StructureMineshaftPieces();
+  new StructureOceanMonument();
+  new StructureStrongholdPieces.ChestCorridor();
+  new StructureStrongholdPieces.Library();
+  new StructureStrongholdPieces.RoomCrossing();
+  new StructureVillagePieces.House2();
+  WorldServer.fillChestHook();
 }

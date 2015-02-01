@@ -1,6 +1,0 @@
-EntityPlayer player
-ItemStack current
-World world
-int x
-int y
-int z

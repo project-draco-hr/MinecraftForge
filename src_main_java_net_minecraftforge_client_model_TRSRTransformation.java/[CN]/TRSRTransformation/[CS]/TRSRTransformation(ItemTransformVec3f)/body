@@ -1,0 +1,3 @@
+{
+  this(transform.translation,quatFromYXZ(transform.rotation),transform.scale,null);
+}

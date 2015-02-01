@@ -1,0 +1,5 @@
+{
+  this.fluid=fluid;
+  this.world=world;
+  this.pos=pos;
+}

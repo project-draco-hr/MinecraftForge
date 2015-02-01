@@ -1,0 +1,8 @@
+{
+  IBlockState state=world.getBlockState(pos);
+  state=state.getBlock().getActualState(state,world,pos);
+  for (  String type : stack.getItem().getToolClasses(stack)) {
+    if (state.getBlock().isToolEffective(type,state))     return true;
+  }
+  return false;
+}
