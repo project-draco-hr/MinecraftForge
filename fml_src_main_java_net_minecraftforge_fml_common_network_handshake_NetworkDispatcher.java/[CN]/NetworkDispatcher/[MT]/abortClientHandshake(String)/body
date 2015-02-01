@@ -1,0 +1,4 @@
+{
+  FMLLog.log(Level.INFO,"Aborting client handshake \"%s\"",type);
+  completeClientSideConnection(ConnectionType.valueOf(type));
+}

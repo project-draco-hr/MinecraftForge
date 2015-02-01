@@ -1,0 +1,10 @@
+{
+  int part=(int)(input.readByte() & 0xFF);
+  if (part != part_expected) {
+    throw new IOException("Received FML MultiPart packet out of order, Expected " + part_expected + " Got "+ part);
+  }
+  int len=input.readableBytes() - 1;
+  input.readBytes(data,offset,len);
+  part_expected++;
+  offset+=len;
+}

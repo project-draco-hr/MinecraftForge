@@ -1,9 +1,0 @@
-{
-  if (block == null)   return null;
-  String name=getMain().iBlockRegistry.getNameForObject(block);
-  UniqueIdentifier ui=new UniqueIdentifier(name);
-  if (customItemStacks.contains(ui.modId,ui.name)) {
-    return null;
-  }
-  return ui;
-}

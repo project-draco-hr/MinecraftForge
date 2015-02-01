@@ -1,7 +1,0 @@
-{
-  this.btnSelectCategory.xPosition=listWidth / 2 - 150;
-  this.btnSelectCategory.yPosition=y;
-  this.btnSelectCategory.enabled=enabled();
-  this.btnSelectCategory.drawButton(this.mc,mouseX,mouseY);
-  super.drawEntry(slotIndex,x,y,listWidth,slotHeight,tessellator,mouseX,mouseY,isSelected);
-}

@@ -1,0 +1,6 @@
+{
+  super(name,(Object)null,ConfigGuiType.CONFIG_CATEGORY,langKey);
+  this.childElements=childElements;
+  this.configEntryClass=customListEntryClass;
+  isProperty=false;
+}

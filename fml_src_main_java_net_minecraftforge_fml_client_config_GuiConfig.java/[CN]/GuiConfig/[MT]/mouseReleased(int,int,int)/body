@@ -1,0 +1,5 @@
+{
+  if (mouseEvent != 0 || !this.entryList.mouseReleased(x,y,mouseEvent)) {
+    super.mouseReleased(x,y,mouseEvent);
+  }
+}

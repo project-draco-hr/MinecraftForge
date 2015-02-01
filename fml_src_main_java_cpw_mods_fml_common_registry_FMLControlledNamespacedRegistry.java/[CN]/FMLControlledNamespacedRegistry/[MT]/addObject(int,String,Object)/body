@@ -1,3 +1,0 @@
-{
-  GameData.getMain().register(thing,name,id);
-}

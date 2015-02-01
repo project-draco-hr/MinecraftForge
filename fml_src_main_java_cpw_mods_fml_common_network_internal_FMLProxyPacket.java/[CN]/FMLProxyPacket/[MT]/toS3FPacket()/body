@@ -1,3 +1,0 @@
-{
-  return new S3FPacketCustomPayload(channel,payload.array());
-}

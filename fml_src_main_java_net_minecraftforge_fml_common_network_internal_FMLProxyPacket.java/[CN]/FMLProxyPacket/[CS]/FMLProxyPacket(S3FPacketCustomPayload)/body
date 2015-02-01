@@ -1,0 +1,4 @@
+{
+  this(original.getBufferData(),original.getChannelName());
+  this.target=Side.CLIENT;
+}

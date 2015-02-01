@@ -1,3 +1,0 @@
-{
-  FMLLog.log(level,throwable,message);
-}

@@ -1,0 +1,23 @@
+{
+  if (!(Boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment")) {
+    classLoader.registerTransformer("net.minecraftforge.fml.common.asm.transformers.DeobfuscationTransformer");
+  }
+  for (  String transformer : CoreModManager.getAccessTransformers()) {
+    classLoader.registerTransformer(transformer);
+  }
+  classLoader.registerTransformer("net.minecraftforge.fml.common.asm.transformers.ModAccessTransformer");
+  classLoader.registerTransformer("net.minecraftforge.fml.common.asm.transformers.ItemStackTransformer");
+  try {
+    FMLRelaunchLog.fine("Validating minecraft");
+    Class<?> loaderClazz=Class.forName("net.minecraftforge.fml.common.Loader",true,classLoader);
+    Method m=loaderClazz.getMethod("injectData",Object[].class);
+    m.invoke(null,(Object)FMLInjectionData.data());
+    m=loaderClazz.getMethod("instance");
+    m.invoke(null);
+    FMLRelaunchLog.fine("Minecraft validated, launching...");
+  }
+ catch (  Exception e) {
+    System.out.println("A CRITICAL PROBLEM OCCURED INITIALIZING MINECRAFT - LIKELY YOU HAVE AN INCORRECT VERSION FOR THIS FML");
+    throw new RuntimeException(e);
+  }
+}

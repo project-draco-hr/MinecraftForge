@@ -1,3 +1,0 @@
-{
-  FMLLog.log("FMLRenderAccessLibrary",level,message);
-}

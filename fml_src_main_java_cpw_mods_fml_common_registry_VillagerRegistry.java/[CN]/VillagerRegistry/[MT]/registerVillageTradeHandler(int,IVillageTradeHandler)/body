@@ -1,3 +1,0 @@
-{
-  tradeHandlers.put(villagerId,handler);
-}

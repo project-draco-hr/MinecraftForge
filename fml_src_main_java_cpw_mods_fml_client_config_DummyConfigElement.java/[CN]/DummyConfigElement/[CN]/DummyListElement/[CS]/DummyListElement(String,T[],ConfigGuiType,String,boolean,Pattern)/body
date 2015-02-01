@@ -1,3 +1,0 @@
-{
-  this(name,defaultValues,type,langKey,isListFixedLength,-1,validStringPattern,(T)null,(T)null);
-}

@@ -1,5 +1,0 @@
-{
-  for (  IVillageTradeHandler handler : instance().tradeHandlers.get(villagerType)) {
-    handler.manipulateTradesForVillager(villager,recipeList,random);
-  }
-}

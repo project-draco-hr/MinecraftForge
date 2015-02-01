@@ -1,0 +1,48 @@
+{
+  String channelName=msg.getChannelName();
+  if ("FML|MP".equals(channelName)) {
+    try {
+      if (multipart == null) {
+        multipart=new MultiPartCustomPayload(msg.getBufferData());
+      }
+ else {
+        multipart.processPart(msg.getBufferData());
+      }
+    }
+ catch (    IOException e) {
+      this.kickWithMessage(e.getMessage());
+      multipart=null;
+      return true;
+    }
+    if (multipart.isComplete()) {
+      msg=multipart;
+      channelName=msg.getChannelName();
+      multipart=null;
+    }
+ else {
+      return true;
+    }
+  }
+  if ("FML|HS".equals(channelName) || "REGISTER".equals(channelName) || "UNREGISTER".equals(channelName)) {
+    FMLProxyPacket proxy=new FMLProxyPacket(msg);
+    proxy.setDispatcher(this);
+    handshakeChannel.writeInbound(proxy);
+    for (    Object push : handshakeChannel.inboundMessages()) {
+      List<FMLProxyPacket> messageResult=FMLNetworkHandler.forwardHandshake((FMLMessage.CompleteHandshake)push,this,Side.CLIENT);
+      for (      FMLProxyPacket result : messageResult) {
+        result.setTarget(Side.CLIENT);
+        result.payload().resetReaderIndex();
+        context.fireChannelRead(result);
+      }
+    }
+    handshakeChannel.inboundMessages().clear();
+    return true;
+  }
+ else   if (NetworkRegistry.INSTANCE.hasChannel(channelName,Side.CLIENT)) {
+    FMLProxyPacket proxy=new FMLProxyPacket(msg);
+    proxy.setDispatcher(this);
+    context.fireChannelRead(proxy);
+    return true;
+  }
+  return false;
+}

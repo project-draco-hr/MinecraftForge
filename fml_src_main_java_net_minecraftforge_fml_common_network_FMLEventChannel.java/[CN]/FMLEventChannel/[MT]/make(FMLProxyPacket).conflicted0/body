@@ -1,0 +1,8 @@
+{
+  FMLNetworkEvent.CustomPacketEvent<?> event=null;
+  if (msg.handler() instanceof NetHandlerPlayServer) {
+    NetHandlerPlayServer server=(NetHandlerPlayServer)msg.handler();
+    event=new FMLNetworkEvent.ServerCustomPacketEvent(server.getNetworkManager(),msg);
+  }
+  return event;
+}

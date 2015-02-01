@@ -1,0 +1,7 @@
+{
+  Object blockName=iBlockRegistry.getNameForObject(item.block);
+  Object itemName=iItemRegistry.getNameForObject(item);
+  if (blockName != null && !blockName.equals(itemName) && !"minecraft:standing_banner".equals(blockName.toString())) {
+    FMLLog.bigWarning("Block <-> ItemBlock name mismatch, block name %s, item name %s",blockName,itemName);
+  }
+}

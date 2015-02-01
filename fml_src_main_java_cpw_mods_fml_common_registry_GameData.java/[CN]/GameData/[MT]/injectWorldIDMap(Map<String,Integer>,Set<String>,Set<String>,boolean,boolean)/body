@@ -1,3 +1,0 @@
-{
-  return injectWorldIDMap(dataList,new HashSet<Integer>(),new HashMap<String,String>(),new HashMap<String,String>(),blockSubstitutions,itemSubstitutions,injectFrozenData,isLocalWorld);
-}

@@ -1,5 +1,0 @@
-String name
-T[] defaultValues
-ConfigGuiType type
-String langKey
-Pattern validStringPattern

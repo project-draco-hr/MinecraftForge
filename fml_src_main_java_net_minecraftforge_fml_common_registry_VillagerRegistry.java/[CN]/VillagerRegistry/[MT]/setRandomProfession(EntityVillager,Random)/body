@@ -1,0 +1,3 @@
+{
+  entity.setProfession(rand.nextInt(5));
+}

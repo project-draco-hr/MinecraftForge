@@ -1,0 +1,4 @@
+{
+  Validate.isInstanceOf(ResourceLocation.class,name);
+  GameData.getMain().register(thing,name.toString(),id);
+}

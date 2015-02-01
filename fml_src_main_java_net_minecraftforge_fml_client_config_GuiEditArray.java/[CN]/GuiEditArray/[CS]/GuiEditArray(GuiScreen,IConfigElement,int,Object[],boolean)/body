@@ -1,0 +1,29 @@
+{
+  this.mc=Minecraft.getMinecraft();
+  this.parentScreen=parentScreen;
+  this.configElement=configElement;
+  this.slotIndex=slotIndex;
+  this.beforeValues=currentValues;
+  this.currentValues=currentValues;
+  this.toolTip=new ArrayList();
+  this.enabled=enabled;
+  String propName=I18n.format(configElement.getLanguageKey());
+  String comment;
+  comment=I18n.format(configElement.getLanguageKey() + ".tooltip","\n" + EnumChatFormatting.AQUA,configElement.getDefault(),configElement.getMinValue(),configElement.getMaxValue());
+  if (!comment.equals(configElement.getLanguageKey() + ".tooltip"))   toolTip=mc.fontRendererObj.listFormattedStringToWidth(EnumChatFormatting.GREEN + propName + "\n"+ EnumChatFormatting.YELLOW+ comment,300);
+ else   if (configElement.getComment() != null && !configElement.getComment().trim().isEmpty())   toolTip=mc.fontRendererObj.listFormattedStringToWidth(EnumChatFormatting.GREEN + propName + "\n"+ EnumChatFormatting.YELLOW+ configElement.getComment(),300);
+ else   toolTip=mc.fontRendererObj.listFormattedStringToWidth(EnumChatFormatting.GREEN + propName + "\n"+ EnumChatFormatting.RED+ "No tooltip defined.",300);
+  if (parentScreen instanceof GuiConfig) {
+    this.title=((GuiConfig)parentScreen).title;
+    if (((GuiConfig)parentScreen).titleLine2 != null) {
+      this.titleLine2=((GuiConfig)parentScreen).titleLine2;
+      this.titleLine3=I18n.format(configElement.getLanguageKey());
+    }
+ else     this.titleLine2=I18n.format(configElement.getLanguageKey());
+    this.tooltipHoverChecker=new HoverChecker(28,37,0,parentScreen.width,800);
+  }
+ else {
+    this.title=I18n.format(configElement.getLanguageKey());
+    this.tooltipHoverChecker=new HoverChecker(8,17,0,parentScreen.width,800);
+  }
+}

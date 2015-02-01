@@ -1,7 +1,0 @@
-{
-  Thread thr=Thread.currentThread();
-  if ((thr.getName().equals("Server thread"))) {
-    return Side.SERVER;
-  }
-  return Side.CLIENT;
-}

@@ -1,4 +1,0 @@
-Iterable<MissingMapping> missedMappings
-boolean isLocalWorld
-GameData gameData
-Map<String,Integer[]> remaps

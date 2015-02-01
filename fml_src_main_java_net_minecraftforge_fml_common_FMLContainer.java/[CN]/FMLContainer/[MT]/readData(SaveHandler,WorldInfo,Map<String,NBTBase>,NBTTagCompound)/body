@@ -1,0 +1,124 @@
+{
+  if (tag.hasKey("ModList")) {
+    NBTTagList modList=tag.getTagList("ModList",(byte)10);
+    for (int i=0; i < modList.tagCount(); i++) {
+      NBTTagCompound mod=modList.getCompoundTagAt(i);
+      String modId=mod.getString("ModId");
+      String modVersion=mod.getString("ModVersion");
+      ModContainer container=Loader.instance().getIndexedModList().get(modId);
+      if (container == null) {
+        FMLLog.log("fml.ModTracker",Level.ERROR,"This world was saved with mod %s which appears to be missing, things may not work well",modId);
+        continue;
+      }
+      if (!modVersion.equals(container.getVersion())) {
+        FMLLog.log("fml.ModTracker",Level.INFO,"This world was saved with mod %s version %s and it is now at version %s, things may not work well",modId,modVersion,container.getVersion());
+      }
+    }
+  }
+  List<String> failedElements=null;
+  if (tag.hasKey("ModItemData")) {
+    GameData.GameDataSnapshot snapshot=new GameData.GameDataSnapshot();
+    GameData.GameDataSnapshot.Entry items=new GameData.GameDataSnapshot.Entry();
+    snapshot.entries.put("fml:blocks",new GameData.GameDataSnapshot.Entry());
+    snapshot.entries.put("fml:items",items);
+    FMLLog.info("Attempting to convert old world data to new system. This may be trouble!");
+    NBTTagList modList=tag.getTagList("ModItemData",(byte)10);
+    for (int i=0; i < modList.tagCount(); i++) {
+      NBTTagCompound data=modList.getCompoundTagAt(i);
+      String forcedModId=data.hasKey("ForcedModId") ? data.getString("ForcedModId") : null;
+      String forcedName=data.hasKey("ForcedName") ? data.getString("ForcedName") : null;
+      if (forcedName == null) {
+        FMLLog.warning("Found unlabelled item in world save, this may cause problems. The item type %s:%d will not be present",data.getString("ItemType"),data.getInteger("ordinal"));
+      }
+ else {
+        String itemLabel=String.format("%s:%s",forcedModId != null ? forcedModId : data.getString("ModId"),forcedName);
+        items.ids.put(itemLabel,data.getInteger("ItemId"));
+      }
+    }
+    failedElements=GameData.injectSnapshot(snapshot,true,true);
+  }
+ else   if (tag.hasKey("ItemData")) {
+    GameData.GameDataSnapshot snapshot=new GameData.GameDataSnapshot();
+    GameData.GameDataSnapshot.Entry blocks=new GameData.GameDataSnapshot.Entry();
+    GameData.GameDataSnapshot.Entry items=new GameData.GameDataSnapshot.Entry();
+    snapshot.entries.put("fml:blocks",blocks);
+    snapshot.entries.put("fml:items",items);
+    NBTTagList list=tag.getTagList("ItemData",10);
+    for (int i=0; i < list.tagCount(); i++) {
+      NBTTagCompound e=list.getCompoundTagAt(i);
+      String name=e.getString("K");
+      if (name.charAt(0) == '\u0001')       blocks.ids.put(name.substring(1),e.getInteger("V"));
+ else       if (name.charAt(0) == '\u0002')       items.ids.put(name.substring(1),e.getInteger("V"));
+    }
+    Set<Integer> blockedIds=new HashSet<Integer>();
+    if (!tag.hasKey("BlockedItemIds")) {
+      GameData.fixBrokenIds(blocks,items,blockedIds);
+    }
+ else {
+      for (      int id : tag.getIntArray("BlockedItemIds")) {
+        blockedIds.add(id);
+      }
+    }
+    blocks.blocked.addAll(blockedIds);
+    items.blocked.addAll(blockedIds);
+    list=tag.getTagList("BlockAliases",10);
+    for (int i=0; i < list.tagCount(); i++) {
+      NBTTagCompound dataTag=list.getCompoundTagAt(i);
+      blocks.aliases.put(dataTag.getString("K"),dataTag.getString("V"));
+    }
+    if (tag.hasKey("BlockSubstitutions",9)) {
+      list=tag.getTagList("BlockSubstitutions",10);
+      for (int i=0; i < list.tagCount(); i++) {
+        NBTTagCompound dataTag=list.getCompoundTagAt(i);
+        blocks.substitutions.add(dataTag.getString("K"));
+      }
+    }
+    list=tag.getTagList("ItemAliases",10);
+    for (int i=0; i < list.tagCount(); i++) {
+      NBTTagCompound dataTag=list.getCompoundTagAt(i);
+      items.aliases.put(dataTag.getString("K"),dataTag.getString("V"));
+    }
+    if (tag.hasKey("ItemSubstitutions",9)) {
+      list=tag.getTagList("ItemSubstitutions",10);
+      for (int i=0; i < list.tagCount(); i++) {
+        NBTTagCompound dataTag=list.getCompoundTagAt(i);
+        items.substitutions.add(dataTag.getString("K"));
+      }
+    }
+    failedElements=GameData.injectSnapshot(snapshot,true,true);
+  }
+ else   if (tag.hasKey("Registries")) {
+    GameData.GameDataSnapshot snapshot=new GameData.GameDataSnapshot();
+    NBTTagCompound regs=tag.getCompoundTag("Registries");
+    for (    String key : (Set<String>)regs.getKeySet()) {
+      GameData.GameDataSnapshot.Entry entry=new GameData.GameDataSnapshot.Entry();
+      snapshot.entries.put(key,entry);
+      NBTTagList list=regs.getCompoundTag(key).getTagList("ids",10);
+      for (int x=0; x < list.tagCount(); x++) {
+        NBTTagCompound e=list.getCompoundTagAt(x);
+        entry.ids.put(e.getString("K"),e.getInteger("V"));
+      }
+      list=regs.getCompoundTag(key).getTagList("aliases",10);
+      for (int x=0; x < list.tagCount(); x++) {
+        NBTTagCompound e=list.getCompoundTagAt(x);
+        entry.aliases.put(e.getString("K"),e.getString("V"));
+      }
+      list=regs.getCompoundTag(key).getTagList("substitutions",10);
+      for (int x=0; x < list.tagCount(); x++) {
+        NBTTagCompound e=list.getCompoundTagAt(x);
+        entry.substitutions.add(e.getString("K"));
+      }
+      int[] blocked=regs.getCompoundTag(key).getIntArray("blocked");
+      for (      int i : blocked) {
+        entry.blocked.add(i);
+      }
+    }
+    failedElements=GameData.injectSnapshot(snapshot,true,true);
+  }
+  if (failedElements != null && !failedElements.isEmpty()) {
+    String text="Forge Mod Loader could not load this save.\n\n" + "There are " + failedElements.size() + " unassigned blocks and items in this save.\n"+ "You will not be able to load until they are present again.\n\n"+ "Missing Blocks/Items:\n";
+    for (    String s : failedElements)     text+=s + "\n";
+    StartupQuery.notify(text);
+    StartupQuery.abort();
+  }
+}

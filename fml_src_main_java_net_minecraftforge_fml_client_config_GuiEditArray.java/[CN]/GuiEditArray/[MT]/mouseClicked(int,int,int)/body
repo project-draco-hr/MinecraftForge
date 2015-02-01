@@ -1,0 +1,6 @@
+{
+  if (mouseEvent != 0 || !this.entryList.mouseClicked(x,y,mouseEvent)) {
+    this.entryList.mouseClickedPassThru(x,y,mouseEvent);
+    super.mouseClicked(x,y,mouseEvent);
+  }
+}

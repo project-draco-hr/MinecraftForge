@@ -1,0 +1,9 @@
+{
+  optionals=ArrayListMultimap.create();
+  Set<ASMData> interfaceLists=dataTable.getAll("net.minecraftforge.fml.common.Optional$InterfaceList");
+  addData(unpackInterfaces(interfaceLists));
+  Set<ASMData> interfaces=dataTable.getAll("net.minecraftforge.fml.common.Optional$Interface");
+  addData(interfaces);
+  Set<ASMData> methods=dataTable.getAll("net.minecraftforge.fml.common.Optional$Method");
+  addData(methods);
+}

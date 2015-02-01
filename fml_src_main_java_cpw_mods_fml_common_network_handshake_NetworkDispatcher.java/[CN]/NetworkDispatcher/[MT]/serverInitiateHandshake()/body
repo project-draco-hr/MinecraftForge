@@ -1,8 +1,0 @@
-{
-  this.state=ConnectionState.AWAITING_HANDSHAKE;
-  this.manager.channel().pipeline().addFirst("fml:vanilla_detector",new VanillaTimeoutWaiter());
-  serverHandler=new NetHandlerPlayServer(scm.getServerInstance(),manager,player);
-  this.netHandler=serverHandler;
-  player.playerNetServerHandler=null;
-  this.manager.setConnectionState(EnumConnectionState.PLAY);
-}

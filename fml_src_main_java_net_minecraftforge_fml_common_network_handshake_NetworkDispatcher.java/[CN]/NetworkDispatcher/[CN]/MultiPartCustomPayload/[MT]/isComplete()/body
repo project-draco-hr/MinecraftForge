@@ -1,0 +1,3 @@
+{
+  return part_expected == part_count;
+}

@@ -1,3 +1,0 @@
-{
-  return this.mc.fontRenderer.getStringWidth(this.name);
-}

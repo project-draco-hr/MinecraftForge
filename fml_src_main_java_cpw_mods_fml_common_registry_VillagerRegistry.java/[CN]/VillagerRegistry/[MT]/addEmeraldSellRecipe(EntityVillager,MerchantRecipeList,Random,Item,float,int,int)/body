@@ -1,6 +1,0 @@
-{
-  if (min > 0 && max > 0) {
-    EntityVillager.blacksmithSellingList.put(item,new Tuple(min,max));
-  }
-  EntityVillager.func_146089_b(list,item,random,chance);
-}

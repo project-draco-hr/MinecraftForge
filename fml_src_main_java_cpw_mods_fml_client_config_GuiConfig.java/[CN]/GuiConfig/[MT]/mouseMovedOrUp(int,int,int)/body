@@ -1,5 +1,0 @@
-{
-  if (mouseEvent != 0 || !this.entryList.func_148181_b(x,y,mouseEvent)) {
-    super.mouseMovedOrUp(x,y,mouseEvent);
-  }
-}

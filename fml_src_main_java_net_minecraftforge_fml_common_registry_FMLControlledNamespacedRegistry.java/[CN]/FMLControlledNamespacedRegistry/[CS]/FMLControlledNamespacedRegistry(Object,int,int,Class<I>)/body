@@ -1,0 +1,7 @@
+{
+  super(defaultKey);
+  this.superType=type;
+  this.optionalDefaultKey=defaultKey;
+  this.maxId=maxIdValue;
+  this.minId=minIdValue;
+}

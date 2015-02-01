@@ -1,9 +1,0 @@
-{
-  if (msg instanceof FMLProxyPacket) {
-    if (side == Side.CLIENT)     ctx.write(((FMLProxyPacket)msg).toC17Packet(),promise);
- else     ctx.write(((FMLProxyPacket)msg).toS3FPacket(),promise);
-  }
- else {
-    ctx.write(msg,promise);
-  }
-}

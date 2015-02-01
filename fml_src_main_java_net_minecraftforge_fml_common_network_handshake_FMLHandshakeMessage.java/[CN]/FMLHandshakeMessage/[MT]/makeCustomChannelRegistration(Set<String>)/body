@@ -1,0 +1,5 @@
+{
+  String salutation=Joiner.on('\0').join(Iterables.concat(Arrays.asList("FML|HS","FML","FML|MP"),channels));
+  FMLProxyPacket proxy=new FMLProxyPacket(new PacketBuffer(Unpooled.wrappedBuffer(salutation.getBytes(Charsets.UTF_8))),"REGISTER");
+  return proxy;
+}

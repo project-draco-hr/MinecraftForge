@@ -1,0 +1,4 @@
+{
+  this.identityMap.clear();
+  this.objectList.clear();
+}

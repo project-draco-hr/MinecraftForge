@@ -1,9 +1,0 @@
-{
-  if (this.btnValue.mousePressed(owningEntryList.mc,x,y)) {
-    btnValue.func_146113_a(owningEntryList.mc.getSoundHandler());
-    value=!value;
-    owningEntryList.recalculateState();
-    return true;
-  }
-  return super.mousePressed(index,x,y,mouseEvent,relativeX,relativeY);
-}

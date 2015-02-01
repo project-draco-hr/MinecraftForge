@@ -1,0 +1,19 @@
+{
+  if (button.id == 2000) {
+    try {
+      this.entryList.saveChanges();
+    }
+ catch (    Throwable e) {
+      e.printStackTrace();
+    }
+    this.mc.displayGuiScreen(this.parentScreen);
+  }
+ else   if (button.id == 2001) {
+    this.currentValue=configElement.getDefault();
+    this.entryList=new GuiSelectStringEntries(this,this.mc,this.configElement,this.selectableValues);
+  }
+ else   if (button.id == 2002) {
+    this.currentValue=beforeValue;
+    this.entryList=new GuiSelectStringEntries(this,this.mc,this.configElement,this.selectableValues);
+  }
+}

@@ -1,0 +1,3 @@
+Set<ArtifactVersion> missingMods
+String id
+String name

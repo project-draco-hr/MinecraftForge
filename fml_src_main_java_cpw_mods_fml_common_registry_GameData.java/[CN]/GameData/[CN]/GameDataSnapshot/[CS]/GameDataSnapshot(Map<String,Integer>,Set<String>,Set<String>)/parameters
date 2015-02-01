@@ -1,3 +1,0 @@
-Map<String,Integer> idMap
-Set<String> blockSubstitutions
-Set<String> itemSubstitutions

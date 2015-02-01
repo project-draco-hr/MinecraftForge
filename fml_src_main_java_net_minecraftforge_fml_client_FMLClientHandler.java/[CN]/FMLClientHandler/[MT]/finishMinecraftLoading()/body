@@ -1,0 +1,38 @@
+{
+  if (modsMissing != null || wrongMC != null || customError != null || dupesFound != null || modSorting != null) {
+    return;
+  }
+  try {
+    Loader.instance().initializeMods();
+  }
+ catch (  CustomModLoadingErrorDisplayException custom) {
+    FMLLog.log(Level.ERROR,custom,"A custom exception was thrown by a mod, the game will now halt");
+    customError=custom;
+    return;
+  }
+catch (  LoaderException le) {
+    haltGame("There was a severe problem during mod loading that has caused the game to fail",le);
+    return;
+  }
+  client.refreshResources();
+  RenderingRegistry.loadEntityRenderers((Map<Class<? extends Entity>,Render>)Minecraft.getMinecraft().getRenderManager().entityRenderMap);
+  guiFactories=HashBiMap.create();
+  for (  ModContainer mc : Loader.instance().getActiveModList()) {
+    String className=mc.getGuiClassName();
+    if (Strings.isNullOrEmpty(className)) {
+      continue;
+    }
+    try {
+      Class<?> clazz=Class.forName(className,true,Loader.instance().getModClassLoader());
+      Class<? extends IModGuiFactory> guiClassFactory=clazz.asSubclass(IModGuiFactory.class);
+      IModGuiFactory guiFactory=guiClassFactory.newInstance();
+      guiFactory.initialize(client);
+      guiFactories.put(mc,guiFactory);
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.ERROR,e,"A critical error occurred instantiating the gui factory for mod %s",mc.getModId());
+    }
+  }
+  loading=false;
+  client.gameSettings.loadOptions();
+}
