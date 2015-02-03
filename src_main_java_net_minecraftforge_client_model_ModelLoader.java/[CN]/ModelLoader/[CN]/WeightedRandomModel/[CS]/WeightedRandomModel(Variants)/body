@@ -8,7 +8,6 @@
     IModel model=new WeightedPartWrapper(getModel(loc));
     models.add(model);
     builder.put(model,new TRSRTransformation(v.getRotation()));
-    if (v.isUvLocked())     uvLocked.add(ModelLoaderRegistry.getActualLocation(loc));
   }
   defaultState=new MapModelState(builder.build());
 }
