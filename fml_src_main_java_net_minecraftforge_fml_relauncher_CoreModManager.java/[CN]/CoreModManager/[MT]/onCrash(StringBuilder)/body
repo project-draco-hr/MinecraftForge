@@ -1,0 +1,9 @@
+{
+  if (!loadedCoremods.isEmpty() || !reparsedCoremods.isEmpty()) {
+    builder.append("\nWARNING: coremods are present:\n");
+    for (    String coreMod : transformers.keySet()) {
+      builder.append("  ").append(coreMod).append('\n');
+    }
+    builder.append("Contact their authors BEFORE contacting forge\n\n");
+  }
+}

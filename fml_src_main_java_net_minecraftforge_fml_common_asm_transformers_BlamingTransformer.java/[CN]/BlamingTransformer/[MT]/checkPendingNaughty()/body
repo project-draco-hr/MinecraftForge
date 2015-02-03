@@ -1,0 +1,11 @@
+{
+  ImmutableSet.Builder<String> toRemove=ImmutableSet.builder();
+  for (  String cls : orphanNaughtyClasses) {
+    if (classMap.containsKey(cls)) {
+      String modId=classMap.get(cls);
+      blame(modId,cls);
+      toRemove.add(cls);
+    }
+  }
+  orphanNaughtyClasses.removeAll(toRemove.build());
+}

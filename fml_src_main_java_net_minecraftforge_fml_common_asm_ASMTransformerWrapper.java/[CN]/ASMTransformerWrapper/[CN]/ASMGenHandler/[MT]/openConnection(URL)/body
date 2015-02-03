@@ -1,0 +1,17 @@
+{
+  String file=url.getFile();
+  if (file.equals("/")) {
+    return new URLConnection(url){
+      public void connect() throws IOException {
+        throw new UnsupportedOperationException();
+      }
+    }
+;
+  }
+  if (!file.startsWith("/"))   throw new RuntimeException("Malformed URL: " + url);
+  file=file.substring(1);
+  if (wrapperModMap.containsKey(file)) {
+    return new ASMGenConnection(url,file);
+  }
+  return null;
+}

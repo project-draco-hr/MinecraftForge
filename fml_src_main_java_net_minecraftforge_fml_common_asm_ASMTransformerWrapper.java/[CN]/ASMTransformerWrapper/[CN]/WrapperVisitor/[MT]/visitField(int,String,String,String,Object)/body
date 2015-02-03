@@ -1,0 +1,6 @@
+{
+  if (name.equals("parentClass")) {
+    return super.visitField(access,name,desc,signature,parentClass);
+  }
+  return super.visitField(access,name,desc,signature,value);
+}

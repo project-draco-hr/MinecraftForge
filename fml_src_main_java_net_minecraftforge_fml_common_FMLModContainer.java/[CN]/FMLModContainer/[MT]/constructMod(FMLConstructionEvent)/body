@@ -1,5 +1,6 @@
 {
   try {
+    BlamingTransformer.addClasses(getModId(),candidate.getClassList());
     ModClassLoader modClassLoader=event.getModClassLoader();
     modClassLoader.addFile(source);
     modClassLoader.clearNegativeCacheFor(candidate.getClassList());

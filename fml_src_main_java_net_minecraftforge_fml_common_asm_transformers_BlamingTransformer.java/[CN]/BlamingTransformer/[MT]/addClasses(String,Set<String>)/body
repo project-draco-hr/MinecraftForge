@@ -1,0 +1,6 @@
+{
+  for (  String cls : classList) {
+    classMap.put(cls,modId);
+  }
+  checkPendingNaughty();
+}
