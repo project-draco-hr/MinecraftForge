@@ -1,0 +1,3 @@
+{
+  customStateMappers.put(block.delegate,mapper);
+}

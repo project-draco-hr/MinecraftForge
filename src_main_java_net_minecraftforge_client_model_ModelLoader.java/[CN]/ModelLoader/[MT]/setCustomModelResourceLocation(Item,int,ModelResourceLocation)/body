@@ -1,0 +1,3 @@
+{
+  customModels.put(item.delegate,Pair.of(metadata,model));
+}

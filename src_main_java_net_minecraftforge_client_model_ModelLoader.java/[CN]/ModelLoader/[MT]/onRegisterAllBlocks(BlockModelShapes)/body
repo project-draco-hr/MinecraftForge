@@ -1,0 +1,5 @@
+{
+  for (  Entry<RegistryDelegate<Block>,IStateMapper> e : customStateMappers.entrySet()) {
+    shapes.registerBlockWithStateMapper(e.getKey().get(),e.getValue());
+  }
+}

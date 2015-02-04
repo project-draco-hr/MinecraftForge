@@ -1,0 +1,12 @@
+{
+  super.preInit(event);
+  Item item=Item.getItemFromBlock(CustomModelBlock.instance);
+  ModelLoader.setCustomModelResourceLocation(item,0,itemLocation);
+  ModelLoader.setCustomStateMapper(CustomModelBlock.instance,new StateMapperBase(){
+    protected ModelResourceLocation getModelResourceLocation(    IBlockState p_178132_1_){
+      return blockLocation;
+    }
+  }
+);
+  MinecraftForge.EVENT_BUS.register(BakeEventHandler.instance);
+}

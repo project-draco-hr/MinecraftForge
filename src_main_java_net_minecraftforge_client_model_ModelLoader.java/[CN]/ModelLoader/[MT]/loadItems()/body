@@ -6,7 +6,10 @@
       ModelResourceLocation memory=new ModelResourceLocation(s,"inventory");
       resolveTextures.add(ModelLoaderRegistry.getActualLocation(file));
       IModel model=getModel(file);
-      if (model != null)       stateModels.put(memory,model);
+      if (model == null || model == getMissingModel()) {
+        missingVariants.add(memory);
+      }
+ else       stateModels.put(memory,model);
     }
   }
 }

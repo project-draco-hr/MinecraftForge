@@ -1,0 +1,8 @@
+{
+  for (  ModelResourceLocation missing : missingVariants) {
+    if (modelRegistry.getObject(missing) == null) {
+      FMLLog.severe("Model definition for location %s not found",missing);
+    }
+  }
+  isLoading=false;
+}

@@ -1,4 +1,5 @@
 {
+  isLoading=true;
   loadBlocks();
   loadItems();
   stateModels.put(MODEL_MISSING,getModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath())));
