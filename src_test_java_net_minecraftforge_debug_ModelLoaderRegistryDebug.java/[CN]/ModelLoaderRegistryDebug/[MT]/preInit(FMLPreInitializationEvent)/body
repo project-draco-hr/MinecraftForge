@@ -1,8 +1,4 @@
 {
-  B3DLoader.instance.addDomain(MODID.toLowerCase());
   GameRegistry.registerBlock(CustomModelBlock.instance,CustomModelBlock.name);
-  String modelLocation=MODID.toLowerCase() + ":untitled2.b3d";
-  ModelBakery.addVariantName(Item.getItemFromBlock(CustomModelBlock.instance),modelLocation);
-  Item item=Item.getItemFromBlock(CustomModelBlock.instance);
-  ModelLoader.setCustomModelResourceLocation(item,0,new ModelResourceLocation(modelLocation,"inventory"));
+  if (event.getSide() == Side.CLIENT)   clientPreInit();
 }
