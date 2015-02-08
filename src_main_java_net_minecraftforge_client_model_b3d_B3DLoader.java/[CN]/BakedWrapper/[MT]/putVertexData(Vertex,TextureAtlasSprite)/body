@@ -12,7 +12,7 @@ case COLOR:
     put(e,v.getColor().x,v.getColor().y,v.getColor().z,v.getColor().w);
   }
  else {
-    put(e,1,1,1,0);
+    put(e,1,1,1,1);
   }
 break;
 case UV:
