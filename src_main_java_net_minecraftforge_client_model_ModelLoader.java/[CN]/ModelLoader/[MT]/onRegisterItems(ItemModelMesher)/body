@@ -2,7 +2,7 @@
   for (  Map.Entry<RegistryDelegate<Item>,ItemMeshDefinition> e : customMeshDefinitions.entrySet()) {
     mesher.register(e.getKey().get(),e.getValue());
   }
-  for (  Entry<RegistryDelegate<Item>,Pair<Integer,ModelResourceLocation>> e : customModels.entrySet()) {
-    mesher.register(e.getKey().get(),e.getValue().getLeft(),e.getValue().getRight());
+  for (  Entry<Pair<RegistryDelegate<Item>,Integer>,ModelResourceLocation> e : customModels.entrySet()) {
+    mesher.register(e.getKey().getLeft().get(),e.getKey().getRight(),e.getValue());
   }
 }
