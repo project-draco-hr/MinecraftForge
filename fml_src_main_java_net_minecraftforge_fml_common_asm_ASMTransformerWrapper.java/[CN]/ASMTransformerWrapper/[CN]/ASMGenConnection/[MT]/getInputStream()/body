@@ -1,0 +1,8 @@
+{
+  try {
+    return new ByteArrayInputStream(wrapperCache.get(file));
+  }
+ catch (  ExecutionException e) {
+    throw new RuntimeException(e);
+  }
+}

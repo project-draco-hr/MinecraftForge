@@ -1,0 +1,4 @@
+{
+  if (enabled && name.equals("net.minecraft.client.gui.GuiMainMenu"))   throw new RuntimeException("Faulty transformer test exception");
+  return basicClass;
+}

@@ -1,8 +1,16 @@
 {
   FMLRelaunchLog.fine("Injecting coremod %s {%s} class transformers",name,coreModInstance.getClass().getName());
+  List<String> ts=Lists.newArrayList();
   if (coreModInstance.getASMTransformerClass() != null)   for (  String transformer : coreModInstance.getASMTransformerClass()) {
     FMLRelaunchLog.finer("Registering transformer %s",transformer);
-    classLoader.registerTransformer(transformer);
+    classLoader.registerTransformer(ASMTransformerWrapper.getTransformerWrapper(classLoader,transformer,name));
+    ts.add(transformer);
+  }
+  if (!rootNames.contains(name)) {
+    String loc;
+    if (location == null)     loc="unknown";
+ else     loc=location.getName();
+    transformers.put(name + " (" + loc+ ")",ts);
   }
   FMLRelaunchLog.fine("Injection complete");
   FMLRelaunchLog.fine("Running coremod plugin for %s {%s}",name,coreModInstance.getClass().getName());

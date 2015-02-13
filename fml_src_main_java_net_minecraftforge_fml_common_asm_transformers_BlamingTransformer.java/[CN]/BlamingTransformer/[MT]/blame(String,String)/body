@@ -1,0 +1,5 @@
+{
+  naughtyClasses.add(cls);
+  naughtyMods.add(modId);
+  FMLLog.severe("Unsupported class format in mod %s: class %s",modId,cls);
+}
