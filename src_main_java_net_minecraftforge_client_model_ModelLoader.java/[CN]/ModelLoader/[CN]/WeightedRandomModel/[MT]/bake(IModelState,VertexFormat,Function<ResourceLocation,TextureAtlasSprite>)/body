@@ -13,5 +13,5 @@
     Variant v=variants.get(i);
     builder.add(model.bake(addUV(v.isUvLocked(),state.apply(model)),format,bakedTextureGetter),variants.get(i).getWeight());
   }
-  return new IFlexibleBakedModel.Wrapper(builder.build(),Attributes.DEFAULT_BAKED_FORMAT);
+  return new FlexibleWeightedBakedModel(builder.build(),Attributes.DEFAULT_BAKED_FORMAT);
 }
