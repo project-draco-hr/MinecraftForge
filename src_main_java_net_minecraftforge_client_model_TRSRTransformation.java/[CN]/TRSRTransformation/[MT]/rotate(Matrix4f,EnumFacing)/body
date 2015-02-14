@@ -1,5 +1,6 @@
 {
-  Vector4f vec=new Vector4f(facing.getDirectionVec().getX(),facing.getDirectionVec().getY(),facing.getDirectionVec().getZ(),1);
+  Vec3i dir=facing.getDirectionVec();
+  Vector4f vec=new Vector4f(dir.getX(),dir.getY(),dir.getZ(),0);
   matrix.transform(vec);
-  return EnumFacing.getFacingFromVector(vec.x / vec.w,vec.y / vec.w,vec.z / vec.w);
+  return EnumFacing.getFacingFromVector(vec.x,vec.y,vec.z);
 }

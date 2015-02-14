@@ -12,13 +12,7 @@
     Collection<Face> faces=mesh.getKind().getFaces();
     faces=mesh.getKind().bake(new Function<Node<?>,Matrix4f>(){
       public Matrix4f apply(      Node<?> node){
-        TRSRTransformation ret=TRSRTransformation.identity(), pm=null;
-        if (node.getParent() != null)         pm=new TRSRTransformation(apply(node.getParent()));
-        if (pm != null) {
-          ret=ret.compose(pm);
-        }
-        ret=ret.compose(state.apply(PartWrapper.create(node)));
-        return ret.getMatrix();
+        return state.apply(PartWrapper.create(node)).getMatrix();
       }
     }
 );

@@ -1,0 +1,14 @@
+{
+  Matrix4f m=new Matrix4f();
+  m.setIdentity();
+  m.m30=m.m31=m.m32=1;
+  m.m33=0;
+  m.mul(matrix,m);
+  for (int i=0; i < 3; i++) {
+    for (int j=0; j < 3; j++) {
+      float v=m.getElement(i,j) / m.getElement(3,j);
+      if (Math.abs(v - Math.round(v)) > 1e-5)       return false;
+    }
+  }
+  return true;
+}
