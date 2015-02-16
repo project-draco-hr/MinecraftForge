@@ -5,29 +5,29 @@
   for (  VertexFormatElement e : (List<VertexFormatElement>)format.getElements()) {
 switch (e.getUsage()) {
 case POSITION:
-      put(e,v.getPos().x,v.getPos().y,v.getPos().z,1);
+      put(e,v.getPos().x,v.getPos().y,v.getPos().z,1f);
     break;
 case COLOR:
   if (v.getColor() != null) {
     put(e,v.getColor().x,v.getColor().y,v.getColor().z,v.getColor().w);
   }
  else {
-    put(e,1,1,1,1);
+    put(e,1f,1f,1f,1f);
   }
 break;
 case UV:
 if (e.getIndex() < v.getTexCoords().length) {
-put(e,sprite.getInterpolatedU(v.getTexCoords()[0].x * 16),sprite.getInterpolatedV(v.getTexCoords()[0].y * 16),0,1);
+put(e,sprite.getInterpolatedU(v.getTexCoords()[0].x * 16),sprite.getInterpolatedV(v.getTexCoords()[0].y * 16),0f,1f);
 }
  else {
-put(e,0,0,0,1);
+put(e,0f,0f,0f,1f);
 }
 break;
 case NORMAL:
-put(e,0,1,0,1);
+put(e,0f,1f,0f,1f);
 break;
 case GENERIC:
-put(e,0,0,0,1);
+put(e,0f,0f,0f,0f);
 break;
 default :
 break;

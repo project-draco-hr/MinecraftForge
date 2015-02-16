@@ -1,5 +1,5 @@
 ByteBuffer buf
 VertexFormatElement e
-boolean normalize
+boolean denormalize
 Number fill
 Number ns
