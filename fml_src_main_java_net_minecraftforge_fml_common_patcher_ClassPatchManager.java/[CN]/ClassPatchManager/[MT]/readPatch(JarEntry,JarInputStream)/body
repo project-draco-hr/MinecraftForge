@@ -1,5 +1,5 @@
 {
-  FMLRelaunchLog.finer("Reading patch data from %s",patchEntry.getName());
+  if (DEBUG)   FMLRelaunchLog.finer("Reading patch data from %s",patchEntry.getName());
   ByteArrayDataInput input;
   try {
     input=ByteStreams.newDataInput(ByteStreams.toByteArray(jis));
