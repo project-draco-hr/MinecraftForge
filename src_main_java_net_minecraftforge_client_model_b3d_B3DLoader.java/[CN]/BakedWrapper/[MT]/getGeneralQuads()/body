@@ -30,7 +30,7 @@
       buf.flip();
       int[] data=new int[VERTICES_IN_QUAD * format.getNextOffset() / BYTES_IN_INT];
       buf.asIntBuffer().get(data);
-      builder.add(new BakedQuad(data,-1,EnumFacing.getFacingFromVector(f.getNormal().x,f.getNormal().y,f.getNormal().z)));
+      builder.add(new ColoredBakedQuad(data,-1,EnumFacing.getFacingFromVector(f.getNormal().x,f.getNormal().y,f.getNormal().z)));
     }
     quads=builder.build();
   }
