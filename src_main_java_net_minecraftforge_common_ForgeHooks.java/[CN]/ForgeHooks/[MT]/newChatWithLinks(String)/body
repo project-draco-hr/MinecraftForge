@@ -10,8 +10,12 @@
     lastEnd=end;
     String url=string.substring(start,end);
     IChatComponent link=new ChatComponentText(url);
-    if (URI.create(url).getScheme() == null) {
-      url="http://" + url;
+    try {
+      if ((new URI(url)).getScheme() == null)       url="http://" + url;
+    }
+ catch (    URISyntaxException e) {
+      ichat.appendText(url);
+      continue;
     }
     ClickEvent click=new ClickEvent(ClickEvent.Action.OPEN_URL,url);
     link.getChatStyle().setChatClickEvent(click);
