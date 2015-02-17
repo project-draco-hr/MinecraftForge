@@ -1,0 +1,3 @@
+{
+  map.setTextureEntry(White.loc.toString(),White.instance);
+}
