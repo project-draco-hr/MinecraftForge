@@ -1,0 +1,8 @@
+{
+  BufferedImage image=new BufferedImage(1,1,BufferedImage.TYPE_INT_ARGB);
+  image.setRGB(0,0,0xFFFFFFFF);
+  BufferedImage[] images=new BufferedImage[Minecraft.getMinecraft().gameSettings.mipmapLevels + 1];
+  images[0]=image;
+  loadSprite(images,null);
+  return false;
+}

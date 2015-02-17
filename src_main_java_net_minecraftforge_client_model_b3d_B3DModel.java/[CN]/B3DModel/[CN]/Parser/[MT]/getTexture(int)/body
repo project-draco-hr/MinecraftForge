@@ -3,6 +3,6 @@
     logger.error(String.format("texture %s is out of range",texture));
     return null;
   }
- else   if (texture == -1)   return null;
+ else   if (texture == -1)   return Texture.White;
   return textures.get(texture);
 }
