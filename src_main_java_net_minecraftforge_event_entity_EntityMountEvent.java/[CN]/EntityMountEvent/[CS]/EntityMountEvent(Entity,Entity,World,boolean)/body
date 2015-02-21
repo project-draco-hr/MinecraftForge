@@ -1,0 +1,7 @@
+{
+  super(entityMounting);
+  this.entityMounting=entityMounting;
+  this.entityBeingMounted=entityBeingMounted;
+  this.worldObj=entityWorld;
+  this.isMounting=isMounting;
+}

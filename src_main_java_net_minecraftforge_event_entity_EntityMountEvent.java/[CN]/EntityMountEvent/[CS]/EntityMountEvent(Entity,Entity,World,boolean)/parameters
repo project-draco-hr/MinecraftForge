@@ -1,0 +1,4 @@
+Entity entityMounting
+Entity entityBeingMounted
+World entityWorld
+boolean isMounting

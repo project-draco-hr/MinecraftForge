@@ -1,0 +1,3 @@
+Entity entityMounting
+Entity entityBeingMounted
+boolean isMounting
