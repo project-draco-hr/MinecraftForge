@@ -16,7 +16,12 @@
     if (modTypes.containsKey(ann.getASMType())) {
       FMLLog.fine("Identified a mod of type %s (%s) - loading",ann.getASMType(),className);
       try {
-        return modTypes.get(ann.getASMType()).newInstance(className,container,ann.getValues());
+        ModContainer ret=modTypes.get(ann.getASMType()).newInstance(className,container,ann.getValues());
+        if (!ret.shouldLoadInEnvironment()) {
+          FMLLog.fine("Skipping mod %s, container opted to not load.",className);
+          return null;
+        }
+        return ret;
       }
  catch (      Exception e) {
         FMLLog.log(Level.ERROR,e,"Unable to construct %s container",ann.getASMType().getClassName());
