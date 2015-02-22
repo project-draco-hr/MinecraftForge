@@ -1,5 +1,5 @@
 {
-  byte[] data=IOUtils.toByteArray(new InputStreamReader(inputstream,Charsets.UTF_8));
+  byte[] data=IOUtils.toByteArray(inputstream);
   boolean isEnhanced=false;
   for (  String line : IOUtils.readLines(new ByteArrayInputStream(data),Charsets.UTF_8)) {
     if (!line.isEmpty() && line.charAt(0) == '#') {
