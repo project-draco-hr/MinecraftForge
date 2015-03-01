@@ -1,0 +1,5 @@
+{
+  NeighborNotifyEvent event=new NeighborNotifyEvent(world,pos,state,notifiedSides);
+  MinecraftForge.EVENT_BUS.post(event);
+  return event;
+}
