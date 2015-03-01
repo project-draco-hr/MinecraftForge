@@ -1,0 +1,6 @@
+{
+  if (ENABLE) {
+    System.out.println(event.pos.toString());
+    event.setCanceled(true);
+  }
+}
