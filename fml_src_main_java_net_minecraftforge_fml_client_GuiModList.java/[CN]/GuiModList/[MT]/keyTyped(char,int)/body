@@ -1,0 +1,4 @@
+{
+  super.keyTyped(c,keyCode);
+  search.textboxKeyTyped(c,keyCode);
+}
