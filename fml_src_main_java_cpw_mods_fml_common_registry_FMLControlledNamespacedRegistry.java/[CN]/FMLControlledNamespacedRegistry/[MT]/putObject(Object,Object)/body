@@ -1,6 +1,6 @@
 {
   String name=(String)objName;
-  I thing=superType.cast(obj);
+  I thing=cast(obj);
   if (name == null)   throw new NullPointerException("Can't use a null-name for the registry.");
   if (name.isEmpty())   throw new IllegalArgumentException("Can't use an empty name for the registry.");
   if (thing == null)   throw new NullPointerException("Can't add null-object to the registry.");
