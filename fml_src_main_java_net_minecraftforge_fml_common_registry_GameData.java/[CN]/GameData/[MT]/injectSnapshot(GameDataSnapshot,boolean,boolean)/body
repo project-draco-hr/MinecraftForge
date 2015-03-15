@@ -67,6 +67,8 @@
   }
   List<String> missedMappings=Loader.instance().fireMissingMappingEvent(missingBlocks,missingItems,isLocalWorld,newData,remapBlocks,remapItems);
   if (!missedMappings.isEmpty())   return missedMappings;
+  missedMappings=newData.loadGenericRegistries(snapshot,getMain());
+  if (!missedMappings.isEmpty())   return missedMappings;
   if (injectFrozenData) {
     Map<String,Integer> newBlocks=frozen.iBlockRegistry.getEntriesNotIn(newData.iBlockRegistry);
     Map<String,Integer> newItems=frozen.iItemRegistry.getEntriesNotIn(newData.iItemRegistry);

@@ -1,0 +1,4 @@
+{
+  FMLControlledNamespacedRegistry<?> fmlControlledNamespacedRegistry=new FMLControlledNamespacedRegistry<T>(null,maxId,minId,type);
+  return (FMLControlledNamespacedRegistry<T>)fmlControlledNamespacedRegistry;
+}

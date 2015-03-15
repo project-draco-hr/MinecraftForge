@@ -5,4 +5,5 @@
   availabilityMap.or(data.availabilityMap);
   blockedIds.clear();
   blockedIds.addAll(data.blockedIds);
+  copyGenericRegistries(data);
 }
