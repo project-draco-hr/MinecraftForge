@@ -1,0 +1,8 @@
+{
+  boolean isCanceled=MinecraftForge.EVENT_BUS.post(new EntityMountEvent(entityMounting,entityBeingMounted,entityMounting.worldObj,isMounting));
+  if (isCanceled) {
+    entityMounting.setPositionAndRotation(entityMounting.posX,entityMounting.posY,entityMounting.posZ,entityMounting.prevRotationYaw,entityMounting.prevRotationPitch);
+    return false;
+  }
+ else   return true;
+}
