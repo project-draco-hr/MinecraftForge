@@ -1,0 +1,8 @@
+{
+  for (  SortType t : values()) {
+    if (t.buttonID == button.id) {
+      return t;
+    }
+  }
+  return null;
+}

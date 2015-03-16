@@ -115,4 +115,8 @@
     disableModButton.visible=false;
   }
   super.drawScreen(p_571_1_,p_571_2_,p_571_3_);
+  String text=I18n.format("fml.menu.mods.search");
+  int x=((10 + modList.right) / 2) - (getFontRenderer().getStringWidth(text) / 2);
+  getFontRenderer().drawString(text,x,modList.bottom + 5,0xFFFFFF);
+  search.drawTextBox();
 }

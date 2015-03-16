@@ -1,19 +1,33 @@
 {
   if (button.enabled) {
+    SortType type=SortType.getTypeForButton(button);
+    if (type != null) {
+      for (      GuiButton b : (List<GuiButton>)buttonList) {
+        if (SortType.getTypeForButton(b) != null) {
+          b.enabled=true;
+        }
+      }
+      button.enabled=false;
+      sorted=false;
+      sortType=type;
+      this.mods=modList.getMods();
+    }
+ else {
 switch (button.id) {
 case 6:
-      this.mc.displayGuiScreen(this.mainMenu);
-    return;
+        this.mc.displayGuiScreen(this.mainMenu);
+      return;
 case 20:
-  try {
-    IModGuiFactory guiFactory=FMLClientHandler.instance().getGuiFactoryFor(selectedMod);
-    GuiScreen newScreen=guiFactory.mainConfigGuiClass().getConstructor(GuiScreen.class).newInstance(this);
-    this.mc.displayGuiScreen(newScreen);
-  }
- catch (  Exception e) {
-    FMLLog.log(Level.ERROR,e,"There was a critical issue trying to build the config GUI for %s",selectedMod.getModId());
-  }
-return;
+    try {
+      IModGuiFactory guiFactory=FMLClientHandler.instance().getGuiFactoryFor(selectedMod);
+      GuiScreen newScreen=guiFactory.mainConfigGuiClass().getConstructor(GuiScreen.class).newInstance(this);
+      this.mc.displayGuiScreen(newScreen);
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.ERROR,e,"There was a critical issue trying to build the config GUI for %s",selectedMod.getModId());
+    }
+  return;
+}
 }
 }
 super.actionPerformed(button);
