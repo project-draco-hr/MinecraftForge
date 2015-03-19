@@ -3,4 +3,6 @@
   this.name=name;
   this.volume=volume;
   this.pitch=pitch;
+  this.newVolume=volume;
+  this.newPitch=pitch;
 }
