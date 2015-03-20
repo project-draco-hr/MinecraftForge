@@ -5,5 +5,11 @@
   this.netHandler=serverHandler;
   player.playerNetServerHandler=null;
   this.manager.setConnectionState(EnumConnectionState.PLAY);
-  return player.dimension;
+  NBTTagCompound playerNBT=scm.getPlayerNBT(player);
+  if (playerNBT != null) {
+    return playerNBT.getInteger("Dimension");
+  }
+ else {
+    return 0;
+  }
 }
