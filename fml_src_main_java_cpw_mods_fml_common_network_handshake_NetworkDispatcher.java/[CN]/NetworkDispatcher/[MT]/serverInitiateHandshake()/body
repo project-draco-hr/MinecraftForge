@@ -5,4 +5,5 @@
   this.netHandler=serverHandler;
   player.playerNetServerHandler=null;
   this.manager.setConnectionState(EnumConnectionState.PLAY);
+  return player.dimension;
 }
