@@ -1,4 +1,3 @@
 {
-  Iterable<?> self=this;
-  return GenericIterableFactory.newCastingIterable(self,superType);
+  return GenericIterableFactory.newCastingIterable(super.iterator(),superType);
 }

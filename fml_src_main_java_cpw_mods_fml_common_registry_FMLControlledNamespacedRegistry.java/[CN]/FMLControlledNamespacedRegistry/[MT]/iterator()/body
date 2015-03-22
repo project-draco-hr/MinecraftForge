@@ -1,0 +1,3 @@
+{
+  return Iterators.concat(super.iterator(),getPersistentSubstitutions().values().iterator());
+}
