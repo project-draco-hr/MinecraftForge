@@ -1,4 +1,4 @@
 {
-  this.fluidID=fluid.getID();
+  this.fluid=fluid;
   this.amount=amount;
 }

@@ -1,0 +1,3 @@
+{
+  return canDisplace(world,x,y,z);
+}

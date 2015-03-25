@@ -1,4 +1,3 @@
 {
-  this.fluidID=fluidID;
-  this.amount=amount;
+  this(FluidRegistry.getFluid(fluidID),amount);
 }

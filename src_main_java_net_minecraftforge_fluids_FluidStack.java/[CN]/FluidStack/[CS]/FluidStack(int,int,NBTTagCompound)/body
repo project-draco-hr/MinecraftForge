@@ -1,6 +1,3 @@
 {
-  this(fluidID,amount);
-  if (nbt != null) {
-    tag=(NBTTagCompound)nbt.copy();
-  }
+  this(FluidRegistry.getFluid(fluidID),amount,nbt);
 }
