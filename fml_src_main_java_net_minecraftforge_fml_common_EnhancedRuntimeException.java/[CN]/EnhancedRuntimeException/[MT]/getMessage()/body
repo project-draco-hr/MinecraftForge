@@ -1,0 +1,17 @@
+{
+  StackTraceElement[] stack=Thread.currentThread().getStackTrace();
+  if (stack.length > 2 && stack[2].getClassName().startsWith("org.apache.logging.log4j.")) {
+    final StringWriter buf=new StringWriter();
+    String msg=super.getMessage();
+    if (msg != null)     buf.append(msg);
+    buf.append('\n');
+    this.printStackTrace(new WrappedPrintStream(){
+      @Override void println(      String line){
+        buf.append(line).append('\n');
+      }
+    }
+);
+    return buf.toString();
+  }
+  return super.getMessage();
+}
