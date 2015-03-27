@@ -1,0 +1,9 @@
+{
+  printStackTrace(new WrappedPrintStream(){
+    @Override void println(    String line){
+      s.println(line);
+    }
+  }
+);
+  super.printStackTrace(s);
+}

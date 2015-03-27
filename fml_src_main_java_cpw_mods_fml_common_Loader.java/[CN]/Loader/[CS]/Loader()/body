@@ -2,7 +2,7 @@
   modClassLoader=new ModClassLoader(getClass().getClassLoader());
   if (!mccversion.equals(MC_VERSION)) {
     FMLLog.severe("This version of FML is built for Minecraft %s, we have detected Minecraft %s in your minecraft jar file",mccversion,MC_VERSION);
-    throw new LoaderException();
+    throw new LoaderException(String.format("This version of FML is built for Minecraft %s, we have detected Minecraft %s in your minecraft jar file",mccversion,MC_VERSION));
   }
   minecraft=new MinecraftDummyContainer(MC_VERSION);
   mcp=new MCPDummyContainer(MetadataCollection.from(getClass().getResourceAsStream("/mcpmod.info"),"MCP").getMetadataForId("mcp",null));

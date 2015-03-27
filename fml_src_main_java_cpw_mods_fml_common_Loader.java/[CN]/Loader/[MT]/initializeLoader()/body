@@ -18,7 +18,7 @@
     boolean dirMade=canonicalModsDir.mkdir();
     if (!dirMade) {
       FMLLog.severe("Unable to create the mod directory %s",canonicalModsPath);
-      throw new LoaderException();
+      throw new LoaderException(String.format("Unable to create the mod directory %s",canonicalModsPath));
     }
     FMLLog.info("Mod directory created successfully");
   }

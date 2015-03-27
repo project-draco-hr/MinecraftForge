@@ -41,6 +41,6 @@
   }
   if (parseFailure) {
     FMLLog.log(Level.WARN,"Unable to parse dependency string %s",dependencyString);
-    throw new LoaderException();
+    throw new LoaderException(String.format("Unable to parse dependency string %s",dependencyString));
   }
 }
