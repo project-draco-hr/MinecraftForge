@@ -7,6 +7,6 @@
     return registerItem((Item)obj,name,idHint);
   }
  else {
-    throw new IllegalArgumentException("An invalid registry object is to be added, only instances of Block or Item are allowed.");
+    return findRegistry(obj.getClass()).add(idHint,name,obj);
   }
 }
