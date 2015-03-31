@@ -83,7 +83,7 @@
     try {
       failedElements=GameData.injectWorldIDMap(dataList,blockedIds,blockAliases,itemAliases,blockSubstitutions,itemSubstitutions,true,true);
     }
- catch (    IllegalArgumentException ex) {
+ catch (    IllegalStateException ex) {
       String msg="The world state is utterly corrupted and this save is NOT loadable\n\n" + "There is a high probability that a mod has broken the\n" + "ID map and there is\n"+ "NOTHING FML or Forge can do to recover this save.\n\n"+ "If you changed your mods, try reverting the change";
       FMLLog.log(Level.FATAL,ex,msg);
       StartupQuery.notify(msg);
