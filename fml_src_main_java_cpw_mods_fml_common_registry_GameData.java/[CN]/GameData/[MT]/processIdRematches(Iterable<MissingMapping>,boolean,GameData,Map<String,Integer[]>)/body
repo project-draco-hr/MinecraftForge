@@ -28,6 +28,9 @@
         remaps.put(newName,new Integer[]{currId,newId});
       }
     }
+ else     if (action == FMLMissingMappingsEvent.Action.BLOCKONLY) {
+      FMLLog.fine("The ItemBlock %s is no longer present in the game. The residual block will remain",remap.name);
+    }
  else {
       if (action == FMLMissingMappingsEvent.Action.DEFAULT) {
         defaulted.add(remap.name);

@@ -1,0 +1,5 @@
+{
+  if (type != GameRegistry.Type.ITEM)   throw new IllegalArgumentException("Cannot skip an item that is a block");
+  if (GameData.getBlockRegistry().getRaw(id) == null)   throw new IllegalArgumentException("Cannot skip an ItemBlock that doesn't have a Block");
+  action=Action.BLOCKONLY;
+}
