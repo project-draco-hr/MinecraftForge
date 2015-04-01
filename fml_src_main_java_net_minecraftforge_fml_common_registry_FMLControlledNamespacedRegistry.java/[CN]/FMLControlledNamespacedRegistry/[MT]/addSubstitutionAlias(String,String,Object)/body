@@ -3,7 +3,7 @@
     FMLLog.severe("The substitution of %s has already occured. You cannot duplicate substitutions",nameToReplace);
     throw new ExistingSubstitutionException(nameToReplace,toReplace);
   }
-  I replacement=superType.cast(toReplace);
+  I replacement=cast(toReplace);
   I original=getRaw(nameToReplace);
   if (original == null) {
     throw new NullPointerException("The replacement target is not present. This won't work");

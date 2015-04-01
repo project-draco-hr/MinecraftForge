@@ -1,0 +1,4 @@
+{
+  FMLLog.fine("Overriding dimension: using %d",this.overrideLoginDim);
+  return this.overrideLoginDim != 0 ? this.overrideLoginDim : p_147282_1_.getDimension();
+}

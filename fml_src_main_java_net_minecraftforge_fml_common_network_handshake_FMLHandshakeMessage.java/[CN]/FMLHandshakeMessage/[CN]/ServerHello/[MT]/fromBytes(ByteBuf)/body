@@ -1,3 +1,10 @@
 {
   serverProtocolVersion=buffer.readByte();
+  if (serverProtocolVersion > 1) {
+    overrideDimension=buffer.readInt();
+    FMLLog.fine("Server FML protocol version %d, 4 byte dimension received %d",serverProtocolVersion,overrideDimension);
+  }
+ else {
+    FMLLog.info("Server FML protocol version %d, no additional data received",serverProtocolVersion);
+  }
 }
