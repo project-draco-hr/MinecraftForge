@@ -4,6 +4,10 @@
     String regName=e.getKey();
     FMLControlledNamespacedRegistry<?> registry=e.getValue();
     FMLControlledNamespacedRegistry<?> newRegistry=genericRegistries.get(regName);
+    if (newRegistry == null) {
+      newRegistry=registry.makeShallowCopy();
+      genericRegistries.put(regName,newRegistry);
+    }
     GameDataSnapshot.Entry regSnap=snapshot.entries.get("fmlgr:" + regName);
     if (regSnap == null) {
       FMLLog.info("Weird, there was no registry data for registry %s found in the snapshot",regName);
@@ -21,7 +25,7 @@
  else       if (currId != entryId) {
         FMLLog.fine("Fixed registry %s id mismatch %s: %d (init) -> %d (map).",regName,entryName,currId,entryId);
       }
-      newRegistry.register(entryId,entryName,registry.getRaw(entryName));
+      newRegistry.add(entryId,entryName,registry.getRaw(entryName));
     }
   }
   return result;

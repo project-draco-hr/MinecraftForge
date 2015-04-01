@@ -6,6 +6,6 @@
     return (BiMap<String,T>)blockSubstitutions;
   }
  else {
-    throw new RuntimeException("WHAT?");
+    return ImmutableBiMap.of();
   }
 }
