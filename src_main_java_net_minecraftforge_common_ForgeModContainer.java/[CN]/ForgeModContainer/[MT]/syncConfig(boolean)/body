@@ -74,6 +74,10 @@
   prop.setLanguageKey("forge.configgui.spawnfuzz").setRequiresWorldRestart(false);
   defaultSpawnFuzz=prop.getInt(20);
   propOrder.add(prop.getName());
+  prop=config.get(Configuration.CATEGORY_GENERAL,"spawnHasFuzz",Boolean.TRUE,"If the overworld has ANY spawn fuzz at all. If not, the spawn will always be the exact same location.");
+  prop.setLanguageKey("forge.configgui.hasspawnfuzz").setRequiresWorldRestart(false);
+  defaultHasSpawnFuzz=prop.getBoolean(Boolean.TRUE);
+  propOrder.add(prop.getName());
   config.setCategoryPropertyOrder(CATEGORY_GENERAL,propOrder);
   if (config.hasChanged()) {
     config.save();
