@@ -1,5 +1,0 @@
-EntityPlayer player
-RenderPlayer renderer
-int slot
-float partialTick
-ItemStack stack

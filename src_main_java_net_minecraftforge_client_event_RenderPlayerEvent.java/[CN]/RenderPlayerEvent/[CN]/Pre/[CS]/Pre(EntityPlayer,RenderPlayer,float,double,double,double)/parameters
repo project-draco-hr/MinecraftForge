@@ -1,3 +1,6 @@
 EntityPlayer player
 RenderPlayer renderer
 float tick
+double x
+double y
+double z

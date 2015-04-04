@@ -1,3 +1,6 @@
 EntityPlayer player
 RenderPlayer renderer
 float partialRenderTick
+double x
+double y
+double z
