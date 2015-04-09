@@ -2,6 +2,6 @@
   int code=1;
   code=31 * code + container.getItem().hashCode();
   code=31 * code + container.getItemDamage();
-  if (fluid != null)   code=31 * code + fluid.fluidID;
+  if (stack != null)   code=31 * code + stack.hashCode();
   return code;
 }

@@ -1,4 +1,4 @@
 {
   this(container);
-  this.fluid=fluid;
+  this.stack=stack;
 }

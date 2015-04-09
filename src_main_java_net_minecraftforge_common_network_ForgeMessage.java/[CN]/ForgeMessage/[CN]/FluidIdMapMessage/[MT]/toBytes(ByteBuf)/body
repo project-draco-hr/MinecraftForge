@@ -1,8 +1,8 @@
 {
-  Map<String,Integer> ids=FluidRegistry.getRegisteredFluidIDs();
+  Map<Fluid,Integer> ids=FluidRegistry.getRegisteredFluidIDsByFluid();
   bytes.writeInt(ids.size());
-  for (  Map.Entry<String,Integer> entry : ids.entrySet()) {
-    ByteBufUtils.writeUTF8String(bytes,entry.getKey());
+  for (  Map.Entry<Fluid,Integer> entry : ids.entrySet()) {
+    ByteBufUtils.writeUTF8String(bytes,entry.getKey().getName());
     bytes.writeInt(entry.getValue());
   }
 }

@@ -1,5 +1,0 @@
-{
-  maxID=newfluidIDs.size();
-  fluidIDs.clear();
-  fluidIDs.putAll(newfluidIDs);
-}

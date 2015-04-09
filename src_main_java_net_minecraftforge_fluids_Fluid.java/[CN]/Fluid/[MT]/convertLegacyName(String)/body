@@ -1,3 +1,0 @@
-{
-  return fluidName != null && legacyNames.containsKey(fluidName) ? legacyNames.get(fluidName) : fluidName;
-}
