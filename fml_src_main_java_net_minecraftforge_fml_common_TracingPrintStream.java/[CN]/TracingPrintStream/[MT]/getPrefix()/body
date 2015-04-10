@@ -1,5 +1,8 @@
 {
   StackTraceElement[] elems=Thread.currentThread().getStackTrace();
-  StackTraceElement elem=elems[3];
+  StackTraceElement elem=elems[BASE_DEPTH];
+  if (elem.getClassName().startsWith("kotlin.io.")) {
+    elem=elems[BASE_DEPTH + 2];
+  }
   return "[" + elem.getClassName() + ":"+ elem.getMethodName()+ ":"+ elem.getLineNumber()+ "]: ";
 }
