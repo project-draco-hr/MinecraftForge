@@ -1,1 +1,2 @@
 BiMap<Fluid,Integer> newfluidIDs
+Set<String> defaultNames

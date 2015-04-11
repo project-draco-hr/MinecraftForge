@@ -5,4 +5,13 @@
     int fluidId=bytes.readInt();
     fluidIds.put(FluidRegistry.getFluid(fluidName),fluidId);
   }
+  if (bytes.isReadable()) {
+    for (int i=0; i < listSize; i++) {
+      defaultFluids.add(ByteBufUtils.readUTF8String(bytes));
+    }
+  }
+ else {
+    FMLLog.getLogger().log(Level.INFO,"Legacy server message contains no default fluid list - there may be problems with fluids");
+    defaultFluids.clear();
+  }
 }

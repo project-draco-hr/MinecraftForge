@@ -1,0 +1,5 @@
+{
+  ModContainer activeModContainer=Loader.instance().activeModContainer();
+  String activeModContainerName=activeModContainer == null ? "minecraft" : activeModContainer.getModId();
+  return activeModContainerName + ":" + fluid.getName();
+}

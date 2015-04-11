@@ -1,12 +1,13 @@
 {
+  masterFluidReference.put(uniqueName(fluid),fluid);
   if (fluids.containsKey(fluid.getName())) {
-    FMLLog.bigWarning("Duplicate registration attempt for fluid %s (type %s) has occurred. This is not a problem itself, but subsequent failed FluidStacks result if this is not handled properly",fluid.getName(),fluid.getClass().getName());
     return false;
   }
   fluids.put(fluid.getName(),fluid);
   maxID++;
   fluidIDs.put(fluid,maxID);
   fluidNames.put(maxID,fluid.getName());
+  defaultFluidName.put(fluid.getName(),uniqueName(fluid));
   MinecraftForge.EVENT_BUS.post(new FluidRegisterEvent(fluid.getName(),maxID));
   return true;
 }

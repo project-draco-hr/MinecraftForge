@@ -5,4 +5,8 @@
     ByteBufUtils.writeUTF8String(bytes,entry.getKey().getName());
     bytes.writeInt(entry.getValue());
   }
+  for (  Map.Entry<Fluid,Integer> entry : ids.entrySet()) {
+    String defaultName=FluidRegistry.getDefaultFluidName(entry.getKey());
+    ByteBufUtils.writeUTF8String(bytes,defaultName);
+  }
 }

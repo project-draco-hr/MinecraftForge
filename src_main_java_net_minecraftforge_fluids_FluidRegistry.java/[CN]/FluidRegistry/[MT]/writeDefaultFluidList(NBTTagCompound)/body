@@ -1,0 +1,7 @@
+{
+  NBTTagList tagList=new NBTTagList();
+  for (  Entry<String,Fluid> def : fluids.entrySet()) {
+    tagList.appendTag(new NBTTagString(getDefaultFluidName(def.getValue())));
+  }
+  forgeData.setTag("DefaultFluidList",tagList);
+}
