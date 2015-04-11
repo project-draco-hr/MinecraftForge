@@ -1,0 +1,42 @@
+{
+  Logger logger=LogManager.getLogger("TEXTURE ERRORS");
+  logger.error(Strings.repeat("+=",25));
+  logger.error("The following missing textures were found.");
+  Map<String,FallbackResourceManager> resManagers=ObfuscationReflectionHelper.getPrivateValue(SimpleReloadableResourceManager.class,(SimpleReloadableResourceManager)Minecraft.getMinecraft().getResourceManager(),"domainResourceManagers","field_110548" + "_a");
+  for (  String resourceDomain : missingTextures.keySet()) {
+    Set<ResourceLocation> missing=missingTextures.get(resourceDomain);
+    logger.error("  DOMAIN {}",resourceDomain);
+    logger.error("  domain {} is missing {} texture{}",resourceDomain,missing.size(),missing.size() != 1 ? "s" : "");
+    logger.error(Strings.repeat("=",50));
+    FallbackResourceManager fallbackResourceManager=resManagers.get(resourceDomain);
+    if (fallbackResourceManager == null) {
+      logger.error("    domain {} is missing a resource manager, how very odd");
+    }
+ else {
+      List<IResourcePack> resPacks=ObfuscationReflectionHelper.getPrivateValue(FallbackResourceManager.class,fallbackResourceManager,"resourcePacks","field_110540" + "_a");
+      logger.error("    domain {} has {} location{}:",resourceDomain,resPacks.size(),resPacks.size() != 1 ? "s" : "");
+      for (      IResourcePack resPack : resPacks) {
+        if (resPack instanceof FMLContainerHolder) {
+          FMLContainerHolder containerHolder=(FMLContainerHolder)resPack;
+          ModContainer fmlContainer=containerHolder.getFMLContainer();
+          logger.error("      mod {} resources at {}",fmlContainer.getModId(),fmlContainer.getSource().getPath());
+        }
+ else         if (resPack instanceof AbstractResourcePack) {
+          AbstractResourcePack resourcePack=(AbstractResourcePack)resPack;
+          File resPath=ObfuscationReflectionHelper.getPrivateValue(AbstractResourcePack.class,resourcePack,"resourcePackFile","field_110597" + "_b");
+          logger.error("      resource pack at path {}",resPath.getPath());
+        }
+ else {
+          logger.error("      unknown resourcepack type {} : {}",resPack.getClass().getName(),resPack.getPackName());
+        }
+      }
+    }
+    logger.error(Strings.repeat("-",25));
+    logger.error("    The missing resources for domain {} are:",resourceDomain);
+    for (    ResourceLocation rl : missing) {
+      logger.error("      {}",rl.getResourcePath());
+    }
+    logger.error(Strings.repeat("-",50));
+  }
+  logger.error(Strings.repeat("+=",25));
+}

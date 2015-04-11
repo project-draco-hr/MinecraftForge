@@ -1,0 +1,3 @@
+{
+  missingTextures.put(resourceLocation.getResourceDomain(),resourceLocation);
+}
