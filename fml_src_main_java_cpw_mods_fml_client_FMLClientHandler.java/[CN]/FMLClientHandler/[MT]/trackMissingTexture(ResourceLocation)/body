@@ -1,3 +1,4 @@
 {
+  badTextureDomains.add(resourceLocation.getResourceDomain());
   missingTextures.put(resourceLocation.getResourceDomain(),resourceLocation);
 }

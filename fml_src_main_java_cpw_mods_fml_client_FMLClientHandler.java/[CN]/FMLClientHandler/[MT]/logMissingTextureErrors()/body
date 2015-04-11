@@ -1,16 +1,17 @@
 {
   Logger logger=LogManager.getLogger("TEXTURE ERRORS");
   logger.error(Strings.repeat("+=",25));
-  logger.error("The following missing textures were found.");
+  logger.error("The following texture errors were found.");
   Map<String,FallbackResourceManager> resManagers=ObfuscationReflectionHelper.getPrivateValue(SimpleReloadableResourceManager.class,(SimpleReloadableResourceManager)Minecraft.getMinecraft().getResourceManager(),"domainResourceManagers","field_110548" + "_a");
   for (  String resourceDomain : missingTextures.keySet()) {
     Set<ResourceLocation> missing=missingTextures.get(resourceDomain);
-    logger.error("  DOMAIN {}",resourceDomain);
-    logger.error("  domain {} is missing {} texture{}",resourceDomain,missing.size(),missing.size() != 1 ? "s" : "");
     logger.error(Strings.repeat("=",50));
+    logger.error("  DOMAIN {}",resourceDomain);
+    logger.error(Strings.repeat("-",50));
+    logger.error("  domain {} is missing {} texture{}",resourceDomain,missing.size(),missing.size() != 1 ? "s" : "");
     FallbackResourceManager fallbackResourceManager=resManagers.get(resourceDomain);
     if (fallbackResourceManager == null) {
-      logger.error("    domain {} is missing a resource manager, how very odd");
+      logger.error("    domain {} is missing a resource manager - it is probably a side-effect of automatic texture processing",resourceDomain);
     }
  else {
       List<IResourcePack> resPacks=ObfuscationReflectionHelper.getPrivateValue(FallbackResourceManager.class,fallbackResourceManager,"resourcePacks","field_110540" + "_a");
@@ -36,7 +37,22 @@
     for (    ResourceLocation rl : missing) {
       logger.error("      {}",rl.getResourcePath());
     }
-    logger.error(Strings.repeat("-",50));
+    logger.error(Strings.repeat("-",25));
+    if (!brokenTextures.containsRow(resourceDomain)) {
+      logger.error("    No other errors exist for domain {}",resourceDomain);
+    }
+ else {
+      logger.error("    The following other errors were reported for domain {}:",resourceDomain);
+      Map<String,Set<ResourceLocation>> resourceErrs=brokenTextures.row(resourceDomain);
+      for (      String error : resourceErrs.keySet()) {
+        logger.error(Strings.repeat("-",25));
+        logger.error("    Problem: {}",error);
+        for (        ResourceLocation rl : resourceErrs.get(error)) {
+          logger.error("      {}",rl.getResourcePath());
+        }
+      }
+    }
+    logger.error(Strings.repeat("=",50));
   }
   logger.error(Strings.repeat("+=",25));
 }
