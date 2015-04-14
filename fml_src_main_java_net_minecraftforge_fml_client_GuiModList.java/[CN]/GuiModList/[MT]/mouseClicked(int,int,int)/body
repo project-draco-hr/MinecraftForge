@@ -1,7 +1,0 @@
-{
-  super.mouseClicked(x,y,button);
-  search.mouseClicked(x,y,button);
-  if (button == 1 && x >= search.xPosition && x < search.xPosition + this.width && y >= search.yPosition && y < search.yPosition + this.height) {
-    search.setText("");
-  }
-}
