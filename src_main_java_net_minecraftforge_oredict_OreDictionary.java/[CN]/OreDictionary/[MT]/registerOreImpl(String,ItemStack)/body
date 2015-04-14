@@ -1,5 +1,9 @@
 {
-  if ("Unknown".equals(name))   return;
+  if (name == null || name.isEmpty() || "Unknown".equals(name))   return;
+  if (ore == null || ore.getItem() == null) {
+    FMLLog.bigWarning("Invalid registration attempt for an Ore Dictionary item with name %s has occurred. The registration has been denied to prevent crashes. The mod responsible for the registration needs to correct this.",name);
+    return;
+  }
   int oreID=getOreID(name);
   int hash=Item.getIdFromItem(ore.getItem());
   if (ore.getItemDamage() != WILDCARD_VALUE) {
