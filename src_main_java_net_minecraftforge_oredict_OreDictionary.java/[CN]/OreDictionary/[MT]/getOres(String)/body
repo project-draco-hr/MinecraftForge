@@ -1,3 +1,3 @@
 {
-  return nameToId.get(name) != null ? getOres(getOreID(name)) : EMPTY_LIST;
+  return getOres(getOreID(name));
 }
