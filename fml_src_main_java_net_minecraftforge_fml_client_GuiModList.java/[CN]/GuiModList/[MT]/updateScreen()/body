@@ -7,7 +7,7 @@
   }
   if (!sorted) {
     reloadMods();
-    Collections.sort(mods,sortType.comparator);
+    Collections.sort(mods,sortType);
     selected=modList.selectedIndex=mods.indexOf(selectedMod);
     sorted=true;
   }

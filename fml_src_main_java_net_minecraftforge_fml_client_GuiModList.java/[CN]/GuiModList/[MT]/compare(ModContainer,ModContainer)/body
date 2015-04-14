@@ -1,12 +1,5 @@
 {
   String name1=StringUtils.stripControlCodes(o1.getName()).toLowerCase();
   String name2=StringUtils.stripControlCodes(o2.getName()).toLowerCase();
-switch (type) {
-case A_TO_Z:
-    return name1.compareTo(name2);
-case Z_TO_A:
-  return name2.compareTo(name1);
-default :
-return 0;
-}
+  return compare(name1,name2);
 }

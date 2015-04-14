@@ -1,4 +1,3 @@
 {
   this.buttonID=buttonID;
-  this.comparator=new ModComparator(this);
 }
