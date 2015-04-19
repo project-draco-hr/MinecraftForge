@@ -9,7 +9,7 @@
     FMLLog.severe("The mod %s has attempted to request a ticket without a listener in place",modId);
     throw new RuntimeException("Invalid ticket request");
   }
-  int allowedCount=ticketConstraints.containsKey(modId) ? ticketConstraints.get(modId) : defaultMaxCount;
+  int allowedCount=getMaxTicketLengthFor(modId);
   if (tickets.get(world).get(modId).size() >= allowedCount) {
     if (!warnedMods.contains(modId)) {
       FMLLog.info("The mod %s has attempted to allocate a chunkloading ticket beyond it's currently allocated maximum : %d",modId,allowedCount);
