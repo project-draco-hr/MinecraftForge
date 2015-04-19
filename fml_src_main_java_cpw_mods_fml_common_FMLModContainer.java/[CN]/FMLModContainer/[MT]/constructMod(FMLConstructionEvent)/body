@@ -60,6 +60,5 @@
   }
  catch (  Throwable e) {
     controller.errorOccurred(this,e);
-    Throwables.propagateIfPossible(e);
   }
 }
