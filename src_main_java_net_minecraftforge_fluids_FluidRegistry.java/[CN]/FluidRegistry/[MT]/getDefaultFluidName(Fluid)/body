@@ -1,3 +1,8 @@
 {
-  return masterFluidReference.inverse().get(key);
+  String name=masterFluidReference.inverse().get(key);
+  if (Strings.isNullOrEmpty(name)) {
+    FMLLog.getLogger().log(Level.ERROR,"The fluid registry is corrupted. A fluid {} {} is not properly registered. The mod that registered this is broken",key.getClass().getName(),key.getName());
+    throw new IllegalStateException("The fluid registry is corrupted");
+  }
+  return name;
 }
