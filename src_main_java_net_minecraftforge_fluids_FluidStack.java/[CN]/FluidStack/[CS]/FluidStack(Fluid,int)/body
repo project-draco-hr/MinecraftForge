@@ -7,6 +7,7 @@
     FMLLog.bigWarning("Failed attempt to create a FluidStack for an unregistered Fluid %s (type %s)",fluid.getName(),fluid.getClass().getName());
     throw new IllegalArgumentException("Cannot create a fluidstack from an unregistered fluid");
   }
-  this.fluid=fluid;
+  this.fluidDelegate=FluidRegistry.makeDelegate(fluid);
   this.amount=amount;
+  this.fluid=fluid;
 }

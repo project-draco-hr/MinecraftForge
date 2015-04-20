@@ -20,4 +20,7 @@
     fluidIDs.put(fluid,id);
   }
   fluidBlocks=null;
+  for (  FluidDelegate fd : delegates.values()) {
+    fd.rebind();
+  }
 }

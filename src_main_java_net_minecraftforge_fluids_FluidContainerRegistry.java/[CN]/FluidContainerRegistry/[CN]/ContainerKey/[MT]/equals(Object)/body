@@ -6,6 +6,6 @@
   if (stack == null && ck.stack != null)   return false;
   if (stack != null && ck.stack == null)   return false;
   if (stack == null && ck.stack == null)   return true;
-  if (stack.fluid != ck.stack.fluid)   return false;
+  if (stack.getFluid() != ck.stack.getFluid())   return false;
   return true;
 }

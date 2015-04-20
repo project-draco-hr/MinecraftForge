@@ -1,5 +1,6 @@
 {
   masterFluidReference.put(uniqueName(fluid),fluid);
+  delegates.put(fluid,new FluidDelegate(fluid,fluid.getName()));
   if (fluids.containsKey(fluid.getName())) {
     return false;
   }
