@@ -1,11 +1,15 @@
 {
   modController.distributeStateMessage(LoaderState.INITIALIZATION);
+  progressBar.step("Postinitialization");
   modController.transition(LoaderState.POSTINITIALIZATION,false);
   modController.distributeStateMessage(FMLInterModComms.IMCEvent.class);
   modController.distributeStateMessage(LoaderState.POSTINITIALIZATION);
+  progressBar.step("Finishing up");
   modController.transition(LoaderState.AVAILABLE,false);
   modController.distributeStateMessage(LoaderState.AVAILABLE);
   GameData.freezeData();
   GameData.dumpRegistry(minecraftDir);
   FMLLog.info("Forge Mod Loader has successfully loaded %d mod%s",mods.size(),mods.size() == 1 ? "" : "s");
+  ProgressManager.pop(progressBar);
+  progressBar=null;
 }

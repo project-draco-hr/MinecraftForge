@@ -6,5 +6,6 @@
   ObjectHolderRegistry.INSTANCE.findObjectHolders(discoverer.getASMTable());
   modController.distributeStateMessage(LoaderState.PREINITIALIZATION,discoverer.getASMTable(),canonicalConfigDir);
   ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  progressBar.step("Initialization");
   modController.transition(LoaderState.INITIALIZATION,false);
 }
