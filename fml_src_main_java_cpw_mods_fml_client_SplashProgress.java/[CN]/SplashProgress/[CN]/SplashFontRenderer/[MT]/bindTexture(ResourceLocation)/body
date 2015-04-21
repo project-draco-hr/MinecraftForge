@@ -1,0 +1,4 @@
+{
+  if (location != locationFontTexture)   throw new IllegalArgumentException();
+  GL11.glBindTexture(GL11.GL_TEXTURE_2D,fontTexture);
+}

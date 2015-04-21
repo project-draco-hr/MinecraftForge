@@ -1,0 +1,4 @@
+{
+  super(Minecraft.getMinecraft().gameSettings,fontLocation,null,false);
+  super.onResourceManagerReload(null);
+}

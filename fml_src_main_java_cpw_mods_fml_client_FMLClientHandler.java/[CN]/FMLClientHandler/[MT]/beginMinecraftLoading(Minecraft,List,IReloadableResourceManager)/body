@@ -1,4 +1,5 @@
 {
+  SplashProgress.start();
   client=minecraft;
   this.resourcePackList=resourcePackList;
   this.resourceManager=resourceManager;

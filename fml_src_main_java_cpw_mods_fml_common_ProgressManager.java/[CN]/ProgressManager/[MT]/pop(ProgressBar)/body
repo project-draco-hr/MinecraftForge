@@ -1,0 +1,5 @@
+{
+  if (bar.getSteps() != bar.getStep())   throw new IllegalStateException("can't pop unfinished ProgressBar " + bar.getTitle());
+  bars.remove(bar);
+  FMLCommonHandler.instance().processWindowMessages();
+}

@@ -1,0 +1,6 @@
+{
+  ProgressBar bar=new ProgressBar(title,steps);
+  bars.add(bar);
+  FMLCommonHandler.instance().processWindowMessages();
+  return bar;
+}

@@ -1,0 +1,195 @@
+{
+  if (!enabled)   return;
+  FMLCommonHandler.instance().registerCrashCallable(new ICrashCallable(){
+    public String call() throws Exception {
+      return "' Vendor: '" + GL11.glGetString(GL11.GL_VENDOR) + "' Version: '"+ GL11.glGetString(GL11.GL_VERSION)+ "' Renderer: '"+ GL11.glGetString(GL11.GL_RENDERER)+ "'";
+    }
+    public String getLabel(){
+      return "GL info";
+    }
+  }
+);
+  CrashReport report=CrashReport.makeCrashReport(new Throwable(),"Loading screen debug info");
+  System.out.println(report.getCompleteReport());
+  fontTexture=GL11.glGenTextures();
+  loadTexture(mcPack,fontTexture,fontLocation);
+  logoTexture=GL11.glGenTextures();
+  loadTexture(mcPack,logoTexture,logoLocation);
+  forgeTexture=GL11.glGenTextures();
+  loadTexture(fmlPack,forgeTexture,forgeLocation);
+  try {
+    d=new SharedDrawable(Display.getDrawable());
+    Display.getDrawable().releaseContext();
+    d.makeCurrent();
+  }
+ catch (  LWJGLException e) {
+    e.printStackTrace();
+    throw new RuntimeException(e);
+  }
+  thread=new Thread(new Runnable(){
+    private final int barWidth=400;
+    private final int barHeight=20;
+    private final int textHeight2=20;
+    private final int barOffset=55;
+    public void run(){
+      setGL();
+      while (!done) {
+        ProgressBar first=null, penult=null, last=null;
+        Iterator<ProgressBar> i=ProgressManager.barIterator();
+        while (i.hasNext()) {
+          if (first == null)           first=i.next();
+ else {
+            penult=last;
+            last=i.next();
+          }
+        }
+        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+        int w=Display.getWidth();
+        int h=Display.getHeight();
+        GL11.glViewport(0,0,w,h);
+        GL11.glMatrixMode(GL11.GL_PROJECTION);
+        GL11.glLoadIdentity();
+        GL11.glOrtho(320 - w / 2,320 + w / 2,240 + h / 2,240 - h / 2,-1,1);
+        GL11.glMatrixMode(GL11.GL_MODELVIEW);
+        GL11.glLoadIdentity();
+        setColor(backgroundColor);
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D,logoTexture);
+        GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(0,0);
+        GL11.glVertex2f(320 - 256,240 - 256);
+        GL11.glTexCoord2f(0,1);
+        GL11.glVertex2f(320 - 256,240 + 256);
+        GL11.glTexCoord2f(1,1);
+        GL11.glVertex2f(320 + 256,240 + 256);
+        GL11.glTexCoord2f(1,0);
+        GL11.glVertex2f(320 + 256,240 - 256);
+        GL11.glEnd();
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        if (first != null) {
+          GL11.glPushMatrix();
+          GL11.glTranslatef(320 - (float)barWidth / 2,310,0);
+          drawBar(first);
+          if (penult != null) {
+            GL11.glTranslatef(0,barOffset,0);
+            drawBar(penult);
+          }
+          if (last != null) {
+            GL11.glTranslatef(0,barOffset,0);
+            drawBar(last);
+          }
+          GL11.glPopMatrix();
+        }
+        angle+=1;
+        setColor(backgroundColor);
+        GL11.glTranslatef(680,420,0);
+        GL11.glRotatef(angle,0,0,1);
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D,forgeTexture);
+        GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(0,0);
+        GL11.glVertex2f(-50,-50);
+        GL11.glTexCoord2f(0,1);
+        GL11.glVertex2f(-50,50);
+        GL11.glTexCoord2f(1,1);
+        GL11.glVertex2f(50,50);
+        GL11.glTexCoord2f(1,0);
+        GL11.glVertex2f(50,-50);
+        GL11.glEnd();
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        Display.update();
+        if (pause) {
+          clearGL();
+          setGL();
+        }
+        try {
+          Thread.sleep(10);
+        }
+ catch (        InterruptedException e) {
+          e.printStackTrace();
+          throw new RuntimeException(e);
+        }
+      }
+      clearGL();
+    }
+    private void setColor(    int color){
+      GL11.glColor3ub((byte)((color >> 16) & 0xFF),(byte)((color >> 8) & 0xFF),(byte)(color & 0xFF));
+    }
+    private void drawBox(    int w,    int h){
+      GL11.glBegin(GL11.GL_QUADS);
+      GL11.glVertex2f(0,0);
+      GL11.glVertex2f(0,h);
+      GL11.glVertex2f(w,h);
+      GL11.glVertex2f(w,0);
+      GL11.glEnd();
+    }
+    private void drawBar(    ProgressBar b){
+      GL11.glPushMatrix();
+      setColor(fontColor);
+      GL11.glScalef(2,2,1);
+      GL11.glEnable(GL11.GL_TEXTURE_2D);
+      fontRenderer.drawString(b.getTitle() + " - " + b.getMessage(),0,0,0x000000);
+      GL11.glDisable(GL11.GL_TEXTURE_2D);
+      GL11.glPopMatrix();
+      GL11.glPushMatrix();
+      GL11.glTranslatef(0,textHeight2,0);
+      setColor(barBorderColor);
+      drawBox(barWidth,barHeight);
+      setColor(barBackgroundColor);
+      GL11.glTranslatef(1,1,0);
+      drawBox(barWidth - 2,barHeight - 2);
+      setColor(barColor);
+      drawBox((barWidth - 2) * b.getStep() / b.getSteps(),barHeight - 2);
+      String progress="" + b.getStep() + "/"+ b.getSteps();
+      GL11.glTranslatef(((float)barWidth - 2 - fontRenderer.getStringWidth(progress)) / 2,2,0);
+      setColor(fontColor);
+      GL11.glScalef(2,2,1);
+      GL11.glEnable(GL11.GL_TEXTURE_2D);
+      fontRenderer.drawString(progress,0,0,0x000000);
+      GL11.glPopMatrix();
+    }
+    private void setGL(){
+      lock.lock();
+      try {
+        Display.getDrawable().makeCurrent();
+      }
+ catch (      LWJGLException e) {
+        e.printStackTrace();
+        throw new RuntimeException(e);
+      }
+      GL11.glClearColor((float)((backgroundColor >> 16) & 0xFF) / 0xFF,(float)((backgroundColor >> 8) & 0xFF) / 0xFF,(float)(backgroundColor & 0xFF) / 0xFF,1);
+      GL11.glDisable(GL11.GL_LIGHTING);
+      GL11.glDisable(GL11.GL_DEPTH_TEST);
+      GL11.glEnable(GL11.GL_BLEND);
+      GL11.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
+      GL11.glEnable(GL11.GL_TEXTURE_2D);
+      if (fontRenderer == null) {
+        fontRenderer=new SplashFontRenderer();
+      }
+      GL11.glDisable(GL11.GL_TEXTURE_2D);
+    }
+    private void clearGL(){
+      Minecraft mc=Minecraft.getMinecraft();
+      mc.displayWidth=Display.getWidth();
+      mc.displayHeight=Display.getHeight();
+      mc.resize(mc.displayWidth,mc.displayHeight);
+      GL11.glClearColor(1,1,1,1);
+      GL11.glEnable(GL11.GL_DEPTH_TEST);
+      GL11.glDepthFunc(GL11.GL_LEQUAL);
+      GL11.glEnable(GL11.GL_ALPHA_TEST);
+      GL11.glAlphaFunc(GL11.GL_GREATER,.1f);
+      try {
+        Display.getDrawable().releaseContext();
+      }
+ catch (      LWJGLException e) {
+        e.printStackTrace();
+        throw new RuntimeException(e);
+      }
+ finally {
+        lock.unlock();
+      }
+    }
+  }
+);
+  thread.start();
+}
