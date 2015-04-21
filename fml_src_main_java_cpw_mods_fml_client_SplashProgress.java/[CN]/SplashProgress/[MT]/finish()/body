@@ -1,0 +1,16 @@
+{
+  if (!enabled)   return;
+  try {
+    done=true;
+    thread.join();
+    d.releaseContext();
+    Display.getDrawable().makeCurrent();
+    GL11.glDeleteTextures(fontTexture);
+    GL11.glDeleteTextures(logoTexture);
+    GL11.glDeleteTextures(forgeTexture);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    throw new RuntimeException(e);
+  }
+}

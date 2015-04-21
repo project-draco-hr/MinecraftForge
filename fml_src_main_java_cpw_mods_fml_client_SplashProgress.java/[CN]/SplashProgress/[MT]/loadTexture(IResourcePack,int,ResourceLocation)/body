@@ -1,0 +1,14 @@
+{
+  InputStream s=null;
+  try {
+    s=pack.getInputStream(location);
+    TextureUtil.uploadTextureImageAllocate(name,ImageIO.read(pack.getInputStream(location)),false,false);
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+    throw new RuntimeException(e);
+  }
+ finally {
+    IOUtils.closeQuietly(s);
+  }
+}
