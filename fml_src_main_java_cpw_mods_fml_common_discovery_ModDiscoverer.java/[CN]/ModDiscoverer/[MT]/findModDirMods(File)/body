@@ -1,23 +1,3 @@
 {
-  File[] modList=FileListHelper.sortFileList(modsDir,null);
-  modList=FileListHelper.sortFileList(ObjectArrays.concat(modList,ModListHelper.additionalMods.values().toArray(new File[0]),File.class));
-  for (  File modFile : modList) {
-    if (CoreModManager.getLoadedCoremods().contains(modFile.getName())) {
-      FMLLog.finer("Skipping already parsed coremod or tweaker %s",modFile.getName());
-    }
- else     if (modFile.isDirectory()) {
-      FMLLog.fine("Found a candidate mod directory %s",modFile.getName());
-      candidates.add(new ModCandidate(modFile,modFile,ContainerType.DIR));
-    }
- else {
-      Matcher matcher=zipJar.matcher(modFile.getName());
-      if (matcher.matches()) {
-        FMLLog.fine("Found a candidate zip or jar file %s",matcher.group(0));
-        candidates.add(new ModCandidate(modFile,modFile,ContainerType.JAR));
-      }
- else {
-        FMLLog.fine("Ignoring unknown file %s in mods directory",modFile.getName());
-      }
-    }
-  }
+  findModDirMods(modsDir,new File[0]);
 }
