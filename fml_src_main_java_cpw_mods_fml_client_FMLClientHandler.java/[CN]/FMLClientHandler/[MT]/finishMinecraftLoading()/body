@@ -37,5 +37,4 @@ catch (  LoaderException le) {
   }
   loading=false;
   client.gameSettings.loadOptions();
-  SplashProgress.finish();
 }

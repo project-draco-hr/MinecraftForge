@@ -8,4 +8,5 @@
   ObjectHolderRegistry.INSTANCE.applyObjectHolders();
   progressBar.step("Initializing mods Phase 2");
   modController.transition(LoaderState.INITIALIZATION,false);
+  progressBar.step("Initializing Minecraft Engine");
 }

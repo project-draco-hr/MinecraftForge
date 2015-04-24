@@ -1,3 +1,4 @@
 {
+  if (sidedDelegate == null)   return;
   sidedDelegate.processWindowMessages();
 }

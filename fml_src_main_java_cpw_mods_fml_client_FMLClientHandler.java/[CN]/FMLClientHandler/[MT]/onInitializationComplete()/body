@@ -17,4 +17,6 @@
  else {
   }
   logMissingTextureErrors();
+  Loader.instance().loadingComplete();
+  SplashProgress.finish();
 }

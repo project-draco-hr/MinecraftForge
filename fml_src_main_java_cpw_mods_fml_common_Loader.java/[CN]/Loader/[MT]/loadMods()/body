@@ -1,5 +1,5 @@
 {
-  progressBar=ProgressManager.push("Mod Loading",5);
+  progressBar=ProgressManager.push("Loading",7);
   progressBar.step("Constructing Mods");
   initializeLoader();
   mods=Lists.newArrayList();
