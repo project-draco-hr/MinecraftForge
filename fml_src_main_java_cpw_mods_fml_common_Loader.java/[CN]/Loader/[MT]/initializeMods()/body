@@ -1,6 +1,6 @@
 {
   modController.distributeStateMessage(LoaderState.INITIALIZATION);
-  progressBar.step("Postinitialization");
+  progressBar.step("Initializing mods Phase 3");
   modController.transition(LoaderState.POSTINITIALIZATION,false);
   modController.distributeStateMessage(FMLInterModComms.IMCEvent.class);
   modController.distributeStateMessage(LoaderState.POSTINITIALIZATION);
