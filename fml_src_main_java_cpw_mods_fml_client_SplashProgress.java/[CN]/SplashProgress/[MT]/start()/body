@@ -26,6 +26,7 @@
     e.printStackTrace();
     throw new RuntimeException(e);
   }
+  Thread mainThread=Thread.currentThread();
   thread=new Thread(new Runnable(){
     private final int barWidth=400;
     private final int barHeight=20;
@@ -188,6 +189,13 @@
  finally {
         lock.unlock();
       }
+    }
+  }
+);
+  thread.setUncaughtExceptionHandler(new UncaughtExceptionHandler(){
+    public void uncaughtException(    Thread t,    Throwable e){
+      FMLLog.log(Level.ERROR,e,"Splash thread Exception");
+      Minecraft.getMinecraft().crashed(CrashReport.makeCrashReport(e,"Splash thread"));
     }
   }
 );
