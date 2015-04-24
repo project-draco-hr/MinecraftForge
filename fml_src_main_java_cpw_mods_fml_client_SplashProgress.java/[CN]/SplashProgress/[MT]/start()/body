@@ -195,9 +195,10 @@
   thread.setUncaughtExceptionHandler(new UncaughtExceptionHandler(){
     public void uncaughtException(    Thread t,    Throwable e){
       FMLLog.log(Level.ERROR,e,"Splash thread Exception");
-      Minecraft.getMinecraft().crashed(CrashReport.makeCrashReport(e,"Splash thread"));
+      threadError=e;
     }
   }
 );
   thread.start();
+  checkThreadState();
 }

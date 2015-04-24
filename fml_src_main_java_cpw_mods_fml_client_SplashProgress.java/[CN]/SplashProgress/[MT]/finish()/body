@@ -1,5 +1,6 @@
 {
   if (!enabled)   return;
+  checkThreadState();
   try {
     done=true;
     thread.join();
