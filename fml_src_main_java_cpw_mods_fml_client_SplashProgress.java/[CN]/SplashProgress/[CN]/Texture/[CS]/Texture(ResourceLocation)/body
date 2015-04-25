@@ -2,7 +2,7 @@
   InputStream s=null;
   try {
     this.location=location;
-    s=pack.getInputStream(location);
+    s=open(location);
     ImageInputStream stream=ImageIO.createImageInputStream(s);
     Iterator<ImageReader> readers=ImageIO.getImageReaders(stream);
     if (!readers.hasNext())     throw new IOException("No suitable reader found for image" + location);
@@ -28,7 +28,6 @@
     checkGLError("Texture creation");
     for (int i=0; i * (size / width) < frames; i++) {
       for (int j=0; i * (size / width) + j < frames && j < size / width; j++) {
-        FMLLog.info("loc: %s, i: %s, j: %s, size: %s, width: %s, height: %s",location,i,j,size,width,height);
         buf.clear();
         BufferedImage image=images[i * (size / width) + j];
         for (int k=0; k < height; k++) {

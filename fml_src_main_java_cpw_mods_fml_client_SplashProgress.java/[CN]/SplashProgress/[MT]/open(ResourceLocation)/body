@@ -1,0 +1,9 @@
+{
+  if (miscPack.resourceExists(loc)) {
+    return miscPack.getInputStream(loc);
+  }
+ else   if (fmlPack.resourceExists(loc)) {
+    return fmlPack.getInputStream(loc);
+  }
+  return mcPack.getInputStream(loc);
+}

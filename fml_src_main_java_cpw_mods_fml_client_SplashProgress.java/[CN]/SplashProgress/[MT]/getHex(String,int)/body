@@ -1,0 +1,3 @@
+{
+  return Integer.decode(getString(name,"0x" + Integer.toString(def,16).toUpperCase()));
+}

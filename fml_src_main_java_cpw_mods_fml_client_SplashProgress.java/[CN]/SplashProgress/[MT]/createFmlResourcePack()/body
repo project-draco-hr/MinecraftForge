@@ -1,8 +1,0 @@
-{
-  if (FMLSanityChecker.fmlLocation.isDirectory()) {
-    return new FolderResourcePack(FMLSanityChecker.fmlLocation);
-  }
- else {
-    return new FileResourcePack(FMLSanityChecker.fmlLocation);
-  }
-}
