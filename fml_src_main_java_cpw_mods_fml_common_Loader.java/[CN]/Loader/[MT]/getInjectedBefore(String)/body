@@ -1,0 +1,3 @@
+{
+  return injectedBefore.get(modId);
+}
