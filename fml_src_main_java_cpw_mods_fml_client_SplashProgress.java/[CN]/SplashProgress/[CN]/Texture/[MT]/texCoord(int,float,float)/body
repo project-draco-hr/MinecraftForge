@@ -1,0 +1,3 @@
+{
+  glTexCoord2f(getU(frame,u),getV(frame,v));
+}

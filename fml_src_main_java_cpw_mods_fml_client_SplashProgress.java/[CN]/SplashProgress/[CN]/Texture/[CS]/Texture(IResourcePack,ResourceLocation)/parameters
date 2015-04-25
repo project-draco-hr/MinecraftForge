@@ -1,3 +1,2 @@
 IResourcePack pack
-int name
 ResourceLocation location
