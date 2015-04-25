@@ -15,8 +15,8 @@
     showGuiScreen(new GuiCustomModLoadingErrorScreen(customError));
   }
  else {
+    Loader.instance().loadingComplete();
+    SplashProgress.finish();
   }
   logMissingTextureErrors();
-  Loader.instance().loadingComplete();
-  SplashProgress.finish();
 }

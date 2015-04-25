@@ -1,4 +1,7 @@
 {
+  if (missingTextures.isEmpty() && brokenTextures.isEmpty()) {
+    return;
+  }
   Logger logger=LogManager.getLogger("TEXTURE ERRORS");
   logger.error(Strings.repeat("+=",25));
   logger.error("The following texture errors were found.");
