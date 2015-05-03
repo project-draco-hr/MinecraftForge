@@ -1,4 +1,5 @@
 {
+  progressBar.step("Initializing mods Phase 2");
   modController.distributeStateMessage(LoaderState.INITIALIZATION);
   progressBar.step("Initializing mods Phase 3");
   modController.transition(LoaderState.POSTINITIALIZATION,false);
