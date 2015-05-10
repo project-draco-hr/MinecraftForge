@@ -12,5 +12,6 @@
   new StructureStrongholdPieces.Library();
   new StructureStrongholdPieces.RoomCrossing();
   new StructureVillagePieces.House2();
+  new StructureNetherBridgePieces.Corridor();
   WorldServer.fillChestHook();
 }
