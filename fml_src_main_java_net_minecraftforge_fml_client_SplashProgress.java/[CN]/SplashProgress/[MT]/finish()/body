@@ -1,0 +1,17 @@
+{
+  if (!enabled)   return;
+  checkThreadState();
+  try {
+    done=true;
+    thread.join();
+    d.releaseContext();
+    Display.getDrawable().makeCurrent();
+    fontTexture.delete();
+    logoTexture.delete();
+    forgeTexture.delete();
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    throw new RuntimeException(e);
+  }
+}

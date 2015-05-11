@@ -1,4 +1,6 @@
 {
+  progressBar=ProgressManager.push("Loading",7);
+  progressBar.step("Constructing Mods");
   initializeLoader();
   mods=Lists.newArrayList();
   namedMods=Maps.newHashMap();
@@ -32,5 +34,6 @@
   if (getActiveModList().isEmpty()) {
     FMLLog.fine("No user mod signature data found");
   }
+  progressBar.step("Initializing mods Phase 1");
   modController.transition(LoaderState.PREINITIALIZATION,false);
 }

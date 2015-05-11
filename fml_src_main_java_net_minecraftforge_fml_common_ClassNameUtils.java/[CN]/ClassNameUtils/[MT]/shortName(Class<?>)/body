@@ -1,0 +1,4 @@
+{
+  String nm=clz.getName();
+  return nm.indexOf('.') > -1 ? nm.substring(nm.lastIndexOf('.') + 1) : nm;
+}

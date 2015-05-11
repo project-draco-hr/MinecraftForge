@@ -2,7 +2,10 @@
   if (stateEvent instanceof FMLPreInitializationEvent) {
     modObjectList=buildModObjectList();
   }
+  ProgressBar bar=ProgressManager.push(stateEvent.description(),activeModList.size());
   for (  ModContainer mc : activeModList) {
+    bar.step(mc.getName());
     sendEventToModContainer(stateEvent,mc);
   }
+  ProgressManager.pop(bar);
 }

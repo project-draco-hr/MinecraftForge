@@ -39,4 +39,5 @@
     FMLLog.severe("Attempting to load configuration from %s, which is not a directory",canonicalConfigPath);
     throw new LoaderException();
   }
+  readInjectedDependencies();
 }

@@ -1,10 +1,14 @@
 {
+  progressBar.step("Initializing mods Phase 2");
   modController.distributeStateMessage(LoaderState.INITIALIZATION);
+  progressBar.step("Initializing mods Phase 3");
   modController.transition(LoaderState.POSTINITIALIZATION,false);
   modController.distributeStateMessage(FMLInterModComms.IMCEvent.class);
   modController.distributeStateMessage(LoaderState.POSTINITIALIZATION);
+  progressBar.step("Finishing up");
   modController.transition(LoaderState.AVAILABLE,false);
   modController.distributeStateMessage(LoaderState.AVAILABLE);
   GameData.freezeData();
   FMLLog.info("Forge Mod Loader has successfully loaded %d mod%s",mods.size(),mods.size() == 1 ? "" : "s");
+  progressBar.step("Completing Minecraft initialization");
 }

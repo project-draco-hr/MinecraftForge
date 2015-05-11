@@ -1,0 +1,14 @@
+{
+  if (!enabled)   return;
+  checkThreadState();
+  pause=false;
+  try {
+    Display.getDrawable().releaseContext();
+    d.makeCurrent();
+  }
+ catch (  LWJGLException e) {
+    e.printStackTrace();
+    throw new RuntimeException(e);
+  }
+  lock.unlock();
+}
