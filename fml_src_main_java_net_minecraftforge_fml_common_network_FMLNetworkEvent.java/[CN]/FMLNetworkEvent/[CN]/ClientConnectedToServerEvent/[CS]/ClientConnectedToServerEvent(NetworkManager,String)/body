@@ -1,0 +1,5 @@
+{
+  super((INetHandlerPlayClient)manager.getNetHandler(),INetHandlerPlayClient.class,manager);
+  this.isLocal=manager.isLocalChannel();
+  this.connectionType=connectionType;
+}

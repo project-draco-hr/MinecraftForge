@@ -1,0 +1,14 @@
+{
+  Set<String> remoteModIds=modList.keySet();
+  Set<String> localModIds=namedMods.keySet();
+  Set<String> difference=Sets.newLinkedHashSet(Sets.difference(localModIds,remoteModIds));
+  for (Iterator<String> iterator=difference.iterator(); iterator.hasNext(); ) {
+    String missingRemotely=iterator.next();
+    ModState modState=modController.getModState(namedMods.get(missingRemotely));
+    if (modState == ModState.DISABLED) {
+      iterator.remove();
+    }
+  }
+  if (difference.size() > 0)   FMLLog.info("Attempting connection with missing mods %s at %s",difference,side);
+  return true;
+}

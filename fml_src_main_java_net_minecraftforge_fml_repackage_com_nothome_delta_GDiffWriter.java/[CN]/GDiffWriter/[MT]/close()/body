@@ -1,0 +1,5 @@
+{
+  this.flush();
+  output.write((byte)EOF);
+  output.close();
+}

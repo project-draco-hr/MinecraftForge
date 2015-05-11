@@ -1,0 +1,3 @@
+{
+  return remoteVersions.containsKey(container.getModId()) ? acceptVersion(remoteVersions.get(container.getModId())) : side == Side.SERVER;
+}

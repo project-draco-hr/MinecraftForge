@@ -1,0 +1,3 @@
+{
+  new ServerLaunchWrapper().run(args);
+}

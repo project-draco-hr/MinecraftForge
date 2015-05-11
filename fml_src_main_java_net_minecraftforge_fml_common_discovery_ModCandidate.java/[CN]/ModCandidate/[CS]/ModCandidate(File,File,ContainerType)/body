@@ -1,0 +1,3 @@
+{
+  this(classPathRoot,modContainer,sourceType,false,false);
+}

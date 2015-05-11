@@ -1,0 +1,4 @@
+{
+  this.jar=jar;
+  this.entry=entry;
+}

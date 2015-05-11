@@ -1,0 +1,13 @@
+{
+  try {
+    ReflectionHelper.setPrivateValue(classToAccess,instance,value,remapFieldNames(classToAccess.getName(),fieldNames));
+  }
+ catch (  UnableToFindFieldException e) {
+    FMLLog.log(Level.ERROR,e,"Unable to locate any field %s on type %s",Arrays.toString(fieldNames),classToAccess.getName());
+    throw e;
+  }
+catch (  UnableToAccessFieldException e) {
+    FMLLog.log(Level.ERROR,e,"Unable to set any field %s on type %s",Arrays.toString(fieldNames),classToAccess.getName());
+    throw e;
+  }
+}

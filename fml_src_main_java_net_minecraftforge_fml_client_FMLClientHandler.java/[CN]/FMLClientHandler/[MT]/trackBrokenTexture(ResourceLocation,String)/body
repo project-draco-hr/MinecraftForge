@@ -1,0 +1,9 @@
+{
+  badTextureDomains.add(resourceLocation.getResourceDomain());
+  Set<ResourceLocation> badType=brokenTextures.get(resourceLocation.getResourceDomain(),error);
+  if (badType == null) {
+    badType=Sets.newHashSet();
+    brokenTextures.put(resourceLocation.getResourceDomain(),error,badType);
+  }
+  badType.add(resourceLocation);
+}

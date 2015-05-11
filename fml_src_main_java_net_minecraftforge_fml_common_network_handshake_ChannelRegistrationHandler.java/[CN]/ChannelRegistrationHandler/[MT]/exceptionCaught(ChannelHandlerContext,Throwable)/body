@@ -1,0 +1,4 @@
+{
+  FMLLog.log(Level.ERROR,cause,"ChannelRegistrationHandler exception");
+  super.exceptionCaught(ctx,cause);
+}

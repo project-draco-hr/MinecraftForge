@@ -1,0 +1,11 @@
+{
+  String className=name.substring(0,name.lastIndexOf('.'));
+  foundClasses.add(className.replace('.','/'));
+  className=className.replace('/','.');
+  int pkgIdx=className.lastIndexOf('.');
+  if (pkgIdx > -1) {
+    String pkg=className.substring(0,pkgIdx);
+    packages.add(pkg);
+    this.table.registerPackage(this,pkg);
+  }
+}

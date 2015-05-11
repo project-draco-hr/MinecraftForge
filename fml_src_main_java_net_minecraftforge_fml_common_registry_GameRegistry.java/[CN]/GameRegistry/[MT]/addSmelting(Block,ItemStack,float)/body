@@ -1,0 +1,3 @@
+{
+  FurnaceRecipes.instance().addSmeltingRecipeForBlock(input,output,xp);
+}

@@ -1,0 +1,10 @@
+{
+  try {
+    ASMData clone=(ASMData)this.clone();
+    clone.annotationInfo=newAnnotationInfo;
+    return clone;
+  }
+ catch (  CloneNotSupportedException e) {
+    throw new RuntimeException("Unpossible",e);
+  }
+}

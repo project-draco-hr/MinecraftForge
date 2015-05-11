@@ -1,0 +1,33 @@
+{
+  if (inputStream == null) {
+    return new MetadataCollection();
+  }
+  InputStreamReader reader=new InputStreamReader(inputStream);
+  try {
+    MetadataCollection collection;
+    Gson gson=new GsonBuilder().registerTypeAdapter(ArtifactVersion.class,new ArtifactVersionAdapter()).create();
+    JsonParser parser=new JsonParser();
+    JsonElement rootElement=parser.parse(reader);
+    if (rootElement.isJsonArray()) {
+      collection=new MetadataCollection();
+      JsonArray jsonList=rootElement.getAsJsonArray();
+      collection.modList=new ModMetadata[jsonList.size()];
+      int i=0;
+      for (      JsonElement mod : jsonList) {
+        collection.modList[i++]=gson.fromJson(mod,ModMetadata.class);
+      }
+    }
+ else {
+      collection=gson.fromJson(rootElement,MetadataCollection.class);
+    }
+    collection.parseModMetadataList();
+    return collection;
+  }
+ catch (  JsonParseException e) {
+    FMLLog.log(Level.ERROR,e,"The mcmod.info file in %s cannot be parsed as valid JSON. It will be ignored",sourceName);
+    return new MetadataCollection();
+  }
+catch (  Exception e) {
+    throw Throwables.propagate(e);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  this.btnValue.displayString=currentValue.toString();
+}

@@ -1,0 +1,11 @@
+{
+  RandomAccessFileSeekableSource source=new RandomAccessFileSeekableSource(new RandomAccessFile(sourceFile,"r"));
+  InputStream is=new BufferedInputStream(new FileInputStream(targetFile));
+  try {
+    compute(source,is,output);
+  }
+  finally {
+    source.close();
+    is.close();
+  }
+}

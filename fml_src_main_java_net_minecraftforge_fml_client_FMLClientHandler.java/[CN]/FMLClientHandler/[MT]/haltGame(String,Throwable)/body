@@ -1,0 +1,5 @@
+{
+  SplashProgress.finish();
+  client.displayCrashReport(new CrashReport(message,t));
+  throw Throwables.propagate(t);
+}

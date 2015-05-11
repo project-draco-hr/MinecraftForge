@@ -1,0 +1,37 @@
+{
+  File injectedDepFile=new File(getConfigDir(),"injectedDependencies.json");
+  if (!injectedDepFile.exists()) {
+    FMLLog.getLogger().log(Level.DEBUG,"File {} not found. No dependencies injected",injectedDepFile.getAbsolutePath());
+    return;
+  }
+  JsonParser parser=new JsonParser();
+  JsonElement injectedDeps;
+  try {
+    injectedDeps=parser.parse(new FileReader(injectedDepFile));
+    for (    JsonElement el : injectedDeps.getAsJsonArray()) {
+      JsonObject jo=el.getAsJsonObject();
+      String modId=jo.get("modId").getAsString();
+      JsonArray deps=jo.get("deps").getAsJsonArray();
+      for (      JsonElement dep : deps) {
+        JsonObject depObj=dep.getAsJsonObject();
+        String type=depObj.get("type").getAsString();
+        if (type.equals("before")) {
+          injectedBefore.put(modId,VersionParser.parseVersionReference(depObj.get("target").getAsString()));
+        }
+ else         if (type.equals("after")) {
+          injectedAfter.put(modId,VersionParser.parseVersionReference(depObj.get("target").getAsString()));
+        }
+ else {
+          FMLLog.getLogger().log(Level.ERROR,"Invalid dependency type {}",type);
+          throw new RuntimeException("Unable to parse type");
+        }
+      }
+    }
+  }
+ catch (  Exception e) {
+    FMLLog.getLogger().log(Level.ERROR,"Unable to parse {} - skipping",injectedDepFile);
+    FMLLog.getLogger().throwing(Level.ERROR,e);
+    return;
+  }
+  FMLLog.getLogger().log(Level.DEBUG,"Loaded {} injected dependencies on modIds: {}",injectedBefore.size(),injectedBefore.keySet());
+}

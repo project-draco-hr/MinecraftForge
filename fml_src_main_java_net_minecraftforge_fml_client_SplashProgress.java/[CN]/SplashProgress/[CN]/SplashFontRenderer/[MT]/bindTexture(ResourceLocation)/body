@@ -1,0 +1,4 @@
+{
+  if (location != locationFontTexture)   throw new IllegalArgumentException();
+  fontTexture.bind();
+}

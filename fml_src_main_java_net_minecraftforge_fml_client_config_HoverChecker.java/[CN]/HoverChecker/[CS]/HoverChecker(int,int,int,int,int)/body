@@ -1,0 +1,8 @@
+{
+  this.top=top;
+  this.bottom=bottom;
+  this.left=left;
+  this.right=right;
+  this.threshold=threshold;
+  this.hoverStart=-1;
+}

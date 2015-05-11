@@ -1,0 +1,3 @@
+{
+  return Loader.instance().checkRemoteModList(modList,side);
+}

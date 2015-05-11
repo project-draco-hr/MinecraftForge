@@ -1,0 +1,5 @@
+{
+  super(data);
+  this.asmData=(ASMDataTable)data[0];
+  this.configurationDir=(File)data[1];
+}

@@ -1,0 +1,4 @@
+{
+  if (eventKey == Keyboard.KEY_ESCAPE)   this.mc.displayGuiScreen(parentScreen);
+ else   this.entryList.keyTyped(eventChar,eventKey);
+}

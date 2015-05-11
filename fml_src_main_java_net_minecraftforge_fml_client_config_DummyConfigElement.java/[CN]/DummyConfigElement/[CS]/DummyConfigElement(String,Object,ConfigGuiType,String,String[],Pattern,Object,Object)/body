@@ -1,0 +1,19 @@
+{
+  this.name=name;
+  this.defaultValue=defaultValue;
+  this.value=defaultValue;
+  this.type=type;
+  this.langKey=langKey;
+  this.validValues=validValues;
+  this.validStringPattern=validStringPattern;
+  if (minValue == null) {
+    if (type == ConfigGuiType.INTEGER)     this.minValue=(Integer)Integer.MIN_VALUE;
+ else     if (type == ConfigGuiType.DOUBLE)     this.minValue=(Double)(-Double.MAX_VALUE);
+  }
+ else   this.minValue=minValue;
+  if (maxValue == null) {
+    if (type == ConfigGuiType.INTEGER)     this.maxValue=(Integer)Integer.MAX_VALUE;
+ else     if (type == ConfigGuiType.DOUBLE)     this.maxValue=(Double)Double.MAX_VALUE;
+  }
+ else   this.maxValue=maxValue;
+}

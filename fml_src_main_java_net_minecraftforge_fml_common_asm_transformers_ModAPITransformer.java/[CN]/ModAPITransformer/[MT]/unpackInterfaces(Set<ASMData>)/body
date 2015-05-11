@@ -1,0 +1,11 @@
+{
+  Set<ASMData> result=Sets.newHashSet();
+  for (  ASMData data : packedInterfaces) {
+    @SuppressWarnings("unchecked") List<Map<String,Object>> packedList=(List<Map<String,Object>>)data.getAnnotationInfo().get("value");
+    for (    Map<String,Object> packed : packedList) {
+      ASMData newData=data.copy(packed);
+      result.add(newData);
+    }
+  }
+  return result;
+}

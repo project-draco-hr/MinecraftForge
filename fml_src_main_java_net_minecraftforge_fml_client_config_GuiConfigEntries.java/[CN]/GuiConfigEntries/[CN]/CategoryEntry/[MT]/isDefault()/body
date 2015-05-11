@@ -1,0 +1,4 @@
+{
+  if (childScreen instanceof GuiConfig && ((GuiConfig)childScreen).entryList != null)   return ((GuiConfig)childScreen).entryList.areAllEntriesDefault(true);
+  return true;
+}

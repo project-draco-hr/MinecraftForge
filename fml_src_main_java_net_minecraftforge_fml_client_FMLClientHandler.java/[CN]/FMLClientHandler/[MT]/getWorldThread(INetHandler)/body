@@ -1,0 +1,5 @@
+{
+  if (net instanceof INetHandlerPlayClient || net instanceof INetHandlerLoginClient || net instanceof INetHandlerStatusClient)   return getClient();
+  if (net instanceof INetHandlerHandshakeServer || net instanceof INetHandlerLoginServer || net instanceof INetHandlerPlayServer|| net instanceof INetHandlerStatusServer)   return getServer();
+  throw new RuntimeException("Unknown INetHandler: " + net);
+}

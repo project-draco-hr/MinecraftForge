@@ -1,0 +1,4 @@
+{
+  ModAnnotation ann=new ModAnnotation(AnnotationType.METHOD,Type.getType(annotationName),methodName + methodDescriptor);
+  annotations.addFirst(ann);
+}

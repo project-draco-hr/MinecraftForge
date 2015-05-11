@@ -1,0 +1,9 @@
+{
+  if (basicClass == null)   return null;
+  ClassReader reader=new ClassReader(basicClass);
+  ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
+  ClassVisitor visitor=writer;
+  visitor=new ExitVisitor(visitor);
+  reader.accept(visitor,0);
+  return writer.toByteArray();
+}

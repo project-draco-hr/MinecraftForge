@@ -1,0 +1,4 @@
+{
+  super(String.format("Mod %s (%s) requires %s",id,name,missingMods));
+  this.missingMods=missingMods;
+}

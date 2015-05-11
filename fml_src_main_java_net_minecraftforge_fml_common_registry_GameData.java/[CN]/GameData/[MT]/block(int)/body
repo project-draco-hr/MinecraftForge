@@ -1,0 +1,4 @@
+{
+  blockedIds.add(id);
+  useSlot(id);
+}

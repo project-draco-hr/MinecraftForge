@@ -1,0 +1,6 @@
+{
+  this.hasMore=hasMore;
+  this.name=name;
+  this.ids=entry.ids;
+  this.substitutions=entry.substitutions;
+}

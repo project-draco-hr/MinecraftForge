@@ -1,0 +1,3 @@
+{
+  compute(new ByteBufferSeekableSource(source),new ByteArrayInputStream(target),new GDiffWriter(output));
+}

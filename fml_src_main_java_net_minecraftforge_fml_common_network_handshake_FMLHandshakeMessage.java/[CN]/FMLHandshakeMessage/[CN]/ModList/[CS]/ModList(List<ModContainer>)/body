@@ -1,0 +1,5 @@
+{
+  for (  ModContainer mod : modList) {
+    modTags.put(mod.getModId(),mod.getVersion());
+  }
+}

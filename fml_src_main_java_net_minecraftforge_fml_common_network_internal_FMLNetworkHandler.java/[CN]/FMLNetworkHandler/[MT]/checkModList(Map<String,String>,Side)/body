@@ -1,0 +1,16 @@
+{
+  List<ModContainer> rejects=Lists.newArrayList();
+  for (  Entry<ModContainer,NetworkModHolder> networkMod : NetworkRegistry.INSTANCE.registry().entrySet()) {
+    boolean result=networkMod.getValue().check(listData,side);
+    if (!result) {
+      rejects.add(networkMod.getKey());
+    }
+  }
+  if (rejects.isEmpty()) {
+    return null;
+  }
+ else {
+    FMLLog.info("Rejecting connection %s: %s",side,rejects);
+    return String.format("Mod rejections %s",rejects);
+  }
+}

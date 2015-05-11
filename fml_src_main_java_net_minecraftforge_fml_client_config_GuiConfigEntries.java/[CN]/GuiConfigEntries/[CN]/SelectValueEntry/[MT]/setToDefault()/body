@@ -1,0 +1,6 @@
+{
+  if (enabled()) {
+    this.currentValue=configElement.getDefault().toString();
+    updateValueButtonText();
+  }
+}

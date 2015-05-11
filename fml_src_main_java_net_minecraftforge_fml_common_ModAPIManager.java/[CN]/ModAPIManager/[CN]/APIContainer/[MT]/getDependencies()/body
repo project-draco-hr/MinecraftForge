@@ -1,0 +1,3 @@
+{
+  return selfReferenced ? ImmutableList.<ArtifactVersion>of() : ImmutableList.of(ownerMod);
+}

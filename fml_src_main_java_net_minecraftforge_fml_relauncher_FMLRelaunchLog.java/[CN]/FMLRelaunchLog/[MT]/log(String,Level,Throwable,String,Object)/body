@@ -1,0 +1,3 @@
+{
+  LogManager.getLogger(targetLog).log(level,String.format(format,data),ex);
+}

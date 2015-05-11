@@ -1,0 +1,4 @@
+{
+  FMLServerHandler.instance();
+  sidedDelegate.beginServerLoading(dedicatedServer);
+}

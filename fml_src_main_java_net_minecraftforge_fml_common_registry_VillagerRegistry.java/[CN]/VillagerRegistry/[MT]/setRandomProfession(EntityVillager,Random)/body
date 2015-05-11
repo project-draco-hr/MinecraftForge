@@ -1,0 +1,5 @@
+{
+  Set<String> entries=INSTANCE.professions.getKeys();
+  int prof=rand.nextInt(entries.size());
+  entity.setProfession(rand.nextInt(5));
+}

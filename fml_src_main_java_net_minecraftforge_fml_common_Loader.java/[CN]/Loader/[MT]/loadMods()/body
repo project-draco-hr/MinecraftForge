@@ -1,0 +1,39 @@
+{
+  progressBar=ProgressManager.push("Loading",7);
+  progressBar.step("Constructing Mods");
+  initializeLoader();
+  mods=Lists.newArrayList();
+  namedMods=Maps.newHashMap();
+  modController=new LoadController(this);
+  modController.transition(LoaderState.LOADING,false);
+  discoverer=identifyMods();
+  ModAPIManager.INSTANCE.manageAPI(modClassLoader,discoverer);
+  disableRequestedMods();
+  modController.distributeStateMessage(FMLLoadEvent.class);
+  sortModList();
+  ModAPIManager.INSTANCE.cleanupAPIContainers(modController.getActiveModList());
+  ModAPIManager.INSTANCE.cleanupAPIContainers(mods);
+  mods=ImmutableList.copyOf(mods);
+  for (  File nonMod : discoverer.getNonModLibs()) {
+    if (nonMod.isFile()) {
+      FMLLog.info("FML has found a non-mod file %s in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.",nonMod.getName());
+      try {
+        modClassLoader.addFile(nonMod);
+      }
+ catch (      MalformedURLException e) {
+        FMLLog.log(Level.ERROR,e,"Encountered a weird problem with non-mod file injection : %s",nonMod.getName());
+      }
+    }
+  }
+  modController.transition(LoaderState.CONSTRUCTING,false);
+  modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader,discoverer.getASMTable(),reverseDependencies);
+  FMLLog.fine("Mod signature data");
+  for (  ModContainer mod : getActiveModList()) {
+    FMLLog.fine("\t%s(%s:%s): %s (%s)",mod.getModId(),mod.getName(),mod.getVersion(),mod.getSource().getName(),CertificateHelper.getFingerprint(mod.getSigningCertificate()));
+  }
+  if (getActiveModList().isEmpty()) {
+    FMLLog.fine("No user mod signature data found");
+  }
+  progressBar.step("Initializing mods Phase 1");
+  modController.transition(LoaderState.PREINITIALIZATION,false);
+}

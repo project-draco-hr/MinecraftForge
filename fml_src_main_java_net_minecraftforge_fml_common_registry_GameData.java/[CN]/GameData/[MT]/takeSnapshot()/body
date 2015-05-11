@@ -1,0 +1,9 @@
+{
+  GameDataSnapshot snap=new GameDataSnapshot();
+  snap.entries.put("fml:blocks",new GameDataSnapshot.Entry(getMain().getBlockRegistry()));
+  snap.entries.put("fml:items",new GameDataSnapshot.Entry(getMain().getItemRegistry()));
+  for (  Map.Entry<String,FMLControlledNamespacedRegistry<?>> e : getMain().genericRegistries.entrySet()) {
+    snap.entries.put("fmlgr:" + e.getKey(),new GameDataSnapshot.Entry(e.getValue()));
+  }
+  return snap;
+}

@@ -1,0 +1,11 @@
+{
+  if (containerAnnotationData == null) {
+    ImmutableMap.Builder<ModContainer,SetMultimap<String,ASMData>> mapBuilder=ImmutableMap.<ModContainer,SetMultimap<String,ASMData>>builder();
+    for (    ModContainer cont : containers) {
+      Multimap<String,ASMData> values=Multimaps.filterValues(globalAnnotationData,new ModContainerPredicate(cont));
+      mapBuilder.put(cont,ImmutableSetMultimap.copyOf(values));
+    }
+    containerAnnotationData=mapBuilder.build();
+  }
+  return containerAnnotationData.get(container);
+}

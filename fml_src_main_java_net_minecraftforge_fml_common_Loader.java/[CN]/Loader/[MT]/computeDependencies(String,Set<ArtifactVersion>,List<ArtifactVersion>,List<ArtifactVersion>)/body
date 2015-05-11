@@ -1,0 +1,46 @@
+{
+  if (dependencyString == null || dependencyString.length() == 0) {
+    return;
+  }
+  boolean parseFailure=false;
+  for (  String dep : DEPENDENCYSPLITTER.split(dependencyString)) {
+    List<String> depparts=Lists.newArrayList(DEPENDENCYPARTSPLITTER.split(dep));
+    if (depparts.size() != 2) {
+      parseFailure=true;
+      continue;
+    }
+    String instruction=depparts.get(0);
+    String target=depparts.get(1);
+    boolean targetIsAll=target.startsWith("*");
+    if (targetIsAll && target.length() > 1) {
+      parseFailure=true;
+      continue;
+    }
+    if ("required-before".equals(instruction) || "required-after".equals(instruction)) {
+      if (!targetIsAll) {
+        requirements.add(VersionParser.parseVersionReference(target));
+      }
+ else {
+        parseFailure=true;
+        continue;
+      }
+    }
+    if (targetIsAll && target.indexOf('@') > -1) {
+      parseFailure=true;
+      continue;
+    }
+    if ("required-before".equals(instruction) || "before".equals(instruction)) {
+      dependants.add(VersionParser.parseVersionReference(target));
+    }
+ else     if ("required-after".equals(instruction) || "after".equals(instruction)) {
+      dependencies.add(VersionParser.parseVersionReference(target));
+    }
+ else {
+      parseFailure=true;
+    }
+  }
+  if (parseFailure) {
+    FMLLog.log(Level.WARN,"Unable to parse dependency string %s",dependencyString);
+    throw new LoaderException(String.format("Unable to parse dependency string %s",dependencyString));
+  }
+}

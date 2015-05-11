@@ -1,0 +1,2 @@
+String modId
+Map<String,Object> extraData

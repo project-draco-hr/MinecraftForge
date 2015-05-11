@@ -1,0 +1,8 @@
+{
+  if (wrappedContainer instanceof WorldAccessContainer) {
+    return (WorldAccessContainer)wrappedContainer;
+  }
+ else {
+    return null;
+  }
+}

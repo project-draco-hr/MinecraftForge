@@ -1,0 +1,3 @@
+{
+  return input.desc.equals("Lnet/minecraftforge/fml/common/eventhandler/SubscribeEvent;");
+}

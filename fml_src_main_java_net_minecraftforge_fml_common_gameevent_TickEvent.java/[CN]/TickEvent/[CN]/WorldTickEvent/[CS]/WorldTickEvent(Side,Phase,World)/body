@@ -1,0 +1,4 @@
+{
+  super(Type.WORLD,side,phase);
+  this.world=world;
+}

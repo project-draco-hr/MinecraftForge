@@ -1,0 +1,5 @@
+{
+  NetworkDispatcher net=new NetworkDispatcher(manager);
+  manager.channel().attr(FML_DISPATCHER).getAndSet(net);
+  return net;
+}

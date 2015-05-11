@@ -1,0 +1,16 @@
+{
+  if (msg instanceof FMLProxyPacket) {
+    if (side == Side.CLIENT) {
+      ctx.write(((FMLProxyPacket)msg).toC17Packet(),promise);
+    }
+ else {
+      List<Packet> parts=((FMLProxyPacket)msg).toS3FPackets();
+      for (      Packet pkt : parts) {
+        ctx.write(pkt,promise);
+      }
+    }
+  }
+ else {
+    ctx.write(msg,promise);
+  }
+}

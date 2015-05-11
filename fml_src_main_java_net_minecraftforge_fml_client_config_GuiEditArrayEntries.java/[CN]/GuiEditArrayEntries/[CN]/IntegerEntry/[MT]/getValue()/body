@@ -1,0 +1,8 @@
+{
+  try {
+    return Integer.valueOf(this.textFieldValue.getText().trim());
+  }
+ catch (  Throwable e) {
+    return Integer.MAX_VALUE;
+  }
+}

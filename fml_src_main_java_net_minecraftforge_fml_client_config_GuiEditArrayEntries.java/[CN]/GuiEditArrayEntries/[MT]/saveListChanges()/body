@@ -1,0 +1,31 @@
+{
+  int listLength=configElement.isListLengthFixed() ? listEntries.size() : listEntries.size() - 1;
+  if (owningGui.slotIndex != -1 && owningGui.parentScreen != null && owningGui.parentScreen instanceof GuiConfig && ((GuiConfig)owningGui.parentScreen).entryList.getListEntry(owningGui.slotIndex) instanceof ArrayEntry) {
+    ArrayEntry entry=(ArrayEntry)((GuiConfig)owningGui.parentScreen).entryList.getListEntry(owningGui.slotIndex);
+    Object[] ao=new Object[listLength];
+    for (int i=0; i < listLength; i++)     ao[i]=listEntries.get(i).getValue();
+    entry.setListFromChildScreen(ao);
+  }
+ else {
+    if (configElement.isList() && configElement.getType() == ConfigGuiType.BOOLEAN) {
+      Boolean[] abol=new Boolean[listLength];
+      for (int i=0; i < listLength; i++)       abol[i]=Boolean.valueOf(listEntries.get(i).getValue().toString());
+      configElement.set(abol);
+    }
+ else     if (configElement.isList() && configElement.getType() == ConfigGuiType.INTEGER) {
+      Integer[] ai=new Integer[listLength];
+      for (int i=0; i < listLength; i++)       ai[i]=Integer.valueOf(listEntries.get(i).getValue().toString());
+      configElement.set(ai);
+    }
+ else     if (configElement.isList() && configElement.getType() == ConfigGuiType.DOUBLE) {
+      Double[] ad=new Double[listLength];
+      for (int i=0; i < listLength; i++)       ad[i]=Double.valueOf(listEntries.get(i).getValue().toString());
+      configElement.set(ad);
+    }
+ else     if (configElement.isList()) {
+      String[] as=new String[listLength];
+      for (int i=0; i < listLength; i++)       as[i]=listEntries.get(i).getValue().toString();
+      configElement.set(as);
+    }
+  }
+}

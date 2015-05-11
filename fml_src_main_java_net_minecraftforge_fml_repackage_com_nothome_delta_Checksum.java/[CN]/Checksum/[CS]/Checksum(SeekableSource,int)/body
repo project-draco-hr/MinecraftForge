@@ -1,0 +1,14 @@
+{
+  ByteBuffer bb=ByteBuffer.allocate(chunkSize * 2);
+  int count=0;
+  while (true) {
+    source.read(bb);
+    bb.flip();
+    if (bb.remaining() < chunkSize)     break;
+    while (bb.remaining() >= chunkSize) {
+      long queryChecksum=queryChecksum0(bb,chunkSize);
+      checksums.put(queryChecksum,count++);
+    }
+    bb.compact();
+  }
+}

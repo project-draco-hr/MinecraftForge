@@ -1,0 +1,6 @@
+{
+  this.owner=owner;
+  handler=(IEventListener)createWrapper(method).getConstructor(Object.class).newInstance(target);
+  subInfo=method.getAnnotation(SubscribeEvent.class);
+  readable="ASM: " + target + " "+ method.getName()+ Type.getMethodDescriptor(method);
+}

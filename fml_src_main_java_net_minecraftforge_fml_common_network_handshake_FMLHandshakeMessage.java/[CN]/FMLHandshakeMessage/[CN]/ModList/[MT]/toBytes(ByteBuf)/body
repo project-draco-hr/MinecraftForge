@@ -1,0 +1,8 @@
+{
+  super.toBytes(buffer);
+  ByteBufUtils.writeVarInt(buffer,modTags.size(),2);
+  for (  Map.Entry<String,String> modTag : modTags.entrySet()) {
+    ByteBufUtils.writeUTF8String(buffer,modTag.getKey());
+    ByteBufUtils.writeUTF8String(buffer,modTag.getValue());
+  }
+}

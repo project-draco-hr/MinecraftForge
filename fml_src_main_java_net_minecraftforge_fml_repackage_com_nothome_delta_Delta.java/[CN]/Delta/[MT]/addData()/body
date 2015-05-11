@@ -1,0 +1,6 @@
+{
+  int i=target.read();
+  if (debug)   debug("addData " + Integer.toHexString(i));
+  if (i == -1)   return;
+  output.addData((byte)i);
+}

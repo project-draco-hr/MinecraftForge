@@ -1,0 +1,5 @@
+String targetLog
+Level level
+Throwable ex
+String format
+Object data

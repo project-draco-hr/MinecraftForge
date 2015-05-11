@@ -1,0 +1,29 @@
+{
+  Method factoryMethod=null;
+  for (  Method m : clazz.getDeclaredMethods()) {
+    for (    Annotation a : m.getAnnotations()) {
+      if (a.annotationType().equals(Mod.EventHandler.class)) {
+        if (m.getParameterTypes().length == 1 && FMLEvent.class.isAssignableFrom(m.getParameterTypes()[0])) {
+          m.setAccessible(true);
+          eventMethods.put((Class<? extends FMLEvent>)m.getParameterTypes()[0],m);
+        }
+ else {
+          FMLLog.log(getModId(),Level.ERROR,"The mod %s appears to have an invalid event annotation %s. This annotation can only apply to methods with recognized event arguments - it will not be called",getModId(),a.annotationType().getSimpleName());
+        }
+      }
+ else       if (a.annotationType().equals(Mod.InstanceFactory.class)) {
+        if (Modifier.isStatic(m.getModifiers()) && m.getParameterTypes().length == 0 && factoryMethod == null) {
+          m.setAccessible(true);
+          factoryMethod=m;
+        }
+ else         if (!(Modifier.isStatic(m.getModifiers()) && m.getParameterTypes().length == 0)) {
+          FMLLog.log(getModId(),Level.ERROR,"The InstanceFactory annotation can only apply to a static method, taking zero arguments - it will be ignored on %s(%s)",m.getName(),Arrays.asList(m.getParameterTypes()));
+        }
+ else         if (factoryMethod != null) {
+          FMLLog.log(getModId(),Level.ERROR,"The InstanceFactory annotation can only be used once, the application to %s(%s) will be ignored",m.getName(),Arrays.asList(m.getParameterTypes()));
+        }
+      }
+    }
+  }
+  return factoryMethod;
+}

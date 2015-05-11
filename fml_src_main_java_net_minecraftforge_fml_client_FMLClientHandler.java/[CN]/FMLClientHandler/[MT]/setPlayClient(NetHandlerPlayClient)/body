@@ -1,0 +1,3 @@
+{
+  this.currentPlayClient=new WeakReference<NetHandlerPlayClient>(netHandlerPlayClient);
+}

@@ -1,0 +1,9 @@
+{
+  for (  ModCandidate c : candidates) {
+    if (c.getModContainer().equals(candidate.getModContainer())) {
+      FMLLog.finer("  Skipping already in list %s",candidate.getModContainer());
+      return;
+    }
+  }
+  candidates.add(candidate);
+}

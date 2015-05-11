@@ -1,0 +1,4 @@
+{
+  GameRegistry.registerTileEntity(tileEntityClass,id);
+  bindTileEntitySpecialRenderer(tileEntityClass,specialRenderer);
+}

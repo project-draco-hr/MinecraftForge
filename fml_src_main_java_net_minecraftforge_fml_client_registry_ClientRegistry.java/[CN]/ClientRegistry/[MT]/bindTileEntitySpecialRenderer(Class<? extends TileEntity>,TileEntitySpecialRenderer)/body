@@ -1,0 +1,4 @@
+{
+  TileEntityRendererDispatcher.instance.mapSpecialRenderers.put(tileEntityClass,specialRenderer);
+  specialRenderer.setRendererDispatcher(TileEntityRendererDispatcher.instance);
+}

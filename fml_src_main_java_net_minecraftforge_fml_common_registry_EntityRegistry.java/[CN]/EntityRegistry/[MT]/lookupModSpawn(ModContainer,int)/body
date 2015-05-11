@@ -1,0 +1,8 @@
+{
+  for (  EntityRegistration er : entityRegistrations.get(mc)) {
+    if (er.getModEntityId() == modEntityId) {
+      return er;
+    }
+  }
+  return null;
+}

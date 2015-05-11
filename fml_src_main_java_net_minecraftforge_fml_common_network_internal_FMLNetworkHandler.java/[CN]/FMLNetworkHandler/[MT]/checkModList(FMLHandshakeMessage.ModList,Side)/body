@@ -1,0 +1,4 @@
+{
+  Map<String,String> modList=modListPacket.modList();
+  return checkModList(modList,side);
+}

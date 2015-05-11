@@ -1,0 +1,11 @@
+{
+  if (!injected) {
+    injected=true;
+    launchLoader.addURL(asmGenRoot);
+  }
+  String name=getWrapperName(parentClass);
+  String fileName=name.replace('.','/') + ".class";
+  wrapperModMap.put(fileName,coreMod);
+  wrapperParentMap.put(fileName,parentClass);
+  return name;
+}

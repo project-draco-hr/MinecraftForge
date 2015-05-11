@@ -1,0 +1,3 @@
+{
+  return ClassPatchManager.INSTANCE.applyPatch(name,transformedName,bytes);
+}

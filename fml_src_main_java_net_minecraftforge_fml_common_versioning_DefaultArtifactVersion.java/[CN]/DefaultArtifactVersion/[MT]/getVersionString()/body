@@ -1,0 +1,3 @@
+{
+  return comparableVersion == null ? "unknown" : comparableVersion.toString();
+}

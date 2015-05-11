@@ -1,0 +1,7 @@
+{
+  this.classPathRoot=classPathRoot;
+  this.modContainer=modContainer;
+  this.sourceType=sourceType;
+  this.isMinecraft=isMinecraft;
+  this.classpath=classpath;
+}

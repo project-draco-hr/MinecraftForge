@@ -1,0 +1,15 @@
+{
+  Side side=msg.getTarget();
+  NetworkManager manager=msg.getOrigin();
+  if (msg.channel().equals("REGISTER") || msg.channel().equals("UNREGISTER")) {
+    byte[] data=new byte[msg.payload().readableBytes()];
+    msg.payload().readBytes(data);
+    String channels=new String(data,Charsets.UTF_8);
+    String[] split=channels.split("\0");
+    Set<String> channelSet=ImmutableSet.copyOf(split);
+    FMLCommonHandler.instance().fireNetRegistrationEvent(manager,channelSet,msg.channel(),side);
+  }
+ else {
+    ctx.fireChannelRead(msg);
+  }
+}

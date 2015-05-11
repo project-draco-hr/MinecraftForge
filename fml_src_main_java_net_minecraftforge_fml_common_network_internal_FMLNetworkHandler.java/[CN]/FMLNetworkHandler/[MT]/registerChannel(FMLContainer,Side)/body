@@ -1,0 +1,8 @@
+{
+  channelPair=NetworkRegistry.INSTANCE.newChannel(container,"FML",new FMLRuntimeCodec(),new HandshakeCompletionHandler());
+  EmbeddedChannel embeddedChannel=channelPair.get(Side.SERVER);
+  embeddedChannel.attr(FMLOutboundHandler.FML_MESSAGETARGET).set(OutboundTarget.NOWHERE);
+  if (side == Side.CLIENT) {
+    addClientHandlers();
+  }
+}

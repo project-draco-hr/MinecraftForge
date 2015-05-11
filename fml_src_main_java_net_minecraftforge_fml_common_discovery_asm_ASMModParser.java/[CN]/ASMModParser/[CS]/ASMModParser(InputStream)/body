@@ -1,0 +1,10 @@
+{
+  try {
+    ClassReader reader=new ClassReader(stream);
+    reader.accept(new ModClassVisitor(this),0);
+  }
+ catch (  Exception ex) {
+    FMLLog.log(Level.ERROR,ex,"Unable to read a class file correctly");
+    throw new LoaderException(ex);
+  }
+}

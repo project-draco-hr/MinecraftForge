@@ -1,0 +1,4 @@
+{
+  super(Type.RENDER,Side.CLIENT,phase);
+  this.renderTickTime=renderTickTime;
+}

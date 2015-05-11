@@ -1,0 +1,3 @@
+{
+  Minecraft.getMinecraft().gameSettings.keyBindings=ArrayUtils.add(Minecraft.getMinecraft().gameSettings.keyBindings,key);
+}

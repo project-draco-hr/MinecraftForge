@@ -1,0 +1,3 @@
+{
+  return GenericIterableFactory.newCastingIterable(super.iterator(),superType);
+}

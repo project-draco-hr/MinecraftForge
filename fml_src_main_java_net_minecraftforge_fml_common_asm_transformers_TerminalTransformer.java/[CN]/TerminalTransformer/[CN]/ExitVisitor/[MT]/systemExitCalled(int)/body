@@ -1,0 +1,4 @@
+{
+  ExitVisitor.checkAccess();
+  System.exit(status);
+}

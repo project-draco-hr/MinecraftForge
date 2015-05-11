@@ -1,0 +1,5 @@
+{
+  super(player);
+  this.crafting=crafting;
+  this.craftMatrix=craftMatrix;
+}

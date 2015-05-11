@@ -1,0 +1,3 @@
+int mouseX
+int mouseY
+int mouseEvent

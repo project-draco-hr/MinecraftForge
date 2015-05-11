@@ -1,0 +1,6 @@
+{
+  int err=GL11.glGetError();
+  if (err != 0) {
+    throw new IllegalStateException(where + ": " + GLU.gluErrorString(err));
+  }
+}

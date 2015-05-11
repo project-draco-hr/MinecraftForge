@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < configElement.getValidValues().length; i++)   if (configElement.getValidValues()[i].equalsIgnoreCase(s)) {
+    return i;
+  }
+  return 0;
+}

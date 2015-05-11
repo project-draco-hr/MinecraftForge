@@ -1,0 +1,5 @@
+{
+  if (state.hasEvent()) {
+    masterChannel.post(state.getEvent(eventData));
+  }
+}

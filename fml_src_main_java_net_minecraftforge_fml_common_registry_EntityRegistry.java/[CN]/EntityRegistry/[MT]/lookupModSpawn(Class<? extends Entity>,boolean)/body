@@ -1,0 +1,13 @@
+{
+  Class<?> localClazz=clazz;
+  do {
+    EntityRegistration er=entityClassRegistrations.get(localClazz);
+    if (er != null) {
+      return er;
+    }
+    localClazz=localClazz.getSuperclass();
+    keepLooking=(!Object.class.equals(localClazz));
+  }
+ while (keepLooking);
+  return null;
+}

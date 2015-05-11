@@ -1,0 +1,8 @@
+{
+  I ret=superType.cast(super.getObject(loc));
+  if (ret == null) {
+    String name=aliases.get(loc.toString());
+    if (name != null)     return getRaw(name);
+  }
+  return ret;
+}

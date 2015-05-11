@@ -1,0 +1,22 @@
+{
+  if (parent != null) {
+    parent.resizeLists(max);
+  }
+  if (lists.length >= max) {
+    return;
+  }
+  ListenerListInst[] newList=new ListenerListInst[max];
+  int x=0;
+  for (; x < lists.length; x++) {
+    newList[x]=lists[x];
+  }
+  for (; x < max; x++) {
+    if (parent != null) {
+      newList[x]=new ListenerListInst(parent.getInstance(x));
+    }
+ else {
+      newList[x]=new ListenerListInst();
+    }
+  }
+  lists=newList;
+}

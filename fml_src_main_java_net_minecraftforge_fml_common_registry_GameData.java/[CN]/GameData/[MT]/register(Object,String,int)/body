@@ -1,0 +1,13 @@
+{
+  if (obj instanceof Block) {
+    name=addPrefix(name);
+    return registerBlock((Block)obj,name,idHint);
+  }
+ else   if (obj instanceof Item) {
+    name=addPrefix(name);
+    return registerItem((Item)obj,name,idHint);
+  }
+ else {
+    return findRegistry(obj.getClass()).add(idHint,name,obj);
+  }
+}

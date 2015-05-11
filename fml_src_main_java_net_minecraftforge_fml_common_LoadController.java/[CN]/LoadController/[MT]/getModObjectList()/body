@@ -1,0 +1,7 @@
+{
+  if (modObjectList == null) {
+    FMLLog.severe("Detected an attempt by a mod %s to perform game activity during mod construction. This is a serious programming error.",activeContainer);
+    return buildModObjectList();
+  }
+  return ImmutableBiMap.copyOf(modObjectList);
+}

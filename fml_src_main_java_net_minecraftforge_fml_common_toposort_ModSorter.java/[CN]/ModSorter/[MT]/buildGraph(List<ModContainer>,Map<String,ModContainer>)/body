@@ -1,0 +1,58 @@
+{
+  modGraph=new DirectedGraph<ModContainer>();
+  modGraph.addNode(beforeAll);
+  modGraph.addNode(before);
+  modGraph.addNode(afterAll);
+  modGraph.addNode(after);
+  modGraph.addEdge(before,after);
+  modGraph.addEdge(beforeAll,before);
+  modGraph.addEdge(after,afterAll);
+  for (  ModContainer mod : modList) {
+    modGraph.addNode(mod);
+  }
+  for (  ModContainer mod : modList) {
+    if (mod.isImmutable()) {
+      modGraph.addEdge(beforeAll,mod);
+      modGraph.addEdge(mod,before);
+      continue;
+    }
+    boolean preDepAdded=false;
+    boolean postDepAdded=false;
+    for (    ArtifactVersion dep : mod.getDependencies()) {
+      preDepAdded=true;
+      String modid=dep.getLabel();
+      if (modid.equals("*")) {
+        modGraph.addEdge(mod,afterAll);
+        modGraph.addEdge(after,mod);
+        postDepAdded=true;
+      }
+ else {
+        modGraph.addEdge(before,mod);
+        if (nameLookup.containsKey(modid) || Loader.isModLoaded(modid)) {
+          modGraph.addEdge(nameLookup.get(modid),mod);
+        }
+      }
+    }
+    for (    ArtifactVersion dep : mod.getDependants()) {
+      postDepAdded=true;
+      String modid=dep.getLabel();
+      if (modid.equals("*")) {
+        modGraph.addEdge(beforeAll,mod);
+        modGraph.addEdge(mod,before);
+        preDepAdded=true;
+      }
+ else {
+        modGraph.addEdge(mod,after);
+        if (Loader.isModLoaded(modid)) {
+          modGraph.addEdge(mod,nameLookup.get(modid));
+        }
+      }
+    }
+    if (!preDepAdded) {
+      modGraph.addEdge(before,mod);
+    }
+    if (!postDepAdded) {
+      modGraph.addEdge(mod,after);
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{
+  CraftingManager.getInstance().addShapelessRecipe(output,params);
+}

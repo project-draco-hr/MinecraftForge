@@ -1,0 +1,4 @@
+String type
+boolean isCompatible
+Map<String,String> modData
+boolean isBlocked

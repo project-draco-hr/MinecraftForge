@@ -1,0 +1,5 @@
+{
+  HashMap<String,ModContainer> sortingNameLookup=Maps.newHashMap(nameLookup);
+  ModAPIManager.INSTANCE.injectAPIModContainers(modList,sortingNameLookup);
+  buildGraph(modList,sortingNameLookup);
+}

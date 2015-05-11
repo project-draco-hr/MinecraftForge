@@ -1,0 +1,3 @@
+{
+  return getStringLocalization(key,FMLCommonHandler.instance().getCurrentLanguage());
+}

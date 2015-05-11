@@ -1,0 +1,4 @@
+ModContainer container
+Class<?> modClass
+String acceptableVersionRange
+ASMDataTable table

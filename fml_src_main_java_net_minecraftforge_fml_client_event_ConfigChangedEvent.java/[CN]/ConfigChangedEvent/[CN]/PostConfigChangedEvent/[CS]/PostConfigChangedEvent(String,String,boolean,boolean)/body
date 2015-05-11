@@ -1,0 +1,3 @@
+{
+  super(modID,configID,isWorldRunning,requiresMcRestart);
+}

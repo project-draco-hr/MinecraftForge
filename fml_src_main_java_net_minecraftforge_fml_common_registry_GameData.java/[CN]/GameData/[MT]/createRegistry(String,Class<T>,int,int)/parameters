@@ -1,0 +1,4 @@
+String registryName
+Class<T> type
+int minId
+int maxId

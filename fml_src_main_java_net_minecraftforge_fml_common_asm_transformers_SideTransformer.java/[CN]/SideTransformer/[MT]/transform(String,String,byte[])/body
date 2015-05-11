@@ -1,0 +1,37 @@
+{
+  if (bytes == null) {
+    return null;
+  }
+  ClassNode classNode=new ClassNode();
+  ClassReader classReader=new ClassReader(bytes);
+  classReader.accept(classNode,0);
+  if (remove((List<AnnotationNode>)classNode.visibleAnnotations,SIDE)) {
+    if (DEBUG) {
+      System.out.println(String.format("Attempted to load class %s for invalid side %s",classNode.name,SIDE));
+    }
+    throw new RuntimeException(String.format("Attempted to load class %s for invalid side %s",classNode.name,SIDE));
+  }
+  Iterator<FieldNode> fields=classNode.fields.iterator();
+  while (fields.hasNext()) {
+    FieldNode field=fields.next();
+    if (remove((List<AnnotationNode>)field.visibleAnnotations,SIDE)) {
+      if (DEBUG) {
+        System.out.println(String.format("Removing Field: %s.%s",classNode.name,field.name));
+      }
+      fields.remove();
+    }
+  }
+  Iterator<MethodNode> methods=classNode.methods.iterator();
+  while (methods.hasNext()) {
+    MethodNode method=methods.next();
+    if (remove((List<AnnotationNode>)method.visibleAnnotations,SIDE)) {
+      if (DEBUG) {
+        System.out.println(String.format("Removing Method: %s.%s%s",classNode.name,method.name,method.desc));
+      }
+      methods.remove();
+    }
+  }
+  ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
+  classNode.accept(writer);
+  return writer.toByteArray();
+}

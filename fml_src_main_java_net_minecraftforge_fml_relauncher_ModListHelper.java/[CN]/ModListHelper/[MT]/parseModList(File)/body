@@ -1,0 +1,16 @@
+{
+  FMLRelaunchLog.fine("Attempting to load commandline specified mods, relative to %s",minecraftDirectory.getAbsolutePath());
+  mcDirectory=minecraftDirectory;
+  @SuppressWarnings("unchecked") Map<String,String> args=(Map<String,String>)Launch.blackboard.get("launchArgs");
+  String listFile=args.get("--modListFile");
+  if (listFile != null) {
+    parseListFile(listFile);
+  }
+  String extraMods=args.get("--mods");
+  if (extraMods != null) {
+    String[] split=extraMods.split(",");
+    for (    String modFile : split) {
+      tryAddFile(modFile,null,modFile);
+    }
+  }
+}

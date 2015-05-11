@@ -1,0 +1,5 @@
+{
+  super(Opcodes.ASM5,cv);
+  this.name=name.replace('.','/');
+  this.parentClass=parentClass;
+}

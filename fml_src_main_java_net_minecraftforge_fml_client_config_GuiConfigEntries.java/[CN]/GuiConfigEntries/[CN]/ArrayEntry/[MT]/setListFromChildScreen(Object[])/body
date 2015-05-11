@@ -1,0 +1,6 @@
+{
+  if (enabled() && !Arrays.deepEquals(currentValues,newList)) {
+    currentValues=newList;
+    updateValueButtonText();
+  }
+}

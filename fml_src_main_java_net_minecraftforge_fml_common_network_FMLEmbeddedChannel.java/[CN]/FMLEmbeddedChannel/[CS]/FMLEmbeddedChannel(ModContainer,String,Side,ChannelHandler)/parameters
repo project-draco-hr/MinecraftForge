@@ -1,0 +1,4 @@
+ModContainer container
+String channelName
+Side source
+ChannelHandler handlers

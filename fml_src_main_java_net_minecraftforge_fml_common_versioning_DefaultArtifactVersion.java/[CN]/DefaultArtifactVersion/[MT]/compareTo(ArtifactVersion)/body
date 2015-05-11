@@ -1,0 +1,3 @@
+{
+  return unbounded ? 0 : this.comparableVersion.compareTo(((DefaultArtifactVersion)o).comparableVersion);
+}

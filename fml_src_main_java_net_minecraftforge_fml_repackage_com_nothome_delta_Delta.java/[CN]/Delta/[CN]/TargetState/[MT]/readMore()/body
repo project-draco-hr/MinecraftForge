@@ -1,0 +1,6 @@
+{
+  if (debug)   debug("readMore " + tbuf);
+  tbuf.compact();
+  c.read(tbuf);
+  tbuf.flip();
+}

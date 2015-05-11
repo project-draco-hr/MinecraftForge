@@ -1,0 +1,14 @@
+{
+  String oldSrg=parts[1];
+  int lastOld=oldSrg.lastIndexOf('/');
+  String cl=oldSrg.substring(0,lastOld);
+  String oldName=oldSrg.substring(lastOld + 1);
+  String sig=parts[2];
+  String newSrg=parts[3];
+  int lastNew=newSrg.lastIndexOf('/');
+  String newName=newSrg.substring(lastNew + 1);
+  if (!rawMethodMaps.containsKey(cl)) {
+    rawMethodMaps.put(cl,Maps.<String,String>newHashMap());
+  }
+  rawMethodMaps.get(cl).put(oldName + sig,newName);
+}

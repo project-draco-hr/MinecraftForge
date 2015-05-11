@@ -1,0 +1,7 @@
+{
+  super(new ModMetadata());
+  getMetadata().modId="Minecraft";
+  getMetadata().name="Minecraft";
+  getMetadata().version=actualMCVersion;
+  staticRange=VersionParser.parseRange("[" + actualMCVersion + "]");
+}

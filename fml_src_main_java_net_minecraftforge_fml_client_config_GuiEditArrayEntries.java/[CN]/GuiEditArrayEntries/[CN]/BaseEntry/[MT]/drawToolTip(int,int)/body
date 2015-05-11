@@ -1,0 +1,5 @@
+{
+  boolean canHover=mouseY < owningEntryList.bottom && mouseY > owningEntryList.top;
+  if (this.btnAddNewEntryAbove.visible && this.addNewEntryAboveHoverChecker.checkHover(mouseX,mouseY,canHover))   owningScreen.drawToolTip(this.addNewToolTip,mouseX,mouseY);
+  if (this.btnRemoveEntry.visible && this.removeEntryHoverChecker.checkHover(mouseX,mouseY,canHover))   owningScreen.drawToolTip(this.removeToolTip,mouseX,mouseY);
+}

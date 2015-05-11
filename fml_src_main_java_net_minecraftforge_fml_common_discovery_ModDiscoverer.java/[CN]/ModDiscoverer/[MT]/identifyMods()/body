@@ -1,0 +1,21 @@
+{
+  List<ModContainer> modList=Lists.newArrayList();
+  for (  ModCandidate candidate : candidates) {
+    try {
+      List<ModContainer> mods=candidate.explore(dataTable);
+      if (mods.isEmpty() && !candidate.isClasspath()) {
+        nonModLibs.add(candidate.getModContainer());
+      }
+ else {
+        modList.addAll(mods);
+      }
+    }
+ catch (    LoaderException le) {
+      FMLLog.log(Level.WARN,le,"Identified a problem with the mod candidate %s, ignoring this source",candidate.getModContainer());
+    }
+catch (    Throwable t) {
+      Throwables.propagate(t);
+    }
+  }
+  return modList;
+}

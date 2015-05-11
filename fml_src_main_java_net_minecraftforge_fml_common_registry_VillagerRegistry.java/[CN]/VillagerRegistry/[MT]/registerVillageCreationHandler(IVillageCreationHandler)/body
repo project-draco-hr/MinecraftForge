@@ -1,0 +1,3 @@
+{
+  villageCreationHandlers.put(handler.getComponentClass(),handler);
+}

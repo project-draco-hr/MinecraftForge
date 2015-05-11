@@ -1,0 +1,22 @@
+{
+  ModContainer mc=FMLCommonHandler.instance().findContainerFor(mod);
+  EntityRegistration er=new EntityRegistration(mc,entityClass,entityName,id,trackingRange,updateFrequency,sendsVelocityUpdates);
+  try {
+    entityClassRegistrations.put(entityClass,er);
+    entityNames.put(entityName,mc);
+    if (!EntityList.classToStringMapping.containsKey(entityClass)) {
+      String entityModName=String.format("%s.%s",mc.getModId(),entityName);
+      EntityList.classToStringMapping.put(entityClass,entityModName);
+      EntityList.stringToClassMapping.put(entityModName,entityClass);
+      FMLLog.finer("Automatically registered mod %s entity %s as %s",mc.getModId(),entityName,entityModName);
+    }
+ else {
+      FMLLog.fine("Skipping automatic mod %s entity registration for already registered class %s",mc.getModId(),entityClass.getName());
+    }
+  }
+ catch (  IllegalArgumentException e) {
+    FMLLog.log(Level.WARN,e,"The mod %s tried to register the entity (name,class) (%s,%s) one or both of which are already registered",mc.getModId(),entityName,entityClass.getName());
+    return;
+  }
+  entityRegistrations.put(mc,er);
+}

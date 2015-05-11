@@ -1,0 +1,3 @@
+{
+  return width * (frame % (size / width) + u) / size;
+}

@@ -1,0 +1,3 @@
+{
+  super(String.format("The substitute %s for %s (type %s) is type incompatible.",replacement.getClass().getName(),fromName,original.getClass().getName()));
+}

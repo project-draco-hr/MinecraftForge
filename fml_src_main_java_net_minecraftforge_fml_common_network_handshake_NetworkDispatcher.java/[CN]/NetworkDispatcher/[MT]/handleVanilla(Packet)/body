@@ -1,0 +1,9 @@
+{
+  if (state == ConnectionState.AWAITING_HANDSHAKE && msg instanceof S01PacketJoinGame) {
+    handshakeChannel.pipeline().fireUserEventTriggered(msg);
+  }
+ else {
+    FMLLog.info("Unexpected packet during modded negotiation - assuming vanilla or keepalives : %s",msg.getClass().getName());
+  }
+  return false;
+}

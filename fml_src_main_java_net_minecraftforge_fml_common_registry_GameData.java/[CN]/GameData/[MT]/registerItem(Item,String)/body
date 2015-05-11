@@ -1,0 +1,6 @@
+{
+  int index=name.indexOf(':');
+  if (name.indexOf(':') != -1)   FMLLog.bigWarning("Illegal extra prefix %s for name %s, invalid registry invocation/invalid name?",name.substring(0,index),name);
+  name=addPrefix(name);
+  return registerItem(item,name,-1);
+}

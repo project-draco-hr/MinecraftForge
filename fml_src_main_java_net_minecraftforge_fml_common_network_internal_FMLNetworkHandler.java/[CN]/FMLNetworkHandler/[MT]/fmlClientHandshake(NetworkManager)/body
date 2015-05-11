@@ -1,0 +1,4 @@
+{
+  NetworkDispatcher dispatcher=NetworkDispatcher.allocAndSet(networkManager);
+  dispatcher.clientToServerHandshake();
+}

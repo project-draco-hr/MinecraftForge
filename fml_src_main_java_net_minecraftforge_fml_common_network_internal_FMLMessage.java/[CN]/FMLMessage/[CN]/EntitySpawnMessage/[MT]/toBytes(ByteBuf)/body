@@ -1,0 +1,51 @@
+{
+  super.toBytes(buf);
+  ByteBufUtils.writeUTF8String(buf,modId);
+  buf.writeInt(modEntityTypeId);
+  buf.writeInt(MathHelper.floor_double(entity.posX * 32D));
+  buf.writeInt(MathHelper.floor_double(entity.posY * 32D));
+  buf.writeInt(MathHelper.floor_double(entity.posZ * 32D));
+  buf.writeByte((byte)(entity.rotationYaw * 256.0F / 360.0F));
+  buf.writeByte((byte)(entity.rotationPitch * 256.0F / 360.0F));
+  if (entity instanceof EntityLivingBase) {
+    buf.writeByte((byte)(((EntityLivingBase)entity).rotationYawHead * 256.0F / 360.0F));
+  }
+ else {
+    buf.writeByte(0);
+  }
+  ByteBuf tmpBuf=Unpooled.buffer();
+  PacketBuffer pb=new PacketBuffer(tmpBuf);
+  try {
+    entity.getDataWatcher().writeTo(pb);
+  }
+ catch (  IOException e) {
+    FMLLog.log(Level.FATAL,e,"Encountered fatal exception trying to send entity spawn data watchers");
+    throw Throwables.propagate(e);
+  }
+  buf.writeBytes(tmpBuf);
+  if (entity instanceof IThrowableEntity) {
+    Entity owner=((IThrowableEntity)entity).getThrower();
+    buf.writeInt(owner == null ? entity.getEntityId() : owner.getEntityId());
+    double maxVel=3.9D;
+    double mX=entity.motionX;
+    double mY=entity.motionY;
+    double mZ=entity.motionZ;
+    if (mX < -maxVel)     mX=-maxVel;
+    if (mY < -maxVel)     mY=-maxVel;
+    if (mZ < -maxVel)     mZ=-maxVel;
+    if (mX > maxVel)     mX=maxVel;
+    if (mY > maxVel)     mY=maxVel;
+    if (mZ > maxVel)     mZ=maxVel;
+    buf.writeInt((int)(mX * 8000D));
+    buf.writeInt((int)(mY * 8000D));
+    buf.writeInt((int)(mZ * 8000D));
+  }
+ else {
+    buf.writeInt(0);
+  }
+  if (entity instanceof IEntityAdditionalSpawnData) {
+    tmpBuf=Unpooled.buffer();
+    ((IEntityAdditionalSpawnData)entity).writeSpawnData(tmpBuf);
+    buf.writeBytes(tmpBuf);
+  }
+}

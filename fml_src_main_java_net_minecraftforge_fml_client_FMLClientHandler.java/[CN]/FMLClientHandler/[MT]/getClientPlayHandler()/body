@@ -1,0 +1,3 @@
+{
+  return this.currentPlayClient == null ? null : this.currentPlayClient.get();
+}

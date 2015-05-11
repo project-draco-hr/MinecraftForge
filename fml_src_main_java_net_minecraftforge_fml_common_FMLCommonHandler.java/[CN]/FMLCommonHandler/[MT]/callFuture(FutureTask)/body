@@ -1,0 +1,12 @@
+{
+  try {
+    task.run();
+    task.get();
+  }
+ catch (  InterruptedException e) {
+    FMLLog.log(Level.FATAL,e,"Exception caught executing FutureTask: " + e.toString());
+  }
+catch (  ExecutionException e) {
+    FMLLog.log(Level.FATAL,e,"Exception caught executing FutureTask: " + e.toString());
+  }
+}

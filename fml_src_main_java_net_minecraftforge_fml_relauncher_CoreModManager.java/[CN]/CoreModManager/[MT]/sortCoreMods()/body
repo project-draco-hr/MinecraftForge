@@ -1,0 +1,25 @@
+{
+  TopologicalSort.DirectedGraph<FMLPluginWrapper> sortGraph=new TopologicalSort.DirectedGraph<FMLPluginWrapper>();
+  Map<String,FMLPluginWrapper> pluginMap=Maps.newHashMap();
+  for (  FMLPluginWrapper plug : loadPlugins) {
+    sortGraph.addNode(plug);
+    pluginMap.put(plug.name,plug);
+  }
+  for (  FMLPluginWrapper plug : loadPlugins) {
+    for (    String dep : plug.predepends) {
+      if (!pluginMap.containsKey(dep)) {
+        FMLRelaunchLog.log(Level.ERROR,"Missing coremod dependency - the coremod %s depends on coremod %s which isn't present.",plug.name,dep);
+        throw new RuntimeException();
+      }
+      sortGraph.addEdge(plug,pluginMap.get(dep));
+    }
+  }
+  try {
+    loadPlugins=TopologicalSort.topologicalSort(sortGraph);
+    FMLRelaunchLog.fine("Sorted coremod list %s",loadPlugins);
+  }
+ catch (  Exception e) {
+    FMLLog.log(Level.ERROR,e,"There was a problem performing the coremod sort");
+    throw Throwables.propagate(e);
+  }
+}

@@ -1,0 +1,6 @@
+int windowId
+String modId
+int modGuiId
+int x
+int y
+int z

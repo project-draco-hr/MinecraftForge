@@ -1,0 +1,4 @@
+{
+  super(String.format("Wrong Minecraft version for %s",mod.getModId()));
+  this.mod=mod;
+}

@@ -1,0 +1,3 @@
+{
+  this(owningScreen,owningEntryList,configElement,new GuiButtonExt(0,owningEntryList.controlX,0,owningEntryList.controlWidth,18,configElement.get() != null ? I18n.format(String.valueOf(configElement.get())) : ""));
+}

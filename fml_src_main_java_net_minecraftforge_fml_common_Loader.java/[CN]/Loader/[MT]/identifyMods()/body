@@ -1,0 +1,32 @@
+{
+  FMLLog.fine("Building injected Mod Containers %s",injectedContainers);
+  mods.add(new InjectedModContainer(mcp,new File("minecraft.jar")));
+  for (  String cont : injectedContainers) {
+    ModContainer mc;
+    try {
+      mc=(ModContainer)Class.forName(cont,true,modClassLoader).newInstance();
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.ERROR,e,"A problem occured instantiating the injected mod container %s",cont);
+      throw new LoaderException(e);
+    }
+    mods.add(new InjectedModContainer(mc,mc.getSource()));
+  }
+  ModDiscoverer discoverer=new ModDiscoverer();
+  FMLLog.fine("Attempting to load mods contained in the minecraft jar file and associated classes");
+  discoverer.findClasspathMods(modClassLoader);
+  FMLLog.fine("Minecraft jar mods loaded successfully");
+  FMLLog.getLogger().log(Level.INFO,"Found {} mods from the command line. Injecting into mod discoverer",ModListHelper.additionalMods.size());
+  FMLLog.info("Searching %s for mods",canonicalModsDir.getAbsolutePath());
+  discoverer.findModDirMods(canonicalModsDir,ModListHelper.additionalMods.values().toArray(new File[0]));
+  File versionSpecificModsDir=new File(canonicalModsDir,mccversion);
+  if (versionSpecificModsDir.isDirectory()) {
+    FMLLog.info("Also searching %s for mods",versionSpecificModsDir);
+    discoverer.findModDirMods(versionSpecificModsDir);
+  }
+  mods.addAll(discoverer.identifyMods());
+  identifyDuplicates(mods);
+  namedMods=Maps.uniqueIndex(mods,new ModIdFunction());
+  FMLLog.info("Forge Mod Loader has identified %d mod%s to load",mods.size(),mods.size() != 1 ? "s" : "");
+  return discoverer;
+}

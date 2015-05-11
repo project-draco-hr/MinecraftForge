@@ -1,0 +1,3 @@
+{
+  return getSource().isDirectory() ? FMLFolderResourcePack.class : FMLFileResourcePack.class;
+}

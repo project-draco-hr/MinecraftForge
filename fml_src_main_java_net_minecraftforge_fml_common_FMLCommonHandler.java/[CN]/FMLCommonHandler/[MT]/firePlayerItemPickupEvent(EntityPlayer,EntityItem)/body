@@ -1,0 +1,3 @@
+{
+  bus().post(new PlayerEvent.ItemPickupEvent(player,item));
+}

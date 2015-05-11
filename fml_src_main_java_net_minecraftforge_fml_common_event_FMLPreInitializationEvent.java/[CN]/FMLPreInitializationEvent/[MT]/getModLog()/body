@@ -1,0 +1,4 @@
+{
+  Logger log=LogManager.getLogger(modContainer.getModId());
+  return log;
+}

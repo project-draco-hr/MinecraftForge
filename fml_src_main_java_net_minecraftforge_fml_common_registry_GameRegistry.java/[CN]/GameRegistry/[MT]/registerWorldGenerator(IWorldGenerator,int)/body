@@ -1,0 +1,7 @@
+{
+  worldGenerators.add(generator);
+  worldGeneratorIndex.put(generator,modGenerationWeight);
+  if (sortedGeneratorList != null) {
+    sortedGeneratorList=null;
+  }
+}

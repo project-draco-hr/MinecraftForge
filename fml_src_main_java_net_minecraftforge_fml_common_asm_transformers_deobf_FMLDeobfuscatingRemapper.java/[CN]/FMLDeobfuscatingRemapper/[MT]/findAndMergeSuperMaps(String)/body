@@ -1,0 +1,16 @@
+{
+  try {
+    String superName=null;
+    String[] interfaces=new String[0];
+    byte[] classBytes=ClassPatchManager.INSTANCE.getPatchedResource(name,map(name),classLoader);
+    if (classBytes != null) {
+      ClassReader cr=new ClassReader(classBytes);
+      superName=cr.getSuperName();
+      interfaces=cr.getInterfaces();
+    }
+    mergeSuperMaps(name,superName,interfaces);
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+}

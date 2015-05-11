@@ -1,0 +1,31 @@
+{
+  if (debug) {
+    debug("using match length S = " + S);
+  }
+  source=new SourceState(seekSource);
+  target=new TargetState(targetIS);
+  this.output=output;
+  if (debug)   debug("checksums " + source.checksum);
+  while (!target.eof()) {
+    debug("!target.eof()");
+    int index=target.find(source);
+    if (index != -1) {
+      if (debug)       debug("found hash " + index);
+      long offset=(long)index * S;
+      source.seek(offset);
+      int match=target.longestMatch(source);
+      if (match >= S) {
+        if (debug)         debug("output.addCopy(" + offset + ","+ match+ ")");
+        output.addCopy(offset,match);
+      }
+ else {
+        target.tbuf.position(target.tbuf.position() - match);
+        addData();
+      }
+    }
+ else {
+      addData();
+    }
+  }
+  output.close();
+}

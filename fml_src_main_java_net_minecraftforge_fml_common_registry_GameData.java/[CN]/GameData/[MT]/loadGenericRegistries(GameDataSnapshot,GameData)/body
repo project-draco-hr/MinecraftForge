@@ -1,0 +1,32 @@
+{
+  List<String> result=Lists.newArrayList();
+  for (  Map.Entry<String,FMLControlledNamespacedRegistry<?>> e : existing.genericRegistries.entrySet()) {
+    String regName=e.getKey();
+    FMLControlledNamespacedRegistry<?> registry=e.getValue();
+    FMLControlledNamespacedRegistry<?> newRegistry=genericRegistries.get(regName);
+    if (newRegistry == null) {
+      newRegistry=registry.makeShallowCopy();
+      genericRegistries.put(regName,newRegistry);
+    }
+    GameDataSnapshot.Entry regSnap=snapshot.entries.get("fmlgr:" + regName);
+    if (regSnap == null) {
+      FMLLog.info("Weird, there was no registry data for registry %s found in the snapshot",regName);
+      continue;
+    }
+    for (    Entry<String,Integer> entry : regSnap.ids.entrySet()) {
+      String entryName=entry.getKey();
+      int entryId=entry.getValue();
+      int currId=registry.getId(entryName);
+      if (currId == -1) {
+        FMLLog.info("Found a missing id in registry %s from the world %s",regName,entryName);
+        result.add(regName + "{" + entryName+ "}="+ entryId);
+        continue;
+      }
+ else       if (currId != entryId) {
+        FMLLog.fine("Fixed registry %s id mismatch %s: %d (init) -> %d (map).",regName,entryName,currId,entryId);
+      }
+      newRegistry.add(entryId,entryName,registry.getRaw(entryName));
+    }
+  }
+  return result;
+}

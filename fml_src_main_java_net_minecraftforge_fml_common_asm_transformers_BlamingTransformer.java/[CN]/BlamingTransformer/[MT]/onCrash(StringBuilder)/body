@@ -1,0 +1,20 @@
+{
+  checkPendingNaughty();
+  if (!naughtyClasses.isEmpty()) {
+    builder.append("\n*** ATTENTION: detected classes with unsupported format ***\n");
+    builder.append("*** DO NOT SUBMIT THIS CRASH REPORT TO FORGE ***\n\n");
+    if (!naughtyMods.isEmpty()) {
+      builder.append("Contact authors of the following mods: \n");
+      for (      String modId : naughtyMods) {
+        builder.append("  ").append(modId).append("\n");
+      }
+    }
+    if (!orphanNaughtyClasses.isEmpty()) {
+      builder.append("Unidentified unsupported classes: \n");
+      for (      String cls : orphanNaughtyClasses) {
+        builder.append("  ").append(cls).append("\n");
+      }
+    }
+    builder.append('\n');
+  }
+}

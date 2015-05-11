@@ -1,0 +1,3 @@
+LaunchClassLoader launchLoader
+String parentClass
+String coreMod

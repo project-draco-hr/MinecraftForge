@@ -1,0 +1,3 @@
+{
+  registerMessage(instantiate(messageHandler),requestMessageType,discriminator,side);
+}

@@ -1,0 +1,3 @@
+byte[] sourceBytes
+InputStream inputStream
+DiffWriter diffWriter

@@ -1,0 +1,3 @@
+{
+  return "/deobfuscation_data-" + mccversion + ".lzma";
+}

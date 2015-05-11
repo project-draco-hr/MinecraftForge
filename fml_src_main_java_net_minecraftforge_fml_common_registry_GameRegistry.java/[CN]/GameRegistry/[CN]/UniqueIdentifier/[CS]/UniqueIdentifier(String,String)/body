@@ -1,0 +1,4 @@
+{
+  this.modId=modId;
+  this.name=name;
+}

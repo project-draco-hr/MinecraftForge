@@ -1,0 +1,12 @@
+{
+  File file=new File(rulesFile);
+  URL rulesResource;
+  if (file.exists()) {
+    rulesResource=file.toURI().toURL();
+  }
+ else {
+    rulesResource=Resources.getResource(rulesFile);
+  }
+  processATFile(Resources.asCharSource(rulesResource,Charsets.UTF_8));
+  FMLRelaunchLog.fine("Loaded %d rules from AccessTransformer config file %s\n",modifiers.size(),rulesFile);
+}

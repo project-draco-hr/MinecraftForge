@@ -1,0 +1,5 @@
+{
+  discriminators.put((byte)discriminator,type);
+  types.put(type,(byte)discriminator);
+  return this;
+}

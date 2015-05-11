@@ -1,0 +1,16 @@
+{
+  try {
+    List<File> files=new ArrayList<File>();
+    for (    URL url : mainClassLoader.getSources()) {
+      URI uri=url.toURI();
+      if (uri.getScheme().equals("file")) {
+        files.add(new File(uri));
+      }
+    }
+    return files.toArray(new File[]{});
+  }
+ catch (  URISyntaxException e) {
+    FMLLog.log(Level.ERROR,e,"Unable to process our input to locate the minecraft code");
+    throw new LoaderException(e);
+  }
+}

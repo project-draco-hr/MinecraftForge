@@ -1,0 +1,14 @@
+{
+  if (owner != null && GETCONTEXT) {
+    ThreadContext.put("mod",owner.getName());
+  }
+ else   if (GETCONTEXT) {
+    ThreadContext.put("mod","");
+  }
+  if (handler != null) {
+    if (!event.isCancelable() || !event.isCanceled() || subInfo.receiveCanceled()) {
+      handler.invoke(event);
+    }
+  }
+  if (GETCONTEXT)   ThreadContext.remove("mod");
+}

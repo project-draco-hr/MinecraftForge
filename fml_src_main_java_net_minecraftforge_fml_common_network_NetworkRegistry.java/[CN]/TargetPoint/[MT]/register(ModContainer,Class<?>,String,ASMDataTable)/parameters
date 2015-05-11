@@ -1,0 +1,4 @@
+ModContainer fmlModContainer
+Class<?> clazz
+String remoteVersionRange
+ASMDataTable asmHarvestedData

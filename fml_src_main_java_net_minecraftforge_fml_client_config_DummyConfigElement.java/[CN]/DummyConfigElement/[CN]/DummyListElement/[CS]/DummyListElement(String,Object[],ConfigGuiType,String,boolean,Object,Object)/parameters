@@ -1,0 +1,7 @@
+String name
+Object[] defaultValues
+ConfigGuiType type
+String langKey
+boolean isListFixedLength
+Object minValue
+Object maxValue

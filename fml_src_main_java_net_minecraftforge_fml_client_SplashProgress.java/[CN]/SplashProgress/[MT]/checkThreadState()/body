@@ -1,0 +1,5 @@
+{
+  if (thread.getState() == Thread.State.TERMINATED || threadError != null) {
+    throw new IllegalStateException("Splash thread",threadError);
+  }
+}

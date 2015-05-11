@@ -1,0 +1,3 @@
+{
+  return FMLConfigGuiScreen.class;
+}

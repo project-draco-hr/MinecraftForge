@@ -1,0 +1,4 @@
+{
+  modController.distributeStateMessage(LoaderState.SERVER_STOPPING);
+  modController.transition(LoaderState.SERVER_STOPPING,false);
+}

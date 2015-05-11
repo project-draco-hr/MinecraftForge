@@ -1,0 +1,11 @@
+{
+  sidedDelegate.serverStopped();
+  MinecraftServer server=getMinecraftServerInstance();
+  Loader.instance().serverStopped();
+  if (server != null)   ObfuscationReflectionHelper.setPrivateValue(MinecraftServer.class,server,false,"field_71316" + "_v","u","serverStopped");
+  CountDownLatch latch=exitLatch;
+  if (latch != null) {
+    latch.countDown();
+    exitLatch=null;
+  }
+}

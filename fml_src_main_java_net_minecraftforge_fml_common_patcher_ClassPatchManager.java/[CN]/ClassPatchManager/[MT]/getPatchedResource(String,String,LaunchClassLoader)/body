@@ -1,0 +1,4 @@
+{
+  byte[] rawClassBytes=loader.getClassBytes(name);
+  return applyPatch(name,mappedName,rawClassBytes);
+}

@@ -1,0 +1,14 @@
+{
+  String oldSrg=parts[1];
+  int lastOld=oldSrg.lastIndexOf('/');
+  String cl=oldSrg.substring(0,lastOld);
+  String oldName=oldSrg.substring(lastOld + 1);
+  String newSrg=parts[2];
+  int lastNew=newSrg.lastIndexOf('/');
+  String newName=newSrg.substring(lastNew + 1);
+  if (!rawFieldMaps.containsKey(cl)) {
+    rawFieldMaps.put(cl,Maps.<String,String>newHashMap());
+  }
+  rawFieldMaps.get(cl).put(oldName + ":" + getFieldType(cl,oldName),newName);
+  rawFieldMaps.get(cl).put(oldName + ":null",newName);
+}

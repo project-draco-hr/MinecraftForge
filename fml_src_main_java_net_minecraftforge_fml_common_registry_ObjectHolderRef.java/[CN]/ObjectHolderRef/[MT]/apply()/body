@@ -1,0 +1,26 @@
+{
+  Object thing;
+  if (isBlock) {
+    thing=GameData.getBlockRegistry().getObject(injectedObject);
+    if (thing == Blocks.air) {
+      thing=null;
+    }
+  }
+ else   if (isItem) {
+    thing=GameData.getItemRegistry().getObject(injectedObject);
+  }
+ else {
+    thing=null;
+  }
+  if (thing == null) {
+    FMLLog.warning("Unable to lookup %s for %s. Is there something wrong with the registry?",injectedObject,field);
+    return;
+  }
+  try {
+    Object fieldAccessor=newFieldAccessor.invoke(reflectionFactory,field,false);
+    fieldAccessorSet.invoke(fieldAccessor,null,thing);
+  }
+ catch (  Exception e) {
+    FMLLog.log(Level.WARN,e,"Unable to set %s with value %s (%s)",this.field,thing,this.injectedObject);
+  }
+}

@@ -1,0 +1,5 @@
+{
+  FMLRelaunchLog.side=Side.CLIENT;
+  side=Side.CLIENT;
+  setupHome();
+}

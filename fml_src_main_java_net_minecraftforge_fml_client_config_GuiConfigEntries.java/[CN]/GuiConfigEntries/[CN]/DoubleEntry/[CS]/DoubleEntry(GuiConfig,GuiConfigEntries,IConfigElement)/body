@@ -1,0 +1,4 @@
+{
+  super(owningScreen,owningEntryList,configElement);
+  this.beforeValue=Double.valueOf(configElement.get().toString());
+}

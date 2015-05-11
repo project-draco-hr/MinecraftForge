@@ -1,0 +1,14 @@
+{
+  super.updateScreen();
+  search.updateCursorCounter();
+  if (!search.getText().equals(lastFilterText)) {
+    reloadMods();
+    sorted=false;
+  }
+  if (!sorted) {
+    reloadMods();
+    Collections.sort(mods,sortType);
+    selected=modList.selectedIndex=mods.indexOf(selectedMod);
+    sorted=true;
+  }
+}

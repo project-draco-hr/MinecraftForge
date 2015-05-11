@@ -1,0 +1,3 @@
+{
+  return String.format("%s : %s => %s (%b) size %d",name,sourceClassName,targetClassName,existsAtTarget,patch.length);
+}

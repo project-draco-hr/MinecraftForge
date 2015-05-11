@@ -1,0 +1,5 @@
+{
+  this();
+  Preconditions.checkArgument(handler != null,"EventBus exception handler can not be null");
+  exceptionHandler=handler;
+}

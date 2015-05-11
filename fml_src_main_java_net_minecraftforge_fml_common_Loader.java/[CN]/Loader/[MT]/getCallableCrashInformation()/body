@@ -1,0 +1,11 @@
+{
+  return new ICrashCallable(){
+    @Override public String call() throws Exception {
+      return getCrashInformation();
+    }
+    @Override public String getLabel(){
+      return "FML";
+    }
+  }
+;
+}

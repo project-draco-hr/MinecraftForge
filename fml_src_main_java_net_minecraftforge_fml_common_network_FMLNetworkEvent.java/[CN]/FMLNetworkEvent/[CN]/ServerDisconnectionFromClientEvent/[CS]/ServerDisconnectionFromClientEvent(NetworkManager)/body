@@ -1,0 +1,3 @@
+{
+  super((INetHandlerPlayServer)manager.getNetHandler(),INetHandlerPlayServer.class,manager);
+}

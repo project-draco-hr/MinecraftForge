@@ -1,0 +1,5 @@
+{
+  this(container);
+  this.checker=Preconditions.checkNotNull(checker);
+  FMLLog.fine("The mod %s is using a custom checker %s",container.getModId(),checker.getClass().getName());
+}

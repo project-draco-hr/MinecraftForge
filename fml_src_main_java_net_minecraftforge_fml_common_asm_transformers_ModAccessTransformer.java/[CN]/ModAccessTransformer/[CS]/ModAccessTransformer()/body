@@ -1,0 +1,16 @@
+{
+  super(ModAccessTransformer.class);
+  ClassLoader classLoader=this.getClass().getClassLoader().getClass().getClassLoader();
+  Class<?> otherClazz=Class.forName(this.getClass().getName(),true,classLoader);
+  Field otherField=otherClazz.getDeclaredField("embedded");
+  otherField.setAccessible(true);
+  embedded=(Map<String,String>)otherField.get(null);
+  for (  Map.Entry<String,String> e : embedded.entrySet()) {
+    int old_count=getModifiers().size();
+    processATFile(CharSource.wrap(e.getValue()));
+    int added=getModifiers().size() - old_count;
+    if (added > 0) {
+      FMLRelaunchLog.fine("Loaded %d rules from AccessTransformer mod jar file %s\n",added,e.getKey());
+    }
+  }
+}

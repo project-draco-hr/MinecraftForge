@@ -1,0 +1,5 @@
+{
+  if (getPersistentSubstitutions().containsKey(nameToReplace)) {
+    activeSubstitutions.put(nameToReplace,getPersistentSubstitutions().get(nameToReplace));
+  }
+}

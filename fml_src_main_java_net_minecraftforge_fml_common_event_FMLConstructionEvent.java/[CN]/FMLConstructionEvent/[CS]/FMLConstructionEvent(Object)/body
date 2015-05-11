@@ -1,0 +1,5 @@
+{
+  this.modClassLoader=(ModClassLoader)eventData[0];
+  this.asmData=(ASMDataTable)eventData[1];
+  this.reverseDependencies=(ListMultimap<String,String>)eventData[2];
+}

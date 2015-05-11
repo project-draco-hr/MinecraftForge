@@ -1,0 +1,4 @@
+{
+  GuiScreen gui=(GuiScreen)clientGuiElement;
+  client.displayGuiScreen(gui);
+}

@@ -1,0 +1,5 @@
+int maxId
+String type
+BitSet availabilityMap
+Set<Integer> blockedIds
+FMLControlledNamespacedRegistry<Block> iBlockRegistry

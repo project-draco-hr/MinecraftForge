@@ -1,0 +1,9 @@
+{
+  if (bytes == null) {
+    return null;
+  }
+  ClassReader classReader=new ClassReader(bytes);
+  VersionVisitor visitor=new VersionVisitor();
+  classReader.accept(visitor,ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG);
+  return bytes;
+}

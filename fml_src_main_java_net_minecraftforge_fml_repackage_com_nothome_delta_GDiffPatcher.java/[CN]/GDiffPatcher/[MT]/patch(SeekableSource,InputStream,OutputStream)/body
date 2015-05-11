@@ -1,0 +1,65 @@
+{
+  DataOutputStream outOS=new DataOutputStream(out);
+  DataInputStream patchIS=new DataInputStream(patch);
+  if (patchIS.readUnsignedByte() != 0xd1 || patchIS.readUnsignedByte() != 0xff || patchIS.readUnsignedByte() != 0xd1 || patchIS.readUnsignedByte() != 0xff || patchIS.readUnsignedByte() != 0x04) {
+    throw new PatchException("magic string not found, aborting!");
+  }
+  while (true) {
+    int command=patchIS.readUnsignedByte();
+    if (command == EOF)     break;
+    int length;
+    int offset;
+    if (command <= DATA_MAX) {
+      append(command,patchIS,outOS);
+      continue;
+    }
+switch (command) {
+case DATA_USHORT:
+      length=patchIS.readUnsignedShort();
+    append(length,patchIS,outOS);
+  break;
+case DATA_INT:
+length=patchIS.readInt();
+append(length,patchIS,outOS);
+break;
+case COPY_USHORT_UBYTE:
+offset=patchIS.readUnsignedShort();
+length=patchIS.readUnsignedByte();
+copy(offset,length,source,outOS);
+break;
+case COPY_USHORT_USHORT:
+offset=patchIS.readUnsignedShort();
+length=patchIS.readUnsignedShort();
+copy(offset,length,source,outOS);
+break;
+case COPY_USHORT_INT:
+offset=patchIS.readUnsignedShort();
+length=patchIS.readInt();
+copy(offset,length,source,outOS);
+break;
+case COPY_INT_UBYTE:
+offset=patchIS.readInt();
+length=patchIS.readUnsignedByte();
+copy(offset,length,source,outOS);
+break;
+case COPY_INT_USHORT:
+offset=patchIS.readInt();
+length=patchIS.readUnsignedShort();
+copy(offset,length,source,outOS);
+break;
+case COPY_INT_INT:
+offset=patchIS.readInt();
+length=patchIS.readInt();
+copy(offset,length,source,outOS);
+break;
+case COPY_LONG_INT:
+long loffset=patchIS.readLong();
+length=patchIS.readInt();
+copy(loffset,length,source,outOS);
+break;
+default :
+throw new IllegalStateException("command " + command);
+}
+}
+outOS.flush();
+}

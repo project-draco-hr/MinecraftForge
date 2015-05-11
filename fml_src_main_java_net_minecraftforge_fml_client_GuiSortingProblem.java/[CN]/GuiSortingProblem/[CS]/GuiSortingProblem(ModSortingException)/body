@@ -1,0 +1,3 @@
+{
+  this.failedList=modSorting.getExceptionData();
+}

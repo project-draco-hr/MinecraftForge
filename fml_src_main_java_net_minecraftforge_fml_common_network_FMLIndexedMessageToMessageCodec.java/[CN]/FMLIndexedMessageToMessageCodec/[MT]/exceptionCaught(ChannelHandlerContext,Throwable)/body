@@ -1,0 +1,4 @@
+{
+  FMLLog.log(Level.ERROR,cause,"FMLIndexedMessageCodec exception caught");
+  super.exceptionCaught(ctx,cause);
+}

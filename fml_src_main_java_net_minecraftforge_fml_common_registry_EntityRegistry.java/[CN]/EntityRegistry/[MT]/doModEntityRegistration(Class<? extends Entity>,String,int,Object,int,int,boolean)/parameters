@@ -1,0 +1,7 @@
+Class<? extends Entity> entityClass
+String entityName
+int id
+Object mod
+int trackingRange
+int updateFrequency
+boolean sendsVelocityUpdates

@@ -1,0 +1,4 @@
+SaveHandler handler
+WorldInfo info
+Map<String,NBTBase> propertyMap
+NBTTagCompound tag

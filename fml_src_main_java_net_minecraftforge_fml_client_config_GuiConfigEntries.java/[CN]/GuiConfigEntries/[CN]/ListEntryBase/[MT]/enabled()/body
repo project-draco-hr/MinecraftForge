@@ -1,0 +1,3 @@
+{
+  return owningScreen.isWorldRunning ? !owningScreen.allRequireWorldRestart && !configElement.requiresWorldRestart() : true;
+}

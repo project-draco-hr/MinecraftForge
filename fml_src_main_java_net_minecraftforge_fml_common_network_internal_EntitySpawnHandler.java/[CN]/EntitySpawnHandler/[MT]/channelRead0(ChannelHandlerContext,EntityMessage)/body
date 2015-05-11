@@ -1,0 +1,14 @@
+{
+  IThreadListener thread=FMLCommonHandler.instance().getWorldThread(ctx.channel().attr(NetworkRegistry.NET_HANDLER).get());
+  if (thread.isCallingFromMinecraftThread()) {
+    process(msg);
+  }
+ else {
+    thread.addScheduledTask(new Runnable(){
+      public void run(){
+        EntitySpawnHandler.this.process(msg);
+      }
+    }
+);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  if (recommendedVersion != null) {
+    return recommendedVersion.toString();
+  }
+ else {
+    return Joiner.on(',').join(restrictions);
+  }
+}

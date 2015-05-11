@@ -1,0 +1,10 @@
+{
+  if (frozen == null) {
+    FMLLog.warning("Can't revert to frozen GameData state without freezing first.");
+  }
+ else {
+    FMLLog.fine("Reverting to frozen data state.");
+    getMain().set(frozen);
+  }
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+}

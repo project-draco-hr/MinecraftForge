@@ -1,0 +1,3 @@
+{
+  return CraftingManager.getInstance().addRecipe(output,params);
+}

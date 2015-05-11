@@ -1,0 +1,21 @@
+{
+  byte[] data=IOUtils.toByteArray(inputstream);
+  boolean isEnhanced=false;
+  for (  String line : IOUtils.readLines(new ByteArrayInputStream(data),Charsets.UTF_8)) {
+    if (!line.isEmpty() && line.charAt(0) == '#') {
+      line=line.substring(1).trim();
+      if (line.equals("PARSE_ESCAPES")) {
+        isEnhanced=true;
+        break;
+      }
+    }
+  }
+  if (!isEnhanced)   return new ByteArrayInputStream(data);
+  Properties props=new Properties();
+  props.load(new InputStreamReader(new ByteArrayInputStream(data),Charsets.UTF_8));
+  for (  Entry e : props.entrySet()) {
+    table.put((String)e.getKey(),(String)e.getValue());
+  }
+  props.clear();
+  return null;
+}

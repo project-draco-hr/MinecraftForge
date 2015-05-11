@@ -1,0 +1,3 @@
+{
+  return activeContainer != null ? activeContainer : findActiveContainerFromStack();
+}

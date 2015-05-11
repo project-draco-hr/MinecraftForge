@@ -1,0 +1,4 @@
+{
+  discoverer.addSubAnnotation(name,desc);
+  return new ModAnnotationVisitor(discoverer,true);
+}

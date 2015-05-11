@@ -1,0 +1,4 @@
+{
+  NetworkDispatcher dispatcher=NetworkDispatcher.allocAndSet(manager,scm);
+  dispatcher.serverToClientHandshake(player);
+}

@@ -1,0 +1,3 @@
+{
+  return restrictions.size() == 1 ? restrictions.get(0).getLowerBound().getVersionString() : "";
+}

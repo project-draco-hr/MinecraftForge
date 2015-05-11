@@ -1,0 +1,8 @@
+{
+  try {
+    return parent.transform(name,transformedName,basicClass);
+  }
+ catch (  Throwable e) {
+    throw new TransformerException("Exception in class transformer " + parent + " from coremod "+ getCoreMod(),e);
+  }
+}

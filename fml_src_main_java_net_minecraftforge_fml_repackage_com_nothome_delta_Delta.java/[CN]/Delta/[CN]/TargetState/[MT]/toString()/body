@@ -1,0 +1,3 @@
+{
+  return "Target[" + " targetBuff=" + dump() + " sourceBuff="+ this.sbuf+ " hashf="+ this.hash+ " eof="+ this.eof+ "]";
+}

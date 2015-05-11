@@ -1,0 +1,7 @@
+{
+  if (Loader.instance().activeModContainer() == null) {
+    return false;
+  }
+  enqueueMessage(Loader.instance().activeModContainer(),modTarget,message);
+  return Loader.isModLoaded(modTarget) && !Loader.instance().hasReachedState(LoaderState.POSTINITIALIZATION);
+}

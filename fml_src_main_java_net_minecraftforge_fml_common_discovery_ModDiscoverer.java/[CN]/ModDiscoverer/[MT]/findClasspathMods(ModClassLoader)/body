@@ -1,0 +1,27 @@
+{
+  List<String> knownLibraries=ImmutableList.<String>builder().addAll(modClassLoader.getDefaultLibraries()).addAll(CoreModManager.getLoadedCoremods()).addAll(CoreModManager.getReparseableCoremods()).build();
+  File[] minecraftSources=modClassLoader.getParentSources();
+  if (minecraftSources.length == 1 && minecraftSources[0].isFile()) {
+    FMLLog.fine("Minecraft is a file at %s, loading",minecraftSources[0].getAbsolutePath());
+    addCandidate(new ModCandidate(minecraftSources[0],minecraftSources[0],ContainerType.JAR,true,true));
+  }
+ else {
+    int i=0;
+    for (    File source : minecraftSources) {
+      if (source.isFile()) {
+        if (knownLibraries.contains(source.getName()) || modClassLoader.isDefaultLibrary(source)) {
+          FMLLog.finer("Skipping known library file %s",source.getAbsolutePath());
+        }
+ else {
+          FMLLog.fine("Found a minecraft related file at %s, examining for mod candidates",source.getAbsolutePath());
+          addCandidate(new ModCandidate(source,source,ContainerType.JAR,i == 0,true));
+        }
+      }
+ else       if (minecraftSources[i].isDirectory()) {
+        FMLLog.fine("Found a minecraft related directory at %s, examining for mod candidates",source.getAbsolutePath());
+        addCandidate(new ModCandidate(source,source,ContainerType.DIR,i == 0,true));
+      }
+      i++;
+    }
+  }
+}

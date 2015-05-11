@@ -1,0 +1,9 @@
+{
+  int low=buf.readUnsignedShort();
+  int high=0;
+  if ((low & 0x8000) != 0) {
+    low=low & 0x7FFF;
+    high=buf.readUnsignedByte();
+  }
+  return ((high & 0xFF) << 15) | low;
+}

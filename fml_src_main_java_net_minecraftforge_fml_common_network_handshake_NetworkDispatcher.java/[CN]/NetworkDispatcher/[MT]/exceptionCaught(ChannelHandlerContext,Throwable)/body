@@ -1,0 +1,6 @@
+{
+  if (!(cause instanceof ClosedChannelException)) {
+    FMLLog.log(Level.ERROR,cause,"NetworkDispatcher exception");
+  }
+  super.exceptionCaught(ctx,cause);
+}

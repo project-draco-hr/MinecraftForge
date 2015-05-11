@@ -1,0 +1,4 @@
+{
+  super.handlerAdded(ctx);
+  ctx.attr(INBOUNDPACKETTRACKER).set(new ThreadLocal<WeakReference<FMLProxyPacket>>());
+}

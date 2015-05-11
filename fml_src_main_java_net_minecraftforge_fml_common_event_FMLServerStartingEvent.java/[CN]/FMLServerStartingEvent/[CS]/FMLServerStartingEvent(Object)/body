@@ -1,0 +1,4 @@
+{
+  super(data);
+  this.server=(MinecraftServer)data[0];
+}

@@ -1,0 +1,11 @@
+{
+  if (type.equals(Item.class)) {
+    return (BiMap<String,T>)itemSubstitutions;
+  }
+ else   if (type.equals(Block.class)) {
+    return (BiMap<String,T>)blockSubstitutions;
+  }
+ else {
+    return ImmutableBiMap.of();
+  }
+}

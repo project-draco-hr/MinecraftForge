@@ -1,0 +1,3 @@
+{
+  return (SortingExceptionData<T>)sortingExceptionData;
+}

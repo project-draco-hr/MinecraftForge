@@ -1,0 +1,3 @@
+{
+  this.packageMap.put(pkg,modCandidate);
+}

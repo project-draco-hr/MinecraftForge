@@ -1,0 +1,65 @@
+{
+  try {
+    BlamingTransformer.addClasses(getModId(),candidate.getClassList());
+    ModClassLoader modClassLoader=event.getModClassLoader();
+    modClassLoader.addFile(source);
+    modClassLoader.clearNegativeCacheFor(candidate.getClassList());
+    Class<?> clazz=Class.forName(className,true,modClassLoader);
+    Certificate[] certificates=clazz.getProtectionDomain().getCodeSource().getCertificates();
+    int len=0;
+    if (certificates != null) {
+      len=certificates.length;
+    }
+    Builder<String> certBuilder=ImmutableList.<String>builder();
+    for (int i=0; i < len; i++) {
+      certBuilder.add(CertificateHelper.getFingerprint(certificates[i]));
+    }
+    ImmutableList<String> certList=certBuilder.build();
+    sourceFingerprints=ImmutableSet.copyOf(certList);
+    String expectedFingerprint=(String)descriptor.get("certificateFingerprint");
+    fingerprintNotPresent=true;
+    if (expectedFingerprint != null && !expectedFingerprint.isEmpty()) {
+      if (!sourceFingerprints.contains(expectedFingerprint)) {
+        Level warnLevel=Level.ERROR;
+        if (source.isDirectory()) {
+          warnLevel=Level.TRACE;
+        }
+        FMLLog.log(getModId(),warnLevel,"The mod %s is expecting signature %s for source %s, however there is no signature matching that description",getModId(),expectedFingerprint,source.getName());
+      }
+ else {
+        certificate=certificates[certList.indexOf(expectedFingerprint)];
+        fingerprintNotPresent=false;
+      }
+    }
+    @SuppressWarnings("unchecked") List<Map<String,Object>> props=(List<Map<String,Object>>)descriptor.get("customProperties");
+    if (props != null) {
+      com.google.common.collect.ImmutableMap.Builder<String,String> builder=ImmutableMap.<String,String>builder();
+      for (      Map<String,Object> p : props) {
+        builder.put((String)p.get("k"),(String)p.get("v"));
+      }
+      customModProperties=builder.build();
+    }
+ else {
+      customModProperties=EMPTY_PROPERTIES;
+    }
+    Boolean hasDisableableFlag=(Boolean)descriptor.get("canBeDeactivated");
+    boolean hasReverseDepends=!event.getReverseDependencies().get(getModId()).isEmpty();
+    if (hasDisableableFlag != null && hasDisableableFlag) {
+      disableability=hasReverseDepends ? Disableable.DEPENDENCIES : Disableable.YES;
+    }
+ else {
+      disableability=hasReverseDepends ? Disableable.DEPENDENCIES : Disableable.RESTART;
+    }
+    Method factoryMethod=gatherAnnotations(clazz);
+    modInstance=getLanguageAdapter().getNewInstance(this,clazz,modClassLoader,factoryMethod);
+    NetworkRegistry.INSTANCE.register(this,clazz,(String)(descriptor.containsKey("acceptableRemoteVersions") ? descriptor.get("acceptableRemoteVersions") : null),event.getASMHarvestedData());
+    if (fingerprintNotPresent) {
+      eventBus.post(new FMLFingerprintViolationEvent(source.isDirectory(),source,ImmutableSet.copyOf(this.sourceFingerprints),expectedFingerprint));
+    }
+    ProxyInjector.inject(this,event.getASMHarvestedData(),FMLCommonHandler.instance().getSide(),getLanguageAdapter());
+    processFieldAnnotations(event.getASMHarvestedData());
+  }
+ catch (  Throwable e) {
+    controller.errorOccurred(this,e);
+  }
+}

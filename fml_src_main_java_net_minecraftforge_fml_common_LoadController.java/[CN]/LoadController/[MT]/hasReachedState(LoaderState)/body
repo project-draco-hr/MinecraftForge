@@ -1,0 +1,3 @@
+{
+  return this.state.ordinal() >= state.ordinal() && this.state != LoaderState.ERRORED;
+}

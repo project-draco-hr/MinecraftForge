@@ -1,0 +1,13 @@
+{
+  JsonObject fmlData=new JsonObject();
+  fmlData.addProperty("type","FML");
+  JsonArray modList=new JsonArray();
+  for (  ModContainer mc : Loader.instance().getActiveModList()) {
+    JsonObject modData=new JsonObject();
+    modData.addProperty("modid",mc.getModId());
+    modData.addProperty("version",mc.getVersion());
+    modList.add(modData);
+  }
+  fmlData.add("modList",modList);
+  jsonobject.add("modinfo",fmlData);
+}

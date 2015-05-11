@@ -1,0 +1,34 @@
+{
+  if (listeners.containsKey(target)) {
+    return;
+  }
+  ModContainer activeModContainer=Loader.instance().activeModContainer();
+  if (activeModContainer == null) {
+    FMLLog.log(Level.ERROR,new Throwable(),"Unable to determine registrant mod for %s. This is a critical error and should be impossible",target);
+    activeModContainer=Loader.instance().getMinecraftModContainer();
+  }
+  listenerOwners.put(target,activeModContainer);
+  Set<? extends Class<?>> supers=TypeToken.of(target.getClass()).getTypes().rawTypes();
+  for (  Method method : target.getClass().getMethods()) {
+    for (    Class<?> cls : supers) {
+      try {
+        Method real=cls.getDeclaredMethod(method.getName(),method.getParameterTypes());
+        if (real.isAnnotationPresent(SubscribeEvent.class)) {
+          Class<?>[] parameterTypes=method.getParameterTypes();
+          if (parameterTypes.length != 1) {
+            throw new IllegalArgumentException("Method " + method + " has @SubscribeEvent annotation, but requires "+ parameterTypes.length+ " arguments.  Event handler methods must require a single argument.");
+          }
+          Class<?> eventType=parameterTypes[0];
+          if (!Event.class.isAssignableFrom(eventType)) {
+            throw new IllegalArgumentException("Method " + method + " has @SubscribeEvent annotation, but takes a argument that is not an Event "+ eventType);
+          }
+          register(eventType,target,real,activeModContainer);
+          break;
+        }
+      }
+ catch (      NoSuchMethodException e) {
+        ;
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  super(nextScreen,title,message);
+  this.buttonText=buttonText;
+}

@@ -1,0 +1,4 @@
+{
+  Certificate[] certificates=getClass().getProtectionDomain().getCodeSource().getCertificates();
+  return certificates != null ? certificates[0] : null;
+}

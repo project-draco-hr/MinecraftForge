@@ -1,0 +1,10 @@
+{
+  Properties langPack=modLanguageData.get(lang);
+  if (langPack != null) {
+    mergeWithoutOverwrite(langPack,properties);
+  }
+  Properties usPack=modLanguageData.get("en_US");
+  if (usPack != null) {
+    mergeWithoutOverwrite(usPack,properties);
+  }
+}

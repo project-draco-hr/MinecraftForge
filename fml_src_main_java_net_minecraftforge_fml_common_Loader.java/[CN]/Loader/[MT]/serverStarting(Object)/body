@@ -1,0 +1,11 @@
+{
+  try {
+    modController.distributeStateMessage(LoaderState.SERVER_STARTING,server);
+    modController.transition(LoaderState.SERVER_STARTING,false);
+  }
+ catch (  Throwable t) {
+    FMLLog.log(Level.ERROR,t,"A fatal exception occurred during the server starting event");
+    return false;
+  }
+  return true;
+}

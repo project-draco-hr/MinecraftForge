@@ -1,0 +1,12 @@
+{
+  if (!methodNameMaps.containsKey(className) && !negativeCacheMethods.contains(className)) {
+    findAndMergeSuperMaps(className);
+    if (!methodNameMaps.containsKey(className)) {
+      negativeCacheMethods.add(className);
+    }
+    if (DUMP_METHOD_MAPS) {
+      FMLRelaunchLog.finer("Method map for %s : %s",className,methodNameMaps.get(className));
+    }
+  }
+  return methodNameMaps.get(className);
+}

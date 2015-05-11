@@ -1,0 +1,12 @@
+{
+  if (channels.containsKey(name) || name.startsWith("MC|") || name.startsWith("\u0001")|| name.startsWith("FML")) {
+    throw new RuntimeException("That channel is already registered");
+  }
+  EnumMap<Side,FMLEmbeddedChannel> result=Maps.newEnumMap(Side.class);
+  for (  Side side : Side.values()) {
+    FMLEmbeddedChannel channel=new FMLEmbeddedChannel(name,side,handlers);
+    channels.get(side).put(name,channel);
+    result.put(side,channel);
+  }
+  return result;
+}

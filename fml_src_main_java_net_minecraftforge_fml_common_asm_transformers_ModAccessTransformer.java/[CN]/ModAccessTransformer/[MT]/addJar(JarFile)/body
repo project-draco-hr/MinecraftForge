@@ -1,0 +1,11 @@
+{
+  Manifest manifest=jar.getManifest();
+  String atList=manifest.getMainAttributes().getValue("FMLAT");
+  if (atList == null)   return;
+  for (  String at : atList.split(" ")) {
+    JarEntry jarEntry=jar.getJarEntry("META-INF/" + at);
+    if (jarEntry != null) {
+      embedded.put(String.format("%s!META-INF/%s",jar.getName(),at),new JarByteSource(jar,jarEntry).asCharSource(Charsets.UTF_8).read());
+    }
+  }
+}

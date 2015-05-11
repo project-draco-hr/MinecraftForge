@@ -1,0 +1,11 @@
+{
+  if (super.mousePressed(par1Minecraft,par2,par3)) {
+    this.sliderValue=(float)(par2 - (this.xPosition + 4)) / (float)(this.width - 8);
+    updateSlider();
+    this.dragging=true;
+    return true;
+  }
+ else {
+    return false;
+  }
+}

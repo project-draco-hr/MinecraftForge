@@ -1,0 +1,7 @@
+{
+  boolean result=true;
+  for (  Entry<ModContainer,NetworkModHolder> e : registry.entrySet()) {
+    result&=e.getValue().acceptsVanilla(from);
+  }
+  return result;
+}

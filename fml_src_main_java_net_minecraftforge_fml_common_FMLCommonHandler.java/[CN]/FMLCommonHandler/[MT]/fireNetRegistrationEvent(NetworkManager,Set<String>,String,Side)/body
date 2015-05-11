@@ -1,0 +1,3 @@
+{
+  sidedDelegate.fireNetRegistrationEvent(bus(),manager,channelSet,channel,side);
+}

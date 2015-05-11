@@ -1,0 +1,10 @@
+{
+  if (type == Object.class) {
+    return;
+  }
+  types.add(type);
+  for (  Class<?> intf : type.getInterfaces()) {
+    findSuperTypes(intf,types);
+  }
+  findSuperTypes(type.getSuperclass(),types);
+}

@@ -1,0 +1,5 @@
+{
+  this.handler=thing;
+  this.type=type;
+  this.manager=manager;
+}
