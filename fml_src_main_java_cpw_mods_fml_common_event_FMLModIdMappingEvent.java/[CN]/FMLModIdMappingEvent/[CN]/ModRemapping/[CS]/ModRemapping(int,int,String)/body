@@ -1,0 +1,6 @@
+{
+  this.oldId=oldId;
+  this.newId=newId;
+  this.tag=tag.substring(1);
+  this.remapTarget=tag.charAt(0) == '\u0001' ? RemapTarget.BLOCK : RemapTarget.ITEM;
+}

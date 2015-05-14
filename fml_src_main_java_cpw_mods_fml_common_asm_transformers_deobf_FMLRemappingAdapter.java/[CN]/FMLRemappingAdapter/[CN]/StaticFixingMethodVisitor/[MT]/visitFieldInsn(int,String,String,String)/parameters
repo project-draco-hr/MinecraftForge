@@ -1,0 +1,4 @@
+int opcode
+String originalType
+String originalName
+String desc

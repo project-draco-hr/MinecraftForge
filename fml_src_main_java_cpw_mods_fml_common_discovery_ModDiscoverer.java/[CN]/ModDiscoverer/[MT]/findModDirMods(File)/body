@@ -1,0 +1,3 @@
+{
+  findModDirMods(modsDir,new File[0]);
+}

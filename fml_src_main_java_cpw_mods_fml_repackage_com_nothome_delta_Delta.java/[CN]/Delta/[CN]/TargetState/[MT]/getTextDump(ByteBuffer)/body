@@ -1,0 +1,11 @@
+{
+  StringBuffer sb=new StringBuffer(bb.remaining() * 2);
+  bb.mark();
+  while (bb.hasRemaining()) {
+    int val=bb.get();
+    if (val > 32 && val < 127)     sb.append(" ").append((char)val);
+ else     append(sb,val);
+  }
+  bb.reset();
+  return sb.toString();
+}

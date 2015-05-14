@@ -1,0 +1,4 @@
+{
+  CommandHandler ch=(CommandHandler)getServer().getCommandManager();
+  ch.registerCommand(command);
+}

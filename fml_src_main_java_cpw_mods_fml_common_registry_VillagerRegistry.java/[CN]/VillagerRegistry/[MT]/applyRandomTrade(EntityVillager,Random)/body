@@ -1,0 +1,5 @@
+{
+  int extra=instance().newVillagerIds.size();
+  int trade=rand.nextInt(5 + extra);
+  villager.setProfession(trade < 5 ? trade : instance().newVillagerIds.get(trade - 5));
+}

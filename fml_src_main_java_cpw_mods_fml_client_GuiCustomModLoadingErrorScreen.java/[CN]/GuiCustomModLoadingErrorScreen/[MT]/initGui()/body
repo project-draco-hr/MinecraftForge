@@ -1,0 +1,5 @@
+{
+  super.initGui();
+  this.buttonList.clear();
+  this.customException.initGui(this,fontRendererObj);
+}

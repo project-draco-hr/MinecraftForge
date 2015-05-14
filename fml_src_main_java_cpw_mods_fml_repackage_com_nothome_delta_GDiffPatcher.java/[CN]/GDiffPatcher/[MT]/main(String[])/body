@@ -1,0 +1,23 @@
+{
+  if (argv.length != 3) {
+    System.err.println("usage GDiffPatch source patch output");
+    System.err.println("aborting..");
+    return;
+  }
+  try {
+    File sourceFile=new File(argv[0]);
+    File patchFile=new File(argv[1]);
+    File outputFile=new File(argv[2]);
+    if (sourceFile.length() > Integer.MAX_VALUE || patchFile.length() > Integer.MAX_VALUE) {
+      System.err.println("source or patch is too large, max length is " + Integer.MAX_VALUE);
+      System.err.println("aborting..");
+      return;
+    }
+    GDiffPatcher patcher=new GDiffPatcher();
+    patcher.patch(sourceFile,patchFile,outputFile);
+    System.out.println("finished patching file");
+  }
+ catch (  Exception ioe) {
+    System.err.println("error while patching: " + ioe);
+  }
+}

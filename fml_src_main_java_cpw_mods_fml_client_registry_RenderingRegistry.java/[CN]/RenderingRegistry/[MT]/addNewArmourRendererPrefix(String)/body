@@ -1,0 +1,4 @@
+{
+  RenderBiped.bipedArmorFilenamePrefix=ObjectArrays.concat(RenderBiped.bipedArmorFilenamePrefix,armor);
+  return RenderBiped.bipedArmorFilenamePrefix.length - 1;
+}

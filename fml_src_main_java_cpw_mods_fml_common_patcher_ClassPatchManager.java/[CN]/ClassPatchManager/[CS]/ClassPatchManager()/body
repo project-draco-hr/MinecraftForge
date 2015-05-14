@@ -1,0 +1,6 @@
+{
+  if (dumpPatched) {
+    tempDir=Files.createTempDir();
+    FMLRelaunchLog.info("Dumping patched classes to %s",tempDir.getAbsolutePath());
+  }
+}

@@ -1,0 +1,8 @@
+{
+  boolean ret=super.containsKey(name);
+  if (!ret) {
+    name=aliases.get(name);
+    if (name != null)     return containsKey(name);
+  }
+  return ret;
+}

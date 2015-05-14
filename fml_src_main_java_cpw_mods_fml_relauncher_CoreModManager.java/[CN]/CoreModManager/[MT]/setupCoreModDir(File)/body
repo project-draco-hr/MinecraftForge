@@ -1,0 +1,16 @@
+{
+  File coreModDir=new File(mcDir,"mods");
+  try {
+    coreModDir=coreModDir.getCanonicalFile();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(String.format("Unable to canonicalize the coremod dir at %s",mcDir.getName()),e);
+  }
+  if (!coreModDir.exists()) {
+    coreModDir.mkdir();
+  }
+ else   if (coreModDir.exists() && !coreModDir.isDirectory()) {
+    throw new RuntimeException(String.format("Found a coremod file in %s that's not a directory",mcDir.getName()));
+  }
+  return coreModDir;
+}

@@ -1,0 +1,5 @@
+{
+  ByteArrayOutputStream os=new ByteArrayOutputStream();
+  patch(source,new ByteArrayInputStream(patch),os);
+  return os.toByteArray();
+}

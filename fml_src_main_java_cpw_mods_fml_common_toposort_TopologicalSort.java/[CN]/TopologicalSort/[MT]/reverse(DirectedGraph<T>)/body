@@ -1,0 +1,12 @@
+{
+  DirectedGraph<T> result=new DirectedGraph<T>();
+  for (  T node : graph) {
+    result.addNode(node);
+  }
+  for (  T from : graph) {
+    for (    T to : graph.edgesFrom(from)) {
+      result.addEdge(to,from);
+    }
+  }
+  return result;
+}

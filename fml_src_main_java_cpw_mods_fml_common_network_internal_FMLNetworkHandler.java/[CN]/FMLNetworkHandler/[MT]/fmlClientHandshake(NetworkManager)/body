@@ -1,0 +1,4 @@
+{
+  NetworkDispatcher dispatcher=NetworkDispatcher.allocAndSet(field_147393_d);
+  dispatcher.clientToServerHandshake();
+}

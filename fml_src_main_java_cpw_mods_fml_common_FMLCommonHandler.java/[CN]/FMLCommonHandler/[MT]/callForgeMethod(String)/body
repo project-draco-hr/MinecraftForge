@@ -1,0 +1,9 @@
+{
+  if (noForge)   return null;
+  try {
+    return findMinecraftForge().getMethod(method).invoke(null);
+  }
+ catch (  Exception e) {
+    return null;
+  }
+}

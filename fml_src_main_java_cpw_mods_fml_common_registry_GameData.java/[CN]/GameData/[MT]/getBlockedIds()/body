@@ -1,0 +1,9 @@
+{
+  int[] ret=new int[getMain().blockedIds.size()];
+  int index=0;
+  for (  int id : getMain().blockedIds) {
+    ret[index]=id;
+    index++;
+  }
+  return ret;
+}

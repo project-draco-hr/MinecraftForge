@@ -1,0 +1,5 @@
+T node
+DirectedGraph<T> graph
+List<T> sortedResult
+Set<T> visitedNodes
+Set<T> expandedNodes

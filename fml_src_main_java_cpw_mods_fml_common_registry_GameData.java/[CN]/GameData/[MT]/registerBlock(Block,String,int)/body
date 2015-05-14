@@ -1,0 +1,22 @@
+{
+  ItemBlock itemBlock=null;
+  for (  Item item : iItemRegistry.typeSafeIterable()) {
+    if (item instanceof ItemBlock && ((ItemBlock)item).field_150939_a == block) {
+      itemBlock=(ItemBlock)item;
+      break;
+    }
+  }
+  if (itemBlock != null) {
+    idHint=iItemRegistry.getId(itemBlock);
+    FMLLog.fine("Found matching ItemBlock %s for Block %s at id %d",itemBlock,block,idHint);
+    freeSlot(idHint,block);
+  }
+  int blockId=iBlockRegistry.add(idHint,name,block,availabilityMap);
+  if (itemBlock != null) {
+    if (blockId != idHint)     throw new IllegalStateException(String.format("Block at itemblock id %d insertion failed, got id %d.",idHint,blockId));
+    verifyItemBlockName(itemBlock);
+  }
+  useSlot(blockId);
+  ((RegistryDelegate.Delegate<Block>)block.delegate).setName(name);
+  return blockId;
+}

@@ -1,0 +1,28 @@
+{
+  ModContainer mc=namedMods.get(modId);
+  Disableable disableable=mc.canBeDisabled();
+  if (disableable == Disableable.NEVER) {
+    FMLLog.info("Cannot disable mod %s - it is never allowed to be disabled",modId);
+    return;
+  }
+  if (disableable == Disableable.DEPENDENCIES) {
+    FMLLog.info("Cannot disable mod %s - there are dependent mods that require its presence",modId);
+    return;
+  }
+  if (disableable == Disableable.YES) {
+    FMLLog.info("Runtime disabling mod %s",modId);
+    modController.disableMod(mc);
+    List<ModContainer> localmods=Lists.newArrayList(mods);
+    localmods.remove(mc);
+    mods=ImmutableList.copyOf(localmods);
+  }
+  try {
+    Properties props=new Properties();
+    props.load(new FileReader(forcedModFile));
+    props.put(modId,"false");
+    props.store(new FileWriter(forcedModFile),null);
+  }
+ catch (  Exception e) {
+    FMLLog.log(Level.INFO,e,"An error occurred writing the fml mod states file, your disabled change won't persist");
+  }
+}

@@ -1,0 +1,4 @@
+{
+  FMLLog.log(Level.ERROR,cause,"OpenGuiHandler exception");
+  super.exceptionCaught(ctx,cause);
+}

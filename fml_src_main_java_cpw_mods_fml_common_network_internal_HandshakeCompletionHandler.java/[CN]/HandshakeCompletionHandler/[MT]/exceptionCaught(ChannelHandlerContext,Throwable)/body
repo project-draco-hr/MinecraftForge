@@ -1,0 +1,4 @@
+{
+  FMLLog.log(Level.ERROR,cause,"HandshakeCompletionHandler exception");
+  super.exceptionCaught(ctx,cause);
+}

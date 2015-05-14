@@ -1,0 +1,67 @@
+{
+  this(container);
+  SetMultimap<String,ASMData> annotationTable=table.getAnnotationsFor(container);
+  Set<ASMData> versionCheckHandlers;
+  if (annotationTable != null) {
+    versionCheckHandlers=annotationTable.get(NetworkCheckHandler.class.getName());
+  }
+ else {
+    versionCheckHandlers=ImmutableSet.of();
+  }
+  String networkCheckHandlerMethod=null;
+  for (  ASMData vch : versionCheckHandlers) {
+    if (vch.getClassName().equals(modClass.getName())) {
+      networkCheckHandlerMethod=vch.getObjectName();
+      networkCheckHandlerMethod=networkCheckHandlerMethod.substring(0,networkCheckHandlerMethod.indexOf('('));
+      break;
+    }
+  }
+  if (versionCheckHandlers.isEmpty()) {
+    for (    Method m : modClass.getMethods()) {
+      if (m.isAnnotationPresent(NetworkCheckHandler.class)) {
+        if (m.getParameterTypes().length == 2 && m.getParameterTypes()[0].equals(Map.class) && m.getParameterTypes()[1].equals(Side.class)) {
+          this.checkHandler=m;
+          break;
+        }
+ else {
+          FMLLog.severe("Found unexpected method signature for annotation NetworkCheckHandler");
+        }
+      }
+    }
+  }
+  if (networkCheckHandlerMethod != null) {
+    try {
+      Method checkHandlerMethod=modClass.getDeclaredMethod(networkCheckHandlerMethod,Map.class,Side.class);
+      if (checkHandlerMethod.isAnnotationPresent(NetworkCheckHandler.class)) {
+        this.checkHandler=checkHandlerMethod;
+      }
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.WARN,e,"The declared version check handler method %s on network mod id %s is not accessible",networkCheckHandlerMethod,container.getModId());
+    }
+  }
+  if (this.checkHandler != null) {
+    this.checker=new MethodNetworkChecker();
+  }
+ else   if (!Strings.isNullOrEmpty(acceptableVersionRange) && acceptableVersionRange.equals("*")) {
+    this.checker=new IgnoredChecker();
+  }
+ else {
+    try {
+      this.acceptableRange=VersionRange.createFromVersionSpec(acceptableVersionRange);
+    }
+ catch (    InvalidVersionSpecificationException e) {
+      FMLLog.log(Level.WARN,e,"Invalid bounded range %s specified for network mod id %s",acceptableVersionRange,container.getModId());
+    }
+    this.checker=new DefaultNetworkChecker();
+  }
+  FMLLog.finer("Mod %s is using network checker : %s",container.getModId(),this.checker);
+  FMLLog.finer("Testing mod %s to verify it accepts its own version in a remote connection",container.getModId());
+  boolean acceptsSelf=acceptVersion(container.getVersion());
+  if (!acceptsSelf) {
+    FMLLog.severe("The mod %s appears to reject its own version number (%s) in its version handling. This is likely a severe bug in the mod!",container.getModId(),container.getVersion());
+  }
+ else {
+    FMLLog.finer("The mod %s accepts its own version (%s)",container.getModId(),container.getVersion());
+  }
+}

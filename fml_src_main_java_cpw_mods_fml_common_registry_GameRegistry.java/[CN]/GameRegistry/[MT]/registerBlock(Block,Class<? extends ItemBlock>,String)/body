@@ -1,0 +1,3 @@
+{
+  return registerBlock(block,itemclass,name,new Object[]{});
+}

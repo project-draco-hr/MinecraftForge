@@ -1,0 +1,3 @@
+{
+  return ((SaveFormatOld)server.getActiveAnvilConverter()).savesDirectory;
+}

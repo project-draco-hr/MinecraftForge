@@ -1,0 +1,6 @@
+{
+  for (  EntityRendererInfo info : entityRenderers) {
+    rendererMap.put(info.target,info.renderer);
+    info.renderer.setRenderManager(RenderManager.instance);
+  }
+}

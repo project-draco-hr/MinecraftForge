@@ -1,0 +1,6 @@
+{
+  int len=readVarInt(from,2);
+  String str=from.toString(from.readerIndex(),len,Charsets.UTF_8);
+  from.readerIndex(from.readerIndex() + len);
+  return str;
+}

@@ -1,0 +1,15 @@
+{
+  this.mc=Minecraft.getMinecraft();
+  this.parentScreen=parentScreen;
+  this.configElements=configElements;
+  this.entryList=new GuiConfigEntries(this,mc);
+  this.initEntries=new ArrayList<IConfigEntry>(entryList.listEntries);
+  this.allRequireWorldRestart=allRequireWorldRestart;
+  this.allRequireMcRestart=allRequireMcRestart;
+  this.modID=modID;
+  this.configID=configID;
+  this.isWorldRunning=mc.theWorld != null;
+  if (title != null)   this.title=title;
+  this.titleLine2=titleLine2;
+  if (this.titleLine2 != null && this.titleLine2.startsWith(" > "))   this.titleLine2=this.titleLine2.replaceFirst(" > ","");
+}

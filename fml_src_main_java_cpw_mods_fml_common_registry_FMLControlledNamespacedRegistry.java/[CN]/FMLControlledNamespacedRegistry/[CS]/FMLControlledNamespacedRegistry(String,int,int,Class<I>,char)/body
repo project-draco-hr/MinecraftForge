@@ -1,0 +1,7 @@
+{
+  this.superType=type;
+  this.discriminator=discriminator;
+  this.optionalDefaultName=optionalDefault;
+  this.maxId=maxIdValue;
+  this.minId=minIdValue;
+}

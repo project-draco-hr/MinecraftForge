@@ -1,0 +1,4 @@
+Block block
+Class<? extends ItemBlock> itemclass
+String name
+Object itemCtorArgs

@@ -1,0 +1,8 @@
+{
+  this.name=name;
+  this.sourceClassName=sourceClassName;
+  this.targetClassName=targetClassName;
+  this.existsAtTarget=existsAtTarget;
+  this.inputChecksum=inputChecksum;
+  this.patch=patch;
+}

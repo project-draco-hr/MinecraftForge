@@ -1,0 +1,4 @@
+{
+  buf.write(b);
+  if (buf.size() >= CHUNK_SIZE)   writeBuf();
+}

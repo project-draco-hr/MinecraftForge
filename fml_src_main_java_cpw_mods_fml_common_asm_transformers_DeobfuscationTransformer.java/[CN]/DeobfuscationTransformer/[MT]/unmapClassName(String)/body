@@ -1,0 +1,3 @@
+{
+  return FMLDeobfuscatingRemapper.INSTANCE.unmap(name.replace('.','/')).replace('/','.');
+}

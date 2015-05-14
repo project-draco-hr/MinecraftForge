@@ -1,0 +1,4 @@
+{
+  acceptsVanillaClient=check(ImmutableMap.<String,String>of(),Side.CLIENT);
+  acceptsVanillaServer=check(ImmutableMap.<String,String>of(),Side.SERVER);
+}

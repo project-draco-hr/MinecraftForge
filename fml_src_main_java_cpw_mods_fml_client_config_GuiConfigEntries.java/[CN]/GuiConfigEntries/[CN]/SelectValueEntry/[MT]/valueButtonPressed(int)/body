@@ -1,0 +1,3 @@
+{
+  mc.displayGuiScreen(new GuiSelectString(this.owningScreen,configElement,slotIndex,selectableValues,currentValue,enabled()));
+}

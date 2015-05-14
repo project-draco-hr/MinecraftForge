@@ -1,0 +1,3 @@
+{
+  super(parent,getConfigElements(),"FML",false,false,I18n.format("fml.config.sample.title"));
+}

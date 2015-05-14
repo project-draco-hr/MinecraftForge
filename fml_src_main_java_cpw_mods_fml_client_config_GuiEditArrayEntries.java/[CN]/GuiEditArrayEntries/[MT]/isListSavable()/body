@@ -1,0 +1,4 @@
+{
+  for (  IArrayEntry entry : this.listEntries)   if (!entry.isValueSavable())   return false;
+  return true;
+}

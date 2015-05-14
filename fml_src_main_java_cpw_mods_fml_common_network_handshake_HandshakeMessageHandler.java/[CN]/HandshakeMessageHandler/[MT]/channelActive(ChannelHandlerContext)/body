@@ -1,0 +1,3 @@
+{
+  ctx.attr(fmlHandshakeState).set(initialState);
+}

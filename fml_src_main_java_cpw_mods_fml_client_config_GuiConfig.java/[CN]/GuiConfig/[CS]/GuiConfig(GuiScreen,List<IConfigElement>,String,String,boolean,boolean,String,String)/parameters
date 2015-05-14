@@ -1,0 +1,8 @@
+GuiScreen parentScreen
+List<IConfigElement> configElements
+String modID
+String configID
+boolean allRequireWorldRestart
+boolean allRequireMcRestart
+String title
+String titleLine2

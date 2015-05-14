@@ -1,0 +1,3 @@
+{
+  System.out.println("DIRT BLOCK >> " + Blocks.dirt.getUnlocalizedName());
+}

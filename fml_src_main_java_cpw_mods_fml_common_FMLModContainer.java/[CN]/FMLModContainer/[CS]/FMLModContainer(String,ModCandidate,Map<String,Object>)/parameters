@@ -1,0 +1,3 @@
+String className
+ModCandidate container
+Map<String,Object> modDescriptor

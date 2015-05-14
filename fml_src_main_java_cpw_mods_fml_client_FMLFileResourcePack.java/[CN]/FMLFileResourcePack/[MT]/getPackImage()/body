@@ -1,0 +1,3 @@
+{
+  return ImageIO.read(getInputStreamByName(container.getMetadata().logoFile));
+}

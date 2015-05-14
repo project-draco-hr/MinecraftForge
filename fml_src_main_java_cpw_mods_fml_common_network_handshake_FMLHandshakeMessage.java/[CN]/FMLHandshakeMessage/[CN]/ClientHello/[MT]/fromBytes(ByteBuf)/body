@@ -1,0 +1,3 @@
+{
+  serverProtocolVersion=buffer.readByte();
+}

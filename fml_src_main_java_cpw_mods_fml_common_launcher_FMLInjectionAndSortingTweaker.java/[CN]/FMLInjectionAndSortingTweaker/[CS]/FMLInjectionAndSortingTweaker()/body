@@ -1,0 +1,4 @@
+{
+  CoreModManager.injectCoreModTweaks(this);
+  run=false;
+}

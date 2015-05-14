@@ -1,0 +1,5 @@
+{
+  for (  ASMData data : interfaces) {
+    optionals.put(data.getClassName(),data);
+  }
+}

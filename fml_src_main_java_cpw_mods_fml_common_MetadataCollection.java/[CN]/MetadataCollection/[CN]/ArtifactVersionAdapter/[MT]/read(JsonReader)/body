@@ -1,0 +1,3 @@
+{
+  return VersionParser.parseVersionReference(in.nextString());
+}

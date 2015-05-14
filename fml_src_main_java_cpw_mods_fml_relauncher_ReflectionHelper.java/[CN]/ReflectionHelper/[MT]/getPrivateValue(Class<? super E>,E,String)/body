@@ -1,0 +1,8 @@
+{
+  try {
+    return (T)findField(classToAccess,fieldNames).get(instance);
+  }
+ catch (  Exception e) {
+    throw new UnableToAccessFieldException(fieldNames,e);
+  }
+}

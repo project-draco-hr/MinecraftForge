@@ -1,0 +1,11 @@
+{
+  List<String> modNames=Lists.newArrayListWithExpectedSize(3);
+  modNames.add("fml");
+  if (!noForge) {
+    modNames.add("forge");
+  }
+  if (Loader.instance().getFMLBrandingProperties().containsKey("snooperbranding")) {
+    modNames.add(Loader.instance().getFMLBrandingProperties().get("snooperbranding"));
+  }
+  return Joiner.on(',').join(modNames);
+}

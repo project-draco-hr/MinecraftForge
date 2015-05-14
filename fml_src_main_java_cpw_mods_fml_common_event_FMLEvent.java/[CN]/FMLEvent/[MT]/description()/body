@@ -1,0 +1,4 @@
+{
+  String cn=getClass().getName();
+  return cn.substring(cn.lastIndexOf('.') + 4,cn.length() - 5);
+}

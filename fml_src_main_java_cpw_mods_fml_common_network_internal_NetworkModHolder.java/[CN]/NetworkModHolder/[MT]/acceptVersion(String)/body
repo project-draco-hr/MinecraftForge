@@ -1,0 +1,6 @@
+{
+  if (acceptableRange != null) {
+    return acceptableRange.containsVersion(new DefaultArtifactVersion(version));
+  }
+  return container.getVersion().equals(version);
+}

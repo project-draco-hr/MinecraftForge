@@ -1,0 +1,49 @@
+{
+  modMetadata=mc.getMetadataForId(getModId(),descriptor);
+  if (descriptor.containsKey("useMetadata")) {
+    overridesMetadata=!((Boolean)descriptor.get("useMetadata")).booleanValue();
+  }
+  if (overridesMetadata || !modMetadata.useDependencyInformation) {
+    Set<ArtifactVersion> requirements=Sets.newHashSet();
+    List<ArtifactVersion> dependencies=Lists.newArrayList();
+    List<ArtifactVersion> dependants=Lists.newArrayList();
+    annotationDependencies=(String)descriptor.get("dependencies");
+    Loader.instance().computeDependencies(annotationDependencies,requirements,dependencies,dependants);
+    dependants.addAll(Loader.instance().getInjectedBefore(getModId()));
+    dependencies.addAll(Loader.instance().getInjectedAfter(getModId()));
+    modMetadata.requiredMods=requirements;
+    modMetadata.dependencies=dependencies;
+    modMetadata.dependants=dependants;
+    FMLLog.log(getModId(),Level.TRACE,"Parsed dependency info : %s %s %s",requirements,dependencies,dependants);
+  }
+ else {
+    FMLLog.log(getModId(),Level.TRACE,"Using mcmod dependency info : %s %s %s",modMetadata.requiredMods,modMetadata.dependencies,modMetadata.dependants);
+  }
+  if (Strings.isNullOrEmpty(modMetadata.name)) {
+    FMLLog.log(getModId(),Level.INFO,"Mod %s is missing the required element 'name'. Substituting %s",getModId(),getModId());
+    modMetadata.name=getModId();
+  }
+  internalVersion=(String)descriptor.get("version");
+  if (Strings.isNullOrEmpty(internalVersion)) {
+    Properties versionProps=searchForVersionProperties();
+    if (versionProps != null) {
+      internalVersion=versionProps.getProperty(getModId() + ".version");
+      FMLLog.log(getModId(),Level.DEBUG,"Found version %s for mod %s in version.properties, using",internalVersion,getModId());
+    }
+  }
+  if (Strings.isNullOrEmpty(internalVersion) && !Strings.isNullOrEmpty(modMetadata.version)) {
+    FMLLog.log(getModId(),Level.WARN,"Mod %s is missing the required element 'version' and a version.properties file could not be found. Falling back to metadata version %s",getModId(),modMetadata.version);
+    internalVersion=modMetadata.version;
+  }
+  if (Strings.isNullOrEmpty(internalVersion)) {
+    FMLLog.log(getModId(),Level.WARN,"Mod %s is missing the required element 'version' and no fallback can be found. Substituting '1.0'.",getModId());
+    modMetadata.version=internalVersion="1.0";
+  }
+  String mcVersionString=(String)descriptor.get("acceptedMinecraftVersions");
+  if (!Strings.isNullOrEmpty(mcVersionString)) {
+    minecraftAccepted=VersionParser.parseRange(mcVersionString);
+  }
+ else {
+    minecraftAccepted=Loader.instance().getMinecraftModContainer().getStaticVersionRange();
+  }
+}

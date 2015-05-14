@@ -1,0 +1,33 @@
+{
+  String lookupName=name;
+  if (name.endsWith("$class")) {
+    lookupName=name.substring(0,name.length() - 6);
+  }
+  if (optionals == null || !optionals.containsKey(lookupName)) {
+    return basicClass;
+  }
+  ClassNode classNode=new ClassNode();
+  ClassReader classReader=new ClassReader(basicClass);
+  classReader.accept(classNode,0);
+  if (logDebugInfo)   FMLRelaunchLog.finer("Optional removal - found optionals for class %s - processing",name);
+  for (  ASMData optional : optionals.get(lookupName)) {
+    String modId=(String)optional.getAnnotationInfo().get("modid");
+    if (Loader.isModLoaded(modId) || ModAPIManager.INSTANCE.hasAPI(modId)) {
+      if (logDebugInfo)       FMLRelaunchLog.finer("Optional removal skipped - mod present %s",modId);
+      continue;
+    }
+    if (logDebugInfo)     FMLRelaunchLog.finer("Optional on %s triggered - mod missing %s",name,modId);
+    if (optional.getAnnotationInfo().containsKey("iface")) {
+      Boolean stripRefs=(Boolean)optional.getAnnotationInfo().get("striprefs");
+      if (stripRefs == null)       stripRefs=Boolean.FALSE;
+      stripInterface(classNode,(String)optional.getAnnotationInfo().get("iface"),stripRefs);
+    }
+ else {
+      stripMethod(classNode,(String)optional.getObjectName());
+    }
+  }
+  if (logDebugInfo)   FMLRelaunchLog.finer("Optional removal - class %s processed",name);
+  ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);
+  classNode.accept(writer);
+  return writer.toByteArray();
+}

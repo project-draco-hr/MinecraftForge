@@ -1,0 +1,14 @@
+{
+  ByteBuf buffer=Unpooled.buffer();
+  @SuppressWarnings("unchecked") Class<? extends A> clazz=(Class<? extends A>)msg.getClass();
+  byte discriminator=types.get(clazz);
+  buffer.writeByte(discriminator);
+  encodeInto(ctx,msg,buffer);
+  FMLProxyPacket proxy=new FMLProxyPacket(buffer.copy(),ctx.channel().attr(NetworkRegistry.FML_CHANNEL).get());
+  WeakReference<FMLProxyPacket> ref=ctx.attr(INBOUNDPACKETTRACKER).get().get();
+  FMLProxyPacket old=ref == null ? null : ref.get();
+  if (old != null) {
+    proxy.setDispatcher(old.getDispatcher());
+  }
+  out.add(proxy);
+}

@@ -1,0 +1,3 @@
+{
+  return client.currentScreen != null && client.currentScreen.getClass().equals(gui);
+}

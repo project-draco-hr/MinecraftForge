@@ -1,0 +1,4 @@
+FMLEmbeddedChannel channel
+String type
+IMessageHandler<? super REQ,? extends REPLY> messageHandler
+Class<REQ> requestType

@@ -1,0 +1,10 @@
+{
+  ExtendedServerListData extendedData=serverDataTag.get(serverEntry);
+  if (extendedData != null && extendedData.isBlocked) {
+    showGuiScreen(new GuiAccessDenied(guiMultiplayer,serverEntry));
+  }
+ else {
+    showGuiScreen(new GuiConnecting(guiMultiplayer,client,serverEntry));
+  }
+  playClientBlock=new CountDownLatch(1);
+}

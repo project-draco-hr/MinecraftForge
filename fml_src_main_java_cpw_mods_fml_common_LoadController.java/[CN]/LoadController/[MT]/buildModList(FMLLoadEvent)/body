@@ -1,0 +1,19 @@
+{
+  Builder<String,EventBus> eventBus=ImmutableMap.builder();
+  for (  ModContainer mod : loader.getModList()) {
+    EventBus bus=new EventBus(mod.getModId());
+    boolean isActive=mod.registerBus(bus,this);
+    if (isActive) {
+      activeModList.add(mod);
+      modStates.put(mod.getModId(),ModState.UNLOADED);
+      eventBus.put(mod.getModId(),bus);
+      FMLCommonHandler.instance().addModToResourcePack(mod);
+    }
+ else {
+      FMLLog.log(mod.getModId(),Level.WARN,"Mod %s has been disabled through configuration",mod.getModId());
+      modStates.put(mod.getModId(),ModState.UNLOADED);
+      modStates.put(mod.getModId(),ModState.DISABLED);
+    }
+  }
+  eventChannels=eventBus.build();
+}

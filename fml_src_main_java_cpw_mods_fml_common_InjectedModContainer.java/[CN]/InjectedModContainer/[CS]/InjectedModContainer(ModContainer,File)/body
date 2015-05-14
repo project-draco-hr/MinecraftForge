@@ -1,0 +1,4 @@
+{
+  this.source=source != null ? source : new File("minecraft.jar");
+  this.wrappedContainer=mc;
+}

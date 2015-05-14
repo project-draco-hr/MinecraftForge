@@ -1,0 +1,11 @@
+{
+  if (forge == null && !noForge) {
+    try {
+      forge=Class.forName("net.minecraftforge.common.MinecraftForge");
+    }
+ catch (    Exception ex) {
+      noForge=true;
+    }
+  }
+  return forge;
+}

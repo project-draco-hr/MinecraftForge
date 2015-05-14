@@ -1,0 +1,4 @@
+{
+  Logger l=LogManager.getLogger("FMLRenderAccessLibrary");
+  return l;
+}

@@ -1,0 +1,4 @@
+String providedAPI
+String apiVersion
+File source
+ArtifactVersion ownerMod

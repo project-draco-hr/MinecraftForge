@@ -1,0 +1,7 @@
+{
+  stream.println("Duplicate Mods:");
+  for (  Entry<ModContainer,File> e : dupes.entries()) {
+    stream.println(String.format("\t%s : %s",e.getKey().getModId(),e.getValue().getAbsolutePath()));
+  }
+  stream.println("");
+}

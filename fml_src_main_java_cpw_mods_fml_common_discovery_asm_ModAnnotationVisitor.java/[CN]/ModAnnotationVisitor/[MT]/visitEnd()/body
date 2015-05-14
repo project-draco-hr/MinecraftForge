@@ -1,0 +1,8 @@
+{
+  if (array) {
+    discoverer.endArray();
+  }
+  if (isSubAnnotation) {
+    discoverer.endSubAnnotation();
+  }
+}

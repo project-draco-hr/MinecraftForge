@@ -1,0 +1,9 @@
+{
+  optionals=ArrayListMultimap.create();
+  Set<ASMData> interfaceLists=dataTable.getAll("cpw.mods.fml.common.Optional$InterfaceList");
+  addData(unpackInterfaces(interfaceLists));
+  Set<ASMData> interfaces=dataTable.getAll("cpw.mods.fml.common.Optional$Interface");
+  addData(interfaces);
+  Set<ASMData> methods=dataTable.getAll("cpw.mods.fml.common.Optional$Method");
+  addData(methods);
+}

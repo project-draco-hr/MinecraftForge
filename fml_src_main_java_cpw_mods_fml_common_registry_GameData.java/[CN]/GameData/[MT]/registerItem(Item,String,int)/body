@@ -1,0 +1,32 @@
+{
+  if (item instanceof ItemBlock) {
+    Block block=((ItemBlock)item).field_150939_a;
+    if (idHint != -1 && getMain().blockSubstitutions.containsKey(name)) {
+      block=getMain().blockSubstitutions.get(name);
+    }
+    int id=iBlockRegistry.getId(block);
+    if (id == -1) {
+      if (idHint < 0 || availabilityMap.get(idHint) || idHint > MAX_BLOCK_ID) {
+        id=availabilityMap.nextClearBit(MIN_BLOCK_ID);
+        if (id > MAX_BLOCK_ID)         throw new RuntimeException(String.format("Invalid id %d - maximum id range exceeded.",id));
+        FMLLog.fine("Allocated id %d for ItemBlock %s in the block id range, original id requested: %d.",id,name,idHint);
+      }
+ else {
+        id=idHint;
+      }
+    }
+ else {
+      FMLLog.fine("Found matching Block %s for ItemBlock %s at id %d, original id requested: %d",block,item,id,idHint);
+      freeSlot(id,item);
+    }
+    idHint=id;
+  }
+  int itemId=iItemRegistry.add(idHint,name,item,availabilityMap);
+  if (item instanceof ItemBlock) {
+    if (itemId != idHint)     throw new IllegalStateException(String.format("ItemBlock at block id %d insertion failed, got id %d.",idHint,itemId));
+    verifyItemBlockName((ItemBlock)item);
+  }
+  useSlot(itemId);
+  ((RegistryDelegate.Delegate<Item>)item.delegate).setName(name);
+  return itemId;
+}

@@ -1,0 +1,29 @@
+{
+  this.netHandler=inethandler;
+  EmbeddedChannel internalChannel=NetworkRegistry.INSTANCE.getChannel(this.channel,this.target);
+  if (internalChannel != null) {
+    internalChannel.attr(NetworkRegistry.NET_HANDLER).set(this.netHandler);
+    try {
+      if (internalChannel.writeInbound(this)) {
+        badPackets.add(this.channel);
+        if (badPackets.size() % packetCountWarning == 0) {
+          FMLLog.severe("Detected ongoing potential memory leak. %d packets have leaked. Top offenders",badPackets.size());
+          int i=0;
+          for (          Entry<String> s : Multisets.copyHighestCountFirst(badPackets).entrySet()) {
+            if (i++ > 10)             break;
+            FMLLog.severe("\t %s : %d",s.getElement(),s.getCount());
+          }
+        }
+      }
+      internalChannel.inboundMessages().clear();
+    }
+ catch (    FMLNetworkException ne) {
+      FMLLog.log(Level.ERROR,ne,"There was a network exception handling a packet on channel %s",channel);
+      dispatcher.rejectHandshake(ne.getMessage());
+    }
+catch (    Throwable t) {
+      FMLLog.log(Level.ERROR,t,"There was a critical exception handling a packet on channel %s",channel);
+      dispatcher.rejectHandshake("A fatal error has occured, this connection is terminated");
+    }
+  }
+}

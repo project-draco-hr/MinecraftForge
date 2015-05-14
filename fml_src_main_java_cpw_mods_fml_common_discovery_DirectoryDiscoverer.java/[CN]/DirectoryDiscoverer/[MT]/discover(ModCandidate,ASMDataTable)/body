@@ -1,0 +1,10 @@
+{
+  this.table=table;
+  List<ModContainer> found=Lists.newArrayList();
+  FMLLog.fine("Examining directory %s for potential mods",candidate.getModContainer().getName());
+  exploreFileSystem("",candidate.getModContainer(),found,candidate,null);
+  for (  ModContainer mc : found) {
+    table.addContainer(mc);
+  }
+  return found;
+}

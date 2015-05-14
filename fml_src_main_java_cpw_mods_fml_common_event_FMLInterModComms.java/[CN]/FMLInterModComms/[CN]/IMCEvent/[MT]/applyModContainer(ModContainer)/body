@@ -1,0 +1,5 @@
+{
+  this.activeContainer=activeContainer;
+  this.currentList=null;
+  FMLLog.finer("Attempting to deliver %d IMC messages to mod %s",modMessages.get(activeContainer.getModId()).size(),activeContainer.getModId());
+}

@@ -1,0 +1,5 @@
+{
+  for (  ModMetadata modMetadata : modList) {
+    metadatas.put(modMetadata.modId,modMetadata);
+  }
+}

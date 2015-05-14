@@ -1,0 +1,10 @@
+{
+  System.err.print("DATA: ");
+  byte[] ba=os.toByteArray();
+  for (int ix=0; ix < ba.length; ix++) {
+    if (ba[ix] == '\n')     System.err.print("\\n");
+ else     System.err.print(String.valueOf((char)((char)ba[ix])));
+  }
+  System.err.println("");
+  os.reset();
+}

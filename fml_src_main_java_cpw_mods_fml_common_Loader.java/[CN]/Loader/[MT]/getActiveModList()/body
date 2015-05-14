@@ -1,0 +1,3 @@
+{
+  return modController != null ? modController.getActiveModList() : ImmutableList.<ModContainer>of();
+}

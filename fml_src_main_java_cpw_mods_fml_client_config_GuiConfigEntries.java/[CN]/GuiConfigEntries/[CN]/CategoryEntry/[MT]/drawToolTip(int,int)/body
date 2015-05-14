@@ -1,0 +1,5 @@
+{
+  boolean canHover=mouseY < this.owningScreen.entryList.bottom && mouseY > this.owningScreen.entryList.top;
+  if (this.tooltipHoverChecker.checkHover(mouseX,mouseY,canHover))   this.owningScreen.drawToolTip(toolTip,mouseX,mouseY);
+  super.drawToolTip(mouseX,mouseY);
+}

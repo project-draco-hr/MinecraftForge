@@ -1,0 +1,8 @@
+{
+  if (!run) {
+    CoreModManager.sortTweakList();
+    @SuppressWarnings("unchecked") List<String> newTweaks=(List<String>)Launch.blackboard.get("TweakClasses");
+    newTweaks.add("cpw.mods.fml.common.launcher.TerminalTweaker");
+  }
+  run=true;
+}

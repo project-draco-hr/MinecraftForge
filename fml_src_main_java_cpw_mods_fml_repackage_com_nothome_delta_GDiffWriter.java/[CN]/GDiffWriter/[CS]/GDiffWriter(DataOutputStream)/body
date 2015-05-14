@@ -1,0 +1,8 @@
+{
+  this.output=os;
+  output.writeByte(0xd1);
+  output.writeByte(0xff);
+  output.writeByte(0xd1);
+  output.writeByte(0xff);
+  output.writeByte(0x04);
+}

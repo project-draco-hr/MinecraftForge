@@ -1,0 +1,13 @@
+{
+  if (!eventMethods.containsKey(event.getClass())) {
+    return;
+  }
+  try {
+    for (    Method m : eventMethods.get(event.getClass())) {
+      m.invoke(modInstance,event);
+    }
+  }
+ catch (  Throwable t) {
+    controller.errorOccurred(this,t);
+  }
+}

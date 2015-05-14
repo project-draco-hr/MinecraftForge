@@ -1,0 +1,4 @@
+{
+  ExitVisitor.checkAccess();
+  runtime.halt(status);
+}

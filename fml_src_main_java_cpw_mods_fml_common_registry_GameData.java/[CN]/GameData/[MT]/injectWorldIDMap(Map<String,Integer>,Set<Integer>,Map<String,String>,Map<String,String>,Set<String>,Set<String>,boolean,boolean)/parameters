@@ -1,0 +1,8 @@
+Map<String,Integer> dataList
+Set<Integer> blockedIds
+Map<String,String> blockAliases
+Map<String,String> itemAliases
+Set<String> blockSubstitutions
+Set<String> itemSubstitutions
+boolean injectFrozenData
+boolean isLocalWorld

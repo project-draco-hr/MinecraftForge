@@ -1,0 +1,43 @@
+{
+  File modsDir=new File(minecraftDir,"mods");
+  File configDir=new File(minecraftDir,"config");
+  String canonicalModsPath;
+  String canonicalConfigPath;
+  try {
+    canonicalModsPath=modsDir.getCanonicalPath();
+    canonicalConfigPath=configDir.getCanonicalPath();
+    canonicalConfigDir=configDir.getCanonicalFile();
+    canonicalModsDir=modsDir.getCanonicalFile();
+  }
+ catch (  IOException ioe) {
+    FMLLog.log(Level.ERROR,ioe,"Failed to resolve loader directories: mods : %s ; config %s",canonicalModsDir.getAbsolutePath(),configDir.getAbsolutePath());
+    throw new LoaderException(ioe);
+  }
+  if (!canonicalModsDir.exists()) {
+    FMLLog.info("No mod directory found, creating one: %s",canonicalModsPath);
+    boolean dirMade=canonicalModsDir.mkdir();
+    if (!dirMade) {
+      FMLLog.severe("Unable to create the mod directory %s",canonicalModsPath);
+      throw new LoaderException(String.format("Unable to create the mod directory %s",canonicalModsPath));
+    }
+    FMLLog.info("Mod directory created successfully");
+  }
+  if (!canonicalConfigDir.exists()) {
+    FMLLog.fine("No config directory found, creating one: %s",canonicalConfigPath);
+    boolean dirMade=canonicalConfigDir.mkdir();
+    if (!dirMade) {
+      FMLLog.severe("Unable to create the config directory %s",canonicalConfigPath);
+      throw new LoaderException();
+    }
+    FMLLog.info("Config directory created successfully");
+  }
+  if (!canonicalModsDir.isDirectory()) {
+    FMLLog.severe("Attempting to load mods from %s, which is not a directory",canonicalModsPath);
+    throw new LoaderException();
+  }
+  if (!configDir.isDirectory()) {
+    FMLLog.severe("Attempting to load configuration from %s, which is not a directory",canonicalConfigPath);
+    throw new LoaderException();
+  }
+  readInjectedDependencies();
+}

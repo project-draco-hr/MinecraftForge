@@ -1,0 +1,99 @@
+{
+  if (tag.hasKey("ModList")) {
+    NBTTagList modList=tag.getTagList("ModList",(byte)10);
+    for (int i=0; i < modList.tagCount(); i++) {
+      NBTTagCompound mod=modList.getCompoundTagAt(i);
+      String modId=mod.getString("ModId");
+      String modVersion=mod.getString("ModVersion");
+      ModContainer container=Loader.instance().getIndexedModList().get(modId);
+      if (container == null) {
+        FMLLog.log("fml.ModTracker",Level.ERROR,"This world was saved with mod %s which appears to be missing, things may not work well",modId);
+        continue;
+      }
+      if (!modVersion.equals(container.getVersion())) {
+        FMLLog.log("fml.ModTracker",Level.INFO,"This world was saved with mod %s version %s and it is now at version %s, things may not work well",modId,modVersion,container.getVersion());
+      }
+    }
+  }
+  List<String> failedElements=null;
+  if (tag.hasKey("ModItemData")) {
+    FMLLog.info("Attempting to convert old world data to new system. This may be trouble!");
+    NBTTagList modList=tag.getTagList("ModItemData",(byte)10);
+    Map<String,Integer> dataList=Maps.newLinkedHashMap();
+    for (int i=0; i < modList.tagCount(); i++) {
+      NBTTagCompound itemTag=modList.getCompoundTagAt(i);
+      String modId=itemTag.getString("ModId");
+      String itemType=itemTag.getString("ItemType");
+      int itemId=itemTag.getInteger("ItemId");
+      int ordinal=itemTag.getInteger("ordinal");
+      String forcedModId=itemTag.hasKey("ForcedModId") ? itemTag.getString("ForcedModId") : null;
+      String forcedName=itemTag.hasKey("ForcedName") ? itemTag.getString("ForcedName") : null;
+      if (forcedName == null) {
+        FMLLog.warning("Found unlabelled item in world save, this may cause problems. The item type %s:%d will not be present",itemType,ordinal);
+      }
+ else {
+        String itemLabel=String.format("%c%s:%s",'\u0002',forcedModId != null ? forcedModId : modId,forcedName);
+        dataList.put(itemLabel,itemId);
+      }
+    }
+    failedElements=GameData.injectWorldIDMap(dataList,ImmutableSet.<String>of(),ImmutableSet.<String>of(),true,true);
+  }
+ else   if (tag.hasKey("ItemData")) {
+    NBTTagList list=tag.getTagList("ItemData",10);
+    Map<String,Integer> dataList=Maps.newLinkedHashMap();
+    for (int i=0; i < list.tagCount(); i++) {
+      NBTTagCompound dataTag=list.getCompoundTagAt(i);
+      dataList.put(dataTag.getString("K"),dataTag.getInteger("V"));
+    }
+    Set<Integer> blockedIds=new HashSet<Integer>();
+    if (!tag.hasKey("BlockedItemIds")) {
+      GameData.fixBrokenIds(dataList,blockedIds);
+    }
+    for (    int id : tag.getIntArray("BlockedItemIds")) {
+      blockedIds.add(id);
+    }
+    Map<String,String> blockAliases=new HashMap<String,String>();
+    list=tag.getTagList("BlockAliases",10);
+    for (int i=0; i < list.tagCount(); i++) {
+      NBTTagCompound dataTag=list.getCompoundTagAt(i);
+      blockAliases.put(dataTag.getString("K"),dataTag.getString("V"));
+    }
+    Set<String> blockSubstitutions=Sets.newHashSet();
+    if (tag.hasKey("BlockSubstitutions",9)) {
+      list=tag.getTagList("BlockSubstitutions",10);
+      for (int i=0; i < list.tagCount(); i++) {
+        NBTTagCompound dataTag=list.getCompoundTagAt(i);
+        blockSubstitutions.add(dataTag.getString("K"));
+      }
+    }
+    Map<String,String> itemAliases=new HashMap<String,String>();
+    list=tag.getTagList("ItemAliases",10);
+    for (int i=0; i < list.tagCount(); i++) {
+      NBTTagCompound dataTag=list.getCompoundTagAt(i);
+      itemAliases.put(dataTag.getString("K"),dataTag.getString("V"));
+    }
+    Set<String> itemSubstitutions=Sets.newHashSet();
+    if (tag.hasKey("ItemSubstitutions",9)) {
+      list=tag.getTagList("ItemSubstitutions",10);
+      for (int i=0; i < list.tagCount(); i++) {
+        NBTTagCompound dataTag=list.getCompoundTagAt(i);
+        itemSubstitutions.add(dataTag.getString("K"));
+      }
+    }
+    try {
+      failedElements=GameData.injectWorldIDMap(dataList,blockedIds,blockAliases,itemAliases,blockSubstitutions,itemSubstitutions,true,true);
+    }
+ catch (    IllegalStateException ex) {
+      String msg="The world state is utterly corrupted and this save is NOT loadable\n\n" + "There is a high probability that a mod has broken the\n" + "ID map and there is\n"+ "NOTHING FML or Forge can do to recover this save.\n\n"+ "If you changed your mods, try reverting the change";
+      FMLLog.log(Level.FATAL,ex,msg);
+      StartupQuery.notify(msg);
+      StartupQuery.abort();
+    }
+  }
+  if (failedElements != null && !failedElements.isEmpty()) {
+    String text="Forge Mod Loader could not load this save.\n\n" + "There are " + failedElements.size() + " unassigned blocks and items in this save.\n"+ "You will not be able to load until they are present again.\n\n"+ "Missing Blocks/Items:\n";
+    for (    String s : failedElements)     text+=s + "\n";
+    StartupQuery.notify(text);
+    StartupQuery.abort();
+  }
+}

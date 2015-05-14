@@ -1,0 +1,7 @@
+{
+  if (owningScreen.slotIndex != -1 && owningScreen.parentScreen != null && owningScreen.parentScreen instanceof GuiConfig && ((GuiConfig)owningScreen.parentScreen).entryList.getListEntry(owningScreen.slotIndex) instanceof SelectValueEntry) {
+    SelectValueEntry entry=(SelectValueEntry)((GuiConfig)owningScreen.parentScreen).entryList.getListEntry(owningScreen.slotIndex);
+    entry.setValueFromChildScreen(owningScreen.currentValue);
+  }
+ else   configElement.set(owningScreen.currentValue);
+}

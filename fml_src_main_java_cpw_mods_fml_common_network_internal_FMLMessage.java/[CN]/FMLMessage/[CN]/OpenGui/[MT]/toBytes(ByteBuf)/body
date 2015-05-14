@@ -1,0 +1,8 @@
+{
+  buf.writeInt(windowId);
+  ByteBufUtils.writeUTF8String(buf,modId);
+  buf.writeInt(modGuiId);
+  buf.writeInt(x);
+  buf.writeInt(y);
+  buf.writeInt(z);
+}

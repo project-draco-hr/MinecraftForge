@@ -1,0 +1,20 @@
+{
+  if (customItemStacks == null) {
+    return;
+  }
+  if (Boolean.valueOf(System.getProperty("fml.dumpRegistry","false")).booleanValue()) {
+    ImmutableListMultimap.Builder<String,String> builder=ImmutableListMultimap.builder();
+    for (    String modId : customItemStacks.rowKeySet()) {
+      builder.putAll(modId,customItemStacks.row(modId).keySet());
+    }
+    File f=new File(minecraftDir,"itemStackRegistry.csv");
+    MapJoiner mapJoiner=Joiner.on("\n").withKeyValueSeparator(",");
+    try {
+      Files.write(mapJoiner.join(builder.build().entries()),f,Charsets.UTF_8);
+      FMLLog.log(Level.INFO,"Dumped item registry data to %s",f.getAbsolutePath());
+    }
+ catch (    IOException e) {
+      FMLLog.log(Level.ERROR,e,"Failed to write registry data to %s",f.getAbsolutePath());
+    }
+  }
+}

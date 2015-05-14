@@ -1,0 +1,5 @@
+{
+  Launch.blackboard.put("fml.deobfuscatedEnvironment",deobfuscatedEnvironment);
+  tweaker.injectCascadingTweak("cpw.mods.fml.common.launcher.FMLDeobfTweaker");
+  tweakSorting.put("cpw.mods.fml.common.launcher.FMLDeobfTweaker",Integer.valueOf(1000));
+}

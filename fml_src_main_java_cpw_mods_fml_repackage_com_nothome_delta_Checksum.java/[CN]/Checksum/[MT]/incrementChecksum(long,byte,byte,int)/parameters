@@ -1,0 +1,4 @@
+long checksum
+byte out
+byte in
+int chunkSize

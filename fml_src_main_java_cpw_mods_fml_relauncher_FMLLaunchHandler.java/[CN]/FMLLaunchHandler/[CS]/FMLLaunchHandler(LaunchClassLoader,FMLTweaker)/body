@@ -1,0 +1,9 @@
+{
+  this.classLoader=launchLoader;
+  this.tweaker=tweaker;
+  this.minecraftHome=tweaker.getGameDir();
+  this.classLoader.addClassLoaderExclusion("cpw.mods.fml.relauncher.");
+  this.classLoader.addClassLoaderExclusion("net.minecraftforge.classloading.");
+  this.classLoader.addTransformerExclusion("cpw.mods.fml.common.asm.transformers.deobf.");
+  this.classLoader.addTransformerExclusion("cpw.mods.fml.common.patcher.");
+}

@@ -1,0 +1,3 @@
+{
+  for (  IConfigEntry entry : this.listEntries)   if ((includeChildren || !(entry instanceof CategoryEntry)))   entry.undoChanges();
+}

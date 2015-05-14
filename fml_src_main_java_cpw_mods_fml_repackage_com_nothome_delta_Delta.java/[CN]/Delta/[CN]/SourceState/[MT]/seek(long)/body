@@ -1,0 +1,3 @@
+{
+  source.seek(index);
+}

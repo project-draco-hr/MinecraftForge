@@ -1,0 +1,7 @@
+Minecraft client
+int width
+int height
+int top
+int bottom
+int left
+int entryHeight

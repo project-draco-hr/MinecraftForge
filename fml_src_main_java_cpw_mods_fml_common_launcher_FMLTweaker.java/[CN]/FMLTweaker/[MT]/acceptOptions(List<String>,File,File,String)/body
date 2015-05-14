@@ -1,0 +1,48 @@
+{
+  this.gameDir=(gameDir == null ? new File(".") : gameDir);
+  this.launchArgs=(Map<String,String>)Launch.blackboard.get("launchArgs");
+  this.standaloneArgs=Lists.newArrayList();
+  if (this.launchArgs == null) {
+    this.launchArgs=Maps.newHashMap();
+    Launch.blackboard.put("launchArgs",this.launchArgs);
+  }
+  String classifier=null;
+  for (  String arg : args) {
+    if (arg.startsWith("-")) {
+      if (classifier != null) {
+        classifier=launchArgs.put(classifier,"");
+      }
+ else       if (arg.contains("=")) {
+        classifier=launchArgs.put(arg.substring(0,arg.indexOf('=')),arg.substring(arg.indexOf('=') + 1));
+      }
+ else {
+        classifier=arg;
+      }
+    }
+ else {
+      if (classifier != null) {
+        classifier=launchArgs.put(classifier,arg);
+      }
+ else {
+        this.standaloneArgs.add(arg);
+      }
+    }
+  }
+  if (!this.launchArgs.containsKey("--version")) {
+    launchArgs.put("--version",profile != null ? profile : "UnknownFMLProfile");
+  }
+  if (!this.launchArgs.containsKey("--gameDir") && gameDir != null) {
+    launchArgs.put("--gameDir",gameDir.getAbsolutePath());
+  }
+  if (!this.launchArgs.containsKey("--assetsDir") && assetsDir != null) {
+    launchArgs.put("--assetsDir",assetsDir.getAbsolutePath());
+  }
+  Yggdrasil.login(launchArgs);
+  try {
+    jarLocation=getClass().getProtectionDomain().getCodeSource().getLocation().toURI();
+  }
+ catch (  URISyntaxException e) {
+    LogManager.getLogger("FMLTWEAK").log(Level.ERROR,"Missing URI information for FML tweak");
+    throw Throwables.propagate(e);
+  }
+}

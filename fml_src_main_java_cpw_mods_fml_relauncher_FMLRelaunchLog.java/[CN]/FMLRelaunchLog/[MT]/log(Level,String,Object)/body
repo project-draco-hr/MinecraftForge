@@ -1,0 +1,6 @@
+{
+  if (!configured) {
+    configureLogging();
+  }
+  log.myLog.log(level,String.format(format,data));
+}

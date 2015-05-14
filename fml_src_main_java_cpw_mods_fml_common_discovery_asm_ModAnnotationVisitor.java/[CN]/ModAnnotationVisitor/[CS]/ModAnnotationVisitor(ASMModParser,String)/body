@@ -1,0 +1,6 @@
+{
+  this(discoverer);
+  this.array=true;
+  this.name=name;
+  discoverer.addAnnotationArray(name);
+}

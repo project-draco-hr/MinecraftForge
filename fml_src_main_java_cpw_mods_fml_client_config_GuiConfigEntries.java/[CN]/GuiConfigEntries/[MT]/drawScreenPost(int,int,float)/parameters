@@ -1,0 +1,3 @@
+int mouseX
+int mouseY
+float partialTicks

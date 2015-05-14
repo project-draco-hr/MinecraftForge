@@ -1,0 +1,10 @@
+{
+  String targetName=null;
+  for (  Entry<String,ChannelHandler> entry : pipeline()) {
+    if (type.isInstance(entry.getValue())) {
+      targetName=entry.getKey();
+      break;
+    }
+  }
+  return targetName;
+}

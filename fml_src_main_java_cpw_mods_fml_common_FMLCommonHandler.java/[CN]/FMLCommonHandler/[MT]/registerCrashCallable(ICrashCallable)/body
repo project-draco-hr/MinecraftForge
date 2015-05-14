@@ -1,0 +1,3 @@
+{
+  crashCallables.add(callable);
+}

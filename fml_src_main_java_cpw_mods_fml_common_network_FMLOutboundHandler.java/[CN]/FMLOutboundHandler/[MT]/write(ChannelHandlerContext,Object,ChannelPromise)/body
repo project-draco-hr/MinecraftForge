@@ -1,0 +1,35 @@
+{
+  if (!(msg instanceof FMLProxyPacket)) {
+    return;
+  }
+  FMLProxyPacket pkt=(FMLProxyPacket)msg;
+  OutboundTarget outboundTarget;
+  Object args=null;
+  NetworkDispatcher dispatcher=ctx.channel().attr(NetworkDispatcher.FML_DISPATCHER).get();
+  if (dispatcher != null) {
+    ctx.write(msg,promise);
+    return;
+  }
+  outboundTarget=ctx.channel().attr(FML_MESSAGETARGET).get();
+  Side channelSide=ctx.channel().attr(NetworkRegistry.CHANNEL_SOURCE).get();
+  if (outboundTarget != null && outboundTarget.allowed.contains(channelSide)) {
+    args=ctx.channel().attr(FML_MESSAGETARGETARGS).get();
+    outboundTarget.validateArgs(args);
+  }
+ else   if (channelSide == Side.CLIENT) {
+    outboundTarget=OutboundTarget.TOSERVER;
+  }
+ else {
+    throw new FMLNetworkException("Packet arrived at the outbound handler without a valid target!");
+  }
+  List<NetworkDispatcher> dispatchers=outboundTarget.selectNetworks(args,ctx,pkt);
+  if (dispatchers == null) {
+    ctx.write(msg,promise);
+    promise.setSuccess();
+    return;
+  }
+  for (  NetworkDispatcher targetDispatcher : dispatchers) {
+    targetDispatcher.sendProxy((FMLProxyPacket)msg);
+  }
+  promise.setSuccess();
+}

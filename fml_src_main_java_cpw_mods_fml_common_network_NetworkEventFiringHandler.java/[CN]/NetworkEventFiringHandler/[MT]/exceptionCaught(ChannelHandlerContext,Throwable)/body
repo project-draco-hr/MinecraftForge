@@ -1,0 +1,4 @@
+{
+  FMLLog.log(Level.ERROR,cause,"NetworkEventFiringHandler exception");
+  super.exceptionCaught(ctx,cause);
+}

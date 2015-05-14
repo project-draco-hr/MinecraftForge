@@ -1,0 +1,4 @@
+{
+  bus.register(this);
+  return true;
+}

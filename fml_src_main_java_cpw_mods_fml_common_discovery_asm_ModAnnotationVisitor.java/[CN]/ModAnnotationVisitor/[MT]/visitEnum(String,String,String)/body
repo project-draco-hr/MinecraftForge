@@ -1,0 +1,3 @@
+{
+  discoverer.addAnnotationEnumProperty(name,desc,value);
+}

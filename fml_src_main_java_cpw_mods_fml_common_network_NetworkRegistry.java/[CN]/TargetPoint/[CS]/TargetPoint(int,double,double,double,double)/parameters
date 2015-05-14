@@ -1,0 +1,5 @@
+int dimension
+double x
+double y
+double z
+double range

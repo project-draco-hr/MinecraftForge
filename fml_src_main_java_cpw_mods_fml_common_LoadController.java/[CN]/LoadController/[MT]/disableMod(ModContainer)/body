@@ -1,0 +1,12 @@
+{
+  HashMap<String,EventBus> temporary=Maps.newHashMap(eventChannels);
+  String modId=mod.getModId();
+  EventBus bus=temporary.remove(modId);
+  bus.post(new FMLModDisabledEvent());
+  if (errors.get(modId).isEmpty()) {
+    eventChannels=ImmutableMap.copyOf(temporary);
+    modStates.put(modId,ModState.DISABLED);
+    modObjectList.remove(mod);
+    activeModList.remove(mod);
+  }
+}

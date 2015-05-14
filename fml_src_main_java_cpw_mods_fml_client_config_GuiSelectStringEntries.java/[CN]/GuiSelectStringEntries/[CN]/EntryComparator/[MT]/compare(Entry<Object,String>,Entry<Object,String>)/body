@@ -1,0 +1,5 @@
+{
+  int compare=o1.getValue().toLowerCase(Locale.US).compareTo(o2.getValue().toLowerCase(Locale.US));
+  if (compare == 0)   compare=o1.getKey().toString().toLowerCase(Locale.US).compareTo(o2.getKey().toString().toLowerCase(Locale.US));
+  return compare;
+}

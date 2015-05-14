@@ -1,0 +1,4 @@
+{
+  File[] files=dir.listFiles(filter);
+  return sortFileList(files);
+}

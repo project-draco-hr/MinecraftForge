@@ -1,0 +1,17 @@
+{
+  if (buf.size() > 0) {
+    if (buf.size() <= DATA_MAX) {
+      output.writeByte(buf.size());
+    }
+ else     if (buf.size() <= 65535) {
+      output.writeByte(DATA_USHORT);
+      output.writeShort(buf.size());
+    }
+ else {
+      output.writeByte(DATA_INT);
+      output.writeInt(buf.size());
+    }
+    buf.writeTo(output);
+    buf.reset();
+  }
+}

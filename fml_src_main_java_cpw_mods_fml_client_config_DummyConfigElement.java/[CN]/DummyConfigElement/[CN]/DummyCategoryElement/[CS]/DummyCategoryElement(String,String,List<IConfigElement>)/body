@@ -1,0 +1,3 @@
+{
+  this(name,langKey,childElements,(Class<? extends IConfigEntry>)null);
+}

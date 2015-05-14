@@ -1,0 +1,5 @@
+{
+  super(requestType);
+  messageHandler=Preconditions.checkNotNull(handler,"IMessageHandler must not be null");
+  this.side=side;
+}

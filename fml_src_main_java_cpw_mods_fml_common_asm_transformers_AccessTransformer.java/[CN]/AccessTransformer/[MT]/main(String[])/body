@@ -1,0 +1,42 @@
+{
+  if (args.length < 2) {
+    System.out.println("Usage: AccessTransformer <JarPath> <MapFile> [MapFile2]... ");
+    System.exit(1);
+  }
+  boolean hasTransformer=false;
+  AccessTransformer[] trans=new AccessTransformer[args.length - 1];
+  for (int x=1; x < args.length; x++) {
+    try {
+      trans[x - 1]=new AccessTransformer(args[x]);
+      hasTransformer=true;
+    }
+ catch (    IOException e) {
+      System.out.println("Could not read Transformer Map: " + args[x]);
+      e.printStackTrace();
+    }
+  }
+  if (!hasTransformer) {
+    System.out.println("Culd not find a valid transformer to perform");
+    System.exit(1);
+  }
+  File orig=new File(args[0]);
+  File temp=new File(args[0] + ".ATBack");
+  if (!orig.exists() && !temp.exists()) {
+    System.out.println("Could not find target jar: " + orig);
+    System.exit(1);
+  }
+  if (!orig.renameTo(temp)) {
+    System.out.println("Could not rename file: " + orig + " -> "+ temp);
+    System.exit(1);
+  }
+  try {
+    processJar(temp,orig,trans);
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+    System.exit(1);
+  }
+  if (!temp.delete()) {
+    System.out.println("Could not delete temp file: " + temp);
+  }
+}

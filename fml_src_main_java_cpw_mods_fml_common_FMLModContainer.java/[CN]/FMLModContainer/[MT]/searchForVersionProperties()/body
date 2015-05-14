@@ -1,0 +1,30 @@
+{
+  try {
+    FMLLog.log(getModId(),Level.DEBUG,"Attempting to load the file version.properties from %s to locate a version number for %s",getSource().getName(),getModId());
+    Properties version=null;
+    if (getSource().isFile()) {
+      ZipFile source=new ZipFile(getSource());
+      ZipEntry versionFile=source.getEntry("version.properties");
+      if (versionFile != null) {
+        version=new Properties();
+        version.load(source.getInputStream(versionFile));
+      }
+      source.close();
+    }
+ else     if (getSource().isDirectory()) {
+      File propsFile=new File(getSource(),"version.properties");
+      if (propsFile.exists() && propsFile.isFile()) {
+        version=new Properties();
+        FileInputStream fis=new FileInputStream(propsFile);
+        version.load(fis);
+        fis.close();
+      }
+    }
+    return version;
+  }
+ catch (  Exception e) {
+    Throwables.propagateIfPossible(e);
+    FMLLog.log(getModId(),Level.TRACE,"Failed to find a usable version.properties file");
+    return null;
+  }
+}

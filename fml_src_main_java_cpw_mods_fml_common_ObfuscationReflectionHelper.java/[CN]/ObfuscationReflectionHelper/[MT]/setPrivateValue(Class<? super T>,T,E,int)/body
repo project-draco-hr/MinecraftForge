@@ -1,0 +1,9 @@
+{
+  try {
+    ReflectionHelper.setPrivateValue(classToAccess,instance,value,fieldIndex);
+  }
+ catch (  UnableToAccessFieldException e) {
+    FMLLog.log(Level.ERROR,e,"There was a problem setting field index %d on type %s",fieldIndex,classToAccess.getName());
+    throw e;
+  }
+}

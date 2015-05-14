@@ -1,0 +1,31 @@
+{
+  target.oldAccess=access;
+  int t=target.targetAccess;
+  int ret=(access & ~7);
+switch (access & 7) {
+case ACC_PRIVATE:
+    ret|=t;
+  break;
+case 0:
+ret|=(t != ACC_PRIVATE ? t : 0);
+break;
+case ACC_PROTECTED:
+ret|=(t != ACC_PRIVATE && t != 0 ? t : ACC_PROTECTED);
+break;
+case ACC_PUBLIC:
+ret|=(t != ACC_PRIVATE && t != 0 && t != ACC_PROTECTED ? t : ACC_PUBLIC);
+break;
+default :
+throw new RuntimeException("The fuck?");
+}
+if (target.changeFinal) {
+if (target.markFinal) {
+ret|=ACC_FINAL;
+}
+ else {
+ret&=~ACC_FINAL;
+}
+}
+target.newAccess=ret;
+return ret;
+}

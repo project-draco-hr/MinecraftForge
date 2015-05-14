@@ -1,0 +1,14 @@
+{
+  if (button.enabled) {
+    if (button.id == this.scrollUpActionId) {
+      this.scrollDistance-=(float)(this.slotHeight * 2 / 3);
+      this.initialMouseClickY=-2.0F;
+      this.applyScrollLimits();
+    }
+ else     if (button.id == this.scrollDownActionId) {
+      this.scrollDistance+=(float)(this.slotHeight * 2 / 3);
+      this.initialMouseClickY=-2.0F;
+      this.applyScrollLimits();
+    }
+  }
+}

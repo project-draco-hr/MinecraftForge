@@ -1,0 +1,5 @@
+GuiErrorScreen errorScreen
+FontRenderer fontRenderer
+int mouseRelX
+int mouseRelY
+float tickTime

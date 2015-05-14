@@ -1,0 +1,23 @@
+{
+  FMLRelaunchLog.finer("Reading patch data from %s",patchEntry.getName());
+  ByteArrayDataInput input;
+  try {
+    input=ByteStreams.newDataInput(ByteStreams.toByteArray(jis));
+  }
+ catch (  IOException e) {
+    FMLRelaunchLog.log(Level.WARN,e,"Unable to read binpatch file %s - ignoring",patchEntry.getName());
+    return null;
+  }
+  String name=input.readUTF();
+  String sourceClassName=input.readUTF();
+  String targetClassName=input.readUTF();
+  boolean exists=input.readBoolean();
+  int inputChecksum=0;
+  if (exists) {
+    inputChecksum=input.readInt();
+  }
+  int patchLength=input.readInt();
+  byte[] patchBytes=new byte[patchLength];
+  input.readFully(patchBytes);
+  return new ClassPatch(name,sourceClassName,targetClassName,exists,inputChecksum,patchBytes);
+}

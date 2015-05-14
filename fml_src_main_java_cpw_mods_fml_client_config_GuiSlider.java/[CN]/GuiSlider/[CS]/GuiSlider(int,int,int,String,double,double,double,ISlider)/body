@@ -1,0 +1,3 @@
+{
+  this(id,xPos,yPos,150,20,displayStr,"",minVal,maxVal,currentVal,true,true,par);
+}

@@ -1,0 +1,22 @@
+{
+  if (wrongMC != null) {
+    showGuiScreen(new GuiWrongMinecraft(wrongMC));
+  }
+ else   if (modsMissing != null) {
+    showGuiScreen(new GuiModsMissing(modsMissing));
+  }
+ else   if (dupesFound != null) {
+    showGuiScreen(new GuiDupesFound(dupesFound));
+  }
+ else   if (modSorting != null) {
+    showGuiScreen(new GuiSortingProblem(modSorting));
+  }
+ else   if (customError != null) {
+    showGuiScreen(new GuiCustomModLoadingErrorScreen(customError));
+  }
+ else {
+    Loader.instance().loadingComplete();
+    SplashProgress.finish();
+  }
+  logMissingTextureErrors();
+}

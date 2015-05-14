@@ -1,0 +1,9 @@
+{
+  try {
+    masterChannel.post(customEvent.newInstance());
+  }
+ catch (  Exception e) {
+    FMLLog.log(Level.ERROR,e,"An unexpected exception");
+    throw new LoaderException(e);
+  }
+}

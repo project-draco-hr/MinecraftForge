@@ -1,0 +1,9 @@
+{
+  IGuiHandler handler=serverGuiHandlers.get(mc);
+  if (handler != null) {
+    return (Container)handler.getServerGuiElement(modGuiId,player,world,x,y,z);
+  }
+ else {
+    return null;
+  }
+}

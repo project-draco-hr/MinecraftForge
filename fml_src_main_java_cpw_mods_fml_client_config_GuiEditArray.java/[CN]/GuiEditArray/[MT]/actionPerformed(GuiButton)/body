@@ -1,0 +1,19 @@
+{
+  if (button.id == 2000) {
+    try {
+      this.entryList.saveListChanges();
+    }
+ catch (    Throwable e) {
+      e.printStackTrace();
+    }
+    this.mc.displayGuiScreen(this.parentScreen);
+  }
+ else   if (button.id == 2001) {
+    this.currentValues=configElement.getDefaults();
+    this.entryList=new GuiEditArrayEntries(this,this.mc,this.configElement,this.beforeValues,this.currentValues);
+  }
+ else   if (button.id == 2002) {
+    this.currentValues=Arrays.copyOf(beforeValues,beforeValues.length);
+    this.entryList=new GuiEditArrayEntries(this,this.mc,this.configElement,this.beforeValues,this.currentValues);
+  }
+}

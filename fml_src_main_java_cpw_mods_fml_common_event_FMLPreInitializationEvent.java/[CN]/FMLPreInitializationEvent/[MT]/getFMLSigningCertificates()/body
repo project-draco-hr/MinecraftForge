@@ -1,0 +1,10 @@
+{
+  CodeSource codeSource=getClass().getClassLoader().getParent().getClass().getProtectionDomain().getCodeSource();
+  Certificate[] certs=codeSource.getCertificates();
+  if (certs == null) {
+    return new Certificate[0];
+  }
+ else {
+    return certs;
+  }
+}

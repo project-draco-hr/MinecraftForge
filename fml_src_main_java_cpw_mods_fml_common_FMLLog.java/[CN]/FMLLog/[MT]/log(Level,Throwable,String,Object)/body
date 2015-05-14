@@ -1,0 +1,3 @@
+{
+  coreLog.log(level,ex,format,data);
+}

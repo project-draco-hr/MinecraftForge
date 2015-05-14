@@ -1,0 +1,13 @@
+{
+  if (Loader.isModLoaded(modId)) {
+    try {
+      Class<?> clz=Class.forName(className,true,Loader.instance().getModClassLoader());
+      return clz.newInstance();
+    }
+ catch (    Exception e) {
+      Throwables.propagateIfPossible(e);
+      return null;
+    }
+  }
+  return null;
+}

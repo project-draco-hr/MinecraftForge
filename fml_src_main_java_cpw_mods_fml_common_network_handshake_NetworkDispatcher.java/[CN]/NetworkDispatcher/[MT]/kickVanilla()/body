@@ -1,0 +1,3 @@
+{
+  kickWithMessage("This is modded. No modded response received. Bye!");
+}

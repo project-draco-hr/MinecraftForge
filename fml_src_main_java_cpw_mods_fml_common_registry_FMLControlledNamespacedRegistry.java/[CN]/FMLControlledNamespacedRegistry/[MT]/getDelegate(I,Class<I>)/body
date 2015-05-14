@@ -1,0 +1,3 @@
+{
+  return GameData.buildDelegate(thing,clazz);
+}

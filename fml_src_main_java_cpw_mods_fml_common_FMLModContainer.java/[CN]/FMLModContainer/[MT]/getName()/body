@@ -1,0 +1,3 @@
+{
+  return modMetadata.name;
+}

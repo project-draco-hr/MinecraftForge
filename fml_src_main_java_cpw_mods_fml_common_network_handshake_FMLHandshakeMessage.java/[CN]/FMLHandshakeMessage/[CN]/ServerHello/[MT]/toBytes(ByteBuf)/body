@@ -1,0 +1,4 @@
+{
+  buffer.writeByte(NetworkRegistry.FML_PROTOCOL);
+  buffer.writeInt(overrideDimension);
+}

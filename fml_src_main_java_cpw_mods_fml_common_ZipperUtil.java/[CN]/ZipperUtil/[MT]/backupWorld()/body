@@ -1,0 +1,4 @@
+{
+  String dirName=FMLCommonHandler.instance().getMinecraftServerInstance().getFolderName();
+  backupWorld(dirName);
+}

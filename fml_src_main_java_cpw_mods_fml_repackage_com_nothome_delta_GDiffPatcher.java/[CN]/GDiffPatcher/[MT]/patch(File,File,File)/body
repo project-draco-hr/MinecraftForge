@@ -1,0 +1,16 @@
+{
+  RandomAccessFileSeekableSource source=new RandomAccessFileSeekableSource(new RandomAccessFile(sourceFile,"r"));
+  InputStream patch=new FileInputStream(patchFile);
+  OutputStream output=new FileOutputStream(outputFile);
+  try {
+    patch(source,patch,output);
+  }
+ catch (  IOException e) {
+    throw e;
+  }
+ finally {
+    source.close();
+    patch.close();
+    output.close();
+  }
+}

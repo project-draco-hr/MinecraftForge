@@ -1,0 +1,5 @@
+{
+  server=minecraftServer;
+  Loader.instance().loadMods();
+  Loader.instance().preinitializeMods();
+}

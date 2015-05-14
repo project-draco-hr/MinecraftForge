@@ -1,0 +1,4 @@
+{
+  if (beforeValue != null)   return !beforeValue.equals(currentValue);
+ else   return currentValue == null;
+}

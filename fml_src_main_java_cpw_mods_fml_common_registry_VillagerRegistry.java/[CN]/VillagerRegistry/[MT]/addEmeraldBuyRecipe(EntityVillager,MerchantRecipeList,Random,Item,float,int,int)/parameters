@@ -1,0 +1,7 @@
+EntityVillager villager
+MerchantRecipeList list
+Random random
+Item item
+float chance
+int min
+int max

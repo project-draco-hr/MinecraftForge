@@ -1,0 +1,6 @@
+{
+  if (processedVersion == null) {
+    processedVersion=new DefaultArtifactVersion(getModId(),getVersion());
+  }
+  return processedVersion;
+}

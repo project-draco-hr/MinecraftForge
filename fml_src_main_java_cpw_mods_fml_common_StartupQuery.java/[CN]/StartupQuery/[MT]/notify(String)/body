@@ -1,0 +1,4 @@
+{
+  StartupQuery query=new StartupQuery(text,null);
+  query.execute();
+}

@@ -1,0 +1,3 @@
+{
+  return description.endsWith(":NOFML??r") ? description.substring(0,description.length() - 8) + "??r" : description;
+}

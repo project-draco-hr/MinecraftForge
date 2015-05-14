@@ -1,0 +1,4 @@
+{
+  this.manager.channel().config().setAutoRead(false);
+  this.manager.channel().pipeline().addBefore("packet_handler","fml:packet_handler",this);
+}

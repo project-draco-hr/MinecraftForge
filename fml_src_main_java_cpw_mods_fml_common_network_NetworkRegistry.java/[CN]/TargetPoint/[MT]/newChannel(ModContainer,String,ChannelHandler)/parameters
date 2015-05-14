@@ -1,0 +1,3 @@
+ModContainer container
+String name
+ChannelHandler handlers

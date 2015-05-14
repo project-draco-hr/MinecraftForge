@@ -1,0 +1,3 @@
+{
+  classLoader.registerTransformer("cpw.mods.fml.common.asm.transformers.TerminalTransformer");
+}

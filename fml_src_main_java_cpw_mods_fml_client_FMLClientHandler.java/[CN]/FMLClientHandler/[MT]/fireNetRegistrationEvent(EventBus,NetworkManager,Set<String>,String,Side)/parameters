@@ -1,0 +1,5 @@
+EventBus bus
+NetworkManager manager
+Set<String> channelSet
+String channel
+Side side

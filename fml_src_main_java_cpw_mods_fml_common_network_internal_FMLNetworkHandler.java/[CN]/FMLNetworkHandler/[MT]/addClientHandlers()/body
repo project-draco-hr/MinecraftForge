@@ -1,0 +1,6 @@
+{
+  ChannelPipeline pipeline=channelPair.get(Side.CLIENT).pipeline();
+  String targetName=channelPair.get(Side.CLIENT).findChannelHandlerNameForType(FMLRuntimeCodec.class);
+  pipeline.addAfter(targetName,"GuiHandler",new OpenGuiHandler());
+  pipeline.addAfter(targetName,"EntitySpawnHandler",new EntitySpawnHandler());
+}

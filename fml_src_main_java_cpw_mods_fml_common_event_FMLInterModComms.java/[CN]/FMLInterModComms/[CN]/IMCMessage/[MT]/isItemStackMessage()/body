@@ -1,0 +1,3 @@
+{
+  return ItemStack.class.isAssignableFrom(getMessageType());
+}

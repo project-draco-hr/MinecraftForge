@@ -1,0 +1,3 @@
+SeekableSource seekSource
+InputStream targetIS
+DiffWriter output

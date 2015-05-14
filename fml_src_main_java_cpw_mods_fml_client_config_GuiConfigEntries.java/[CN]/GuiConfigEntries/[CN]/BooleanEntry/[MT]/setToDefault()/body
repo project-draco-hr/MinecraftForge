@@ -1,0 +1,6 @@
+{
+  if (enabled()) {
+    currentValue=Boolean.valueOf(configElement.getDefault().toString());
+    updateValueButtonText();
+  }
+}

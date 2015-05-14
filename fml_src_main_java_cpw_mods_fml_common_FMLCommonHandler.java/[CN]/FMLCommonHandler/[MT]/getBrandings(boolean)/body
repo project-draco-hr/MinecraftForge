@@ -1,0 +1,6 @@
+{
+  if (brandings == null) {
+    computeBranding();
+  }
+  return includeMC ? ImmutableList.copyOf(brandings) : ImmutableList.copyOf(brandingsNoMC);
+}

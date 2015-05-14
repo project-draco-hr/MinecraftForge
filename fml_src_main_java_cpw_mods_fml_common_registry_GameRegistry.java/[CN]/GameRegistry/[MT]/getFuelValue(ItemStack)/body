@@ -1,0 +1,7 @@
+{
+  int fuelValue=0;
+  for (  IFuelHandler handler : fuelHandlers) {
+    fuelValue=Math.max(fuelValue,handler.getBurnTime(itemStack));
+  }
+  return fuelValue;
+}

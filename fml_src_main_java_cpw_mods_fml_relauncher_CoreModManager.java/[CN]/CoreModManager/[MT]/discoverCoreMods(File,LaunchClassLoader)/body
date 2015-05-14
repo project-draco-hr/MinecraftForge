@@ -1,0 +1,100 @@
+{
+  ModListHelper.parseModList(mcDir);
+  FMLRelaunchLog.fine("Discovering coremods");
+  File coreMods=setupCoreModDir(mcDir);
+  FilenameFilter ff=new FilenameFilter(){
+    @Override public boolean accept(    File dir,    String name){
+      return name.endsWith(".jar");
+    }
+  }
+;
+  FilenameFilter derpfilter=new FilenameFilter(){
+    @Override public boolean accept(    File dir,    String name){
+      return name.endsWith(".jar.zip");
+    }
+  }
+;
+  File[] derplist=coreMods.listFiles(derpfilter);
+  if (derplist != null && derplist.length > 0) {
+    FMLRelaunchLog.severe("FML has detected several badly downloaded jar files,  which have been named as zip files. You probably need to download them again, or they may not work properly");
+    for (    File f : derplist) {
+      FMLRelaunchLog.severe("Problem file : %s",f.getName());
+    }
+  }
+  File[] coreModList=coreMods.listFiles(ff);
+  File versionedModDir=new File(coreMods,FMLInjectionData.mccversion);
+  if (versionedModDir.isDirectory()) {
+    File[] versionedCoreMods=versionedModDir.listFiles(ff);
+    coreModList=ObjectArrays.concat(coreModList,versionedCoreMods,File.class);
+  }
+  coreModList=ObjectArrays.concat(coreModList,ModListHelper.additionalMods.values().toArray(new File[0]),File.class);
+  coreModList=FileListHelper.sortFileList(coreModList);
+  for (  File coreMod : coreModList) {
+    FMLRelaunchLog.fine("Examining for coremod candidacy %s",coreMod.getName());
+    JarFile jar=null;
+    Attributes mfAttributes;
+    try {
+      jar=new JarFile(coreMod);
+      if (jar.getManifest() == null) {
+        continue;
+      }
+      ModAccessTransformer.addJar(jar);
+      mfAttributes=jar.getManifest().getMainAttributes();
+    }
+ catch (    IOException ioe) {
+      FMLRelaunchLog.log(Level.ERROR,ioe,"Unable to read the jar file %s - ignoring",coreMod.getName());
+      continue;
+    }
+ finally {
+      if (jar != null) {
+        try {
+          jar.close();
+        }
+ catch (        IOException e) {
+        }
+      }
+    }
+    String cascadedTweaker=mfAttributes.getValue("TweakClass");
+    if (cascadedTweaker != null) {
+      FMLRelaunchLog.info("Loading tweaker %s from %s",cascadedTweaker,coreMod.getName());
+      Integer sortOrder=Ints.tryParse(Strings.nullToEmpty(mfAttributes.getValue("TweakOrder")));
+      sortOrder=(sortOrder == null ? Integer.valueOf(0) : sortOrder);
+      handleCascadingTweak(coreMod,jar,cascadedTweaker,classLoader,sortOrder);
+      loadedCoremods.add(coreMod.getName());
+      continue;
+    }
+    List<String> modTypes=mfAttributes.containsKey(MODTYPE) ? Arrays.asList(mfAttributes.getValue(MODTYPE).split(",")) : ImmutableList.of("FML");
+    if (!modTypes.contains("FML")) {
+      FMLRelaunchLog.fine("Adding %s to the list of things to skip. It is not an FML mod,  it has types %s",coreMod.getName(),modTypes);
+      loadedCoremods.add(coreMod.getName());
+      continue;
+    }
+    String modSide=mfAttributes.containsKey(MODSIDE) ? mfAttributes.getValue(MODSIDE) : "BOTH";
+    if (!("BOTH".equals(modSide) || FMLLaunchHandler.side.name().equals(modSide))) {
+      FMLRelaunchLog.fine("Mod %s has ModSide meta-inf value %s, and we're %s. It will be ignored",coreMod.getName(),modSide,FMLLaunchHandler.side.name());
+      loadedCoremods.add(coreMod.getName());
+      continue;
+    }
+    String fmlCorePlugin=mfAttributes.getValue("FMLCorePlugin");
+    if (fmlCorePlugin == null) {
+      FMLRelaunchLog.fine("Not found coremod data in %s",coreMod.getName());
+      continue;
+    }
+    try {
+      classLoader.addURL(coreMod.toURI().toURL());
+      if (!mfAttributes.containsKey(COREMODCONTAINSFMLMOD)) {
+        FMLRelaunchLog.finer("Adding %s to the list of known coremods, it will not be examined again",coreMod.getName());
+        loadedCoremods.add(coreMod.getName());
+      }
+ else {
+        FMLRelaunchLog.finer("Found FMLCorePluginContainsFMLMod marker in %s, it will be examined later for regular @Mod instances",coreMod.getName());
+        reparsedCoremods.add(coreMod.getName());
+      }
+    }
+ catch (    MalformedURLException e) {
+      FMLRelaunchLog.log(Level.ERROR,e,"Unable to convert file into a URL. weird");
+      continue;
+    }
+    loadCoreMod(classLoader,fmlCorePlugin,coreMod);
+  }
+}

@@ -1,0 +1,4 @@
+LinkedHashMap<String,Integer> missing
+boolean isLocalWorld
+GameData gameData
+Map<String,Integer[]> remaps

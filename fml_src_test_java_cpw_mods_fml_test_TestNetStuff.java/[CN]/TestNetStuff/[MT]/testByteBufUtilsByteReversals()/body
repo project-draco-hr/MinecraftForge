@@ -1,0 +1,29 @@
+{
+  ByteBuf buf=Unpooled.buffer(5,5);
+  ByteBufUtils.writeVarInt(buf,1,1);
+  assertEquals("1 is 1",1,ByteBufUtils.readVarInt(buf,1));
+  buf.clear();
+  ByteBufUtils.writeVarInt(buf,127,1);
+  assertEquals("127 is 127",127,ByteBufUtils.readVarInt(buf,1));
+  buf.clear();
+  ByteBufUtils.writeVarInt(buf,128,2);
+  assertEquals("128 is 128",128,ByteBufUtils.readVarInt(buf,2));
+  buf.clear();
+  ByteBufUtils.writeVarInt(buf,16383,2);
+  assertEquals("16383 is 16383",16383,ByteBufUtils.readVarInt(buf,2));
+  buf.clear();
+  ByteBufUtils.writeVarInt(buf,16384,3);
+  assertEquals("16384 is 16384",16384,ByteBufUtils.readVarInt(buf,3));
+  buf.clear();
+  ByteBufUtils.writeVarInt(buf,2097151,3);
+  assertEquals("2097151 is 2097151",2097151,ByteBufUtils.readVarInt(buf,3));
+  buf.clear();
+  ByteBufUtils.writeVarInt(buf,2097152,4);
+  assertEquals("2097152 is 2097152",2097152,ByteBufUtils.readVarInt(buf,4));
+  buf.clear();
+  ByteBufUtils.writeVarInt(buf,268435455,4);
+  assertEquals("268435455 is 268435455",268435455,ByteBufUtils.readVarInt(buf,4));
+  buf.clear();
+  ByteBufUtils.writeVarInt(buf,268435456,5);
+  assertEquals("268435456 is 268435456",268435456,ByteBufUtils.readVarInt(buf,5));
+}

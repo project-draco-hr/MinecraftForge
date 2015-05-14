@@ -1,0 +1,3 @@
+String name
+String langKey
+Class<? extends IConfigEntry> customListEntryClass

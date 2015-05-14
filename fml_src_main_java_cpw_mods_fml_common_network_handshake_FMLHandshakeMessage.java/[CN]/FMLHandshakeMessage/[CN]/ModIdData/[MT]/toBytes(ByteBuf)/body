@@ -1,0 +1,15 @@
+{
+  ByteBufUtils.writeVarInt(buffer,modIds.size(),3);
+  for (  Entry<String,Integer> entry : modIds.entrySet()) {
+    ByteBufUtils.writeUTF8String(buffer,entry.getKey());
+    ByteBufUtils.writeVarInt(buffer,entry.getValue(),3);
+  }
+  ByteBufUtils.writeVarInt(buffer,blockSubstitutions.size(),3);
+  for (  String entry : blockSubstitutions) {
+    ByteBufUtils.writeUTF8String(buffer,entry);
+  }
+  ByteBufUtils.writeVarInt(buffer,blockSubstitutions.size(),3);
+  for (  String entry : itemSubstitutions) {
+    ByteBufUtils.writeUTF8String(buffer,entry);
+  }
+}

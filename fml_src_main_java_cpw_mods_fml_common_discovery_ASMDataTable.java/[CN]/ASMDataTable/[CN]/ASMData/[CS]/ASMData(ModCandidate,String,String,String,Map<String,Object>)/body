@@ -1,0 +1,7 @@
+{
+  this.candidate=candidate;
+  this.annotationName=annotationName;
+  this.className=className;
+  this.objectName=objectName;
+  this.annotationInfo=info;
+}

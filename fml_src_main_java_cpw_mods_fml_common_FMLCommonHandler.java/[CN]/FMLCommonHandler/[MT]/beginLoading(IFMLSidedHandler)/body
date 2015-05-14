@@ -1,0 +1,7 @@
+{
+  sidedDelegate=handler;
+  FMLLog.log("MinecraftForge",Level.INFO,"Attempting early MinecraftForge initialization");
+  callForgeMethod("initialize");
+  callForgeMethod("registerCrashCallable");
+  FMLLog.log("MinecraftForge",Level.INFO,"Completed early MinecraftForge initialization");
+}

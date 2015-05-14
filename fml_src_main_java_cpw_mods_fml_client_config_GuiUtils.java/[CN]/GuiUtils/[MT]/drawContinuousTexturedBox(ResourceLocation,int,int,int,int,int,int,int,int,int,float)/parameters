@@ -1,0 +1,11 @@
+ResourceLocation res
+int x
+int y
+int u
+int v
+int width
+int height
+int textureWidth
+int textureHeight
+int borderSize
+float zLevel

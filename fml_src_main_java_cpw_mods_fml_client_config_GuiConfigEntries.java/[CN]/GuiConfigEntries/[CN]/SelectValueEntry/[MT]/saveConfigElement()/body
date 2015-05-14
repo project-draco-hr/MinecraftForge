@@ -1,0 +1,7 @@
+{
+  if (enabled() && isChanged()) {
+    this.configElement.set(currentValue);
+    return configElement.requiresMcRestart();
+  }
+  return false;
+}

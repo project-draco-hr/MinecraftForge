@@ -1,0 +1,32 @@
+{
+  if (this.sliderValue < 0.0F) {
+    this.sliderValue=0.0F;
+  }
+  if (this.sliderValue > 1.0F) {
+    this.sliderValue=1.0F;
+  }
+  String val;
+  if (showDecimal) {
+    val=Double.toString(sliderValue * (maxValue - minValue) + minValue);
+    if (val.substring(val.indexOf(".") + 1).length() > precision) {
+      val=val.substring(0,val.indexOf(".") + precision + 1);
+      if (val.endsWith(".")) {
+        val=val.substring(0,val.indexOf(".") + precision);
+      }
+    }
+ else {
+      while (val.substring(val.indexOf(".") + 1).length() < precision) {
+        val=val + "0";
+      }
+    }
+  }
+ else {
+    val=Integer.toString((int)Math.round(sliderValue * (maxValue - minValue) + minValue));
+  }
+  if (drawString) {
+    displayString=dispString + val + suffix;
+  }
+  if (parent != null) {
+    parent.onChangeSliderValue(this);
+  }
+}

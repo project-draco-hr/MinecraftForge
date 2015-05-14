@@ -1,0 +1,13 @@
+{
+  if (Strings.isNullOrEmpty(labelledRef)) {
+    throw new RuntimeException(String.format("Empty reference %s",labelledRef));
+  }
+  List<String> parts=Lists.newArrayList(SEPARATOR.split(labelledRef));
+  if (parts.size() > 2) {
+    throw new RuntimeException(String.format("Invalid versioned reference %s",labelledRef));
+  }
+  if (parts.size() == 1) {
+    return new DefaultArtifactVersion(parts.get(0),true);
+  }
+  return new DefaultArtifactVersion(parts.get(0),parseRange(parts.get(1)));
+}

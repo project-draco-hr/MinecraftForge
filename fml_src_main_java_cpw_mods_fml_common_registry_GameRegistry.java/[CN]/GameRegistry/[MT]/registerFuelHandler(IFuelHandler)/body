@@ -1,0 +1,3 @@
+{
+  fuelHandlers.add(handler);
+}

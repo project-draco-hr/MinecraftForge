@@ -1,0 +1,14 @@
+{
+  assertEquals("length of 1 is 1",1,ByteBufUtils.varIntByteCount(1));
+  assertEquals("length of 127 is 1",1,ByteBufUtils.varIntByteCount(127));
+  assertEquals("length of 128 is 2",2,ByteBufUtils.varIntByteCount(128));
+  assertEquals("length of 16383 is 2",2,ByteBufUtils.varIntByteCount(16383));
+  assertEquals("length of 16384 is 3",3,ByteBufUtils.varIntByteCount(16384));
+  assertEquals("length of 2097151 is 3",3,ByteBufUtils.varIntByteCount(2097151));
+  assertEquals("length of 2097152 is 4",4,ByteBufUtils.varIntByteCount(2097152));
+  assertEquals("length of 268435455 is 4",4,ByteBufUtils.varIntByteCount(268435455));
+  assertEquals("length of 268435456 is 5",5,ByteBufUtils.varIntByteCount(268435456));
+  assertEquals("length of MIN_VAL is 5",5,ByteBufUtils.varIntByteCount(Integer.MIN_VALUE));
+  assertEquals("length of MAX_VAL is 5",5,ByteBufUtils.varIntByteCount(Integer.MAX_VALUE));
+  assertEquals("length of -1 is 5",5,ByteBufUtils.varIntByteCount(-1));
+}

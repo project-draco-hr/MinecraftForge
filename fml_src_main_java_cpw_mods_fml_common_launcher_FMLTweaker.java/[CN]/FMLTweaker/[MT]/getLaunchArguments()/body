@@ -1,0 +1,10 @@
+{
+  List<String> args=Lists.newArrayList();
+  args.addAll(standaloneArgs);
+  for (  Entry<String,String> arg : launchArgs.entrySet()) {
+    args.add(arg.getKey());
+    args.add(arg.getValue());
+  }
+  launchArgs.clear();
+  return args.toArray(new String[args.size()]);
+}

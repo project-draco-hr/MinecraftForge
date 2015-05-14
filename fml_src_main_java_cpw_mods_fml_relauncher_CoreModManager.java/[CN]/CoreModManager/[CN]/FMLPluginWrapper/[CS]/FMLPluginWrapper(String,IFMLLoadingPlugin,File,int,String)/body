@@ -1,0 +1,8 @@
+{
+  super();
+  this.name=name;
+  this.coreModInstance=coreModInstance;
+  this.location=location;
+  this.sortIndex=sortIndex;
+  this.predepends=Lists.newArrayList(predepends);
+}

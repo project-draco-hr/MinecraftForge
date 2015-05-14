@@ -1,0 +1,10 @@
+{
+  this.selected=var1;
+  if (var1 >= 0 && var1 <= mods.size()) {
+    this.selectedMod=mods.get(selected);
+  }
+ else {
+    this.selectedMod=null;
+  }
+  cachedLogo=null;
+}

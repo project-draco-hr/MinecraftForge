@@ -1,0 +1,3 @@
+String modId
+String name
+int stackSize

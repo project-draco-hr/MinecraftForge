@@ -1,0 +1,5 @@
+{
+  this.idMap=idMap;
+  this.blockSubstitutions=blockSubstitutions;
+  this.itemSubstitutions=itemSubstitutions;
+}

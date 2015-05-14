@@ -1,0 +1,7 @@
+{
+  if (enabled() && isChanged()) {
+    configElement.set(configElement.getValidValues()[currentIndex]);
+    return configElement.requiresMcRestart();
+  }
+  return false;
+}

@@ -1,0 +1,6 @@
+{
+  super(entity);
+  this.serverX=serverX;
+  this.serverY=serverY;
+  this.serverZ=serverZ;
+}

@@ -1,0 +1,5 @@
+ModCandidate candidate
+String annotation
+String className
+String objectName
+Map<String,Object> annotationInfo

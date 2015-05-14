@@ -1,0 +1,32 @@
+{
+  if (argv.length != 3) {
+    System.err.println("usage Delta [-d] source target [output]");
+    System.err.println("either -d or an output filename must be specified.");
+    System.err.println("aborting..");
+    return;
+  }
+  DiffWriter output=null;
+  File sourceFile=null;
+  File targetFile=null;
+  if (argv[0].equals("-d")) {
+    sourceFile=new File(argv[1]);
+    targetFile=new File(argv[2]);
+    output=new DebugDiffWriter();
+  }
+ else {
+    sourceFile=new File(argv[0]);
+    targetFile=new File(argv[1]);
+    output=new GDiffWriter(new DataOutputStream(new BufferedOutputStream(new FileOutputStream(new File(argv[2])))));
+  }
+  if (sourceFile.length() > Integer.MAX_VALUE || targetFile.length() > Integer.MAX_VALUE) {
+    System.err.println("source or target is too large, max length is " + Integer.MAX_VALUE);
+    System.err.println("aborting..");
+    output.close();
+    return;
+  }
+  Delta d=new Delta();
+  d.compute(sourceFile,targetFile,output);
+  output.flush();
+  output.close();
+  if (debug)   System.out.println("finished generating delta");
+}

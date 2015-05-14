@@ -1,0 +1,6 @@
+{
+  if (enabled()) {
+    currentIndex=defaultIndex;
+    updateValueButtonText();
+  }
+}

@@ -1,0 +1,3 @@
+SaveHandler handler
+WorldInfo worldInfo
+NBTTagCompound tagCompound

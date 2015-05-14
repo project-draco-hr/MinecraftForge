@@ -1,0 +1,24 @@
+{
+  if (extraServerListData.containsKey(originalResponse)) {
+    JsonObject jsonData=extraServerListData.get(originalResponse);
+    String type=jsonData.get("type").getAsString();
+    JsonArray modDataArray=jsonData.get("modList").getAsJsonArray();
+    boolean moddedClientAllowed=jsonData.has("clientModsAllowed") ? jsonData.get("clientModsAllowed").getAsBoolean() : true;
+    Builder<String,String> modListBldr=ImmutableMap.<String,String>builder();
+    for (    JsonElement obj : modDataArray) {
+      JsonObject modObj=obj.getAsJsonObject();
+      modListBldr.put(modObj.get("modid").getAsString(),modObj.get("version").getAsString());
+    }
+    Map<String,String> modListMap=modListBldr.build();
+    serverDataTag.put(data,new ExtendedServerListData(type,FMLNetworkHandler.checkModList(modListMap,Side.SERVER) == null,modListMap,!moddedClientAllowed));
+  }
+ else {
+    String serverDescription=data.serverMOTD;
+    boolean moddedClientAllowed=true;
+    if (!Strings.isNullOrEmpty(serverDescription)) {
+      moddedClientAllowed=!serverDescription.endsWith(":NOFML??r");
+    }
+    serverDataTag.put(data,new ExtendedServerListData("VANILLA",false,ImmutableMap.<String,String>of(),!moddedClientAllowed));
+  }
+  startupConnectionData.countDown();
+}

@@ -1,0 +1,5 @@
+{
+  if (client.thePlayer == player && gui != null) {
+    client.displayGuiScreen(gui);
+  }
+}

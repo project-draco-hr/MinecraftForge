@@ -1,0 +1,9 @@
+{
+  this.table=table;
+  this.mods=sourceType.findMods(this,table);
+  if (!baseModCandidateTypes.isEmpty()) {
+    FMLLog.info("Attempting to reparse the mod container %s",getModContainer().getName());
+    this.mods=sourceType.findMods(this,table);
+  }
+  return this.mods;
+}

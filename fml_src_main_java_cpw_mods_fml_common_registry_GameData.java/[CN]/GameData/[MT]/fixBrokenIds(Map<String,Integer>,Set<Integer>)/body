@@ -1,0 +1,99 @@
+{
+  BitSet availabilityMap=new BitSet(MAX_ITEM_ID + 1);
+  for (  Entry<String,Integer> entry : dataList.entrySet()) {
+    String itemName=entry.getKey();
+    @SuppressWarnings("unused") String realName=itemName.substring(1);
+    if (itemName.charAt(0) == '\u0001') {
+      availabilityMap.set(entry.getValue());
+    }
+  }
+  Set<Integer> newBlockedIds=new HashSet<Integer>();
+  Set<String> itemsToRemove=new HashSet<String>();
+  Map<String,Integer> itemsToRelocate=new HashMap<String,Integer>();
+  for (  Entry<String,Integer> entry : dataList.entrySet()) {
+    String itemName=entry.getKey();
+    if (itemName.charAt(0) != '\u0001') {
+      int oldId=entry.getValue();
+      String realName=itemName.substring(1);
+      String blockName='\u0001' + realName;
+      Item item=getMain().iItemRegistry.getRaw(realName);
+      boolean blockThisId=false;
+      if (item == null) {
+        FMLLog.warning("Item %s (old id %d) is no longer available and thus can't be fixed.",realName,oldId);
+        itemsToRemove.add(itemName);
+        blockThisId=true;
+      }
+ else       if (item instanceof ItemBlock) {
+        if (dataList.containsKey(blockName)) {
+          int blockId=dataList.get(blockName);
+          if (blockId != oldId) {
+            FMLLog.warning("ItemBlock %s (old id %d) doesn't have the same id as its block (%d).",realName,oldId,blockId);
+            itemsToRelocate.put(entry.getKey(),blockId);
+            blockThisId=true;
+          }
+ else {
+            availabilityMap.set(oldId);
+          }
+        }
+ else {
+          FMLLog.warning("Item %s (old id %d) has been migrated to an ItemBlock and can't be fixed.",realName,oldId);
+          itemsToRemove.add(itemName);
+          blockThisId=true;
+        }
+      }
+ else       if (availabilityMap.get(oldId)) {
+        FMLLog.warning("Item %s (old id %d) is conflicting with another block/item and can't be fixed.",realName,oldId);
+        itemsToRemove.add(itemName);
+      }
+ else {
+        availabilityMap.set(oldId);
+      }
+      if (blockThisId && !availabilityMap.get(oldId)) {
+        newBlockedIds.add(oldId);
+        availabilityMap.set(oldId);
+      }
+    }
+  }
+  if (itemsToRemove.isEmpty() && itemsToRelocate.isEmpty())   return;
+  String text="Forge Mod Loader detected that this save is damaged.\n\n" + "It's likely that an automatic repair can successfully restore\n" + "most of it, except some items which may get swapped with others.\n\n"+ "A world backup will be created as a zip file in your saves\n"+ "directory automatically.\n\n" + itemsToRemove.size() + " items need to be removed.\n"+ itemsToRelocate.size()+ " items need to be relocated.";
+  boolean confirmed=StartupQuery.confirm(text);
+  if (!confirmed)   StartupQuery.abort();
+  Set<String> modsMissing=new HashSet<String>();
+  for (  String itemName : itemsToRemove) {
+    modsMissing.add(itemName.substring(1,itemName.indexOf(':')));
+  }
+  for (Iterator<String> it=modsMissing.iterator(); it.hasNext(); ) {
+    String mod=it.next();
+    if (mod.equals("minecraft") || Loader.isModLoaded(mod))     it.remove();
+  }
+  if (!modsMissing.isEmpty()) {
+    text="Forge Mod Loader detected that " + modsMissing.size() + " mods are missing.\n\n"+ "If you continue items previously provided by those mods will be\n"+ "removed while repairing this world save.\n\n"+ "Missing mods:\n";
+    for (    String mod : modsMissing)     text+=mod + "\n";
+    confirmed=StartupQuery.confirm(text);
+    if (!confirmed)     StartupQuery.abort();
+  }
+  try {
+    String skip=System.getProperty("fml.doNotBackup");
+    if (skip == null || !"true".equals(skip)) {
+      ZipperUtil.backupWorld();
+    }
+ else {
+      for (int x=0; x < 10; x++)       FMLLog.severe("!!!!!!!!!! UPDATING WORLD WITHOUT DOING BACKUP !!!!!!!!!!!!!!!!");
+    }
+  }
+ catch (  IOException e) {
+    StartupQuery.notify("The world backup couldn't be created.\n\n" + e);
+    StartupQuery.abort();
+  }
+  for (  String itemName : itemsToRemove) {
+    int id=dataList.remove(itemName);
+    FMLLog.warning("Removed Item %s, old id %d.",itemName.substring(1),id);
+  }
+  for (  Map.Entry<String,Integer> entry : itemsToRelocate.entrySet()) {
+    String itemName=entry.getKey();
+    int newId=entry.getValue();
+    int oldId=dataList.put(itemName,newId);
+    FMLLog.warning("Remapped Item %s to id %d, old id %d.",itemName.substring(1),newId,oldId);
+  }
+  blockedIds.addAll(newBlockedIds);
+}

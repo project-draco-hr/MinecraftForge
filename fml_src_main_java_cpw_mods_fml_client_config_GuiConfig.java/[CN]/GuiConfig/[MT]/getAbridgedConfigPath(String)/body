@@ -1,0 +1,5 @@
+{
+  Minecraft mc=Minecraft.getMinecraft();
+  if (mc.mcDataDir.getAbsolutePath().endsWith("."))   return path.replace("\\","/").replace(mc.mcDataDir.getAbsolutePath().replace("\\","/").substring(0,mc.mcDataDir.getAbsolutePath().length() - 1),"/.minecraft/");
+ else   return path.replace("\\","/").replace(mc.mcDataDir.getAbsolutePath().replace("\\","/"),"/.minecraft");
+}

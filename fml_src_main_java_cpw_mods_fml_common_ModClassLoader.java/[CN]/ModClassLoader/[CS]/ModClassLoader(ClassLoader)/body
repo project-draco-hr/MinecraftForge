@@ -1,0 +1,4 @@
+{
+  super(new URL[0],null);
+  this.mainClassLoader=(LaunchClassLoader)parent;
+}

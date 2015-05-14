@@ -1,0 +1,14 @@
+{
+  setupServerList();
+  OldServerPinger osp=new OldServerPinger();
+  ServerData serverData=new ServerData("Command Line",host + ":" + port);
+  try {
+    osp.func_147224_a(serverData);
+    startupConnectionData.await(30,TimeUnit.SECONDS);
+  }
+ catch (  Exception e) {
+    showGuiScreen(new GuiConnecting(new GuiMainMenu(),client,host,port));
+    return;
+  }
+  connectToServer(new GuiMainMenu(),serverData);
+}

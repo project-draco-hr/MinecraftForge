@@ -1,0 +1,5 @@
+{
+  String value=config.getProperty(name,def);
+  config.setProperty(name,value);
+  return value;
+}
