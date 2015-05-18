@@ -1,0 +1,11 @@
+{
+  if (input == null || input.getMaxStackSize() != 1 || input.stackSize != 1)   return null;
+  if (ingredient == null || ingredient.stackSize <= 0)   return null;
+  for (  IBrewingRecipe recipe : recipes) {
+    ItemStack output=recipe.getOutput(input,ingredient);
+    if (output != null) {
+      return output;
+    }
+  }
+  return null;
+}

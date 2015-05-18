@@ -1,0 +1,3 @@
+ItemStack input
+List<ItemStack> ingredient
+ItemStack output

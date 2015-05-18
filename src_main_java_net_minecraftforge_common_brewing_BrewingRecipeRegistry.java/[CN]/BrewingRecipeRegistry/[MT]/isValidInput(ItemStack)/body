@@ -1,0 +1,9 @@
+{
+  if (stack == null || stack.getMaxStackSize() != 1 || stack.stackSize != 1)   return false;
+  for (  IBrewingRecipe recipe : recipes) {
+    if (recipe.isInput(stack)) {
+      return true;
+    }
+  }
+  return false;
+}

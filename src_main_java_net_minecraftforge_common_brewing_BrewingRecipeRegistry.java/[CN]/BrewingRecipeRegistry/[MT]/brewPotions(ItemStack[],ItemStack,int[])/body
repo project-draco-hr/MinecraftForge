@@ -1,0 +1,8 @@
+{
+  for (  int i : inputIndexes) {
+    ItemStack output=getOutput(inputs[i],ingredient);
+    if (output != null) {
+      inputs[i]=output;
+    }
+  }
+}

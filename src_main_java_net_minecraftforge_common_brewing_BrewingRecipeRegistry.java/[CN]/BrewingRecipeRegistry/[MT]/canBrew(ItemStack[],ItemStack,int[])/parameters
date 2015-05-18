@@ -1,0 +1,3 @@
+ItemStack[] inputs
+ItemStack ingredient
+int[] inputIndexes
