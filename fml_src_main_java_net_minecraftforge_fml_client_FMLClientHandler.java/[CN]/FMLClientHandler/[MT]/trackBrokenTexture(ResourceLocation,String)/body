@@ -3,7 +3,7 @@
   Set<ResourceLocation> badType=brokenTextures.get(resourceLocation.getResourceDomain(),error);
   if (badType == null) {
     badType=Sets.newHashSet();
-    brokenTextures.put(resourceLocation.getResourceDomain(),error,badType);
+    brokenTextures.put(resourceLocation.getResourceDomain(),Objects.firstNonNull(error,"Unknown error"),badType);
   }
   badType.add(resourceLocation);
 }
