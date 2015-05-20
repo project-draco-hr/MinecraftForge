@@ -1,0 +1,2 @@
+IFlexibleBakedModel base
+ImmutableMap<String,IFlexibleBakedModel> parts

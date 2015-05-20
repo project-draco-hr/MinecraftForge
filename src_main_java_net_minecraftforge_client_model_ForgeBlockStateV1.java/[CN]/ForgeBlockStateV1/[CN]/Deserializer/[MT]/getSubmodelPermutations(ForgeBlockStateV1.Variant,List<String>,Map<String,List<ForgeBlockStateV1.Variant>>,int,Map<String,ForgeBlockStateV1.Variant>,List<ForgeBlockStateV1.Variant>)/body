@@ -1,0 +1,23 @@
+{
+  if (depth >= sorted.size()) {
+    ForgeBlockStateV1.Variant add=new Variant(baseVar);
+    for (    Entry<String,ForgeBlockStateV1.Variant> part : parts.entrySet())     add.submodels.put(part.getKey(),Collections.singletonList(part.getValue()));
+    ret.add(add);
+    return ret;
+  }
+  String name=sorted.get(depth);
+  List<ForgeBlockStateV1.Variant> vars=map.get(sorted.get(depth));
+  if (vars != null) {
+    for (    ForgeBlockStateV1.Variant v : vars) {
+      if (v != null) {
+        parts.put(name,v);
+        getSubmodelPermutations(baseVar,sorted,map,depth + 1,parts,ret);
+        parts.remove(name);
+      }
+    }
+  }
+ else {
+    getSubmodelPermutations(baseVar,sorted,map,depth + 1,parts,ret);
+  }
+  return ret;
+}

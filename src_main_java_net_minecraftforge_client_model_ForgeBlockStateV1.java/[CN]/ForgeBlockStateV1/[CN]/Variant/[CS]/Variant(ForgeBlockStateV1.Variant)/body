@@ -1,0 +1,11 @@
+{
+  this.model=other.model;
+  this.modelSet=other.modelSet;
+  this.rotation=other.rotation;
+  this.uvLock=other.uvLock;
+  this.weight=other.weight;
+  this.textures.putAll(other.textures);
+  this.submodels.putAll(other.submodels);
+  this.simpleSubmodels.putAll(other.simpleSubmodels);
+  this.customData.putAll(other.customData);
+}

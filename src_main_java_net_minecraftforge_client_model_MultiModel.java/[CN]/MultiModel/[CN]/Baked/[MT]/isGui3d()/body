@@ -1,0 +1,3 @@
+{
+  return internalBase.isGui3d();
+}

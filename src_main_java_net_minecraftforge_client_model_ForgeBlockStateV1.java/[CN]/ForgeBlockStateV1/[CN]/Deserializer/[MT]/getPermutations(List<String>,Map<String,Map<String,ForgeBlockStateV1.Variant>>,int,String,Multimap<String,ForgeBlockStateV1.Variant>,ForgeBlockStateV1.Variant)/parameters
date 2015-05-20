@@ -1,0 +1,6 @@
+List<String> sorted
+Map<String,Map<String,ForgeBlockStateV1.Variant>> base
+int depth
+String prefix
+Multimap<String,ForgeBlockStateV1.Variant> ret
+ForgeBlockStateV1.Variant parent

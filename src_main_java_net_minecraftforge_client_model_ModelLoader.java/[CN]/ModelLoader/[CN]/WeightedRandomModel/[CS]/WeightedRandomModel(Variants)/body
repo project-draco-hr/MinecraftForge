@@ -4,7 +4,12 @@
   for (  Variant v : (List<Variant>)variants.getVariants()) {
     ResourceLocation loc=v.getModelLocation();
     locations.add(loc);
-    IModel model=new WeightedPartWrapper(getModel(loc));
+    IModel model=getModel(loc);
+    if (v instanceof ISmartVariant) {
+      model=((ISmartVariant)v).process(model,ModelLoader.this);
+      textures.addAll(model.getTextures());
+    }
+    model=new WeightedPartWrapper(model);
     models.add(model);
     builder.put(model,new TRSRTransformation(v.getRotation()));
   }

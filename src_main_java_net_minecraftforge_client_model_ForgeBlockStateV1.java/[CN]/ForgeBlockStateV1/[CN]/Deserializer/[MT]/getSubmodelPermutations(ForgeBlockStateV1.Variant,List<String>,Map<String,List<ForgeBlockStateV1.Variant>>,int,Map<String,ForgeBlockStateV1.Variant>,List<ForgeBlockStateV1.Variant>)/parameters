@@ -1,0 +1,6 @@
+ForgeBlockStateV1.Variant baseVar
+List<String> sorted
+Map<String,List<ForgeBlockStateV1.Variant>> map
+int depth
+Map<String,ForgeBlockStateV1.Variant> parts
+List<ForgeBlockStateV1.Variant> ret

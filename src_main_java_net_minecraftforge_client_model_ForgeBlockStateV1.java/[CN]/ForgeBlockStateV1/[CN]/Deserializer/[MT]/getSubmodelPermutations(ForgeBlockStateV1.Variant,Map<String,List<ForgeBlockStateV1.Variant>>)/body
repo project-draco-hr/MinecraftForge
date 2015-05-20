@@ -1,0 +1,5 @@
+{
+  List<String> sorted=Lists.newArrayList(variants.keySet());
+  Collections.sort(sorted);
+  return getSubmodelPermutations(baseVar,sorted,variants,0,new HashMap<String,ForgeBlockStateV1.Variant>(),new ArrayList<ForgeBlockStateV1.Variant>());
+}

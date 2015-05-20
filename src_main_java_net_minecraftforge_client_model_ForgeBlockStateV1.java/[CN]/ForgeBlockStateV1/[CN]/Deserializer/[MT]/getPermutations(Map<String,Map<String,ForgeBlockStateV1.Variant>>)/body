@@ -1,0 +1,5 @@
+{
+  List<String> sorted=Lists.newArrayList(base.keySet());
+  Collections.sort(sorted);
+  return getPermutations(sorted,base,0,"",HashMultimap.<String,ForgeBlockStateV1.Variant>create(),null);
+}

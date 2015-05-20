@@ -1,0 +1,3 @@
+IModel base
+ImmutableMap<String,String> textureMap
+ImmutableMap<String,String> customData

@@ -1,0 +1,12 @@
+{
+  if (depth == sorted.size()) {
+    ret.put(prefix,parent);
+    return ret;
+  }
+  String name=sorted.get(depth);
+  for (  Entry<String,ForgeBlockStateV1.Variant> e : base.get(name).entrySet()) {
+    ForgeBlockStateV1.Variant newHead=parent == null ? new Variant(e.getValue()) : new Variant(parent).sync(e.getValue());
+    getPermutations(sorted,base,depth + 1,prefix + (depth == 0 ? "" : ",") + name+ "="+ e.getKey(),ret,newHead);
+  }
+  return ret;
+}

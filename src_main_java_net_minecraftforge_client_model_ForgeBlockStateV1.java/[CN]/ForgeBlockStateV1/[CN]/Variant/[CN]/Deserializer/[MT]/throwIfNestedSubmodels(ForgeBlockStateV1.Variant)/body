@@ -1,0 +1,3 @@
+{
+  if (submodel.submodels.size() > 0)   throw new UnsupportedOperationException("Forge BlockStateLoader V1 does not support nested submodels.");
+}

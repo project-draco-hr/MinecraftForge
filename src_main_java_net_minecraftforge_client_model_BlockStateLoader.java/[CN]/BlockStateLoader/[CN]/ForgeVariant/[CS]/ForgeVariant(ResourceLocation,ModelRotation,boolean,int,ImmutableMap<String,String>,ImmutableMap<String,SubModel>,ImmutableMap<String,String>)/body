@@ -1,0 +1,6 @@
+{
+  super(model == null ? new ResourceLocation("builtin/missing") : model,rotation,uvLock,weight);
+  this.textures=textures;
+  this.parts=parts;
+  this.customData=customData;
+}

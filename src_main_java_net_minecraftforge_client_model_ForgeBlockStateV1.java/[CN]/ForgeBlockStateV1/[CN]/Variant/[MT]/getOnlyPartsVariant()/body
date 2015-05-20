@@ -1,0 +1,16 @@
+{
+  if (submodels.size() > 0) {
+    ImmutableMap.Builder<String,SubModel> builder=ImmutableMap.builder();
+    for (    Entry<String,List<ForgeBlockStateV1.Variant>> entry : submodels.entrySet()) {
+      List<ForgeBlockStateV1.Variant> part=entry.getValue();
+      if (part != null) {
+        if (part.size() == 1)         builder.put(entry.getKey(),part.get(0).asGenericSubModel());
+ else         throw new RuntimeException("Something attempted to get the list of submodels " + "for a variant with model \"" + model + "\", when this variant "+ "contains multiple variants for submodel "+ entry.getKey());
+      }
+    }
+    return builder.build();
+  }
+ else {
+    return ImmutableMap.of();
+  }
+}

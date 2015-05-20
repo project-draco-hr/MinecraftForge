@@ -1,0 +1,2 @@
+Map<String,List<ForgeBlockStateV1.Variant>> output
+Map<String,List<ForgeBlockStateV1.Variant>> input

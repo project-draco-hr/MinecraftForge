@@ -1,0 +1,5 @@
+{
+  this.base=base;
+  this.baseState=baseState;
+  this.parts=parts;
+}
