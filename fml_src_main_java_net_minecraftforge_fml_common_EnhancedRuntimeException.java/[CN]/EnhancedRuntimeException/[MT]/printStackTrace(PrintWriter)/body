@@ -1,6 +1,6 @@
 {
   printStackTrace(new WrappedPrintStream(){
-    @Override void println(    String line){
+    @Override public void println(    String line){
       s.println(line);
     }
   }
