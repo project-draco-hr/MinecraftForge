@@ -1,0 +1,19 @@
+{
+  File configFile=new File(Minecraft.getMinecraft().mcDataDir,"config/splash.properties");
+  FileReader r=null;
+  enabled=false;
+  config.setProperty("enabled","false");
+  FileWriter w=null;
+  try {
+    w=new FileWriter(configFile);
+    config.store(w,"Splash screen properties");
+  }
+ catch (  IOException e) {
+    FMLLog.log(Level.ERROR,e,"Could not save the splash.properties file");
+    return false;
+  }
+ finally {
+    IOUtils.closeQuietly(w);
+  }
+  return true;
+}

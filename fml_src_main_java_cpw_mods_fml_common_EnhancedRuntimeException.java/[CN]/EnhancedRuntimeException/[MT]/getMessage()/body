@@ -6,7 +6,7 @@
     if (msg != null)     buf.append(msg);
     buf.append('\n');
     this.printStackTrace(new WrappedPrintStream(){
-      @Override void println(      String line){
+      @Override public void println(      String line){
         buf.append(line).append('\n');
       }
     }
