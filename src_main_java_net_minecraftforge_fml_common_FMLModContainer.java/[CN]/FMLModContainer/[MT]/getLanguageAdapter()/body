@@ -1,3 +1,12 @@
 {
+  if (languageAdapter == null) {
+    try {
+      languageAdapter=(ILanguageAdapter)Class.forName((String)descriptor.get("modLanguageAdapter"),true,Loader.instance().getModClassLoader()).newInstance();
+    }
+ catch (    Exception ex) {
+      FMLLog.log(Level.ERROR,ex,"Error constructing custom mod language adapter referenced by %s (modid: %s)",this.className,getModId());
+      throw new RuntimeException(ex);
+    }
+  }
   return languageAdapter;
 }

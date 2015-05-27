@@ -10,13 +10,7 @@
     this.languageAdapter="scala".equals(modLanguage) ? new ILanguageAdapter.ScalaAdapter() : new ILanguageAdapter.JavaAdapter();
   }
  else {
-    try {
-      this.languageAdapter=(ILanguageAdapter)Class.forName(languageAdapterType,true,Loader.instance().getModClassLoader()).newInstance();
-      FMLLog.finer("Using custom language adapter %s (type %s) for %s (modid %s)",this.languageAdapter,languageAdapterType,this.className,getModId());
-    }
- catch (    Exception ex) {
-      FMLLog.log(Level.ERROR,ex,"Error constructing custom mod language adapter %s (referenced by %s) (modid: %s)",languageAdapterType,this.className,getModId());
-      throw new LoaderException(ex);
-    }
+    this.languageAdapter=null;
+    FMLLog.finer("Using custom language adapter %s for %s (modid: %s)",languageAdapterType,this.className,getModId());
   }
 }
