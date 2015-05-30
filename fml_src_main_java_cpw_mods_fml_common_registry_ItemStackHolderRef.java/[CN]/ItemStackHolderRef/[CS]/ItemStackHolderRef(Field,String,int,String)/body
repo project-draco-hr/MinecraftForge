@@ -1,0 +1,7 @@
+{
+  this.field=field;
+  this.itemName=itemName;
+  this.meta=meta;
+  this.serializednbt=serializednbt;
+  makeWritable(field);
+}
