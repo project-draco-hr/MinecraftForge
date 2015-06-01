@@ -6,6 +6,6 @@
   if (fluid == null && ck.fluid != null)   return false;
   if (fluid != null && ck.fluid == null)   return false;
   if (fluid == null && ck.fluid == null)   return true;
-  if (fluid.fluidID != ck.fluid.fluidID)   return false;
+  if (fluid.getFluid() != ck.fluid.getFluid())   return false;
   return true;
 }

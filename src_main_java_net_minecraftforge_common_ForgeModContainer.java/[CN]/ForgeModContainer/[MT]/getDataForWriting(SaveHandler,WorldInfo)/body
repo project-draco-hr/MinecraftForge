@@ -2,5 +2,6 @@
   NBTTagCompound forgeData=new NBTTagCompound();
   NBTTagCompound dimData=DimensionManager.saveDimensionDataMap();
   forgeData.setTag("DimensionData",dimData);
+  FluidRegistry.writeDefaultFluidList(forgeData);
   return forgeData;
 }

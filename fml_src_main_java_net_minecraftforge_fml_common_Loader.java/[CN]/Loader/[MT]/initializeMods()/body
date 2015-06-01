@@ -4,6 +4,7 @@
   progressBar.step("Initializing mods Phase 3");
   modController.transition(LoaderState.POSTINITIALIZATION,false);
   modController.distributeStateMessage(FMLInterModComms.IMCEvent.class);
+  ItemStackHolderInjector.INSTANCE.inject();
   modController.distributeStateMessage(LoaderState.POSTINITIALIZATION);
   progressBar.step("Finishing up");
   modController.transition(LoaderState.AVAILABLE,false);

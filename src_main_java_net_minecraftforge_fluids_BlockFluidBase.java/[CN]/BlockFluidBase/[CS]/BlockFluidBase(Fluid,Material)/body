@@ -10,6 +10,7 @@
   this.tickRate=fluid.viscosity / 200;
   this.densityDir=fluid.density > 0 ? -1 : 1;
   fluid.setBlock(this);
+  this.definedFluid=fluid;
   displacements.putAll(defaultDisplacements);
   this.setDefaultState(blockState.getBaseState().withProperty(LEVEL,0));
 }

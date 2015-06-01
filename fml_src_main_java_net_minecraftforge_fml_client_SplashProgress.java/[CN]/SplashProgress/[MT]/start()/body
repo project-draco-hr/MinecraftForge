@@ -155,7 +155,9 @@
         glVertex2f(fw,-fh);
         glEnd();
         glDisable(GL_TEXTURE_2D);
+        mutex.acquireUninterruptibly();
         Display.update();
+        mutex.release();
         if (pause) {
           clearGL();
           setGL();

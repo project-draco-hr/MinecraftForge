@@ -1,0 +1,14 @@
+{
+  Set<String> defaults=Sets.newHashSet();
+  if (tag.hasKey("DefaultFluidList",9)) {
+    FMLLog.getLogger().log(Level.DEBUG,"Loading persistent fluid defaults from world");
+    NBTTagList tl=tag.getTagList("DefaultFluidList",8);
+    for (int i=0; i < tl.tagCount(); i++) {
+      defaults.add(tl.getStringTagAt(i));
+    }
+  }
+ else {
+    FMLLog.getLogger().log(Level.DEBUG,"World is missing persistent fluid defaults - using local defaults");
+  }
+  loadFluidDefaults(defaults);
+}

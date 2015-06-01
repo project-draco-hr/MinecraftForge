@@ -2,4 +2,5 @@
   if (shouldSortRecipies) {
     RecipeSorter.sortCraftManager();
   }
+  FluidRegistry.validateFluidRegistry();
 }

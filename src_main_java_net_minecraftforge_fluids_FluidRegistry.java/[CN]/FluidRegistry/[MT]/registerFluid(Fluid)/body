@@ -1,9 +1,14 @@
 {
-  if (fluidIDs.containsKey(fluid.getName())) {
+  masterFluidReference.put(uniqueName(fluid),fluid);
+  delegates.put(fluid,new FluidDelegate(fluid,fluid.getName()));
+  if (fluids.containsKey(fluid.getName())) {
     return false;
   }
   fluids.put(fluid.getName(),fluid);
-  fluidIDs.put(fluid.getName(),++maxID);
+  maxID++;
+  fluidIDs.put(fluid,maxID);
+  fluidNames.put(maxID,fluid.getName());
+  defaultFluidName.put(fluid.getName(),uniqueName(fluid));
   MinecraftForge.EVENT_BUS.post(new FluidRegisterEvent(fluid.getName(),maxID));
   return true;
 }

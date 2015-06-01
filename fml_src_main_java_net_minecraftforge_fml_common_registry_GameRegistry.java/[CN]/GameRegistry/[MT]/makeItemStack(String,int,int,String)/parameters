@@ -1,0 +1,4 @@
+String itemName
+int meta
+int stackSize
+String nbtString

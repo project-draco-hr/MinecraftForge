@@ -1,0 +1,10 @@
+{
+  maxID=newfluidIDs.size();
+  fluidIDs.clear();
+  fluidIDs.putAll(newfluidIDs);
+  fluidNames.clear();
+  for (  Entry<Fluid,Integer> e : fluidIDs.entrySet()) {
+    fluidNames.put(e.getValue(),e.getKey().getName());
+  }
+  loadFluidDefaults(defaultNames);
+}

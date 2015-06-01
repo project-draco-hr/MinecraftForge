@@ -1,0 +1,4 @@
+Field field
+String itemName
+int meta
+String serializednbt

@@ -1,0 +1,6 @@
+{
+  this(fluid,amount);
+  if (nbt != null) {
+    tag=(NBTTagCompound)nbt.copy();
+  }
+}

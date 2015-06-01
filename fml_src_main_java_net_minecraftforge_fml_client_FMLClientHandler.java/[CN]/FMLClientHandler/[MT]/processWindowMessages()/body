@@ -1,5 +1,6 @@
 {
-  if (LWJGLUtil.getPlatform() == LWJGLUtil.PLATFORM_WINDOWS) {
-    Display.processMessages();
-  }
+  if (LWJGLUtil.getPlatform() != LWJGLUtil.PLATFORM_WINDOWS)   return;
+  if (!SplashProgress.mutex.tryAcquire())   return;
+  Display.processMessages();
+  SplashProgress.mutex.release();
 }

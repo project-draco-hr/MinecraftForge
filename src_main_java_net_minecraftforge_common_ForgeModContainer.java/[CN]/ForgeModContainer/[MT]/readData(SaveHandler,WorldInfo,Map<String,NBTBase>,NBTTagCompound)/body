@@ -1,3 +1,4 @@
 {
   DimensionManager.loadDimensionDataMap(tag.hasKey("DimensionData") ? tag.getCompoundTag("DimensionData") : null);
+  FluidRegistry.loadFluidDefaults(tag);
 }

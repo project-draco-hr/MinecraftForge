@@ -28,14 +28,6 @@
   prop.setLanguageKey("forge.configgui.sortRecipies").setRequiresMcRestart(true);
   shouldSortRecipies=prop.getBoolean(shouldSortRecipies);
   propOrder.add(prop.getName());
-  prop=config.get(Configuration.CATEGORY_GENERAL,"forceDuplicateFluidBlockCrash",true);
-  prop.comment="Set this to true to force a crash if more than one block attempts to link back to the same Fluid. Enabled by default.";
-  prop.setLanguageKey("forge.configgui.forceDuplicateFluidBlockCrash").setRequiresMcRestart(true);
-  forceDuplicateFluidBlockCrash=prop.getBoolean(true);
-  propOrder.add(prop.getName());
-  if (!forceDuplicateFluidBlockCrash) {
-    FMLLog.warning("Disabling forced crashes on duplicate Fluid Blocks - USE AT YOUR OWN RISK");
-  }
   prop=config.get(Configuration.CATEGORY_GENERAL,"removeErroringEntities",false);
   prop.comment="Set this to true to remove any Entity that throws an error in its update method instead of closing the server and reporting a crash log. BE WARNED THIS COULD SCREW UP EVERYTHING USE SPARINGLY WE ARE NOT RESPONSIBLE FOR DAMAGES.";
   prop.setLanguageKey("forge.configgui.removeErroringEntities").setRequiresWorldRestart(true);
@@ -76,6 +68,10 @@
   prop=config.get(Configuration.CATEGORY_GENERAL,"defaultSpawnFuzz",20,"The spawn fuzz when a player respawns in the world, this is controlable by WorldType, this config option is for the default overworld.",1,Integer.MAX_VALUE);
   prop.setLanguageKey("forge.configgui.spawnfuzz").setRequiresWorldRestart(false);
   defaultSpawnFuzz=prop.getInt(20);
+  propOrder.add(prop.getName());
+  prop=config.get(Configuration.CATEGORY_GENERAL,"spawnHasFuzz",Boolean.TRUE,"If the overworld has ANY spawn fuzz at all. If not, the spawn will always be the exact same location.");
+  prop.setLanguageKey("forge.configgui.hasspawnfuzz").setRequiresWorldRestart(false);
+  defaultHasSpawnFuzz=prop.getBoolean(Boolean.TRUE);
   propOrder.add(prop.getName());
   config.setCategoryPropertyOrder(CATEGORY_GENERAL,propOrder);
   if (config.hasChanged()) {

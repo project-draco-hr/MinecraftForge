@@ -4,8 +4,10 @@
     return;
   }
   ObjectHolderRegistry.INSTANCE.findObjectHolders(discoverer.getASMTable());
+  ItemStackHolderInjector.INSTANCE.findHolders(discoverer.getASMTable());
   modController.distributeStateMessage(LoaderState.PREINITIALIZATION,discoverer.getASMTable(),canonicalConfigDir);
   ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  ItemStackHolderInjector.INSTANCE.inject();
   modController.transition(LoaderState.INITIALIZATION,false);
   progressBar.step("Initializing Minecraft Engine");
 }

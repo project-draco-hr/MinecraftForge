@@ -1,6 +1,6 @@
 {
-  if (!fluidIDs.containsKey(fluidName)) {
+  if (!fluids.containsKey(fluidName)) {
     return null;
   }
-  return new FluidStack(getFluidID(fluidName),amount);
+  return new FluidStack(getFluid(fluidName),amount);
 }

@@ -1,0 +1,4 @@
+{
+  this.fluid=fluid;
+  this.name=name;
+}
