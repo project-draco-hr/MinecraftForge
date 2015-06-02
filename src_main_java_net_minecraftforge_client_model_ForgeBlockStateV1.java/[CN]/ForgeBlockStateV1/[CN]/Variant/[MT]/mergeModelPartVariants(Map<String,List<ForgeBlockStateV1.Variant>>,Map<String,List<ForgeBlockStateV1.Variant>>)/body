@@ -1,0 +1,15 @@
+{
+  for (  Entry<String,List<ForgeBlockStateV1.Variant>> e : input.entrySet()) {
+    String key=e.getKey();
+    if (!output.containsKey(key)) {
+      List<ForgeBlockStateV1.Variant> variants=e.getValue();
+      if (variants != null) {
+        List<ForgeBlockStateV1.Variant> newVariants=Lists.newArrayListWithCapacity(variants.size());
+        for (        ForgeBlockStateV1.Variant v : variants)         newVariants.add(new Variant(v));
+        output.put(key,newVariants);
+      }
+ else       output.put(key,variants);
+    }
+  }
+  return output;
+}

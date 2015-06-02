@@ -1,0 +1,3 @@
+{
+  return new SubModel(rotation.or(ModelRotation.X0_Y0),uvLock.or(false),getTextures(),model,getCustomData());
+}

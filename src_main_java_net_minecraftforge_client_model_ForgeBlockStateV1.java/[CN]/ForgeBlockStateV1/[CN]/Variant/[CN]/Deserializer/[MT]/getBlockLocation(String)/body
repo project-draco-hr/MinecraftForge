@@ -1,0 +1,4 @@
+{
+  ResourceLocation tmp=new ResourceLocation(location);
+  return new ResourceLocation(tmp.getResourceDomain(),"block/" + tmp.getResourcePath());
+}

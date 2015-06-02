@@ -1,0 +1,6 @@
+{
+  Set<ResourceLocation> deps=Sets.newHashSet();
+  if (base != null)   deps.addAll(base.getDependencies());
+  for (  Pair<IModel,IModelState> pair : parts.values())   deps.addAll(pair.getLeft().getDependencies());
+  return deps;
+}

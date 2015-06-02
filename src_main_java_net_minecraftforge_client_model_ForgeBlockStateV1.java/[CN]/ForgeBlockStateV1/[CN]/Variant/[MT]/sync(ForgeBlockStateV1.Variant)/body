@@ -1,0 +1,17 @@
+{
+  if (!this.modelSet)   this.model=parent.model;
+  if (!this.rotation.isPresent())   this.rotation=parent.rotation;
+  if (!this.uvLock.isPresent())   this.uvLock=parent.uvLock;
+  if (!this.weight.isPresent())   this.weight=parent.weight;
+  for (  Entry<String,String> e : parent.textures.entrySet()) {
+    if (!this.textures.containsKey(e.getKey()))     this.textures.put(e.getKey(),e.getValue());
+  }
+  mergeModelPartVariants(this.submodels,parent.submodels);
+  for (  Entry<String,Object> e : parent.simpleSubmodels.entrySet()) {
+    if (!this.simpleSubmodels.containsKey(e.getKey()))     this.simpleSubmodels.put(e.getKey(),e.getValue());
+  }
+  for (  Entry<String,String> e : parent.customData.entrySet()) {
+    if (!this.customData.containsKey(e.getKey()))     this.customData.put(e.getKey(),e.getValue());
+  }
+  return this;
+}

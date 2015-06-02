@@ -1,0 +1,6 @@
+{
+  StringBuilder buf=new StringBuilder();
+  buf.append("TexturedVariant:");
+  for (  Entry<String,String> e : this.textures.entrySet())   buf.append(" ").append(e.getKey()).append(" = ").append(e.getValue());
+  return buf.toString();
+}

@@ -1,0 +1,86 @@
+{
+  JsonObject json=element.getAsJsonObject();
+  ForgeBlockStateV1 ret=new ForgeBlockStateV1();
+  ret.forge_marker=JsonUtils.getJsonObjectIntegerFieldValue(json,"forge_marker");
+  if (json.has("defaults")) {
+    ret.defaults=context.deserialize(json.get("defaults"),ForgeBlockStateV1.Variant.class);
+    if (ret.defaults.simpleSubmodels.size() > 0)     throw new RuntimeException("\"defaults\" variant cannot contain a simple \"submodel\" definition.");
+  }
+  Map<String,Map<String,ForgeBlockStateV1.Variant>> condensed=Maps.newHashMap();
+  Multimap<String,ForgeBlockStateV1.Variant> specified=HashMultimap.create();
+  for (  Entry<String,JsonElement> e : JsonUtils.getJsonObject(json,"variants").entrySet()) {
+    if (e.getKey().contains("=")) {
+      if (e.getValue().isJsonArray()) {
+        for (        JsonElement a : e.getValue().getAsJsonArray()) {
+          Variant.Deserializer.INSTANCE.simpleSubmodelKey=e.getKey();
+          specified.put(e.getKey(),(ForgeBlockStateV1.Variant)context.deserialize(a,ForgeBlockStateV1.Variant.class));
+        }
+      }
+ else {
+        Variant.Deserializer.INSTANCE.simpleSubmodelKey=e.getKey();
+        specified.put(e.getKey(),(ForgeBlockStateV1.Variant)context.deserialize(e.getValue(),ForgeBlockStateV1.Variant.class));
+      }
+    }
+ else {
+      Map<String,ForgeBlockStateV1.Variant> subs=Maps.newHashMap();
+      condensed.put(e.getKey(),subs);
+      for (      Entry<String,JsonElement> se : e.getValue().getAsJsonObject().entrySet()) {
+        Variant.Deserializer.INSTANCE.simpleSubmodelKey=e.getKey() + "=" + se.getKey();
+        subs.put(se.getKey(),(ForgeBlockStateV1.Variant)context.deserialize(se.getValue(),ForgeBlockStateV1.Variant.class));
+      }
+    }
+  }
+  Multimap<String,ForgeBlockStateV1.Variant> permutations=getPermutations(condensed);
+  for (  Entry<String,Collection<ForgeBlockStateV1.Variant>> e : specified.asMap().entrySet()) {
+    Collection<ForgeBlockStateV1.Variant> baseVars=permutations.get(e.getKey());
+    List<ForgeBlockStateV1.Variant> addVars=Lists.newArrayList();
+    for (    ForgeBlockStateV1.Variant specVar : e.getValue()) {
+      if (!baseVars.isEmpty()) {
+        for (        ForgeBlockStateV1.Variant baseVar : baseVars)         addVars.add(new Variant(specVar).sync(baseVar));
+      }
+ else       addVars.add(specVar);
+    }
+    baseVars.clear();
+    baseVars.addAll(addVars);
+  }
+  for (  Entry<String,ForgeBlockStateV1.Variant> e : permutations.entries()) {
+    ForgeBlockStateV1.Variant v=e.getValue();
+    if (ret.defaults != null) {
+      v.sync(ret.defaults);
+      for (      Entry<String,Object> partKey : v.simpleSubmodels.entrySet()) {
+        if (partKey.getValue() == null)         continue;
+        if (!v.submodels.containsKey(partKey.getKey()))         throw new RuntimeException("This should never happen! Simple submodel is not contained in the submodel map!");
+        List<ForgeBlockStateV1.Variant> partList=v.submodels.get(partKey.getKey());
+        if (partList.size() > 1)         throw new RuntimeException("This should never happen! Simple submodel has multiple variants!");
+        ForgeBlockStateV1.Variant part=partList.get(0);
+        Optional<ModelRotation> rotation=part.rotation;
+        part.sync(v);
+        part.simpleSubmodels.clear();
+        part.rotation=rotation;
+      }
+    }
+    if (v.textures != null) {
+      for (      Entry<String,String> tex : v.textures.entrySet()) {
+        if (tex.getValue() != null && tex.getValue().charAt(0) == '#') {
+          String value=v.textures.get(tex.getValue().substring(1));
+          if (value == null) {
+            FMLLog.severe("Could not resolve texture name \"" + tex.getValue() + "\" for permutation \""+ e.getKey()+ "\"");
+            for (            Entry<String,String> t : v.textures.entrySet())             FMLLog.severe(t.getKey() + "=" + t.getValue());
+            throw new JsonParseException("Could not resolve texture name \"" + tex.getValue() + "\" for permutation \""+ e.getKey()+ "\"");
+          }
+          v.textures.put(tex.getKey(),value);
+        }
+      }
+      for (      List<ForgeBlockStateV1.Variant> part : v.submodels.values()) {
+        for (        ForgeBlockStateV1.Variant partVar : part) {
+          for (          Entry<String,String> texEntry : v.textures.entrySet()) {
+            if (!partVar.textures.containsKey(texEntry.getKey()))             partVar.textures.put(texEntry.getKey(),texEntry.getValue());
+          }
+        }
+      }
+    }
+    if (!v.submodels.isEmpty())     ret.variants.putAll(e.getKey(),getSubmodelPermutations(v,v.submodels));
+ else     ret.variants.put(e.getKey(),v);
+  }
+  return ret;
+}

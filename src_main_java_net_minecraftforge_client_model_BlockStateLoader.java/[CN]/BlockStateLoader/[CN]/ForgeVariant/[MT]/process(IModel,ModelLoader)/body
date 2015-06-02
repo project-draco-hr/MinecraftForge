@@ -1,0 +1,19 @@
+{
+  int size=parts.size();
+  boolean hasBase=base != loader.getMissingModel();
+  if (hasBase) {
+    base=runModelHooks(base,textures,customData);
+    if (size <= 0)     return base;
+  }
+  ModelRotation baseRot=getRotation();
+  ImmutableMap.Builder<String,Pair<IModel,IModelState>> models=ImmutableMap.builder();
+  for (  Entry<String,SubModel> entry : parts.entrySet()) {
+    SubModel part=entry.getValue();
+    Matrix4f matrix=new Matrix4f(baseRot.getMatrix());
+    matrix.mul(part.getRotation().getMatrix());
+    IModelState partState=new TRSRTransformation(matrix);
+    if (part.isUVLock())     partState=new ModelLoader.UVLock(partState);
+    models.put(entry.getKey(),Pair.of(runModelHooks(loader.getModel(part.getModelLocation()),part.getTextures(),part.getCustomData()),partState));
+  }
+  return new MultiModel(hasBase ? base : null,baseRot,models.build());
+}

@@ -1,0 +1,69 @@
+{
+  ForgeBlockStateV1.Variant ret=new Variant();
+  JsonObject json=element.getAsJsonObject();
+  if (json.has("model")) {
+    if (json.get("model").isJsonNull())     ret.model=null;
+ else     ret.model=getBlockLocation(JsonUtils.getJsonObjectStringFieldValue(json,"model"));
+    ret.modelSet=true;
+  }
+  if (json.has("textures")) {
+    for (    Entry<String,JsonElement> e : json.get("textures").getAsJsonObject().entrySet()) {
+      if (e.getValue().isJsonNull())       ret.textures.put(e.getKey(),null);
+ else       ret.textures.put(e.getKey(),e.getValue().getAsString());
+    }
+  }
+  if (json.has("x") || json.has("y")) {
+    int x=JsonUtils.getJsonObjectIntegerFieldValueOrDefault(json,"x",0);
+    int y=JsonUtils.getJsonObjectIntegerFieldValueOrDefault(json,"y",0);
+    ret.rotation=Optional.of(ModelRotation.getModelRotation(x,y));
+    if (ret.rotation == null)     throw new JsonParseException("Invalid BlockModelRotation x: " + x + " y: "+ y);
+  }
+  if (json.has("uvlock")) {
+    ret.uvLock=Optional.of(JsonUtils.getJsonObjectBooleanFieldValue(json,"uvlock"));
+  }
+  if (json.has("weight")) {
+    ret.weight=Optional.of(JsonUtils.getJsonObjectIntegerFieldValue(json,"weight"));
+  }
+  if (json.has("submodel")) {
+    JsonElement submodels=json.get("submodel");
+    if (submodels.isJsonPrimitive()) {
+      if (simpleSubmodelKey == null)       throw new RuntimeException("Attempted to use a simple submodel declaration outside a valid state variant declaration.");
+      String key=simpleSubmodelKey;
+      simpleSubmodelKey=null;
+      ret.model=getBlockLocation(submodels.getAsString());
+      ret.modelSet=true;
+      ForgeBlockStateV1.Variant dummyVar=new Variant();
+      dummyVar.submodels.put(key,Collections.singletonList(ret));
+      dummyVar.simpleSubmodels=Collections.singletonMap(key,Variant.SET_VALUE);
+      return dummyVar;
+    }
+ else {
+      simpleSubmodelKey=null;
+      for (      Entry<String,JsonElement> submodel : submodels.getAsJsonObject().entrySet()) {
+        JsonElement varEl=submodel.getValue();
+        List<ForgeBlockStateV1.Variant> submodelVariants;
+        if (varEl.isJsonArray()) {
+          submodelVariants=Lists.newArrayList();
+          for (          JsonElement e : varEl.getAsJsonArray())           submodelVariants.add((ForgeBlockStateV1.Variant)context.deserialize(e,ForgeBlockStateV1.Variant.class));
+        }
+ else         if (varEl.isJsonNull()) {
+          submodelVariants=null;
+        }
+ else {
+          submodelVariants=Collections.singletonList((ForgeBlockStateV1.Variant)context.deserialize(varEl,ForgeBlockStateV1.Variant.class));
+        }
+        if (submodelVariants != null)         for (        ForgeBlockStateV1.Variant part : submodelVariants)         throwIfNestedSubmodels(part);
+        ret.submodels.put(submodel.getKey(),submodelVariants);
+        ret.simpleSubmodels.put(submodel.getKey(),null);
+      }
+    }
+  }
+  if (json.has("custom")) {
+    for (    Entry<String,JsonElement> e : json.get("custom").getAsJsonObject().entrySet()) {
+      if (e.getValue().isJsonNull())       ret.customData.put(e.getKey(),null);
+ else       ret.customData.put(e.getKey(),e.getValue().toString());
+    }
+  }
+  simpleSubmodelKey=null;
+  return ret;
+}

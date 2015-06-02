@@ -1,0 +1,2 @@
+ForgeBlockStateV1.Variant baseVar
+Map<String,List<ForgeBlockStateV1.Variant>> variants
