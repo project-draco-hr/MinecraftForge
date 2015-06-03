@@ -10,5 +10,5 @@
  else {
     FMLLog.getLogger().log(Level.DEBUG,"World is missing persistent fluid defaults - using local defaults");
   }
-  loadFluidDefaults(defaults);
+  loadFluidDefaults(HashBiMap.create(fluidIDs),defaults);
 }
