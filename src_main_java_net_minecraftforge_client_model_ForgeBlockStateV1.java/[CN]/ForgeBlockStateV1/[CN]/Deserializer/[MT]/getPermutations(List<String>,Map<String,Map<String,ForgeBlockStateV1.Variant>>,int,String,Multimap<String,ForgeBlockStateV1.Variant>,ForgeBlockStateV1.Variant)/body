@@ -1,6 +1,6 @@
 {
   if (depth == sorted.size()) {
-    ret.put(prefix,parent);
+    if (parent != null)     ret.put(prefix,parent);
     return ret;
   }
   String name=sorted.get(depth);
