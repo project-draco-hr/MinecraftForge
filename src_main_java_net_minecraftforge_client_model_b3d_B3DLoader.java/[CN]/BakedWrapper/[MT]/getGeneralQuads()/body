@@ -18,9 +18,10 @@
 );
     for (    Face f : faces) {
       buf.clear();
-      List<Texture> textures=f.getBrush().getTextures();
+      List<Texture> textures=null;
+      if (f.getBrush() != null)       textures=f.getBrush().getTextures();
       TextureAtlasSprite sprite;
-      if (textures.isEmpty())       sprite=this.textures.get("missingno");
+      if (textures == null || textures.isEmpty())       sprite=this.textures.get("missingno");
  else       if (textures.get(0) == B3DModel.Texture.White)       sprite=ModelLoader.White.instance;
  else       sprite=this.textures.get(textures.get(0).getPath());
       putVertexData(f.getV1(),sprite);

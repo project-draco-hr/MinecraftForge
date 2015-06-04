@@ -1,3 +1,0 @@
-{
-  return modelLocation.getResourceDomain().equals("forgedebug") && modelLocation.getResourcePath().contains("dummymodel");
-}

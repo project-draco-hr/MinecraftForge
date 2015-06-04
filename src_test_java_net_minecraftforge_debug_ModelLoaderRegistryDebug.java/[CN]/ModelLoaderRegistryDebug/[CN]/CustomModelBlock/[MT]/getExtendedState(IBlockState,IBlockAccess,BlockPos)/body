@@ -1,6 +1,4 @@
 {
-  IModel model=ModelLoaderRegistry.getModel(new ResourceLocation(MODID.toLowerCase(),"block/untitled2.b3d"));
-  B3DLoader.B3DState defaultState=((B3DLoader.Wrapper)model).getDefaultState();
-  B3DLoader.B3DState newState=new B3DLoader.B3DState(defaultState.getAnimation(),counter);
+  B3DLoader.B3DState newState=new B3DLoader.B3DState(null,counter);
   return ((IExtendedBlockState)this.state.getBaseState()).withProperty(B3DLoader.B3DFrameProperty.instance,newState);
 }

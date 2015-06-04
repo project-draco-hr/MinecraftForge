@@ -1,8 +1,15 @@
 {
   ImmutableMap.Builder<String,TextureAtlasSprite> builder=ImmutableMap.builder();
-  for (  String path : textures.keySet()) {
-    builder.put(path,bakedTextureGetter.apply(textures.get(path)));
+  TextureAtlasSprite missing=bakedTextureGetter.apply(new ResourceLocation("missingno"));
+  for (  Map.Entry<String,ResourceLocation> e : textures.entrySet()) {
+    if (e.getValue().getResourcePath().startsWith("#")) {
+      FMLLog.severe("unresolved texture '%s' for b3d model '%s'",e.getValue().getResourcePath(),location);
+      builder.put(e.getKey(),missing);
+    }
+ else {
+      builder.put(e.getKey(),bakedTextureGetter.apply(e.getValue()));
+    }
   }
-  builder.put("missingno",bakedTextureGetter.apply(new ResourceLocation("missingno")));
+  builder.put("missingno",missing);
   return new BakedWrapper(this,state,format,builder.build());
 }

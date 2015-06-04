@@ -1,0 +1,8 @@
+{
+  ImmutableMap.Builder<String,ResourceLocation> builder=ImmutableMap.builder();
+  for (  Texture t : textures) {
+    String path=t.getPath();
+    builder.put(path,new ResourceLocation(getLocation(path)));
+  }
+  return builder.build();
+}

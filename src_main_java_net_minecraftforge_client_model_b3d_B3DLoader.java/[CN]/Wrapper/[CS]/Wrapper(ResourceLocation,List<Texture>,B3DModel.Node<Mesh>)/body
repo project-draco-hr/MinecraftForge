@@ -1,3 +1,3 @@
 {
-  this(location,buildTextures(location,textures),mesh);
+  this(location,buildTextures(textures),mesh);
 }
