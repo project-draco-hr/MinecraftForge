@@ -1,6 +1,8 @@
 {
+  Object missingModel=modelRegistry.getObject(MODEL_MISSING);
   for (  ModelResourceLocation missing : missingVariants) {
-    if (modelRegistry.getObject(missing) == null) {
+    Object model=modelRegistry.getObject(missing);
+    if (model == null || model == missingModel) {
       FMLLog.severe("Model definition for location %s not found",missing);
     }
   }
