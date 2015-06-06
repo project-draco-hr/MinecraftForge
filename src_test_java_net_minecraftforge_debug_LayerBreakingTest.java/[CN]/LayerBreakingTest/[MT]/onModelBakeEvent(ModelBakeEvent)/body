@@ -1,0 +1,3 @@
+{
+  event.modelRegistry.putObject(new ModelResourceLocation("LayerBreakingTest:LayerBreakingTest"),new SmartModel());
+}

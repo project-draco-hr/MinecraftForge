@@ -1,0 +1,14 @@
+{
+  if (solid == null) {
+    TextureAtlasSprite a=Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(Blocks.stained_glass.getStateFromMeta(3)).getTexture();
+    TextureAtlasSprite b=Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(Blocks.cobblestone.getDefaultState()).getTexture();
+    translucent=new TestBakedModel(a,true);
+    solid=new TestBakedModel(b,false);
+  }
+  if (net.minecraftforge.client.MinecraftForgeClient.getRenderLayer() == EnumWorldBlockLayer.SOLID) {
+    return solid;
+  }
+ else {
+    return translucent;
+  }
+}
