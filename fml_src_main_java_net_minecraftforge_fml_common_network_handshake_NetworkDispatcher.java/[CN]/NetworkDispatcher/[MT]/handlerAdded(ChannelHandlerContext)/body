@@ -1,4 +1,9 @@
 {
+  if (this.state != null) {
+    FMLLog.getLogger().log(Level.INFO,"Opening channel which already seems to have a state set. This is a vanilla connection. Handshake handler will stop now");
+    return;
+  }
+  FMLLog.getLogger().log(Level.TRACE,"Handshake channel activating");
   this.state=ConnectionState.OPENING;
   this.handshakeChannel.pipeline().fireUserEventTriggered(this);
   this.manager.channel().config().setAutoRead(true);

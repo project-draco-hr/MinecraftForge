@@ -1,6 +1,10 @@
 {
   if (state == ConnectionState.AWAITING_HANDSHAKE) {
-    state=ConnectionState.HANDSHAKING;
+synchronized (this) {
+      if (state == ConnectionState.AWAITING_HANDSHAKE) {
+        state=ConnectionState.HANDSHAKING;
+      }
+    }
   }
   String channelName=msg.getChannelName();
   if ("FML|HS".equals(channelName) || "REGISTER".equals(channelName) || "UNREGISTER".equals(channelName)) {
