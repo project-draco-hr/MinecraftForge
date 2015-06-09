@@ -1,0 +1,5 @@
+{
+  super(entity);
+  this.attackingPlayer=attackingPlayer;
+  this.originalExperiencePoints=this.droppedExperiencePoints=originalExperience;
+}

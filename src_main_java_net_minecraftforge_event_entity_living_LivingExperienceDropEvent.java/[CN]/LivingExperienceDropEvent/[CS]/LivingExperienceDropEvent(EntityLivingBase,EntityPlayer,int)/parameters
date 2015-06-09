@@ -1,0 +1,3 @@
+EntityLivingBase entity
+EntityPlayer attackingPlayer
+int originalExperience
