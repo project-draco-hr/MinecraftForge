@@ -9,7 +9,7 @@
   neweModel.parent=this.model.parent;
   Set<String> removed=Sets.newHashSet();
   for (  Entry<String,String> e : textures.entrySet()) {
-    if (e.getValue() == null) {
+    if ("".equals(e.getValue())) {
       removed.add(e.getKey());
       neweModel.textures.remove(e.getKey());
     }
