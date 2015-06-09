@@ -1,0 +1,3 @@
+{
+  return OreDictionary.itemMatches(this.input,stack,false);
+}

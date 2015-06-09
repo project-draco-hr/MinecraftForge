@@ -1,0 +1,3 @@
+{
+  return getOutput(input,ingredient) != null;
+}

@@ -1,0 +1,9 @@
+{
+  if (stack == null || stack.stackSize <= 0)   return false;
+  for (  IBrewingRecipe recipe : recipes) {
+    if (recipe.isIngredient(stack)) {
+      return true;
+    }
+  }
+  return false;
+}

@@ -1,0 +1,3 @@
+{
+  return stack.getItem() instanceof ItemPotion || stack.getItem() == Items.glass_bottle;
+}

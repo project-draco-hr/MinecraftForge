@@ -1,0 +1,3 @@
+{
+  return addRecipe(new BrewingRecipe(input,ingredient,output));
+}
