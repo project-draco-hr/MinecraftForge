@@ -2,6 +2,7 @@
   if (defaultNames.isEmpty()) {
     defaultNames.addAll(defaultFluidName.values());
   }
+  BiMap<String,Fluid> localFluids=HashBiMap.create(fluids);
   for (  String defaultName : defaultNames) {
     Fluid fluid=masterFluidReference.get(defaultName);
     if (fluid == null) {
@@ -15,10 +16,17 @@
       FMLLog.getLogger().log(Level.ERROR,"The fluid {} specified as default is not present - it will be reverted to default {}",defaultName,localDefault);
     }
     FMLLog.getLogger().log(Level.DEBUG,"The fluid {} has been selected as the default fluid for {}",defaultName,fluid.getName());
-    Fluid oldFluid=fluids.put(fluid.getName(),fluid);
-    Integer id=fluidIDs.remove(oldFluid);
-    fluidIDs.put(fluid,id);
+    Fluid oldFluid=localFluids.put(fluid.getName(),fluid);
+    Integer id=localFluidIDs.remove(oldFluid);
+    localFluidIDs.put(fluid,id);
   }
+  BiMap<Integer,String> localFluidNames=fluidNames;
+  for (  Entry<Fluid,Integer> e : localFluidIDs.entrySet()) {
+    localFluidNames.put(e.getValue(),e.getKey().getName());
+  }
+  fluidIDs=localFluidIDs;
+  fluids=localFluids;
+  fluidNames=localFluidNames;
   fluidBlocks=null;
   for (  FluidDelegate fd : delegates.values()) {
     fd.rebind();

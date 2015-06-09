@@ -1,0 +1,2 @@
+BiMap<Fluid,Integer> localFluidIDs
+Set<String> defaultNames
