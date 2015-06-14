@@ -35,6 +35,6 @@
     thing=activeSubstitutions.get(name);
   }
   addObjectRaw(idToUse,new ResourceLocation(name),thing);
-  FMLLog.finer("Registry add: %s %d %s (req. id %d)",name,idToUse,thing,id);
+  if (DEBUG)   FMLLog.finer("Registry add: %s %d %s (req. id %d)",name,idToUse,thing,id);
   return idToUse;
 }

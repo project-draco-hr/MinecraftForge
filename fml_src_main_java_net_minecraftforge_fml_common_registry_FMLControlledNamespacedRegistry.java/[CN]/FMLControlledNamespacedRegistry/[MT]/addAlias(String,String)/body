@@ -1,4 +1,4 @@
 {
   aliases.put(from,to);
-  FMLLog.finer("Registry alias: %s -> %s",from,to);
+  if (DEBUG)   FMLLog.finer("Registry alias: %s -> %s",from,to);
 }
