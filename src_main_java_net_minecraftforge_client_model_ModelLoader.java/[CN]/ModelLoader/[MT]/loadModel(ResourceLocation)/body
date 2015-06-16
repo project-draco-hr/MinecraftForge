@@ -1,11 +1,3 @@
 {
-  try {
-    return loader.new VanillaModelWrapper(modelLocation,loader.loadModel(modelLocation));
-  }
- catch (  IOException e) {
-    if (loader.isLoading) {
-    }
- else     FMLLog.log(Level.ERROR,e,"Exception loading model %s with vanilla loader, skipping",modelLocation);
-    return loader.getMissingModel();
-  }
+  return loader.new VanillaModelWrapper(modelLocation,loader.loadModel(modelLocation));
 }

@@ -1,0 +1,29 @@
+{
+  this.variants=variants.getVariants();
+  ImmutableMap.Builder<IModelPart,TRSRTransformation> builder=ImmutableMap.builder();
+  for (  Variant v : (List<Variant>)variants.getVariants()) {
+    ResourceLocation loc=v.getModelLocation();
+    locations.add(loc);
+    IModel model=null;
+    try {
+      model=getModel(loc);
+    }
+ catch (    Exception e) {
+      FMLLog.warning("Unable to load block model: \'" + loc + "\' for variant: \'"+ parent+ "\': "+ e.toString());
+      model=getMissingModel();
+    }
+    if (v instanceof ISmartVariant) {
+      model=((ISmartVariant)v).process(model,ModelLoader.this);
+      textures.addAll(model.getTextures());
+    }
+    model=new WeightedPartWrapper(model);
+    models.add(model);
+    builder.put(model,new TRSRTransformation(v.getRotation()));
+  }
+  if (models.size() == 0) {
+    IModel missing=getMissingModel();
+    models.add(missing);
+    builder.put(missing,new TRSRTransformation(ModelRotation.X0_Y0));
+  }
+  defaultState=new MapModelState(builder.build());
+}

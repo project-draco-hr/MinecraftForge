@@ -8,7 +8,7 @@
   }
   if (variants != null && !variants.getVariants().isEmpty()) {
     try {
-      stateModels.put(location,new WeightedRandomModel(variants));
+      stateModels.put(location,new WeightedRandomModel(location,variants));
     }
  catch (    Throwable e) {
       throw new RuntimeException(e);

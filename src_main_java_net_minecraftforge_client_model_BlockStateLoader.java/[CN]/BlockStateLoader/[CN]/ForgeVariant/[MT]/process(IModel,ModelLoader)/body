@@ -13,7 +13,15 @@
     matrix.mul(part.getRotation().getMatrix());
     IModelState partState=new TRSRTransformation(matrix);
     if (part.isUVLock())     partState=new ModelLoader.UVLock(partState);
-    models.put(entry.getKey(),Pair.of(runModelHooks(loader.getModel(part.getModelLocation()),part.getTextures(),part.getCustomData()),partState));
+    IModel model=null;
+    try {
+      model=loader.getModel(part.getModelLocation());
+    }
+ catch (    IOException e) {
+      FMLLog.warning("Unable to load block sub-model: \'" + part.getModelLocation() + "\': "+ e.toString());
+      model=loader.getMissingModel();
+    }
+    models.put(entry.getKey(),Pair.of(runModelHooks(model,part.getTextures(),part.getCustomData()),partState));
   }
   return new MultiModel(hasBase ? base : null,baseRot,models.build());
 }

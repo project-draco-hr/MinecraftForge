@@ -24,12 +24,17 @@
     FMLLog.severe("no suitable loader found for the model %s, skipping",location);
     model=getMissingModel();
   }
- else   try {
-    model=accepted.loadModel(actual);
-  }
- catch (  Exception e) {
-    FMLLog.log(Level.ERROR,e,"Exception loading model %s with loader %s, skipping",location,accepted);
-    model=getMissingModel();
+ else {
+    try {
+      model=accepted.loadModel(actual);
+    }
+ catch (    IOException e) {
+      throw e;
+    }
+catch (    Exception e) {
+      FMLLog.log(Level.ERROR,e,"Exception loading model %s with loader %s, skipping",location,accepted);
+      model=getMissingModel();
+    }
   }
   cache.put(location,model);
   return model;

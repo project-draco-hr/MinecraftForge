@@ -4,12 +4,19 @@
     for (    String s : (List<String>)getVariantNames(item)) {
       ResourceLocation file=getItemLocation(s);
       ModelResourceLocation memory=new ModelResourceLocation(s,"inventory");
-      IModel model=getModel(file);
-      if (model == null || model == getMissingModel()) {
-        FMLLog.fine("Item json isn't found for '" + memory + "', trying to load the variant from the blockstate json");
-        registerVariant(getModelBlockDefinition(memory),memory);
+      IModel model=null;
+      try {
+        model=getModel(file);
       }
- else       stateModels.put(memory,model);
+ catch (      IOException e) {
+      }
+ finally {
+        if (model == null || model == getMissingModel()) {
+          FMLLog.fine("Item json isn't found for '" + memory + "', trying to load the variant from the blockstate json");
+          registerVariant(getModelBlockDefinition(memory),memory);
+        }
+ else         stateModels.put(memory,model);
+      }
     }
   }
 }

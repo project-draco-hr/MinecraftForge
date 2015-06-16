@@ -2,8 +2,13 @@
   isLoading=true;
   loadBlocks();
   loadItems();
-  IModel missing=getModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath()));
-  stateModels.put(MODEL_MISSING,missing);
+  try {
+    missingModel=getModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath()));
+  }
+ catch (  IOException e) {
+    Throwables.propagate(e);
+  }
+  stateModels.put(MODEL_MISSING,missingModel);
   textures.remove(TextureMap.LOCATION_MISSING_TEXTURE);
   textures.addAll(LOCATIONS_BUILTIN_TEXTURES);
   textureMap.loadSprites(resourceManager,new IIconCreator(){
@@ -16,7 +21,7 @@
 );
   sprites.put(new ResourceLocation("missingno"),textureMap.getMissingSprite());
   Function<ResourceLocation,TextureAtlasSprite> textureGetter=Functions.forMap(sprites,textureMap.getMissingSprite());
-  IFlexibleBakedModel missingBaked=missing.bake(missing.getDefaultState(),Attributes.DEFAULT_BAKED_FORMAT,textureGetter);
+  IFlexibleBakedModel missingBaked=missingModel.bake(missingModel.getDefaultState(),Attributes.DEFAULT_BAKED_FORMAT,textureGetter);
   for (  Entry<ModelResourceLocation,IModel> e : stateModels.entrySet()) {
     if (e.getValue() == getMissingModel()) {
       bakedRegistry.putObject(e.getKey(),missingBaked);

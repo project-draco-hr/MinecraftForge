@@ -1,17 +1,3 @@
 {
-  this.variants=variants.getVariants();
-  ImmutableMap.Builder<IModelPart,TRSRTransformation> builder=ImmutableMap.builder();
-  for (  Variant v : (List<Variant>)variants.getVariants()) {
-    ResourceLocation loc=v.getModelLocation();
-    locations.add(loc);
-    IModel model=getModel(loc);
-    if (v instanceof ISmartVariant) {
-      model=((ISmartVariant)v).process(model,ModelLoader.this);
-      textures.addAll(model.getTextures());
-    }
-    model=new WeightedPartWrapper(model);
-    models.add(model);
-    builder.put(model,new TRSRTransformation(v.getRotation()));
-  }
-  defaultState=new MapModelState(builder.build());
+  this(null,variants);
 }

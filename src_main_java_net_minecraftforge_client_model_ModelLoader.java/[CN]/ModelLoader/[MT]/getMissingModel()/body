@@ -1,3 +1,11 @@
 {
-  return getModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath()));
+  if (missingModel == null) {
+    try {
+      missingModel=getModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath()));
+    }
+ catch (    IOException e) {
+      Throwables.propagate(e);
+    }
+  }
+  return missingModel;
 }
