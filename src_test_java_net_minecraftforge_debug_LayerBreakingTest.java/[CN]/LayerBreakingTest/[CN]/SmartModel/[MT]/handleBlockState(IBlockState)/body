@@ -1,9 +1,8 @@
 {
   if (solid == null) {
-    TextureAtlasSprite a=Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(Blocks.stained_glass.getStateFromMeta(3)).getTexture();
-    TextureAtlasSprite b=Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(Blocks.cobblestone.getDefaultState()).getTexture();
-    translucent=new TestBakedModel(a,true);
-    solid=new TestBakedModel(b,false);
+    BlockModelShapes models=Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes();
+    translucent=new TestBakedModel(models.getModelForState(Blocks.stained_glass.getStateFromMeta(3)).getTexture(),true);
+    solid=new TestBakedModel(models.getModelForState(Blocks.cobblestone.getDefaultState()).getTexture(),false);
   }
   if (net.minecraftforge.client.MinecraftForgeClient.getRenderLayer() == EnumWorldBlockLayer.SOLID) {
     return solid;
