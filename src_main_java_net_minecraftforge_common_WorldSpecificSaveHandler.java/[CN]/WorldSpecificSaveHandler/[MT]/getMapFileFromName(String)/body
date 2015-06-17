@@ -4,7 +4,7 @@
     dataDir.mkdirs();
   }
   File file=new File(dataDir,name + ".dat");
-  if (!file.exists() && name.equalsIgnoreCase("FORTRESS")) {
+  if (!file.exists() && name.equalsIgnoreCase("FORTRESS") && world.provider.getDimensionId() == -1) {
     File parentFile=parent.getMapFileFromName(name);
     if (parentFile.exists()) {
       try {
