@@ -13,10 +13,10 @@
       }
       B3DModel.Parser parser=new B3DModel.Parser(resource.getInputStream());
       B3DModel model=parser.parse();
-      cache.put(modelLocation,model);
+      cache.put(file,model);
     }
  catch (    IOException e) {
-      cache.put(modelLocation,null);
+      cache.put(file,null);
       throw e;
     }
   }
