@@ -83,10 +83,10 @@
     this.drawGradientRect(this.left,this.top,this.right,this.bottom,-1072689136,-804253680);
   }
  else {
-    GL11.glDisable(GL11.GL_LIGHTING);
-    GL11.glDisable(GL11.GL_FOG);
+    GlStateManager.disableLighting();
+    GlStateManager.disableFog();
     this.client.renderEngine.bindTexture(Gui.optionsBackground);
-    GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
+    GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
     float var17=32.0F;
     worldr.startDrawingQuads();
     worldr.setColorOpaque_I(2105376);
@@ -108,8 +108,8 @@
       if (this.field_25123_p && this.isSelected(var11)) {
         var14=boxLeft;
         int var15=boxRight;
-        GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
-        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
+        GlStateManager.disableTexture2D();
         worldr.startDrawingQuads();
         worldr.setColorOpaque_I(8421504);
         worldr.addVertexWithUV((double)var14,(double)(var19 + var13 + 2),0.0D,0.0D,1.0D);
@@ -122,26 +122,26 @@
         worldr.addVertexWithUV((double)(var15 - 1),(double)(var19 - 1),0.0D,1.0D,0.0D);
         worldr.addVertexWithUV((double)(var14 + 1),(double)(var19 - 1),0.0D,0.0D,0.0D);
         tess.draw();
-        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        GlStateManager.enableTexture2D();
       }
       this.drawSlot(var11,boxRight,var19,var13,tess);
     }
   }
-  GL11.glDisable(GL11.GL_DEPTH_TEST);
-  byte var20=4;
+  GlStateManager.disableDepth();
+  byte border=4;
   if (this.client.theWorld == null) {
     this.overlayBackground(0,this.top,255,255);
     this.overlayBackground(this.bottom,this.listHeight,255,255);
   }
-  GL11.glEnable(GL11.GL_BLEND);
-  GL11.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
-  GL11.glDisable(GL11.GL_ALPHA_TEST);
-  GL11.glShadeModel(GL11.GL_SMOOTH);
-  GL11.glDisable(GL11.GL_TEXTURE_2D);
+  GlStateManager.enableBlend();
+  GlStateManager.blendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
+  GlStateManager.disableAlpha();
+  GlStateManager.shadeModel(GL11.GL_SMOOTH);
+  GlStateManager.disableTexture2D();
   worldr.startDrawingQuads();
   worldr.setColorRGBA_I(0,0);
-  worldr.addVertexWithUV((double)this.left,(double)(this.top + var20),0.0D,0.0D,1.0D);
-  worldr.addVertexWithUV((double)this.right,(double)(this.top + var20),0.0D,1.0D,1.0D);
+  worldr.addVertexWithUV((double)this.left,(double)(this.top + border),0.0D,0.0D,1.0D);
+  worldr.addVertexWithUV((double)this.right,(double)(this.top + border),0.0D,1.0D,1.0D);
   worldr.setColorRGBA_I(0,255);
   worldr.addVertexWithUV((double)this.right,(double)this.top,0.0D,1.0D,0.0D);
   worldr.addVertexWithUV((double)this.left,(double)this.top,0.0D,0.0D,0.0D);
@@ -151,8 +151,8 @@
   worldr.addVertexWithUV((double)this.left,(double)this.bottom,0.0D,0.0D,1.0D);
   worldr.addVertexWithUV((double)this.right,(double)this.bottom,0.0D,1.0D,1.0D);
   worldr.setColorRGBA_I(0,0);
-  worldr.addVertexWithUV((double)this.right,(double)(this.bottom - var20),0.0D,1.0D,0.0D);
-  worldr.addVertexWithUV((double)this.left,(double)(this.bottom - var20),0.0D,0.0D,0.0D);
+  worldr.addVertexWithUV((double)this.right,(double)(this.bottom - border),0.0D,1.0D,0.0D);
+  worldr.addVertexWithUV((double)this.left,(double)(this.bottom - border),0.0D,0.0D,0.0D);
   tess.draw();
   var19=this.getContentHeight() - (this.bottom - this.top - 4);
   if (var19 > 0) {
@@ -190,8 +190,8 @@
     tess.draw();
   }
   this.func_27257_b(mouseX,mouseY);
-  GL11.glEnable(GL11.GL_TEXTURE_2D);
-  GL11.glShadeModel(GL11.GL_FLAT);
-  GL11.glEnable(GL11.GL_ALPHA_TEST);
-  GL11.glDisable(GL11.GL_BLEND);
+  GlStateManager.enableTexture2D();
+  GlStateManager.shadeModel(GL11.GL_FLAT);
+  GlStateManager.enableAlpha();
+  GlStateManager.disableBlend();
 }

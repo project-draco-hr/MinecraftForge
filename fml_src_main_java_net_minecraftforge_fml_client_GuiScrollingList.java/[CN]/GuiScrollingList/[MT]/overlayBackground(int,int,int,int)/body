@@ -2,7 +2,7 @@
   Tessellator var5=Tessellator.getInstance();
   WorldRenderer worldr=var5.getWorldRenderer();
   this.client.renderEngine.bindTexture(Gui.optionsBackground);
-  GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
+  GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
   float var6=32.0F;
   worldr.startDrawingQuads();
   worldr.setColorRGBA_I(4210752,p_22239_4_);
