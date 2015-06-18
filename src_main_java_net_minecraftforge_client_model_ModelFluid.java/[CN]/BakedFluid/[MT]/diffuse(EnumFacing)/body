@@ -1,0 +1,13 @@
+{
+switch (side) {
+case DOWN:
+    return .5f;
+case UP:
+  return 1f;
+case NORTH:
+case SOUTH:
+return .8f;
+default :
+return .6f;
+}
+}

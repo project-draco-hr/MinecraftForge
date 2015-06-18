@@ -1,0 +1,3 @@
+{
+  super(name,new ResourceLocation("blocks/water_still"),new ResourceLocation("blocks/water_flow"));
+}

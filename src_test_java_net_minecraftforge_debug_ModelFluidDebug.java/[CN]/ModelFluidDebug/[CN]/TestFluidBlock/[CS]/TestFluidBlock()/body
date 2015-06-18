@@ -1,0 +1,5 @@
+{
+  super(TestFluid.instance,Material.water);
+  setCreativeTab(CreativeTabs.tabBlock);
+  setUnlocalizedName(MODID + ":" + name);
+}

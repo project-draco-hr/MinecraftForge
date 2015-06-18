@@ -1,0 +1,6 @@
+{
+  this.fluidName=fluidName.toLowerCase(Locale.ENGLISH);
+  this.unlocalizedName=fluidName;
+  this.still=still;
+  this.flowing=flowing;
+}

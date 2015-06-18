@@ -1,3 +1,0 @@
-{
-  ModelLoaderRegistry.registerLoader(this);
-}
