@@ -1,5 +1,5 @@
 {
-  if (ingredient != null && input != null && input.getItem() instanceof ItemPotion) {
+  if (ingredient != null && input != null && input.getItem() instanceof ItemPotion && isIngredient(ingredient)) {
     int inputMeta=input.getMetadata();
     int outputMeta=PotionHelper.applyIngredient(inputMeta,ingredient.getItem().getPotionEffect(ingredient));
     if (inputMeta == outputMeta) {
