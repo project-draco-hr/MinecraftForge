@@ -1,0 +1,5 @@
+{
+  super(TestGas.instance,Material.lava);
+  setCreativeTab(CreativeTabs.tabBlock);
+  setUnlocalizedName(MODID + ":" + name);
+}

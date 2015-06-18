@@ -1,0 +1,6 @@
+{
+  FluidRegistry.registerFluid(TestFluid.instance);
+  FluidRegistry.registerFluid(TestGas.instance);
+  GameRegistry.registerBlock(TestFluidBlock.instance,TestFluidBlock.name);
+  GameRegistry.registerBlock(TestGasBlock.instance,TestGasBlock.name);
+}

@@ -1,0 +1,83 @@
+{
+  this.transformation=transformation;
+  this.format=format;
+  this.color=color;
+  this.still=still;
+  this.flowing=flowing;
+  this.gas=gas;
+  this.state=stateOption;
+  ByteBuffer buf=BufferUtils.createByteBuffer(4 * format.getNextOffset());
+  int[] data;
+  faceQuads=Maps.newEnumMap(EnumFacing.class);
+  for (  EnumFacing side : EnumFacing.values()) {
+    faceQuads.put(side,ImmutableList.<BakedQuad>of());
+  }
+  if (state.isPresent()) {
+    IExtendedBlockState state=this.state.get();
+    float[] y=new float[4];
+    for (int i=0; i < 4; i++) {
+      if (gas) {
+        y[i]=1 - state.getValue(BlockFluidBase.LEVEL_CORNERS[i]);
+      }
+ else {
+        y[i]=state.getValue(BlockFluidBase.LEVEL_CORNERS[i]);
+      }
+    }
+    float flow=state.getValue(BlockFluidBase.FLOW_DIRECTION);
+    TextureAtlasSprite topSprite=flowing;
+    float scale=4;
+    if (flow < -999F) {
+      flow=0;
+      scale=8;
+      topSprite=still;
+    }
+    float c=MathHelper.cos(flow) * scale;
+    float s=MathHelper.sin(flow) * scale;
+    EnumFacing side=gas ? EnumFacing.DOWN : EnumFacing.UP;
+    buf.clear();
+    for (int i=gas ? 3 : 0; i != (gas ? -1 : 4); i+=(gas ? -1 : 1)) {
+      putVertex(buf,side,x[i],y[i],z[i],topSprite.getInterpolatedU(8 + c * (x[i] * 2 - 1) + s * (z[i] * 2 - 1)),topSprite.getInterpolatedV(8 + c * (x[(i + 1) % 4] * 2 - 1) + s * (z[(i + 1) % 4] * 2 - 1)));
+    }
+    buf.flip();
+    data=new int[4 * format.getNextOffset() / 4];
+    buf.asIntBuffer().get(data);
+    faceQuads.put(side,ImmutableList.<BakedQuad>of(new IColoredBakedQuad.ColoredBakedQuad(data,-1,side)));
+    side=side.getOpposite();
+    buf.clear();
+    for (int i=gas ? 3 : 0; i != (gas ? -1 : 4); i+=(gas ? -1 : 1)) {
+      putVertex(buf,side,z[i],gas ? 1 : 0,x[i],still.getInterpolatedU(z[i] * 16),still.getInterpolatedV(x[i] * 16));
+    }
+    buf.flip();
+    data=new int[4 * format.getNextOffset() / 4];
+    buf.asIntBuffer().get(data);
+    faceQuads.put(side,ImmutableList.<BakedQuad>of(new IColoredBakedQuad.ColoredBakedQuad(data,-1,side)));
+    for (int i=0; i < 4; i++) {
+      side=EnumFacing.getHorizontal((5 - i) % 4);
+      BakedQuad q[]=new BakedQuad[2];
+      for (int k=0; k < 2; k++) {
+        buf.clear();
+        for (int j=0; j < 4; j++) {
+          int l=(k * 3) + (1 - 2 * k) * j;
+          float yl=z[l] * y[(i + x[l]) % 4];
+          if (gas && z[l] == 0)           yl=1;
+          putVertex(buf,side,x[(i + x[l]) % 4],yl,z[(i + x[l]) % 4],flowing.getInterpolatedU(x[l] * 8),flowing.getInterpolatedV((gas ? yl : 1 - yl) * 8));
+        }
+        buf.flip();
+        data=new int[4 * format.getNextOffset() / 4];
+        buf.asIntBuffer().get(data);
+        q[k]=new IColoredBakedQuad.ColoredBakedQuad(data,-1,side);
+      }
+      faceQuads.put(side,ImmutableList.of(q[0],q[1]));
+    }
+  }
+ else {
+    buf.clear();
+    for (int i=0; i < 4; i++) {
+      putVertex(buf,EnumFacing.UP,z[i],x[i],0,still.getInterpolatedU(x[i] * 16),still.getInterpolatedV(z[i] * 16));
+    }
+    buf.flip();
+    data=new int[4 * format.getNextOffset() / 4];
+    buf.asIntBuffer().get(data);
+    faceQuads.put(EnumFacing.SOUTH,ImmutableList.<BakedQuad>of(new IColoredBakedQuad.ColoredBakedQuad(data,-1,EnumFacing.UP)));
+  }
+}

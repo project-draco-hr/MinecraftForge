@@ -1,0 +1,11 @@
+{
+  if (!customData.containsKey("fluid"))   return this;
+  String fluidStr=customData.get("fluid");
+  JsonElement e=new JsonParser().parse(fluidStr);
+  String fluid=e.getAsString();
+  if (!FluidRegistry.isFluidRegistered(fluid)) {
+    FMLLog.severe("fluid '%s' not found",fluid);
+    return waterModel;
+  }
+  return new ModelFluid(FluidRegistry.getFluid(fluid));
+}
