@@ -1,0 +1,4 @@
+{
+  instance().doModEntityRegistration(entityClass,entityName,id,mod,trackingRange,updateFrequency,sendsVelocityUpdates);
+  EntityRegistry.registerEgg(entityClass,eggPrimary,eggSecondary);
+}
