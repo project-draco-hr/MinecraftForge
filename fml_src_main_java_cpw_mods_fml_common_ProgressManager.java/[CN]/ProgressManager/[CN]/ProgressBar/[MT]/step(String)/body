@@ -1,5 +1,10 @@
 {
   if (step >= steps)   throw new IllegalStateException("too much steps for ProgressBar " + title);
+  if (timeEachStep && step != 0) {
+    long newTime=System.nanoTime();
+    FMLLog.fine("Bar Step: %s - %s took %.3fs",getTitle(),getMessage(),((float)(newTime - lastTime) / 1000000 / 1000));
+    lastTime=newTime;
+  }
   step++;
   this.message=FMLCommonHandler.instance().stripSpecialChars(message);
   FMLCommonHandler.instance().processWindowMessages();
