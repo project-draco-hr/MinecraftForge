@@ -1,0 +1,7 @@
+{
+  super(model == null ? new ResourceLocation("builtin/missing") : model,state instanceof ModelRotation ? (ModelRotation)state : ModelRotation.X0_Y0,uvLock,weight);
+  this.textures=textures;
+  this.parts=parts;
+  this.customData=customData;
+  this.state=state;
+}

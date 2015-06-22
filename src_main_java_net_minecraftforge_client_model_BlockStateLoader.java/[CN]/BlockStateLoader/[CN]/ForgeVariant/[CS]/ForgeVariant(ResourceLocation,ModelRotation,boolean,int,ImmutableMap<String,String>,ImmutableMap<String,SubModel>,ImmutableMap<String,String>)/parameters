@@ -1,7 +1,0 @@
-ResourceLocation model
-ModelRotation rotation
-boolean uvLock
-int weight
-ImmutableMap<String,String> textures
-ImmutableMap<String,SubModel> parts
-ImmutableMap<String,String> customData

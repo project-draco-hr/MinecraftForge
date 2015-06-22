@@ -54,10 +54,10 @@
         List<ForgeBlockStateV1.Variant> partList=v.submodels.get(partKey.getKey());
         if (partList.size() > 1)         throw new RuntimeException("This should never happen! Simple submodel has multiple variants!");
         ForgeBlockStateV1.Variant part=partList.get(0);
-        Optional<ModelRotation> rotation=part.rotation;
+        Optional<IModelState> state=part.state;
         part.sync(v);
         part.simpleSubmodels.clear();
-        part.rotation=rotation;
+        part.state=state;
       }
     }
     if (v.textures != null) {

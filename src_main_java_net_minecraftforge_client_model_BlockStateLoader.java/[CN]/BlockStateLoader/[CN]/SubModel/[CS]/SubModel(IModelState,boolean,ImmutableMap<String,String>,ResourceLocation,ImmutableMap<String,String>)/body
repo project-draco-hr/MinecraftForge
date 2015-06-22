@@ -1,0 +1,7 @@
+{
+  this.state=state;
+  this.uvLock=uvLock;
+  this.textures=textures;
+  this.model=model;
+  this.customData=customData;
+}

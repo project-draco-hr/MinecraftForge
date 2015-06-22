@@ -1,6 +1,6 @@
 {
   IFlexibleBakedModel bakedBase=null;
-  if (base != null)   bakedBase=base.bake(baseState,format,bakedTextureGetter);
+  if (base != null)   bakedBase=base.bake(state,format,bakedTextureGetter);
   ImmutableMap.Builder<String,IFlexibleBakedModel> mapBuilder=ImmutableMap.builder();
   for (  Entry<String,Pair<IModel,IModelState>> entry : parts.entrySet()) {
     Pair<IModel,IModelState> pair=entry.getValue();

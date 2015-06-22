@@ -2,5 +2,8 @@
   if (!(part instanceof PartWrapper<?>)) {
     throw new IllegalArgumentException("B3DState can only be applied to b3d models");
   }
+  if (parent != null) {
+    return parent.apply(part).compose(getNodeMatrix(((PartWrapper<?>)part).getNode()));
+  }
   return getNodeMatrix(((PartWrapper<?>)part).getNode());
 }

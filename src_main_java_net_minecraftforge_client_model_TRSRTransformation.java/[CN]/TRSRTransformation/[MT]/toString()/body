@@ -1,0 +1,4 @@
+{
+  genCheck();
+  return Objects.toStringHelper(this.getClass()).add("matrix",matrix).add("translation",translation).add("leftRot",leftRot).add("scale",scale).add("rightRot",rightRot).toString();
+}

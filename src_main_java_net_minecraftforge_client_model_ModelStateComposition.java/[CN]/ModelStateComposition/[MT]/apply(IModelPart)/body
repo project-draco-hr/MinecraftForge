@@ -1,0 +1,3 @@
+{
+  return first.apply(part).compose(second.apply(part));
+}

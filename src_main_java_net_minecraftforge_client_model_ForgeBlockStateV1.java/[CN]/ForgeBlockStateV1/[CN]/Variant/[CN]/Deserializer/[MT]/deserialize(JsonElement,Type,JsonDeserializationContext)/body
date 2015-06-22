@@ -15,8 +15,88 @@
   if (json.has("x") || json.has("y")) {
     int x=JsonUtils.getJsonObjectIntegerFieldValueOrDefault(json,"x",0);
     int y=JsonUtils.getJsonObjectIntegerFieldValueOrDefault(json,"y",0);
-    ret.rotation=Optional.of(ModelRotation.getModelRotation(x,y));
-    if (ret.rotation == null)     throw new JsonParseException("Invalid BlockModelRotation x: " + x + " y: "+ y);
+    ret.state=Optional.<IModelState>of(new TRSRTransformation(ModelRotation.getModelRotation(x,y)));
+    if (!ret.state.isPresent())     throw new JsonParseException("Invalid BlockModelRotation x: " + x + " y: "+ y);
+  }
+  if (json.has("transform")) {
+    if (json.get("transform").isJsonPrimitive() && json.get("transform").getAsJsonPrimitive().isString()) {
+      String transform=json.get("transform").getAsString();
+      if (transform.equals("identity")) {
+        ret.state=Optional.<IModelState>of(TRSRTransformation.identity());
+      }
+ else       if (transform.equals("forge:default-block")) {
+        IModelState thirdperson=TRSRTransformation.blockCenterToCorner(new TRSRTransformation(new Vector3f(0,1.5f / 16,-2.75f / 16),TRSRTransformation.quatFromYXZDegrees(new Vector3f(10,-45,170)),new Vector3f(0.375f,0.375f,0.375f),null));
+        ret.state=Optional.<IModelState>of(new IPerspectiveState.Impl(TRSRTransformation.identity(),ImmutableMap.of(TransformType.THIRD_PERSON,thirdperson)));
+      }
+ else       if (transform.equals("forge:default-item")) {
+        IModelState thirdperson=TRSRTransformation.blockCenterToCorner(new TRSRTransformation(new Vector3f(0,1f / 16,-3f / 16),TRSRTransformation.quatFromYXZDegrees(new Vector3f(-90,0,0)),new Vector3f(0.55f,0.55f,0.55f),null));
+        IModelState firstperson=TRSRTransformation.blockCenterToCorner(new TRSRTransformation(new Vector3f(0,4f / 16,2f / 16),TRSRTransformation.quatFromYXZDegrees(new Vector3f(0,-135,25)),new Vector3f(1.7f,1.7f,1.7f),null));
+        ret.state=Optional.<IModelState>of(new IPerspectiveState.Impl(TRSRTransformation.identity(),ImmutableMap.of(TransformType.THIRD_PERSON,thirdperson,TransformType.FIRST_PERSON,firstperson)));
+      }
+ else       if (transform.equals("forge:default-tool")) {
+        IModelState thirdperson=TRSRTransformation.blockCenterToCorner(new TRSRTransformation(new Vector3f(0,1.25f / 16,-3.5f / 16),TRSRTransformation.quatFromYXZDegrees(new Vector3f(0,90,-35)),new Vector3f(0.85f,0.85f,0.85f),null));
+        IModelState firstperson=TRSRTransformation.blockCenterToCorner(new TRSRTransformation(new Vector3f(0,4f / 16,2f / 16),TRSRTransformation.quatFromYXZDegrees(new Vector3f(0,-135,25)),new Vector3f(1.7f,1.7f,1.7f),null));
+        ret.state=Optional.<IModelState>of(new IPerspectiveState.Impl(TRSRTransformation.identity(),ImmutableMap.of(TransformType.THIRD_PERSON,thirdperson,TransformType.FIRST_PERSON,firstperson)));
+      }
+ else {
+        throw new JsonParseException("transform: unknown default string: " + transform);
+      }
+    }
+ else     if (!json.get("transform").isJsonObject()) {
+      try {
+        TRSRTransformation base=context.deserialize(json.get("transform"),TRSRTransformation.class);
+        ret.state=Optional.<IModelState>of(TRSRTransformation.blockCenterToCorner(base));
+      }
+ catch (      JsonParseException e) {
+        throw new JsonParseException("transform: expected a string, object or valid base transformation, got: " + json.get("transform"));
+      }
+    }
+ else {
+      JsonObject transform=json.get("transform").getAsJsonObject();
+      EnumMap<TransformType,IModelState> transforms=Maps.newEnumMap(TransformType.class);
+      if (transform.has("thirdperson")) {
+        TRSRTransformation t=context.deserialize(transform.get("thirdperson"),TRSRTransformation.class);
+        transform.remove("thirdperson");
+        transforms.put(TransformType.THIRD_PERSON,TRSRTransformation.blockCenterToCorner(t));
+      }
+      if (transform.has("firstperson")) {
+        TRSRTransformation t=context.deserialize(transform.get("firstperson"),TRSRTransformation.class);
+        transform.remove("firstperson");
+        transforms.put(TransformType.FIRST_PERSON,TRSRTransformation.blockCenterToCorner(t));
+      }
+      if (transform.has("gui")) {
+        TRSRTransformation t=context.deserialize(transform.get("gui"),TRSRTransformation.class);
+        transform.remove("gui");
+        transforms.put(TransformType.GUI,TRSRTransformation.blockCenterToCorner(t));
+      }
+      if (transform.has("head")) {
+        TRSRTransformation t=context.deserialize(transform.get("head"),TRSRTransformation.class);
+        transform.remove("head");
+        transforms.put(TransformType.HEAD,TRSRTransformation.blockCenterToCorner(t));
+      }
+      int k=transform.entrySet().size();
+      if (transform.has("matrix"))       k--;
+      if (transform.has("translation"))       k--;
+      if (transform.has("rotation"))       k--;
+      if (transform.has("scale"))       k--;
+      if (transform.has("post-rotation"))       k--;
+      if (k > 0) {
+        throw new JsonParseException("transform: allowed keys: 'thirdperson', 'firstperson', 'gui', 'head', 'matrix', 'translation', 'rotation', 'scale', 'post-rotation'");
+      }
+      TRSRTransformation base=TRSRTransformation.identity();
+      if (!transform.entrySet().isEmpty()) {
+        base=context.deserialize(transform,TRSRTransformation.class);
+        base=TRSRTransformation.blockCenterToCorner(base);
+      }
+      IModelState state;
+      if (transforms.isEmpty()) {
+        state=base;
+      }
+ else {
+        state=new IPerspectiveState.Impl(base,Maps.immutableEnumMap(transforms));
+      }
+      ret.state=Optional.of(state);
+    }
   }
   if (json.has("uvlock")) {
     ret.uvLock=Optional.of(JsonUtils.getJsonObjectBooleanFieldValue(json,"uvlock"));

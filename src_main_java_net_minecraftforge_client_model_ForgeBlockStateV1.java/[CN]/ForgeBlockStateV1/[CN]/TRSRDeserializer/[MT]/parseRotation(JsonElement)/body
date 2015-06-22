@@ -1,0 +1,18 @@
+{
+  if (e.isJsonArray()) {
+    if (e.getAsJsonArray().get(0).isJsonObject()) {
+      Quat4f ret=new Quat4f(0,0,0,1);
+      for (      JsonElement a : e.getAsJsonArray()) {
+        ret.mul(parseAxisRotation(a));
+      }
+      return ret;
+    }
+ else {
+      return new Quat4f(parseFloatArray(e,4,"Rotation"));
+    }
+  }
+ else   if (e.isJsonObject()) {
+    return parseAxisRotation(e);
+  }
+ else   throw new JsonParseException("Rotation: expected array or object, got: " + e);
+}

@@ -1,0 +1,3 @@
+Animation animation
+int frame
+IModelState parent

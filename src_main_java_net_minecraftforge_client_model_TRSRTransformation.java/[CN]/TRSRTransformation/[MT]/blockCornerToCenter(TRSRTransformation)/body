@@ -1,0 +1,9 @@
+{
+  Matrix4f ret=new Matrix4f(transform.getMatrix()), tmp=new Matrix4f();
+  tmp.setIdentity();
+  tmp.m03=tmp.m13=tmp.m23=-.5f;
+  ret.mul(tmp,ret);
+  tmp.m03=tmp.m13=tmp.m23=.5f;
+  ret.mul(tmp);
+  return new TRSRTransformation(ret);
+}

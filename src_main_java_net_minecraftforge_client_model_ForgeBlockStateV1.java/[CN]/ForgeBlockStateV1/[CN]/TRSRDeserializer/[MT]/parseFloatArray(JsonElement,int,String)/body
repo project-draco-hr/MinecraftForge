@@ -1,0 +1,15 @@
+{
+  if (!e.isJsonArray())   throw new JsonParseException(prefix + ": expected an array, got: " + e);
+  JsonArray t=e.getAsJsonArray();
+  if (t.size() != length)   throw new JsonParseException(prefix + ": expected an array of length " + length+ ", got: "+ t.size());
+  float[] ret=new float[length];
+  for (int i=0; i < length; i++) {
+    try {
+      ret[i]=t.get(i).getAsNumber().floatValue();
+    }
+ catch (    ClassCastException ex) {
+      throw new JsonParseException(prefix + " element: expected number, got: " + t.get(i));
+    }
+  }
+  return ret;
+}

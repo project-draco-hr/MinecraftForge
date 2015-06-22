@@ -1,4 +1,0 @@
-{
-  this.map=ImmutableMap.copyOf(map);
-  this.def=def;
-}

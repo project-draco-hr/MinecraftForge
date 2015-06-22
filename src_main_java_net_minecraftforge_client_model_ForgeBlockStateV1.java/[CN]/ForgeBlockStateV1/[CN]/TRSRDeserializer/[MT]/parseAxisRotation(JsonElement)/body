@@ -1,0 +1,23 @@
+{
+  if (!e.isJsonObject())   throw new JsonParseException("Axis rotation: object expected, got: " + e);
+  JsonObject obj=e.getAsJsonObject();
+  if (obj.entrySet().size() != 1)   throw new JsonParseException("Axis rotation: expected single axis object, got: " + e);
+  Map.Entry<String,JsonElement> entry=obj.entrySet().iterator().next();
+  Quat4f ret=new Quat4f();
+  try {
+    if (entry.getKey().equals("x")) {
+      ret.set(new AxisAngle4d(1,0,0,Math.toRadians(entry.getValue().getAsNumber().floatValue())));
+    }
+ else     if (entry.getKey().equals("y")) {
+      ret.set(new AxisAngle4d(0,1,0,Math.toRadians(entry.getValue().getAsNumber().floatValue())));
+    }
+ else     if (entry.getKey().equals("z")) {
+      ret.set(new AxisAngle4d(0,0,1,Math.toRadians(entry.getValue().getAsNumber().floatValue())));
+    }
+ else     throw new JsonParseException("Axis rotation: expected single axis key, got: " + entry.getKey());
+  }
+ catch (  ClassCastException ex) {
+    throw new JsonParseException("Axis rotation value: expected number, got: " + entry.getValue());
+  }
+  return ret;
+}
