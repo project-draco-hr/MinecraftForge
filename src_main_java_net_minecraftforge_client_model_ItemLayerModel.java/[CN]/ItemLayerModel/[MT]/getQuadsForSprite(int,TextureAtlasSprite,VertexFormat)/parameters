@@ -1,0 +1,3 @@
+int tint
+TextureAtlasSprite sprite
+VertexFormat format

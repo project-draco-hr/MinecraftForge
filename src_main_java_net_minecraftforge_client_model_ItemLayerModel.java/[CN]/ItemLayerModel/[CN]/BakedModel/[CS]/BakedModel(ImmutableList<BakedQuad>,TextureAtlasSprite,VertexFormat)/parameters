@@ -1,0 +1,3 @@
+ImmutableList<BakedQuad> quads
+TextureAtlasSprite particle
+VertexFormat format

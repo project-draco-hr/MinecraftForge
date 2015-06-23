@@ -1,0 +1,4 @@
+{
+  super.preInit(event);
+  ModelLoader.setCustomModelResourceLocation(TestItem.instance,0,modelLocation);
+}

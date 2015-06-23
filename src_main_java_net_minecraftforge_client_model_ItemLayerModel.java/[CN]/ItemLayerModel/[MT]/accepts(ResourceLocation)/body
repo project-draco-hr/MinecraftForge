@@ -1,0 +1,3 @@
+{
+  return modelLocation.getResourceDomain().equals("forge") && (modelLocation.getResourcePath().equals("item-layer") || modelLocation.getResourcePath().equals("models/block/item-layer") || modelLocation.getResourcePath().equals("models/item/item-layer"));
+}

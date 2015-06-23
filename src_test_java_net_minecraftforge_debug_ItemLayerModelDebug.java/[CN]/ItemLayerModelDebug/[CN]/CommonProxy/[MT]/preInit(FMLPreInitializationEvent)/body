@@ -1,0 +1,3 @@
+{
+  GameRegistry.registerItem(TestItem.instance,TestItem.name);
+}

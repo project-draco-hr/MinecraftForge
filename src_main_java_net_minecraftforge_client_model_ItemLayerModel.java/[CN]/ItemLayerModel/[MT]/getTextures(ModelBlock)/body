@@ -1,0 +1,7 @@
+{
+  ImmutableList.Builder<ResourceLocation> builder=ImmutableList.builder();
+  for (int i=0; model.isTexturePresent("layer" + i); i++) {
+    builder.add(new ResourceLocation(model.resolveTextureName("layer" + i)));
+  }
+  return builder.build();
+}
