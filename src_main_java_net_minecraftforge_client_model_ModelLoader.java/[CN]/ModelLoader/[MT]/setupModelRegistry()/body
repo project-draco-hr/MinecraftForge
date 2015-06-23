@@ -14,12 +14,11 @@
   textureMap.loadSprites(resourceManager,new IIconCreator(){
     public void registerSprites(    TextureMap map){
       for (      ResourceLocation t : textures) {
-        sprites.put(t,map.registerSprite(t));
+        map.registerSprite(t);
       }
     }
   }
 );
-  sprites.put(new ResourceLocation("missingno"),textureMap.getMissingSprite());
   Function<ResourceLocation,TextureAtlasSprite> textureGetter=new Function<ResourceLocation,TextureAtlasSprite>(){
     public TextureAtlasSprite apply(    ResourceLocation location){
       return Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString());

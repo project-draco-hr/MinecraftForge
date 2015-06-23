@@ -7,5 +7,5 @@
   ItemCameraTransforms transforms=new ItemCameraTransforms(model.getThirdPersonTransform(),model.getFirstPersonTransform(),model.getHeadTransform(),model.getInGuiTransform());
   if (hasItemModel(model))   return new ItemLayerModel(model).bake(new IPerspectiveState.Impl(state,transforms),format,bakedTextureGetter);
   if (isCustomRenderer(model))   return new IFlexibleBakedModel.Wrapper(new BuiltInModel(transforms),format);
-  return new IFlexibleBakedModel.Wrapper(bakeModel(model,state.apply(this),state instanceof UVLock),format);
+  return bakeNormal(model,state.apply(this),format,bakedTextureGetter,state instanceof UVLock);
 }

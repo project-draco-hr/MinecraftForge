@@ -1,0 +1,5 @@
+ModelBlock model
+TRSRTransformation state
+VertexFormat format
+Function<ResourceLocation,TextureAtlasSprite> bakedTextureGetter
+boolean uvLocked
