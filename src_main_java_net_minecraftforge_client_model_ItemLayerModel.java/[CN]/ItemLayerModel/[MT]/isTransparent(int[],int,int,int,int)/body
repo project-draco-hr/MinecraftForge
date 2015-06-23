@@ -1,0 +1,3 @@
+{
+  return (pixels[u + (vMax - 1 - v) * uMax] >> 24 & 0xFF) == 0;
+}

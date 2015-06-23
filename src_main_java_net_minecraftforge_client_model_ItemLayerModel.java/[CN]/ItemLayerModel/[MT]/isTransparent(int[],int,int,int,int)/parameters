@@ -1,0 +1,5 @@
+int[] pixels
+int uMax
+int vMax
+int u
+int v

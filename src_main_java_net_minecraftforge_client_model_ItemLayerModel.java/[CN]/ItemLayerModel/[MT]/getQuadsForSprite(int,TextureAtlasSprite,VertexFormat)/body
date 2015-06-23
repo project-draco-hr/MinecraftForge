@@ -12,7 +12,7 @@
     for (int v=0; v < vMax; v++) {
       ptu=true;
       for (int u=0; u < uMax; u++) {
-        boolean t=(pixels[u + (vMax - 1 - v) * uMax] >> 24 & 0xFF) == 0;
+        boolean t=isTransparent(pixels,uMax,vMax,u,v);
         if (ptu && !t) {
           builder.add(buildSideQuad(buf,format,EnumFacing.WEST,tint,sprite,u,v));
         }

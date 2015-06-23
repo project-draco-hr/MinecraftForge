@@ -1,9 +1,23 @@
 {
   ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
+  final TRSRTransformation transform=state.apply(this);
   for (int i=0; i < textures.size(); i++) {
     TextureAtlasSprite sprite=bakedTextureGetter.apply(textures.get(i));
-    builder.addAll(getQuadsForSprite(i,sprite,format));
+    builder.addAll(Iterables.transform(getQuadsForSprite(i,sprite,format),new Function<BakedQuad,BakedQuad>(){
+      public BakedQuad apply(      BakedQuad input){
+        return Attributes.transform(transform,input,format);
+      }
+    }
+));
   }
   TextureAtlasSprite particle=bakedTextureGetter.apply(textures.isEmpty() ? new ResourceLocation("missingno") : textures.get(0));
+  if (state instanceof IPerspectiveState) {
+    IPerspectiveState ps=(IPerspectiveState)state;
+    Map<TransformType,TRSRTransformation> map=Maps.newHashMap();
+    for (    TransformType type : TransformType.values()) {
+      map.put(type,ps.forPerspective(type).apply(this));
+    }
+    return new BakedModel(builder.build(),particle,format,Maps.immutableEnumMap(map));
+  }
   return new BakedModel(builder.build(),particle,format);
 }

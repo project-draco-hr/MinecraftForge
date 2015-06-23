@@ -1,0 +1,6 @@
+{
+  this.quads=quads;
+  this.particle=particle;
+  this.format=format;
+  this.transforms=transforms;
+}

@@ -1,0 +1,5 @@
+{
+  TRSRTransformation tr=transforms.getOrDefault(cameraTransformType,TRSRTransformation.identity());
+  Matrix4f mat=tr == TRSRTransformation.identity() ? null : tr.getMatrix();
+  return Pair.of((IBakedModel)this,mat);
+}
