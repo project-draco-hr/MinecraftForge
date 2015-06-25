@@ -1,7 +1,5 @@
 EntityPlayer player
 float renderPartialTicks
 OverlayType type
-Block block
-int x
-int y
-int z
+IBlockState block
+BlockPos blockPos

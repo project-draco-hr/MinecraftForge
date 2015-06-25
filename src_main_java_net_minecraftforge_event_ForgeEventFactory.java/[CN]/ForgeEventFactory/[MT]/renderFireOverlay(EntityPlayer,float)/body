@@ -1,0 +1,3 @@
+{
+  return renderBlockOverlay(player,renderPartialTicks,OverlayType.FIRE,Blocks.fire.getDefaultState(),new BlockPos(player));
+}
