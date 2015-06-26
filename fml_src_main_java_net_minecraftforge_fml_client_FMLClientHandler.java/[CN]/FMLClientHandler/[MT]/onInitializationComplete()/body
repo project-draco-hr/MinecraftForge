@@ -1,4 +1,6 @@
 {
+  GlStateManager.disableTexture2D();
+  GlStateManager.enableTexture2D();
   if (wrongMC != null) {
     showGuiScreen(new GuiWrongMinecraft(wrongMC));
   }
