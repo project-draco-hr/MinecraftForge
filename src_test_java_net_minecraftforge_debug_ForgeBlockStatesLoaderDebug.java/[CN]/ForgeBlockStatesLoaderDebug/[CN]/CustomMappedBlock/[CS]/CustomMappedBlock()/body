@@ -1,0 +1,4 @@
+{
+  super(Material.rock);
+  this.setUnlocalizedName(MODID + ".customMappedBlock");
+}
