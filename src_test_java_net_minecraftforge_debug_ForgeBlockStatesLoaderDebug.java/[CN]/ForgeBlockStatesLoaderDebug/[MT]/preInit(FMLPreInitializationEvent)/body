@@ -1,4 +1,6 @@
 {
+  blockCustom.setUnlocalizedName(MODID + ".customBlock");
+  GameRegistry.registerBlock(blockCustom,"customBlock");
   blockCustomWall.setUnlocalizedName(MODID + ".customWall");
   GameRegistry.registerBlock(blockCustomWall,null,nameCustomWall);
   GameRegistry.registerItem(itemCustomWall,nameCustomWall);
