@@ -1,0 +1,22 @@
+{
+  if (Math.abs(x) > Math.abs(y)) {
+    if (Math.abs(x) > Math.abs(z)) {
+      if (x < 0)       return EnumFacing.WEST;
+      return EnumFacing.EAST;
+    }
+ else {
+      if (z < 0)       return EnumFacing.NORTH;
+      return EnumFacing.SOUTH;
+    }
+  }
+ else {
+    if (Math.abs(y) > Math.abs(z)) {
+      if (y < 0)       return EnumFacing.DOWN;
+      return EnumFacing.UP;
+    }
+ else {
+      if (z < 0)       return EnumFacing.NORTH;
+      return EnumFacing.SOUTH;
+    }
+  }
+}

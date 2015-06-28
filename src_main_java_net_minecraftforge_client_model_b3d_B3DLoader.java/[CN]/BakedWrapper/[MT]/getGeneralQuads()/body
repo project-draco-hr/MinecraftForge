@@ -8,7 +8,7 @@
         builder.addAll(new BakedWrapper(new B3DLoader.Wrapper(model.getLocation(),model.getTextureMap(),childMesh),state,format,textures).getGeneralQuads());
       }
     }
-    Multimap<Vertex,Pair<Float,Node<Bone>>> weightMap=mesh.getKind().getWeightMap();
+    mesh.getKind().getWeightMap();
     Collection<Face> faces=mesh.getKind().getFaces();
     faces=mesh.getKind().bake(new Function<Node<?>,Matrix4f>(){
       public Matrix4f apply(      Node<?> node){
@@ -17,21 +17,20 @@
     }
 );
     for (    Face f : faces) {
-      buf.clear();
+      UnpackedBakedQuad.Builder quadBuilder=new UnpackedBakedQuad.Builder(format);
+      quadBuilder.setQuadOrientation(EnumFacing.getFacingFromVector(f.getNormal().x,f.getNormal().y,f.getNormal().z));
+      quadBuilder.setQuadColored();
       List<Texture> textures=null;
       if (f.getBrush() != null)       textures=f.getBrush().getTextures();
       TextureAtlasSprite sprite;
       if (textures == null || textures.isEmpty())       sprite=this.textures.get("missingno");
  else       if (textures.get(0) == B3DModel.Texture.White)       sprite=ModelLoader.White.instance;
  else       sprite=this.textures.get(textures.get(0).getPath());
-      putVertexData(f.getV1(),sprite);
-      putVertexData(f.getV2(),sprite);
-      putVertexData(f.getV3(),sprite);
-      putVertexData(f.getV3(),sprite);
-      buf.flip();
-      int[] data=new int[VERTICES_IN_QUAD * format.getNextOffset() / BYTES_IN_INT];
-      buf.asIntBuffer().get(data);
-      builder.add(new ColoredBakedQuad(data,-1,EnumFacing.getFacingFromVector(f.getNormal().x,f.getNormal().y,f.getNormal().z)));
+      putVertexData(quadBuilder,f.getV1(),f.getNormal(),sprite);
+      putVertexData(quadBuilder,f.getV2(),f.getNormal(),sprite);
+      putVertexData(quadBuilder,f.getV3(),f.getNormal(),sprite);
+      putVertexData(quadBuilder,f.getV3(),f.getNormal(),sprite);
+      builder.add(quadBuilder.build());
     }
     quads=builder.build();
   }

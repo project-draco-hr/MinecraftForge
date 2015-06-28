@@ -1,0 +1,11 @@
+{
+  if (tint != -1) {
+    color[0]*=(float)(multiplier >> 0x10 & 0xFF) / 0xFF;
+    color[1]*=(float)(multiplier >> 0x8 & 0xFF) / 0xFF;
+    color[2]*=(float)(multiplier & 0xFF) / 0xFF;
+  }
+  float a=getAo(x,y,z);
+  color[0]*=a;
+  color[1]*=a;
+  color[2]*=a;
+}

@@ -1,0 +1,4 @@
+{
+  this.format=format;
+  quadData=new float[format.getElementCount()][4][4];
+}

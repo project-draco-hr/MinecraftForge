@@ -1,0 +1,7 @@
+float[] normal
+float[] color
+float x
+float y
+float z
+float tint
+int multiplier

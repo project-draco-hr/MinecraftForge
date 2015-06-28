@@ -1,0 +1,12 @@
+{
+  LightUtil.pack(data,quadData,getVertexFormat(),v,e);
+  if (e == getVertexFormat().getElementCount() - 1) {
+    v++;
+    if (v == 4) {
+      renderer.addVertexData(quadData);
+      renderer.checkAndGrow();
+      Arrays.fill(quadData,0);
+      v=0;
+    }
+  }
+}

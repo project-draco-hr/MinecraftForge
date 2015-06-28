@@ -1,0 +1,20 @@
+{
+  int sx=x < 0 ? 1 : 2;
+  int sy=y < 0 ? 1 : 2;
+  int sz=z < 0 ? 1 : 2;
+  if (x < 0)   x++;
+  if (y < 0)   y++;
+  if (z < 0)   z++;
+  float a=0;
+  float[][][] ao=blockInfo.getAo();
+  a+=ao[sx - 1][sy - 1][sz - 1] * (1 - x) * (1 - y)* (1 - z);
+  a+=ao[sx - 1][sy - 1][sz - 0] * (1 - x) * (1 - y)* (0 + z);
+  a+=ao[sx - 1][sy - 0][sz - 1] * (1 - x) * (0 + y)* (1 - z);
+  a+=ao[sx - 1][sy - 0][sz - 0] * (1 - x) * (0 + y)* (0 + z);
+  a+=ao[sx - 0][sy - 1][sz - 1] * (0 + x) * (1 - y)* (1 - z);
+  a+=ao[sx - 0][sy - 1][sz - 0] * (0 + x) * (1 - y)* (0 + z);
+  a+=ao[sx - 0][sy - 0][sz - 1] * (0 + x) * (0 + y)* (1 - z);
+  a+=ao[sx - 0][sy - 0][sz - 0] * (0 + x) * (0 + y)* (0 + z);
+  a=MathHelper.clamp_float(a,0,1);
+  return a;
+}

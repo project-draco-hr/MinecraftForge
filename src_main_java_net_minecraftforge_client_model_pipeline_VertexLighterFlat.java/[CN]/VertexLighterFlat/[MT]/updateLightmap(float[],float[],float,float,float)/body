@@ -1,0 +1,14 @@
+{
+  float e1=.5f - 1e4f;
+  float e2=1 - 1e4f;
+  BlockPos pos=blockInfo.getBlockPos();
+  if (y < -e1 && normal[1] < -e2)   pos=pos.down();
+  if (y > e1 && normal[1] > e2)   pos=pos.up();
+  if (z < -e1 && normal[2] < -e2)   pos=pos.north();
+  if (z > e1 && normal[2] > e2)   pos=pos.south();
+  if (x < -e1 && normal[0] < -e2)   pos=pos.west();
+  if (x > e1 && normal[0] > e2)   pos=pos.east();
+  int brightness=blockInfo.getBlock().getMixedBrightnessForBlock(blockInfo.getWorld(),pos);
+  lightmap[0]=((float)((brightness >> 0x04) & 0xF) * 0x20) / 0xFFFF;
+  lightmap[1]=((float)((brightness >> 0x14) & 0xF) * 0x20) / 0xFFFF;
+}

@@ -1,0 +1,7 @@
+{
+  VertexFormat format=parent.getVertexFormat();
+  if (format.hasNormal())   return format;
+  format=new VertexFormat(format);
+  format.setElement(new VertexFormatElement(0,VertexFormatElement.EnumType.FLOAT,VertexFormatElement.EnumUsage.NORMAL,4));
+  return format;
+}

@@ -3,12 +3,7 @@
   final TRSRTransformation transform=state.apply(this);
   for (int i=0; i < textures.size(); i++) {
     TextureAtlasSprite sprite=bakedTextureGetter.apply(textures.get(i));
-    builder.addAll(Iterables.transform(getQuadsForSprite(i,sprite,format),new Function<BakedQuad,BakedQuad>(){
-      public BakedQuad apply(      BakedQuad input){
-        return Attributes.transform(transform,input,format);
-      }
-    }
-));
+    builder.addAll(getQuadsForSprite(i,sprite,format,transform));
   }
   TextureAtlasSprite particle=bakedTextureGetter.apply(textures.isEmpty() ? new ResourceLocation("missingno") : textures.get(0));
   if (state instanceof IPerspectiveState) {

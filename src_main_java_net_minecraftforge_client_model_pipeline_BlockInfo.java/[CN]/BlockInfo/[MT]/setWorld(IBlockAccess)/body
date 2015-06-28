@@ -1,0 +1,5 @@
+{
+  this.world=world;
+  cachedTint=-1;
+  cachedMultiplier=-1;
+}

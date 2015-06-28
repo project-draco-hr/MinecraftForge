@@ -25,13 +25,13 @@
     }
   }
 ;
-  IFlexibleBakedModel missingBaked=missingModel.bake(missingModel.getDefaultState(),Attributes.DEFAULT_BAKED_FORMAT,textureGetter);
+  IFlexibleBakedModel missingBaked=missingModel.bake(missingModel.getDefaultState(),DefaultVertexFormats.ITEM,textureGetter);
   for (  Entry<ModelResourceLocation,IModel> e : stateModels.entrySet()) {
     if (e.getValue() == getMissingModel()) {
       bakedRegistry.putObject(e.getKey(),missingBaked);
     }
  else {
-      bakedRegistry.putObject(e.getKey(),e.getValue().bake(e.getValue().getDefaultState(),Attributes.DEFAULT_BAKED_FORMAT,textureGetter));
+      bakedRegistry.putObject(e.getKey(),e.getValue().bake(e.getValue().getDefaultState(),DefaultVertexFormats.ITEM,textureGetter));
     }
   }
   return bakedRegistry;

@@ -1,0 +1,22 @@
+{
+  consumer.setQuadOrientation(quad.getFace());
+  if (quad.hasTintIndex()) {
+    consumer.setQuadTint(quad.getTintIndex());
+  }
+  if (quad instanceof IColoredBakedQuad) {
+    consumer.setQuadColored();
+  }
+  float[] data=new float[4];
+  int[] eMap=formatMaps.getUnchecked(consumer.getVertexFormat());
+  for (int v=0; v < 4; v++) {
+    for (int e=0; e < consumer.getVertexFormat().getElementCount(); e++) {
+      if (eMap[e] != DefaultVertexFormats.ITEM.getElementCount()) {
+        unpack(quad.getVertexData(),data,DefaultVertexFormats.ITEM,v,eMap[e]);
+        consumer.put(e,data);
+      }
+ else {
+        consumer.put(e);
+      }
+    }
+  }
+}

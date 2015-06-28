@@ -1,0 +1,4 @@
+float[][][][] light
+float x
+float y
+float z

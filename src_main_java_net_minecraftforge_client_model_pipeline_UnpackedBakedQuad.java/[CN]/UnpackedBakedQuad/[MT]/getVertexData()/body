@@ -1,0 +1,11 @@
+{
+  if (!packed) {
+    packed=true;
+    for (int v=0; v < 4; v++) {
+      for (int e=0; e < format.getElementCount(); e++) {
+        LightUtil.pack(unpackedData[v][e],vertexData,format,v,e);
+      }
+    }
+  }
+  return vertexData;
+}

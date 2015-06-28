@@ -1,0 +1,8 @@
+{
+  System.arraycopy(data,0,quadData[element][vertices],0,data.length);
+  if (element == getVertexFormat().getElementCount() - 1)   vertices++;
+  if (vertices == 4) {
+    vertices=0;
+    processQuad();
+  }
+}

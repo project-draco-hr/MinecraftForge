@@ -1,0 +1,41 @@
+{
+  VertexFormatElement element=formatFrom.getElement(e);
+  for (int i=0; i < 4; i++) {
+    if (i < element.getElementCount()) {
+      int pos=v * formatFrom.getNextOffset() + element.getOffset() + element.getType().getSize() * i;
+      int index=pos >> 2;
+      int offset=pos & 3;
+      int bits=from[index];
+      bits=bits >>> (offset * 8);
+      if ((pos + element.getType().getSize() - 1) / 4 != index) {
+        bits|=from[index + 1] << ((4 - offset) * 8);
+      }
+      int mask=(256 << (8 * (element.getType().getSize() - 1))) - 1;
+      bits&=mask;
+switch (element.getType()) {
+case FLOAT:
+        to[i]=Float.intBitsToFloat(bits);
+      break;
+case UBYTE:
+case USHORT:
+    to[i]=(float)bits / mask;
+  break;
+case UINT:
+to[i]=(float)((double)(bits & 0xFFFFFFFFL) / 0xFFFFFFFFL);
+break;
+case BYTE:
+to[i]=((float)(byte)bits) / mask * 2;
+break;
+case SHORT:
+to[i]=((float)(short)bits) / mask * 2;
+break;
+case INT:
+to[i]=((float)(bits & 0xFFFFFFFFL)) / 0xFFFFFFFFL * 2;
+break;
+}
+}
+ else {
+to[i]=0;
+}
+}
+}

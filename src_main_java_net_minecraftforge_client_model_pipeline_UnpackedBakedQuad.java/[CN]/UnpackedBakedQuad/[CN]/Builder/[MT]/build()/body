@@ -1,0 +1,9 @@
+{
+  if (!full) {
+    throw new IllegalStateException("not enough data");
+  }
+  if (isColored) {
+    return new Colored(unpackedData,tint,orientation,format);
+  }
+  return new UnpackedBakedQuad(unpackedData,tint,orientation,format);
+}

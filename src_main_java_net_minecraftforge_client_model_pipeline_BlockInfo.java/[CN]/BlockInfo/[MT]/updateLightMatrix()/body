@@ -1,0 +1,46 @@
+{
+  boolean full=false;
+  for (int x=0; x <= 2; x++) {
+    for (int y=0; y <= 2; y++) {
+      for (int z=0; z <= 2; z++) {
+        BlockPos pos=blockPos.add(x - 1,y - 1,z - 1);
+        Block block=world.getBlockState(pos).getBlock();
+        translucent[x][y][z]=block.isTranslucent();
+        int brightness=this.block.getMixedBrightnessForBlock(world,pos);
+        s[x][y][z]=(brightness >> 0x14) & 0xF;
+        b[x][y][z]=(brightness >> 0x04) & 0xF;
+        ao[x][y][z]=block.getAmbientOcclusionLightValue();
+        if (x == 1 && y == 1 && z == 1) {
+          full=block.isFullCube();
+        }
+      }
+    }
+  }
+  if (!full) {
+    for (    EnumFacing side : EnumFacing.values()) {
+      int x=side.getFrontOffsetX() + 1;
+      int y=side.getFrontOffsetY() + 1;
+      int z=side.getFrontOffsetZ() + 1;
+      s[x][y][z]=Math.max(s[1][1][1] - 1,s[x][y][z]);
+      b[x][y][z]=Math.max(b[1][1][1] - 1,b[x][y][z]);
+    }
+  }
+  for (int x=0; x < 2; x++) {
+    for (int y=0; y < 2; y++) {
+      for (int z=0; z < 2; z++) {
+        int x1=x * 2;
+        int y1=y * 2;
+        int z1=z * 2;
+        boolean tx=translucent[x1][1][z1] || translucent[x1][y1][1];
+        skyLight[0][x][y][z]=combine(s[x1][1][1],s[x1][1][z1],s[x1][y1][1],tx ? s[x1][y1][z1] : s[x1][1][1]);
+        blockLight[0][x][y][z]=combine(b[x1][1][1],b[x1][1][z1],b[x1][y1][1],tx ? b[x1][y1][z1] : b[x1][1][1]);
+        boolean ty=translucent[x1][y1][1] || translucent[1][y1][z1];
+        skyLight[1][x][y][z]=combine(s[1][y1][1],s[x1][y1][1],s[1][y1][z1],ty ? s[x1][y1][z1] : s[1][y1][1]);
+        blockLight[1][x][y][z]=combine(b[1][y1][1],b[x1][y1][1],b[1][y1][z1],ty ? b[x1][y1][z1] : b[1][y1][1]);
+        boolean tz=translucent[1][y1][z1] || translucent[1][y1][z1];
+        skyLight[2][x][y][z]=combine(s[1][1][z1],s[1][y1][z1],s[x1][1][z1],tz ? s[x1][y1][z1] : s[1][1][z1]);
+        blockLight[2][x][y][z]=combine(b[1][1][z1],b[1][y1][z1],b[x1][1][z1],tz ? b[x1][y1][z1] : b[1][1][z1]);
+      }
+    }
+  }
+}

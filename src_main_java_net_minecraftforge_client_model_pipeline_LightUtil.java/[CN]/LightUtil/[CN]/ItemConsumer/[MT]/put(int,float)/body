@@ -1,0 +1,21 @@
+{
+  if (getVertexFormat().getElement(element).getUsage() == EnumUsage.COLOR) {
+    System.arraycopy(auxColor,0,buf,0,buf.length);
+    if (colored) {
+      for (int i=0; i < 4; i++) {
+        buf[i]*=data[i];
+      }
+    }
+    super.put(element,buf);
+  }
+ else {
+    super.put(element,data);
+  }
+  if (element == getVertexFormat().getElementCount() - 1) {
+    vertices++;
+    if (vertices == 4) {
+      vertices=0;
+      colored=false;
+    }
+  }
+}

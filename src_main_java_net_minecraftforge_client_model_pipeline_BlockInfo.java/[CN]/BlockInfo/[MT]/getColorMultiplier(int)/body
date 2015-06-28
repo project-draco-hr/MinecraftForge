@@ -1,0 +1,4 @@
+{
+  if (cachedTint == tint)   return cachedMultiplier;
+  return block.colorMultiplier(world,blockPos,tint);
+}

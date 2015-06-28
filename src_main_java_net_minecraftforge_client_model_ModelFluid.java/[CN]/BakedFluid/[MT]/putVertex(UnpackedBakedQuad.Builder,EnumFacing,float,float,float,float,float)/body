@@ -1,0 +1,24 @@
+{
+  for (int e=0; e < format.getElementCount(); e++) {
+switch (format.getElement(e).getUsage()) {
+case POSITION:
+      builder.put(e,x - side.getDirectionVec().getX() * eps,y,z - side.getDirectionVec().getZ() * eps,1f);
+    break;
+case COLOR:
+  float d=LightUtil.diffuseLight(side);
+builder.put(e,d * ((color >> 16) & 0xFF) / 255f,d * ((color >> 8) & 0xFF) / 255f,d * (color & 0xFF) / 255f,((color >> 24) & 0xFF) / 255f);
+break;
+case UV:
+if (format.getElement(e).getIndex() == 0) {
+builder.put(e,u,v,0f,1f);
+break;
+}
+case NORMAL:
+builder.put(e,(float)side.getFrontOffsetX(),(float)side.getFrontOffsetY(),(float)side.getFrontOffsetZ(),0f);
+break;
+default :
+builder.put(e);
+break;
+}
+}
+}

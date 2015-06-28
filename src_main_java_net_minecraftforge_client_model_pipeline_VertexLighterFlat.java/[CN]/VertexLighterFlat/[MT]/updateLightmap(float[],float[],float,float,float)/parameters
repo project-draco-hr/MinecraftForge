@@ -1,0 +1,5 @@
+float[] normal
+float[] lightmap
+float x
+float y
+float z

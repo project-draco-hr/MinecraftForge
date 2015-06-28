@@ -1,0 +1,7 @@
+{
+  if (c == 0)   c=Math.max(0,Math.max(s1,s2) - 1);
+  if (s1 == 0)   s1=Math.max(0,c - 1);
+  if (s2 == 0)   s2=Math.max(0,c - 1);
+  if (s3 == 0)   s3=Math.max(0,Math.max(s1,s2) - 1);
+  return (float)(c + s1 + s2+ s3) * 0x20 / (4 * 0xFFFF);
+}

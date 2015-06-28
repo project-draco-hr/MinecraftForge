@@ -1,0 +1,8 @@
+{
+  int x=((byte)(facing.getFrontOffsetX() * 127)) & 0xFF;
+  int y=((byte)(facing.getFrontOffsetY() * 127)) & 0xFF;
+  int z=((byte)(facing.getFrontOffsetZ() * 127)) & 0xFF;
+  for (int i=0; i < 4; i++) {
+    faceData[i * 7 + 6]=x | (y << 0x08) | (z << 0x10);
+  }
+}

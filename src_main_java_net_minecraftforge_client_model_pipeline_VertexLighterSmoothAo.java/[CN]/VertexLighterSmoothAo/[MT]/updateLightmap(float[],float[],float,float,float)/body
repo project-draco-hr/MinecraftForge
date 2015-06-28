@@ -1,0 +1,4 @@
+{
+  lightmap[0]=calcLightmap(blockInfo.getBlockLight(),x,y,z);
+  lightmap[1]=calcLightmap(blockInfo.getSkyLight(),x,y,z);
+}

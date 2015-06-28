@@ -1,0 +1,73 @@
+{
+  float[][] position=quadData[posIndex];
+  float[][] normal=null;
+  float[][] lightmap=quadData[lightmapIndex];
+  float[][] color=quadData[colorIndex];
+  if (normalIndex != -1 && (quadData[normalIndex][0][0] != -1 || quadData[normalIndex][0][1] != -1 || quadData[normalIndex][0][2] != -1)) {
+    normal=quadData[normalIndex];
+  }
+ else {
+    normal=new float[4][4];
+    Vector3f v1=new Vector3f(position[3]);
+    Vector3f t=new Vector3f(position[1]);
+    Vector3f v2=new Vector3f(position[2]);
+    v1.sub(t);
+    t.set(position[0]);
+    v2.sub(t);
+    v1.cross(v2,v1);
+    v1.normalize();
+    for (int v=0; v < 4; v++) {
+      normal[v][0]=v1.x;
+      normal[v][1]=v1.y;
+      normal[v][2]=v1.z;
+      normal[v][3]=0;
+    }
+  }
+  int multiplier=-1;
+  if (tint != -1) {
+    multiplier=blockInfo.getColorMultiplier(tint);
+  }
+  for (int v=0; v < 4; v++) {
+    position[v][0]+=blockInfo.getShx();
+    position[v][1]+=blockInfo.getShy();
+    position[v][2]+=blockInfo.getShz();
+    float x=position[v][0] - .5f;
+    float y=position[v][1] - .5f;
+    float z=position[v][2] - .5f;
+{
+      x+=normal[v][0] * .5f;
+      y+=normal[v][1] * .5f;
+      z+=normal[v][2] * .5f;
+    }
+    updateLightmap(normal[v],lightmap[v],x,y,z);
+    updateColor(normal[v],color[v],x,y,z,tint,multiplier);
+    for (int e=0; e < parent.getVertexFormat().getElementCount(); e++) {
+switch (parent.getVertexFormat().getElement(e).getUsage()) {
+case POSITION:
+        float[] pos=new float[4];
+      System.arraycopy(position[v],0,pos,0,position[v].length);
+    pos[0]+=(blockInfo.getBlockPos().getX() & 0xF);
+  pos[1]+=(blockInfo.getBlockPos().getY() & 0xF);
+pos[2]+=(blockInfo.getBlockPos().getZ() & 0xF);
+parent.put(e,pos);
+break;
+case NORMAL:
+if (normalIndex != -1) {
+parent.put(e,normal[v]);
+break;
+}
+case COLOR:
+parent.put(e,color[v]);
+break;
+case UV:
+if (getVertexFormat().getElement(e).getIndex() == 1) {
+parent.put(e,lightmap[v]);
+break;
+}
+default :
+parent.put(e,quadData[e][v]);
+}
+}
+}
+tint=-1;
+}

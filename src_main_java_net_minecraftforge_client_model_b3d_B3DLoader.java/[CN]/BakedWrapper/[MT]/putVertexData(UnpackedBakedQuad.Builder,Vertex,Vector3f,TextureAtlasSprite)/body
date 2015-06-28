@@ -1,0 +1,36 @@
+{
+  for (int e=0; e < format.getElementCount(); e++) {
+switch (format.getElement(e).getUsage()) {
+case POSITION:
+      builder.put(e,v.getPos().x,v.getPos().y,v.getPos().z,1);
+    break;
+case COLOR:
+  float d=LightUtil.diffuseLight(faceNormal.x,faceNormal.y,faceNormal.z);
+if (v.getColor() != null) {
+  builder.put(e,d * v.getColor().x,d * v.getColor().y,d * v.getColor().z,v.getColor().w);
+}
+ else {
+  builder.put(e,d,d,d,1);
+}
+break;
+case UV:
+if (format.getElement(e).getIndex() < v.getTexCoords().length) {
+builder.put(e,sprite.getInterpolatedU(v.getTexCoords()[0].x * 16),sprite.getInterpolatedV(v.getTexCoords()[0].y * 16),0,1);
+}
+ else {
+builder.put(e,0,0,0,1);
+}
+break;
+case NORMAL:
+if (v.getNormal() != null) {
+builder.put(e,v.getNormal().x,v.getNormal().y,v.getNormal().z,1);
+}
+ else {
+builder.put(e,faceNormal.x,faceNormal.y,faceNormal.z,1);
+}
+break;
+default :
+builder.put(e);
+}
+}
+}

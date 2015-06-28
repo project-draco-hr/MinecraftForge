@@ -13,6 +13,6 @@
     int ncg=Math.min(0xFF,(int)(cg * vcg / 0xFF));
     int ncb=Math.min(0xFF,(int)(cb * vcb / 0xFF));
     int nca=Math.min(0xFF,(int)(ca * vca / 0xFF));
-    renderer.putColorRGBA(renderer.getColorIndex(i + 1),ncr,ncg,ncb,nca);
+    renderer.putColorRGBA(renderer.getColorIndex(4 - i),ncr,ncg,ncb,nca);
   }
 }

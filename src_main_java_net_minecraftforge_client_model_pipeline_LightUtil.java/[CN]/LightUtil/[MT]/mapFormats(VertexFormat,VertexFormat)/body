@@ -1,0 +1,15 @@
+{
+  int[] eMap=new int[from.getElementCount()];
+  for (int e=0; e < from.getElementCount(); e++) {
+    VertexFormatElement expected=from.getElement(e);
+    int e2;
+    for (e2=0; e2 < to.getElementCount(); e2++) {
+      VertexFormatElement current=to.getElement(e2);
+      if (expected.getUsage() == current.getUsage() && expected.getIndex() == current.getIndex()) {
+        break;
+      }
+    }
+    eMap[e]=e2;
+  }
+  return eMap;
+}

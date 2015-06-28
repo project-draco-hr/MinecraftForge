@@ -1,0 +1,6 @@
+{
+  if (itemConsumer == null) {
+    itemConsumer=new ItemConsumer(getTessellator());
+  }
+  return itemConsumer;
+}

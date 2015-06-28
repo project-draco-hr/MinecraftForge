@@ -3,5 +3,4 @@
   this.state=state;
   this.format=format;
   this.textures=textures;
-  buf=BufferUtils.createByteBuffer(VERTICES_IN_QUAD * format.getNextOffset());
 }

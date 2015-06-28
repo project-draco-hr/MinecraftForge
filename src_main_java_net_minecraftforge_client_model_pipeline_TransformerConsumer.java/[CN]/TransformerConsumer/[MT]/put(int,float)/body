@@ -1,0 +1,4 @@
+{
+  float[] newData=transform(element,data);
+  parent.put(element,newData);
+}

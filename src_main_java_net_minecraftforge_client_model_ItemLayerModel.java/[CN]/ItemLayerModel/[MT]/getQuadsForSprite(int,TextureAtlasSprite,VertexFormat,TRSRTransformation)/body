@@ -1,0 +1,42 @@
+{
+  ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
+  int uMax=sprite.getIconWidth();
+  int vMax=sprite.getIconHeight();
+  for (int f=0; f < sprite.getFrameCount(); f++) {
+    int[] pixels=sprite.getFrameTextureData(f)[0];
+    boolean ptu;
+    boolean[] ptv=new boolean[uMax];
+    Arrays.fill(ptv,true);
+    for (int v=0; v < vMax; v++) {
+      ptu=true;
+      for (int u=0; u < uMax; u++) {
+        boolean t=isTransparent(pixels,uMax,vMax,u,v);
+        if (ptu && !t) {
+          builder.add(buildSideQuad(format,transform,EnumFacing.WEST,tint,sprite,u,v));
+        }
+        if (!ptu && t) {
+          builder.add(buildSideQuad(format,transform,EnumFacing.EAST,tint,sprite,u,v));
+        }
+        if (ptv[u] && !t) {
+          builder.add(buildSideQuad(format,transform,EnumFacing.UP,tint,sprite,u,v));
+        }
+        if (!ptv[u] && t) {
+          builder.add(buildSideQuad(format,transform,EnumFacing.DOWN,tint,sprite,u,v));
+        }
+        ptu=t;
+        ptv[u]=t;
+      }
+      if (!ptu) {
+        builder.add(buildSideQuad(format,transform,EnumFacing.EAST,tint,sprite,uMax,v));
+      }
+    }
+    for (int u=0; u < uMax; u++) {
+      if (!ptv[u]) {
+        builder.add(buildSideQuad(format,transform,EnumFacing.DOWN,tint,sprite,u,vMax));
+      }
+    }
+  }
+  builder.add(buildQuad(format,transform,EnumFacing.SOUTH,tint,0,0,7.5f / 16f,sprite.getMinU(),sprite.getMaxV(),0,1,7.5f / 16f,sprite.getMinU(),sprite.getMinV(),1,1,7.5f / 16f,sprite.getMaxU(),sprite.getMinV(),1,0,7.5f / 16f,sprite.getMaxU(),sprite.getMaxV()));
+  builder.add(buildQuad(format,transform,EnumFacing.NORTH,tint,0,0,8.5f / 16f,sprite.getMinU(),sprite.getMaxV(),1,0,8.5f / 16f,sprite.getMaxU(),sprite.getMaxV(),1,1,8.5f / 16f,sprite.getMaxU(),sprite.getMinV(),0,1,8.5f / 16f,sprite.getMinU(),sprite.getMinV()));
+  return builder.build();
+}

@@ -1,0 +1,4 @@
+int tint
+TextureAtlasSprite sprite
+VertexFormat format
+TRSRTransformation transform

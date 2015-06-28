@@ -73,6 +73,9 @@
   prop.setLanguageKey("forge.configgui.hasspawnfuzz").setRequiresWorldRestart(false);
   defaultHasSpawnFuzz=prop.getBoolean(Boolean.TRUE);
   propOrder.add(prop.getName());
+  prop=config.get(Configuration.CATEGORY_GENERAL,"forgeLightPipelineEnabled",Boolean.TRUE,"Enable the forge block rendering pipeline - fixes the lighting of custom models.");
+  forgeLightPipelineEnabled=prop.getBoolean(Boolean.TRUE);
+  propOrder.add(prop.getName());
   config.setCategoryPropertyOrder(CATEGORY_GENERAL,propOrder);
   if (config.hasChanged()) {
     config.save();

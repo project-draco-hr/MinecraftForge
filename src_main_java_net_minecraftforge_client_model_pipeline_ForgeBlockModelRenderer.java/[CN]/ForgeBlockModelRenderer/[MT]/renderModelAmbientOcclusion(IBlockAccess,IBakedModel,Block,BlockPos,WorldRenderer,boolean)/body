@@ -1,0 +1,12 @@
+{
+  if (ForgeModContainer.forgeLightPipelineEnabled) {
+    if (wr != lastRendererSmooth.get()) {
+      lastRendererSmooth.set(wr);
+      lighterSmooth.get().setParent(new WorldRendererConsumer(wr));
+    }
+    return render(lighterSmooth.get(),world,model,block,pos,wr,checkSides);
+  }
+ else {
+    return super.renderModelAmbientOcclusion(world,model,block,pos,wr,checkSides);
+  }
+}

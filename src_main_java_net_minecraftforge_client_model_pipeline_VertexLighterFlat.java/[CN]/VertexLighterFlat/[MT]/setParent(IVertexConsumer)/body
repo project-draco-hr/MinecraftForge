@@ -1,0 +1,33 @@
+{
+  super.setParent(parent);
+  if (Objects.equal(getVertexFormat(),parent.getVertexFormat()))   return;
+  setVertexFormat(getVertexFormat(parent));
+  for (int i=0; i < getVertexFormat().getElementCount(); i++) {
+switch (getVertexFormat().getElement(i).getUsage()) {
+case POSITION:
+      posIndex=i;
+    break;
+case NORMAL:
+  normalIndex=i;
+break;
+case COLOR:
+colorIndex=i;
+break;
+case UV:
+if (getVertexFormat().getElement(i).getIndex() == 1) {
+lightmapIndex=i;
+}
+break;
+default :
+}
+}
+if (posIndex == -1) {
+throw new IllegalArgumentException("vertex lighter needs format with position");
+}
+if (lightmapIndex == -1) {
+throw new IllegalArgumentException("vertex lighter needs format with lightmap");
+}
+if (colorIndex == -1) {
+throw new IllegalArgumentException("vertex lighter needs format with color");
+}
+}
