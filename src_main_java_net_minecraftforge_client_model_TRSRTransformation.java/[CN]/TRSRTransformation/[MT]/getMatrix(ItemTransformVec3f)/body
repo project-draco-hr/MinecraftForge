@@ -1,0 +1,4 @@
+{
+  TRSRTransformation ret=new TRSRTransformation(transform.translation,quatFromYXZDegrees(transform.rotation),transform.scale,null);
+  return blockCenterToCorner(ret).getMatrix();
+}

@@ -1,0 +1,58 @@
+{
+  if (json.isJsonPrimitive() && json.getAsJsonPrimitive().isString()) {
+    String transform=json.getAsString();
+    if (transform.equals("identity")) {
+      return TRSRTransformation.identity();
+    }
+ else {
+      throw new JsonParseException("TRSR: unknown default string: " + transform);
+    }
+  }
+  if (json.isJsonArray()) {
+    return new TRSRTransformation(parseMatrix(json));
+  }
+  if (!json.isJsonObject())   throw new JsonParseException("TRSR: expected array or object, got: " + json);
+  JsonObject obj=json.getAsJsonObject();
+  TRSRTransformation ret;
+  if (obj.has("matrix")) {
+    ret=new TRSRTransformation(parseMatrix(obj.get("matrix")));
+    obj.remove("matrix");
+    if (obj.entrySet().size() != 0) {
+      throw new JsonParseException("TRSR: can't combine matrix and other keys");
+    }
+    return ret;
+  }
+  Vector3f translation=null;
+  Quat4f leftRot=null;
+  Vector3f scale=null;
+  Quat4f rightRot=null;
+  if (obj.has("translation")) {
+    translation=new Vector3f(parseFloatArray(obj.get("translation"),3,"Translation"));
+    obj.remove("translation");
+  }
+  if (obj.has("rotation")) {
+    leftRot=parseRotation(obj.get("rotation"));
+    obj.remove("rotation");
+  }
+  if (obj.has("scale")) {
+    if (!obj.get("scale").isJsonArray()) {
+      try {
+        float s=obj.get("scale").getAsNumber().floatValue();
+        scale=new Vector3f(s,s,s);
+      }
+ catch (      ClassCastException ex) {
+        throw new JsonParseException("TRSR scale: expected number or array, got: " + obj.get("scale"));
+      }
+    }
+ else {
+      scale=new Vector3f(parseFloatArray(obj.get("scale"),3,"Scale"));
+    }
+    obj.remove("scale");
+  }
+  if (obj.has("post-rotation")) {
+    rightRot=parseRotation(obj.get("post-rotation"));
+    obj.remove("post-rotation");
+  }
+  if (!obj.entrySet().isEmpty())   throw new JsonParseException("TRSR: can either have single 'matrix' key, or a combination of 'translation', 'rotation', 'scale', 'post-rotation'");
+  return new TRSRTransformation(translation,leftRot,scale,rightRot);
+}

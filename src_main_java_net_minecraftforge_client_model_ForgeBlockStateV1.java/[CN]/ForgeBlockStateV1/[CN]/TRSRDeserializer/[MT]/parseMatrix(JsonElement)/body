@@ -1,0 +1,20 @@
+{
+  if (!e.isJsonArray())   throw new JsonParseException("Matrix: expected an array, got: " + e);
+  JsonArray m=e.getAsJsonArray();
+  if (m.size() != 3)   throw new JsonParseException("Matrix: expected an array of length 3, got: " + m.size());
+  Matrix4f ret=new Matrix4f();
+  for (int i=0; i < 3; i++) {
+    if (!m.get(i).isJsonArray())     throw new JsonParseException("Matrix row: expected an array, got: " + m.get(i));
+    JsonArray r=m.get(i).getAsJsonArray();
+    if (r.size() != 4)     throw new JsonParseException("Matrix row: expected an array of length 4, got: " + r.size());
+    for (int j=0; j < 4; j++) {
+      try {
+        ret.setElement(i,j,r.get(j).getAsNumber().floatValue());
+      }
+ catch (      ClassCastException ex) {
+        throw new JsonParseException("Matrix element: expected number, got: " + r.get(j));
+      }
+    }
+  }
+  return ret;
+}

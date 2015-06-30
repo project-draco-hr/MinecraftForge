@@ -5,7 +5,10 @@
   ModelBlock model=this.model;
   if (model == null)   return getMissingModel().bake(state,format,bakedTextureGetter);
   ItemCameraTransforms transforms=new ItemCameraTransforms(model.getThirdPersonTransform(),model.getFirstPersonTransform(),model.getHeadTransform(),model.getInGuiTransform());
-  if (hasItemModel(model))   return new ItemLayerModel(model).bake(new IPerspectiveState.Impl(state,transforms),format,bakedTextureGetter);
+  if (hasItemModel(model)) {
+    IPerspectiveState perState=state instanceof IPerspectiveState ? (IPerspectiveState)state : new IPerspectiveState.Impl(state,transforms);
+    return new ItemLayerModel(model).bake(perState,format,bakedTextureGetter);
+  }
   if (isCustomRenderer(model))   return new IFlexibleBakedModel.Wrapper(new BuiltInModel(transforms),format);
   return bakeNormal(model,state.apply(this),format,bakedTextureGetter,state instanceof UVLock);
 }

@@ -1,5 +1,0 @@
-ModelRotation rotation
-boolean uvLock
-ImmutableMap<String,String> textures
-ResourceLocation model
-ImmutableMap<String,String> customData

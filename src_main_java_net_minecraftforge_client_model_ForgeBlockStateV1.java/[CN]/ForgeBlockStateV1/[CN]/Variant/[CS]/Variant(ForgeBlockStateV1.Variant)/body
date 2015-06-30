@@ -1,7 +1,7 @@
 {
   this.model=other.model;
   this.modelSet=other.modelSet;
-  this.rotation=other.rotation;
+  this.state=other.state;
   this.uvLock=other.uvLock;
   this.weight=other.weight;
   this.textures.putAll(other.textures);

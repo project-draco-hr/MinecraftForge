@@ -1,0 +1,5 @@
+{
+  if (parent == null)   return null;
+ else   if (parent instanceof B3DState)   return ((B3DState)parent).parent;
+  return parent;
+}

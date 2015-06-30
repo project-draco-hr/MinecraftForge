@@ -1,0 +1,5 @@
+{
+  this.animation=animation;
+  this.frame=frame;
+  this.parent=getParent(parent);
+}

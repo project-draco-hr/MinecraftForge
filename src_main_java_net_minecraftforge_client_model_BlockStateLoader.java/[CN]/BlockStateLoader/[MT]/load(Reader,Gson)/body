@@ -10,11 +10,10 @@ case 1:
   for (  Entry<String,Collection<ForgeBlockStateV1.Variant>> entry : v1.variants.asMap().entrySet()) {
     List<ModelBlockDefinition.Variant> mcVars=Lists.newArrayList();
     for (    ForgeBlockStateV1.Variant var : entry.getValue()) {
-      ModelRotation rot=var.getRotation().or(ModelRotation.X0_Y0);
       boolean uvLock=var.getUvLock().or(false);
       int weight=var.getWeight().or(1);
-      if (var.getModel() != null && var.getSubmodels().size() == 0 && var.getTextures().size() == 0 && var.getCustomData().size() == 0)       mcVars.add(new ModelBlockDefinition.Variant(var.getModel(),rot,uvLock,weight));
- else       mcVars.add(new ForgeVariant(var.getModel(),rot,uvLock,weight,var.getTextures(),var.getOnlyPartsVariant(),var.getCustomData()));
+      if (var.getModel() != null && var.getSubmodels().size() == 0 && var.getTextures().size() == 0 && var.getCustomData().size() == 0 && var.getState().orNull() instanceof ModelRotation)       mcVars.add(new ModelBlockDefinition.Variant(var.getModel(),(ModelRotation)var.getState().get(),uvLock,weight));
+ else       mcVars.add(new ForgeVariant(var.getModel(),var.getState().or(TRSRTransformation.identity()),uvLock,weight,var.getTextures(),var.getOnlyPartsVariant(),var.getCustomData()));
     }
     variants.add(new ModelBlockDefinition.Variants(entry.getKey(),mcVars));
   }
