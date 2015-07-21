@@ -1,3 +1,4 @@
 {
+  if (unlistedProperties == null || unlistedProperties.isEmpty())   return super.createState(block,properties,unlistedProperties);
   return new ExtendedStateImplementation(block,properties,unlistedProperties,null);
 }

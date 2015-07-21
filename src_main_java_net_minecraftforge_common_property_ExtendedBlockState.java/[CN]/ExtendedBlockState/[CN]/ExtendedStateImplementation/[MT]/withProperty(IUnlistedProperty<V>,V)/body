@@ -10,5 +10,5 @@
   if (Iterables.all(newMap.values(),Predicates.<Optional<?>>equalTo(Optional.absent()))) {
     return (IExtendedBlockState)normalMap.get(getProperties());
   }
-  return new ExtendedStateImplementation(getBlock(),getProperties(),ImmutableMap.copyOf(newMap),propertyValueTable);
+  return new ExtendedStateImplementation(getBlock(),getProperties(),ImmutableMap.copyOf(newMap),propertyValueTable).setMap(this.normalMap);
 }
