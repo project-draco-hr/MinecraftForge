@@ -60,6 +60,11 @@
         part.state=state;
       }
     }
+    Iterator<List<Variant>> iter=v.submodels.values().iterator();
+    while (iter.hasNext()) {
+      List<Variant> submodel=iter.next();
+      if (submodel == null)       iter.remove();
+    }
     if (v.textures != null) {
       for (      Entry<String,String> tex : v.textures.entrySet()) {
         if (tex.getValue() != null && tex.getValue().charAt(0) == '#') {
