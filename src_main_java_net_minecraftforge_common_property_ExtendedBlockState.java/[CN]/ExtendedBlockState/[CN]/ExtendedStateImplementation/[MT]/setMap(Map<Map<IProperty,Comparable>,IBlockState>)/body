@@ -1,0 +1,4 @@
+{
+  this.normalMap=map;
+  return this;
+}
