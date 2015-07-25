@@ -1,0 +1,23 @@
+{
+  BiomeType biomeType=null;
+  try {
+    biomeType=BiomeType.getType("FAKE");
+  }
+ catch (  NullPointerException npe) {
+    LOGGER.warn("EnumHelper in BiomeType is working incorrectly!",npe);
+  }
+ finally {
+    if (biomeType == null || !biomeType.name().equals("FAKE"))     LOGGER.warn("EnumHelper in BiomeType is working incorrectly!");
+  }
+  EnumPlantType plantType=null;
+  if (plantType == null || !plantType.name().equals("FAKE"))   ;
+  try {
+    plantType=EnumPlantType.getPlantType("FAKE");
+  }
+ catch (  NullPointerException npe) {
+    LOGGER.warn("EnumHelper in EnumPlantType is working incorrectly!",npe);
+  }
+ finally {
+    if (plantType == null || !plantType.name().equals("FAKE"))     LOGGER.warn("EnumHelper in EnumPlantType is working incorrectly!");
+  }
+}
