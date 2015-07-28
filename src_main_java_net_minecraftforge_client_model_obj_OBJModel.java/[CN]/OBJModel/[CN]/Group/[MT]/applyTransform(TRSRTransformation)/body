@@ -1,0 +1,7 @@
+{
+  LinkedHashSet<Face> faceSet=new LinkedHashSet<Face>();
+  for (  Face f : this.faces) {
+    faceSet.add(f.bake(transform));
+  }
+  return faceSet;
+}

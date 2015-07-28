@@ -1,0 +1,29 @@
+{
+  Matrix4f m=transform.getMatrix();
+  Vertex[] vertices=new Vertex[verts.length];
+  Normal[] normals=norms != null ? new Normal[norms.length] : null;
+  TextureCoordinate[] textureCoords=texCoords != null ? new TextureCoordinate[texCoords.length] : null;
+  for (int i=0; i < verts.length; i++) {
+    m=transform.getMatrix();
+    Vertex v=verts[i];
+    Normal n=norms != null ? norms[i] : null;
+    TextureCoordinate t=texCoords != null ? texCoords[i] : null;
+    Vector4f pos=new Vector4f(v.getPosition()), newPos=new Vector4f();
+    pos.w=1;
+    m.transform(pos,newPos);
+    Vector4f rPos=new Vector4f(newPos.x,newPos.y,newPos.z,newPos.w);
+    vertices[i]=new Vertex(rPos,v.getMaterial());
+    if (n != null) {
+      m.invert();
+      m.transpose();
+      Vector4f normal=new Vector4f(n.getNormal()), newNormal=new Vector4f();
+      normal.w=1;
+      m.transform(normal,newNormal);
+      Vector3f rNormal=new Vector3f(newNormal.x / newNormal.w,newNormal.y / newNormal.w,newNormal.z / newNormal.w);
+      rNormal.normalize();
+      normals[i]=new Normal(rNormal);
+    }
+    if (t != null)     textureCoords[i]=t;
+  }
+  return new Face(vertices,normals,textureCoords,this.materialName);
+}

@@ -1,0 +1,11 @@
+{
+switch (this) {
+default :
+case SET_TRUE:
+    return true;
+case SET_FALSE:
+  return false;
+case TOGGLE:
+return !valueToToggle;
+}
+}

@@ -1,0 +1,3 @@
+{
+  this(verts,norms,texCoords,Material.DEFAULT_NAME);
+}

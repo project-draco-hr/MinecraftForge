@@ -1,0 +1,25 @@
+{
+  Map<String,Material> mats=new HashMap<String,Material>();
+  for (  Map.Entry<String,Material> e : this.materials.entrySet()) {
+    if (replacements.containsKey(e.getKey()) || replacements.containsKey("all")) {
+      Texture currentTexture=e.getValue().texture;
+      Texture replacementTexture=new Texture(replacements.get(e.getKey()),currentTexture.position,currentTexture.scale,currentTexture.rotation);
+      Material replacementMaterial=new Material(e.getValue().color,replacementTexture,e.getValue().name);
+      mats.put(e.getKey(),replacementMaterial);
+    }
+ else {
+      mats.put(e.getKey(),e.getValue());
+    }
+  }
+  MaterialLibrary ret=new MaterialLibrary();
+  ret.unknownMaterialCommands=this.unknownMaterialCommands;
+  ret.materials=mats;
+  ret.groups=this.groups;
+  ret.mtlStream=this.mtlStream;
+  ret.mtlReader=this.mtlReader;
+  ret.minU=this.minU;
+  ret.maxU=this.maxU;
+  ret.minV=this.minV;
+  ret.maxV=this.maxV;
+  return ret;
+}

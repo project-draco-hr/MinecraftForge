@@ -1,0 +1,9 @@
+{
+  StringBuilder builder=new StringBuilder("OBJState: ");
+  builder.append(String.format("%n    parent: %s%n",this.parent.toString()));
+  builder.append(String.format("    visibility map: %n"));
+  for (  Map.Entry<String,Boolean> e : this.visibilityMap.entrySet()) {
+    builder.append(String.format("        name: %s visible: %b%n",e.getKey(),e.getValue()));
+  }
+  return builder.toString();
+}

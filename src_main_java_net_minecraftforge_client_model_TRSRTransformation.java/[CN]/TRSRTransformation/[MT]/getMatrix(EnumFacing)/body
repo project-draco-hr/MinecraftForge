@@ -1,0 +1,18 @@
+{
+switch (facing) {
+case DOWN:
+    return ModelRotation.X90_Y0.getMatrix();
+case UP:
+  return ModelRotation.X270_Y0.getMatrix();
+case NORTH:
+return TRSRTransformation.identity.matrix;
+case SOUTH:
+return ModelRotation.X0_Y180.getMatrix();
+case WEST:
+return ModelRotation.X0_Y270.getMatrix();
+case EAST:
+return ModelRotation.X0_Y90.getMatrix();
+default :
+return new Matrix4f();
+}
+}

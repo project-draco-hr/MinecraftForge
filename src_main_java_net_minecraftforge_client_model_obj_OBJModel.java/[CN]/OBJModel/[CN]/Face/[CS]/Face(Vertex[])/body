@@ -1,0 +1,3 @@
+{
+  this(verts,new Normal[0],new TextureCoordinate[0]);
+}

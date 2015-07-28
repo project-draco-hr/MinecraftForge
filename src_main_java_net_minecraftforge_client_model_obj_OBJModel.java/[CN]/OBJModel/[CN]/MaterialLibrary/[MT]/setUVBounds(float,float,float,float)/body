@@ -1,0 +1,6 @@
+{
+  this.minU=minU;
+  this.maxU=maxU;
+  this.minV=minV;
+  this.maxV=maxV;
+}

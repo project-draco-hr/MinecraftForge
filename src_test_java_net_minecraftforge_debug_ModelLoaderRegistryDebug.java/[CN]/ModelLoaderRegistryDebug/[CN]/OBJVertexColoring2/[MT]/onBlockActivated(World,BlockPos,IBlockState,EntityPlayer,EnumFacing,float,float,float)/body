@@ -1,0 +1,6 @@
+{
+  if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof OBJVertexColoring2TileEntity) {
+    ((OBJVertexColoring2TileEntity)world.getTileEntity(pos)).cycleColors();
+  }
+  return false;
+}

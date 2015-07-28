@@ -1,0 +1,7 @@
+{
+  StringBuilder builder=new StringBuilder();
+  builder.append(String.format("v:%n"));
+  builder.append(String.format("    position: %s %s %s%n",position.x,position.y,position.z));
+  builder.append(String.format("    material: %s %s %s %s %s%n",material.getName(),material.getColor().x,material.getColor().y,material.getColor().z,material.getColor().w));
+  return builder.toString();
+}

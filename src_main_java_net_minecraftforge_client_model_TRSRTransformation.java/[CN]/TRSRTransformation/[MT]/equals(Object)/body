@@ -1,0 +1,11 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  TRSRTransformation other=(TRSRTransformation)obj;
+  if (matrix == null) {
+    if (other.matrix != null)     return false;
+  }
+ else   if (!matrix.equals(other.matrix))   return false;
+  return true;
+}

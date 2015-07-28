@@ -1,0 +1,4 @@
+{
+  this.manager=resourceManager;
+  cache.clear();
+}

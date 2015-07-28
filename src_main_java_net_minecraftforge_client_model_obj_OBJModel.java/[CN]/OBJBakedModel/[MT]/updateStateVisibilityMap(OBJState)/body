@@ -1,0 +1,23 @@
+{
+  if (state.visibilityMap.containsKey(Group.ALL)) {
+    boolean operation=state.visibilityMap.get(Group.ALL);
+    state.visibilityMap.clear();
+    for (    String s : this.model.getMatLib().getGroups().keySet()) {
+      state.visibilityMap.put(s,state.operation.performOperation(operation));
+    }
+  }
+ else   if (state.visibilityMap.containsKey(Group.ALL_EXCEPT)) {
+    List<String> exceptList=state.getGroupNamesFromMap().subList(1,state.getGroupNamesFromMap().size());
+    state.visibilityMap.remove(Group.ALL_EXCEPT);
+    for (    String s : this.model.getMatLib().getGroups().keySet()) {
+      if (!exceptList.contains(s)) {
+        state.visibilityMap.put(s,state.operation.performOperation(state.visibilityMap.get(s)));
+      }
+    }
+  }
+ else {
+    for (    String s : state.visibilityMap.keySet()) {
+      state.visibilityMap.put(s,state.operation.performOperation(state.visibilityMap.get(s)));
+    }
+  }
+}

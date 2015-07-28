@@ -1,0 +1,7 @@
+{
+  List<Group> groupList=Lists.newArrayList();
+  for (  Group g : this.groups.values()) {
+    if (g.faces.contains(f))     groupList.add(g);
+  }
+  return groupList;
+}

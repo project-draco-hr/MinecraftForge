@@ -1,0 +1,8 @@
+{
+  Vector4f colorVec=new Vector4f();
+  colorVec.w=(color >> 24 & 255) / 255;
+  colorVec.x=(color >> 16 & 255) / 255;
+  colorVec.y=(color >> 8 & 255) / 255;
+  colorVec.z=(color & 255) / 255;
+  this.materials.get(name).setColor(colorVec);
+}

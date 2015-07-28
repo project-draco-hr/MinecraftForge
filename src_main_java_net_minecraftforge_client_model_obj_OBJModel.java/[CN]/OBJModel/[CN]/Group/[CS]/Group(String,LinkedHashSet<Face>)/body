@@ -1,0 +1,4 @@
+{
+  this.name=name != null ? name : DEFAULT_NAME;
+  this.faces=faces == null ? new LinkedHashSet<Face>() : faces;
+}

@@ -1,0 +1,4 @@
+{
+  this.parent=parent;
+  for (  String s : visibleGroups)   this.visibilityMap.put(s,visibility);
+}

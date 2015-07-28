@@ -1,0 +1,5 @@
+{
+  if (verts == null)   return false;
+ else   this.verts=verts;
+  return true;
+}

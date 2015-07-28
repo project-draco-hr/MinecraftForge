@@ -1,0 +1,10 @@
+{
+  this.verts=verts;
+  this.verts=this.verts != null && this.verts.length > 0 ? this.verts : null;
+  this.norms=norms;
+  this.norms=this.norms != null && this.norms.length > 0 ? this.norms : null;
+  this.texCoords=texCoords;
+  this.texCoords=this.texCoords != null && this.texCoords.length > 0 ? this.texCoords : null;
+  setMaterialName(materialName);
+  ensureQuads();
+}

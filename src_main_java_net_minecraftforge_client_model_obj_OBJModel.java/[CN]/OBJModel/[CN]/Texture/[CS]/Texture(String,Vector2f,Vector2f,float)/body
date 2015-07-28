@@ -1,0 +1,6 @@
+{
+  this.path=path;
+  this.position=position;
+  this.scale=scale;
+  this.rotation=rotation;
+}

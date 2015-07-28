@@ -1,0 +1,21 @@
+{
+  if (names == null || names.isEmpty())   return;
+  this.operation=operation;
+  if (names.get(0).equals(Group.ALL)) {
+    for (    String s : this.visibilityMap.keySet()) {
+      this.visibilityMap.put(s,this.operation.performOperation(this.visibilityMap.get(s)));
+    }
+  }
+ else   if (names.get(0).equals(Group.ALL_EXCEPT)) {
+    for (    String s : this.visibilityMap.keySet()) {
+      if (!names.subList(1,names.size()).contains(s)) {
+        this.visibilityMap.put(s,this.operation.performOperation(this.visibilityMap.get(s)));
+      }
+    }
+  }
+ else {
+    for (    String s : names) {
+      this.visibilityMap.put(s,this.operation.performOperation(this.visibilityMap.get(s)));
+    }
+  }
+}

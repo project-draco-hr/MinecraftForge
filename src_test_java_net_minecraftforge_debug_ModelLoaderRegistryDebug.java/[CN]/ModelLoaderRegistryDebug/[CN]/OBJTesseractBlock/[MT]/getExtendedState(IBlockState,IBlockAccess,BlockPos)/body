@@ -1,0 +1,5 @@
+{
+  OBJTesseractTileEntity tileEntity=(OBJTesseractTileEntity)world.getTileEntity(pos);
+  OBJModel.OBJState retState=new OBJModel.OBJState(tileEntity == null ? Lists.newArrayList(OBJModel.Group.ALL) : tileEntity.visible,true);
+  return ((IExtendedBlockState)this.state.getBaseState()).withProperty(OBJModel.OBJProperty.instance,retState);
+}

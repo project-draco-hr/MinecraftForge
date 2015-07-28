@@ -1,0 +1,6 @@
+{
+  super(Material.iron);
+  this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH,false).withProperty(SOUTH,false).withProperty(WEST,false).withProperty(EAST,false));
+  setCreativeTab(CreativeTabs.tabBlock);
+  setUnlocalizedName(MODID + ":" + name);
+}

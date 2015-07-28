@@ -1,0 +1,3 @@
+Vector4f color
+Texture texture
+String name

@@ -1,0 +1,3 @@
+{
+  this.groups.put(Group.DEFAULT_NAME,new Group(Group.DEFAULT_NAME,null));
+}

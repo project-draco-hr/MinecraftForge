@@ -1,0 +1,3 @@
+{
+  return new OBJBakedModel(this.model,this.state,this.format,this.textures);
+}

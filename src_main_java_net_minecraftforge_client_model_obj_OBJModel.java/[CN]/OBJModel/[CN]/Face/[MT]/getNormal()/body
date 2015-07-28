@@ -1,0 +1,88 @@
+{
+  if (norms == null) {
+    Vector3f v1=new Vector3f(this.verts[0].getPosition().x,this.verts[0].getPosition().y,this.verts[0].getPosition().z);
+    Vector3f v2=new Vector3f(this.verts[1].getPosition().x,this.verts[1].getPosition().y,this.verts[1].getPosition().z);
+    Vector3f v3=new Vector3f(this.verts[2].getPosition().x,this.verts[2].getPosition().y,this.verts[2].getPosition().z);
+    Vector3f v4=this.verts.length > 3 ? new Vector3f(this.verts[3].getPosition().x,this.verts[3].getPosition().y,this.verts[3].getPosition().z) : null;
+    if (v4 == null) {
+      Vector3f v2c=new Vector3f(v2.x,v2.y,v2.z);
+      Vector3f v1c=new Vector3f(v1.x,v1.y,v1.z);
+      v1c.sub(v2c);
+      Vector3f v3c=new Vector3f(v3.x,v3.y,v3.z);
+      v3c.sub(v2c);
+      Vector3f c=new Vector3f();
+      c.cross(v1c,v3c);
+      c.normalize();
+      Normal normal=new Normal(c);
+      return normal;
+    }
+ else {
+      Vector3f v2c=new Vector3f(v2.x,v2.y,v2.z);
+      Vector3f v1c=new Vector3f(v1.x,v1.y,v1.z);
+      v1c.sub(v2c);
+      Vector3f v3c=new Vector3f(v3.x,v3.y,v3.z);
+      v3c.sub(v2c);
+      Vector3f c=new Vector3f();
+      c.cross(v1c,v3c);
+      c.normalize();
+      v1c=new Vector3f(v1.x,v1.y,v1.z);
+      v3c=new Vector3f(v3.x,v3.y,v3.z);
+      Vector3f v4c=new Vector3f(v4.x,v4.y,v4.z);
+      v1c.sub(v4c);
+      v3c.sub(v4c);
+      Vector3f d=new Vector3f();
+      d.cross(v1c,v3c);
+      d.normalize();
+      Vector3f avg=new Vector3f();
+      avg.x=(c.x + d.x) * 0.5f;
+      avg.y=(c.y + d.y) * 0.5f;
+      avg.z=(c.z + d.z) * 0.5f;
+      avg.normalize();
+      Normal normal=new Normal(avg);
+      return normal;
+    }
+  }
+ else {
+    Vector3f n1=this.norms[0].getNormal();
+    Vector3f n2=this.norms[1].getNormal();
+    Vector3f n3=this.norms[2].getNormal();
+    Vector3f n4=this.norms.length > 3 ? this.norms[3].getNormal() : null;
+    if (n4 == null) {
+      Vector3f n2c=new Vector3f(n2.x,n2.y,n2.z);
+      Vector3f n1c=new Vector3f(n1.x,n1.y,n1.z);
+      n1c.sub(n2c);
+      Vector3f n3c=new Vector3f(n3.x,n3.y,n3.z);
+      n3c.sub(n2c);
+      Vector3f c=new Vector3f();
+      c.cross(n1c,n3c);
+      c.normalize();
+      Normal normal=new Normal(c);
+      return normal;
+    }
+ else {
+      Vector3f n2c=new Vector3f(n2.x,n2.y,n2.z);
+      Vector3f n1c=new Vector3f(n1.x,n1.y,n1.z);
+      n1c.sub(n2c);
+      Vector3f n3c=new Vector3f(n3.x,n3.y,n3.z);
+      n3c.sub(n2c);
+      Vector3f c=new Vector3f();
+      c.cross(n1c,n3c);
+      c.normalize();
+      n1c=new Vector3f(n1.x,n1.y,n1.z);
+      n3c=new Vector3f(n3.x,n3.y,n3.z);
+      Vector3f n4c=new Vector3f(n4.x,n4.y,n4.z);
+      n1c.sub(n4c);
+      n3c.sub(n4c);
+      Vector3f d=new Vector3f();
+      d.cross(n1c,n3c);
+      d.normalize();
+      Vector3f avg=new Vector3f();
+      avg.x=(c.x + d.x) * 0.5f;
+      avg.y=(c.y + d.y) * 0.5f;
+      avg.z=(c.z + d.z) * 0.5f;
+      avg.normalize();
+      Normal normal=new Normal(avg);
+      return normal;
+    }
+  }
+}

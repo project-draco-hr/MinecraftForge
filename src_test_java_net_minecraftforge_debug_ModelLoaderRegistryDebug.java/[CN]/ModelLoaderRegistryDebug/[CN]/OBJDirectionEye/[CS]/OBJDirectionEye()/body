@@ -1,0 +1,6 @@
+{
+  super(Material.iron);
+  setDefaultState(this.blockState.getBaseState().withProperty(FACING,EnumFacing.NORTH));
+  setCreativeTab(CreativeTabs.tabBlock);
+  setUnlocalizedName(name);
+}

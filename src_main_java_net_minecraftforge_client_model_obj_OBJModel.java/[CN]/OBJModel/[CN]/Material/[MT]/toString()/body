@@ -1,0 +1,7 @@
+{
+  StringBuilder builder=new StringBuilder(String.format("%nMaterial:%n"));
+  builder.append(String.format("    Name: %s%n",this.name));
+  builder.append(String.format("    Color: %s%n",this.color.toString()));
+  builder.append(String.format("    Is White: %b%n",this.isWhite()));
+  return builder.toString();
+}

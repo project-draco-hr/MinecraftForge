@@ -1,0 +1,9 @@
+{
+  List<String> ret=Lists.newArrayList();
+  for (  Map.Entry<String,Boolean> e : this.visibilityMap.entrySet()) {
+    if (e.getValue() == visibility) {
+      ret.add(e.getKey());
+    }
+  }
+  return ret;
+}

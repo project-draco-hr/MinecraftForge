@@ -1,0 +1,10 @@
+{
+  Iterator<Material> materialIterator=this.matLib.materials.values().iterator();
+  List<ResourceLocation> textures=Lists.newArrayList();
+  while (materialIterator.hasNext()) {
+    Material mat=materialIterator.next();
+    ResourceLocation textureLoc=new ResourceLocation(mat.getTexture().getPath());
+    if (!textures.contains(textureLoc))     textures.add(textureLoc);
+  }
+  return textures;
+}

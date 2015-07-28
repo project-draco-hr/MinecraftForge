@@ -1,0 +1,3 @@
+{
+  this(new Vector4f(1f,1f,1f,1f),texture,DEFAULT_NAME);
+}

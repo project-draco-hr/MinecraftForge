@@ -1,0 +1,3 @@
+{
+  this(color,Texture.White,WHITE_NAME);
+}

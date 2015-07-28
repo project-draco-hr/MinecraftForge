@@ -1,0 +1,4 @@
+{
+  Block block=world.getBlockState(pos).getBlock();
+  return block instanceof OBJCustomDataBlock;
+}

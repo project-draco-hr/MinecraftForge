@@ -1,0 +1,4 @@
+{
+  ResourceLocation loc=new ResourceLocation(this.path);
+  return loc;
+}

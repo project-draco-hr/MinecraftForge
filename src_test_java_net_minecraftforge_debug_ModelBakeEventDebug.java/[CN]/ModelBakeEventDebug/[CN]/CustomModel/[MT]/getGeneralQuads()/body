@@ -6,7 +6,7 @@
     for (int i=0; i < cubeSize; i++) {
       for (int j=0; j < cubeSize; j++) {
         if (state != null) {
-          Integer value=(Integer)state.getValue(properties[f.ordinal()]);
+          Integer value=state.getValue(properties[f.ordinal()]);
           if (value != null && (value & (1 << (i * cubeSize + j))) != 0) {
             ret.add(createSidedBakedQuad((float)(1 + i * 5) / len,(float)(5 + i * 5) / len,(float)(1 + j * 5) / len,(float)(5 + j * 5) / len,1.0001f,overlay,f));
           }

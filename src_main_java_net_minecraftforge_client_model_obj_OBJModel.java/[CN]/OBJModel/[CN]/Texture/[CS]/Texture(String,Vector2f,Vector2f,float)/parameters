@@ -1,0 +1,4 @@
+String path
+Vector2f position
+Vector2f scale
+float rotation

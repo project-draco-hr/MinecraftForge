@@ -1,0 +1,3 @@
+List<String> visibleGroups
+boolean visibility
+IModelState parent

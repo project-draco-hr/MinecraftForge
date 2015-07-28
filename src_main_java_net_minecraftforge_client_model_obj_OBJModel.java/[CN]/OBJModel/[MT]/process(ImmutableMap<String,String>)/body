@@ -1,0 +1,7 @@
+{
+  for (  Map.Entry<String,String> e : customData.entrySet()) {
+    if (e.getKey().equals("ambient"))     this.ambientOcclusion=GSON.fromJson(e.getValue(),Boolean.TYPE);
+ else     if (e.getKey().equals("gui3d"))     this.gui3d=GSON.fromJson(e.getValue(),Boolean.TYPE);
+  }
+  return this;
+}

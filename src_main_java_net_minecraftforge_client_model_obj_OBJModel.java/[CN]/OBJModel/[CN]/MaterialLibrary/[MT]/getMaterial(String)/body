@@ -1,0 +1,3 @@
+{
+  return this.materials.get(name);
+}

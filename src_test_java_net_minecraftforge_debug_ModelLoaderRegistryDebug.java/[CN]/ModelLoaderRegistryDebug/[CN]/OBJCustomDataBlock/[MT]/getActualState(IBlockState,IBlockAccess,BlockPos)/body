@@ -1,0 +1,3 @@
+{
+  return state.withProperty(NORTH,this.canConnectTo(world,pos.north())).withProperty(SOUTH,this.canConnectTo(world,pos.south())).withProperty(WEST,this.canConnectTo(world,pos.west())).withProperty(EAST,this.canConnectTo(world,pos.east()));
+}

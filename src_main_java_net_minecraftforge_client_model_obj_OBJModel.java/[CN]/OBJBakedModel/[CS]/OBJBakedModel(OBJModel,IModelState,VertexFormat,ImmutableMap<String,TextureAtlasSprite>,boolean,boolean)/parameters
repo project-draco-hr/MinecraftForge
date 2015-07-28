@@ -1,0 +1,6 @@
+OBJModel model
+IModelState state
+VertexFormat format
+ImmutableMap<String,TextureAtlasSprite> textures
+boolean ambientOcclusion
+boolean gui3d
