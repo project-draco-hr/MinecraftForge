@@ -1,10 +1,17 @@
 {
   this.classLoader=classLoader;
   try {
-    InputStream classData=getClass().getResourceAsStream(deobfFileName);
-    LZMAInputSupplier zis=new LZMAInputSupplier(classData);
-    CharSource srgSource=zis.asCharSource(Charsets.UTF_8);
-    List<String> srgList=srgSource.readLines();
+    List<String> srgList;
+    final String gradleStartProp=System.getProperty("net.minecraftforge.gradle.GradleStart.srg.srg-mcp");
+    if (Strings.isNullOrEmpty(gradleStartProp)) {
+      InputStream classData=getClass().getResourceAsStream(deobfFileName);
+      LZMAInputSupplier zis=new LZMAInputSupplier(classData);
+      CharSource srgSource=zis.asCharSource(Charsets.UTF_8);
+      srgList=srgSource.readLines();
+    }
+ else {
+      srgList=Files.readLines(new File(gradleStartProp),Charsets.UTF_8);
+    }
     rawMethodMaps=Maps.newHashMap();
     rawFieldMaps=Maps.newHashMap();
     Builder<String,String> builder=ImmutableBiMap.<String,String>builder();
