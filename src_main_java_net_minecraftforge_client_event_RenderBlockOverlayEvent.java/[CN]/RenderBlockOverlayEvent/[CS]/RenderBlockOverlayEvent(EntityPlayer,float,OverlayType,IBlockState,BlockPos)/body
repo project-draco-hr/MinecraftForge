@@ -1,0 +1,7 @@
+{
+  this.player=player;
+  this.renderPartialTicks=renderPartialTicks;
+  this.overlayType=type;
+  this.blockForOverlay=block;
+  this.blockPos=blockPos;
+}
