@@ -1,0 +1,39 @@
+{
+  this.classLoader=classLoader;
+  try {
+    List<String> srgList;
+    final String gradleStartProp=System.getProperty("net.minecraftforge.gradle.GradleStart.srg.srg-mcp");
+    if (Strings.isNullOrEmpty(gradleStartProp)) {
+      InputStream classData=getClass().getResourceAsStream(deobfFileName);
+      LZMAInputSupplier zis=new LZMAInputSupplier(classData);
+      CharSource srgSource=zis.asCharSource(Charsets.UTF_8);
+      srgList=srgSource.readLines();
+    }
+ else {
+      srgList=Files.readLines(new File(gradleStartProp),Charsets.UTF_8);
+    }
+    rawMethodMaps=Maps.newHashMap();
+    rawFieldMaps=Maps.newHashMap();
+    Builder<String,String> builder=ImmutableBiMap.<String,String>builder();
+    Splitter splitter=Splitter.on(CharMatcher.anyOf(": ")).omitEmptyStrings().trimResults();
+    for (    String line : srgList) {
+      String[] parts=Iterables.toArray(splitter.split(line),String.class);
+      String typ=parts[0];
+      if ("CL".equals(typ)) {
+        parseClass(builder,parts);
+      }
+ else       if ("MD".equals(typ)) {
+        parseMethod(parts);
+      }
+ else       if ("FD".equals(typ)) {
+        parseField(parts);
+      }
+    }
+    classNameBiMap=builder.build();
+  }
+ catch (  IOException ioe) {
+    FMLRelaunchLog.log(Level.ERROR,ioe,"An error occurred loading the deobfuscation map data");
+  }
+  methodNameMaps=Maps.newHashMapWithExpectedSize(rawMethodMaps.size());
+  fieldNameMaps=Maps.newHashMapWithExpectedSize(rawFieldMaps.size());
+}

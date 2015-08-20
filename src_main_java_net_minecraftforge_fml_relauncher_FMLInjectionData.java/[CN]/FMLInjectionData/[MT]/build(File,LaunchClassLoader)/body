@@ -1,0 +1,9 @@
+{
+  minecraftHome=mcHome;
+  major=String.valueOf(ForgeVersion.majorVersion);
+  minor=String.valueOf(ForgeVersion.minorVersion);
+  rev=String.valueOf(ForgeVersion.revisionVersion);
+  build=String.valueOf(ForgeVersion.buildVersion);
+  mccversion=ForgeVersion.mcVersion;
+  mcpversion=ForgeVersion.mcpVersion;
+}
