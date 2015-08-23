@@ -1,5 +1,7 @@
 {
   File configFile=new File(Minecraft.getMinecraft().mcDataDir,"config/splash.properties");
+  File parent=configFile.getParentFile();
+  if (!parent.exists())   parent.mkdirs();
   FileReader r=null;
   config=new Properties();
   try {
@@ -12,7 +14,8 @@
  finally {
     IOUtils.closeQuietly(r);
   }
-  enabled=getBool("enabled",true) && ((!FMLClientHandler.instance().hasOptifine()) || Launch.blackboard.containsKey("optifine.ForgeSplashCompatible"));
+  boolean defaultEnabled=!System.getProperty("os.name").toLowerCase().contains("mac");
+  enabled=getBool("enabled",defaultEnabled) && ((!FMLClientHandler.instance().hasOptifine()) || Launch.blackboard.containsKey("optifine.ForgeSplashCompatible"));
   rotate=getBool("rotate",false);
   logoOffset=getInt("logoOffset",0);
   backgroundColor=getHex("background",0xFFFFFF);
@@ -66,9 +69,9 @@
   }
  catch (  LWJGLException e) {
     e.printStackTrace();
-    throw new RuntimeException(e);
+    disableSplash(e);
   }
-  Thread mainThread=Thread.currentThread();
+  getMaxTextureSize();
   thread=new Thread(new Runnable(){
     private final int barWidth=400;
     private final int barHeight=20;
