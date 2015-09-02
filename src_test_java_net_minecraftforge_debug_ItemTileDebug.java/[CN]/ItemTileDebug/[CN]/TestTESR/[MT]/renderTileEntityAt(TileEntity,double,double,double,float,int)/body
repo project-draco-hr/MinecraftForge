@@ -1,0 +1,16 @@
+{
+  glPushMatrix();
+  glTranslated(x,y,z);
+  GlStateManager.disableTexture2D();
+  GlStateManager.disableLighting();
+  glColor4f(.2f,1,.1f,1);
+  glBegin(GL_QUADS);
+  glVertex3f(0,.5f,0);
+  glVertex3f(0,.5f,1);
+  glVertex3f(1,.5f,1);
+  glVertex3f(1,.5f,0);
+  glEnd();
+  glPopMatrix();
+  GlStateManager.enableTexture2D();
+  GlStateManager.enableLighting();
+}
