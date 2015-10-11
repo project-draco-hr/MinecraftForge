@@ -1,0 +1,4 @@
+{
+  System.out.println(event.forced + " " + event.newSpawn.toString());
+  event.setCanceled(true);
+}
