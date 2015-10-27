@@ -1,22 +1,27 @@
 {
   if (model.getParentLocation() != null) {
-    try {
-      IModel parent=getModel(model.getParentLocation());
-      if (parent instanceof VanillaModelWrapper) {
-        model.parent=((VanillaModelWrapper)parent).model;
-      }
- else {
-        throw new IllegalStateException("vanilla model '" + model + "' can't have non-vanilla parent");
-      }
+    if (model.getParentLocation().getResourcePath().equals("builtin/generated")) {
+      model.parent=MODEL_GENERATED;
     }
- catch (    IOException e) {
-      FMLLog.warning("Could not load vanilla model parent '" + model.getParentLocation() + "' for '"+ model+ "': "+ e.toString());
-      IModel missing=ModelLoader.this.getMissingModel();
-      if (missing instanceof VanillaModelWrapper) {
-        model.parent=((VanillaModelWrapper)missing).model;
-      }
  else {
-        throw new IllegalStateException("vanilla model '" + model + "' has missing parent, and missing model is not a vanilla model");
+      try {
+        IModel parent=getModel(model.getParentLocation());
+        if (parent instanceof VanillaModelWrapper) {
+          model.parent=((VanillaModelWrapper)parent).model;
+        }
+ else {
+          throw new IllegalStateException("vanilla model '" + model + "' can't have non-vanilla parent");
+        }
+      }
+ catch (      IOException e) {
+        FMLLog.warning("Could not load vanilla model parent '" + model.getParentLocation() + "' for '"+ model+ "': "+ e.toString());
+        IModel missing=ModelLoader.this.getMissingModel();
+        if (missing instanceof VanillaModelWrapper) {
+          model.parent=((VanillaModelWrapper)missing).model;
+        }
+ else {
+          throw new IllegalStateException("vanilla model '" + model + "' has missing parent, and missing model is not a vanilla model");
+        }
       }
     }
   }

@@ -1,6 +1,6 @@
 {
-  ResourceLocation actual=getActualLocation(location);
   if (cache.containsKey(location))   return cache.get(location);
+  ResourceLocation actual=getActualLocation(location);
   ICustomModelLoader accepted=null;
   for (  ICustomModelLoader loader : loaders) {
     try {
