@@ -1,0 +1,41 @@
+{
+  this.base=base;
+  this.parts=parts;
+  if (base != null)   internalBase=base;
+ else {
+    Iterator<IFlexibleBakedModel> iter=parts.values().iterator();
+    if (iter.hasNext())     internalBase=iter.next();
+ else     throw new IllegalArgumentException("No base model or submodel provided for MultiModel.Baked " + location + ".");
+  }
+  EnumMap<EnumFacing,ImmutableList<BakedQuad>> faces=Maps.newEnumMap(EnumFacing.class);
+  for (  EnumFacing face : EnumFacing.values()) {
+    ImmutableList.Builder<BakedQuad> faceQuads=ImmutableList.builder();
+    if (base != null)     faceQuads.addAll(base.getFaceQuads(face));
+    for (    IFlexibleBakedModel bakedPart : parts.values())     faceQuads.addAll(bakedPart.getFaceQuads(face));
+    faces.put(face,faceQuads.build());
+  }
+  this.faces=Maps.immutableEnumMap(faces);
+  ImmutableList.Builder<BakedQuad> genQuads=ImmutableList.builder();
+  if (base != null)   genQuads.addAll(base.getGeneralQuads());
+  for (  IFlexibleBakedModel bakedPart : parts.values())   genQuads.addAll(bakedPart.getGeneralQuads());
+  general=genQuads.build();
+  if (perspective && base instanceof IPerspectiveAwareModel) {
+    IPerspectiveAwareModel perBase=(IPerspectiveAwareModel)base;
+    ImmutableMap.Builder<TransformType,Pair<Baked,TRSRTransformation>> builder=ImmutableMap.builder();
+    for (    TransformType type : TransformType.values()) {
+      Pair<IBakedModel,Matrix4f> p=perBase.handlePerspective(type);
+      IFlexibleBakedModel newBase;
+      if (p.getLeft() instanceof IFlexibleBakedModel) {
+        newBase=(IFlexibleBakedModel)p.getLeft();
+      }
+ else {
+        newBase=new IFlexibleBakedModel.Wrapper(p.getLeft(),base.getFormat());
+      }
+      builder.put(type,Pair.of(new Baked(location,false,newBase,parts),new TRSRTransformation(p.getRight())));
+    }
+    transforms=builder.build();
+  }
+ else {
+    transforms=ImmutableMap.of();
+  }
+}

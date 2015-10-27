@@ -1,22 +1,3 @@
 {
-  this.base=base;
-  this.parts=parts;
-  if (base != null)   internalBase=base;
- else {
-    Iterator<IFlexibleBakedModel> iter=parts.values().iterator();
-    if (iter.hasNext())     internalBase=iter.next();
- else     throw new RuntimeException("No base model or submodel provided for this MultiModel.Baked.");
-  }
-  EnumMap<EnumFacing,ImmutableList<BakedQuad>> faces=Maps.newEnumMap(EnumFacing.class);
-  for (  EnumFacing face : EnumFacing.values()) {
-    ImmutableList.Builder<BakedQuad> faceQuads=ImmutableList.builder();
-    if (base != null)     faceQuads.addAll(base.getFaceQuads(face));
-    for (    IFlexibleBakedModel bakedPart : parts.values())     faceQuads.addAll(bakedPart.getFaceQuads(face));
-    faces.put(face,faceQuads.build());
-  }
-  this.faces=Maps.immutableEnumMap(faces);
-  ImmutableList.Builder<BakedQuad> genQuads=ImmutableList.builder();
-  if (base != null)   genQuads.addAll(base.getGeneralQuads());
-  for (  IFlexibleBakedModel bakedPart : parts.values())   genQuads.addAll(bakedPart.getGeneralQuads());
-  general=genQuads.build();
+  this(null,false,base,parts);
 }

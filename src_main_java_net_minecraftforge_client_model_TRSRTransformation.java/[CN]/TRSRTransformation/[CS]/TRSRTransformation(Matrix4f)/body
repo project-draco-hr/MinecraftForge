@@ -1,3 +1,8 @@
 {
-  this.matrix=matrix;
+  if (matrix == null) {
+    this.matrix=identity.matrix;
+  }
+ else {
+    this.matrix=matrix;
+  }
 }

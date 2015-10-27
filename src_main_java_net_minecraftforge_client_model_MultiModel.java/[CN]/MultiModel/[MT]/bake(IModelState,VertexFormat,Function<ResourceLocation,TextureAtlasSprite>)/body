@@ -6,5 +6,10 @@
     Pair<IModel,IModelState> pair=entry.getValue();
     mapBuilder.put(entry.getKey(),pair.getLeft().bake(pair.getRight(),format,bakedTextureGetter));
   }
-  return new Baked(bakedBase,mapBuilder.build());
+  if (bakedBase == null && parts.isEmpty()) {
+    FMLLog.log(Level.ERROR,"MultiModel %s is empty (no base model or parts were provided/resolved)",location);
+    IModel missing=ModelLoaderRegistry.getMissingModel();
+    return missing.bake(missing.getDefaultState(),format,bakedTextureGetter);
+  }
+  return new Baked(location,true,bakedBase,mapBuilder.build());
 }

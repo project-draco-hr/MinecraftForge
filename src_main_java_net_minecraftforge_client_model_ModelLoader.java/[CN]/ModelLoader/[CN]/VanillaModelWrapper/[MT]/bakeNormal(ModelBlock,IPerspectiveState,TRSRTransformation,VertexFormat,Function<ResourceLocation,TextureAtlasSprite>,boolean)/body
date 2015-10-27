@@ -12,5 +12,5 @@
       }
     }
   }
-  return new IFlexibleBakedModel.Wrapper(builder.makeBakedModel(),format);
+  return new IPerspectiveAwareModel.MapWrapper(new IFlexibleBakedModel.Wrapper(builder.makeBakedModel(),format),perState,this);
 }
