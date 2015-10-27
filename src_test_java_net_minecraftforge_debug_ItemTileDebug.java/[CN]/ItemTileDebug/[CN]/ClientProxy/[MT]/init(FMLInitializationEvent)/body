@@ -1,0 +1,3 @@
+{
+  ClientRegistry.bindTileEntitySpecialRenderer(CustomTileEntity.class,TestTESR.instance);
+}

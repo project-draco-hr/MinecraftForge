@@ -1,6 +1,5 @@
 {
   super.preInit(event);
-  ClientRegistry.bindTileEntitySpecialRenderer(CustomTileEntity.class,TestTESR.instance);
   Item item=Item.getItemFromBlock(TestBlock.instance);
   ForgeHooksClient.registerTESRItemStack(item,0,CustomTileEntity.class);
   ModelLoader.setCustomModelResourceLocation(item,0,itemLocation);
