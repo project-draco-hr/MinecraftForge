@@ -1,0 +1,6 @@
+{
+  if (this.verts != null && this.verts.length == 3) {
+    this.isTri=true;
+    this.verts=new Vertex[]{this.verts[0],this.verts[1],this.verts[2],this.verts[2]};
+  }
+}

@@ -52,36 +52,13 @@
         sprite=ModelLoader.White.instance;
       }
  else       sprite=this.textures.get(f.getMaterialName());
-      float minU=0.0f;
-      float maxU=1.0f;
-      float minV=0.0f;
-      float maxV=1.0f;
-      if (f.texCoords != null && !f.areUVsNormalized()) {
-        for (        TextureCoordinate t : f.texCoords) {
-          minU=t.getPosition().x < minU ? t.getPosition().x : minU;
-          maxU=t.getPosition().x > maxU ? t.getPosition().x : maxU;
-          minV=t.getPosition().y < minV ? t.getPosition().y : minV;
-          maxV=t.getPosition().y > maxV ? t.getPosition().y : maxV;
-        }
-        for (int i=0; i < f.texCoords.length; i++) {
-          TextureCoordinate t=f.texCoords[i];
-          float U=(t.getPosition().x - minU) / (maxU - minU);
-          float V=(t.getPosition().y - minV) / (maxV - minV);
-          Vector3f normPos=new Vector3f(U,V,t.getPosition().z);
-          f.texCoords[i]=new TextureCoordinate(normPos);
-        }
-      }
-      TextureCoordinate def1=new TextureCoordinate(new Vector3f(minU,minV,1));
-      TextureCoordinate def2=new TextureCoordinate(new Vector3f(maxU,minV,1));
-      TextureCoordinate def3=new TextureCoordinate(new Vector3f(maxU,maxV,1));
-      TextureCoordinate def4=new TextureCoordinate(new Vector3f(minU,maxV,1));
       UnpackedBakedQuad.Builder builder=new UnpackedBakedQuad.Builder(format);
+      builder.setQuadOrientation(EnumFacing.getFacingFromVector(f.getNormal().x,f.getNormal().y,f.getNormal().z));
       builder.setQuadColored();
-      builder.setQuadOrientation(EnumFacing.getFacingFromVector(f.getNormal().normal.x,f.getNormal().normal.y,f.getNormal().normal.z));
-      putVertexData(builder,f.verts[0],f.texCoords != null ? f.texCoords[0] : def1,f.norms != null ? f.norms[0] : f.getNormal(),sprite);
-      putVertexData(builder,f.verts[1],f.texCoords != null ? f.texCoords[1] : def2,f.norms != null ? f.norms[1] : f.getNormal(),sprite);
-      putVertexData(builder,f.verts[2],f.texCoords != null ? f.texCoords[2] : def3,f.norms != null ? f.norms[2] : f.getNormal(),sprite);
-      putVertexData(builder,f.verts[3],f.texCoords != null ? f.texCoords[3] : def4,f.norms != null ? f.norms[3] : f.getNormal(),sprite);
+      putVertexData(builder,f.verts[0],f.getNormal(),TextureCoordinate.getDefaultUVs()[0],sprite);
+      putVertexData(builder,f.verts[1],f.getNormal(),TextureCoordinate.getDefaultUVs()[1],sprite);
+      putVertexData(builder,f.verts[2],f.getNormal(),TextureCoordinate.getDefaultUVs()[2],sprite);
+      putVertexData(builder,f.verts[3],f.getNormal(),TextureCoordinate.getDefaultUVs()[3],sprite);
       quads.add(builder.build());
     }
   }

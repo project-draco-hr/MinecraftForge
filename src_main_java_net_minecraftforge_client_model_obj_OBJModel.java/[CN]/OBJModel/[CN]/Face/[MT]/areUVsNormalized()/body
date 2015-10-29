@@ -1,8 +1,0 @@
-{
-  for (  TextureCoordinate t : this.texCoords) {
-    if (!(t.getPosition().x > 0.0f && t.getPosition().x < 1.0f && t.getPosition().y > 0.0f && t.getPosition().y < 1.0f)) {
-      return false;
-    }
-  }
-  return true;
-}

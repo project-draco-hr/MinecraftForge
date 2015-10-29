@@ -12,12 +12,16 @@
  else         throw e;
       }
       OBJModel.Parser parser=new OBJModel.Parser(resource,manager);
-      OBJModel model=parser.parse();
-      cache.put(modelLocation,model);
+      OBJModel model=null;
+      try {
+        model=parser.parse();
+      }
+  finally {
+        cache.put(modelLocation,model);
+      }
     }
  catch (    IOException e) {
-      FMLLog.log(Level.ERROR,e,"Exception loading model %s with OBJ loader, skipping",modelLocation);
-      cache.put(modelLocation,null);
+      throw e;
     }
   }
   OBJModel model=cache.get(file);

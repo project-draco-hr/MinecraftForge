@@ -1,6 +1,4 @@
 {
-  OBJModel ret=new OBJModel(this.matLib.makeLibWithReplacements(textures),this.modelLocation);
-  ret.ambientOcclusion=this.ambientOcclusion;
-  ret.gui3d=this.gui3d;
+  OBJModel ret=new OBJModel(this.matLib.makeLibWithReplacements(textures),this.modelLocation,this.customData);
   return ret;
 }

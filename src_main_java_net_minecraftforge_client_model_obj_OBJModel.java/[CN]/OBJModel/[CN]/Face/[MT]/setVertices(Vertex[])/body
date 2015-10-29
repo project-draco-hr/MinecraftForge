@@ -1,5 +1,6 @@
 {
   if (verts == null)   return false;
  else   this.verts=verts;
+  checkData();
   return true;
 }

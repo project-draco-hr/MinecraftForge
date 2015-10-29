@@ -1,4 +1,3 @@
 {
-  this.matLib=matLib;
-  this.modelLocation=modelLocation;
+  this(matLib,modelLocation,null);
 }

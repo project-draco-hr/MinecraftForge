@@ -1,5 +1,0 @@
-{
-  if (texCoords == null)   return false;
- else   this.texCoords=texCoords;
-  return true;
-}

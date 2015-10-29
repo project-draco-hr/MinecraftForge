@@ -1,0 +1,4 @@
+{
+  super(String.format("Model '%s' has UVs ('vt') out of bounds 0-1! The missing model will be used instead. Support for UV processing will be added to the OBJ loader in the future.",modelLocation));
+  this.modelLocation=modelLocation;
+}

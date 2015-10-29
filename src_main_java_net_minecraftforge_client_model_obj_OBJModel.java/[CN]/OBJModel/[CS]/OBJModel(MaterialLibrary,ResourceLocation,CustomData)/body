@@ -1,0 +1,5 @@
+{
+  this.matLib=matLib;
+  this.modelLocation=modelLocation;
+  this.customData=customData;
+}

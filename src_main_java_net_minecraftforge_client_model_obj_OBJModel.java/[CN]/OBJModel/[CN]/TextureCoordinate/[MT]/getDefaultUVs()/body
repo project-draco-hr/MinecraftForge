@@ -1,0 +1,8 @@
+{
+  TextureCoordinate[] texCoords=new TextureCoordinate[4];
+  texCoords[0]=new TextureCoordinate(0.0f,0.0f,1.0f);
+  texCoords[1]=new TextureCoordinate(1.0f,0.0f,1.0f);
+  texCoords[2]=new TextureCoordinate(1.0f,1.0f,1.0f);
+  texCoords[3]=new TextureCoordinate(0.0f,1.0f,1.0f);
+  return texCoords;
+}

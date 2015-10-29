@@ -1,0 +1,26 @@
+{
+  for (int e=0; e < format.getElementCount(); e++) {
+switch (format.getElement(e).getUsage()) {
+case POSITION:
+      builder.put(e,v.getPos().x,v.getPos().y,v.getPos().z,v.getPos().w);
+    break;
+case COLOR:
+  float d;
+if (v.hasNormal()) d=LightUtil.diffuseLight(v.getNormal().x,v.getNormal().y,v.getNormal().z);
+ else d=LightUtil.diffuseLight(faceNormal.x,faceNormal.y,faceNormal.z);
+if (v.getMaterial() != null) builder.put(e,d * v.getMaterial().getColor().x,d * v.getMaterial().getColor().y,d * v.getMaterial().getColor().z,v.getMaterial().getColor().w);
+ else builder.put(e,d,d,d,1);
+break;
+case UV:
+if (!v.hasTextureCoordinate()) builder.put(e,sprite.getInterpolatedU(defUV.u * 16),sprite.getInterpolatedV(defUV.v * 16),0,1);
+ else builder.put(e,sprite.getInterpolatedU(v.getTextureCoordinate().u * 16),sprite.getInterpolatedV(v.getTextureCoordinate().v * 16),0,1);
+break;
+case NORMAL:
+if (!v.hasNormal()) builder.put(e,faceNormal.x,faceNormal.y,faceNormal.z,1);
+ else builder.put(e,v.getNormal().x,v.getNormal().y,v.getNormal().z,1);
+break;
+default :
+builder.put(e);
+}
+}
+}

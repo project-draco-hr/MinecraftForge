@@ -1,0 +1,5 @@
+UnpackedBakedQuad.Builder builder
+Vertex v
+Normal faceNormal
+TextureCoordinate defUV
+TextureAtlasSprite sprite

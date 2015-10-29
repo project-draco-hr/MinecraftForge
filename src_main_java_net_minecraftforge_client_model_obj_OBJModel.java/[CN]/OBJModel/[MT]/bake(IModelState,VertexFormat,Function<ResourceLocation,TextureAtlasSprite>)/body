@@ -4,7 +4,7 @@
   TextureAtlasSprite missing=bakedTextureGetter.apply(new ResourceLocation("missingno"));
   for (  Map.Entry<String,Material> e : matLib.materials.entrySet()) {
     if (e.getValue().getTexture().getTextureLocation().getResourcePath().startsWith("#")) {
-      FMLLog.severe("unresolved texture '%s' for obj model '%s'",e.getValue().getTexture().getTextureLocation().getResourcePath(),modelLocation);
+      FMLLog.severe("OBJLoader: Unresolved texture '%s' for obj model '%s'",e.getValue().getTexture().getTextureLocation().getResourcePath(),modelLocation);
       builder.put(e.getKey(),missing);
     }
  else {
@@ -12,5 +12,5 @@
     }
   }
   builder.put("missingno",missing);
-  return new OBJBakedModel(this,state,format,builder.build(),ambientOcclusion,gui3d);
+  return new OBJBakedModel(this,state,format,builder.build());
 }
