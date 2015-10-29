@@ -17,9 +17,5 @@
   ret.groups=this.groups;
   ret.mtlStream=this.mtlStream;
   ret.mtlReader=this.mtlReader;
-  ret.minU=this.minU;
-  ret.maxU=this.maxU;
-  ret.minV=this.minV;
-  ret.maxV=this.maxV;
   return ret;
 }

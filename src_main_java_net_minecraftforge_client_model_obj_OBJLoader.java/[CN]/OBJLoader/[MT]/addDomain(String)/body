@@ -1,3 +1,4 @@
 {
   enabledDomains.add(domain.toLowerCase());
+  FMLLog.log(Level.INFO,"OBJLoader: Domain %s has been added.",domain.toLowerCase());
 }

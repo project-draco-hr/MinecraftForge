@@ -1,5 +1,0 @@
-{
-  if (norms == null)   return false;
- else   this.norms=norms;
-  return true;
-}

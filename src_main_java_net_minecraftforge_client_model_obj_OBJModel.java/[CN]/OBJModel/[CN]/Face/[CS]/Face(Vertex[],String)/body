@@ -1,0 +1,5 @@
+{
+  this.verts=verts != null && verts.length > 2 ? verts : null;
+  setMaterialName(materialName);
+  checkData();
+}

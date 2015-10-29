@@ -1,3 +1,7 @@
 {
-  this(model,state,format,textures,true,true);
+  this.model=model;
+  this.state=state;
+  if (this.state instanceof OBJState)   this.updateStateVisibilityMap((OBJState)this.state);
+  this.format=format;
+  this.textures=textures;
 }

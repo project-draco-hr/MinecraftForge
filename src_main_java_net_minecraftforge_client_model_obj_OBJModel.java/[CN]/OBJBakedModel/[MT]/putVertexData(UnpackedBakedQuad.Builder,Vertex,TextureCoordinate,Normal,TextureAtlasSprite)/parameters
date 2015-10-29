@@ -1,5 +1,0 @@
-UnpackedBakedQuad.Builder builder
-Vertex v
-TextureCoordinate t
-Normal n
-TextureAtlasSprite sprite
