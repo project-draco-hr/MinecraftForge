@@ -6,8 +6,8 @@
     for (    Group g : this.model.getMatLib().getGroups().values()) {
       if (this.state instanceof OBJState) {
         OBJState state=(OBJState)this.state;
-        if (state.parent != null && state.parent instanceof TRSRTransformation) {
-          transform=(TRSRTransformation)state.parent;
+        if (state.parent != null) {
+          transform=state.parent.apply(model);
         }
         if (state.getGroupNamesFromMap().contains(Group.ALL)) {
           state.visibilityMap.clear();
@@ -33,12 +33,8 @@
           faces.addAll(g.applyTransform(transform));
         }
       }
- else       if (this.state instanceof TRSRTransformation) {
-        transform=(TRSRTransformation)this.state;
-        faces.addAll(g.applyTransform(transform));
-      }
  else {
-        transform=TRSRTransformation.identity();
+        transform=state.apply(model);
         faces.addAll(g.applyTransform(transform));
       }
     }
@@ -55,10 +51,11 @@
       UnpackedBakedQuad.Builder builder=new UnpackedBakedQuad.Builder(format);
       builder.setQuadOrientation(EnumFacing.getFacingFromVector(f.getNormal().x,f.getNormal().y,f.getNormal().z));
       builder.setQuadColored();
-      putVertexData(builder,f.verts[0],f.getNormal(),TextureCoordinate.getDefaultUVs()[0],sprite);
-      putVertexData(builder,f.verts[1],f.getNormal(),TextureCoordinate.getDefaultUVs()[1],sprite);
-      putVertexData(builder,f.verts[2],f.getNormal(),TextureCoordinate.getDefaultUVs()[2],sprite);
-      putVertexData(builder,f.verts[3],f.getNormal(),TextureCoordinate.getDefaultUVs()[3],sprite);
+      Normal faceNormal=f.getNormal();
+      putVertexData(builder,f.verts[0],faceNormal,TextureCoordinate.getDefaultUVs()[0],sprite);
+      putVertexData(builder,f.verts[1],faceNormal,TextureCoordinate.getDefaultUVs()[1],sprite);
+      putVertexData(builder,f.verts[2],faceNormal,TextureCoordinate.getDefaultUVs()[2],sprite);
+      putVertexData(builder,f.verts[3],faceNormal,TextureCoordinate.getDefaultUVs()[3],sprite);
       quads.add(builder.build());
     }
   }

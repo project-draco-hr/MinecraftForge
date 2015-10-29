@@ -1,31 +1,9 @@
 {
-  for (  Vertex v : this.verts) {
-    if (!v.hasNormal()) {
-      Vector3f vPos=v.getPos3();
-      vPos.normalize();
-      v.setNormal(new Normal(vPos));
-    }
-  }
-  Vector3f a=this.verts[1].getNormal().getData();
-  a.sub(this.verts[0].getNormal().getData());
-  Vector3f b=this.verts[2].getNormal().getData();
-  b.sub(this.verts[0].getNormal().getData());
-  Vector3f c=new Vector3f();
-  c.cross(a,b);
-  c.normalize();
-  if (this.isTri)   return new Normal(c);
- else {
-    a=this.verts[1].getNormal().getData();
-    a.sub(this.verts[3].getNormal().getData());
-    b=this.verts[2].getNormal().getData();
-    b.sub(this.verts[3].getNormal().getData());
-    Vector3f c1=new Vector3f();
-    c1.cross(a,b);
-    c1.normalize();
-    Vector3f normal=new Vector3f();
-    normal.add(c,c1);
-    normal.scale(0.5f);
-    normal.normalize();
-    return new Normal(normal);
-  }
+  Vector3f a=this.verts[2].getPos3();
+  a.sub(this.verts[0].getPos3());
+  Vector3f b=this.verts[3].getPos3();
+  b.sub(this.verts[1].getPos3());
+  a.cross(a,b);
+  a.normalize();
+  return new Normal(a);
 }

@@ -12,12 +12,12 @@ if (v.getMaterial() != null) builder.put(e,d * v.getMaterial().getColor().x,d * 
  else builder.put(e,d,d,d,1);
 break;
 case UV:
-if (!v.hasTextureCoordinate()) builder.put(e,sprite.getInterpolatedU(defUV.u * 16),sprite.getInterpolatedV(defUV.v * 16),0,1);
- else builder.put(e,sprite.getInterpolatedU(v.getTextureCoordinate().u * 16),sprite.getInterpolatedV(v.getTextureCoordinate().v * 16),0,1);
+if (!v.hasTextureCoordinate()) builder.put(e,sprite.getInterpolatedU(defUV.u * 16),sprite.getInterpolatedV((model.customData.flipV ? 1 - defUV.v : defUV.v) * 16),0,1);
+ else builder.put(e,sprite.getInterpolatedU(v.getTextureCoordinate().u * 16),sprite.getInterpolatedV((model.customData.flipV ? 1 - v.getTextureCoordinate().v : v.getTextureCoordinate().v) * 16),0,1);
 break;
 case NORMAL:
-if (!v.hasNormal()) builder.put(e,faceNormal.x,faceNormal.y,faceNormal.z,1);
- else builder.put(e,v.getNormal().x,v.getNormal().y,v.getNormal().z,1);
+if (!v.hasNormal()) builder.put(e,faceNormal.x,faceNormal.y,faceNormal.z,0);
+ else builder.put(e,v.getNormal().x,v.getNormal().y,v.getNormal().z,0);
 break;
 default :
 builder.put(e);

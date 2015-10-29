@@ -1,0 +1,6 @@
+{
+  this.ambientOcclusion=parent.ambientOcclusion;
+  this.gui3d=parent.gui3d;
+  this.flipV=parent.flipV;
+  this.process(customData);
+}

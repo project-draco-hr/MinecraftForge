@@ -2,6 +2,6 @@
   for (  Map.Entry<String,String> e : customData.entrySet()) {
     if (e.getKey().equals("ambient"))     this.ambientOcclusion=Boolean.valueOf(e.getValue());
  else     if (e.getKey().equals("gui3d"))     this.gui3d=Boolean.valueOf(e.getValue());
- else     if (e.getKey().equals("modifyUVs"))     this.modifyUVs=Boolean.valueOf(e.getValue());
+ else     if (e.getKey().equals("flip-v"))     this.flipV=Boolean.valueOf(e.getValue());
   }
 }

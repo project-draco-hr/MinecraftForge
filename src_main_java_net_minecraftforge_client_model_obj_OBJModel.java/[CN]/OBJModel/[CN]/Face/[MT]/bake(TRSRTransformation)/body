@@ -1,23 +1,25 @@
 {
   Matrix4f m=transform.getMatrix();
+  Matrix3f mn=null;
   Vertex[] vertices=new Vertex[verts.length];
   for (int i=0; i < verts.length; i++) {
-    m=transform.getMatrix();
     Vertex v=verts[i];
     Vector4f pos=new Vector4f(v.getPos()), newPos=new Vector4f();
     pos.w=1;
     m.transform(pos,newPos);
     vertices[i]=new Vertex(newPos,v.getMaterial());
     if (v.hasNormal()) {
-      m.invert();
-      Vector4f normal=new Vector4f(v.getNormal().getData()), newNormal=new Vector4f();
-      normal.w=1.0f;
-      m.transform(normal,newNormal);
-      Vector3f rNormal=new Vector3f(newNormal.x / newNormal.w,newNormal.y / newNormal.w,newNormal.z / newNormal.w);
-      rNormal.normalize();
-      vertices[i].setNormal(new Normal(rNormal));
+      if (mn == null) {
+        mn=new Matrix3f();
+        m.getRotationScale(mn);
+        mn.invert();
+        mn.transpose();
+      }
+      Vector3f normal=new Vector3f(v.getNormal().getData()), newNormal=new Vector3f();
+      mn.transform(normal,newNormal);
+      newNormal.normalize();
+      vertices[i].setNormal(new Normal(newNormal));
     }
- else     v.setNormal(new Normal(0.0f,1.0f,0.0f));
     if (v.hasTextureCoordinate())     vertices[i].setTextureCoordinate(v.getTextureCoordinate());
  else     v.setTextureCoordinate(TextureCoordinate.getDefaultUVs()[i]);
   }

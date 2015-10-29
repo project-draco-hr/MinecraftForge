@@ -1,4 +1,4 @@
 {
-  OBJModel ret=new OBJModel(this.matLib,this.modelLocation,new CustomData(customData));
+  OBJModel ret=new OBJModel(this.matLib,this.modelLocation,new CustomData(this.customData,customData));
   return ret;
 }

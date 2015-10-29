@@ -15,6 +15,7 @@
   for (; ; ) {
     currentLine=mtlReader.readLine();
     if (currentLine == null)     break;
+    currentLine.trim();
     if (currentLine.isEmpty() || currentLine.startsWith("#"))     continue;
     String[] fields=WHITE_SPACE.split(currentLine,2);
     String key=fields[0];
