@@ -5,7 +5,7 @@
     return;
   }
   int oreID=getOreID(name);
-  int hash=Item.getIdFromItem(ore.getItem());
+  int hash=GameData.getItemRegistry().getId(ore.getItem().delegate.name());
   if (ore.getItemDamage() != WILDCARD_VALUE) {
     hash|=((ore.getItemDamage() + 1) << 16);
   }

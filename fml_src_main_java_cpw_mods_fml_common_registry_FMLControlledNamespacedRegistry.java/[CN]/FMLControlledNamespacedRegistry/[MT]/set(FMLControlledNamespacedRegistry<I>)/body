@@ -10,7 +10,8 @@
   underlyingIntegerMap=new ObjectIntIdentityMap();
   registryObjects.clear();
   for (  I thing : registry.typeSafeIterable()) {
-    addObjectRaw(registry.getId(thing),registry.getNameForObject(thing),thing);
+    int id=registry.getId(thing);
+    addObjectRaw(id,registry.getNameForObject(thing),thing);
   }
   this.activeSubstitutions.putAll(registry.activeSubstitutions);
 }
