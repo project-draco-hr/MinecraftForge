@@ -50,8 +50,9 @@
           vert=vert < 0 ? this.vertices.size() - 1 : vert - 1;
           norm=Integer.parseInt(splitSlash[i][1]);
           norm=norm < 0 ? this.normals.size() - 1 : norm - 1;
-          this.vertices.get(vert).setNormal(this.normals.get(norm));
-          v.add(this.vertices.get(vert));
+          Vertex newV=new Vertex(new Vector4f(this.vertices.get(vert).getPos()),material);
+          newV.setNormal(this.normals.get(norm));
+          v.add(newV);
         }
  else         if (splitData[i].contains("/")) {
           splitSlash[i]=splitData[i].split("/");
@@ -63,15 +64,17 @@
             norm=Integer.parseInt(splitSlash[i][2]);
             norm=norm < 0 ? this.normals.size() - 1 : norm - 1;
           }
-          this.vertices.get(vert).setTextureCoordinate(this.texCoords.get(texCoord));
-          this.vertices.get(vert).setNormal(splitSlash[i].length > 2 ? this.normals.get(norm) : null);
-          v.add(this.vertices.get(vert));
+          Vertex newV=new Vertex(new Vector4f(this.vertices.get(vert).getPos()),material);
+          newV.setTextureCoordinate(this.texCoords.get(texCoord));
+          newV.setNormal(splitSlash[i].length > 2 ? this.normals.get(norm) : null);
+          v.add(newV);
         }
  else {
           splitSlash[i]=splitData[i].split("");
           vert=Integer.parseInt(splitSlash[i][0]);
           vert=vert < 0 ? this.vertices.size() - 1 : vert - 1;
-          v.add(this.vertices.get(vert));
+          Vertex newV=new Vertex(new Vector4f(this.vertices.get(vert).getPos()),material);
+          v.add(newV);
         }
       }
       Vertex[] va=new Vertex[v.size()];
