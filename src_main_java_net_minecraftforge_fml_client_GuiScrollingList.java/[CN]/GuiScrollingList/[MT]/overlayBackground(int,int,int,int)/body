@@ -1,15 +1,16 @@
 {
-  Tessellator var5=Tessellator.getInstance();
-  WorldRenderer worldr=var5.getWorldRenderer();
+  Tessellator tess=Tessellator.getInstance();
+  WorldRenderer worldr=tess.getWorldRenderer();
   this.client.renderEngine.bindTexture(Gui.optionsBackground);
   GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
-  float var6=32.0F;
+  float scale=32.0F;
+  double startUV=(screenWidth / scale) / screenWidth * (left - 0);
   worldr.startDrawingQuads();
-  worldr.setColorRGBA_I(4210752,p_22239_4_);
-  worldr.addVertexWithUV(0.0D,(double)p_22239_2_,0.0D,0.0D,(double)((float)p_22239_2_ / var6));
-  worldr.addVertexWithUV((double)this.listWidth + 30,(double)p_22239_2_,0.0D,(double)((float)(this.listWidth + 30) / var6),(double)((float)p_22239_2_ / var6));
-  worldr.setColorRGBA_I(4210752,p_22239_3_);
-  worldr.addVertexWithUV((double)this.listWidth + 30,(double)p_22239_1_,0.0D,(double)((float)(this.listWidth + 30) / var6),(double)((float)p_22239_1_ / var6));
-  worldr.addVertexWithUV(0.0D,(double)p_22239_1_,0.0D,0.0D,(double)((float)p_22239_1_ / var6));
-  var5.draw();
+  worldr.setColorRGBA_I(0x404040,alpah2);
+  worldr.addVertexWithUV(left,height,0.0D,startUV,height / scale);
+  worldr.addVertexWithUV(left + listWidth + 8,height,0.0D,(left + listWidth + 8) / scale,height / scale);
+  worldr.setColorRGBA_I(0x404040,alpha1);
+  worldr.addVertexWithUV(left + listWidth + 8,top,0.0D,(left + listWidth + 8) / scale,top / scale);
+  worldr.addVertexWithUV(left,top,0.0D,startUV,top / scale);
+  tess.draw();
 }

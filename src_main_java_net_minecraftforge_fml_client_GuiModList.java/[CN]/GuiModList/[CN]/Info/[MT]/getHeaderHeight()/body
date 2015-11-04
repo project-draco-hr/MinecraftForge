@@ -1,0 +1,18 @@
+{
+  int height=0;
+  if (logoPath != null) {
+    double scaleX=logoDims.width / 200.0;
+    double scaleY=logoDims.height / 65.0;
+    double scale=1.0;
+    if (scaleX > 1 || scaleY > 1) {
+      scale=1.0 / Math.max(scaleX,scaleY);
+    }
+    logoDims.width*=scale;
+    logoDims.height*=scale;
+    height+=logoDims.height;
+    height+=10;
+  }
+  height+=(lines.size() * 10);
+  if (height < this.bottom - this.top - 8)   height=this.bottom - this.top - 8;
+  return height;
+}

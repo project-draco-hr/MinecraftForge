@@ -1,2 +1,2 @@
-boolean p_27259_1_
-int p_27259_2_
+boolean hasFooter
+int footerHeight

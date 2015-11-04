@@ -1,12 +1,12 @@
 {
-  int var1=this.getContentHeight() - (this.bottom - this.top - 4);
-  if (var1 < 0) {
-    var1/=2;
+  int listHeight=this.getContentHeight() - (this.bottom - this.top - 4);
+  if (listHeight < 0) {
+    listHeight/=2;
   }
   if (this.scrollDistance < 0.0F) {
     this.scrollDistance=0.0F;
   }
-  if (this.scrollDistance > (float)var1) {
-    this.scrollDistance=(float)var1;
+  if (this.scrollDistance > (float)listHeight) {
+    this.scrollDistance=(float)listHeight;
   }
 }

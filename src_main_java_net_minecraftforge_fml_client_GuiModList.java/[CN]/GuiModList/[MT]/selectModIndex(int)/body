@@ -1,5 +1,6 @@
 {
+  if (index == this.selected)   return;
   this.selected=index;
   this.selectedMod=(index >= 0 && index <= mods.size()) ? mods.get(selected) : null;
-  cachedLogo=null;
+  updateCache();
 }

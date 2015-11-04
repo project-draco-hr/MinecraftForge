@@ -1,7 +1,3 @@
 {
-  this.field_27262_q=p_27259_1_;
-  this.field_27261_r=p_27259_2_;
-  if (!p_27259_1_) {
-    this.field_27261_r=0;
-  }
+  setHeaderInfo(hasFooter,footerHeight);
 }

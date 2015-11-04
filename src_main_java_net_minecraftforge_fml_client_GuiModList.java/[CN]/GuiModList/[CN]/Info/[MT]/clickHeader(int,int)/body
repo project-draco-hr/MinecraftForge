@@ -1,0 +1,22 @@
+{
+  int offset=y;
+  if (logoPath != null) {
+    offset-=logoDims.height + 10;
+  }
+  if (offset <= 0)   return;
+  int lineIdx=offset / 10;
+  if (lineIdx >= lines.size())   return;
+  IChatComponent line=lines.get(lineIdx);
+  if (line != null) {
+    int k=-4;
+    for (    IChatComponent part : (Iterable<IChatComponent>)line) {
+      if (!(part instanceof ChatComponentText))       continue;
+      k+=GuiModList.this.fontRendererObj.getStringWidth(((ChatComponentText)part).getChatComponentText_TextValue());
+      if (k >= x) {
+        System.out.println(part);
+        GuiModList.this.func_175276_a(part);
+        break;
+      }
+    }
+  }
+}

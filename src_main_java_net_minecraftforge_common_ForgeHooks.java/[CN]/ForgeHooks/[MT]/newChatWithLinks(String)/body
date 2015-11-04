@@ -1,26 +1,3 @@
 {
-  IChatComponent ichat=new ChatComponentText("");
-  Matcher matcher=URL_PATTERN.matcher(string);
-  int lastEnd=0;
-  String remaining=string;
-  while (matcher.find()) {
-    int start=matcher.start();
-    int end=matcher.end();
-    ichat.appendText(string.substring(lastEnd,start));
-    lastEnd=end;
-    String url=string.substring(start,end);
-    IChatComponent link=new ChatComponentText(url);
-    try {
-      if ((new URI(url)).getScheme() == null)       url="http://" + url;
-    }
- catch (    URISyntaxException e) {
-      ichat.appendText(url);
-      continue;
-    }
-    ClickEvent click=new ClickEvent(ClickEvent.Action.OPEN_URL,url);
-    link.getChatStyle().setChatClickEvent(click);
-    ichat.appendSibling(link);
-  }
-  ichat.appendText(string.substring(lastEnd));
-  return ichat;
+  return newChatWithLinks(string,true);
 }

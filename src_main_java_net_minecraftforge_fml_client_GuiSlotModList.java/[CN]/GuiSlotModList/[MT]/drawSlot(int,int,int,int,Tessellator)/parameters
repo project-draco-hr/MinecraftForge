@@ -1,5 +1,5 @@
-int listIndex
-int var2
-int var3
-int var4
-Tessellator var5
+int idx
+int right
+int top
+int height
+Tessellator tess

@@ -1,3 +1,3 @@
-int p_571_1_
-int p_571_2_
-float p_571_3_
+int mouseX
+int mouseY
+float partialTicks

@@ -1,4 +1,4 @@
 {
-  this.scrollUpActionId=p_22240_2_;
-  this.scrollDownActionId=p_22240_3_;
+  this.scrollUpActionId=upActionID;
+  this.scrollDownActionId=downActionID;
 }

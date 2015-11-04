@@ -1,0 +1,5 @@
+{
+  this.hasHeader=hasHeader;
+  this.headerHeight=headerHeight;
+  if (!hasHeader)   this.headerHeight=0;
+}

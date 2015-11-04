@@ -1,0 +1,4 @@
+int width
+List<String> lines
+ResourceLocation logoPath
+Dimension logoDims

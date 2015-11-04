@@ -1,0 +1,7 @@
+{
+  super(GuiModList.this.getMinecraftInstance(),width,GuiModList.this.height,32,GuiModList.this.height - 88 + 4,GuiModList.this.listWidth + 20,60,GuiModList.this.width,GuiModList.this.height);
+  this.lines=resizeContent(lines);
+  this.logoPath=logoPath;
+  this.logoDims=logoDims;
+  this.setHeaderInfo(true,getHeaderHeight());
+}
