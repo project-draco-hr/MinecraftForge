@@ -1,3 +1,4 @@
 {
-  return target;
+  CheckResult res=getResult(ForgeModContainer.getInstance());
+  return res.target != null ? res.target.toString() : null;
 }

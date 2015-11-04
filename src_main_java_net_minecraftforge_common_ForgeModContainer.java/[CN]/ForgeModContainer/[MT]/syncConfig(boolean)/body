@@ -77,6 +77,10 @@
   forgeLightPipelineEnabled=prop.getBoolean(Boolean.TRUE);
   propOrder.add(prop.getName());
   config.setCategoryPropertyOrder(CATEGORY_GENERAL,propOrder);
+  propOrder=new ArrayList<String>();
+  prop=config.get(VERSION_CHECK_CAT,"Global",true,"Enable the entire mod update check system. This only applies to mods using the Forge system.");
+  propOrder.add("Global");
+  config.setCategoryPropertyOrder(VERSION_CHECK_CAT,propOrder);
   if (config.hasChanged()) {
     config.save();
   }

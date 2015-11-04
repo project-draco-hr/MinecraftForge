@@ -1,0 +1,24 @@
+{
+  ConfigCategory cfg=ForgeModContainer.getConfig().getCategory(VERSION_CHECK_CAT);
+  Map<String,Property> values=new HashMap<String,Property>(cfg.getValues());
+  values.remove("Global");
+  Property global=ForgeModContainer.getConfig().get(VERSION_CHECK_CAT,"Global",true);
+  List<Property> props=new ArrayList<Property>();
+  for (  ModContainer mod : ForgeVersion.gatherMods().keySet()) {
+    values.remove(mod.getModId());
+    props.add(ForgeModContainer.getConfig().get(VERSION_CHECK_CAT,mod.getModId(),true));
+  }
+  props.addAll(values.values());
+  Collections.sort(props,new Comparator<Property>(){
+    @Override public int compare(    Property o1,    Property o2){
+      return o1.getName().compareTo(o2.getName());
+    }
+  }
+);
+  List<IConfigElement> list=new ArrayList<IConfigElement>();
+  list.add(new ConfigElement(global));
+  for (  Property prop : props) {
+    list.add(new ConfigElement(prop));
+  }
+  return new GuiConfig(this.owningScreen,list,this.owningScreen.modID,VERSION_CHECK_CAT,true,true,GuiConfig.getAbridgedConfigPath(ForgeModContainer.getConfig().toString()));
+}

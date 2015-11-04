@@ -7,5 +7,8 @@
       ForgeChunkManager.syncConfigDefaults();
       ForgeChunkManager.loadConfiguration();
     }
+ else     if (VERSION_CHECK_CAT.equals(event.configID)) {
+      syncConfig(false);
+    }
   }
 }

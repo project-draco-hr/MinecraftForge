@@ -1,0 +1,4 @@
+Status status
+ComparableVersion target
+Map<ComparableVersion,String> changes
+String url

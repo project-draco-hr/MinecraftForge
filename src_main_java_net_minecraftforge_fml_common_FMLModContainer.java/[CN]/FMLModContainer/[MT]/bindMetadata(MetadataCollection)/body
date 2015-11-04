@@ -46,4 +46,13 @@
  else {
     minecraftAccepted=Loader.instance().getMinecraftModContainer().getStaticVersionRange();
   }
+  String jsonURL=(String)descriptor.get("updateJSON");
+  if (!Strings.isNullOrEmpty(jsonURL)) {
+    try {
+      this.updateJSONUrl=new URL(jsonURL);
+    }
+ catch (    MalformedURLException e) {
+      FMLLog.log(getModId(),Level.DEBUG,"Specified json URL invalid: %s",jsonURL);
+    }
+  }
 }
