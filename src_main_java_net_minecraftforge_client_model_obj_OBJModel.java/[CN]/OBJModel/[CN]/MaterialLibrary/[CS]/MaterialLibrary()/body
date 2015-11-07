@@ -1,3 +1,6 @@
 {
   this.groups.put(Group.DEFAULT_NAME,new Group(Group.DEFAULT_NAME,null));
+  Material def=new Material();
+  def.setName(Material.DEFAULT_NAME);
+  this.materials.put(Material.DEFAULT_NAME,def);
 }

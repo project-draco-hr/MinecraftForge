@@ -1,6 +1,7 @@
 {
   String currentLine="";
   Material material=new Material();
+  material.setName(Material.DEFAULT_NAME);
   int usemtlCounter=0;
   for (; ; ) {
     currentLine=objReader.readLine();

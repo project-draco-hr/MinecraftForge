@@ -1,9 +1,20 @@
 {
   Map<String,Material> mats=new HashMap<String,Material>();
   for (  Map.Entry<String,Material> e : this.materials.entrySet()) {
-    if (replacements.containsKey(e.getKey()) || replacements.containsKey("all")) {
+    String keyMat=e.getKey();
+    if (!keyMat.startsWith("#"))     keyMat="#" + keyMat;
+    String keyTex=e.getValue().getTexture().getPath();
+    if (keyTex.endsWith(".png"))     keyTex=keyTex.substring(0,keyTex.length() - ".png".length());
+    if (!keyTex.startsWith("#"))     keyTex="#" + keyTex;
+    if (replacements.containsKey(keyMat)) {
       Texture currentTexture=e.getValue().texture;
-      Texture replacementTexture=new Texture(replacements.get(e.getKey()),currentTexture.position,currentTexture.scale,currentTexture.rotation);
+      Texture replacementTexture=new Texture(replacements.get(keyMat),currentTexture.position,currentTexture.scale,currentTexture.rotation);
+      Material replacementMaterial=new Material(e.getValue().color,replacementTexture,e.getValue().name);
+      mats.put(e.getKey(),replacementMaterial);
+    }
+ else     if (replacements.containsKey(keyTex)) {
+      Texture currentTexture=e.getValue().texture;
+      Texture replacementTexture=new Texture(replacements.get(keyTex),currentTexture.position,currentTexture.scale,currentTexture.rotation);
       Material replacementMaterial=new Material(e.getValue().color,replacementTexture,e.getValue().name);
       mats.put(e.getKey(),replacementMaterial);
     }
