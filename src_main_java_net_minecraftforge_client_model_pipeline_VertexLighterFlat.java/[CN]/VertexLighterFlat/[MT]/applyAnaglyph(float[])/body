@@ -1,0 +1,6 @@
+{
+  float r=color[0];
+  color[0]=(r * 30 + color[1] * 59 + color[2] * 11) / 100;
+  color[1]=(r * 3 + color[1] * 7) / 10;
+  color[2]=(r * 3 + color[2] * 7) / 10;
+}

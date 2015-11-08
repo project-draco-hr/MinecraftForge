@@ -41,6 +41,9 @@
     }
     updateLightmap(normal[v],lightmap[v],x,y,z);
     updateColor(normal[v],color[v],x,y,z,tint,multiplier);
+    if (EntityRenderer.anaglyphEnable) {
+      applyAnaglyph(color[v]);
+    }
     for (int e=0; e < parent.getVertexFormat().getElementCount(); e++) {
 switch (parent.getVertexFormat().getElement(e).getUsage()) {
 case POSITION:
