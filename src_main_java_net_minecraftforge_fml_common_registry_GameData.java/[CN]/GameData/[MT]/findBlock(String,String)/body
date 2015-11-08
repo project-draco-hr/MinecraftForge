@@ -1,4 +1,3 @@
 {
-  String key=modId + ":" + name;
-  return getMain().iBlockRegistry.containsKey(key) ? getMain().iBlockRegistry.getObject(key) : null;
+  return getMain().iBlockRegistry.getObject(modId + ":" + name);
 }
