@@ -4,12 +4,13 @@
     if (pair.getRight() != null)     multiplyCurrentGlMatrix(pair.getRight());
     return pair.getLeft();
   }
+ else {
 switch (cameraTransformType) {
 case FIRST_PERSON:
-    RenderItem.applyVanillaTransform(model.getItemCameraTransforms().firstPerson);
-  break;
+      RenderItem.applyVanillaTransform(model.getItemCameraTransforms().firstPerson);
+    break;
 case GUI:
-RenderItem.applyVanillaTransform(model.getItemCameraTransforms().gui);
+  RenderItem.applyVanillaTransform(model.getItemCameraTransforms().gui);
 break;
 case HEAD:
 RenderItem.applyVanillaTransform(model.getItemCameraTransforms().head);
@@ -19,6 +20,7 @@ RenderItem.applyVanillaTransform(model.getItemCameraTransforms().thirdPerson);
 break;
 default :
 break;
+}
 }
 return model;
 }
