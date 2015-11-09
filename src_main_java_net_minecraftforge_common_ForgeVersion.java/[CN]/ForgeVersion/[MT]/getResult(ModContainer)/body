@@ -1,4 +1,5 @@
 {
+  if (mod == null)   return PENDING_CHECK;
   if (mod instanceof InjectedModContainer)   mod=((InjectedModContainer)mod).wrappedContainer;
   CheckResult ret=results.get(mod);
   return ret == null ? PENDING_CHECK : ret;

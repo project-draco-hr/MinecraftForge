@@ -6,7 +6,6 @@
     classLoader.registerTransformer(transformer);
   }
   classLoader.registerTransformer("net.minecraftforge.fml.common.asm.transformers.ModAccessTransformer");
-  classLoader.registerTransformer("net.minecraftforge.fml.common.asm.transformers.ItemStackTransformer");
   try {
     FMLRelaunchLog.fine("Validating minecraft");
     Class<?> loaderClazz=Class.forName("net.minecraftforge.fml.common.Loader",true,classLoader);
