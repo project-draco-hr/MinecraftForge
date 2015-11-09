@@ -1,7 +1,15 @@
 {
   if (stack == null || stack.getItem() == null)   return new int[0];
   Set<Integer> set=new HashSet<Integer>();
-  int id=Item.getIdFromItem(stack.getItem());
+  String registryName=stack.getItem().delegate.name();
+  int id;
+  if (registryName == null) {
+    FMLLog.log(Level.DEBUG,"Attempted to find the oreIDs for an unregistered object (%s). This won't work very well.",stack);
+    return new int[0];
+  }
+ else {
+    id=GameData.getItemRegistry().getId(registryName);
+  }
   List<Integer> ids=stackToId.get(id);
   if (ids != null)   set.addAll(ids);
   ids=stackToId.get(id | ((stack.getItemDamage() + 1) << 16));
