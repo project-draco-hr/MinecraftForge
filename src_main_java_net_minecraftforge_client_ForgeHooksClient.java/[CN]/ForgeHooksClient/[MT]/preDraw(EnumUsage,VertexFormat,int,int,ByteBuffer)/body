@@ -1,5 +1,6 @@
 {
-  buffer.position(attr.getOffset());
+  VertexFormatElement attr=format.getElement(element);
+  buffer.position(format.func_181720_d(element));
 switch (attrType) {
 case POSITION:
     glVertexPointer(attr.getElementCount(),attr.getType().getGlConstant(),stride,buffer);

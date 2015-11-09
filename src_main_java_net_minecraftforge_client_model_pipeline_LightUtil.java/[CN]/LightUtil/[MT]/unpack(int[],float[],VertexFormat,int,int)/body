@@ -2,7 +2,7 @@
   VertexFormatElement element=formatFrom.getElement(e);
   for (int i=0; i < 4; i++) {
     if (i < element.getElementCount()) {
-      int pos=v * formatFrom.getNextOffset() + element.getOffset() + element.getType().getSize() * i;
+      int pos=v * formatFrom.getNextOffset() + formatFrom.func_181720_d(e) + element.getType().getSize() * i;
       int index=pos >> 2;
       int offset=pos & 3;
       int bits=from[index];

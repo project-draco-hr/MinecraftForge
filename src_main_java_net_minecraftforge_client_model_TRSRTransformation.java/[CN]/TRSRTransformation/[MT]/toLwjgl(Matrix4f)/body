@@ -1,0 +1,20 @@
+{
+  org.lwjgl.util.vector.Matrix4f r=new org.lwjgl.util.vector.Matrix4f();
+  r.m00=m.m00;
+  r.m01=m.m10;
+  r.m02=m.m20;
+  r.m03=m.m30;
+  r.m10=m.m01;
+  r.m11=m.m11;
+  r.m12=m.m21;
+  r.m13=m.m31;
+  r.m20=m.m02;
+  r.m21=m.m12;
+  r.m22=m.m22;
+  r.m23=m.m32;
+  r.m30=m.m03;
+  r.m31=m.m13;
+  r.m32=m.m23;
+  r.m33=m.m33;
+  return r;
+}

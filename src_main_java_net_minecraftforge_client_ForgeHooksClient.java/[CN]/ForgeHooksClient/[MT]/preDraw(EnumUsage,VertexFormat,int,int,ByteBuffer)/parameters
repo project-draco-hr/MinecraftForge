@@ -1,4 +1,5 @@
 EnumUsage attrType
-VertexFormatElement attr
+VertexFormat format
+int element
 int stride
 ByteBuffer buffer

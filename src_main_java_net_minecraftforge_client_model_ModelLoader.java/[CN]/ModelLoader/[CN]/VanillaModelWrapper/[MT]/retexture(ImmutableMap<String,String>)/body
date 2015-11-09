@@ -4,7 +4,7 @@
   for (  BlockPart part : (List<BlockPart>)this.model.getElements()) {
     elements.add(new BlockPart(part.positionFrom,part.positionTo,Maps.newHashMap(part.mapFaces),part.partRotation,part.shade));
   }
-  ModelBlock neweModel=new ModelBlock(this.model.getParentLocation(),elements,Maps.newHashMap(this.model.textures),this.model.isAmbientOcclusion(),this.model.isGui3d(),new ItemCameraTransforms(this.model.getThirdPersonTransform(),this.model.getFirstPersonTransform(),this.model.getHeadTransform(),this.model.getInGuiTransform()));
+  ModelBlock neweModel=new ModelBlock(this.model.getParentLocation(),elements,Maps.newHashMap(this.model.textures),this.model.isAmbientOcclusion(),this.model.isGui3d(),model.func_181682_g());
   neweModel.name=this.model.name;
   neweModel.parent=this.model.parent;
   Set<String> removed=Sets.newHashSet();

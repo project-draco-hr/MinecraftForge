@@ -4,7 +4,7 @@
     EntityPlayer player=Minecraft.getMinecraft().thePlayer;
     Vector3d playerLoc=new Vector3d();
     playerLoc.setX(player.posX);
-    playerLoc.setY(player.posY + player.eyeHeight);
+    playerLoc.setY(player.posY + player.getEyeHeight());
     playerLoc.setZ(player.posZ);
     Vector3d lookVec=new Vector3d(playerLoc.getX() - teLoc.getX(),playerLoc.getY() - teLoc.getY(),playerLoc.getZ() - teLoc.getZ());
     double angleYaw=Math.atan2(lookVec.getZ(),lookVec.getX()) - Math.PI / 2d;

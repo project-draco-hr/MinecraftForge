@@ -4,7 +4,7 @@
   }
   ModelBlock model=this.model;
   if (model == null)   return getMissingModel().bake(state,format,bakedTextureGetter);
-  ItemCameraTransforms transforms=new ItemCameraTransforms(model.getThirdPersonTransform(),model.getFirstPersonTransform(),model.getHeadTransform(),model.getInGuiTransform());
+  ItemCameraTransforms transforms=model.func_181682_g();
   boolean uvlock=false;
   if (state instanceof UVLock) {
     uvlock=true;

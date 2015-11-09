@@ -1,5 +1,5 @@
 {
-  Vector4f tmp=new Vector4f((float)vec.x,(float)vec.y,(float)vec.z,1f);
+  Vector4f tmp=new Vector4f(vec.x,vec.y,vec.z,1f);
   m.transform(tmp);
   if (Math.abs(tmp.w - 1f) > 1e-5)   tmp.scale(1f / tmp.w);
   vec.set(tmp.x,tmp.y,tmp.z);

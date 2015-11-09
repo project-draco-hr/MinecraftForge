@@ -1,7 +1,7 @@
 {
   javax.vecmath.Matrix4f m=new javax.vecmath.Matrix4f(), t=new javax.vecmath.Matrix4f();
   m.setIdentity();
-  m.setTranslation(transform.translation);
+  m.setTranslation(TRSRTransformation.toVecmath(transform.translation));
   t.setIdentity();
   t.rotY(transform.rotation.y);
   m.mul(t);

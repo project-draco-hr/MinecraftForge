@@ -1,4 +1,5 @@
 {
+  VertexFormatElement attr=format.getElement(element);
 switch (attrType) {
 case POSITION:
     glDisableClientState(GL_VERTEX_ARRAY);

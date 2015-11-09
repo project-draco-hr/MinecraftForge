@@ -5,6 +5,11 @@
   graphics.clearRect(0,0,16,16);
   BufferedImage[] images=new BufferedImage[Minecraft.getMinecraft().gameSettings.mipmapLevels + 1];
   images[0]=image;
-  loadSprite(images,null);
+  try {
+    loadSprite(images,null);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
   return false;
 }
