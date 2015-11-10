@@ -6,5 +6,6 @@
     FMLLog.fine("Reverting to frozen data state.");
     getMain().set(frozen);
   }
+  Loader.instance().fireRemapEvent(ImmutableMap.<String,Integer[]>of());
   ObjectHolderRegistry.INSTANCE.applyObjectHolders();
 }

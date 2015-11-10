@@ -1,8 +1,3 @@
 {
-  if (remaps.isEmpty()) {
-    FMLLog.finer("Skipping remap event - no remaps occured");
-  }
- else {
-    modController.propogateStateMessage(new FMLModIdMappingEvent(remaps));
-  }
+  modController.propogateStateMessage(new FMLModIdMappingEvent(remaps));
 }
