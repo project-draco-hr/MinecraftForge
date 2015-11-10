@@ -1,5 +1,16 @@
 {
   if (getPersistentSubstitutions().containsKey(nameToReplace)) {
+    I original=getRaw(nameToReplace);
+    if (superType == Item.class) {
+      Item sub=(Item)getPersistentSubstitutions().get(nameToReplace);
+      if (original == null) {
+        original=(I)GameData.getItemRegistry().getRaw(nameToReplace);
+      }
+      FMLLog.log(Level.DEBUG,"Replacing %s with %s (name %s)",original,sub,nameToReplace);
+      Delegate<Item> delegate=(Delegate<Item>)((Item)original).delegate;
+      delegate.changeReference(sub);
+      ((Delegate<Item>)sub.delegate).setName(nameToReplace);
+    }
     activeSubstitutions.put(nameToReplace,getPersistentSubstitutions().get(nameToReplace));
   }
 }

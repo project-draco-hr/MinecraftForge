@@ -7,6 +7,7 @@
   getMain().testConsistency();
   getMain().iBlockRegistry.dump();
   getMain().iItemRegistry.dump();
+  getMain().iItemRegistry.resetSubstitutionDelegates();
   GameDataSnapshot.Entry blocks=snapshot.entries.get("fml:blocks");
   GameDataSnapshot.Entry items=snapshot.entries.get("fml:items");
   GameData newData=new GameData();

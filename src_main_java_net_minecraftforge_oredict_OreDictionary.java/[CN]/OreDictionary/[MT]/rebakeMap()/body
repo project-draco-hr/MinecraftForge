@@ -4,7 +4,15 @@
     List<ItemStack> ores=idToStack.get(id);
     if (ores == null)     continue;
     for (    ItemStack ore : ores) {
-      int hash=Item.getIdFromItem(ore.getItem());
+      String name=ore.getItem().delegate.name();
+      int hash;
+      if (name == null) {
+        FMLLog.log(Level.DEBUG,"Defaulting unregistered ore dictionary entry for ore dictionary %s: type %s to -1",getOreName(id),ore.getItem().getClass());
+        hash=-1;
+      }
+ else {
+        hash=GameData.getItemRegistry().getId(name);
+      }
       if (ore.getItemDamage() != WILDCARD_VALUE) {
         hash|=((ore.getItemDamage() + 1) << 16);
       }
