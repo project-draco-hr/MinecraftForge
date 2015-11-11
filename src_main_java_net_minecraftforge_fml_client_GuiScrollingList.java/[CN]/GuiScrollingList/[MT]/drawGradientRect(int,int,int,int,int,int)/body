@@ -14,13 +14,11 @@
   GlStateManager.shadeModel(GL11.GL_SMOOTH);
   Tessellator tessellator=Tessellator.getInstance();
   WorldRenderer worldrenderer=tessellator.getWorldRenderer();
-  worldrenderer.startDrawingQuads();
-  worldrenderer.setColorRGBA_F(r1,g1,b1,a1);
-  worldrenderer.addVertex(right,top,0.0D);
-  worldrenderer.addVertex(left,top,0.0D);
-  worldrenderer.setColorRGBA_F(r2,g2,b2,a2);
-  worldrenderer.addVertex(left,bottom,0.0D);
-  worldrenderer.addVertex(right,bottom,0.0D);
+  worldrenderer.func_181668_a(7,DefaultVertexFormats.field_181706_f);
+  worldrenderer.func_181662_b(right,top,0.0D).func_181666_a(r1,g1,b1,a1).func_181675_d();
+  worldrenderer.func_181662_b(left,top,0.0D).func_181666_a(r1,g1,b1,a1).func_181675_d();
+  worldrenderer.func_181662_b(left,bottom,0.0D).func_181666_a(r2,g2,b2,a2).func_181675_d();
+  worldrenderer.func_181662_b(right,bottom,0.0D).func_181666_a(r2,g2,b2,a2).func_181675_d();
   tessellator.draw();
   GlStateManager.shadeModel(GL11.GL_FLAT);
   GlStateManager.disableBlend();

@@ -5,12 +5,10 @@
   GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
   float scale=32.0F;
   double startUV=(screenWidth / scale) / screenWidth * (left - 0);
-  worldr.startDrawingQuads();
-  worldr.setColorRGBA_I(0x404040,alpah2);
-  worldr.addVertexWithUV(left,height,0.0D,startUV,height / scale);
-  worldr.addVertexWithUV(left + listWidth + 8,height,0.0D,(left + listWidth + 8) / scale,height / scale);
-  worldr.setColorRGBA_I(0x404040,alpha1);
-  worldr.addVertexWithUV(left + listWidth + 8,top,0.0D,(left + listWidth + 8) / scale,top / scale);
-  worldr.addVertexWithUV(left,top,0.0D,startUV,top / scale);
+  worldr.func_181668_a(7,DefaultVertexFormats.field_181709_i);
+  worldr.func_181662_b(left,height,0.0D).func_181673_a(startUV,height / scale).func_181669_b(0x40,0x40,0x40,alpha2).func_181675_d();
+  worldr.func_181662_b(left + listWidth + 8,height,0.0D).func_181673_a((left + listWidth + 8) / scale,height / scale).func_181669_b(0x40,0x40,0x40,alpha2).func_181675_d();
+  worldr.func_181662_b(left + listWidth + 8,top,0.0D).func_181673_a((left + listWidth + 8) / scale,top / scale).func_181669_b(0x40,0x40,0x40,alpha1).func_181675_d();
+  worldr.func_181662_b(left,top,0.0D).func_181673_a(startUV,top / scale).func_181669_b(0x40,0x40,0x40,alpha1).func_181675_d();
   tess.draw();
 }
