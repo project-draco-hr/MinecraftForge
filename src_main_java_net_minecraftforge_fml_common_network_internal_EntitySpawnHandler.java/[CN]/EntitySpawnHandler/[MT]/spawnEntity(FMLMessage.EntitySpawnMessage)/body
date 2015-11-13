@@ -35,7 +35,7 @@
       ((IThrowableEntity)entity).setThrower(thrower);
     }
     if (spawnMsg.dataWatcherList != null) {
-      entity.getDataWatcher().updateWatchedObjectsFromList((List<?>)spawnMsg.dataWatcherList);
+      entity.getDataWatcher().updateWatchedObjectsFromList(spawnMsg.dataWatcherList);
     }
     if (spawnMsg.throwerId > 0) {
       entity.setVelocity(spawnMsg.speedScaledX,spawnMsg.speedScaledY,spawnMsg.speedScaledZ);

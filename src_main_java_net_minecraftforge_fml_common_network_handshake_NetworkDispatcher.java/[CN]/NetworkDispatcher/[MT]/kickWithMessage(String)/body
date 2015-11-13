@@ -4,12 +4,12 @@
     manager.closeChannel(chatcomponenttext);
   }
  else {
-    manager.sendPacket(new S40PacketDisconnect(chatcomponenttext),new GenericFutureListener<Future<?>>(){
-      @Override public void operationComplete(      Future<?> result){
+    manager.sendPacket(new S40PacketDisconnect(chatcomponenttext),new GenericFutureListener<Future<? super Void>>(){
+      @Override public void operationComplete(      Future<? super Void> result){
         manager.closeChannel(chatcomponenttext);
       }
     }
-);
+,new GenericFutureListener[0]);
   }
   manager.channel().config().setAutoRead(false);
 }

@@ -1,6 +1,6 @@
 StructureVillagePieces.PieceWeight villagePiece
 StructureVillagePieces.Start startPiece
-List pieces
+List<StructureComponent> pieces
 Random random
 int p1
 int p2
