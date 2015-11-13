@@ -17,5 +17,6 @@
     FMLLog.severe("The substitute %s for %s is registered into the game independently. This won't work",replacement.getClass().getName(),nameToReplace);
     throw new IllegalArgumentException("The object substitution is already registered. This won't work");
   }
+  FMLLog.log(Level.DEBUG,"Adding substitution %s with %s (name %s)",original,replacement,nameToReplace);
   getPersistentSubstitutions().put(nameToReplace,replacement);
 }

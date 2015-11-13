@@ -1,0 +1,6 @@
+{
+  for (  I item : typeSafeIterable()) {
+    Delegate<Item> delegate=(Delegate<Item>)((Item)item).delegate;
+    delegate.changeReference((Item)item);
+  }
+}
