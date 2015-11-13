@@ -5,7 +5,7 @@
   meta.name="Minecraft Forge";
   meta.version=ForgeVersion.getVersion();
   meta.credits="Made possible with help from many people";
-  meta.authorList=Arrays.asList("LexManos","cpw");
+  meta.authorList=Arrays.asList("LexManos","cpw","fry");
   meta.description="Minecraft Forge is a common open source API allowing a broad range of mods " + "to work cooperatively together. It allows many mods to be created without " + "them editing the main Minecraft code.";
   meta.url="http://minecraftforge.net";
   meta.updateUrl="http://minecraftforge.net/forum/index.php/topic,5.0.html";
