@@ -2,7 +2,6 @@
   chunk("NODE");
   animations.push(HashBasedTable.<Integer,Optional<Node<?>>,Key>create());
   Triple<Integer,Integer,Float> animData=null;
-  Animation animation=null;
   Pair<Brush,List<Face>> mesh=null;
   List<Pair<Vertex,Float>> bone=null;
   Map<Integer,Key> keys=new HashMap<Integer,Key>();
