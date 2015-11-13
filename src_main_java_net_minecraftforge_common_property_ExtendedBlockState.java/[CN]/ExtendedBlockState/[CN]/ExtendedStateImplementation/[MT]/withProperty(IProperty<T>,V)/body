@@ -9,12 +9,12 @@
     if (this.getProperties().get(property) == value) {
       return this;
     }
-    Map<IProperty,Comparable> map=new HashMap<IProperty,Comparable>(getProperties());
+    @SuppressWarnings("rawtypes") Map<IProperty,Comparable> map=Maps.newHashMap(getProperties());
     map.put(property,value);
     if (Iterables.all(unlistedProperties.values(),Predicates.<Optional<?>>equalTo(Optional.absent()))) {
       return (IExtendedBlockState)normalMap.get(map);
     }
-    ImmutableTable<IProperty,Comparable,IBlockState> table=propertyValueTable;
+    @SuppressWarnings("rawtypes") ImmutableTable<IProperty,Comparable,IBlockState> table=propertyValueTable;
     table=((StateImplementation)table.get(property,value)).getPropertyValueTable();
     return new ExtendedStateImplementation(getBlock(),ImmutableMap.copyOf(map),unlistedProperties,table).setMap(this.normalMap);
   }
