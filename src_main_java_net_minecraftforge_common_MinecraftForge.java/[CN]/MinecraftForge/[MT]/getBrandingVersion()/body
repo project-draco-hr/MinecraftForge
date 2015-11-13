@@ -1,3 +1,0 @@
-{
-  return "Minecraft Forge " + ForgeVersion.getVersion();
-}
