@@ -1,2 +1,2 @@
 Class<? extends Entity> entityClass
-Render renderer
+Render<? extends Entity> renderer
