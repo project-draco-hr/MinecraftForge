@@ -14,9 +14,10 @@
   this.manager.setConnectionState(EnumConnectionState.PLAY);
   NBTTagCompound playerNBT=scm.getPlayerNBT(player);
   if (playerNBT != null) {
-    return playerNBT.getInteger("Dimension");
+    int dimension=playerNBT.getInteger("Dimension");
+    if (DimensionManager.isDimensionRegistered(dimension)) {
+      return dimension;
+    }
   }
- else {
-    return 0;
-  }
+  return 0;
 }
