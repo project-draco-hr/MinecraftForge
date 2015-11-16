@@ -11,5 +11,5 @@
     }
   }
   builder.put("missingno",missing);
-  return new BakedWrapper(this,state,format,builder.build());
+  return new BakedWrapper(getNode(),state,format,meshes,builder.build());
 }

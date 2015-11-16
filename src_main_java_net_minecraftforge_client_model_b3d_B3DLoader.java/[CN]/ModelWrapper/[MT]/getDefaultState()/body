@@ -1,0 +1,3 @@
+{
+  return new B3DState(model.getRoot().getAnimation(),defaultKey,defaultKey,0);
+}

@@ -1,0 +1,5 @@
+ResourceLocation modelLocation
+B3DModel model
+ImmutableSet<String> meshes
+int defaultKey
+ImmutableMap<String,ResourceLocation> textures

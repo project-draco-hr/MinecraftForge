@@ -2,8 +2,20 @@
   if (!(part instanceof PartWrapper<?>)) {
     throw new IllegalArgumentException("B3DState can only be applied to b3d models");
   }
-  if (parent != null) {
-    return parent.apply(part).compose(getNodeMatrix(((PartWrapper<?>)part).getNode()));
+  Node<?> node=((PartWrapper<?>)part).getNode();
+  TRSRTransformation nodeTransform;
+  if (progress < 1e-5 || frame == nextFrame) {
+    nodeTransform=getNodeMatrix(node,frame);
   }
-  return getNodeMatrix(((PartWrapper<?>)part).getNode());
+ else   if (progress > 1 - 1e-5) {
+    nodeTransform=getNodeMatrix(node,nextFrame);
+  }
+ else {
+    nodeTransform=getNodeMatrix(node,frame);
+    nodeTransform=nodeTransform.slerp(getNodeMatrix(node,nextFrame),progress);
+  }
+  if (parent != null) {
+    return parent.apply(part).compose(nodeTransform);
+  }
+  return nodeTransform;
 }

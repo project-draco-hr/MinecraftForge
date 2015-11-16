@@ -1,5 +1,3 @@
 {
-  this.animation=animation;
-  this.frame=frame;
-  this.parent=getParent(parent);
+  this(animation,frame,frame,0,parent);
 }

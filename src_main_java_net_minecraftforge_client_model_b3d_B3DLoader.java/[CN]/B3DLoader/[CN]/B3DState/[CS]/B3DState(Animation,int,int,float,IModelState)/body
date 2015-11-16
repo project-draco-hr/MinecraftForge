@@ -1,0 +1,7 @@
+{
+  this.animation=animation;
+  this.frame=frame;
+  this.nextFrame=nextFrame;
+  this.progress=MathHelper.clamp_float(progress,0,1);
+  this.parent=getParent(parent);
+}
