@@ -8,7 +8,6 @@
   t.set(v);
   b.set(m);
   b.mul(t);
-  sortSingularValues(b,v);
   Pair<Float,Float> p;
   float ul=1f;
   p=qrGivensQuat(b.m00,b.m10);

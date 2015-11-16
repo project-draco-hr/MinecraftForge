@@ -1,0 +1,3 @@
+{
+  return new TRSRTransformation(lerp(this.getTranslation(),that.getTranslation(),progress),slerp(this.getLeftRot(),that.getLeftRot(),progress),lerp(this.getScale(),that.getScale(),progress),slerp(this.getRightRot(),that.getRightRot(),progress));
+}

@@ -1,0 +1,4 @@
+ResourceLocation location
+ImmutableSet<String> meshes
+ImmutableMap<String,ResourceLocation> textures
+B3DModel.Node<Mesh> mesh

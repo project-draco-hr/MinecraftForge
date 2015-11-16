@@ -1,4 +1,6 @@
-B3DLoader.Wrapper model
+Node<?> node
 IModelState state
 VertexFormat format
+ImmutableSet<String> meshes
 ImmutableMap<String,TextureAtlasSprite> textures
+LoadingCache<Integer,BakedWrapper> cache

@@ -4,7 +4,20 @@
     if (exState.getUnlistedNames().contains(B3DFrameProperty.instance)) {
       B3DState s=exState.getValue(B3DFrameProperty.instance);
       if (s != null) {
-        return getCachedModel(s.getFrame());
+        IModelState parent=this.state;
+        Animation newAnimation=s.getAnimation();
+        if (parent instanceof B3DState) {
+          B3DState ps=(B3DState)parent;
+          parent=ps.getParent();
+        }
+        if (newAnimation == null) {
+          newAnimation=node.getAnimation();
+        }
+        if (s.getFrame() == s.getNextFrame()) {
+          return cache.getUnchecked(s.getFrame());
+        }
+        B3DState newState=new B3DState(newAnimation,s.getFrame(),s.getNextFrame(),s.getProgress(),parent);
+        return new BakedWrapper(node,newState,format,meshes,textures);
       }
     }
   }

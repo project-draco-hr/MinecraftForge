@@ -28,11 +28,10 @@
       FMLLog.severe("No mesh named %s in model %s, skipping",mesh,modelLocation);
       return ModelLoaderRegistry.getMissingModel();
     }
-    return new Wrapper(modelLocation,model.getTextures(),model.getMeshes().get(mesh));
+    return new ModelWrapper(modelLocation,model,ImmutableSet.of(mesh),1);
   }
   if (!(model.getRoot().getKind() instanceof Mesh)) {
-    FMLLog.severe("No root mesh in model %s and no mesh name in location, skipping",modelLocation);
-    return ModelLoaderRegistry.getMissingModel();
+    return new ModelWrapper(modelLocation,model,ImmutableSet.<String>of(),1);
   }
-  return new Wrapper(modelLocation,model.getTextures(),(Node<Mesh>)model.getRoot());
+  return new ModelWrapper(modelLocation,model,ImmutableSet.of(((Node<Mesh>)model.getRoot()).getName()),1);
 }

@@ -1,0 +1,5 @@
+{
+  Vector4f res=new Vector4f(from);
+  res.interpolate(from,to,progress);
+  return res;
+}

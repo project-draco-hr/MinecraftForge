@@ -1,0 +1,4 @@
+Animation animation
+int frame
+int nextFrame
+float progress

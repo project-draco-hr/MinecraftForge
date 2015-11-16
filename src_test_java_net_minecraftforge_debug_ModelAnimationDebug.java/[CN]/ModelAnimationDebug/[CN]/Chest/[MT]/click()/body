@@ -1,0 +1,13 @@
+{
+  if (opening || tick == maxFrame) {
+    opening=false;
+    closing=true;
+    return;
+  }
+  if (closing || tick == minFrame) {
+    closing=false;
+    opening=true;
+    return;
+  }
+  opening=true;
+}

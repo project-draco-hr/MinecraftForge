@@ -1,5 +1,3 @@
 {
-  super(mesh);
-  this.location=location;
-  this.textures=textures;
+  this(location,ImmutableSet.<String>of(),textures,mesh);
 }

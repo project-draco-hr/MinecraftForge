@@ -1,6 +1,8 @@
 {
-  this.model=model;
+  this.node=node;
   this.state=state;
   this.format=format;
+  this.meshes=meshes;
   this.textures=textures;
+  this.cache=cache;
 }

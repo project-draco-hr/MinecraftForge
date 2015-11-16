@@ -1,0 +1,4 @@
+{
+  super.init(event);
+  ClientRegistry.bindTileEntitySpecialRenderer(Chest.class,ChestRenderer.instance);
+}

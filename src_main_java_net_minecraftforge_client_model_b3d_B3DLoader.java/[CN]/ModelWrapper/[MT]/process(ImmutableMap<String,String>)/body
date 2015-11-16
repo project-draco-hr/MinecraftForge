@@ -1,0 +1,36 @@
+{
+  if (data.containsKey("mesh")) {
+    JsonElement e=new JsonParser().parse(data.get("mesh"));
+    if (e.isJsonPrimitive() && e.getAsJsonPrimitive().isString()) {
+      return new ModelWrapper(modelLocation,model,ImmutableSet.of(e.getAsString()),defaultKey,textures);
+    }
+ else     if (e.isJsonArray()) {
+      ImmutableSet.Builder<String> builder=ImmutableSet.builder();
+      for (      JsonElement s : e.getAsJsonArray()) {
+        if (s.isJsonPrimitive() && s.getAsJsonPrimitive().isString()) {
+          builder.add(s.getAsString());
+        }
+ else {
+          FMLLog.severe("unknown mesh definition '%s' in array for b3d model '%s'",s.toString(),modelLocation);
+          return this;
+        }
+      }
+      return new ModelWrapper(modelLocation,model,builder.build(),defaultKey,textures);
+    }
+ else {
+      FMLLog.severe("unknown mesh definition '%s' for b3d model '%s'",e.toString(),modelLocation);
+      return this;
+    }
+  }
+  if (data.containsKey("key")) {
+    JsonElement e=new JsonParser().parse(data.get("key"));
+    if (e.isJsonPrimitive() && e.getAsJsonPrimitive().isNumber()) {
+      return new ModelWrapper(modelLocation,model,meshes,e.getAsNumber().intValue(),textures);
+    }
+ else {
+      FMLLog.severe("unknown keyframe definition '%s' for b3d model '%s'",e.toString(),modelLocation);
+      return this;
+    }
+  }
+  return this;
+}

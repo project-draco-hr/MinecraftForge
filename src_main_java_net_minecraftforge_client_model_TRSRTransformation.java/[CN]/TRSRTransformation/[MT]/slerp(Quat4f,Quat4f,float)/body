@@ -1,0 +1,5 @@
+{
+  Quat4f res=new Quat4f();
+  res.interpolate(from,to,progress);
+  return res;
+}

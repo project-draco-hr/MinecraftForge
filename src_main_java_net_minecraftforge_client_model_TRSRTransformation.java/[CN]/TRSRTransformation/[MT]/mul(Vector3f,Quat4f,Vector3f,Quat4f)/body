@@ -1,7 +1,6 @@
 {
   Matrix4f res=new Matrix4f(), t=new Matrix4f();
   res.setIdentity();
-  if (translation != null)   res.setTranslation(translation);
   if (leftRot != null) {
     t.set(leftRot);
     res.mul(t);
@@ -17,5 +16,6 @@
     t.set(rightRot);
     res.mul(t);
   }
+  if (translation != null)   res.setTranslation(translation);
   return res;
 }
