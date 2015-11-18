@@ -1,5 +1,0 @@
-{
-  this.parent.getFontRenderer().drawString(this.parent.getFontRenderer().trimStringToWidth("Test 1",listWidth - 10),this.left + 3,slotTop + 2,0xFF2222);
-  this.parent.getFontRenderer().drawString(this.parent.getFontRenderer().trimStringToWidth("TEST 2",listWidth - 10),this.left + 3,slotTop + 12,0xFF2222);
-  this.parent.getFontRenderer().drawString(this.parent.getFontRenderer().trimStringToWidth("DISABLED",listWidth - 10),this.left + 3,slotTop + 22,0xFF2222);
-}

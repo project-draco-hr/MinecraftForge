@@ -61,6 +61,11 @@
   this.applyScrollLimits();
   Tessellator tess=Tessellator.getInstance();
   WorldRenderer worldr=tess.getWorldRenderer();
+  ScaledResolution res=new ScaledResolution(client,client.displayWidth,client.displayHeight);
+  double scaleW=client.displayWidth / res.getScaledWidth_double();
+  double scaleH=client.displayHeight / res.getScaledHeight_double();
+  GL11.glEnable(GL11.GL_SCISSOR_TEST);
+  GL11.glScissor((int)(left * scaleW),(int)(client.displayHeight - (bottom * scaleH)),(int)(listWidth * scaleW),(int)(viewHeight * scaleH));
   if (this.client.theWorld != null) {
     this.drawGradientRect(this.left,this.top,this.right,this.bottom,0xC0101010,0xD0101010);
   }
@@ -109,31 +114,6 @@
     }
   }
   GlStateManager.disableDepth();
-  if (this.client.theWorld == null) {
-    this.overlayBackground(0,this.top,255,255);
-    this.overlayBackground(this.bottom,this.listHeight,255,255);
-  }
-  GlStateManager.enableBlend();
-  GlStateManager.blendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
-  GlStateManager.disableAlpha();
-  GlStateManager.shadeModel(GL11.GL_SMOOTH);
-  GlStateManager.disableTexture2D();
-  worldr.startDrawingQuads();
-  worldr.setColorRGBA_I(0,0);
-  worldr.addVertexWithUV(this.left,this.top + border,0.0D,0.0D,1.0D);
-  worldr.addVertexWithUV(this.right,this.top + border,0.0D,1.0D,1.0D);
-  worldr.setColorRGBA_I(0,255);
-  worldr.addVertexWithUV(this.right,this.top,0.0D,1.0D,0.0D);
-  worldr.addVertexWithUV(this.left,this.top,0.0D,0.0D,0.0D);
-  tess.draw();
-  worldr.startDrawingQuads();
-  worldr.setColorRGBA_I(0,255);
-  worldr.addVertexWithUV(this.left,this.bottom,0.0D,0.0D,1.0D);
-  worldr.addVertexWithUV(this.right,this.bottom,0.0D,1.0D,1.0D);
-  worldr.setColorRGBA_I(0,0);
-  worldr.addVertexWithUV(this.right,this.bottom - border,0.0D,1.0D,0.0D);
-  worldr.addVertexWithUV(this.left,this.bottom - border,0.0D,0.0D,0.0D);
-  tess.draw();
   int extraHeight=this.getContentHeight() - viewHeight - border;
   if (extraHeight > 0) {
     int height=viewHeight * viewHeight / this.getContentHeight();
@@ -143,6 +123,7 @@
     if (barTop < this.top) {
       barTop=this.top;
     }
+    GlStateManager.disableTexture2D();
     worldr.startDrawingQuads();
     worldr.setColorRGBA_I(0,255);
     worldr.addVertexWithUV(scrollBarLeft,this.bottom,0.0D,0.0D,1.0D);
@@ -170,4 +151,5 @@
   GlStateManager.shadeModel(GL11.GL_FLAT);
   GlStateManager.enableAlpha();
   GlStateManager.disableBlend();
+  GL11.glDisable(GL11.GL_SCISSOR_TEST);
 }
