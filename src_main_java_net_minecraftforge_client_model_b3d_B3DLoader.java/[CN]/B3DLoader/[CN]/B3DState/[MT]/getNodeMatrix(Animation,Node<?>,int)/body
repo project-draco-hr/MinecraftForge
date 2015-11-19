@@ -2,7 +2,7 @@
   TRSRTransformation ret=TRSRTransformation.identity();
   Key key=null;
   if (animation != null)   key=animation.getKeys().get(frame,node);
- else   if (key == null && node.getAnimation() != null && node.getAnimation() != animation)   key=node.getAnimation().getKeys().get(frame,node);
+ else   if (node.getAnimation() != null && node.getAnimation() != animation)   key=node.getAnimation().getKeys().get(frame,node);
   if (key != null) {
     Node<?> parent=node.getParent();
     if (parent != null) {
