@@ -5,7 +5,7 @@
   }
   BiomeType ret=EnumHelper.addEnum(BiomeType.class,name,new Class[0],new Object[0]);
   if (ret.ordinal() >= biomes.length) {
-    biomes=Arrays.copyOf(biomes,ret.ordinal());
+    biomes=Arrays.copyOf(biomes,ret.ordinal() + 1);
   }
   return ret;
 }
