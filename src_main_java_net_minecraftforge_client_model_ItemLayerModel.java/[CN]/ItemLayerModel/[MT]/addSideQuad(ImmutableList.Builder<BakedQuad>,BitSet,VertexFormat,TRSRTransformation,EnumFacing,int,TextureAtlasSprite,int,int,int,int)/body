@@ -1,0 +1,9 @@
+{
+  int si=side.ordinal();
+  if (si > 4)   si-=2;
+  int index=(vMax + 1) * ((uMax + 1) * si + u) + v;
+  if (!faces.get(index)) {
+    faces.set(index);
+    builder.add(buildSideQuad(format,transform,side,tint,sprite,u,v));
+  }
+}

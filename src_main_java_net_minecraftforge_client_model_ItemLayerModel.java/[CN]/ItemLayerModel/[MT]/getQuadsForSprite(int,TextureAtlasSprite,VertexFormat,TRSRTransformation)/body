@@ -2,6 +2,7 @@
   ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
   int uMax=sprite.getIconWidth();
   int vMax=sprite.getIconHeight();
+  BitSet faces=new BitSet((uMax + 1) * (vMax + 1) * 4);
   for (int f=0; f < sprite.getFrameCount(); f++) {
     int[] pixels=sprite.getFrameTextureData(f)[0];
     boolean ptu;
@@ -12,27 +13,27 @@
       for (int u=0; u < uMax; u++) {
         boolean t=isTransparent(pixels,uMax,vMax,u,v);
         if (ptu && !t) {
-          builder.add(buildSideQuad(format,transform,EnumFacing.WEST,tint,sprite,u,v));
+          addSideQuad(builder,faces,format,transform,EnumFacing.WEST,tint,sprite,uMax,vMax,u,v);
         }
         if (!ptu && t) {
-          builder.add(buildSideQuad(format,transform,EnumFacing.EAST,tint,sprite,u,v));
+          addSideQuad(builder,faces,format,transform,EnumFacing.EAST,tint,sprite,uMax,vMax,u,v);
         }
         if (ptv[u] && !t) {
-          builder.add(buildSideQuad(format,transform,EnumFacing.UP,tint,sprite,u,v));
+          addSideQuad(builder,faces,format,transform,EnumFacing.UP,tint,sprite,uMax,vMax,u,v);
         }
         if (!ptv[u] && t) {
-          builder.add(buildSideQuad(format,transform,EnumFacing.DOWN,tint,sprite,u,v));
+          addSideQuad(builder,faces,format,transform,EnumFacing.DOWN,tint,sprite,uMax,vMax,u,v);
         }
         ptu=t;
         ptv[u]=t;
       }
       if (!ptu) {
-        builder.add(buildSideQuad(format,transform,EnumFacing.EAST,tint,sprite,uMax,v));
+        addSideQuad(builder,faces,format,transform,EnumFacing.EAST,tint,sprite,uMax,vMax,uMax,v);
       }
     }
     for (int u=0; u < uMax; u++) {
       if (!ptv[u]) {
-        builder.add(buildSideQuad(format,transform,EnumFacing.DOWN,tint,sprite,u,vMax));
+        addSideQuad(builder,faces,format,transform,EnumFacing.DOWN,tint,sprite,uMax,vMax,u,vMax);
       }
     }
   }
