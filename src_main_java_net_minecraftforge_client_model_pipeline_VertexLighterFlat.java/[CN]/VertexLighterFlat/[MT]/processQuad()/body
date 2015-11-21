@@ -47,20 +47,15 @@
     for (int e=0; e < parent.getVertexFormat().getElementCount(); e++) {
 switch (parent.getVertexFormat().getElement(e).getUsage()) {
 case POSITION:
-        float[] pos=new float[4];
-      System.arraycopy(position[v],0,pos,0,position[v].length);
-    pos[0]+=blockInfo.getBlockPos().getX();
-  pos[1]+=blockInfo.getBlockPos().getY();
-pos[2]+=blockInfo.getBlockPos().getZ();
-parent.put(e,pos);
-break;
+        parent.put(e,position[v]);
+      break;
 case NORMAL:
-if (normalIndex != -1) {
-parent.put(e,normal[v]);
-break;
-}
+    if (normalIndex != -1) {
+      parent.put(e,normal[v]);
+      break;
+    }
 case COLOR:
-parent.put(e,color[v]);
+  parent.put(e,color[v]);
 break;
 case UV:
 if (getVertexFormat().getElement(e).getIndex() == 1) {
