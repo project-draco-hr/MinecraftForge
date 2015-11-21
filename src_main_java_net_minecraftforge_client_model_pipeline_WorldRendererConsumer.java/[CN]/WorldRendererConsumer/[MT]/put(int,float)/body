@@ -4,7 +4,7 @@
     v++;
     if (v == 4) {
       renderer.addVertexData(quadData);
-      renderer.putPosition(0,0,0);
+      renderer.putPosition(offset.getX(),offset.getY(),offset.getZ());
       Arrays.fill(quadData,0);
       v=0;
     }

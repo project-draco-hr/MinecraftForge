@@ -2,8 +2,11 @@
   if (ForgeModContainer.forgeLightPipelineEnabled) {
     if (wr != lastRendererFlat.get()) {
       lastRendererFlat.set(wr);
-      lighterFlat.get().setParent(new WorldRendererConsumer(wr));
+      WorldRendererConsumer newCons=new WorldRendererConsumer(wr);
+      wrFlat.set(newCons);
+      lighterFlat.get().setParent(newCons);
     }
+    wrFlat.get().setOffset(pos);
     return render(lighterFlat.get(),world,model,block,pos,wr,checkSides);
   }
  else {
