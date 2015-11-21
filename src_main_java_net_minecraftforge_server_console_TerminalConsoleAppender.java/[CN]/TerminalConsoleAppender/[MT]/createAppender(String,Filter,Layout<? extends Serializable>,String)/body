@@ -1,0 +1,12 @@
+{
+  if (name == null) {
+    LOGGER.error("No name provided for TerminalConsoleAppender");
+    return null;
+  }
+  if (layout == null) {
+    layout=PatternLayout.createLayout(null,null,null,null,null);
+  }
+  boolean ignoreExceptions=parseBoolean(ignore,true);
+  System.setProperty("log4j.skipJansi","true");
+  return new TerminalConsoleAppender(name,filter,layout,ignoreExceptions);
+}
