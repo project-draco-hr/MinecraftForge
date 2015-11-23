@@ -1,6 +1,7 @@
 {
   IBlockState state=te.getWorld().getBlockState(te.getPos());
-  IBakedModel model=this.blockRenderer.getModelFromBlockState(state,te.getWorld(),te.getPos());
+  state=state.withProperty(STATIC,false);
+  IBakedModel model=this.blockRenderer.getBlockModelShapes().getModelForState(state);
   if (state instanceof IExtendedBlockState) {
     IExtendedBlockState exState=(IExtendedBlockState)state;
     if (exState.getUnlistedNames().contains(B3DFrameProperty.instance)) {
