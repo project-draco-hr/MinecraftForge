@@ -1,5 +1,5 @@
 {
   this.key=key;
   this.value=value;
-  this.isFunction=false;
+  this.isFunction=isFunction;
 }

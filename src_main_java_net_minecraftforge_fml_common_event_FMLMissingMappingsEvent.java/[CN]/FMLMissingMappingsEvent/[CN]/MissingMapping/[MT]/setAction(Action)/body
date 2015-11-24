@@ -1,4 +1,0 @@
-{
-  if (target == Action.DEFAULT || target == Action.REMAP || target == Action.BLOCKONLY)   throw new IllegalArgumentException();
-  this.action=target;
-}
