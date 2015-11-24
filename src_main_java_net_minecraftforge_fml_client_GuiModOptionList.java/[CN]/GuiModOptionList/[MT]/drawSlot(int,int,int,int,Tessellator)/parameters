@@ -1,5 +1,0 @@
-int slotIdx
-int entryRight
-int slotTop
-int slotBuffer
-Tessellator tess

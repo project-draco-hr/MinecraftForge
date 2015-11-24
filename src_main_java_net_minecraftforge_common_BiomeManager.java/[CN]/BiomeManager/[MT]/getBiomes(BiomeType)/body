@@ -1,5 +1,5 @@
 {
   int idx=type.ordinal();
-  List<BiomeEntry> list=idx > biomes.length ? null : biomes[idx];
+  List<BiomeEntry> list=idx >= biomes.length ? null : biomes[idx];
   return list != null ? ImmutableList.copyOf(list) : null;
 }

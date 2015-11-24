@@ -1,8 +1,0 @@
-{
-  if (button.enabled) {
-    if (button.id == 200) {
-      this.mc.gameSettings.saveOptions();
-      this.mc.displayGuiScreen(this.parentScreen);
-    }
-  }
-}
