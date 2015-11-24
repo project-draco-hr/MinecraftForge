@@ -1,5 +1,5 @@
 {
-  if (!loadedCoremods.isEmpty() || !reparsedCoremods.isEmpty()) {
+  if (!ignoredModFiles.isEmpty() || !candidateModFiles.isEmpty()) {
     builder.append("\nWARNING: coremods are present:\n");
     for (    String coreMod : transformers.keySet()) {
       builder.append("  ").append(coreMod).append('\n');

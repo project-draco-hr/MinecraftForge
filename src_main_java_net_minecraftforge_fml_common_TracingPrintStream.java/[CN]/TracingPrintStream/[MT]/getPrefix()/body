@@ -5,7 +5,7 @@
     elem=elems[BASE_DEPTH + 2];
   }
  else   if (elem.getClassName().startsWith("java.lang.Throwable")) {
-    elem=elems[BASE_DEPTH + 1];
+    elem=elems[BASE_DEPTH + 2];
   }
   return "[" + elem.getClassName() + ":"+ elem.getMethodName()+ ":"+ elem.getLineNumber()+ "]: ";
 }
