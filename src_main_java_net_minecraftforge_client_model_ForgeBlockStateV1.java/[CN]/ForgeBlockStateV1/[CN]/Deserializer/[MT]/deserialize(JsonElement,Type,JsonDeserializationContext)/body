@@ -1,7 +1,7 @@
 {
   JsonObject json=element.getAsJsonObject();
   ForgeBlockStateV1 ret=new ForgeBlockStateV1();
-  ret.forge_marker=JsonUtils.getJsonObjectIntegerFieldValue(json,"forge_marker");
+  ret.forge_marker=JsonUtils.getInt(json,"forge_marker");
   if (json.has("defaults")) {
     ret.defaults=context.deserialize(json.get("defaults"),ForgeBlockStateV1.Variant.class);
     if (ret.defaults.simpleSubmodels.size() > 0)     throw new RuntimeException("\"defaults\" variant cannot contain a simple \"submodel\" definition.");

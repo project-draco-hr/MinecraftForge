@@ -3,7 +3,7 @@
   JsonObject json=element.getAsJsonObject();
   if (json.has("model")) {
     if (json.get("model").isJsonNull())     ret.model=null;
- else     ret.model=getBlockLocation(JsonUtils.getJsonObjectStringFieldValue(json,"model"));
+ else     ret.model=getBlockLocation(JsonUtils.getString(json,"model"));
     ret.modelSet=true;
   }
   if (json.has("textures")) {
@@ -13,8 +13,8 @@
     }
   }
   if (json.has("x") || json.has("y")) {
-    int x=JsonUtils.getJsonObjectIntegerFieldValueOrDefault(json,"x",0);
-    int y=JsonUtils.getJsonObjectIntegerFieldValueOrDefault(json,"y",0);
+    int x=JsonUtils.getInt(json,"x",0);
+    int y=JsonUtils.getInt(json,"y",0);
     ret.state=Optional.<IModelState>of(new TRSRTransformation(ModelRotation.getModelRotation(x,y)));
     if (!ret.state.isPresent())     throw new JsonParseException("Invalid BlockModelRotation x: " + x + " y: "+ y);
   }
@@ -109,10 +109,10 @@
     }
   }
   if (json.has("uvlock")) {
-    ret.uvLock=Optional.of(JsonUtils.getJsonObjectBooleanFieldValue(json,"uvlock"));
+    ret.uvLock=Optional.of(JsonUtils.getBoolean(json,"uvlock"));
   }
   if (json.has("weight")) {
-    ret.weight=Optional.of(JsonUtils.getJsonObjectIntegerFieldValue(json,"weight"));
+    ret.weight=Optional.of(JsonUtils.getInt(json,"weight"));
   }
   if (json.has("submodel")) {
     JsonElement submodels=json.get("submodel");

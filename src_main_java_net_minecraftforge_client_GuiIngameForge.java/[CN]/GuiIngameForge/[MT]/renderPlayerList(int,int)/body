@@ -1,13 +1,13 @@
 {
   ScoreObjective scoreobjective=this.mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(0);
   NetHandlerPlayClient handler=mc.thePlayer.sendQueue;
-  if (mc.gameSettings.keyBindPlayerList.isKeyDown() && (!mc.isIntegratedServerRunning() || handler.func_175106_d().size() > 1 || scoreobjective != null)) {
-    this.overlayPlayerList.func_175246_a(true);
+  if (mc.gameSettings.keyBindPlayerList.isKeyDown() && (!mc.isIntegratedServerRunning() || handler.getPlayerInfoMap().size() > 1 || scoreobjective != null)) {
+    this.overlayPlayerList.updatePlayerList(true);
     if (pre(PLAYER_LIST))     return;
-    this.overlayPlayerList.func_175249_a(width,this.mc.theWorld.getScoreboard(),scoreobjective);
+    this.overlayPlayerList.renderPlayerlist(width,this.mc.theWorld.getScoreboard(),scoreobjective);
     post(PLAYER_LIST);
   }
  else {
-    this.overlayPlayerList.func_175246_a(false);
+    this.overlayPlayerList.updatePlayerList(false);
   }
 }

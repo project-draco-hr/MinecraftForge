@@ -17,11 +17,11 @@
       GlStateManager.pushMatrix();
       GlStateManager.scale(4.0F,4.0F,4.0F);
       int l=opacity << 24 & -16777216;
-      this.func_175179_f().drawString(this.field_175201_x,(float)(-this.func_175179_f().getStringWidth(this.field_175201_x) / 2),-10.0F,16777215 | l,true);
+      this.getFontRenderer().drawString(this.field_175201_x,(float)(-this.getFontRenderer().getStringWidth(this.field_175201_x) / 2),-10.0F,16777215 | l,true);
       GlStateManager.popMatrix();
       GlStateManager.pushMatrix();
       GlStateManager.scale(2.0F,2.0F,2.0F);
-      this.func_175179_f().drawString(this.field_175200_y,(float)(-this.func_175179_f().getStringWidth(this.field_175200_y) / 2),5.0F,16777215 | l,true);
+      this.getFontRenderer().drawString(this.field_175200_y,(float)(-this.getFontRenderer().getStringWidth(this.field_175200_y) / 2),5.0F,16777215 | l,true);
       GlStateManager.popMatrix();
       GlStateManager.disableBlend();
       GlStateManager.popMatrix();
