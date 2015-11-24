@@ -9,5 +9,4 @@
   }
   this.fluidDelegate=FluidRegistry.makeDelegate(fluid);
   this.amount=amount;
-  this.fluid=fluid;
 }
