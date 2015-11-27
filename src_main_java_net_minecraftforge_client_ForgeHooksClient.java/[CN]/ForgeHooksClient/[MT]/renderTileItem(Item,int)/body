@@ -1,7 +1,7 @@
 {
   Class<? extends TileEntity> tileClass=tileItemMap.get(Pair.of(item,metadata));
   if (tileClass != null) {
-    TileEntitySpecialRenderer r=TileEntityRendererDispatcher.instance.getSpecialRendererByClass(tileClass);
+    TileEntitySpecialRenderer<TileEntity> r=TileEntityRendererDispatcher.instance.getSpecialRendererByClass(tileClass);
     if (r != null) {
       r.renderTileEntityAt(null,0,0,0,0,-1);
     }
