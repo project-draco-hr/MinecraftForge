@@ -2,7 +2,7 @@
   FakePlayer ret=MINECRAFT_PLAYER != null ? MINECRAFT_PLAYER.get() : null;
   if (ret == null) {
     ret=FakePlayerFactory.get(world,MINECRAFT);
-    MINECRAFT_PLAYER=new WeakReference(ret);
+    MINECRAFT_PLAYER=new WeakReference<FakePlayer>(ret);
   }
   return ret;
 }

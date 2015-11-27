@@ -13,7 +13,7 @@
   if (!isEnhanced)   return new ByteArrayInputStream(data);
   Properties props=new Properties();
   props.load(new InputStreamReader(new ByteArrayInputStream(data),Charsets.UTF_8));
-  for (  Entry e : props.entrySet()) {
+  for (  Entry<Object,Object> e : props.entrySet()) {
     table.put((String)e.getKey(),(String)e.getValue());
   }
   props.clear();

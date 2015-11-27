@@ -1,0 +1,3 @@
+ModelManager modelManager
+IRegistry<ModelResourceLocation,IBakedModel> modelRegistry
+ModelLoader modelLoader

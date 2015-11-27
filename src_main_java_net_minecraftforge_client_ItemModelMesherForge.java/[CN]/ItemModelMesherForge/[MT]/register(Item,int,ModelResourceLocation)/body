@@ -2,11 +2,11 @@
   TIntObjectHashMap<ModelResourceLocation> locs=locations.get(item);
   TIntObjectHashMap<IBakedModel> mods=models.get(item);
   if (locs == null) {
-    locs=new TIntObjectHashMap();
+    locs=new TIntObjectHashMap<ModelResourceLocation>();
     locations.put(item,locs);
   }
   if (mods == null) {
-    mods=new TIntObjectHashMap();
+    mods=new TIntObjectHashMap<IBakedModel>();
     models.put(item,mods);
   }
   locs.put(meta,location);

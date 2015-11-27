@@ -1,5 +1,5 @@
 {
-  int pattern_header_length, packing_type, num_rows, pattern_data_length;
+  @SuppressWarnings("unused") int pattern_header_length, packing_type, num_rows, pattern_data_length;
   byte[] structure_header, pattern_header, pattern_data;
   Pattern pattern;
   structure_header=new byte[4];

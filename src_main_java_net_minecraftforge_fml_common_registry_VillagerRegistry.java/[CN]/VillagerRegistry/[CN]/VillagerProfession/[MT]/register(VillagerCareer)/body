@@ -1,6 +1,5 @@
 {
   Validate.isTrue(!careers.contains(career),"Attempted to register career that is already registered.");
   Validate.isTrue(career.profession == this,"Attempted to register career for the wrong profession.");
-  career.id=careers.size();
   careers.add(career);
 }

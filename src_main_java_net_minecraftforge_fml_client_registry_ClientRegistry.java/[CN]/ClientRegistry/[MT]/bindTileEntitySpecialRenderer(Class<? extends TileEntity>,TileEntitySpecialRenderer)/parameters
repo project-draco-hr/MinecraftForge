@@ -1,2 +1,0 @@
-Class<? extends TileEntity> tileEntityClass
-TileEntitySpecialRenderer specialRenderer

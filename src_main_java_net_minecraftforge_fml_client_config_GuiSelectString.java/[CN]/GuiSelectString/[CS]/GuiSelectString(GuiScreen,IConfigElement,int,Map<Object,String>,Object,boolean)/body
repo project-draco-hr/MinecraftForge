@@ -6,7 +6,7 @@
   this.selectableValues=selectableValues;
   this.beforeValue=currentValue;
   this.currentValue=currentValue;
-  this.toolTip=new ArrayList();
+  this.toolTip=new ArrayList<String>();
   this.enabled=enabled;
   String propName=I18n.format(configElement.getLanguageKey());
   String comment;

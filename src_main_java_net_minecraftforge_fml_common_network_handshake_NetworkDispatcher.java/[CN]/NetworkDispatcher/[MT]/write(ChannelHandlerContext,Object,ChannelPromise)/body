@@ -4,8 +4,8 @@
       ctx.write(((FMLProxyPacket)msg).toC17Packet(),promise);
     }
  else {
-      List<Packet> parts=((FMLProxyPacket)msg).toS3FPackets();
-      for (      Packet pkt : parts) {
+      List<Packet<INetHandlerPlayClient>> parts=((FMLProxyPacket)msg).toS3FPackets();
+      for (      Packet<INetHandlerPlayClient> pkt : parts) {
         ctx.write(pkt,promise);
       }
     }

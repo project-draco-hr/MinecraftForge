@@ -6,8 +6,8 @@
         boolean requiresMcRestart=this.entryList.saveConfigElements();
         if (Loader.isModLoaded(modID)) {
           ConfigChangedEvent event=new OnConfigChangedEvent(modID,configID,isWorldRunning,requiresMcRestart);
-          FMLCommonHandler.instance().bus().post(event);
-          if (!event.getResult().equals(Result.DENY))           FMLCommonHandler.instance().bus().post(new PostConfigChangedEvent(modID,configID,isWorldRunning,requiresMcRestart));
+          MinecraftForge.EVENT_BUS.post(event);
+          if (!event.getResult().equals(Result.DENY))           MinecraftForge.EVENT_BUS.post(new PostConfigChangedEvent(modID,configID,isWorldRunning,requiresMcRestart));
           if (requiresMcRestart) {
             flag=false;
             mc.displayGuiScreen(new GuiMessageDialog(parentScreen,"fml.configgui.gameRestartTitle",new ChatComponentText(I18n.format("fml.configgui.gameRestartRequired")),"fml.configgui.confirmRestartMessage"));
