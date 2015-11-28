@@ -27,7 +27,9 @@
  else {
         continue;
       }
-      if (newId != remap.id)       throw new IllegalStateException();
+      if (newId != remap.id) {
+        throw new IllegalStateException();
+      }
       if (currId != newId) {
         FMLLog.info("Fixed %s id mismatch %s: %d (init) -> %d (map).",remap.type == GameRegistry.Type.BLOCK ? "block" : "item",newName,currId,newId);
         (remap.type == GameRegistry.Type.BLOCK ? remapBlocks : remapItems).put(newName,new Integer[]{currId,newId});
@@ -61,7 +63,9 @@
     String text="Forge Mod Loader detected missing blocks/items.\n\n" + "There are " + defaulted.size() + " missing blocks and items in this save.\n"+ "If you continue the missing blocks/items will get removed.\n"+ "A world backup will be automatically created in your saves directory.\n\n"+ "Missing Blocks/Items:\n";
     for (    String s : defaulted)     text+=s + "\n";
     boolean confirmed=StartupQuery.confirm(text);
-    if (!confirmed)     StartupQuery.abort();
+    if (!confirmed) {
+      StartupQuery.abort();
+    }
     try {
       String skip=System.getProperty("fml.doNotBackup");
       if (skip == null || !"true".equals(skip)) {

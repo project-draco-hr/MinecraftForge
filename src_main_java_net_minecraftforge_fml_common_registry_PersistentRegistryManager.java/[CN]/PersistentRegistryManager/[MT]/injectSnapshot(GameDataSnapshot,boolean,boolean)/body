@@ -5,11 +5,14 @@
   forAllRegistries(PersistentRegistry.ACTIVE,ValidateRegistryFunction.OPERATION);
   forAllRegistries(PersistentRegistry.ACTIVE,DumpRegistryFunction.OPERATION);
   forAllRegistries(PersistentRegistry.ACTIVE,ResetDelegatesFunction.OPERATION);
+  GameData.getBlockStateIDMap().clear();
   for (  Map.Entry<ResourceLocation,GameDataSnapshot.Entry> snapshotEntry : snapshot.entries.entrySet()) {
     loadPersistentDataToStagingRegistry(injectFrozenData,remaps,missing,snapshotEntry,PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(snapshotEntry.getKey()));
   }
   List<String> missedMappings=Loader.instance().fireMissingMappingEvent(missing.get(BLOCKS),missing.get(ITEMS),isLocalWorld,remaps.get(BLOCKS),remaps.get(ITEMS));
-  if (!missedMappings.isEmpty())   return missedMappings;
+  if (!missedMappings.isEmpty()) {
+    return missedMappings;
+  }
   if (injectFrozenData) {
     for (    Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> r : PersistentRegistry.ACTIVE.registries.entrySet()) {
       loadFrozenDataToStagingRegistry(remaps,r.getKey(),PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(r.getKey()));

@@ -1,5 +1,7 @@
 {
-  if (hasInit)   return;
+  if (hasInit) {
+    return;
+  }
   VillagerProfession prof=new VillagerProfession("minecraft:farmer","minecraft:textures/entity/villager/farmer.png");
 {
     register(prof,0);

@@ -2,7 +2,9 @@
   I ret=super.getObject(name);
   if (ret == null) {
     name=aliases.get(name);
-    if (name != null)     return getRaw(name);
+    if (name != null) {
+      return getRaw(name);
+    }
   }
   return ret;
 }

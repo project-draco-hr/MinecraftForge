@@ -1,5 +1,7 @@
 {
-  if (!DEBUG)   return;
+  if (!DEBUG) {
+    return;
+  }
   List<Integer> ids=new ArrayList<Integer>();
   for (  I thing : this.typeSafeIterable()) {
     ids.add(getId(thing));

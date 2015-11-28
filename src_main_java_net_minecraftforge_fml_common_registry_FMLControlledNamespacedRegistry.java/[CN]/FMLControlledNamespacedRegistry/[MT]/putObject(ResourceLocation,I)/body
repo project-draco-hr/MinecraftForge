@@ -1,6 +1,10 @@
 {
-  if (name == null)   throw new NullPointerException("Can't use a null-name for the registry.");
-  if (thing == null)   throw new NullPointerException("Can't add null-object to the registry.");
+  if (name == null) {
+    throw new NullPointerException("Can't use a null-name for the registry.");
+  }
+  if (thing == null) {
+    throw new NullPointerException("Can't add null-object to the registry.");
+  }
   ResourceLocation existingName=getNameForObject(thing);
   if (existingName == null) {
     FMLLog.bigWarning("Ignoring putObject(%s, %s), not resolvable",name,thing);

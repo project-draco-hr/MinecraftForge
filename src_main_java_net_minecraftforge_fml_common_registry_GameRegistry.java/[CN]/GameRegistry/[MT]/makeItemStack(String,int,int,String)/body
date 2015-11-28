@@ -1,5 +1,7 @@
 {
-  if (itemName == null)   throw new IllegalArgumentException("The itemName cannot be null");
+  if (itemName == null) {
+    throw new IllegalArgumentException("The itemName cannot be null");
+  }
   Item item=GameData.getItemRegistry().getObject(new ResourceLocation(itemName));
   if (item == null) {
     FMLLog.getLogger().log(Level.TRACE,"Unable to find item with name {}",itemName);

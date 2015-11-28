@@ -1,10 +1,10 @@
 {
   ResourceLocation nameToSubstitute=new ResourceLocation(Loader.instance().activeModContainer().getModId(),name);
-  if (type == Type.BLOCK) {
+  if (type == GameRegistry.Type.BLOCK) {
     iBlockRegistry.addSubstitutionAlias(Loader.instance().activeModContainer().getModId(),nameToSubstitute,(Block)toReplace);
     iBlockRegistry.activateSubstitution(nameToSubstitute);
   }
- else   if (type == Type.ITEM) {
+ else   if (type == GameRegistry.Type.ITEM) {
     iItemRegistry.addSubstitutionAlias(Loader.instance().activeModContainer().getModId(),nameToSubstitute,(Item)toReplace);
     iItemRegistry.activateSubstitution(nameToSubstitute);
   }

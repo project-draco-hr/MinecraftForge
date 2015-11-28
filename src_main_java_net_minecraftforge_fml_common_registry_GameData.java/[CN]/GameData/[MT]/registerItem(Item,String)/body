@@ -1,6 +1,8 @@
 {
   int index=name.indexOf(':');
-  if (index != -1)   FMLLog.bigWarning("Dangerous extra prefix %s for name %s, invalid registry invocation/invalid name?",name.substring(0,index),name);
+  if (index != -1) {
+    FMLLog.bigWarning("Dangerous extra prefix %s for name %s, invalid registry invocation/invalid name?",name.substring(0,index),name);
+  }
   ResourceLocation rl=addPrefix(name);
   return registerItem(item,rl,-1);
 }

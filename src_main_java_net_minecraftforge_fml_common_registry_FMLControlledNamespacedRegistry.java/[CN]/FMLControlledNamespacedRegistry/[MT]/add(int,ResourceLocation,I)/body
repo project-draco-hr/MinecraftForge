@@ -1,6 +1,10 @@
 {
-  if (name == null)   throw new NullPointerException(String.format("Can't use a null-name for the registry, object %s.",thing));
-  if (thing == null)   throw new NullPointerException(String.format("Can't add null-object to the registry, name %s.",name));
+  if (name == null) {
+    throw new NullPointerException(String.format("Can't use a null-name for the registry, object %s.",thing));
+  }
+  if (thing == null) {
+    throw new NullPointerException(String.format("Can't add null-object to the registry, name %s.",name));
+  }
   if (optionalDefaultKey != null && optionalDefaultKey.equals(name) && this.optionalDefaultObject == null) {
     this.optionalDefaultObject=thing;
   }
@@ -32,12 +36,16 @@
   if (activeSubstitutions.containsKey(name)) {
     I oldThing=thing;
     thing=activeSubstitutions.get(name);
-    if (DEBUG)     FMLLog.getLogger().log(Level.DEBUG,"Active substitution: {} {}@{} -> {}@{}",name,oldThing.getClass().getName(),System.identityHashCode(oldThing),thing.getClass().getName(),System.identityHashCode(thing));
+    if (DEBUG) {
+      FMLLog.getLogger().log(Level.DEBUG,"Active substitution: {} {}@{} -> {}@{}",name,oldThing.getClass().getName(),System.identityHashCode(oldThing),thing.getClass().getName(),System.identityHashCode(thing));
+    }
   }
   addObjectRaw(idToUse,name,thing);
   if (isDelegated) {
     getExistingDelegate(thing).setResourceName(name);
   }
-  if (DEBUG)   FMLLog.finer("Registry add: %s %d %s (req. id %d)",name,idToUse,thing,id);
+  if (DEBUG) {
+    FMLLog.finer("Registry add: %s %d %s (req. id %d)",name,idToUse,thing,id);
+  }
   return idToUse;
 }

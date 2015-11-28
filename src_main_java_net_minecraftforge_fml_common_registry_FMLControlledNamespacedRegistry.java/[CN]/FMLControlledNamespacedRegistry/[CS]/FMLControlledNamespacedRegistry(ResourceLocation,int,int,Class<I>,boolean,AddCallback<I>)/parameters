@@ -1,0 +1,6 @@
+ResourceLocation defaultKey
+int maxIdValue
+int minIdValue
+Class<I> type
+boolean isDelegated
+AddCallback<I> callback
