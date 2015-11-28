@@ -1,3 +1,0 @@
-{
-  return getRaw(new ResourceLocation(name));
-}

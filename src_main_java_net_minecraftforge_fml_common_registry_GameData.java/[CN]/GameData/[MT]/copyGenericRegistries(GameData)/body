@@ -1,8 +1,0 @@
-{
-  for (  Map.Entry<String,FMLControlledNamespacedRegistry<?>> e : data.genericRegistries.entrySet()) {
-    FMLControlledNamespacedRegistry<?> orig=e.getValue();
-    FMLControlledNamespacedRegistry<?> copy=orig.makeShallowCopy();
-    copy.setFrom(orig);
-    genericRegistries.put(e.getKey(),copy);
-  }
-}

@@ -1,15 +1,15 @@
 {
-  if (this.superType != registry.superType)   throw new IllegalArgumentException("incompatible registry");
-  this.optionalDefaultKey=registry.optionalDefaultKey;
-  this.maxId=registry.maxId;
-  this.minId=registry.minId;
+  if (this.superType != otherRegistry.superType)   throw new IllegalArgumentException("incompatible registry");
+  this.optionalDefaultKey=otherRegistry.optionalDefaultKey;
+  this.maxId=otherRegistry.maxId;
+  this.minId=otherRegistry.minId;
   this.aliases.clear();
-  this.aliases.putAll(registry.aliases);
+  this.aliases.putAll(otherRegistry.aliases);
   this.activeSubstitutions.clear();
-  underlyingIntegerMap=new ObjectIntIdentityMap();
+  underlyingIntegerMap=new ObjectIntIdentityMap<I>();
   registryObjects.clear();
-  for (  I thing : registry.typeSafeIterable()) {
-    addObjectRaw(registry.getId(thing),registry.getNameForObject(thing),thing);
+  for (  I thing : otherRegistry.typeSafeIterable()) {
+    addObjectRaw(otherRegistry.getId(thing),otherRegistry.getNameForObject(thing),thing);
   }
-  this.activeSubstitutions.putAll(registry.activeSubstitutions);
+  this.activeSubstitutions.putAll(otherRegistry.activeSubstitutions);
 }

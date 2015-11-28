@@ -1,0 +1,5 @@
+boolean injectFrozenData
+Map<ResourceLocation,Map<ResourceLocation,Integer[]>> remaps
+LinkedHashMap<ResourceLocation,Map<ResourceLocation,Integer>> missing
+Map.Entry<ResourceLocation,GameDataSnapshot.Entry> snapEntry
+Class<T> regType

@@ -1,3 +1,0 @@
-{
-  return getMain().createGenericRegistry(registryName,type,minId,maxId);
-}

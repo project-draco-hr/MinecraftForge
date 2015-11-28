@@ -1,0 +1,18 @@
+{
+  for (  Map.Entry<ResourceLocation,Integer> entry : ids.entrySet()) {
+    ResourceLocation itemName=entry.getKey();
+    int newId=entry.getValue();
+    int currId=currentRegistry.getId(itemName);
+    if (currId == -1) {
+      FMLLog.info("Found a missing id from the world %s",itemName);
+      missingIds.put(entry.getKey(),newId);
+      continue;
+    }
+ else     if (currId != newId) {
+      FMLLog.fine("Fixed %s id mismatch %s: %d (init) -> %d (map).",registryName,itemName,currId,newId);
+      remappedIds.put(itemName,new Integer[]{currId,newId});
+    }
+    I obj=currentRegistry.getRaw(itemName);
+    add(newId,itemName,obj);
+  }
+}

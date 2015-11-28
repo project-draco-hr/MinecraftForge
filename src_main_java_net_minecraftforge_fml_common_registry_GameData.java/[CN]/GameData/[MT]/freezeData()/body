@@ -1,6 +1,0 @@
-{
-  FMLLog.fine("Freezing block and item id maps");
-  getMain().testConsistency();
-  frozen=new GameData(getMain());
-  frozen.testConsistency();
-}

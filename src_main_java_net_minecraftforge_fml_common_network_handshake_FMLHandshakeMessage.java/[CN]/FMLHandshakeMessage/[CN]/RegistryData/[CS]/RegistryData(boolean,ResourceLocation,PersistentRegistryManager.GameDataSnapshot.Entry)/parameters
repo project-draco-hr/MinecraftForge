@@ -1,0 +1,3 @@
+boolean hasMore
+ResourceLocation name
+PersistentRegistryManager.GameDataSnapshot.Entry entry

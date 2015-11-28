@@ -1,0 +1,15 @@
+{
+  if (name == null)   throw new NullPointerException("Can't use a null-name for the registry.");
+  if (thing == null)   throw new NullPointerException("Can't add null-object to the registry.");
+  ResourceLocation existingName=getNameForObject(thing);
+  if (existingName == null) {
+    FMLLog.bigWarning("Ignoring putObject(%s, %s), not resolvable",name,thing);
+  }
+ else   if (existingName.equals(name)) {
+    FMLLog.bigWarning("Ignoring putObject(%s, %s), already added",name,thing);
+  }
+ else {
+    FMLLog.bigWarning("Ignoring putObject(%s, %s), adding alias to %s instead",name,thing,existingName);
+    addAlias(name,existingName);
+  }
+}

@@ -1,0 +1,5 @@
+Map<ResourceLocation,Integer> missingBlocks
+Map<ResourceLocation,Integer> missingItems
+boolean isLocalWorld
+Map<ResourceLocation,Integer[]> remapBlocks
+Map<ResourceLocation,Integer[]> remapItems

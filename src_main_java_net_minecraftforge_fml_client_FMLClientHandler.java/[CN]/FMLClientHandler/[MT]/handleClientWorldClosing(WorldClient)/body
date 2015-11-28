@@ -1,6 +1,6 @@
 {
   NetworkManager client=getClientToServerNetworkManager();
   if (client != null && !client.isLocalChannel()) {
-    GameData.revertToFrozen();
+    PersistentRegistryManager.revertToFrozen();
   }
 }

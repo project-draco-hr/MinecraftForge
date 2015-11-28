@@ -1,6 +1,3 @@
 {
-  if (persistentSubstitutions == null) {
-    persistentSubstitutions=GameData.getMain().getPersistentSubstitutionMap(superType);
-  }
   return persistentSubstitutions;
 }

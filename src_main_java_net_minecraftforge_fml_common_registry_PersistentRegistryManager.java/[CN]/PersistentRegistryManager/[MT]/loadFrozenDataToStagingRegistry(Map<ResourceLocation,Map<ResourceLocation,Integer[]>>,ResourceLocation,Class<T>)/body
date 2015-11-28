@@ -1,0 +1,5 @@
+{
+  FMLControlledNamespacedRegistry<T> newRegistry=PersistentRegistry.STAGING.getRegistry(registryName,regType);
+  FMLControlledNamespacedRegistry<T> frozenRegistry=PersistentRegistry.FROZEN.getRegistry(registryName,regType);
+  newRegistry.loadIds(frozenRegistry.getEntriesNotIn(newRegistry),Maps.<ResourceLocation,Integer>newLinkedHashMap(),remaps.get(registryName),frozenRegistry,registryName);
+}

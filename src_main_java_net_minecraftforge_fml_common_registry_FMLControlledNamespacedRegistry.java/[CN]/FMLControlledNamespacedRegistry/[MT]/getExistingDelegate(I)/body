@@ -1,0 +1,9 @@
+{
+  try {
+    return (Delegate<I>)delegateAccessor.get(thing);
+  }
+ catch (  IllegalAccessException e) {
+    FMLLog.log(Level.ERROR,e,"Illegal attempt to access delegate");
+    throw Throwables.propagate(e);
+  }
+}

@@ -1,0 +1,26 @@
+{
+  FMLLog.info("Injecting existing block and item data into this {} instance",FMLCommonHandler.instance().getEffectiveSide().isServer() ? "server" : "client");
+  final Map<ResourceLocation,Map<ResourceLocation,Integer[]>> remaps=Maps.newHashMap();
+  final LinkedHashMap<ResourceLocation,Map<ResourceLocation,Integer>> missing=Maps.newLinkedHashMap();
+  forAllRegistries(PersistentRegistry.ACTIVE,ValidateRegistryFunction.OPERATION);
+  forAllRegistries(PersistentRegistry.ACTIVE,DumpRegistryFunction.OPERATION);
+  forAllRegistries(PersistentRegistry.ACTIVE,ResetDelegatesFunction.OPERATION);
+  for (  Map.Entry<ResourceLocation,GameDataSnapshot.Entry> snapshotEntry : snapshot.entries.entrySet()) {
+    loadPersistentDataToStagingRegistry(injectFrozenData,remaps,missing,snapshotEntry,PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(snapshotEntry.getKey()));
+  }
+  List<String> missedMappings=Loader.instance().fireMissingMappingEvent(missing.get(BLOCKS),missing.get(ITEMS),isLocalWorld,remaps.get(BLOCKS),remaps.get(ITEMS));
+  if (!missedMappings.isEmpty())   return missedMappings;
+  if (injectFrozenData) {
+    for (    Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> r : PersistentRegistry.ACTIVE.registries.entrySet()) {
+      loadFrozenDataToStagingRegistry(remaps,r.getKey(),PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(r.getKey()));
+    }
+  }
+  forAllRegistries(PersistentRegistry.STAGING,ValidateRegistryFunction.OPERATION);
+  for (  Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> r : PersistentRegistry.ACTIVE.registries.entrySet()) {
+    loadRegistry(r.getKey(),PersistentRegistry.STAGING,PersistentRegistry.ACTIVE,PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(r.getKey()));
+  }
+  forAllRegistries(PersistentRegistry.ACTIVE,DumpRegistryFunction.OPERATION);
+  Loader.instance().fireRemapEvent(remaps.get(BLOCKS),remaps.get(ITEMS));
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  return ImmutableList.of();
+}

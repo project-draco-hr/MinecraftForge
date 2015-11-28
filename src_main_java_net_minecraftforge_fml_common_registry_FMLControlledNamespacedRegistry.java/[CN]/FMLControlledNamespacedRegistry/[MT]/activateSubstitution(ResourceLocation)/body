@@ -1,0 +1,8 @@
+{
+  if (getPersistentSubstitutions().containsKey(nameToReplace)) {
+    I original=getRaw(nameToReplace);
+    I sub=getPersistentSubstitutions().get(nameToReplace);
+    getExistingDelegate(original).changeReference(sub);
+    activeSubstitutions.put(nameToReplace,sub);
+  }
+}

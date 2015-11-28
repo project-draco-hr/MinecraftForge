@@ -1,4 +1,11 @@
 {
-  type.getRegistry().addSubstitutionAlias(Loader.instance().activeModContainer().getModId(),nameToSubstitute,toReplace);
-  type.getRegistry().activateSubstitution(nameToSubstitute);
+  ResourceLocation nameToSubstitute=new ResourceLocation(Loader.instance().activeModContainer().getModId(),name);
+  if (type == Type.BLOCK) {
+    iBlockRegistry.addSubstitutionAlias(Loader.instance().activeModContainer().getModId(),nameToSubstitute,(Block)toReplace);
+    iBlockRegistry.activateSubstitution(nameToSubstitute);
+  }
+ else   if (type == Type.ITEM) {
+    iItemRegistry.addSubstitutionAlias(Loader.instance().activeModContainer().getModId(),nameToSubstitute,(Item)toReplace);
+    iItemRegistry.activateSubstitution(nameToSubstitute);
+  }
 }

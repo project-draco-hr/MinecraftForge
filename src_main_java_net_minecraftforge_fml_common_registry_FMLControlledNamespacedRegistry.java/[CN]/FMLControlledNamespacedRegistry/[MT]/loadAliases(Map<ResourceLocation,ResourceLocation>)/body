@@ -1,0 +1,5 @@
+{
+  for (  Map.Entry<ResourceLocation,ResourceLocation> alias : aliases.entrySet()) {
+    addAlias(alias.getKey(),alias.getValue());
+  }
+}

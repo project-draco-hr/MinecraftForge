@@ -1,4 +1,0 @@
-{
-  FMLControlledNamespacedRegistry<?> fmlControlledNamespacedRegistry=genericRegistries.get(registryName);
-  return (FMLControlledNamespacedRegistry<T>)fmlControlledNamespacedRegistry;
-}

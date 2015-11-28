@@ -1,0 +1,13 @@
+{
+  if (!DEBUG)   return;
+  List<Integer> ids=new ArrayList<Integer>();
+  for (  I thing : this.typeSafeIterable()) {
+    ids.add(getId(thing));
+  }
+  Collections.sort(ids);
+  FMLLog.finer("Registry Name : {}",registryName);
+  for (  int id : ids) {
+    I thing=getRaw(id);
+    FMLLog.finer("Registry: %d %s %s",id,getNameForObject(thing),thing);
+  }
+}

@@ -11,30 +11,30 @@
   NBTTagCompound registries=new NBTTagCompound();
   fmlData.setTag("Registries",registries);
   FMLLog.fine("Gathering id map for writing to world save %s",info.getWorldName());
-  GameData.GameDataSnapshot dataSnapshot=GameData.takeSnapshot();
-  for (  Map.Entry<String,GameData.GameDataSnapshot.Entry> e : dataSnapshot.entries.entrySet()) {
+  PersistentRegistryManager.GameDataSnapshot dataSnapshot=PersistentRegistryManager.takeSnapshot();
+  for (  Map.Entry<ResourceLocation,PersistentRegistryManager.GameDataSnapshot.Entry> e : dataSnapshot.entries.entrySet()) {
     NBTTagCompound data=new NBTTagCompound();
-    registries.setTag(e.getKey(),data);
+    registries.setTag(e.getKey().toString(),data);
     NBTTagList ids=new NBTTagList();
-    for (    Entry<String,Integer> item : e.getValue().ids.entrySet()) {
+    for (    Entry<ResourceLocation,Integer> item : e.getValue().ids.entrySet()) {
       NBTTagCompound tag=new NBTTagCompound();
-      tag.setString("K",item.getKey());
+      tag.setString("K",item.getKey().toString());
       tag.setInteger("V",item.getValue());
       ids.appendTag(tag);
     }
     data.setTag("ids",ids);
     NBTTagList aliases=new NBTTagList();
-    for (    Entry<String,String> entry : e.getValue().aliases.entrySet()) {
+    for (    Entry<ResourceLocation,ResourceLocation> entry : e.getValue().aliases.entrySet()) {
       NBTTagCompound tag=new NBTTagCompound();
-      tag.setString("K",entry.getKey());
-      tag.setString("V",entry.getValue());
+      tag.setString("K",entry.getKey().toString());
+      tag.setString("V",entry.getValue().toString());
       aliases.appendTag(tag);
     }
     data.setTag("aliases",aliases);
     NBTTagList subs=new NBTTagList();
-    for (    String entry : e.getValue().substitutions) {
+    for (    ResourceLocation entry : e.getValue().substitutions) {
       NBTTagCompound tag=new NBTTagCompound();
-      tag.setString("K",entry);
+      tag.setString("K",entry.toString());
       subs.appendTag(tag);
     }
     data.setTag("substitutions",subs);

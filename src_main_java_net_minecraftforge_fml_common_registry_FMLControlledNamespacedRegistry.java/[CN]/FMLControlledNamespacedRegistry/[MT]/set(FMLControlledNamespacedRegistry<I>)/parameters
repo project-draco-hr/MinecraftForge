@@ -1,1 +1,1 @@
-FMLControlledNamespacedRegistry<I> registry
+FMLControlledNamespacedRegistry<I> otherRegistry

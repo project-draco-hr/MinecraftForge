@@ -1,6 +1,0 @@
-{
-  this.ids=ids;
-  this.substitutions=substitions;
-  this.aliases=aliases;
-  this.blocked=blocked;
-}

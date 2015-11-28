@@ -1,3 +1,0 @@
-{
-  set((FMLControlledNamespacedRegistry<I>)registry);
-}

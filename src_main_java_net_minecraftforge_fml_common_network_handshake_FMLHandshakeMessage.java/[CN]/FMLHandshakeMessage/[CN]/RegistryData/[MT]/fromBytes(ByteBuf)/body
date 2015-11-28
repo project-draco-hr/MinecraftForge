@@ -1,14 +1,14 @@
 {
   this.hasMore=buffer.readBoolean();
-  this.name=ByteBufUtils.readUTF8String(buffer);
+  this.name=new ResourceLocation(ByteBufUtils.readUTF8String(buffer));
   int length=ByteBufUtils.readVarInt(buffer,3);
   ids=Maps.newHashMap();
   for (int i=0; i < length; i++) {
-    ids.put(ByteBufUtils.readUTF8String(buffer),ByteBufUtils.readVarInt(buffer,3));
+    ids.put(new ResourceLocation(ByteBufUtils.readUTF8String(buffer)),ByteBufUtils.readVarInt(buffer,3));
   }
   length=ByteBufUtils.readVarInt(buffer,3);
   substitutions=Sets.newHashSet();
   for (int i=0; i < length; i++) {
-    substitutions.add(ByteBufUtils.readUTF8String(buffer));
+    substitutions.add(new ResourceLocation(ByteBufUtils.readUTF8String(buffer)));
   }
 }

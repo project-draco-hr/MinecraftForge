@@ -1,0 +1,4 @@
+{
+  I object=getRaw(name);
+  return object == null ? this.optionalDefaultObject : object;
+}

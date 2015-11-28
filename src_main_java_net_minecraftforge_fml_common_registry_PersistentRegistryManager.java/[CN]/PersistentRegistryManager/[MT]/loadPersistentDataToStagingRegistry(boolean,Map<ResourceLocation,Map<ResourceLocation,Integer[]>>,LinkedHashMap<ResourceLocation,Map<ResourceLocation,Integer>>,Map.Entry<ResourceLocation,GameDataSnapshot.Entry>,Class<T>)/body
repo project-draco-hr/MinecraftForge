@@ -1,0 +1,20 @@
+{
+  ResourceLocation registryName=snapEntry.getKey();
+  FMLControlledNamespacedRegistry<T> currentRegistry=PersistentRegistry.ACTIVE.getRegistry(registryName,regType);
+  if (currentRegistry == null) {
+    FMLLog.severe("An unknown persistent registry type {} has been encountered. This Forge instance cannot understand it.",registryName);
+    StartupQuery.abort();
+  }
+  FMLControlledNamespacedRegistry<T> newRegistry=PersistentRegistry.STAGING.getOrShallowCopyRegistry(registryName,regType,currentRegistry);
+  GameDataSnapshot.Entry snapshotEntry=snapEntry.getValue();
+  Set<ResourceLocation> substitutions=snapshotEntry.substitutions;
+  if (injectFrozenData) {
+    substitutions=Sets.union(snapshotEntry.substitutions,currentRegistry.getActiveSubstitutions());
+  }
+  newRegistry.loadAliases(snapshotEntry.aliases);
+  newRegistry.loadSubstitutions(substitutions);
+  newRegistry.loadBlocked(snapshotEntry.blocked);
+  missing.put(registryName,Maps.<ResourceLocation,Integer>newLinkedHashMap());
+  remaps.put(registryName,Maps.<ResourceLocation,Integer[]>newHashMap());
+  newRegistry.loadIds(snapshotEntry.ids,missing.get(registryName),remaps.get(registryName),currentRegistry,registryName);
+}

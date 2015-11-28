@@ -1,0 +1,3 @@
+ResourceLocation key
+Class<T> regType
+FMLControlledNamespacedRegistry<T> other

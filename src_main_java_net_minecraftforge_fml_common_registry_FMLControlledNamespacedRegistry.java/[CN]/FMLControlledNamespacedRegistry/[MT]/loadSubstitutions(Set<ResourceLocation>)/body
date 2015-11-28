@@ -1,0 +1,5 @@
+{
+  for (  ResourceLocation rl : substitutions) {
+    activateSubstitution(rl);
+  }
+}

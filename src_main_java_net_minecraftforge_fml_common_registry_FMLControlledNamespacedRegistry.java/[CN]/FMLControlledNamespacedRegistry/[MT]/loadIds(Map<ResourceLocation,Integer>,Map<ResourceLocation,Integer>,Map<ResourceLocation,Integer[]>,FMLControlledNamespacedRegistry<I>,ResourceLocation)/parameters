@@ -1,0 +1,5 @@
+Map<ResourceLocation,Integer> ids
+Map<ResourceLocation,Integer> missingIds
+Map<ResourceLocation,Integer[]> remappedIds
+FMLControlledNamespacedRegistry<I> currentRegistry
+ResourceLocation registryName

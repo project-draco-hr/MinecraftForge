@@ -1,3 +1,0 @@
-{
-  return add(id,name,superType.cast(thing),internalAvailabilityMap);
-}

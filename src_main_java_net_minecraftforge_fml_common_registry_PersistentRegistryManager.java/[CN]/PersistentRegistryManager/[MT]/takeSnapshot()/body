@@ -1,0 +1,11 @@
+{
+  final GameDataSnapshot snap=new GameDataSnapshot();
+  forAllRegistries(PersistentRegistry.ACTIVE,new Function<Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>>,Void>(){
+    @Override public Void apply(    Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> input){
+      snap.entries.put(input.getKey(),new GameDataSnapshot.Entry(input.getValue()));
+      return null;
+    }
+  }
+);
+  return snap;
+}

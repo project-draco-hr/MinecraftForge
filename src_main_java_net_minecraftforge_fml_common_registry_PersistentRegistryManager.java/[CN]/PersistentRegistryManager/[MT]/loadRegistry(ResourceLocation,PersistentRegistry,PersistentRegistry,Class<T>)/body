@@ -1,0 +1,5 @@
+{
+  FMLControlledNamespacedRegistry<T> fromRegistry=from.getRegistry(registryName,regType);
+  FMLControlledNamespacedRegistry<T> toRegistry=to.getOrShallowCopyRegistry(registryName,regType,fromRegistry);
+  toRegistry.set(fromRegistry);
+}
