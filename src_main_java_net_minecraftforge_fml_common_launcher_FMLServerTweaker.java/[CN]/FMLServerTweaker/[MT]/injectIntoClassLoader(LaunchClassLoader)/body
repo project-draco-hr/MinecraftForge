@@ -1,5 +1,8 @@
 {
   classLoader.addClassLoaderExclusion("com.mojang.util.QueueLogAppender");
+  classLoader.addClassLoaderExclusion("jline.");
+  classLoader.addClassLoaderExclusion("org.fusesource.");
+  classLoader.addClassLoaderExclusion("net.minecraftforge.server.console.TerminalConsoleAppender");
   FMLLaunchHandler.configureForServerLaunch(classLoader,this);
   FMLLaunchHandler.appendCoreMods();
 }

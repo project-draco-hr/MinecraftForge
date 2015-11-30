@@ -1,0 +1,35 @@
+{
+  if (!initialized && reader == null) {
+    initialized=true;
+    if (ENABLE_JLINE) {
+      final boolean hasConsole=System.console() != null;
+      if (hasConsole) {
+        try {
+          AnsiConsole.systemInstall();
+          reader=new ConsoleReader();
+          reader.setExpandEvents(false);
+        }
+ catch (        Exception e) {
+          LOGGER.warn("Failed to initialize terminal. Falling back to default.",e);
+        }
+      }
+      if (reader == null) {
+        if (hasConsole || System.getProperty("java.class.path").contains("idea_rt.jar")) {
+          TerminalFactory.configure(OFF);
+          TerminalFactory.reset();
+          try {
+            reader=new ConsoleReader();
+            reader.setExpandEvents(false);
+          }
+ catch (          Exception e) {
+            LOGGER.warn("Failed to initialize fallback terminal. Falling back to standard output console.",e);
+          }
+        }
+ else {
+          LOGGER.warn("Disabling terminal, you're running in an unsupported environment.");
+        }
+      }
+    }
+  }
+  super.start();
+}
