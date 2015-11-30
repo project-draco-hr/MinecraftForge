@@ -1,6 +1,7 @@
 {
   if (!PersistentRegistry.FROZEN.isPopulated()) {
     FMLLog.warning("Can't revert to frozen GameData state without freezing first.");
+    return;
   }
  else {
     FMLLog.fine("Reverting to frozen data state.");

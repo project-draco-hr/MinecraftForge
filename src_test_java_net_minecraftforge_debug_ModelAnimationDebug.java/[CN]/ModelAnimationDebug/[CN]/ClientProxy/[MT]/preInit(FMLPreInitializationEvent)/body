@@ -1,4 +1,5 @@
 {
   super.preInit(event);
+  B3DLoader.instance.addDomain(MODID);
   ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(GameRegistry.findBlock(MODID,blockName)),0,new ModelResourceLocation(MODID.toLowerCase() + ":" + blockName,"inventory"));
 }

@@ -1,5 +1,4 @@
 {
-  B3DLoader.instance.addDomain(MODID);
   GameRegistry.registerBlock(new Block(Material.wood){
 {
       setCreativeTab(CreativeTabs.tabBlock);
