@@ -10,4 +10,5 @@
   }
   Loader.instance().fireRemapEvent(ImmutableMap.<ResourceLocation,Integer[]>of(),ImmutableMap.<ResourceLocation,Integer[]>of());
   ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  FMLLog.fine("Frozen state restored.");
 }

@@ -25,5 +25,6 @@
   forAllRegistries(PersistentRegistry.ACTIVE,DumpRegistryFunction.OPERATION);
   Loader.instance().fireRemapEvent(remaps.get(BLOCKS),remaps.get(ITEMS));
   ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  PersistentRegistry.STAGING.clean();
   return ImmutableList.of();
 }
