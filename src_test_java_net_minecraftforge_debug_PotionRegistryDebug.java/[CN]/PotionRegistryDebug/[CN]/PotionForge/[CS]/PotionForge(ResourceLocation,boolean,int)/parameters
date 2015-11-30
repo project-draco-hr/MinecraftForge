@@ -1,0 +1,3 @@
+ResourceLocation location
+boolean badEffect
+int potionColor
