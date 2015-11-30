@@ -1,3 +1,0 @@
-{
-  return iPotionRegistry.add(id,name,potion);
-}

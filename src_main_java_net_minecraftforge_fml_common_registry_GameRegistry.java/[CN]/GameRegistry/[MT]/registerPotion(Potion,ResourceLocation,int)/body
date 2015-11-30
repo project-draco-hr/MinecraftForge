@@ -1,3 +1,0 @@
-{
-  return GameData.getMain().registerPotion(potion,name,potionID);
-}
