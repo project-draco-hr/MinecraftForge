@@ -7,11 +7,12 @@
     while (!server.isServerStopped() && server.isServerRunning()) {
       try {
         line=reader.readLine("> ");
-        if (line != null) {
-          line=line.trim();
-          if (!line.isEmpty()) {
-            server.addPendingCommand(line,server);
-          }
+        if (line == null) {
+          break;
+        }
+        line=line.trim();
+        if (!line.isEmpty()) {
+          server.addPendingCommand(line,server);
         }
       }
  catch (      IOException e) {

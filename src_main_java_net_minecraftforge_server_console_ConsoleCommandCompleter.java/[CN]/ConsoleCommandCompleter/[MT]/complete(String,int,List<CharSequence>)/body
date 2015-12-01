@@ -1,11 +1,7 @@
 {
   int len=buffer.length();
-  buffer=buffer.trim();
-  if (buffer.isEmpty()) {
-    return cursor;
-  }
   boolean prefix;
-  if (buffer.charAt(0) != '/') {
+  if (buffer.isEmpty() || buffer.charAt(0) != '/') {
     buffer='/' + buffer;
     prefix=false;
   }
@@ -21,6 +17,7 @@
 );
   try {
     List<String> completions=tabComplete.get();
+    Collections.sort(completions);
     if (prefix) {
       candidates.addAll(completions);
     }
@@ -32,6 +29,9 @@
     int pos=buffer.lastIndexOf(' ');
     if (pos == -1) {
       return cursor - len;
+    }
+ else     if (prefix) {
+      return cursor - len + pos + 1;
     }
  else {
       return cursor - len + pos;
