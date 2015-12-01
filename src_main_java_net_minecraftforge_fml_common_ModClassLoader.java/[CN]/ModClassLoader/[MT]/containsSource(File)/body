@@ -1,0 +1,11 @@
+{
+  if (parentURLs == null) {
+    parentURLs=Arrays.asList(mainClassLoader.getURLs());
+  }
+  try {
+    return parentURLs.contains(source.toURI().toURL());
+  }
+ catch (  MalformedURLException e) {
+    return false;
+  }
+}
