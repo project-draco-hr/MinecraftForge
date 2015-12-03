@@ -9,7 +9,7 @@
   for (  Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> r : PersistentRegistry.ACTIVE.registries.entrySet()) {
     loadRegistry(r.getKey(),PersistentRegistry.FROZEN,PersistentRegistry.ACTIVE,PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(r.getKey()));
   }
-  Loader.instance().fireRemapEvent(ImmutableMap.<ResourceLocation,Integer[]>of(),ImmutableMap.<ResourceLocation,Integer[]>of());
+  Loader.instance().fireRemapEvent(ImmutableMap.<ResourceLocation,Integer[]>of(),ImmutableMap.<ResourceLocation,Integer[]>of(),true);
   ObjectHolderRegistry.INSTANCE.applyObjectHolders();
   FMLLog.fine("Frozen state restored.");
 }

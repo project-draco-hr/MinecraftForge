@@ -24,7 +24,7 @@
     loadRegistry(r.getKey(),PersistentRegistry.STAGING,PersistentRegistry.ACTIVE,PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(r.getKey()));
   }
   forAllRegistries(PersistentRegistry.ACTIVE,DumpRegistryFunction.OPERATION);
-  Loader.instance().fireRemapEvent(remaps.get(BLOCKS),remaps.get(ITEMS));
+  Loader.instance().fireRemapEvent(remaps.get(BLOCKS),remaps.get(ITEMS),false);
   ObjectHolderRegistry.INSTANCE.applyObjectHolders();
   PersistentRegistry.STAGING.clean();
   return ImmutableList.of();

@@ -1,4 +1,5 @@
 {
+  this.isFrozen=isFrozen;
   List<ModRemapping> remappings=Lists.newArrayList();
   for (  Entry<ResourceLocation,Integer[]> mapping : blocks.entrySet()) {
     remappings.add(new ModRemapping(mapping.getValue()[0],mapping.getValue()[1],mapping.getKey(),RemapTarget.BLOCK));

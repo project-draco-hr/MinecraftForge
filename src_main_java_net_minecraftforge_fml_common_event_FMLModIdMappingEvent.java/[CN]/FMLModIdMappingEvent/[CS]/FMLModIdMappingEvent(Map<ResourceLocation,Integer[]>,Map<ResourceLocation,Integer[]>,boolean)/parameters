@@ -1,2 +1,3 @@
 Map<ResourceLocation,Integer[]> blocks
 Map<ResourceLocation,Integer[]> items
+boolean isFrozen
