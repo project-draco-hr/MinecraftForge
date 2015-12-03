@@ -1,0 +1,22 @@
+{
+  if (!part.isPresent())   return parent.apply(part);
+  if (!(part.get() instanceof NodeJoint)) {
+    return Optional.absent();
+  }
+  Node<?> node=((NodeJoint)part.get()).getNode();
+  TRSRTransformation nodeTransform;
+  if (progress < 1e-5 || frame == nextFrame) {
+    nodeTransform=getNodeMatrix(node,frame);
+  }
+ else   if (progress > 1 - 1e-5) {
+    nodeTransform=getNodeMatrix(node,nextFrame);
+  }
+ else {
+    nodeTransform=getNodeMatrix(node,frame);
+    nodeTransform=nodeTransform.slerp(getNodeMatrix(node,nextFrame),progress);
+  }
+  if (parent != null && node.getParent() == null) {
+    return Optional.of(parent.apply(part).or(TRSRTransformation.identity()).compose(nodeTransform));
+  }
+  return Optional.of(nodeTransform);
+}

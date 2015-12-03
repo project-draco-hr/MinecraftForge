@@ -23,14 +23,8 @@
     IPerspectiveAwareModel perBase=(IPerspectiveAwareModel)base;
     ImmutableMap.Builder<TransformType,Pair<Baked,TRSRTransformation>> builder=ImmutableMap.builder();
     for (    TransformType type : TransformType.values()) {
-      Pair<IBakedModel,Matrix4f> p=perBase.handlePerspective(type);
-      IFlexibleBakedModel newBase;
-      if (p.getLeft() instanceof IFlexibleBakedModel) {
-        newBase=(IFlexibleBakedModel)p.getLeft();
-      }
- else {
-        newBase=new IFlexibleBakedModel.Wrapper(p.getLeft(),base.getFormat());
-      }
+      Pair<? extends IFlexibleBakedModel,Matrix4f> p=perBase.handlePerspective(type);
+      IFlexibleBakedModel newBase=p.getLeft();
       builder.put(type,Pair.of(new Baked(location,false,newBase,parts),new TRSRTransformation(p.getRight())));
     }
     transforms=builder.build();

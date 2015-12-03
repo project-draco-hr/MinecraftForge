@@ -1,0 +1,4 @@
+{
+  this.map=ImmutableMap.<Wrapper,IModelState>copyOf(map);
+  this.def=def;
+}

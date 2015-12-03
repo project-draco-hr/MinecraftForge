@@ -3,17 +3,24 @@
     throw new IllegalArgumentException("can't bake vanilla models to the format that doesn't fit into the default one: " + format);
   }
   ModelBlock model=this.model;
-  if (model == null)   return getMissingModel().bake(state,format,bakedTextureGetter);
+  if (model == null)   return getMissingModel().bake(getMissingModel().getDefaultState(),format,bakedTextureGetter);
+  List<TRSRTransformation> newTransforms=Lists.newArrayList();
+  for (int i=0; i < model.getElements().size(); i++) {
+    newTransforms.add(null);
+  }
   ItemCameraTransforms transforms=model.func_181682_g();
   boolean uvlock=false;
   if (state instanceof UVLock) {
     uvlock=true;
     state=((UVLock)state).getParent();
   }
-  IPerspectiveState perState=state instanceof IPerspectiveState ? (IPerspectiveState)state : new IPerspectiveState.Impl(state,transforms);
+  Map<TransformType,TRSRTransformation> tMap=Maps.newHashMap();
+  tMap.putAll(IPerspectiveAwareModel.MapWrapper.getTransforms(transforms));
+  tMap.putAll(IPerspectiveAwareModel.MapWrapper.getTransforms(state));
+  IModelState perState=new SimpleModelState(ImmutableMap.copyOf(tMap));
   if (hasItemModel(model)) {
     return new ItemLayerModel(model).bake(perState,format,bakedTextureGetter);
   }
   if (isCustomRenderer(model))   return new IFlexibleBakedModel.Wrapper(new BuiltInModel(transforms),format);
-  return bakeNormal(model,perState,state.apply(this),format,bakedTextureGetter,uvlock);
+  return bakeNormal(model,perState,state.apply(Optional.<IModelPart>absent()).or(TRSRTransformation.identity()),newTransforms,format,bakedTextureGetter,uvlock);
 }

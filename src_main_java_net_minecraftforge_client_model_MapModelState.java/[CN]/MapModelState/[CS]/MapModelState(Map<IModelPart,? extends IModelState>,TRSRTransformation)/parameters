@@ -1,2 +1,0 @@
-Map<IModelPart,? extends IModelState> map
-TRSRTransformation def

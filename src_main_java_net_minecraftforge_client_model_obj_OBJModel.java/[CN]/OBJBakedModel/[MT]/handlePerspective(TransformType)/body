@@ -1,6 +1,7 @@
 {
-  if (state instanceof IPerspectiveState) {
-    return Pair.of((IBakedModel)this,TRSRTransformation.blockCornerToCenter(((IPerspectiveState)state).forPerspective(cameraTransformType).apply(model)).getMatrix());
+  TRSRTransformation tr=state.apply(Optional.of(cameraTransformType)).or(TRSRTransformation.identity());
+  if (tr != TRSRTransformation.identity()) {
+    return Pair.of(this,TRSRTransformation.blockCornerToCenter(tr).getMatrix());
   }
-  return Pair.of((IBakedModel)this,null);
+  return Pair.of(this,null);
 }

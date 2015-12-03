@@ -2,12 +2,12 @@
   if (quads == null) {
     quads=Collections.synchronizedSet(new LinkedHashSet<BakedQuad>());
     Set<Face> faces=Collections.synchronizedSet(new LinkedHashSet<Face>());
-    TRSRTransformation transform=TRSRTransformation.identity();
+    Optional<TRSRTransformation> transform=Optional.absent();
     for (    Group g : this.model.getMatLib().getGroups().values()) {
       if (this.state instanceof OBJState) {
         OBJState state=(OBJState)this.state;
         if (state.parent != null) {
-          transform=state.parent.apply(model);
+          transform=state.parent.apply(Optional.<IModelPart>absent());
         }
         if (state.getGroupNamesFromMap().contains(Group.ALL)) {
           state.visibilityMap.clear();
@@ -34,7 +34,7 @@
         }
       }
  else {
-        transform=state.apply(model);
+        transform=state.apply(Optional.<IModelPart>absent());
         faces.addAll(g.applyTransform(transform));
       }
     }

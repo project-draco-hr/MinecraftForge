@@ -1,15 +1,15 @@
 {
   ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
-  final TRSRTransformation transform=state.apply(this);
+  Optional<TRSRTransformation> transform=state.apply(Optional.<IModelPart>absent());
   for (int i=0; i < textures.size(); i++) {
     TextureAtlasSprite sprite=bakedTextureGetter.apply(textures.get(i));
     builder.addAll(getQuadsForSprite(i,sprite,format,transform));
   }
   TextureAtlasSprite particle=bakedTextureGetter.apply(textures.isEmpty() ? new ResourceLocation("missingno") : textures.get(0));
-  if (state instanceof IPerspectiveState) {
-    IPerspectiveState ps=(IPerspectiveState)state;
-    ImmutableMap<TransformType,TRSRTransformation> map=IPerspectiveAwareModel.MapWrapper.getTransforms(ps,this);
-    return new BakedModel(builder.build(),particle,format,Maps.immutableEnumMap(map));
+  ImmutableMap<TransformType,TRSRTransformation> map=IPerspectiveAwareModel.MapWrapper.getTransforms(state);
+  IFlexibleBakedModel ret=new BakedModel(builder.build(),particle,format);
+  if (map.isEmpty()) {
+    return ret;
   }
-  return new BakedModel(builder.build(),particle,format);
+  return new IPerspectiveAwareModel.MapWrapper(ret,map);
 }

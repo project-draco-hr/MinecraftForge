@@ -1,6 +1,6 @@
 {
   if (model instanceof IPerspectiveAwareModel) {
-    Pair<IBakedModel,Matrix4f> pair=((IPerspectiveAwareModel)model).handlePerspective(cameraTransformType);
+    Pair<? extends IFlexibleBakedModel,Matrix4f> pair=((IPerspectiveAwareModel)model).handlePerspective(cameraTransformType);
     if (pair.getRight() != null)     multiplyCurrentGlMatrix(pair.getRight());
     return pair.getLeft();
   }

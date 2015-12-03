@@ -2,10 +2,16 @@
   for (int e=0; e < format.getElementCount(); e++) {
 switch (format.getElement(e).getUsage()) {
 case POSITION:
-      builder.put(e,x - side.getDirectionVec().getX() * eps,y,z - side.getDirectionVec().getZ() * eps,1f);
-    break;
+      float[] data=new float[]{x - side.getDirectionVec().getX() * eps,y,z - side.getDirectionVec().getZ() * eps,1};
+    if (transformation.isPresent()) {
+      Vector4f vec=new Vector4f(data);
+      transformation.get().getMatrix().transform(vec);
+      vec.get(data);
+    }
+  builder.put(e,data);
+break;
 case COLOR:
-  float d=LightUtil.diffuseLight(side);
+float d=LightUtil.diffuseLight(side);
 builder.put(e,d * ((color >> 16) & 0xFF) / 255f,d * ((color >> 8) & 0xFF) / 255f,d * (color & 0xFF) / 255f,((color >> 24) & 0xFF) / 255f);
 break;
 case UV:

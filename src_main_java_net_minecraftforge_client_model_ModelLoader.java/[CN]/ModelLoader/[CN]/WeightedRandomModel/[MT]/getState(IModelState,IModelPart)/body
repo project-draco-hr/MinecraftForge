@@ -1,6 +1,0 @@
-{
-  if (state instanceof MapModelState) {
-    return ((MapModelState)state).getState(part);
-  }
-  return state;
-}

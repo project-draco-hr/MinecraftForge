@@ -1,0 +1,11 @@
+ImmutableList.Builder<BakedQuad> builder
+BitSet faces
+VertexFormat format
+Optional<TRSRTransformation> transform
+EnumFacing side
+int tint
+TextureAtlasSprite sprite
+int uMax
+int vMax
+int u
+int v

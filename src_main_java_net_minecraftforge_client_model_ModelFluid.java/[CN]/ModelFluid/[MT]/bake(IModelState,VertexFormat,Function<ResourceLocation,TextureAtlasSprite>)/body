@@ -1,3 +1,8 @@
 {
-  return new BakedFluid(state.apply(this),format,fluid.getColor(),bakedTextureGetter.apply(fluid.getStill()),bakedTextureGetter.apply(fluid.getFlowing()),fluid.isGaseous());
+  ImmutableMap<TransformType,TRSRTransformation> map=IPerspectiveAwareModel.MapWrapper.getTransforms(state);
+  IFlexibleBakedModel ret=new BakedFluid(state.apply(Optional.<IModelPart>absent()),format,fluid.getColor(),bakedTextureGetter.apply(fluid.getStill()),bakedTextureGetter.apply(fluid.getFlowing()),fluid.isGaseous());
+  if (map.isEmpty()) {
+    return ret;
+  }
+  return new IPerspectiveAwareModel.MapWrapper(ret,map);
 }

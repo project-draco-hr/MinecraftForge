@@ -1,0 +1,4 @@
+{
+  if (node.getParent() == null)   return Optional.absent();
+  return Optional.of(new NodeJoint(node.getParent()));
+}

@@ -1,3 +1,5 @@
 {
-  this(quads,particle,format,ImmutableMap.<TransformType,TRSRTransformation>of());
+  this.quads=quads;
+  this.particle=particle;
+  this.format=format;
 }

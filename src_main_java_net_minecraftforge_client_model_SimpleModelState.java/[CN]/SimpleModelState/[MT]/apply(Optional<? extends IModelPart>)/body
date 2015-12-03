@@ -1,0 +1,4 @@
+{
+  if (!part.isPresent() || !map.containsKey(part.get()))   return def;
+  return Optional.fromNullable(map.get(part.get()));
+}
