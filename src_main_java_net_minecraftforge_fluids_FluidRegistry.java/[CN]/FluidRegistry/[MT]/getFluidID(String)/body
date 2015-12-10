@@ -1,3 +1,5 @@
 {
-  return fluidIDs.get(getFluid(fluidName));
+  Integer ret=fluidIDs.get(getFluid(fluidName));
+  if (ret == null)   throw new RuntimeException("Attempted to access ID for unregistered fluid, Stop using this method modder!");
+  return ret;
 }
