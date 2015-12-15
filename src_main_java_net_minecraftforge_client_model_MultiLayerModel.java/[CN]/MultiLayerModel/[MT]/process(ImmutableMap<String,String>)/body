@@ -2,7 +2,7 @@
   ImmutableMap.Builder<Optional<EnumWorldBlockLayer>,ModelResourceLocation> builder=ImmutableMap.builder();
   for (  String key : customData.keySet()) {
     if ("base".equals(key)) {
-      builder.put(Optional.absent(),getLocation(customData.get(key)));
+      builder.put(Optional.<EnumWorldBlockLayer>absent(),getLocation(customData.get(key)));
     }
     for (    EnumWorldBlockLayer layer : EnumWorldBlockLayer.values()) {
       if (layer.toString().equals(key)) {
