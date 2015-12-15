@@ -1,0 +1,8 @@
+{
+  JsonElement e=new JsonParser().parse(json);
+  if (e.isJsonPrimitive() && e.getAsJsonPrimitive().isString()) {
+    return new ModelResourceLocation(e.getAsString());
+  }
+  FMLLog.severe("Expect ModelResourceLocation, got: ",json);
+  return new ModelResourceLocation("builtin/missing","missing");
+}

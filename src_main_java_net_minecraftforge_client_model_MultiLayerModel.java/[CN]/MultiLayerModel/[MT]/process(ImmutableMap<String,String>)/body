@@ -1,0 +1,16 @@
+{
+  ImmutableMap.Builder<Optional<EnumWorldBlockLayer>,ModelResourceLocation> builder=ImmutableMap.builder();
+  for (  String key : customData.keySet()) {
+    if ("base".equals(key)) {
+      builder.put(Optional.absent(),getLocation(customData.get(key)));
+    }
+    for (    EnumWorldBlockLayer layer : EnumWorldBlockLayer.values()) {
+      if (layer.toString().equals(key)) {
+        builder.put(Optional.of(layer),getLocation(customData.get(key)));
+      }
+    }
+  }
+  ImmutableMap<Optional<EnumWorldBlockLayer>,ModelResourceLocation> models=builder.build();
+  if (models.isEmpty())   return instance;
+  return new MultiLayerModel(models);
+}

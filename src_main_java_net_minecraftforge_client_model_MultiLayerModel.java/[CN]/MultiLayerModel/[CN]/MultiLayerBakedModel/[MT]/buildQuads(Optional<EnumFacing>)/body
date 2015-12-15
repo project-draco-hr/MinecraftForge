@@ -1,0 +1,12 @@
+{
+  ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
+  for (  IBakedModel model : bakedModels.values()) {
+    if (side.isPresent()) {
+      builder.addAll(model.getFaceQuads(side.get()));
+    }
+ else {
+      builder.addAll(model.getGeneralQuads());
+    }
+  }
+  return builder.build();
+}

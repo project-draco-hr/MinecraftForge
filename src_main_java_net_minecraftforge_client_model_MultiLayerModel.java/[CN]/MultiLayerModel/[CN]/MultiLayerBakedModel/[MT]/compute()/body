@@ -1,0 +1,19 @@
+{
+  if (base == null) {
+    ModelManager manager=Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager();
+    base=getModel(manager,Optional.absent());
+    ImmutableMap.Builder<EnumWorldBlockLayer,IBakedModel> builder=ImmutableMap.builder();
+    for (    EnumWorldBlockLayer layer : EnumWorldBlockLayer.values()) {
+      if (models.containsKey(Optional.of(layer))) {
+        builder.put(layer,getModel(manager,Optional.of(layer)));
+      }
+    }
+    bakedModels=builder.build();
+    ImmutableMap.Builder<Optional<EnumFacing>,ImmutableList<BakedQuad>> quadBuilder=ImmutableMap.builder();
+    quadBuilder.put(Optional.absent(),buildQuads(Optional.absent()));
+    for (    EnumFacing side : EnumFacing.values()) {
+      quadBuilder.put(Optional.of(side),buildQuads(Optional.of(side)));
+    }
+    quads=quadBuilder.build();
+  }
+}

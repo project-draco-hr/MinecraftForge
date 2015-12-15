@@ -1,0 +1,4 @@
+{
+  compute();
+  return bakedModels.get(MinecraftForgeClient.getRenderLayer());
+}

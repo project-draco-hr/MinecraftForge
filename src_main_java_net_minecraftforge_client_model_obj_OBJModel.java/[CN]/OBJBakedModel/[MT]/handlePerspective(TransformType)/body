@@ -1,7 +1,3 @@
 {
-  TRSRTransformation tr=state.apply(Optional.of(cameraTransformType)).or(TRSRTransformation.identity());
-  if (tr != TRSRTransformation.identity()) {
-    return Pair.of(this,TRSRTransformation.blockCornerToCenter(tr).getMatrix());
-  }
-  return Pair.of(this,null);
+  return IPerspectiveAwareModel.MapWrapper.handlePerspective(this,state,cameraTransformType);
 }
