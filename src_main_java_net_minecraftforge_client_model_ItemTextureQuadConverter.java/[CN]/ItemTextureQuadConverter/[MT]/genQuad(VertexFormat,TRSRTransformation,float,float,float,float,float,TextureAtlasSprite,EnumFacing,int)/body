@@ -1,0 +1,14 @@
+{
+  float u1=sprite.getInterpolatedU(x1);
+  float v1=sprite.getInterpolatedV(y1);
+  float u2=sprite.getInterpolatedU(x2);
+  float v2=sprite.getInterpolatedV(y2);
+  x1/=16f;
+  y1/=16f;
+  x2/=16f;
+  y2/=16f;
+  float tmp=y1;
+  y1=1f - y2;
+  y2=1f - tmp;
+  return putQuad(format,transform,facing,color,x1,y1,x2,y2,z,u1,v1,u2,v2);
+}

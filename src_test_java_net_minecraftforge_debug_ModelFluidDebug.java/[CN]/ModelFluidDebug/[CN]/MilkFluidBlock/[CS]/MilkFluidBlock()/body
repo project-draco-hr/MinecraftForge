@@ -1,0 +1,5 @@
+{
+  super(milkFluid,Material.water);
+  setCreativeTab(CreativeTabs.tabBlock);
+  setUnlocalizedName(MODID + ":" + name);
+}

@@ -1,0 +1,7 @@
+{
+  this.baseLocation=baseLocation;
+  this.liquidLocation=liquidLocation;
+  this.coverLocation=coverLocation;
+  this.fluid=fluid;
+  this.flipGas=flipGas;
+}

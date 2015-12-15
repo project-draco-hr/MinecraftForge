@@ -1,0 +1,7 @@
+{
+  ImmutableSet.Builder<ResourceLocation> builder=ImmutableSet.builder();
+  if (baseLocation != null)   builder.add(baseLocation);
+  if (liquidLocation != null)   builder.add(liquidLocation);
+  if (coverLocation != null)   builder.add(coverLocation);
+  return builder.build();
+}

@@ -1,0 +1,6 @@
+{
+  setUnlocalizedName("dynbottle");
+  setMaxStackSize(1);
+  setHasSubtypes(true);
+  setCreativeTab(CreativeTabs.tabMisc);
+}

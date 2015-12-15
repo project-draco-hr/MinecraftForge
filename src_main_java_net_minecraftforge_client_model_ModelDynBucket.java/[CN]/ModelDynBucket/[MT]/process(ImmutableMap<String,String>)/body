@@ -1,0 +1,13 @@
+{
+  String fluidName=customData.get("fluid");
+  Fluid fluid=FluidRegistry.getFluid(fluidName);
+  if (fluid == null)   fluid=this.fluid;
+  boolean flip=flipGas;
+  if (customData.containsKey("flipGas")) {
+    String flipStr=customData.get("flipGas");
+    if (flipStr.equals("true"))     flip=true;
+ else     if (flipStr.equals("false"))     flip=false;
+ else     throw new IllegalArgumentException(String.format("DynBucket custom data \"flipGas\" must have value \'true\' or \'false\' (was \'%s\')",flipStr));
+  }
+  return new ModelDynBucket(baseLocation,liquidLocation,coverLocation,fluid,flip);
+}

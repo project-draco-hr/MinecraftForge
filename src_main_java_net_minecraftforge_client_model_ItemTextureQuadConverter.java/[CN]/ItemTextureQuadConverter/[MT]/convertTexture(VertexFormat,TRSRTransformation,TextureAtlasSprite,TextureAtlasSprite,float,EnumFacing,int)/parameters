@@ -1,0 +1,7 @@
+VertexFormat format
+TRSRTransformation transform
+TextureAtlasSprite template
+TextureAtlasSprite sprite
+float z
+EnumFacing facing
+int color

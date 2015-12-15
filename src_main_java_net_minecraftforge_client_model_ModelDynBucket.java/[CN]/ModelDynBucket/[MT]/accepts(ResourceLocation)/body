@@ -1,0 +1,3 @@
+{
+  return modelLocation.getResourceDomain().equals("forge") && modelLocation.getResourcePath().contains("forgebucket");
+}

@@ -1,0 +1,16 @@
+{
+  ModelLoader.setCustomMeshDefinition(dynBucket,new ItemMeshDefinition(){
+    @Override public ModelResourceLocation getModelLocation(    ItemStack stack){
+      return ModelDynBucket.LOCATION;
+    }
+  }
+);
+  ModelBakery.addVariantName(dynBucket,"forge:dynbucket");
+  ModelLoader.setCustomMeshDefinition(dynBottle,new ItemMeshDefinition(){
+    @Override public ModelResourceLocation getModelLocation(    ItemStack stack){
+      return new ModelResourceLocation(new ResourceLocation("forge","dynbottle"),"inventory");
+    }
+  }
+);
+  ModelBakery.addVariantName(dynBottle,"forge:dynbottle");
+}

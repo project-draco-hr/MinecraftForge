@@ -1,6 +1,7 @@
 {
   List<IConfigElement> list=new ArrayList<IConfigElement>();
   list.add(new DummyCategoryElement("forgeCfg","forge.configgui.ctgy.forgeGeneralConfig",GeneralEntry.class));
+  list.add(new DummyCategoryElement("forgeClientCfg","forge.configgui.ctgy.forgeClientConfig",ClientEntry.class));
   list.add(new DummyCategoryElement("forgeChunkLoadingCfg","forge.configgui.ctgy.forgeChunkLoadingConfig",ChunkLoaderEntry.class));
   list.add(new DummyCategoryElement("forgeVersionCheckCfg","forge.configgui.ctgy.VersionCheckConfig",VersionCheckEntry.class));
   return list;

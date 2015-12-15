@@ -1,0 +1,9 @@
+{
+  ResourceLocation base=baseLocation;
+  ResourceLocation liquid=liquidLocation;
+  ResourceLocation cover=coverLocation;
+  if (textures.containsKey("base"))   base=new ResourceLocation(textures.get("base"));
+  if (textures.containsKey("fluid"))   liquid=new ResourceLocation(textures.get("fluid"));
+  if (textures.containsKey("cover"))   cover=new ResourceLocation(textures.get("cover"));
+  return new ModelDynBucket(base,liquid,cover,fluid,flipGas);
+}

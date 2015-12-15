@@ -1,0 +1,5 @@
+{
+  List<UnpackedBakedQuad> horizontal=convertTextureHorizontal(format,transform,template,sprite,z,facing,color);
+  List<UnpackedBakedQuad> vertical=convertTextureVertical(format,transform,template,sprite,z,facing,color);
+  return horizontal.size() >= vertical.size() ? horizontal : vertical;
+}
