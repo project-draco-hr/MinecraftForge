@@ -1,0 +1,11 @@
+{
+  for (  ResourceLocation dep : model.getDependencies()) {
+    if (dep instanceof ModelResourceLocation) {
+      loadVariants(ImmutableList.of((ModelResourceLocation)dep));
+    }
+ else {
+      getModel(dep);
+    }
+  }
+  textures.addAll(model.getTextures());
+}

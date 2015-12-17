@@ -14,6 +14,12 @@
     }
     if (v instanceof ISmartVariant) {
       model=((ISmartVariant)v).process(model,ModelLoader.this);
+      try {
+        resolveDependencies(model);
+      }
+ catch (      IOException e) {
+        FMLLog.getLogger().error("Exception resolving indirect dependencies for model" + loc,e);
+      }
       textures.addAll(model.getTextures());
     }
     model=new WeightedPartWrapper(model);
