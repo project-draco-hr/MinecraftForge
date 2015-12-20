@@ -1,6 +1,7 @@
 {
   if (base == null) {
     ModelManager manager=Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager();
+    missing=manager.getMissingModel();
     base=getModel(manager,Optional.<EnumWorldBlockLayer>absent());
     ImmutableMap.Builder<EnumWorldBlockLayer,IBakedModel> builder=ImmutableMap.builder();
     for (    EnumWorldBlockLayer layer : EnumWorldBlockLayer.values()) {
