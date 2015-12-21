@@ -1,5 +1,5 @@
 {
-  FMLLog.info("Injecting existing block and item data into this {} instance",FMLCommonHandler.instance().getEffectiveSide().isServer() ? "server" : "client");
+  FMLLog.info("Injecting existing block and item data into this %s instance",FMLCommonHandler.instance().getEffectiveSide().isServer() ? "server" : "client");
   final Map<ResourceLocation,Map<ResourceLocation,Integer[]>> remaps=Maps.newHashMap();
   final LinkedHashMap<ResourceLocation,Map<ResourceLocation,Integer>> missing=Maps.newLinkedHashMap();
   forAllRegistries(PersistentRegistry.ACTIVE,ValidateRegistryFunction.OPERATION);

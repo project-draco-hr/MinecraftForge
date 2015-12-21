@@ -1,5 +1,24 @@
 {
   FMLControlledNamespacedRegistry<T> fromRegistry=from.getRegistry(registryName,regType);
-  FMLControlledNamespacedRegistry<T> toRegistry=to.getOrShallowCopyRegistry(registryName,regType,fromRegistry);
-  toRegistry.set(fromRegistry);
+  if (fromRegistry == null) {
+    FMLControlledNamespacedRegistry<T> toRegistry=to.getRegistry(registryName,regType);
+    if (toRegistry == null) {
+      throw new EnhancedRuntimeException("Could not find registry to load: " + registryName){
+        private static final long serialVersionUID=1L;
+        @Override protected void printStackTrace(        WrappedPrintStream stream){
+          stream.println("Looking For: " + registryName);
+          stream.println("Found From:");
+          for (          ResourceLocation name : from.registries.keySet())           stream.println("  " + name);
+          stream.println("Found To:");
+          for (          ResourceLocation name : to.registries.keySet())           stream.println("  " + name);
+        }
+      }
+;
+    }
+    toRegistry.noitifyCallbacks();
+  }
+ else {
+    FMLControlledNamespacedRegistry<T> toRegistry=to.getOrShallowCopyRegistry(registryName,regType,fromRegistry);
+    toRegistry.set(fromRegistry);
+  }
 }
