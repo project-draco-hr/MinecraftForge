@@ -19,4 +19,35 @@
       }
     }
   }
+  if (ForgeModContainer.replaceVanillaBucketModel) {
+    for (    String s : getVariantNames(Items.bucket)) {
+      ModelResourceLocation memory=new ModelResourceLocation(s,"inventory");
+      try {
+        IModel model=getModel(new ResourceLocation("forge","item/bucket"));
+        stateModels.put(memory,model);
+      }
+ catch (      IOException e) {
+      }
+    }
+    setBucketModel(Items.water_bucket);
+    setBucketModel(Items.lava_bucket);
+    if (FluidRegistry.isFluidRegistered("milk")) {
+      Fluid milk=FluidRegistry.getFluid("milk");
+      FluidStack milkStack=new FluidStack(milk,FluidContainerRegistry.BUCKET_VOLUME);
+      if (FluidContainerRegistry.getContainerCapacity(milkStack,new ItemStack(Items.bucket)) == FluidContainerRegistry.BUCKET_VOLUME) {
+        setBucketModel(Items.milk_bucket);
+      }
+    }
+ else {
+      for (      String s : getVariantNames(Items.milk_bucket)) {
+        ModelResourceLocation memory=new ModelResourceLocation(s,"inventory");
+        try {
+          IModel model=getModel(new ResourceLocation("forge","item/bucket_milk"));
+          stateModels.put(memory,model);
+        }
+ catch (        IOException e) {
+        }
+      }
+    }
+  }
 }

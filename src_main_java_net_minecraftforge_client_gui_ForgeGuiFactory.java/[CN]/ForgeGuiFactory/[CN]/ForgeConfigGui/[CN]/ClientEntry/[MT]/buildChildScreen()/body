@@ -1,0 +1,3 @@
+{
+  return new GuiConfig(this.owningScreen,(new ConfigElement(ForgeModContainer.getConfig().getCategory(Configuration.CATEGORY_CLIENT))).getChildElements(),this.owningScreen.modID,Configuration.CATEGORY_CLIENT,this.configElement.requiresWorldRestart() || this.owningScreen.allRequireWorldRestart,this.configElement.requiresMcRestart() || this.owningScreen.allRequireMcRestart,GuiConfig.getAbridgedConfigPath(ForgeModContainer.getConfig().toString()));
+}

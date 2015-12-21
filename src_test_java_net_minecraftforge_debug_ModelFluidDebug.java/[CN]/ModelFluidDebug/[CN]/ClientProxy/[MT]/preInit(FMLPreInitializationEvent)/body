@@ -2,8 +2,10 @@
   super.preInit(event);
   Item fluid=Item.getItemFromBlock(TestFluidBlock.instance);
   Item gas=Item.getItemFromBlock(TestGasBlock.instance);
+  Item milk=Item.getItemFromBlock(MilkFluidBlock.instance);
   ModelBakery.addVariantName(fluid);
   ModelBakery.addVariantName(gas);
+  ModelBakery.addVariantName(milk);
   ModelLoader.setCustomMeshDefinition(fluid,new ItemMeshDefinition(){
     public ModelResourceLocation getModelLocation(    ItemStack stack){
       return fluidLocation;
@@ -16,6 +18,12 @@
     }
   }
 );
+  ModelLoader.setCustomMeshDefinition(milk,new ItemMeshDefinition(){
+    public ModelResourceLocation getModelLocation(    ItemStack stack){
+      return milkLocation;
+    }
+  }
+);
   ModelLoader.setCustomStateMapper(TestFluidBlock.instance,new StateMapperBase(){
     protected ModelResourceLocation getModelResourceLocation(    IBlockState state){
       return fluidLocation;
@@ -25,6 +33,12 @@
   ModelLoader.setCustomStateMapper(TestGasBlock.instance,new StateMapperBase(){
     protected ModelResourceLocation getModelResourceLocation(    IBlockState state){
       return gasLocation;
+    }
+  }
+);
+  ModelLoader.setCustomStateMapper(MilkFluidBlock.instance,new StateMapperBase(){
+    protected ModelResourceLocation getModelResourceLocation(    IBlockState state){
+      return milkLocation;
     }
   }
 );

@@ -1,0 +1,24 @@
+{
+  ImmutableMap<TransformType,TRSRTransformation> transformMap=IPerspectiveAwareModel.MapWrapper.getTransforms(state);
+  if (flipGas && fluid.isGaseous()) {
+    state=new ModelStateComposition(state,TRSRTransformation.blockCenterToCorner(new TRSRTransformation(null,new Quat4f(0,0,1,0),null,null)));
+  }
+  TRSRTransformation transform=state.apply(Optional.<IModelPart>absent()).or(TRSRTransformation.identity());
+  TextureAtlasSprite fluidSprite=bakedTextureGetter.apply(fluid.getStill());
+  ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
+  if (baseLocation != null) {
+    IFlexibleBakedModel model=(new ItemLayerModel(ImmutableList.of(baseLocation))).bake(state,format,bakedTextureGetter);
+    builder.addAll(model.getGeneralQuads());
+  }
+  if (liquidLocation != null) {
+    TextureAtlasSprite liquid=bakedTextureGetter.apply(liquidLocation);
+    builder.addAll(ItemTextureQuadConverter.convertTexture(format,transform,liquid,fluidSprite,NORTH_Z_FLUID,EnumFacing.NORTH,fluid.getColor()));
+    builder.addAll(ItemTextureQuadConverter.convertTexture(format,transform,liquid,fluidSprite,SOUTH_Z_FLUID,EnumFacing.SOUTH,fluid.getColor()));
+  }
+  if (coverLocation != null) {
+    TextureAtlasSprite base=bakedTextureGetter.apply(coverLocation);
+    builder.add(ItemTextureQuadConverter.genQuad(format,transform,0,0,16,16,NORTH_Z_BASE,base,EnumFacing.NORTH,0xffffffff));
+    builder.add(ItemTextureQuadConverter.genQuad(format,transform,0,0,16,16,SOUTH_Z_BASE,base,EnumFacing.SOUTH,0xffffffff));
+  }
+  return new BakedDynBucket(this,builder.build(),fluidSprite,format,Maps.immutableEnumMap(transformMap),Maps.<String,IFlexibleBakedModel>newHashMap());
+}
