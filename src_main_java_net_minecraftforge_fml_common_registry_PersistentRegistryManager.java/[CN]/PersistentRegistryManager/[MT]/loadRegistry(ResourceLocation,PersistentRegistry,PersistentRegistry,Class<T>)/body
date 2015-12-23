@@ -15,7 +15,7 @@
       }
 ;
     }
-    toRegistry.noitifyCallbacks();
+    toRegistry.notifyCallbacks();
   }
  else {
     FMLControlledNamespacedRegistry<T> toRegistry=to.getOrShallowCopyRegistry(registryName,regType,fromRegistry);

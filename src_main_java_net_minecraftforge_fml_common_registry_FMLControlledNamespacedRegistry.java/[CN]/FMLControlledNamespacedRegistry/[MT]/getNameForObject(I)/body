@@ -1,0 +1,7 @@
+{
+  ResourceLocation rl=super.getNameForObject(p_177774_1_);
+  if (rl == null) {
+    rl=activeSubstitutions.inverse().get(p_177774_1_);
+  }
+  return rl;
+}
