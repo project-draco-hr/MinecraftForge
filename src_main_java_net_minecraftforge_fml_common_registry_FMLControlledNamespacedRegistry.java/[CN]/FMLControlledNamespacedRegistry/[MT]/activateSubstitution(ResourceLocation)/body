@@ -4,5 +4,7 @@
     I sub=getPersistentSubstitutions().get(nameToReplace);
     getExistingDelegate(original).changeReference(sub);
     activeSubstitutions.put(nameToReplace,sub);
+    return original;
   }
+  return null;
 }
