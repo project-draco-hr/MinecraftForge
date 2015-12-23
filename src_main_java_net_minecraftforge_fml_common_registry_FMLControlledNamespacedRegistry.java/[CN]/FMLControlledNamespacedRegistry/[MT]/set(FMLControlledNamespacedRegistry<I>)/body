@@ -7,6 +7,8 @@
   this.minId=otherRegistry.minId;
   this.aliases.clear();
   this.aliases.putAll(otherRegistry.aliases);
+  this.persistentSubstitutions.clear();
+  this.persistentSubstitutions.putAll(otherRegistry.getPersistentSubstitutions());
   this.activeSubstitutions.clear();
   underlyingIntegerMap=new ObjectIntIdentityMap<I>();
   registryObjects.clear();
