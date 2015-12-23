@@ -24,8 +24,5 @@
     if (getId(name) != id) {
       throw new IllegalStateException(String.format("Registry entry for name %s doesn't yield the expected id %d.",name,id));
     }
-    if (blockedIds.contains(id)) {
-      throw new IllegalStateException(String.format("Registry entry for %s %s, id %d, name %s, marked as dangling.",registryName,obj,id,name));
-    }
   }
 }

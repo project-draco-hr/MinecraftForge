@@ -15,6 +15,14 @@
     return missedMappings;
   }
   if (injectFrozenData) {
+    for (    Map.Entry<ResourceLocation,Integer> missingBlock : missing.get(BLOCKS).entrySet()) {
+      ResourceLocation rl=missingBlock.getKey();
+      Integer id=missingBlock.getValue();
+      FMLLog.log(Level.DEBUG,"Replacing id %s named as %s with air block. If the mod becomes available again later, it can reload here",id,rl);
+      PersistentRegistry.STAGING.getRegistry(BLOCKS,Block.class).add(id,rl,new BlockDummyAir());
+    }
+  }
+  if (injectFrozenData) {
     for (    Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> r : PersistentRegistry.ACTIVE.registries.entrySet()) {
       loadFrozenDataToStagingRegistry(remaps,r.getKey(),PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(r.getKey()));
     }
