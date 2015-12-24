@@ -3,7 +3,7 @@
   for (  Item item : GameData.getItemRegistry().typeSafeIterable()) {
     for (    String s : (List<String>)getVariantNames(item)) {
       ResourceLocation file=getItemLocation(s);
-      ModelResourceLocation memory=new ModelResourceLocation(s,"inventory");
+      ModelResourceLocation memory=getInventoryVariant(s);
       IModel model=null;
       try {
         model=getModel(file);
@@ -21,7 +21,7 @@
   }
   if (ForgeModContainer.replaceVanillaBucketModel) {
     for (    String s : getVariantNames(Items.bucket)) {
-      ModelResourceLocation memory=new ModelResourceLocation(s,"inventory");
+      ModelResourceLocation memory=getInventoryVariant(s);
       try {
         IModel model=getModel(new ResourceLocation("forge","item/bucket"));
         stateModels.put(memory,model);
@@ -40,7 +40,7 @@
     }
  else {
       for (      String s : getVariantNames(Items.milk_bucket)) {
-        ModelResourceLocation memory=new ModelResourceLocation(s,"inventory");
+        ModelResourceLocation memory=getInventoryVariant(s);
         try {
           IModel model=getModel(new ResourceLocation("forge","item/bucket_milk"));
           stateModels.put(memory,model);

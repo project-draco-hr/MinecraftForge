@@ -1,6 +1,6 @@
 {
   for (  String s : getVariantNames(item)) {
-    ModelResourceLocation memory=new ModelResourceLocation(s,"inventory");
+    ModelResourceLocation memory=getInventoryVariant(s);
     IModel model=stateModels.get(ModelDynBucket.LOCATION);
     stateModels.put(memory,model);
   }

@@ -1,0 +1,6 @@
+{
+  if (s.contains("#")) {
+    return new ModelResourceLocation(s);
+  }
+  return new ModelResourceLocation(s,"inventory");
+}
