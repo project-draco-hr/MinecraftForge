@@ -20,6 +20,10 @@
     }
   }
   if (ForgeModContainer.replaceVanillaBucketModel) {
+    if (!stateModels.containsKey(ModelDynBucket.LOCATION)) {
+      ModelResourceLocation memory=getInventoryVariant("forge:dynbucket");
+      registerVariant(getModelBlockDefinition(memory),memory);
+    }
     for (    String s : getVariantNames(Items.bucket)) {
       ModelResourceLocation memory=getInventoryVariant(s);
       try {
