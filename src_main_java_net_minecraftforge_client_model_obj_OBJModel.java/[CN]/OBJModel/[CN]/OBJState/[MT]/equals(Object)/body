@@ -3,5 +3,5 @@
   if (obj == null)   return false;
   if (getClass() != obj.getClass())   return false;
   OBJState other=(OBJState)obj;
-  return Objects.equals(visibilityMap,other.visibilityMap) && Objects.equals(parent,other.parent) && operation == other.operation;
+  return Objects.equal(visibilityMap,other.visibilityMap) && Objects.equal(parent,other.parent) && operation == other.operation;
 }
