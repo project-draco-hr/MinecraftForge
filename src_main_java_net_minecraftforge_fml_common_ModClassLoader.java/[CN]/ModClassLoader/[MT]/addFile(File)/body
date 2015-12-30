@@ -1,4 +1,5 @@
 {
   URL url=modFile.toURI().toURL();
   mainClassLoader.addURL(url);
+  this.sources.add(modFile);
 }

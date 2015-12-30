@@ -6,7 +6,7 @@
       mods.clear();
     }
  else {
-      mods=new TIntObjectHashMap();
+      mods=new TIntObjectHashMap<IBakedModel>();
       models.put(e.getKey(),mods);
     }
     final TIntObjectHashMap<IBakedModel> map=mods;

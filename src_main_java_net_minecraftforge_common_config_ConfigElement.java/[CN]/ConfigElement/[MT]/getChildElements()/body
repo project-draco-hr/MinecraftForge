@@ -3,7 +3,7 @@
     List<IConfigElement> elements=new ArrayList<IConfigElement>();
     Iterator<ConfigCategory> ccI=ctgy.getChildren().iterator();
     Iterator<Property> pI=ctgy.getOrderedValues().iterator();
-    int index=0;
+    @SuppressWarnings("unused") int index=0;
     if (categoriesFirst)     while (ccI.hasNext()) {
       ConfigElement temp=new ConfigElement(ccI.next());
       if (temp.showInGui())       elements.add(temp);

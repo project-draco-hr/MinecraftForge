@@ -1,0 +1,9 @@
+{
+  try {
+    return (String)generateName.invoke(defaultChannelPipeline.cast(pipeline),handler);
+  }
+ catch (  Exception e) {
+    FMLLog.log(Level.FATAL,e,"It appears we somehow have a not-standard pipeline. Huh");
+    throw Throwables.propagate(e);
+  }
+}

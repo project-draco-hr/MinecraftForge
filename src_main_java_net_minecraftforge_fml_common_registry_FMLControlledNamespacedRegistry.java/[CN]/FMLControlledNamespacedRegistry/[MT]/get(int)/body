@@ -1,3 +1,0 @@
-{
-  return getObjectById(id);
-}

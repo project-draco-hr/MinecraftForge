@@ -1,0 +1,3 @@
+{
+  modController.propogateStateMessage(new FMLModIdMappingEvent(remapBlocks,remapItems,isFreezing));
+}

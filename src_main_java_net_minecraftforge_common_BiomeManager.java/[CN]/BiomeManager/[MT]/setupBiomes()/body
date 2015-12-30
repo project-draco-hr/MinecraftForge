@@ -1,24 +1,24 @@
 {
-  TrackedList<BiomeEntry>[] currentBiomes=new TrackedList[BiomeType.values().length];
-  List list=new ArrayList();
+  @SuppressWarnings("unchecked") TrackedList<BiomeEntry>[] currentBiomes=new TrackedList[BiomeType.values().length];
+  List<BiomeEntry> list=new ArrayList<BiomeEntry>();
   list.add(new BiomeEntry(BiomeGenBase.forest,10));
   list.add(new BiomeEntry(BiomeGenBase.roofedForest,10));
   list.add(new BiomeEntry(BiomeGenBase.extremeHills,10));
   list.add(new BiomeEntry(BiomeGenBase.plains,10));
   list.add(new BiomeEntry(BiomeGenBase.birchForest,10));
   list.add(new BiomeEntry(BiomeGenBase.swampland,10));
-  currentBiomes[BiomeType.WARM.ordinal()]=new TrackedList(list);
+  currentBiomes[BiomeType.WARM.ordinal()]=new TrackedList<BiomeEntry>(list);
   list.clear();
   list.add(new BiomeEntry(BiomeGenBase.forest,10));
   list.add(new BiomeEntry(BiomeGenBase.extremeHills,10));
   list.add(new BiomeEntry(BiomeGenBase.taiga,10));
   list.add(new BiomeEntry(BiomeGenBase.plains,10));
-  currentBiomes[BiomeType.COOL.ordinal()]=new TrackedList(list);
+  currentBiomes[BiomeType.COOL.ordinal()]=new TrackedList<BiomeEntry>(list);
   list.clear();
   list.add(new BiomeEntry(BiomeGenBase.icePlains,30));
   list.add(new BiomeEntry(BiomeGenBase.coldTaiga,10));
-  currentBiomes[BiomeType.ICY.ordinal()]=new TrackedList(list);
+  currentBiomes[BiomeType.ICY.ordinal()]=new TrackedList<BiomeEntry>(list);
   list.clear();
-  currentBiomes[BiomeType.DESERT.ordinal()]=new TrackedList(list);
+  currentBiomes[BiomeType.DESERT.ordinal()]=new TrackedList<BiomeEntry>(list);
   return currentBiomes;
 }

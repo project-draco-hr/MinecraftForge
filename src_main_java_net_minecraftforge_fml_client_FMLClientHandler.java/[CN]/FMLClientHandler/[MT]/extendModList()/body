@@ -7,14 +7,6 @@
       if ("fml".equals(system)) {
         continue;
       }
-      Map<String,String> mod=modEntry.getValue();
-      String modSystem=mod.get("modsystem");
-      String modId=mod.get("id");
-      String modVersion=mod.get("version");
-      String modName=mod.get("name");
-      String modURL=mod.get("url");
-      String modAuthors=mod.get("authors");
-      String modDescription=mod.get("description");
     }
   }
 }

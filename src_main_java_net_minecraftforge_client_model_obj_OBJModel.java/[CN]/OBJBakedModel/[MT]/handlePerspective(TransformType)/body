@@ -1,6 +1,3 @@
 {
-  if (state instanceof IPerspectiveState) {
-    return Pair.of((IBakedModel)this,TRSRTransformation.blockCornerToCenter(((IPerspectiveState)state).forPerspective(cameraTransformType).apply(model)).getMatrix());
-  }
-  return Pair.of((IBakedModel)this,null);
+  return IPerspectiveAwareModel.MapWrapper.handlePerspective(this,state,cameraTransformType);
 }

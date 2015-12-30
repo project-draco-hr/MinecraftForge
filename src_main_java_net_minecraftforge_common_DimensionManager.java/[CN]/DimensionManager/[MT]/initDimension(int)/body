@@ -12,7 +12,6 @@
   }
   MinecraftServer mcServer=overworld.getMinecraftServer();
   ISaveHandler savehandler=overworld.getSaveHandler();
-  WorldSettings worldSettings=new WorldSettings(overworld.getWorldInfo());
   WorldServer world=(dim == 0 ? overworld : (WorldServer)(new WorldServerMulti(mcServer,savehandler,dim,overworld,mcServer.theProfiler).init()));
   world.addWorldAccess(new WorldManager(mcServer,world));
   MinecraftForge.EVENT_BUS.post(new WorldEvent.Load(world));

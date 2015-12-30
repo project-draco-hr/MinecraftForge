@@ -1,0 +1,7 @@
+{
+  super.acceptOptions(args,gameDir,assetsDir,profile);
+  if (System.getProperty("log4j.configurationFile") == null) {
+    System.setProperty("log4j.configurationFile","log4j2_server.xml");
+    ((LoggerContext)LogManager.getContext(false)).reconfigure();
+  }
+}

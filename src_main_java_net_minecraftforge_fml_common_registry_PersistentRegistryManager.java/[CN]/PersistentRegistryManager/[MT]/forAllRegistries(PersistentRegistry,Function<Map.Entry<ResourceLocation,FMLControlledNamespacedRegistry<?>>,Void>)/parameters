@@ -1,0 +1,2 @@
+PersistentRegistry registrySet
+Function<Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>>,Void> operation

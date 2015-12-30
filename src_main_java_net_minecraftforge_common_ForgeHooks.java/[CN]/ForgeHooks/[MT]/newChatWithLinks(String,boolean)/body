@@ -2,7 +2,6 @@
   IChatComponent ichat=null;
   Matcher matcher=URL_PATTERN.matcher(string);
   int lastEnd=0;
-  String remaining=string;
   while (matcher.find()) {
     int start=matcher.start();
     int end=matcher.end();

@@ -2,5 +2,5 @@ String entityName
 int weightedProb
 int min
 int max
-EnumCreatureType spawnList
+EnumCreatureType typeOfCreature
 BiomeGenBase biomes

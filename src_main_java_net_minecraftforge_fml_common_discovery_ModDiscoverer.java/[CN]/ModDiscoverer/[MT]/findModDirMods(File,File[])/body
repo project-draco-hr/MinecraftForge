@@ -2,7 +2,7 @@
   File[] modList=FileListHelper.sortFileList(modsDir,null);
   modList=FileListHelper.sortFileList(ObjectArrays.concat(modList,supplementalModFileCandidates,File.class));
   for (  File modFile : modList) {
-    if (CoreModManager.getLoadedCoremods().contains(modFile.getName())) {
+    if (CoreModManager.getIgnoredMods().contains(modFile.getName())) {
       FMLLog.finer("Skipping already parsed coremod or tweaker %s",modFile.getName());
     }
  else     if (modFile.isDirectory()) {

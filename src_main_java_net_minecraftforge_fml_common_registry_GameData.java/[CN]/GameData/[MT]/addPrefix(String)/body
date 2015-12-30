@@ -9,8 +9,8 @@
  else {
     prefix="minecraft";
   }
-  if (!oldPrefix.equals(prefix)) {
-    name=prefix + ":" + name;
+  if (!oldPrefix.equals(prefix) && oldPrefix.length() > 0) {
+    prefix=oldPrefix;
   }
-  return name;
+  return new ResourceLocation(prefix,name);
 }

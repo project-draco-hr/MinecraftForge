@@ -1,0 +1,26 @@
+{
+  VertexFormatElement attr=format.getElement(element);
+switch (attrType) {
+case POSITION:
+    glDisableClientState(GL_VERTEX_ARRAY);
+  break;
+case NORMAL:
+glDisableClientState(GL_NORMAL_ARRAY);
+break;
+case COLOR:
+glDisableClientState(GL_COLOR_ARRAY);
+GlStateManager.resetColor();
+break;
+case UV:
+OpenGlHelper.setClientActiveTexture(OpenGlHelper.defaultTexUnit + attr.getIndex());
+glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+OpenGlHelper.setClientActiveTexture(OpenGlHelper.defaultTexUnit);
+break;
+case PADDING:
+break;
+case GENERIC:
+glDisableVertexAttribArray(attr.getIndex());
+default :
+FMLLog.severe("Unimplemented vanilla attribute upload: %s",attrType.getDisplayName());
+}
+}

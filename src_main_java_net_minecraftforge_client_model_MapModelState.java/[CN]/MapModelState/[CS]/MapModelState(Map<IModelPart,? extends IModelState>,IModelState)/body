@@ -1,4 +1,0 @@
-{
-  this.map=ImmutableMap.<IModelPart,IModelState>copyOf(map);
-  this.def=def;
-}

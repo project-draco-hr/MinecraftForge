@@ -1,6 +1,6 @@
 {
   for (  BiomeGenBase biome : biomes) {
-    @SuppressWarnings("unchecked") List<SpawnListEntry> spawns=biome.getSpawnableList(typeOfCreature);
+    List<SpawnListEntry> spawns=biome.getSpawnableList(typeOfCreature);
     for (    SpawnListEntry entry : spawns) {
       if (entry.entityClass == entityClass) {
         entry.itemWeight=weightedProb;

@@ -1,0 +1,4 @@
+int oldId
+int newId
+ResourceLocation tag
+RemapTarget type

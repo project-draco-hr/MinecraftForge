@@ -24,8 +24,8 @@
         String data=new String(ByteStreams.toByteArray(con));
         con.close();
         FMLLog.log("ForgeVersionCheck",Level.DEBUG,"[%s] Received version check data:\n%s",mod.getModId(),data);
-        Map<String,Object> json=new Gson().fromJson(data,Map.class);
-        Map<String,String> promos=(Map<String,String>)json.get("promos");
+        @SuppressWarnings("unchecked") Map<String,Object> json=new Gson().fromJson(data,Map.class);
+        @SuppressWarnings("unchecked") Map<String,String> promos=(Map<String,String>)json.get("promos");
         String display_url=(String)json.get("homepage");
         String rec=promos.get(MinecraftForge.MC_VERSION + "-recommended");
         String lat=promos.get(MinecraftForge.MC_VERSION + "-latest");
@@ -60,7 +60,7 @@
  else         status=BETA;
         FMLLog.log("ForgeVersionCheck",Level.INFO,"[%s] Found status: %s Target: %s",mod.getModId(),status,target);
         Map<ComparableVersion,String> changes=new LinkedHashMap<ComparableVersion,String>();
-        Map<String,String> tmp=(Map<String,String>)json.get(MinecraftForge.MC_VERSION);
+        @SuppressWarnings("unchecked") Map<String,String> tmp=(Map<String,String>)json.get(MinecraftForge.MC_VERSION);
         if (tmp != null) {
           List<ComparableVersion> ordered=new ArrayList<ComparableVersion>();
           for (          String key : tmp.keySet()) {

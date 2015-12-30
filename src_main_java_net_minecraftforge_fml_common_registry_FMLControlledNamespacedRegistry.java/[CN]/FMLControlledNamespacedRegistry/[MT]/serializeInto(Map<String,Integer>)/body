@@ -1,5 +1,0 @@
-{
-  for (  I thing : this.typeSafeIterable()) {
-    idMapping.put(getNameForObject(thing).toString(),getId(thing));
-  }
-}

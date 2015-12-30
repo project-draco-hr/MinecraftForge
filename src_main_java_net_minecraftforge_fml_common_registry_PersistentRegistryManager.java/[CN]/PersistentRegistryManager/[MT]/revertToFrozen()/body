@@ -1,0 +1,15 @@
+{
+  if (!PersistentRegistry.FROZEN.isPopulated()) {
+    FMLLog.warning("Can't revert to frozen GameData state without freezing first.");
+    return;
+  }
+ else {
+    FMLLog.fine("Reverting to frozen data state.");
+  }
+  for (  Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> r : PersistentRegistry.ACTIVE.registries.entrySet()) {
+    loadRegistry(r.getKey(),PersistentRegistry.FROZEN,PersistentRegistry.ACTIVE,PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(r.getKey()));
+  }
+  Loader.instance().fireRemapEvent(ImmutableMap.<ResourceLocation,Integer[]>of(),ImmutableMap.<ResourceLocation,Integer[]>of(),true);
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  FMLLog.fine("Frozen state restored.");
+}

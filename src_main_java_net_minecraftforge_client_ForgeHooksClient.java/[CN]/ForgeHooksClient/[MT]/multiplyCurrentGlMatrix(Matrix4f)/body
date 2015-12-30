@@ -6,5 +6,5 @@
     matrixBuf.put(t);
   }
   matrixBuf.flip();
-  GL11.glMultMatrix(matrixBuf);
+  glMultMatrix(matrixBuf);
 }

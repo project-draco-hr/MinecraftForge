@@ -1,0 +1,5 @@
+{
+  Wrapper w=wrap(obj);
+  if (!map.containsKey(w))   return def;
+  return map.get(w);
+}

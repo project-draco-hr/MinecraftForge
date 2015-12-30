@@ -1,6 +1,6 @@
 {
   this.variants=variants.getVariants();
-  ImmutableMap.Builder<IModelPart,IModelState> builder=ImmutableMap.builder();
+  ImmutableMap.Builder<MapModelState.Wrapper,IModelState> builder=ImmutableMap.builder();
   for (  Variant v : (List<Variant>)variants.getVariants()) {
     ResourceLocation loc=v.getModelLocation();
     locations.add(loc);
@@ -14,16 +14,22 @@
     }
     if (v instanceof ISmartVariant) {
       model=((ISmartVariant)v).process(model,ModelLoader.this);
+      try {
+        resolveDependencies(model);
+      }
+ catch (      IOException e) {
+        FMLLog.getLogger().error("Exception resolving indirect dependencies for model" + loc,e);
+      }
       textures.addAll(model.getTextures());
     }
     model=new WeightedPartWrapper(model);
     models.add(model);
-    builder.put(model,v.getState());
+    builder.put(MapModelState.wrap(model),v.getState());
   }
   if (models.size() == 0) {
     IModel missing=getMissingModel();
     models.add(missing);
-    builder.put(missing,TRSRTransformation.identity());
+    builder.put(MapModelState.wrap(missing),TRSRTransformation.identity());
   }
   defaultState=new MapModelState(builder.build());
 }

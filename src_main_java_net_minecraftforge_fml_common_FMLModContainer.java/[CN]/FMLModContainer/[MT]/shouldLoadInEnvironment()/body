@@ -1,7 +1,9 @@
 {
   boolean clientSideOnly=isTrue((Boolean)descriptor.get("clientSideOnly"));
   boolean serverSideOnly=isTrue((Boolean)descriptor.get("serverSideOnly"));
-  if (clientSideOnly && serverSideOnly)   throw new RuntimeException("Mod annotation claims to be both client and server side only!");
+  if (clientSideOnly && serverSideOnly) {
+    throw new RuntimeException("Mod annotation claims to be both client and server side only!");
+  }
   Side side=FMLCommonHandler.instance().getSide();
   if (clientSideOnly && side != Side.CLIENT) {
     FMLLog.info("Disabling mod %s it is client side only.",getModId());

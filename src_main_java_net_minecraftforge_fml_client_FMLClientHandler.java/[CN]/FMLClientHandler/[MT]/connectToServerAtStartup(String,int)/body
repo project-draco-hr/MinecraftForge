@@ -1,7 +1,7 @@
 {
   setupServerList();
   OldServerPinger osp=new OldServerPinger();
-  ServerData serverData=new ServerData("Command Line",host + ":" + port);
+  ServerData serverData=new ServerData("Command Line",host + ":" + port,false);
   try {
     osp.ping(serverData);
     startupConnectionData.await(30,TimeUnit.SECONDS);

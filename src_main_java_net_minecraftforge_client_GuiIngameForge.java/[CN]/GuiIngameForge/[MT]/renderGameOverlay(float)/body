@@ -1,5 +1,5 @@
 {
-  res=new ScaledResolution(mc,mc.displayWidth,mc.displayHeight);
+  res=new ScaledResolution(mc);
   eventParent=new RenderGameOverlayEvent(partialTicks,res);
   int width=res.getScaledWidth();
   int height=res.getScaledHeight();
@@ -13,7 +13,7 @@
   mc.entityRenderer.setupOverlayRendering();
   GlStateManager.enableBlend();
   if (Minecraft.isFancyGraphicsEnabled()) {
-    func_180480_a(mc.thePlayer.getBrightness(partialTicks),res);
+    renderVignette(mc.thePlayer.getBrightness(partialTicks),res);
   }
  else {
     GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
@@ -48,14 +48,14 @@
   renderTitle(width,height,partialTicks);
   Scoreboard scoreboard=this.mc.theWorld.getScoreboard();
   ScoreObjective objective=null;
-  ScorePlayerTeam scoreplayerteam=scoreboard.getPlayersTeam(mc.thePlayer.getName());
+  ScorePlayerTeam scoreplayerteam=scoreboard.getPlayersTeam(mc.thePlayer.getCommandSenderName());
   if (scoreplayerteam != null) {
-    int slot=scoreplayerteam.func_178775_l().getColorIndex();
+    int slot=scoreplayerteam.getChatFormat().getColorIndex();
     if (slot >= 0)     objective=scoreboard.getObjectiveInDisplaySlot(3 + slot);
   }
   ScoreObjective scoreobjective1=objective != null ? objective : scoreboard.getObjectiveInDisplaySlot(1);
   if (renderObjective && scoreobjective1 != null) {
-    this.func_180475_a(scoreobjective1,res);
+    this.renderScoreboard(scoreobjective1,res);
   }
   GlStateManager.enableBlend();
   GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);

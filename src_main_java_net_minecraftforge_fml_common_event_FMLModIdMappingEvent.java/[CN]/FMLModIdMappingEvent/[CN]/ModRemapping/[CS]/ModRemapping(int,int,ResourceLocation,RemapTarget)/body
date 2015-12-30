@@ -1,0 +1,7 @@
+{
+  this.oldId=oldId;
+  this.newId=newId;
+  this.tag=tag.toString();
+  this.remapTarget=type;
+  this.resourceLocation=tag;
+}

@@ -1,0 +1,5 @@
+{
+  for (  Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> r : registrySet.registries.entrySet()) {
+    operation.apply(r);
+  }
+}

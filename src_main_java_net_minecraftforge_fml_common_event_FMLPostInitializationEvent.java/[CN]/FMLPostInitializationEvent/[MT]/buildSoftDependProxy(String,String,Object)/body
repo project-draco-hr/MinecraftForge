@@ -1,0 +1,20 @@
+{
+  if (Loader.isModLoaded(modId)) {
+    Class<?>[] args=Lists.transform(Lists.newArrayList(arguments),new Function<Object,Class<?>>(){
+      @Nullable @Override public Class<?> apply(      @Nullable Object input){
+        return input.getClass();
+      }
+    }
+).toArray(new Class[0]);
+    try {
+      Class<?> clz=Class.forName(className,true,Loader.instance().getModClassLoader());
+      Constructor<?> ct=clz.getConstructor(args);
+      return Optional.fromNullable(ct.newInstance(arguments));
+    }
+ catch (    Exception e) {
+      FMLLog.getLogger().log(Level.INFO,"An error occurred trying to build a soft depend proxy",e);
+      return Optional.absent();
+    }
+  }
+  return Optional.absent();
+}

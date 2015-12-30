@@ -1,0 +1,6 @@
+{
+  if (part.isPresent()) {
+    return Optional.absent();
+  }
+  return Optional.of(this);
+}

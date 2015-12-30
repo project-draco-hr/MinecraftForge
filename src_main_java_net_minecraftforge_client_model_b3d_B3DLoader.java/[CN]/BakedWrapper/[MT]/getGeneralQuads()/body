@@ -7,8 +7,9 @@
     if (node.getKind() instanceof Mesh && meshes.contains(node.getName())) {
       Mesh mesh=(Mesh)node.getKind();
       Collection<Face> faces=mesh.bake(new Function<Node<?>,Matrix4f>(){
+        private final TRSRTransformation global=state.apply(Optional.<IModelPart>absent()).or(TRSRTransformation.identity());
         public Matrix4f apply(        Node<?> node){
-          return state.apply(PartWrapper.create(node)).getMatrix();
+          return global.compose(state.apply(Optional.of(new NodeJoint(node))).or(TRSRTransformation.identity())).getMatrix();
         }
       }
 );

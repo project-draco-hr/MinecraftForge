@@ -1,4 +1,0 @@
-EnumUsage attrType
-VertexFormatElement attr
-int stride
-ByteBuffer buffer

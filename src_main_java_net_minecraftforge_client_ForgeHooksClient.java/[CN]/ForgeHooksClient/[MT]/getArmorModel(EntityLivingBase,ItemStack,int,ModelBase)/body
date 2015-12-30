@@ -1,4 +1,0 @@
-{
-  ModelBase modelbase=itemStack.getItem().getArmorModel(entityLiving,itemStack,slotID);
-  return modelbase == null ? _default : modelbase;
-}

@@ -87,19 +87,19 @@
       Integer sortOrder=Ints.tryParse(Strings.nullToEmpty(mfAttributes.getValue("TweakOrder")));
       sortOrder=(sortOrder == null ? Integer.valueOf(0) : sortOrder);
       handleCascadingTweak(coreMod,jar,cascadedTweaker,classLoader,sortOrder);
-      loadedCoremods.add(coreMod.getName());
+      ignoredModFiles.add(coreMod.getName());
       continue;
     }
     List<String> modTypes=mfAttributes.containsKey(MODTYPE) ? Arrays.asList(mfAttributes.getValue(MODTYPE).split(",")) : ImmutableList.of("FML");
     if (!modTypes.contains("FML")) {
       FMLRelaunchLog.fine("Adding %s to the list of things to skip. It is not an FML mod,  it has types %s",coreMod.getName(),modTypes);
-      loadedCoremods.add(coreMod.getName());
+      ignoredModFiles.add(coreMod.getName());
       continue;
     }
     String modSide=mfAttributes.containsKey(MODSIDE) ? mfAttributes.getValue(MODSIDE) : "BOTH";
     if (!("BOTH".equals(modSide) || FMLLaunchHandler.side.name().equals(modSide))) {
       FMLRelaunchLog.fine("Mod %s has ModSide meta-inf value %s, and we're %s. It will be ignored",coreMod.getName(),modSide,FMLLaunchHandler.side.name());
-      loadedCoremods.add(coreMod.getName());
+      ignoredModFiles.add(coreMod.getName());
       continue;
     }
     String fmlCorePlugin=mfAttributes.getValue("FMLCorePlugin");
@@ -111,11 +111,11 @@
       classLoader.addURL(coreMod.toURI().toURL());
       if (!mfAttributes.containsKey(COREMODCONTAINSFMLMOD)) {
         FMLRelaunchLog.finer("Adding %s to the list of known coremods, it will not be examined again",coreMod.getName());
-        loadedCoremods.add(coreMod.getName());
+        ignoredModFiles.add(coreMod.getName());
       }
  else {
         FMLRelaunchLog.finer("Found FMLCorePluginContainsFMLMod marker in %s, it will be examined later for regular @Mod instances",coreMod.getName());
-        reparsedCoremods.add(coreMod.getName());
+        candidateModFiles.add(coreMod.getName());
       }
     }
  catch (    MalformedURLException e) {

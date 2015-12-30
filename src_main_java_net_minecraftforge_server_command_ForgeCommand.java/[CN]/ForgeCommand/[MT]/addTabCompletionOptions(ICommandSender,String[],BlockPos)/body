@@ -4,7 +4,7 @@
   }
  else   if (args.length == 2) {
     if ("tps".equals(args[0])) {
-      return func_175762_a(args,getServer().worldTickTimes.keySet());
+      return getListOfStringsMatchingLastWord(args,getServer().worldTickTimes.keySet());
     }
  else     if ("track".equals(args[0])) {
       return getListOfStringsMatchingLastWord(args,"te");

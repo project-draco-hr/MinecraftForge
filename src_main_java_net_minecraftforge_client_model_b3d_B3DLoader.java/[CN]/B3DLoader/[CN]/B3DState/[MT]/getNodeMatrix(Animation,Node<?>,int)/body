@@ -11,14 +11,19 @@
       ret=ret.compose(new TRSRTransformation(parent.getPos(),parent.getRot(),parent.getScale(),null));
     }
     ret=ret.compose(new TRSRTransformation(key.getPos(),key.getRot(),key.getScale(),null));
-    Matrix4f rm=new TRSRTransformation(node.getPos(),node.getRot(),node.getScale(),null).getMatrix();
-    rm.invert();
-    ret=ret.compose(new TRSRTransformation(rm));
+    TRSRTransformation invBind=new NodeJoint(node).getInvBindPose();
+    ret=ret.compose(invBind);
+  }
+ else {
+    Node<?> parent=node.getParent();
     if (parent != null) {
-      rm=new TRSRTransformation(parent.getPos(),parent.getRot(),parent.getScale(),null).getMatrix();
-      rm.invert();
-      ret=ret.compose(new TRSRTransformation(rm));
+      TRSRTransformation pm=cache.getUnchecked(Triple.<Animation,Node<?>,Integer>of(animation,node.getParent(),frame));
+      ret=ret.compose(pm);
+      ret=ret.compose(new TRSRTransformation(parent.getPos(),parent.getRot(),parent.getScale(),null));
     }
+    ret=ret.compose(new TRSRTransformation(node.getPos(),node.getRot(),node.getScale(),null));
+    TRSRTransformation invBind=new NodeJoint(node).getInvBindPose();
+    ret=ret.compose(invBind);
   }
   return ret;
 }

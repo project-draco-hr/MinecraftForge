@@ -1,6 +1,0 @@
-LinkedHashMap<String,Integer> missingBlocks
-LinkedHashMap<String,Integer> missingItems
-boolean isLocalWorld
-GameData gameData
-Map<String,Integer[]> remapBlocks
-Map<String,Integer[]> remapItems

@@ -1,0 +1,3 @@
+{
+  TestPotion INSTANCE=new TestPotion(30,new ResourceLocation(modID,"test_potion"),false,0xff00ff);
+}

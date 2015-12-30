@@ -1,0 +1,3 @@
+{
+  ClientCommandHandler.instance.registerCommand(new TestCommand());
+}

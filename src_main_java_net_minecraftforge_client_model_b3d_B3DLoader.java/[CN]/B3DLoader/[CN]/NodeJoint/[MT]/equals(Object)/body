@@ -1,0 +1,7 @@
+{
+  if (this == obj)   return true;
+  if (!super.equals(obj))   return false;
+  if (getClass() != obj.getClass())   return false;
+  NodeJoint other=(NodeJoint)obj;
+  return Objects.equal(node,other.node);
+}

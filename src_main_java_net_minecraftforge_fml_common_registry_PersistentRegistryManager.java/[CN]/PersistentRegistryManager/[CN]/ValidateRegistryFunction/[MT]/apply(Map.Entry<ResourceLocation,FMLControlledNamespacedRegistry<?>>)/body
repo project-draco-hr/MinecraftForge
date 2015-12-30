@@ -1,0 +1,4 @@
+{
+  input.getValue().validateContent(input.getKey());
+  return null;
+}

@@ -1,3 +1,0 @@
-{
-  this(FluidRegistry.getFluid(fluidID),amount,nbt);
-}

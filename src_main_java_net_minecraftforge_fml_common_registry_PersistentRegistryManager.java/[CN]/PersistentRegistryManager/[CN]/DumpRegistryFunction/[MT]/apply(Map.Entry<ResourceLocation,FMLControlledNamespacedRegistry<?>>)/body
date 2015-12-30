@@ -1,0 +1,4 @@
+{
+  input.getValue().dump(input.getKey());
+  return null;
+}

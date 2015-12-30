@@ -1,0 +1,9 @@
+UnpackedBakedQuad.Builder builder
+VertexFormat format
+Optional<TRSRTransformation> transform
+EnumFacing side
+float x
+float y
+float z
+float u
+float v

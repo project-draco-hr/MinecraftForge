@@ -3,6 +3,7 @@
   try {
     String json=Files.toString(saveFile,charset);
     Type type=new TypeToken<Map<UUID,String>>(){
+      private static final long serialVersionUID=1L;
     }
 .getType();
     map=gson.fromJson(json,type);

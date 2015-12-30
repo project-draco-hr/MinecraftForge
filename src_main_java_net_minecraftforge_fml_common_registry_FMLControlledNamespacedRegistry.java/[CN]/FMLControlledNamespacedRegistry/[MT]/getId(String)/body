@@ -1,5 +1,0 @@
-{
-  I obj=getRaw(itemName);
-  if (obj == null)   return -1;
-  return getId(obj);
-}

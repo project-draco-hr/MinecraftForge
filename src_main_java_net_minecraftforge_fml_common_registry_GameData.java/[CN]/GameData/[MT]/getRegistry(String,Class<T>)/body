@@ -1,3 +1,0 @@
-{
-  return getMain().getGenericRegistry(registryName,type);
-}

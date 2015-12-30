@@ -1,0 +1,3 @@
+{
+  return new org.lwjgl.util.vector.Vector3f(vec.x,vec.y,vec.z);
+}

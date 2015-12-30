@@ -1,4 +1,0 @@
-{
-  if (!map.containsKey(part))   return def.apply(part);
-  return map.get(part).apply(part);
-}

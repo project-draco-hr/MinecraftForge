@@ -2,5 +2,4 @@
   MapMaker mm=new MapMaker();
   mm.weakKeys();
   tileEntityTimings=mm.makeMap();
-  entityTimings=mm.makeMap();
 }

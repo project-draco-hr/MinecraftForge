@@ -1,0 +1,3 @@
+Map<ResourceLocation,Map<ResourceLocation,Integer[]>> remaps
+ResourceLocation registryName
+Class<T> regType

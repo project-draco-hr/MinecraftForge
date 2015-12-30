@@ -28,9 +28,11 @@
  else {
     pipeline.replace("splitter","splitter",new MessageDeserializer2(){
       String prefix=(direction == EnumPacketDirection.SERVERBOUND ? "SERVER: C->S" : "CLIENT: S->C");
-      @Override protected void decode(      ChannelHandlerContext context,      ByteBuf input,      List output){
+      @Override protected void decode(      ChannelHandlerContext context,      ByteBuf input,      List<Object> output) throws Exception {
         super.decode(context,input,output);
-        for (        ByteBuf pkt : (List<ByteBuf>)output) {
+        Iterator<Object> itr=output.iterator();
+        while (itr.hasNext()) {
+          ByteBuf pkt=(ByteBuf)itr.next();
           pkt.markReaderIndex();
           FMLLog.log(Level.DEBUG,"%s:\n%s",prefix,ByteBufUtils.getContentDump(pkt));
           pkt.resetReaderIndex();
@@ -40,7 +42,7 @@
 );
     pipeline.replace("prepender","prepender",new MessageSerializer2(){
       String prefix=(direction == EnumPacketDirection.SERVERBOUND ? "SERVER: S->C" : "CLIENT: C->S");
-      @Override protected void encode(      ChannelHandlerContext context,      ByteBuf input,      ByteBuf output){
+      @Override protected void encode(      ChannelHandlerContext context,      ByteBuf input,      ByteBuf output) throws Exception {
         input.markReaderIndex();
         FMLLog.log(Level.DEBUG,"%s:\n%s",prefix,ByteBufUtils.getContentDump(input));
         input.resetReaderIndex();

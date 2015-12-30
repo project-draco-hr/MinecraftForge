@@ -1,0 +1,3 @@
+{
+  this(new HashMap<ResourceLocation,Integer>(),new HashSet<ResourceLocation>(),new HashMap<ResourceLocation,ResourceLocation>(),new HashSet<Integer>());
+}

@@ -1,4 +1,0 @@
-{
-  if (parent != null)   return parent.apply(part);
-  return new TRSRTransformation(EnumFacing.NORTH);
-}

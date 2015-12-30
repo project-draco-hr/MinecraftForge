@@ -1,3 +1,4 @@
 {
-  return getLocalizedName();
+  String s=this.getUnlocalizedName();
+  return s == null ? "" : StatCollector.translateToLocal(s);
 }

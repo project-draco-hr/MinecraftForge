@@ -1,0 +1,7 @@
+{
+  if (!registries.containsKey(key)) {
+    registries.put(key,other.makeShallowCopy());
+    registrySuperTypes.put(regType,key);
+  }
+  return getRegistry(key,regType);
+}

@@ -1,7 +1,7 @@
 {
   MinecraftForge.EVENT_BUS.register(MinecraftForge.INTERNAL_HANDLER);
   ForgeChunkManager.captureConfig(evt.getModConfigurationDirectory());
-  FMLCommonHandler.instance().bus().register(this);
+  MinecraftForge.EVENT_BUS.register(this);
   if (!ForgeModContainer.disableVersionCheck) {
     ForgeVersion.startVersionCheck();
   }

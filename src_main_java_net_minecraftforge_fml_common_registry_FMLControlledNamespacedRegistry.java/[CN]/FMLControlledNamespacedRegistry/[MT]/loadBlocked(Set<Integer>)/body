@@ -1,0 +1,6 @@
+{
+  for (  Integer id : blocked) {
+    blockedIds.add(id);
+    availabilityMap.set(id);
+  }
+}

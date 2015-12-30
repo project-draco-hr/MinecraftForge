@@ -1,0 +1,3 @@
+Map<ResourceLocation,Integer[]> remapBlocks
+Map<ResourceLocation,Integer[]> remapItems
+boolean isFreezing

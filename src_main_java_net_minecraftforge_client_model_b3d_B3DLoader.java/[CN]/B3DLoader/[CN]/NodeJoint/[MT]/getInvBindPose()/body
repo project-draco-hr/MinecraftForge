@@ -1,0 +1,10 @@
+{
+  Matrix4f m=new TRSRTransformation(node.getPos(),node.getRot(),node.getScale(),null).getMatrix();
+  m.invert();
+  TRSRTransformation pose=new TRSRTransformation(m);
+  if (node.getParent() != null) {
+    TRSRTransformation parent=new NodeJoint(node.getParent()).getInvBindPose();
+    pose=pose.compose(parent);
+  }
+  return pose;
+}

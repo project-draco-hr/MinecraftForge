@@ -1,4 +1,0 @@
-Map<String,Integer> ids
-Set<String> substitions
-Map<String,String> aliases
-Set<Integer> blocked

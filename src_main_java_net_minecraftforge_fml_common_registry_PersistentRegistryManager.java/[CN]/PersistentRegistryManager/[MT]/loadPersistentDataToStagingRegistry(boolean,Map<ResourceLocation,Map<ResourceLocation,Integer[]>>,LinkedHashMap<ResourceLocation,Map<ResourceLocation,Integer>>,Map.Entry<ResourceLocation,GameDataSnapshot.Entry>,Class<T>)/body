@@ -1,0 +1,24 @@
+{
+  ResourceLocation registryName=snapEntry.getKey();
+  if ("fml:blocks".equals(registryName.toString()))   registryName=PersistentRegistryManager.BLOCKS;
+ else   if ("fml:items".equals(registryName.toString()))   registryName=PersistentRegistryManager.ITEMS;
+ else   if ("fmlgr:villagerprofessions".equals(registryName.toString()))   registryName=VillagerRegistry.PROFESSIONS;
+  FMLControlledNamespacedRegistry<T> currentRegistry=PersistentRegistry.ACTIVE.getRegistry(registryName,regType);
+  if (currentRegistry == null) {
+    FMLLog.severe("An unknown persistent registry type \"%s\" has been encountered. This Forge instance cannot understand it.",registryName);
+    StartupQuery.abort();
+  }
+  FMLControlledNamespacedRegistry<T> newRegistry=PersistentRegistry.STAGING.getOrShallowCopyRegistry(registryName,regType,currentRegistry);
+  newRegistry.getPersistentSubstitutions().putAll(currentRegistry.getPersistentSubstitutions());
+  GameDataSnapshot.Entry snapshotEntry=snapEntry.getValue();
+  Set<ResourceLocation> substitutions=snapshotEntry.substitutions;
+  if (injectFrozenData) {
+    substitutions=Sets.union(snapshotEntry.substitutions,currentRegistry.getActiveSubstitutions());
+  }
+  newRegistry.loadAliases(snapshotEntry.aliases);
+  newRegistry.loadSubstitutions(substitutions);
+  newRegistry.loadBlocked(snapshotEntry.blocked);
+  missing.put(registryName,Maps.<ResourceLocation,Integer>newLinkedHashMap());
+  remaps.put(registryName,Maps.<ResourceLocation,Integer[]>newHashMap());
+  newRegistry.loadIds(snapshotEntry.ids,missing.get(registryName),remaps.get(registryName),currentRegistry,registryName);
+}

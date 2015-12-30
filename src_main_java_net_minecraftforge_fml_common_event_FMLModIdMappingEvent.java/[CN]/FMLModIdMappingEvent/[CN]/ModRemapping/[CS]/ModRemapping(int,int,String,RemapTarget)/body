@@ -1,6 +1,0 @@
-{
-  this.oldId=oldId;
-  this.newId=newId;
-  this.tag=tag;
-  this.remapTarget=type;
-}

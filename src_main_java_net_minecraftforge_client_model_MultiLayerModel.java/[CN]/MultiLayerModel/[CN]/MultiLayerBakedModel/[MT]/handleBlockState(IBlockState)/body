@@ -1,0 +1,8 @@
+{
+  compute();
+  EnumWorldBlockLayer layer=MinecraftForgeClient.getRenderLayer();
+  if (!bakedModels.containsKey(layer)) {
+    return missing;
+  }
+  return bakedModels.get(layer);
+}

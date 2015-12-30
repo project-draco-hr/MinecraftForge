@@ -1,5 +1,5 @@
 {
-  if (transforms.isEmpty())   return Pair.<IBakedModel,Matrix4f>of(this,null);
+  if (transforms.isEmpty())   return Pair.of(this,null);
   Pair<Baked,TRSRTransformation> p=transforms.get(cameraTransformType);
-  return Pair.of((IBakedModel)p.getLeft(),p.getRight().getMatrix());
+  return Pair.of(p.getLeft(),p.getRight().getMatrix());
 }

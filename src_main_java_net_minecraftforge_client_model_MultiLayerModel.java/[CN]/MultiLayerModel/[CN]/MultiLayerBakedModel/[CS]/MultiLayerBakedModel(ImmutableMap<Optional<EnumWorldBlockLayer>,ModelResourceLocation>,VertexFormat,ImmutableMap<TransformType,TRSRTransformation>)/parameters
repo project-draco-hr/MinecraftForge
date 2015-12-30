@@ -1,0 +1,3 @@
+ImmutableMap<Optional<EnumWorldBlockLayer>,ModelResourceLocation> models
+VertexFormat format
+ImmutableMap<TransformType,TRSRTransformation> cameraTransforms

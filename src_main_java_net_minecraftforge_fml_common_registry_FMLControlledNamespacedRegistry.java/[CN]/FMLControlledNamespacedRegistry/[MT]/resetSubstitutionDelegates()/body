@@ -1,6 +1,9 @@
 {
-  for (  I item : typeSafeIterable()) {
-    Delegate<Item> delegate=(Delegate<Item>)((Item)item).delegate;
-    delegate.changeReference((Item)item);
+  if (!isDelegated) {
+    return;
+  }
+  for (  I obj : typeSafeIterable()) {
+    Delegate<I> delegate=getExistingDelegate(obj);
+    delegate.changeReference(obj);
   }
 }

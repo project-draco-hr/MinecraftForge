@@ -3,7 +3,6 @@
   SplashProgress.start();
   client=minecraft;
   this.resourcePackList=resourcePackList;
-  this.resourceManager=resourceManager;
   this.resourcePackMap=Maps.newHashMap();
   if (minecraft.isDemo()) {
     FMLLog.severe("DEMO MODE DETECTED, FML will not work. Finishing now.");

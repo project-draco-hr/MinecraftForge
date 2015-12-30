@@ -1,15 +1,11 @@
 {
-  B3DLoader.instance.addDomain(MODID);
   GameRegistry.registerBlock(new Block(Material.wood){
 {
       setCreativeTab(CreativeTabs.tabBlock);
       setUnlocalizedName(MODID + "." + blockName);
     }
     @Override public ExtendedBlockState createBlockState(){
-      return new ExtendedBlockState(this,new IProperty[]{FACING},new IUnlistedProperty[]{B3DFrameProperty.instance});
-    }
-    @Override public int getRenderType(){
-      return -1;
+      return new ExtendedBlockState(this,new IProperty[]{FACING,STATIC},new IUnlistedProperty[]{B3DFrameProperty.instance});
     }
     @Override public boolean isOpaqueCube(){
       return false;
@@ -31,6 +27,9 @@
     }
     @Override public TileEntity createTileEntity(    World world,    IBlockState state){
       return new Chest(state);
+    }
+    @Override public IBlockState getActualState(    IBlockState state,    IBlockAccess world,    BlockPos pos){
+      return state.withProperty(STATIC,true);
     }
     @Override public boolean onBlockActivated(    World world,    BlockPos pos,    IBlockState state,    EntityPlayer player,    EnumFacing side,    float hitX,    float hitY,    float hitZ){
       if (world.isRemote) {

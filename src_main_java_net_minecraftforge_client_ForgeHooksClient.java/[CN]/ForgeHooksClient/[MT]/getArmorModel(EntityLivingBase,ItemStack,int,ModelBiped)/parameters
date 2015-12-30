@@ -1,0 +1,4 @@
+EntityLivingBase entityLiving
+ItemStack itemStack
+int slotID
+ModelBiped _default

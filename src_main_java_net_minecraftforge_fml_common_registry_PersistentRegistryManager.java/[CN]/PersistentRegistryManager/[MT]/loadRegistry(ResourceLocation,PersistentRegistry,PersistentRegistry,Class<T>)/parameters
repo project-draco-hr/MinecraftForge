@@ -1,0 +1,4 @@
+ResourceLocation registryName
+PersistentRegistry from
+PersistentRegistry to
+Class<T> regType

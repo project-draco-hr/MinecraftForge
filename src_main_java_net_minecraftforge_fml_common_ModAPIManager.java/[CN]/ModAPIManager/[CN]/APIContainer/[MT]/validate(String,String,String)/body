@@ -1,2 +1,5 @@
 {
+  if (Loader.instance().getModClassLoader().containsSource(this.getSource())) {
+    FMLLog.bigWarning("The API %s from source %s is loaded from an incompatible classloader. THIS WILL NOT WORK!",providedAPI,this.getSource().getAbsolutePath());
+  }
 }

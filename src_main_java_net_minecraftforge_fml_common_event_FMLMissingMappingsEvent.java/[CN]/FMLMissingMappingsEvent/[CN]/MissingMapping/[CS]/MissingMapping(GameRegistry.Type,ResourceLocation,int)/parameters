@@ -1,0 +1,3 @@
+GameRegistry.Type type
+ResourceLocation name
+int id

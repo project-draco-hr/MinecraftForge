@@ -1,5 +1,5 @@
 {
-  List<String> knownLibraries=ImmutableList.<String>builder().addAll(modClassLoader.getDefaultLibraries()).addAll(CoreModManager.getLoadedCoremods()).addAll(CoreModManager.getReparseableCoremods()).build();
+  List<String> knownLibraries=ImmutableList.<String>builder().addAll(modClassLoader.getDefaultLibraries()).addAll(CoreModManager.getIgnoredMods()).addAll(CoreModManager.getReparseableCoremods()).build();
   File[] minecraftSources=modClassLoader.getParentSources();
   if (minecraftSources.length == 1 && minecraftSources[0].isFile()) {
     FMLLog.fine("Minecraft is a file at %s, loading",minecraftSources[0].getAbsolutePath());

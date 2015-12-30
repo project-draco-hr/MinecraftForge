@@ -1,4 +1,0 @@
-int oldId
-int newId
-String tag
-RemapTarget type

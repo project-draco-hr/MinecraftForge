@@ -1,0 +1,3 @@
+{
+  return ImmutableList.<ResourceLocation>copyOf(models.values());
+}

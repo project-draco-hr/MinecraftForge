@@ -10,8 +10,8 @@
   this.btnRemoveEntry.enabled=owningScreen.enabled;
   this.addNewEntryAboveHoverChecker=new HoverChecker(this.btnAddNewEntryAbove,800);
   this.removeEntryHoverChecker=new HoverChecker(this.btnRemoveEntry,800);
-  this.addNewToolTip=new ArrayList();
-  this.removeToolTip=new ArrayList();
+  this.addNewToolTip=new ArrayList<String>();
+  this.removeToolTip=new ArrayList<String>();
   addNewToolTip.add(I18n.format("fml.configgui.tooltip.addNewEntryAbove"));
   removeToolTip.add(I18n.format("fml.configgui.tooltip.removeEntry"));
 }

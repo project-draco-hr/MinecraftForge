@@ -1,0 +1,4 @@
+{
+  potion.id=id;
+  Potion.potionTypes[id]=potion;
+}

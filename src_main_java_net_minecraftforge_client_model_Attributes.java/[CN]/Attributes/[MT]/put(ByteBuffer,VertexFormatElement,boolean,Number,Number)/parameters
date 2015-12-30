@@ -1,5 +1,0 @@
-ByteBuffer buf
-VertexFormatElement e
-boolean denormalize
-Number fill
-Number ns

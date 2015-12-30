@@ -1,6 +1,8 @@
 {
-  if (itemName == null)   throw new IllegalArgumentException("The itemName cannot be null");
-  Item item=GameData.getItemRegistry().getObject(itemName);
+  if (itemName == null) {
+    throw new IllegalArgumentException("The itemName cannot be null");
+  }
+  Item item=GameData.getItemRegistry().getObject(new ResourceLocation(itemName));
   if (item == null) {
     FMLLog.getLogger().log(Level.TRACE,"Unable to find item with name {}",itemName);
     return null;
@@ -9,7 +11,7 @@
   if (!Strings.isNullOrEmpty(nbtString)) {
     NBTBase nbttag=null;
     try {
-      nbttag=JsonToNBT.func_180713_a(nbtString);
+      nbttag=JsonToNBT.getTagFromJson(nbtString);
     }
  catch (    NBTException e) {
       FMLLog.getLogger().log(Level.WARN,"Encountered an exception parsing ItemStack NBT string {}",nbtString,e);

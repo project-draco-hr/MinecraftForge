@@ -1,5 +1,0 @@
-{
-  for (  EntityRendererInfo info : INSTANCE.entityRenderers) {
-    rendererMap.put(info.target,info.renderer);
-  }
-}
