@@ -1,4 +1,5 @@
 {
+  if (blockRenderer == null)   blockRenderer=Minecraft.getMinecraft().getBlockRendererDispatcher();
   IBlockState state=te.getWorld().getBlockState(te.getPos());
   state=state.withProperty(STATIC,false);
   IBakedModel model=this.blockRenderer.getBlockModelShapes().getModelForState(state);
