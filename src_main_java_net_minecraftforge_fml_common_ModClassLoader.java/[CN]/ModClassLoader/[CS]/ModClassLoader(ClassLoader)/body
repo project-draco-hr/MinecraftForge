@@ -1,5 +1,5 @@
 {
   super(new URL[0],null);
   this.mainClassLoader=(LaunchClassLoader)parent;
-  this.sources=new ArrayList();
+  this.sources=Lists.newArrayList();
 }

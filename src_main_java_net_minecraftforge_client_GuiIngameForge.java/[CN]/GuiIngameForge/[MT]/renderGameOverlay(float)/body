@@ -48,7 +48,7 @@
   renderTitle(width,height,partialTicks);
   Scoreboard scoreboard=this.mc.theWorld.getScoreboard();
   ScoreObjective objective=null;
-  ScorePlayerTeam scoreplayerteam=scoreboard.getPlayersTeam(mc.thePlayer.getCommandSenderName());
+  ScorePlayerTeam scoreplayerteam=scoreboard.getPlayersTeam(mc.thePlayer.getName());
   if (scoreplayerteam != null) {
     int slot=scoreplayerteam.getChatFormat().getColorIndex();
     if (slot >= 0)     objective=scoreboard.getObjectiveInDisplaySlot(3 + slot);

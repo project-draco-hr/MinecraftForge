@@ -5,7 +5,7 @@
     return pair.getLeft();
   }
  else {
-    model.getItemCameraTransforms().func_181689_a(cameraTransformType);
+    model.getItemCameraTransforms().applyTransform(cameraTransformType);
   }
   return model;
 }
