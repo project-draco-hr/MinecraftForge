@@ -1,6 +1,3 @@
 {
-  if (!cache.containsKey(state)) {
-    cache.put(state,new OBJBakedModel(this.model,state,this.format,this.textures));
-  }
-  return cache.get(state);
+  return cache.getUnchecked(state);
 }
