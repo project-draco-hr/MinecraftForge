@@ -1,0 +1,9 @@
+Optional<TRSRTransformation> transformation
+VertexFormat format
+int color
+TextureAtlasSprite still
+TextureAtlasSprite flowing
+boolean gas
+boolean statePresent
+int[] cornerRound
+int flowRound
