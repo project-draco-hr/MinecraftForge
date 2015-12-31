@@ -2,3 +2,4 @@ Map<ResourceLocation,Integer> ids
 Set<ResourceLocation> substitutions
 Map<ResourceLocation,ResourceLocation> aliases
 Set<Integer> blocked
+Set<ResourceLocation> dummies

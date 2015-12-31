@@ -10,4 +10,8 @@
   for (  ResourceLocation entry : substitutions) {
     ByteBufUtils.writeUTF8String(buffer,entry.toString());
   }
+  ByteBufUtils.writeVarInt(buffer,dummied.size(),3);
+  for (  ResourceLocation entry : dummied) {
+    ByteBufUtils.writeUTF8String(buffer,entry.toString());
+  }
 }

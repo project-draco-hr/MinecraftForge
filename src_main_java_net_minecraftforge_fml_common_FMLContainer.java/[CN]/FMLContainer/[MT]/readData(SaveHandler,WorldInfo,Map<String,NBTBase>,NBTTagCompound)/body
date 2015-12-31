@@ -99,6 +99,12 @@
       for (      int i : blocked) {
         entry.blocked.add(i);
       }
+      if (!regs.getCompoundTag(key).hasKey("dummied"))       return;
+      list=regs.getCompoundTag(key).getTagList("dummied",10);
+      for (int x=0; x < list.tagCount(); x++) {
+        NBTTagCompound e=list.getCompoundTagAt(x);
+        entry.dummied.add(new ResourceLocation(e.getString("K")));
+      }
     }
     failedElements=PersistentRegistryManager.injectSnapshot(snapshot,true,true);
   }

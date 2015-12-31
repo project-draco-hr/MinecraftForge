@@ -44,6 +44,13 @@
       blocked[idx++]=i;
     }
     data.setIntArray("blocked",blocked);
+    NBTTagList dummied=new NBTTagList();
+    for (    ResourceLocation entry : e.getValue().dummied) {
+      NBTTagCompound tag=new NBTTagCompound();
+      tag.setString("K",entry.toString());
+      dummied.appendTag(tag);
+    }
+    data.setTag("dummied",dummied);
   }
   return fmlData;
 }

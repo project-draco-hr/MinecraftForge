@@ -1,0 +1,4 @@
+{
+  this.dummiedLocations.add(rl);
+  this.addObjectRaw(id,rl,thing);
+}

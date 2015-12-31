@@ -3,4 +3,5 @@
   this.name=name;
   this.ids=entry.ids;
   this.substitutions=entry.substitutions;
+  this.dummied=entry.dummied;
 }

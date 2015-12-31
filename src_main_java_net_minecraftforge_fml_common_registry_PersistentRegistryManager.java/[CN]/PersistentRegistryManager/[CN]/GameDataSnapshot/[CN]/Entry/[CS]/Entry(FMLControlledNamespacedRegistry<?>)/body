@@ -3,8 +3,10 @@
   this.substitutions=Sets.newHashSet();
   this.aliases=Maps.newHashMap();
   this.blocked=Sets.newHashSet();
+  this.dummied=Sets.newHashSet();
   registry.serializeIds(this.ids);
   registry.serializeSubstitutions(this.substitutions);
   registry.serializeAliases(this.aliases);
   registry.serializeBlockList(this.blocked);
+  registry.serializeDummied(this.dummied);
 }

@@ -10,6 +10,8 @@
   this.persistentSubstitutions.clear();
   this.persistentSubstitutions.putAll(otherRegistry.getPersistentSubstitutions());
   this.activeSubstitutions.clear();
+  this.dummiedLocations.clear();
+  this.dummiedLocations.addAll(otherRegistry.dummiedLocations);
   underlyingIntegerMap=new ObjectIntIdentityMap<I>();
   registryObjects.clear();
   for (  I thing : otherRegistry.typeSafeIterable()) {

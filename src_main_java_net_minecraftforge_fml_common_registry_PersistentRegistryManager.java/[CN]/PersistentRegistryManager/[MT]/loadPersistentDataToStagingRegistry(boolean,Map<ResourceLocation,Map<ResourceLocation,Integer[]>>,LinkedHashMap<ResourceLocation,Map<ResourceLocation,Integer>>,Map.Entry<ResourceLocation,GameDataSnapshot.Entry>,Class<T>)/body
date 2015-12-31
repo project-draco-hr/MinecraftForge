@@ -21,4 +21,5 @@
   missing.put(registryName,Maps.<ResourceLocation,Integer>newLinkedHashMap());
   remaps.put(registryName,Maps.<ResourceLocation,Integer[]>newHashMap());
   newRegistry.loadIds(snapshotEntry.ids,missing.get(registryName),remaps.get(registryName),currentRegistry,registryName);
+  newRegistry.loadDummied(snapshotEntry.dummied);
 }

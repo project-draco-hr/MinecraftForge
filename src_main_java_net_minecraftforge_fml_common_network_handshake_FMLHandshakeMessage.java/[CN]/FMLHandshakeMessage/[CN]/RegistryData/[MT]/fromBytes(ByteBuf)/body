@@ -11,4 +11,10 @@
   for (int i=0; i < length; i++) {
     substitutions.add(new ResourceLocation(ByteBufUtils.readUTF8String(buffer)));
   }
+  dummied=Sets.newHashSet();
+  if (!buffer.isReadable())   return;
+  length=ByteBufUtils.readVarInt(buffer,3);
+  for (int i=0; i < length; i++) {
+    dummied.add(new ResourceLocation(ByteBufUtils.readUTF8String(buffer)));
+  }
 }

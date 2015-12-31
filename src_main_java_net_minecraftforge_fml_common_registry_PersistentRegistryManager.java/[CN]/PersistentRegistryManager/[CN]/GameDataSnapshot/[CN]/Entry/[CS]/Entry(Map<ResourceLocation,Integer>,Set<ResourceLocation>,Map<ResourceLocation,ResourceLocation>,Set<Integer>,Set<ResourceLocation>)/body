@@ -3,4 +3,5 @@
   this.substitutions=substitutions;
   this.aliases=aliases;
   this.blocked=blocked;
+  this.dummied=dummies;
 }
