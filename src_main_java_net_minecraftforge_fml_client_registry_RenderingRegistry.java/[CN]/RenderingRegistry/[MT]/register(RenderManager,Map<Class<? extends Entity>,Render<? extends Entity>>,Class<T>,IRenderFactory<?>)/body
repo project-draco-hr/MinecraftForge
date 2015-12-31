@@ -1,0 +1,3 @@
+{
+  renderMap.put(entityClass,((IRenderFactory<T>)renderFactory).createRenderFor(manager));
+}

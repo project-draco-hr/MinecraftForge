@@ -1,0 +1,4 @@
+RenderManager manager
+Map<Class<? extends Entity>,Render<? extends Entity>> renderMap
+Class<T> entityClass
+IRenderFactory<?> renderFactory

@@ -1,3 +1,0 @@
-Class<T> tileEntityClass
-String id
-TileEntitySpecialRenderer<T> specialRenderer

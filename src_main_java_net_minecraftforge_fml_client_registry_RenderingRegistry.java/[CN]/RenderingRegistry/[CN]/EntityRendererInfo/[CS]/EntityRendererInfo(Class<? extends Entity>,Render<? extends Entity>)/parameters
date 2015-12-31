@@ -1,2 +1,0 @@
-Class<? extends Entity> target
-Render<? extends Entity> renderer

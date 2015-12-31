@@ -1,0 +1,5 @@
+{
+  for (  Map.Entry<Class<? extends Entity>,IRenderFactory<? extends Entity>> entry : INSTANCE.entityRenderers.entrySet()) {
+    register(manager,renderMap,entry.getKey(),entry.getValue());
+  }
+}
