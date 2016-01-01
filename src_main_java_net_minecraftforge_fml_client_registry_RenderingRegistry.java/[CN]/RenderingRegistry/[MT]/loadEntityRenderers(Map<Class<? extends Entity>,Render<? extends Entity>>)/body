@@ -1,0 +1,3 @@
+{
+  entityRenderMap.putAll(INSTANCE.entityRenderersOld);
+}

@@ -17,6 +17,7 @@ catch (  LoaderException le) {
     return;
   }
   client.refreshResources();
+  RenderingRegistry.loadEntityRenderers(Minecraft.getMinecraft().getRenderManager().entityRenderMap);
   guiFactories=HashBiMap.create();
   for (  ModContainer mc : Loader.instance().getActiveModList()) {
     String className=mc.getGuiClassName();
