@@ -1,0 +1,11 @@
+{
+  this.loop=loop;
+  this.variables=variables;
+  EnumSet<Variable> hadVar=Sets.newEnumSet(Collections.<Variable>emptyList(),Variable.class);
+  for (  MBVariableClip var : variables) {
+    if (hadVar.contains(var.variable)) {
+      throw new IllegalArgumentException("duplicate variable: " + var);
+    }
+    hadVar.add(var.variable);
+  }
+}

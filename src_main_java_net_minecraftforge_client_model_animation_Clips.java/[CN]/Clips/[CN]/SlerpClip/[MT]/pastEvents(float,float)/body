@@ -1,0 +1,5 @@
+{
+  float clipLastPollTime=input.apply(lastPollTime);
+  float clipTime=input.apply(time);
+  return Iterables.mergeSorted(ImmutableSet.of(from.pastEvents(clipLastPollTime,clipTime),to.pastEvents(clipLastPollTime,clipTime)),Ordering.<Event>natural());
+}

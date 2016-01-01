@@ -1,0 +1,3 @@
+{
+  return Objects.toStringHelper(getClass()).add("event",event).add("offset",offset).toString();
+}

@@ -20,6 +20,17 @@
         return new BakedWrapper(node,newState,format,meshes,textures);
       }
     }
+ else     if (exState.getUnlistedNames().contains(Properties.AnimationProperty)) {
+      IModelState parent=this.state;
+      if (parent instanceof B3DState) {
+        B3DState ps=(B3DState)parent;
+        parent=ps.getParent();
+      }
+      IModelState newState=exState.getValue(Properties.AnimationProperty);
+      if (newState != null) {
+        return new BakedWrapper(node,new ModelStateComposition(parent,newState),format,meshes,textures);
+      }
+    }
   }
   return this;
 }

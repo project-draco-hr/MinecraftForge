@@ -1,0 +1,3 @@
+{
+  return childClip.pastEvents(this.time.apply(lastPollTime),this.time.apply(time));
+}

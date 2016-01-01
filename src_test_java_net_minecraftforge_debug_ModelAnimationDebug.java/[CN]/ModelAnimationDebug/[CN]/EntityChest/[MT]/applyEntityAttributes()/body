@@ -1,0 +1,4 @@
+{
+  super.applyEntityAttributes();
+  this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(60);
+}

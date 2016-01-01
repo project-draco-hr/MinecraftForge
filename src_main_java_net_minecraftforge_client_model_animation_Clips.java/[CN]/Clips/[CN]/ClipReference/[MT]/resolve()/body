@@ -1,0 +1,10 @@
+{
+  if (clip == null) {
+    if (clipResolver != null) {
+      clip=clipResolver.apply(clipName);
+    }
+    if (clip == null) {
+      throw new IllegalArgumentException("Couldn't resolve clip " + clipName);
+    }
+  }
+}

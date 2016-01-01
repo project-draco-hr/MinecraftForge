@@ -1,0 +1,7 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  SimpleExprValue other=(SimpleExprValue)obj;
+  return Objects.equal(operators,other.operators) && Objects.equal(args,other.args);
+}

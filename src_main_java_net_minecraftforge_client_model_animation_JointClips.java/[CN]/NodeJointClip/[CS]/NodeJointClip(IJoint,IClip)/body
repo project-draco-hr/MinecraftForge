@@ -1,0 +1,4 @@
+{
+  this.child=joint;
+  this.clip=clip;
+}

@@ -1,0 +1,6 @@
+{
+  this.variable=variable;
+  this.type=type;
+  this.interpolation=interpolation;
+  this.samples=samples;
+}

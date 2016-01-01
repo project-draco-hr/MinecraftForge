@@ -1,0 +1,6 @@
+{
+  final Type[] typeArguments=((ParameterizedType)type).getActualTypeArguments();
+  final Type parameterizedType=mapOf(typeArguments[1]).getType();
+  final Map<String,?> map=context.deserialize(json,parameterizedType);
+  return ImmutableMap.copyOf(map);
+}

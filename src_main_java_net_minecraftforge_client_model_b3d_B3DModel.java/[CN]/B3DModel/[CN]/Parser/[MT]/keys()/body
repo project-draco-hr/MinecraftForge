@@ -34,6 +34,7 @@
     animations.peek().put(frame,Optional.<Node<?>>absent(),key);
     ret.put(frame,key);
   }
+  dump("KEYS([(" + Joiner.on("), (").withKeyValueSeparator(" -> ").join(ret) + ")])");
   popLimit();
   return ret;
 }

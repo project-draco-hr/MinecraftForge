@@ -1,0 +1,3 @@
+IClip clip
+float lastPollTime
+float time

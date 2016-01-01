@@ -1,0 +1,10 @@
+{
+  if (parameter == null) {
+    if (valueResolver != null) {
+      parameter=valueResolver.apply(parameterName);
+    }
+    if (parameter == null) {
+      throw new IllegalArgumentException("Couldn't resolve parameter value " + parameterName);
+    }
+  }
+}

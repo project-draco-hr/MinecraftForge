@@ -1,0 +1,16 @@
+{
+  if (asm != null) {
+    if (sneaking) {
+      cycleLength.setValue(6 - cycleLength.apply(0));
+    }
+ else     if (asm.currentState().equals("default")) {
+      float time=Animation.getWorldTime(getWorld());
+      clickTime.setValue(time);
+      asm.transition("starting");
+    }
+ else     if (asm.currentState().equals("moving")) {
+      clickTime.setValue(Animation.getWorldTime(getWorld()));
+      asm.transition("stopping");
+    }
+  }
+}

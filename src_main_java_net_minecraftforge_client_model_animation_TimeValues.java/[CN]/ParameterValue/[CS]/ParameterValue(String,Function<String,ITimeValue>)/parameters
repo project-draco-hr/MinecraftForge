@@ -1,0 +1,2 @@
+String parameterName
+Function<String,ITimeValue> valueResolver

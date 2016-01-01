@@ -1,0 +1,6 @@
+{
+  if (name.equals("main")) {
+    return Optional.<IClip>of(B3DClip.instance);
+  }
+  return Optional.absent();
+}

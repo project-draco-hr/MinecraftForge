@@ -1,0 +1,25 @@
+{
+  ImmutableCollection<MBJointWeight> infos=getJoint(i);
+  if (!infos.isEmpty()) {
+    Matrix4f m=new Matrix4f(), tmp;
+    float weight=0;
+    for (    MBJointWeight info : infos) {
+      if (info.getWeights().containsKey(i)) {
+        ModelBlockAnimation.MBJoint joint=new ModelBlockAnimation.MBJoint(info.getName(),part);
+        Optional<TRSRTransformation> trOp=state.apply(Optional.of(joint));
+        if (trOp.isPresent() && trOp.get() != TRSRTransformation.identity()) {
+          float w=info.getWeights().get(i)[0];
+          tmp=trOp.get().getMatrix();
+          tmp.mul(w);
+          m.add(tmp);
+          weight+=w;
+        }
+      }
+    }
+    if (weight > 1e-5) {
+      m.mul(1f / weight);
+      return new TRSRTransformation(m);
+    }
+  }
+  return null;
+}

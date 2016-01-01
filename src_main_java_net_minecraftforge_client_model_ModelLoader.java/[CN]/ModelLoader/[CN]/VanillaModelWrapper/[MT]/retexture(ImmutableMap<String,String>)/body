@@ -30,5 +30,5 @@
       if (removed.contains(entry.getValue().texture))       itr.remove();
     }
   }
-  return new VanillaModelWrapper(location,neweModel);
+  return new VanillaModelWrapper(location,neweModel,animation);
 }

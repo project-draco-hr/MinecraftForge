@@ -1,0 +1,4 @@
+{
+  this.joints=joints;
+  this.clips=clips;
+}

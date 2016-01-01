@@ -1,0 +1,7 @@
+Entity entity
+float limbSwing
+float limbSwingSpeed
+float timeAlive
+float yawHead
+float rotationPitch
+float scale

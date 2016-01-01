@@ -1,0 +1,39 @@
+{
+  float ret=input;
+  for (int i=0; i < operators.length(); i++) {
+    float arg=args.get(i).apply(input);
+switch (operators.charAt(i)) {
+case '+':
+      ret+=arg;
+    break;
+case '-':
+  ret-=arg;
+break;
+case '*':
+ret*=arg;
+break;
+case '/':
+ret/=arg;
+break;
+case 'm':
+ret=Math.min(ret,arg);
+break;
+case 'M':
+ret=Math.max(ret,arg);
+break;
+case 'r':
+ret=(float)Math.floor(ret / arg) * arg;
+break;
+case 'R':
+ret=(float)Math.ceil(ret / arg) * arg;
+break;
+case 'f':
+ret-=Math.floor(ret / arg) * arg;
+break;
+case 'F':
+ret=(float)Math.ceil(ret / arg) * arg - ret;
+break;
+}
+}
+return ret;
+}

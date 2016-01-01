@@ -1,0 +1,3 @@
+{
+  this.clipResolver.set(clipResolver);
+}

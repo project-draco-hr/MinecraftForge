@@ -1,0 +1,3 @@
+T instance
+float time
+Iterable<Event> pastEvents

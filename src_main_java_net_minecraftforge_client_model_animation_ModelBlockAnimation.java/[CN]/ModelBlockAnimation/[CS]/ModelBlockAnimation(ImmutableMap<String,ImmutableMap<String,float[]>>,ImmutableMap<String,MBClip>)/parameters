@@ -1,0 +1,2 @@
+ImmutableMap<String,ImmutableMap<String,float[]>> joints
+ImmutableMap<String,MBClip> clips

@@ -1,0 +1,7 @@
+{
+  return new TypeToken<List<E>>(){
+  }
+.where(new TypeParameter<E>(){
+  }
+,(TypeToken<E>)TypeToken.of(arg));
+}

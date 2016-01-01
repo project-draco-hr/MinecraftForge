@@ -1,0 +1,5 @@
+{
+  this.childClip=childClip;
+  this.modelLocation=modelLocation;
+  this.clipName=clipName;
+}
