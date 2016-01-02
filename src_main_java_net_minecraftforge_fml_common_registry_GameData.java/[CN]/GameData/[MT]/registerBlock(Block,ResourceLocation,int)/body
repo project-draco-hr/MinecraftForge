@@ -1,3 +1,0 @@
-{
-  return iBlockRegistry.add(idHint,name,block);
-}

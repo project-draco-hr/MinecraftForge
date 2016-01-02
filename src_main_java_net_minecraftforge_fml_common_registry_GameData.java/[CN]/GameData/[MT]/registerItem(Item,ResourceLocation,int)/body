@@ -1,3 +1,0 @@
-{
-  return iItemRegistry.add(idHint,name,item);
-}

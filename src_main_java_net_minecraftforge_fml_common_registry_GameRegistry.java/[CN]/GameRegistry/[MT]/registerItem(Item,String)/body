@@ -1,0 +1,6 @@
+{
+  if (Strings.isNullOrEmpty(name)) {
+    throw new IllegalArgumentException("Attempted to register a block with no name: " + item);
+  }
+  GameData.getMain().registerItem(item,name);
+}

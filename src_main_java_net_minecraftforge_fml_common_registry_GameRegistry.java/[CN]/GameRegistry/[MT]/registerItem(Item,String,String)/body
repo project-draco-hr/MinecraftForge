@@ -1,4 +1,4 @@
 {
-  GameData.getMain().registerItem(item,name);
+  registerItem(item,name);
   return item;
 }

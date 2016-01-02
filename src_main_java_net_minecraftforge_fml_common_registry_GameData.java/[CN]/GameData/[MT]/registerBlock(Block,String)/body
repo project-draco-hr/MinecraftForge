@@ -1,8 +1,3 @@
 {
-  int index=name.indexOf(':');
-  if (index != -1) {
-    FMLLog.bigWarning("Dangerous alternative prefix %s for name %s, invalid registry invocation/invalid name?",name.substring(0,index),name);
-  }
-  ResourceLocation rl=addPrefix(name);
-  return registerBlock(block,rl,-1);
+  return iBlockRegistry.add(-1,addPrefix(name),block);
 }
