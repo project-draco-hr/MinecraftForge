@@ -17,6 +17,9 @@
         continue;
       }
       String targetType=side.isClient() ? annotation.clientSide() : annotation.serverSide();
+      if (targetType.equals("")) {
+        targetType=targ.getClassName() + (side.isClient() ? "$ClientProxy" : "$ServerProxy");
+      }
       Object proxy=Class.forName(targetType,true,mcl).newInstance();
       if (languageAdapter.supportsStatics() && (target.getModifiers() & Modifier.STATIC) == 0) {
         FMLLog.severe("Attempted to load a proxy type %s into %s.%s, but the field is not static",targetType,targ.getClassName(),targ.getObjectName());
