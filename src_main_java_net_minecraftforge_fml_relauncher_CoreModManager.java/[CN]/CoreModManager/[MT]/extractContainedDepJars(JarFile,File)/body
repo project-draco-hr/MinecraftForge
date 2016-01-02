@@ -1,0 +1,33 @@
+{
+  Map<String,File> result=Maps.newHashMap();
+  if (!jar.getManifest().getMainAttributes().containsKey(MODCONTAINSDEPS))   return result;
+  String deps=jar.getManifest().getMainAttributes().getValue(MODCONTAINSDEPS);
+  String[] depList=deps.split(" ");
+  for (  String dep : depList) {
+    if (skipContainedDeps.contains(dep)) {
+      FMLRelaunchLog.log(Level.ERROR,"Skipping dep at request: %s",dep);
+      continue;
+    }
+    final JarEntry jarEntry=jar.getJarEntry(dep);
+    if (jarEntry == null) {
+      FMLRelaunchLog.log(Level.ERROR,"Found invalid ContainsDeps declaration %s in %s",dep,jar.getName());
+      continue;
+    }
+    File target=new File(versionedModsDir,dep);
+    if (target.exists()) {
+      FMLRelaunchLog.log(Level.DEBUG,"Found existing ContainsDep extracted to %s, skipping extraction",target.getCanonicalPath());
+      result.put(dep,target);
+      continue;
+    }
+    FMLRelaunchLog.log(Level.DEBUG,"Extracted ContainedDep %s from %s to %s",dep,jar.getName(),target.getCanonicalPath());
+    try {
+      ByteStreams.copy(jar.getInputStream(jarEntry),new FileOutputStream(target));
+    }
+ catch (    IOException e) {
+      FMLRelaunchLog.log(Level.ERROR,e,"An error occurred extracting dependency");
+      continue;
+    }
+    result.put(dep,target);
+  }
+  return result;
+}

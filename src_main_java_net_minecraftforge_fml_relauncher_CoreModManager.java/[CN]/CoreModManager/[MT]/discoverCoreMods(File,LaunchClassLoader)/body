@@ -60,6 +60,7 @@
     FMLRelaunchLog.fine("Examining for coremod candidacy %s",coreMod.getName());
     JarFile jar=null;
     Attributes mfAttributes;
+    String fmlCorePlugin;
     try {
       jar=new JarFile(coreMod);
       if (jar.getManifest() == null) {
@@ -67,6 +68,33 @@
       }
       ModAccessTransformer.addJar(jar);
       mfAttributes=jar.getManifest().getMainAttributes();
+      String cascadedTweaker=mfAttributes.getValue("TweakClass");
+      if (cascadedTweaker != null) {
+        FMLRelaunchLog.info("Loading tweaker %s from %s",cascadedTweaker,coreMod.getName());
+        Integer sortOrder=Ints.tryParse(Strings.nullToEmpty(mfAttributes.getValue("TweakOrder")));
+        sortOrder=(sortOrder == null ? Integer.valueOf(0) : sortOrder);
+        handleCascadingTweak(coreMod,jar,cascadedTweaker,classLoader,sortOrder);
+        ignoredModFiles.add(coreMod.getName());
+        continue;
+      }
+      List<String> modTypes=mfAttributes.containsKey(MODTYPE) ? Arrays.asList(mfAttributes.getValue(MODTYPE).split(",")) : ImmutableList.of("FML");
+      if (!modTypes.contains("FML")) {
+        FMLRelaunchLog.fine("Adding %s to the list of things to skip. It is not an FML mod,  it has types %s",coreMod.getName(),modTypes);
+        ignoredModFiles.add(coreMod.getName());
+        continue;
+      }
+      String modSide=mfAttributes.containsKey(MODSIDE) ? mfAttributes.getValue(MODSIDE) : "BOTH";
+      if (!("BOTH".equals(modSide) || FMLLaunchHandler.side.name().equals(modSide))) {
+        FMLRelaunchLog.fine("Mod %s has ModSide meta-inf value %s, and we're %s. It will be ignored",coreMod.getName(),modSide,FMLLaunchHandler.side.name());
+        ignoredModFiles.add(coreMod.getName());
+        continue;
+      }
+      ModListHelper.additionalMods.putAll(extractContainedDepJars(jar,versionedModDir));
+      fmlCorePlugin=mfAttributes.getValue("FMLCorePlugin");
+      if (fmlCorePlugin == null) {
+        FMLRelaunchLog.fine("Not found coremod data in %s",coreMod.getName());
+        continue;
+      }
     }
  catch (    IOException ioe) {
       FMLRelaunchLog.log(Level.ERROR,ioe,"Unable to read the jar file %s - ignoring",coreMod.getName());
@@ -80,32 +108,6 @@
  catch (        IOException e) {
         }
       }
-    }
-    String cascadedTweaker=mfAttributes.getValue("TweakClass");
-    if (cascadedTweaker != null) {
-      FMLRelaunchLog.info("Loading tweaker %s from %s",cascadedTweaker,coreMod.getName());
-      Integer sortOrder=Ints.tryParse(Strings.nullToEmpty(mfAttributes.getValue("TweakOrder")));
-      sortOrder=(sortOrder == null ? Integer.valueOf(0) : sortOrder);
-      handleCascadingTweak(coreMod,jar,cascadedTweaker,classLoader,sortOrder);
-      ignoredModFiles.add(coreMod.getName());
-      continue;
-    }
-    List<String> modTypes=mfAttributes.containsKey(MODTYPE) ? Arrays.asList(mfAttributes.getValue(MODTYPE).split(",")) : ImmutableList.of("FML");
-    if (!modTypes.contains("FML")) {
-      FMLRelaunchLog.fine("Adding %s to the list of things to skip. It is not an FML mod,  it has types %s",coreMod.getName(),modTypes);
-      ignoredModFiles.add(coreMod.getName());
-      continue;
-    }
-    String modSide=mfAttributes.containsKey(MODSIDE) ? mfAttributes.getValue(MODSIDE) : "BOTH";
-    if (!("BOTH".equals(modSide) || FMLLaunchHandler.side.name().equals(modSide))) {
-      FMLRelaunchLog.fine("Mod %s has ModSide meta-inf value %s, and we're %s. It will be ignored",coreMod.getName(),modSide,FMLLaunchHandler.side.name());
-      ignoredModFiles.add(coreMod.getName());
-      continue;
-    }
-    String fmlCorePlugin=mfAttributes.getValue("FMLCorePlugin");
-    if (fmlCorePlugin == null) {
-      FMLRelaunchLog.fine("Not found coremod data in %s",coreMod.getName());
-      continue;
     }
     try {
       classLoader.addURL(coreMod.toURI().toURL());
