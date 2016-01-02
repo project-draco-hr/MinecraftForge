@@ -1,0 +1,3 @@
+ItemStack container
+FluidStack resource
+boolean doFill

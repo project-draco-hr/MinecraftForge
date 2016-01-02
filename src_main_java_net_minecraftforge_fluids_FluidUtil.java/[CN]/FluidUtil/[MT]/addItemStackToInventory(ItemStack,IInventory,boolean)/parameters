@@ -1,0 +1,3 @@
+ItemStack itemstack
+IInventory inventory
+boolean isCreative

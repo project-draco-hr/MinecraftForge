@@ -1,0 +1,18 @@
+{
+  if (slot > getSlots()) {
+    return stack;
+  }
+  ItemStack rest=super.insertItem(slot,stack,simulate);
+  if (rest == null || rest.stackSize != stack.stackSize) {
+    ItemStack inSlot=getStackInSlot(slot);
+    if (inSlot != null) {
+      if (inventoryPlayer.player.worldObj.isRemote) {
+        inSlot.animationsToGo=5;
+      }
+ else       if (inventoryPlayer.player instanceof EntityPlayerMP) {
+        inventoryPlayer.player.openContainer.detectAndSendChanges();
+      }
+    }
+  }
+  return rest;
+}

@@ -1,0 +1,6 @@
+{
+  if (index < 0 || index >= itemHandler.length) {
+    return (IItemHandlerModifiable)EmptyHandler.INSTANCE;
+  }
+  return itemHandler[index];
+}

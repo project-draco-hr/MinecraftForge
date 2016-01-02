@@ -1,0 +1,7 @@
+{
+  FluidStack drained=tank.drain(maxDrain,doDrain);
+  if (doDrain && drained != null) {
+    worldObj.markBlockForUpdate(pos);
+  }
+  return drained;
+}

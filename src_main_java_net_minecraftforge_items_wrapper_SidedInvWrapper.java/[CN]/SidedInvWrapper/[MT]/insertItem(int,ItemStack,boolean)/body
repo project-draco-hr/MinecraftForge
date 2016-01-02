@@ -17,6 +17,7 @@
       return null;
     }
  else {
+      stack=stack.copy();
       if (!simulate) {
         ItemStack copy=stack.splitStack(m);
         copy.stackSize+=stackInSlot.stackSize;
@@ -32,6 +33,7 @@
  else {
     m=Math.min(stack.getMaxStackSize(),inv.getInventoryStackLimit());
     if (m < stack.stackSize) {
+      stack=stack.copy();
       if (!simulate) {
         inv.setInventorySlotContents(slot1,stack.splitStack(m));
         return stack;

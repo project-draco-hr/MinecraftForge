@@ -1,0 +1,3 @@
+{
+  return tank.getFluidAmount() == 0 || (tank.getFluid().getFluid() == fluid && tank.getFluidAmount() < tank.getCapacity());
+}

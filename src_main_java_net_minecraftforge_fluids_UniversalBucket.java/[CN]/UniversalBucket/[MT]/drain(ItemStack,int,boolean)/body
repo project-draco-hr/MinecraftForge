@@ -1,0 +1,17 @@
+{
+  if (maxDrain < capacity) {
+    return null;
+  }
+  FluidStack fluidStack=getFluid(container);
+  if (doDrain && fluidStack != null) {
+    if (empty != null) {
+      container.setItem(empty.getItem());
+      container.setTagCompound(empty.getTagCompound());
+      container.setItemDamage(empty.getItemDamage());
+    }
+ else {
+      container.stackSize=0;
+    }
+  }
+  return fluidStack;
+}

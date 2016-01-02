@@ -1,0 +1,41 @@
+{
+  if (!(container.getItem() instanceof IFluidContainerItem)) {
+    return false;
+  }
+  IFluidContainerItem fluidContainer=(IFluidContainerItem)container.getItem();
+  if (fluidContainer.getFluid(container) != null) {
+    if (max <= 0) {
+      max=fluidContainer.getCapacity(container);
+    }
+    FluidStack drained=fluidContainer.drain(container,max,false);
+    if (drained != null) {
+      int filled=tank.fill(side,drained,false);
+      if (filled > 0) {
+        drained=fluidContainer.drain(container,filled,false);
+        if (drained != null && drained.amount == filled) {
+          if (container.stackSize > 1) {
+            ItemStack toEmpty=container.copy();
+            toEmpty.stackSize=1;
+            drained=fluidContainer.drain(toEmpty,filled,true);
+            ItemStack remainder=ItemHandlerHelper.insertItemStacked(inventory,toEmpty,true);
+            if (remainder != null && player == null) {
+              return false;
+            }
+            remainder=ItemHandlerHelper.insertItemStacked(inventory,toEmpty,false);
+            if (remainder != null && player != null) {
+              ItemHandlerHelper.giveItemToPlayer(player,remainder);
+            }
+            tank.fill(side,drained,true);
+            container.stackSize--;
+          }
+ else {
+            drained=fluidContainer.drain(container,filled,true);
+            tank.fill(side,drained,true);
+          }
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
