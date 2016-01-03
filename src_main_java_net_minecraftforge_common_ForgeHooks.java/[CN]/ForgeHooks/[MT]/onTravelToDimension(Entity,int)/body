@@ -1,0 +1,10 @@
+{
+  EntityTravelToDimensionEvent event=new EntityTravelToDimensionEvent(entity,dimension);
+  MinecraftForge.EVENT_BUS.post(event);
+  if (event.isCanceled()) {
+    if (entity instanceof EntityMinecartContainer) {
+      ((EntityMinecartContainer)entity).dropContentsWhenDead=true;
+    }
+  }
+  return !event.isCanceled();
+}

@@ -1,0 +1,6 @@
+{
+  if (ENABLE) {
+    System.out.println("Travelling to Dimension " + event.dimension);
+    event.setCanceled(true);
+  }
+}
