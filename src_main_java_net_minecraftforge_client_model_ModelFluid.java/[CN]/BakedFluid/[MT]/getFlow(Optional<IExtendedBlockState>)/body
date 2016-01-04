@@ -1,7 +1,9 @@
 {
-  int flowRound=-1000;
+  float flow=-1000;
   if (stateOption.isPresent()) {
-    flowRound=(int)Math.round(Math.toDegrees(stateOption.get().getValue(BlockFluidBase.FLOW_DIRECTION).doubleValue()));
+    flow=stateOption.get().getValue(BlockFluidBase.FLOW_DIRECTION);
   }
+  int flowRound=(int)Math.round(Math.toDegrees(flow));
+  flowRound=MathHelper.clamp_int(flowRound,-1000,1000);
   return flowRound;
 }

@@ -22,7 +22,7 @@
     float flow=(float)Math.toRadians(flowRound);
     TextureAtlasSprite topSprite=flowing;
     float scale=4;
-    if (flow < -999F) {
+    if (flow < -17F) {
       flow=0;
       scale=8;
       topSprite=still;
