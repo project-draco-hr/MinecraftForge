@@ -2,4 +2,5 @@
   this.blockPos=blockPos;
   cachedTint=-1;
   cachedMultiplier=-1;
+  shx=shy=shz=0;
 }

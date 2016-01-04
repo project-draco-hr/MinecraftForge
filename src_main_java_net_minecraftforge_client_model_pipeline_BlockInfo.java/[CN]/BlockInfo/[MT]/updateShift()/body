@@ -1,12 +1,3 @@
 {
-  shx=shy=shz=0;
-  long rand=0;
-  if (block.getOffsetType() != EnumOffsetType.NONE) {
-    rand=MathHelper.getPositionRandom(blockPos);
-    shx=((float)((rand >> 16) & 0xF) / 0xF - .5f) * .5f;
-    shz=((float)((rand >> 24) & 0xF) / 0xF - .5f) * .5f;
-    if (block.getOffsetType() == EnumOffsetType.XYZ) {
-      shy=((float)((rand >> 20) & 0xF) / 0xF - 1) * .2f;
-    }
-  }
+  updateShift(false);
 }
