@@ -1,9 +1,8 @@
 Optional<TRSRTransformation> transformation
+ImmutableMap<TransformType,TRSRTransformation> transforms
 VertexFormat format
 int color
 TextureAtlasSprite still
 TextureAtlasSprite flowing
 boolean gas
-boolean statePresent
-int[] cornerRound
-int flowRound
+Optional<IExtendedBlockState> stateOption

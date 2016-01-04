@@ -1,0 +1,3 @@
+{
+  return IPerspectiveAwareModel.MapWrapper.handlePerspective(this,transforms,type);
+}

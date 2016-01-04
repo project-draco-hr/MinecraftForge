@@ -1,5 +1,6 @@
 {
   this.transformation=transformation;
+  this.transforms=transforms;
   this.format=format;
   this.color=color;
   this.still=still;
@@ -68,7 +69,7 @@
     builder.setQuadOrientation(EnumFacing.UP);
     builder.setQuadColored();
     for (int i=0; i < 4; i++) {
-      putVertex(builder,EnumFacing.UP,z[i],x[i],0,still.getInterpolatedU(x[i] * 16),still.getInterpolatedV(z[i] * 16));
+      putVertex(builder,EnumFacing.UP,z[i],x[i],0,still.getInterpolatedU(z[i] * 16),still.getInterpolatedV(x[i] * 16));
     }
     faceQuads.put(EnumFacing.SOUTH,ImmutableList.<BakedQuad>of(builder.build()));
   }
