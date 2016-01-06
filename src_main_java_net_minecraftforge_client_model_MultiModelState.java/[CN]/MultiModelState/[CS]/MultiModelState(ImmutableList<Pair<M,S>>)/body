@@ -1,0 +1,8 @@
+{
+  ImmutableMap.Builder<MultiModelPart,S> builder=ImmutableMap.builder();
+  for (int i=0; i < states.size(); i++) {
+    Pair<M,S> pair=states.get(i);
+    builder.put(new MultiModelPart(pair.getLeft(),i),pair.getRight());
+  }
+  this.states=builder.build();
+}

@@ -1,0 +1,8 @@
+{
+  Optional<TRSRTransformation> normal=state.apply(part);
+  Optional<TRSRTransformation> multi=state.apply(Optional.of(new PartPart(model,index,part)));
+  if (normal.isPresent() && multi.isPresent()) {
+    return Optional.of(normal.get().compose(multi.get()));
+  }
+  return normal.or(multi);
+}

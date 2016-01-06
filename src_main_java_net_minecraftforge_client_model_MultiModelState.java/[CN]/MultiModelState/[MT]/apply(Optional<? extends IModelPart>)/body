@@ -1,0 +1,18 @@
+{
+  if (part.isPresent()) {
+    if (part.get() instanceof MultiModelPart) {
+      MultiModelPart key=(MultiModelPart)part.get();
+      if (states.containsKey(key)) {
+        return Optional.of(states.get(key).apply(Optional.<IModelPart>absent()).or(TRSRTransformation.identity()));
+      }
+    }
+ else     if (part.get() instanceof PartPart) {
+      PartPart partPart=(PartPart)part.get();
+      MultiModelPart key=new MultiModelPart(partPart.model,partPart.index);
+      if (states.containsKey(key)) {
+        return states.get(key).apply(partPart.part);
+      }
+    }
+  }
+  return Optional.absent();
+}

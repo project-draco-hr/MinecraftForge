@@ -1,0 +1,6 @@
+{
+  if (state.apply(Optional.of(new MultiModelPart(model,index))).isPresent()) {
+    return new PartState(state,model,index);
+  }
+  return state;
+}
