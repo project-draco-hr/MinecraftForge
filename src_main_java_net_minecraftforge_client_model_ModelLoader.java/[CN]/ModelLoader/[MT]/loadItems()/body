@@ -1,9 +1,16 @@
 {
   registerVariantNames();
-  for (  Item item : GameData.getItemRegistry().typeSafeIterable()) {
+  int size=0;
+  ImmutableList<Item> items=ImmutableList.copyOf(GameData.getItemRegistry().typeSafeIterable());
+  for (  Item item : items) {
+    size+=getVariantNames(item).size();
+  }
+  itemBar=ProgressManager.push("ModelLoader: items",size);
+  for (  Item item : items) {
     for (    String s : (List<String>)getVariantNames(item)) {
       ResourceLocation file=getItemLocation(s);
       ModelResourceLocation memory=getInventoryVariant(s);
+      itemBar.step(memory.toString());
       IModel model=null;
       try {
         model=getModel(file);
@@ -24,6 +31,7 @@
       }
     }
   }
+  ProgressManager.pop(itemBar);
   if (ForgeModContainer.replaceVanillaBucketModel) {
     if (!stateModels.containsKey(ModelDynBucket.LOCATION)) {
       ModelResourceLocation memory=getInventoryVariant("forge:dynbucket");

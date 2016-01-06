@@ -1,17 +1,26 @@
 {
-  Variants variants=null;
+  if (shouldProgressBar) {
+    blockBar.step(location.toString());
+  }
+  boolean p=shouldProgressBar;
   try {
-    variants=definition.getVariants(location.getVariant());
-  }
- catch (  MissingVariantException e) {
-    missingVariants.add(location);
-  }
-  if (variants != null && !variants.getVariants().isEmpty()) {
+    Variants variants=null;
     try {
-      stateModels.put(location,new WeightedRandomModel(location,variants));
+      variants=definition.getVariants(location.getVariant());
     }
- catch (    Throwable e) {
-      throw new RuntimeException(e);
+ catch (    MissingVariantException e) {
+      missingVariants.add(location);
     }
+    if (variants != null && !variants.getVariants().isEmpty()) {
+      try {
+        stateModels.put(location,new WeightedRandomModel(location,variants));
+      }
+ catch (      Throwable e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+  finally {
+    shouldProgressBar=p;
   }
 }
