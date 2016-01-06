@@ -1,3 +1,0 @@
-{
-  return model.bake(state,format,bakedTextureGetter);
-}

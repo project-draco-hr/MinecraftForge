@@ -1,3 +1,4 @@
 {
-  return new MultiLayerBakedModel(models,format,IPerspectiveAwareModel.MapWrapper.getTransforms(state));
+  IModel missing=ModelLoaderRegistry.getMissingModel();
+  return new MultiLayerBakedModel(buildModels(models,state,format,bakedTextureGetter),missing.bake(missing.getDefaultState(),format,bakedTextureGetter),format,IPerspectiveAwareModel.MapWrapper.getTransforms(state));
 }

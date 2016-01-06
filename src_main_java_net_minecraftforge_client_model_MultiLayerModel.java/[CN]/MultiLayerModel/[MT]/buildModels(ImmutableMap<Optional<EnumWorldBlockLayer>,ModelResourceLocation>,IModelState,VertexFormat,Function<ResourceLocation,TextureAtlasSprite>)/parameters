@@ -1,3 +1,4 @@
+ImmutableMap<Optional<EnumWorldBlockLayer>,ModelResourceLocation> models
 IModelState state
 VertexFormat format
 Function<ResourceLocation,TextureAtlasSprite> bakedTextureGetter

@@ -1,6 +1,6 @@
 {
   this.variants=variants.getVariants();
-  ImmutableMap.Builder<MapModelState.Wrapper,IModelState> builder=ImmutableMap.builder();
+  ImmutableList.Builder<Pair<IModel,IModelState>> builder=ImmutableList.builder();
   for (  Variant v : (List<Variant>)variants.getVariants()) {
     ResourceLocation loc=v.getModelLocation();
     locations.add(loc);
@@ -22,14 +22,13 @@
       }
       textures.addAll(model.getTextures());
     }
-    model=new WeightedPartWrapper(model);
     models.add(model);
-    builder.put(MapModelState.wrap(model),v.getState());
+    builder.add(Pair.of(model,v.getState()));
   }
   if (models.size() == 0) {
     IModel missing=getMissingModel();
     models.add(missing);
-    builder.put(MapModelState.wrap(missing),TRSRTransformation.identity());
+    builder.add(Pair.<IModel,IModelState>of(missing,TRSRTransformation.identity()));
   }
-  defaultState=new MapModelState(builder.build());
+  defaultState=new MultiModelState(builder.build());
 }

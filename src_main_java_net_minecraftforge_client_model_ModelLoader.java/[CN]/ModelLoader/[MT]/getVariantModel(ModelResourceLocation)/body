@@ -1,0 +1,6 @@
+{
+  loadVariants(ImmutableList.of(location));
+  IModel model=stateModels.get(location);
+  if (model == null)   model=getMissingModel();
+  return model;
+}

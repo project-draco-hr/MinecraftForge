@@ -1,4 +1,3 @@
 {
-  compute();
   return base.getParticleTexture();
 }

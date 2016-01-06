@@ -1,8 +1,7 @@
 {
-  compute();
-  EnumWorldBlockLayer layer=MinecraftForgeClient.getRenderLayer();
-  if (!bakedModels.containsKey(layer)) {
+  Optional<EnumWorldBlockLayer> layer=Optional.of(MinecraftForgeClient.getRenderLayer());
+  if (!models.containsKey(layer)) {
     return missing;
   }
-  return bakedModels.get(layer);
+  return models.get(layer);
 }

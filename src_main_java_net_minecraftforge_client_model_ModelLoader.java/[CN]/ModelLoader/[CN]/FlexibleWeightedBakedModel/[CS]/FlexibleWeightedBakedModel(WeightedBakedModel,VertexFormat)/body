@@ -1,5 +1,4 @@
 {
   super(parent.models);
-  this.parent=parent;
   this.format=format;
 }

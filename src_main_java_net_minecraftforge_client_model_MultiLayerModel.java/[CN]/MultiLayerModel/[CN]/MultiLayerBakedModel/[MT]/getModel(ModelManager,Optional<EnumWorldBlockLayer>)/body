@@ -1,7 +1,0 @@
-{
-  ModelResourceLocation loc=models.get(layer);
-  if (loc == null) {
-    loc=new ModelResourceLocation("builtin/missing","missing");
-  }
-  return manager.getModel(loc);
-}

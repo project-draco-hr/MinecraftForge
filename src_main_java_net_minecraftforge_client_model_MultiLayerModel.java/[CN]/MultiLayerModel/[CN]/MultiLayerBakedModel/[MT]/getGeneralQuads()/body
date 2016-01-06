@@ -1,4 +1,3 @@
 {
-  compute();
   return quads.get(Optional.absent());
 }

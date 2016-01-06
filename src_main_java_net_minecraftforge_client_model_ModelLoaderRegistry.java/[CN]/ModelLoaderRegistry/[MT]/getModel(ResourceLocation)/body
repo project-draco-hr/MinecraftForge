@@ -1,39 +1,51 @@
 {
-  if (cache.containsKey(location))   return cache.get(location);
-  ResourceLocation actual=getActualLocation(location);
-  ICustomModelLoader accepted=null;
-  for (  ICustomModelLoader loader : loaders) {
-    try {
-      if (loader.accepts(actual)) {
-        if (accepted != null) {
-          FMLLog.severe("2 loaders (%s and %s) want to load the same model %s",accepted,loader,location);
-          throw new IllegalStateException("2 loaders want to load the same model");
-        }
-        accepted=loader;
-      }
-    }
- catch (    Exception e) {
-      FMLLog.log(Level.ERROR,e,"Exception checking if model %s can be loaded with loader %s, skipping",location,loader);
-    }
-  }
-  if (accepted == null) {
-    if (VanillaLoader.instance.accepts(actual))     accepted=VanillaLoader.instance;
-  }
   IModel model;
-  if (accepted == null) {
-    FMLLog.severe("no suitable loader found for the model %s, skipping",location);
-    model=getMissingModel();
+  if (location instanceof ModelResourceLocation) {
+    ModelLoader loader=ModelLoader.VanillaLoader.instance.getLoader();
+    if (loader != null) {
+      model=loader.getVariantModel((ModelResourceLocation)location);
+    }
+ else {
+      FMLLog.log(Level.ERROR,"Loading model too early, skipping: %s",location);
+      model=getMissingModel();
+    }
   }
  else {
-    try {
-      model=accepted.loadModel(actual);
+    if (cache.containsKey(location))     return cache.get(location);
+    ResourceLocation actual=getActualLocation(location);
+    ICustomModelLoader accepted=null;
+    for (    ICustomModelLoader loader : loaders) {
+      try {
+        if (loader.accepts(actual)) {
+          if (accepted != null) {
+            FMLLog.severe("2 loaders (%s and %s) want to load the same model %s",accepted,loader,location);
+            throw new IllegalStateException("2 loaders want to load the same model");
+          }
+          accepted=loader;
+        }
+      }
+ catch (      Exception e) {
+        FMLLog.log(Level.ERROR,e,"Exception checking if model %s can be loaded with loader %s, skipping",location,loader);
+      }
     }
- catch (    IOException e) {
-      throw e;
+    if (accepted == null) {
+      if (VanillaLoader.instance.accepts(actual))       accepted=VanillaLoader.instance;
     }
-catch (    Exception e) {
-      FMLLog.log(Level.ERROR,e,"Exception loading model %s with loader %s, skipping",location,accepted);
+    if (accepted == null) {
+      FMLLog.severe("no suitable loader found for the model %s, skipping",location);
       model=getMissingModel();
+    }
+ else {
+      try {
+        model=accepted.loadModel(actual);
+      }
+ catch (      IOException e) {
+        throw e;
+      }
+catch (      Exception e) {
+        FMLLog.log(Level.ERROR,e,"Exception loading model %s with loader %s, skipping",location,accepted);
+        model=getMissingModel();
+      }
     }
   }
   cache.put(location,model);

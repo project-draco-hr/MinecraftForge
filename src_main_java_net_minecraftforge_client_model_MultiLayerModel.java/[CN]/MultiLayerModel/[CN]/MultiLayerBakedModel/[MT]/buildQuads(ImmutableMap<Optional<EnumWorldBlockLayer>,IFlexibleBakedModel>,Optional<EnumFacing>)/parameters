@@ -1,0 +1,2 @@
+ImmutableMap<Optional<EnumWorldBlockLayer>,IFlexibleBakedModel> models
+Optional<EnumFacing> side
