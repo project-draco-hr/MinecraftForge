@@ -1,11 +1,10 @@
 {
   Map<IBlockState,ModelResourceLocation> stateMap=blockModelShapes.getBlockStateMapper().putAllStateModelLocations();
-  blockBar=ProgressManager.push("ModelLoader: blocks",stateMap.size());
   Collection<ModelResourceLocation> variants=Lists.newArrayList(stateMap.values());
   variants.add(new ModelResourceLocation("minecraft:item_frame","normal"));
   variants.add(new ModelResourceLocation("minecraft:item_frame","map"));
-  shouldProgressBar=true;
+  blockBar=ProgressManager.push("ModelLoader: blocks",variants.size());
+  loadingBlockModels.addAll(variants);
   loadVariants(variants);
-  shouldProgressBar=false;
   ProgressManager.pop(blockBar);
 }
