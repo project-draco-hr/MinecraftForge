@@ -7,9 +7,5 @@
   }
   TextureAtlasSprite particle=bakedTextureGetter.apply(textures.isEmpty() ? new ResourceLocation("missingno") : textures.get(0));
   ImmutableMap<TransformType,TRSRTransformation> map=IPerspectiveAwareModel.MapWrapper.getTransforms(state);
-  IFlexibleBakedModel ret=new BakedModel(builder.build(),particle,format);
-  if (map.isEmpty()) {
-    return ret;
-  }
-  return new IPerspectiveAwareModel.MapWrapper(ret,map);
+  return new BakedItemModel(builder.build(),particle,format,map,null);
 }

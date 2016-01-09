@@ -1,0 +1,5 @@
+ImmutableList<BakedQuad> quads
+TextureAtlasSprite particle
+VertexFormat format
+ImmutableMap<TransformType,TRSRTransformation> transforms
+IFlexibleBakedModel otherModel
