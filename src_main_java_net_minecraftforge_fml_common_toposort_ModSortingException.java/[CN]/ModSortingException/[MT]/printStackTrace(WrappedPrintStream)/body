@@ -1,0 +1,9 @@
+{
+  SortingExceptionData<ModContainer> exceptionData=getExceptionData();
+  stream.println("A dependency cycle was detected in the input mod set so an ordering cannot be determined");
+  stream.println("The first mod in the cycle is " + exceptionData.getFirstBadNode());
+  stream.println("The mod cycle involves:");
+  for (  ModContainer mc : exceptionData.getVisitedNodes()) {
+    stream.println(String.format("\t%s : before: %s, after: %s",mc.toString(),mc.getDependants(),mc.getDependencies()));
+  }
+}

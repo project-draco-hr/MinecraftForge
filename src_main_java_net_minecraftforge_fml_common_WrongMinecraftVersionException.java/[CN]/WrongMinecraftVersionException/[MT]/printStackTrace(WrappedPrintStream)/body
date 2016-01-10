@@ -1,0 +1,8 @@
+{
+  stream.println("Wrong Minecraft Versions!");
+  stream.println("Mod: " + mod.getModId());
+  stream.println("Location: " + mod.getSource().toString());
+  stream.println("Expected: " + mod.acceptableMinecraftVersionRange().toString());
+  stream.println("Current: " + mcVersion);
+  stream.println("");
+}
