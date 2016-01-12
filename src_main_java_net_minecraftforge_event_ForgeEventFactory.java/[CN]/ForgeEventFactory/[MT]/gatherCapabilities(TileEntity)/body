@@ -1,0 +1,3 @@
+{
+  return gatherCapabilities(new AttachCapabilitiesEvent.TileEntity(tileEntity),null);
+}

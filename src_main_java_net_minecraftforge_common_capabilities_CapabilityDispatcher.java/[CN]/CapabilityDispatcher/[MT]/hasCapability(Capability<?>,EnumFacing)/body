@@ -1,0 +1,8 @@
+{
+  for (  ICapabilityProvider cap : caps) {
+    if (cap.hasCapability(capability,facing)) {
+      return true;
+    }
+  }
+  return false;
+}

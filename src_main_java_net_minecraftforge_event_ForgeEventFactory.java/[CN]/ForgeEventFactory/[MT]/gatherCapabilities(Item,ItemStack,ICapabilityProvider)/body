@@ -1,0 +1,3 @@
+{
+  return gatherCapabilities(new AttachCapabilitiesEvent.Item(item,stack),parent);
+}

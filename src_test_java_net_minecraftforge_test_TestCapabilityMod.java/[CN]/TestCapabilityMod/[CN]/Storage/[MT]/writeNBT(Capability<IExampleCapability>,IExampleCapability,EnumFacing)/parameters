@@ -1,0 +1,3 @@
+Capability<IExampleCapability> capability
+IExampleCapability instance
+EnumFacing side

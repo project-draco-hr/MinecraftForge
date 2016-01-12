@@ -1,0 +1,7 @@
+{
+  NBTTagCompound nbt=new NBTTagCompound();
+  for (int x=0; x < writers.length; x++) {
+    nbt.setTag(names[x],writers[x].serializeNBT());
+  }
+  return nbt;
+}

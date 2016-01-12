@@ -1,0 +1,23 @@
+{
+  List<ICapabilityProvider> lstCaps=Lists.newArrayList();
+  List<INBTSerializable<NBTBase>> lstWriters=Lists.newArrayList();
+  List<String> lstNames=Lists.newArrayList();
+  if (parent != null) {
+    lstCaps.add(parent);
+    if (parent instanceof INBTSerializable) {
+      lstWriters.add((INBTSerializable<NBTBase>)parent);
+      lstNames.add("Parent");
+    }
+  }
+  for (  Map.Entry<ResourceLocation,ICapabilityProvider> entry : list.entrySet()) {
+    ICapabilityProvider prov=entry.getValue();
+    lstCaps.add(prov);
+    if (prov instanceof INBTSerializable) {
+      lstWriters.add((INBTSerializable<NBTBase>)prov);
+      lstNames.add(entry.getKey().toString());
+    }
+  }
+  caps=lstCaps.toArray(new ICapabilityProvider[lstCaps.size()]);
+  writers=lstWriters.toArray(new INBTSerializable[lstWriters.size()]);
+  names=lstNames.toArray(new String[lstNames.size()]);
+}

@@ -1,0 +1,3 @@
+String name
+IStorage<T> storage
+Callable<? extends T> factory

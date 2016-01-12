@@ -1,0 +1,9 @@
+{
+  for (  ICapabilityProvider cap : caps) {
+    T ret=cap.getCapability(capability,facing);
+    if (ret != null) {
+      return ret;
+    }
+  }
+  return null;
+}

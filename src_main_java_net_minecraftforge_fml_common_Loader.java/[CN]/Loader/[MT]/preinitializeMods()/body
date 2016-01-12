@@ -5,6 +5,7 @@
   }
   ObjectHolderRegistry.INSTANCE.findObjectHolders(discoverer.getASMTable());
   ItemStackHolderInjector.INSTANCE.findHolders(discoverer.getASMTable());
+  CapabilityManager.INSTANCE.injectCapabilities(discoverer.getASMTable());
   modController.distributeStateMessage(LoaderState.PREINITIALIZATION,discoverer.getASMTable(),canonicalConfigDir);
   ObjectHolderRegistry.INSTANCE.applyObjectHolders();
   ItemStackHolderInjector.INSTANCE.inject();

@@ -1,0 +1,4 @@
+{
+  CapabilityManager.INSTANCE.register(IExampleCapability.class,new Storage(),DefaultImpl.class);
+  MinecraftForge.EVENT_BUS.register(this);
+}

@@ -1,0 +1,19 @@
+{
+class Provider implements ICapabilityProvider, IExampleCapability {
+    private TileEntity te;
+    Provider(    TileEntity te){
+      this.te=te;
+    }
+    @Override public boolean hasCapability(    Capability<?> capability,    EnumFacing facing){
+      return TEST_CAP != null && capability == TEST_CAP;
+    }
+    @SuppressWarnings("unchecked") @Override public <T>T getCapability(    Capability<T> capability,    EnumFacing facing){
+      if (TEST_CAP != null && capability == TEST_CAP)       return (T)this;
+      return null;
+    }
+    @Override public String getOwnerType(){
+      return te.getClass().getName();
+    }
+  }
+  event.addCapability(new ResourceLocation("TestCapabilityMod:DummyCap"),new Provider(event.getTileEntity()));
+}
