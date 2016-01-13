@@ -8,9 +8,11 @@
       LZMAInputSupplier zis=new LZMAInputSupplier(classData);
       CharSource srgSource=zis.asCharSource(Charsets.UTF_8);
       srgList=srgSource.readLines();
+      FMLRelaunchLog.fine("Loading deobfuscation resource %s with %d records",deobfFileName,srgList.size());
     }
  else {
       srgList=Files.readLines(new File(gradleStartProp),Charsets.UTF_8);
+      FMLRelaunchLog.fine("Loading deobfuscation resource %s with %d records",gradleStartProp,srgList.size());
     }
     rawMethodMaps=Maps.newHashMap();
     rawFieldMaps=Maps.newHashMap();

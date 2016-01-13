@@ -1,7 +1,5 @@
 {
-  if (!(Boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment")) {
-    classLoader.registerTransformer("net.minecraftforge.fml.common.asm.transformers.DeobfuscationTransformer");
-  }
+  classLoader.registerTransformer("net.minecraftforge.fml.common.asm.transformers.DeobfuscationTransformer");
   for (  String transformer : CoreModManager.getAccessTransformers()) {
     classLoader.registerTransformer(transformer);
   }

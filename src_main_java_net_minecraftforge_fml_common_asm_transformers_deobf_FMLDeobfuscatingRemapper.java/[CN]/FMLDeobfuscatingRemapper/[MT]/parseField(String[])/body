@@ -9,6 +9,8 @@
   if (!rawFieldMaps.containsKey(cl)) {
     rawFieldMaps.put(cl,Maps.<String,String>newHashMap());
   }
-  rawFieldMaps.get(cl).put(oldName + ":" + getFieldType(cl,oldName),newName);
+  String fieldType=getFieldType(cl,oldName);
+  if (fieldType == null)   fieldType=getFieldType(cl,newName);
+  rawFieldMaps.get(cl).put(oldName + ":" + fieldType,newName);
   rawFieldMaps.get(cl).put(oldName + ":null",newName);
 }
