@@ -1,0 +1,8 @@
+{
+  super(gui);
+  final ScaledResolution scaledresolution=new ScaledResolution(gui.mc);
+  final int scaledWidth=scaledresolution.getScaledWidth();
+  final int scaledHeight=scaledresolution.getScaledHeight();
+  this.mouseX=Mouse.getX() * scaledWidth / gui.mc.displayWidth;
+  this.mouseY=scaledHeight - Mouse.getY() * scaledHeight / gui.mc.displayHeight - 1;
+}
