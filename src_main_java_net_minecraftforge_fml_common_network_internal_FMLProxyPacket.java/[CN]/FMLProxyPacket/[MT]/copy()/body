@@ -1,0 +1,7 @@
+{
+  FMLProxyPacket pkt=new FMLProxyPacket(new PacketBuffer(payload.duplicate()),channel);
+  pkt.dispatcher=dispatcher;
+  pkt.netHandler=netHandler;
+  pkt.target=target;
+  return pkt;
+}

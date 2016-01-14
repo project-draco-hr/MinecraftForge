@@ -1,3 +1,4 @@
 {
+  if (!manager.isChannelOpen())   msg=msg.copy();
   manager.sendPacket(msg);
 }
