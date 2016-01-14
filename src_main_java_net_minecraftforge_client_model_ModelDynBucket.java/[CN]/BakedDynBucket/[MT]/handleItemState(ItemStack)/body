@@ -5,7 +5,9 @@
       fluidStack=((IFluidContainerItem)stack.getItem()).getFluid(stack);
     }
   }
-  if (fluidStack == null)   return this;
+  if (fluidStack == null) {
+    return this;
+  }
   Fluid fluid=fluidStack.getFluid();
   String name=fluid.getName();
   if (!cache.containsKey(name)) {
