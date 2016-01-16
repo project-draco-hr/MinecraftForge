@@ -1,34 +1,34 @@
 {
   registerVariantNames();
-  int size=0;
-  ImmutableList<Item> items=ImmutableList.copyOf(GameData.getItemRegistry().typeSafeIterable());
-  for (  Item item : items) {
-    size+=getVariantNames(item).size();
+  List<String> itemVariants=Lists.newArrayList();
+  for (  Item item : GameData.getItemRegistry().typeSafeIterable()) {
+    itemVariants.addAll(getVariantNames(item));
   }
-  itemBar=ProgressManager.push("ModelLoader: items",size);
-  for (  Item item : items) {
-    for (    String s : (List<String>)getVariantNames(item)) {
-      ResourceLocation file=getItemLocation(s);
-      ModelResourceLocation memory=getInventoryVariant(s);
-      itemBar.step(memory.toString());
-      IModel model=null;
+  Collections.sort(itemVariants);
+  itemBar=ProgressManager.push("ModelLoader: items",itemVariants.size());
+  for (  String s : itemVariants) {
+    ResourceLocation file=getItemLocation(s);
+    ModelResourceLocation memory=getInventoryVariant(s);
+    itemBar.step(memory.toString());
+    IModel model=null;
+    try {
+      model=getModel(file);
+      if (model == null) {
+        model=getMissingModel();
+      }
+      stateModels.put(memory,model);
+    }
+ catch (    FileNotFoundException e) {
+      FMLLog.fine("Item json isn't found for '" + memory + "', trying to load the variant from the blockstate json");
       try {
-        model=getModel(file);
+        registerVariant(getModelBlockDefinition(memory),memory);
       }
- catch (      IOException e) {
+ catch (      Exception exception) {
+        storeException(memory,new Exception("Could not load item model either from the normal location " + file + " or from the blockstate",exception));
       }
- finally {
-        if (model == null || model == getMissingModel()) {
-          FMLLog.fine("Item json isn't found for '" + memory + "', trying to load the variant from the blockstate json");
-          try {
-            registerVariant(getModelBlockDefinition(memory),memory);
-          }
- catch (          Exception exception) {
-            FMLLog.getLogger().warn("Unable to load definition " + memory,exception);
-          }
-        }
- else         stateModels.put(memory,model);
-      }
+    }
+catch (    Exception exception) {
+      storeException(memory,exception);
     }
   }
   ProgressManager.pop(itemBar);

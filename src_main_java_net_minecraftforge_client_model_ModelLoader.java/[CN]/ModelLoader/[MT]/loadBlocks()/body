@@ -1,10 +1,18 @@
 {
   Map<IBlockState,ModelResourceLocation> stateMap=blockModelShapes.getBlockStateMapper().putAllStateModelLocations();
-  Collection<ModelResourceLocation> variants=Lists.newArrayList(stateMap.values());
+  List<ModelResourceLocation> variants=Lists.newArrayList(stateMap.values());
   variants.add(new ModelResourceLocation("minecraft:item_frame","normal"));
   variants.add(new ModelResourceLocation("minecraft:item_frame","map"));
+  Collections.sort(variants,new Comparator<ModelResourceLocation>(){
+    public int compare(    ModelResourceLocation v1,    ModelResourceLocation v2){
+      return v1.toString().compareTo(v2.toString());
+    }
+  }
+);
   blockBar=ProgressManager.push("ModelLoader: blocks",variants.size());
-  loadingBlockModels.addAll(variants);
-  loadVariants(variants);
+  for (  ModelResourceLocation variant : variants) {
+    loadVariants(ImmutableList.of(variant));
+    blockBar.step(variant.toString());
+  }
   ProgressManager.pop(blockBar);
 }

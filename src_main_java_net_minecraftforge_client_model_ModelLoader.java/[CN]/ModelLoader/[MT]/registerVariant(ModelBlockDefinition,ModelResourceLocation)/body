@@ -1,8 +1,4 @@
 {
-  if (!loadingBlockModels.isEmpty() && loadingBlockModels.peekFirst() == location) {
-    blockBar.step(location.toString());
-    loadingBlockModels.removeFirst();
-  }
   Variants variants=null;
   try {
     variants=definition.getVariants(location.getVariant());
