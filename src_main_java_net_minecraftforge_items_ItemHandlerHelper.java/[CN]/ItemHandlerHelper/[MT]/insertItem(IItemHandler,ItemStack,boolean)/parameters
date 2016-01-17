@@ -1,0 +1,3 @@
+IItemHandler dest
+ItemStack stack
+boolean simulate

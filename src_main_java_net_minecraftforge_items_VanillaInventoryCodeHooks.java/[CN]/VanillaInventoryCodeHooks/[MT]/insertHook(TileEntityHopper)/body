@@ -1,0 +1,3 @@
+{
+  return insertHook(hopper,BlockHopper.getFacing(hopper.getBlockMetadata()));
+}

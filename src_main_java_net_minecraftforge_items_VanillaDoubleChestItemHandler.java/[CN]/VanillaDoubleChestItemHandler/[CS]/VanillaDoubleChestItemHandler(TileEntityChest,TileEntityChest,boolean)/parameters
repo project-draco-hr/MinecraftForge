@@ -1,0 +1,3 @@
+TileEntityChest mainChest
+TileEntityChest other
+boolean mainChestIsUpper

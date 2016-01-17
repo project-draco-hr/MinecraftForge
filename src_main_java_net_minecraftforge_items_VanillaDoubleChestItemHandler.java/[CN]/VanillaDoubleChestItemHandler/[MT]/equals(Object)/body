@@ -1,0 +1,9 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  VanillaDoubleChestItemHandler that=(VanillaDoubleChestItemHandler)o;
+  if (hashCode != that.hashCode)   return false;
+  final TileEntityChest otherChest=getOtherChest();
+  if (mainChestIsUpper == that.mainChestIsUpper)   return Objects.equals(mainChest,that.mainChest) && Objects.equals(otherChest,that.getOtherChest());
+ else   return Objects.equals(mainChest,that.getOtherChest()) && Objects.equals(otherChest,that.mainChest);
+}

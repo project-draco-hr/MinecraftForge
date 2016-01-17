@@ -1,0 +1,4 @@
+{
+  super(hopper);
+  this.hopper=hopper;
+}

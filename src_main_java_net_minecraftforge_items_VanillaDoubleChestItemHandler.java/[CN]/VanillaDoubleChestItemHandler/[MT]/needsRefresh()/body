@@ -1,0 +1,5 @@
+{
+  if (this == NO_ADJACENT_CHESTS_INSTANCE)   return false;
+  TileEntityChest tileEntityChest=get();
+  return tileEntityChest == null || tileEntityChest.isInvalid();
+}

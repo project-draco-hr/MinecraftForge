@@ -1,0 +1,6 @@
+{
+  super(other);
+  this.mainChest=mainChest;
+  this.mainChestIsUpper=mainChestIsUpper;
+  hashCode=Objects.hashCode(mainChestIsUpper ? mainChest : other) * 31 + Objects.hashCode(!mainChestIsUpper ? mainChest : other);
+}

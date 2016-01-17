@@ -1,0 +1,5 @@
+{
+  int[] slots=inv.getSlotsForFace(side);
+  if (slot < slots.length)   return slots[slot];
+  return -1;
+}

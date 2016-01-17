@@ -1,0 +1,4 @@
+{
+  TileEntityChest tileEntityChest=get();
+  return tileEntityChest != null && !tileEntityChest.isInvalid() ? tileEntityChest : null;
+}

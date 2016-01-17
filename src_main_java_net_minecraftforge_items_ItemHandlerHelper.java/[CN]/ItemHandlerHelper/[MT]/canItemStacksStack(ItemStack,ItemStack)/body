@@ -1,0 +1,6 @@
+{
+  if (a == null || !a.isItemEqual(b))   return false;
+  final NBTTagCompound aTag=a.getTagCompound();
+  final NBTTagCompound bTag=b.getTagCompound();
+  return (aTag != null || bTag == null) && (aTag == null || aTag.equals(bTag));
+}

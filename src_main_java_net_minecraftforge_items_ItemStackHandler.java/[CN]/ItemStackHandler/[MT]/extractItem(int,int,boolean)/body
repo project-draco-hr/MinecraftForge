@@ -1,0 +1,21 @@
+{
+  if (amount == 0)   return null;
+  validateSlotIndex(slot);
+  ItemStack existing=this.stacks[slot];
+  if (existing == null)   return null;
+  int toExtract=Math.min(amount,existing.getMaxStackSize());
+  if (existing.stackSize <= toExtract) {
+    if (!simulate) {
+      this.stacks[slot]=null;
+      onContentsChanged(slot);
+    }
+    return existing;
+  }
+ else {
+    if (!simulate) {
+      this.stacks[slot]=ItemHandlerHelper.copyStackWithSize(existing,existing.stackSize - toExtract);
+      onContentsChanged(slot);
+    }
+    return ItemHandlerHelper.copyStackWithSize(existing,toExtract);
+  }
+}

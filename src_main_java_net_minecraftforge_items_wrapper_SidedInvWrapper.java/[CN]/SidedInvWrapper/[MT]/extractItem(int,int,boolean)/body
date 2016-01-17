@@ -1,0 +1,22 @@
+{
+  if (amount == 0)   return null;
+  int slot1=getSlot(inv,slot,side);
+  if (slot1 == -1)   return null;
+  ItemStack stackInSlot=inv.getStackInSlot(slot1);
+  if (stackInSlot == null)   return null;
+  if (!inv.canExtractItem(slot1,stackInSlot,side))   return null;
+  if (simulate) {
+    if (stackInSlot.stackSize < amount) {
+      return stackInSlot.copy();
+    }
+ else {
+      ItemStack copy=stackInSlot.copy();
+      copy.stackSize=amount;
+      return copy;
+    }
+  }
+ else {
+    int m=Math.min(stackInSlot.stackSize,amount);
+    return inv.decrStackSize(slot1,m);
+  }
+}
