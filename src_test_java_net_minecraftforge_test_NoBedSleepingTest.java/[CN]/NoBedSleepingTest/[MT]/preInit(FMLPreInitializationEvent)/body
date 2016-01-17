@@ -1,0 +1,4 @@
+{
+  GameRegistry.registerItem(ItemSleepingPill.instance,ItemSleepingPill.name);
+  MinecraftForge.EVENT_BUS.register(new EventHandler());
+}

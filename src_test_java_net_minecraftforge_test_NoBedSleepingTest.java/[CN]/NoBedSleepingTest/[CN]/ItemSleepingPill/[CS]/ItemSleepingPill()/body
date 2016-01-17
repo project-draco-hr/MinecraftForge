@@ -1,0 +1,4 @@
+{
+  setCreativeTab(CreativeTabs.tabMisc);
+  setUnlocalizedName(MODID + ":" + name);
+}
