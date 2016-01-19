@@ -1,0 +1,9 @@
+{
+  try {
+    return super.getModelBlockDefinition(location);
+  }
+ catch (  Exception exception) {
+    storeException(location,new Exception("Could not load model definition for variant " + location,exception));
+  }
+  return new ModelBlockDefinition(new ArrayList<ModelBlockDefinition>());
+}
