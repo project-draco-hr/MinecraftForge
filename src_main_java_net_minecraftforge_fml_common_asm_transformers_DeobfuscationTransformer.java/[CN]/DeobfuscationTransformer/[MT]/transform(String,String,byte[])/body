@@ -3,8 +3,8 @@
     return null;
   }
   ClassReader classReader=new ClassReader(bytes);
-  ClassWriter classWriter=new ClassWriter(ClassWriter.COMPUTE_MAXS);
+  ClassWriter classWriter=new ClassWriter(WRITER_FLAGS);
   RemappingClassAdapter remapAdapter=new FMLRemappingAdapter(classWriter);
-  classReader.accept(remapAdapter,ClassReader.EXPAND_FRAMES);
+  classReader.accept(remapAdapter,READER_FLAGS);
   return classWriter.toByteArray();
 }
