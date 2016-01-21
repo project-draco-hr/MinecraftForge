@@ -1,0 +1,6 @@
+{
+  if (alwaysCreateEntry) {
+    return getOres(getOreID(name));
+  }
+  return nameToId.get(name) != null ? getOres(getOreID(name)) : EMPTY_LIST;
+}
