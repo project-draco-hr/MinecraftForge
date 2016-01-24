@@ -1,0 +1,9 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  ClipReference other=(ClipReference)obj;
+  resolve();
+  other.resolve();
+  return Objects.equal(clip,other.clip);
+}

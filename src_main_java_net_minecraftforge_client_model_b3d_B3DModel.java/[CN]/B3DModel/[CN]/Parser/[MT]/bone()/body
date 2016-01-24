@@ -4,6 +4,7 @@
   while (buf.hasRemaining()) {
     ret.add(Pair.of(getVertex(buf.getInt()),buf.getFloat()));
   }
+  dump("BONE(...)");
   popLimit();
   return ret;
 }

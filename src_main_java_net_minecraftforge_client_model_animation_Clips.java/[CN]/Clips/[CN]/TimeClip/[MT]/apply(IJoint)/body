@@ -1,0 +1,9 @@
+{
+  return new IJointClip(){
+    private final IJointClip parent=childClip.apply(joint);
+    public TRSRTransformation apply(    float time){
+      return parent.apply(TimeClip.this.time.apply(time));
+    }
+  }
+;
+}

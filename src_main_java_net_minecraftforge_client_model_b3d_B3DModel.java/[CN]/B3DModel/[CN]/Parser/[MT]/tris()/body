@@ -5,6 +5,7 @@
   while (buf.hasRemaining()) {
     ret.add(new Face(getVertex(buf.getInt()),getVertex(buf.getInt()),getVertex(buf.getInt()),getBrush(brush_id)));
   }
+  dump("TRIS([" + Joiner.on(", ").join(ret) + "])");
   popLimit();
   return ret;
 }

@@ -1,0 +1,81 @@
+{
+  initialize();
+  return new Iterable<Event>(){
+    public Iterator<Event> iterator(){
+      return new UnmodifiableIterator<Event>(){
+        private Float curKey;
+        private Event firstEvent;
+        private float stopTime;
+{
+          if (lastPollTime >= time) {
+            curKey=null;
+          }
+ else {
+            float fractTime=time - (float)Math.floor(time);
+            float fractLastTime=lastPollTime - (float)Math.floor(lastPollTime);
+            if (fractLastTime > fractTime) {
+              float tmp=fractTime;
+              fractTime=fractLastTime;
+              fractLastTime=tmp;
+            }
+            if (fractTime - fractLastTime > .5f) {
+              float tmp=fractTime;
+              fractTime=fractLastTime;
+              fractLastTime=tmp;
+            }
+            stopTime=fractLastTime;
+            curKey=events.floorKey(fractTime);
+            if (curKey == null && loop && !events.isEmpty()) {
+              curKey=events.lastKey();
+            }
+            if (curKey != null) {
+              float checkCurTime=curKey;
+              float checkStopTime=stopTime;
+              if (checkCurTime >= fractTime)               checkCurTime--;
+              if (checkStopTime >= fractTime)               checkStopTime--;
+              float offset=fractTime - checkCurTime;
+              Event event=events.get(curKey);
+              if (checkCurTime < checkStopTime) {
+                curKey=null;
+              }
+ else               if (offset != event.offset()) {
+                firstEvent=new Event(event.event(),offset);
+              }
+            }
+          }
+        }
+        public boolean hasNext(){
+          return curKey != null;
+        }
+        @Override public Event next(){
+          if (curKey == null) {
+            throw new NoSuchElementException();
+          }
+          Event event;
+          if (firstEvent == null) {
+            event=events.get(curKey);
+          }
+ else {
+            event=firstEvent;
+            firstEvent=null;
+          }
+          curKey=events.lowerKey(curKey);
+          if (curKey == null && loop) {
+            curKey=events.lastKey();
+          }
+          if (curKey != null) {
+            float checkStopTime=stopTime;
+            while (curKey + events.get(curKey).offset() < checkStopTime)             checkStopTime--;
+            while (curKey + events.get(curKey).offset() >= checkStopTime + 1)             checkStopTime++;
+            if (curKey <= checkStopTime) {
+              curKey=null;
+            }
+          }
+          return event;
+        }
+      }
+;
+    }
+  }
+;
+}

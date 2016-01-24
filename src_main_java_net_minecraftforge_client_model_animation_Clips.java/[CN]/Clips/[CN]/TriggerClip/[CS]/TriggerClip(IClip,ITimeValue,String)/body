@@ -1,0 +1,5 @@
+{
+  this.clip=clip;
+  this.parameter=parameter;
+  this.event=event;
+}

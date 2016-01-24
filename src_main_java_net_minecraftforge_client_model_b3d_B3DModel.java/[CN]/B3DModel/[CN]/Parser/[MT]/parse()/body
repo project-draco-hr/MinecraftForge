@@ -1,6 +1,10 @@
 {
   if (res != null)   return res;
+  dump="\n";
   readHeader();
   res=bb3d();
+  if (printLoadedModels) {
+    logger.info(dump);
+  }
   return res;
 }

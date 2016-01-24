@@ -1,0 +1,6 @@
+{
+  if (parameter.apply(lastPollTime) < 0 && parameter.apply(time) >= 0) {
+    return Iterables.mergeSorted(ImmutableSet.of(clip.pastEvents(lastPollTime,time),ImmutableSet.of(new Event(event,0))),Ordering.<Event>natural());
+  }
+  return clip.pastEvents(lastPollTime,time);
+}

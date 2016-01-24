@@ -1,0 +1,7 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  ModelClip other=(ModelClip)obj;
+  return Objects.equal(modelLocation,other.modelLocation) && Objects.equal(clipName,other.clipName);
+}

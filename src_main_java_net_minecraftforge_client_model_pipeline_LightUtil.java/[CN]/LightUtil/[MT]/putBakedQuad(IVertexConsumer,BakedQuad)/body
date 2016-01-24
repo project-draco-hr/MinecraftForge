@@ -7,10 +7,12 @@
     consumer.setQuadColored();
   }
   float[] data=new float[4];
-  int[] eMap=formatMaps.getUnchecked(consumer.getVertexFormat());
+  VertexFormat format=consumer.getVertexFormat();
+  int count=format.getElementCount();
+  int[] eMap=formatMaps.getUnchecked(format);
   for (int v=0; v < 4; v++) {
-    for (int e=0; e < consumer.getVertexFormat().getElementCount(); e++) {
-      if (eMap[e] != DefaultVertexFormats.ITEM.getElementCount()) {
+    for (int e=0; e < count; e++) {
+      if (eMap[e] != itemCount) {
         unpack(quad.getVertexData(),data,DefaultVertexFormats.ITEM,v,eMap[e]);
         consumer.put(e,data);
       }

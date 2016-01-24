@@ -10,6 +10,7 @@
     float rot=buf.getFloat();
     ret.add(new Texture(path,flags,blend,pos,scale,rot));
   }
+  dump("TEXS([" + Joiner.on(", ").join(ret) + "])");
   popLimit();
   this.textures.addAll(ret);
   return ret;

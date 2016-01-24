@@ -1,0 +1,5 @@
+{
+  for (  Event event : pastEvents) {
+    System.out.println("Event: " + event.event() + " "+ event.offset()+ " "+ getPos()+ " "+ time);
+  }
+}

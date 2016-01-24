@@ -1,0 +1,5 @@
+IJoint joint
+IJointClip fromClip
+IJointClip toClip
+ITimeValue input
+ITimeValue progress

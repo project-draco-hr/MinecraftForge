@@ -1,3 +1,9 @@
 {
-  return loader.new VanillaModelWrapper(modelLocation,loader.loadModel(modelLocation));
+  String modelPath=modelLocation.getResourcePath();
+  if (modelLocation.getResourcePath().startsWith("models/")) {
+    modelPath=modelPath.substring("models/".length());
+  }
+  ResourceLocation armatureLocation=new ResourceLocation(modelLocation.getResourceDomain(),"armatures/" + modelPath + ".json");
+  ModelBlockAnimation animation=Animation.INSTANCE.loadVanillaAnimation(armatureLocation);
+  return loader.new VanillaModelWrapper(modelLocation,loader.loadModel(modelLocation),animation);
 }

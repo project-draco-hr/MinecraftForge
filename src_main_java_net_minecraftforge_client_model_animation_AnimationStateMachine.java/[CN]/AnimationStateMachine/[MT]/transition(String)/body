@@ -1,0 +1,11 @@
+{
+  IClip nc=clips.get(newState);
+  if (!clips.containsKey(newState) || !states.contains(newState)) {
+    throw new IllegalStateException("unknown state: " + newState);
+  }
+  if (!transitions.get(currentStateName).equals(newState)) {
+    throw new IllegalArgumentException("no transition from current clip \"" + currentStateName + "\" to the clip \""+ newState+ "\" found.");
+  }
+  currentStateName=newState;
+  currentState=nc;
+}

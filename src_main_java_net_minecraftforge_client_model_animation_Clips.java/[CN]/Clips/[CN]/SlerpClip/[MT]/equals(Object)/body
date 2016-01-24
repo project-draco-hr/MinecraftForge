@@ -1,0 +1,7 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  SlerpClip other=(SlerpClip)obj;
+  return Objects.equal(from,other.from) && Objects.equal(to,other.to) && Objects.equal(input,other.input)&& Objects.equal(progress,other.progress);
+}

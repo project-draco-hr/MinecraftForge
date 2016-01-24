@@ -1,0 +1,3 @@
+{
+  return Animation.INSTANCE.load(location,parameters);
+}

@@ -1,0 +1,5 @@
+{
+  super();
+  this.g=g;
+  this.f=f;
+}

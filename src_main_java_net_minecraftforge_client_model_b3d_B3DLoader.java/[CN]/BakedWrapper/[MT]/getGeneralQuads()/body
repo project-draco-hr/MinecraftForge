@@ -8,8 +8,14 @@
       Mesh mesh=(Mesh)node.getKind();
       Collection<Face> faces=mesh.bake(new Function<Node<?>,Matrix4f>(){
         private final TRSRTransformation global=state.apply(Optional.<IModelPart>absent()).or(TRSRTransformation.identity());
+        private final LoadingCache<Node<?>,TRSRTransformation> localCache=CacheBuilder.newBuilder().maximumSize(32).build(new CacheLoader<Node<?>,TRSRTransformation>(){
+          public TRSRTransformation load(          Node<?> node) throws Exception {
+            return state.apply(Optional.of(new NodeJoint(node))).or(TRSRTransformation.identity());
+          }
+        }
+);
         public Matrix4f apply(        Node<?> node){
-          return global.compose(state.apply(Optional.of(new NodeJoint(node))).or(TRSRTransformation.identity())).getMatrix();
+          return global.compose(localCache.getUnchecked(node)).getMatrix();
         }
       }
 );

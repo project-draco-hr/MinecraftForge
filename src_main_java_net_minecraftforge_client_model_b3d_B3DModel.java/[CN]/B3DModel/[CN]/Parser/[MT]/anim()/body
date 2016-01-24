@@ -3,6 +3,7 @@
   int flags=buf.getInt();
   int frames=buf.getInt();
   float fps=buf.getFloat();
+  dump("ANIM(" + flags + ", "+ frames+ ", "+ fps+ ")");
   popLimit();
   return Triple.of(flags,frames,fps);
 }

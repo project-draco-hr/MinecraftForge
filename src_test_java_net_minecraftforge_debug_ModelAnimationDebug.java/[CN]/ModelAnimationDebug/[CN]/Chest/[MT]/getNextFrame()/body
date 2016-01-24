@@ -1,5 +1,0 @@
-{
-  if (opening)   return Math.min(tick + 1,maxFrame);
-  if (closing)   return Math.max(tick - 1,minFrame);
-  return tick;
-}

@@ -1,0 +1,3 @@
+{
+  asm=proxy.load(new ResourceLocation(MODID.toLowerCase(),"asms/block/engine.json"),ImmutableMap.<String,ITimeValue>of("cycle_length",cycleLength,"click_time",clickTime));
+}

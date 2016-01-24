@@ -1,0 +1,7 @@
+{
+  this.parameters=parameters;
+  this.clips=clips;
+  this.states=states;
+  this.transitions=transitions;
+  this.startState=startState;
+}

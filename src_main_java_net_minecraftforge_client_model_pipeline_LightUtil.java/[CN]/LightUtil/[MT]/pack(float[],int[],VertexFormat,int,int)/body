@@ -1,30 +1,28 @@
 {
   VertexFormatElement element=formatTo.getElement(e);
+  int vertexStart=v * formatTo.getNextOffset() + formatTo.func_181720_d(e);
+  int count=element.getElementCount();
+  VertexFormatElement.EnumType type=element.getType();
+  int size=type.getSize();
+  int mask=(256 << (8 * (size - 1))) - 1;
   for (int i=0; i < 4; i++) {
-    if (i < element.getElementCount()) {
-      int pos=v * formatTo.getNextOffset() + formatTo.func_181720_d(e) + element.getType().getSize() * i;
+    if (i < count) {
+      int pos=vertexStart + size * i;
       int index=pos >> 2;
       int offset=pos & 3;
       int bits=0;
-      int mask=(256 << (8 * (element.getType().getSize() - 1))) - 1;
       float f=i < from.length ? from[i] : 0;
-switch (element.getType()) {
-case FLOAT:
+      if (type == VertexFormatElement.EnumType.FLOAT) {
         bits=Float.floatToRawIntBits(f);
-      break;
-case UBYTE:
-case USHORT:
-case UINT:
-    bits=(int)(f * mask);
-  break;
-case BYTE:
-case SHORT:
-case INT:
-bits=(int)(f * mask / 2);
-break;
-}
-to[index]&=~(mask << (offset * 8));
-to[index]|=(((bits & mask) << (offset * 8)));
-}
-}
+      }
+ else       if (type == VertexFormatElement.EnumType.UBYTE || type == VertexFormatElement.EnumType.USHORT || type == VertexFormatElement.EnumType.UINT) {
+        bits=(int)(f * mask);
+      }
+ else {
+        bits=(int)(f * mask / 2);
+      }
+      to[index]&=~(mask << (offset * 8));
+      to[index]|=(((bits & mask) << (offset * 8)));
+    }
+  }
 }

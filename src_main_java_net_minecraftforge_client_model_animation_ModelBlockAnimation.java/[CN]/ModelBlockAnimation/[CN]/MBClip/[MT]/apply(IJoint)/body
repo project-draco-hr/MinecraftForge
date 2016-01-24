@@ -1,0 +1,9 @@
+{
+  initialize();
+  if (joint instanceof MBJoint) {
+    MBJoint mbJoint=(MBJoint)joint;
+    MBJointClip clip=jointClips.get(mbJoint.getName());
+    if (clip != null)     return clip;
+  }
+  return JointClips.IdentityJointClip.instance;
+}

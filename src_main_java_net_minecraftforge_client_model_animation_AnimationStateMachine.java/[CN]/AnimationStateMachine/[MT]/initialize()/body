@@ -1,0 +1,22 @@
+{
+  if (parameters == null) {
+    throw new JsonParseException("Animation State Machine should contain \"parameters\" key.");
+  }
+  if (clips == null) {
+    throw new JsonParseException("Animation State Machine should contain \"clips\" key.");
+  }
+  if (states == null) {
+    throw new JsonParseException("Animation State Machine should contain \"states\" key.");
+  }
+  if (transitions == null) {
+    throw new JsonParseException("Animation State Machine should contain \"transitions\" key.");
+  }
+  shouldHandleSpecialEvents=true;
+  lastPollTime=Float.NEGATIVE_INFINITY;
+  IClip state=clips.get(startState);
+  if (!clips.containsKey(startState) || !states.contains(startState)) {
+    throw new IllegalStateException("unknown state: " + startState);
+  }
+  currentStateName=startState;
+  currentState=state;
+}

@@ -1,0 +1,6 @@
+{
+  if (animation.getClips().containsKey(name)) {
+    return Optional.<IClip>fromNullable(animation.getClips().get(name));
+  }
+  return Optional.absent();
+}

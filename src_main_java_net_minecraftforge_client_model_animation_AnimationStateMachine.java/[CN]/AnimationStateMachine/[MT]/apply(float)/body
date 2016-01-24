@@ -1,0 +1,31 @@
+{
+  if (lastPollTime == Float.NEGATIVE_INFINITY) {
+    lastPollTime=time;
+  }
+  Pair<IModelState,Iterable<Event>> pair=clipCache.getUnchecked(Triple.of(currentState,lastPollTime,time));
+  lastPollTime=time;
+  boolean shouldFilter=false;
+  if (shouldHandleSpecialEvents) {
+    for (    Event event : ImmutableList.copyOf(pair.getRight()).reverse()) {
+      if (event.event().startsWith("!")) {
+        shouldFilter=true;
+        if (event.event().startsWith("!transition:")) {
+          String newState=event.event().substring("!transition:".length());
+          transition(newState);
+        }
+ else {
+          System.out.println("Unknown special event \"" + event.event() + "\", ignoring");
+        }
+      }
+    }
+  }
+  if (!shouldFilter) {
+    return pair;
+  }
+  return Pair.of(pair.getLeft(),Iterables.filter(pair.getRight(),new Predicate<Event>(){
+    public boolean apply(    Event event){
+      return !event.event().startsWith("!");
+    }
+  }
+));
+}

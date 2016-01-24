@@ -1,0 +1,4 @@
+IFlexibleBakedModel model
+Function<ResourceLocation,TextureAtlasSprite> bakedTextureGetter
+TRSRTransformation modelState
+IBlockState state

@@ -1,0 +1,5 @@
+{
+  IJointClip fromClip=from.apply(joint);
+  IJointClip toClip=to.apply(joint);
+  return blendClips(joint,fromClip,toClip,input,progress);
+}

@@ -12,6 +12,7 @@
     for (int i=0; i < n_texs; i++)     textures.add(getTexture(buf.getInt()));
     ret.add(new Brush(name,color,shininess,blend,fx,textures));
   }
+  dump("BRUS([" + Joiner.on(", ").join(ret) + "])");
   popLimit();
   this.brushes.addAll(ret);
   return ret;

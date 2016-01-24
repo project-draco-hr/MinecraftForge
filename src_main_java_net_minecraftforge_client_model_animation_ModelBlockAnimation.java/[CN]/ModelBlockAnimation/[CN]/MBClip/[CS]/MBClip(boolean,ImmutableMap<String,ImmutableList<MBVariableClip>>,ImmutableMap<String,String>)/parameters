@@ -1,0 +1,3 @@
+boolean loop
+ImmutableMap<String,ImmutableList<MBVariableClip>> clips
+ImmutableMap<String,String> events

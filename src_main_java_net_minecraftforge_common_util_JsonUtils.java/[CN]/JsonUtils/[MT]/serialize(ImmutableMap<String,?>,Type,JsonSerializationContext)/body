@@ -1,0 +1,5 @@
+{
+  final Type[] typeArguments=((ParameterizedType)type).getActualTypeArguments();
+  final Type parameterizedType=mapOf(typeArguments[1]).getType();
+  return context.serialize(src,parameterizedType);
+}

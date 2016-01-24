@@ -1,0 +1,15 @@
+{
+  return Pair.<IModelState,Iterable<Event>>of(new IModelState(){
+    public Optional<TRSRTransformation> apply(    Optional<? extends IModelPart> part){
+      if (!part.isPresent() || !(part.get() instanceof IJoint)) {
+        return Optional.absent();
+      }
+      IJoint joint=(IJoint)part.get();
+      if (!joint.getParent().isPresent()) {
+        return Optional.of(clip.apply(joint).apply(time).compose(joint.getInvBindPose()));
+      }
+      return Optional.of(clip.apply(joint.getParent().get()).apply(time).compose(clip.apply(joint).apply(time)).compose(joint.getInvBindPose()));
+    }
+  }
+,clip.pastEvents(lastPollTime,time));
+}

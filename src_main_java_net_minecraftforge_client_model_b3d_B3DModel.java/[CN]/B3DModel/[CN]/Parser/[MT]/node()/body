@@ -10,6 +10,7 @@
   Vector3f pos=new Vector3f(buf.getFloat(),buf.getFloat(),buf.getFloat());
   Vector3f scale=new Vector3f(buf.getFloat(),buf.getFloat(),buf.getFloat());
   Quat4f rot=readQuat();
+  dump("NODE(" + name + ", "+ pos+ ", "+ scale+ ", "+ rot+ ") {");
   while (buf.hasRemaining()) {
     readHeader();
     if (isChunk("MESH"))     mesh=mesh();
@@ -19,6 +20,7 @@
  else     if (isChunk("ANIM"))     animData=anim();
  else     skip();
   }
+  dump("}");
   popLimit();
   Table<Integer,Optional<Node<?>>,Key> keyData=animations.pop();
   Node<?> node;

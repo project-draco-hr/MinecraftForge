@@ -2,12 +2,14 @@
   chunk("MESH");
   int brush_id=buf.getInt();
   readHeader();
+  dump("MESH(brush = " + brush_id + ") {");
   vrts();
   List<Face> ret=new ArrayList<Face>();
   while (buf.hasRemaining()) {
     readHeader();
     ret.addAll(tris());
   }
+  dump("}");
   popLimit();
   return Pair.of(getBrush(brush_id),ret);
 }
