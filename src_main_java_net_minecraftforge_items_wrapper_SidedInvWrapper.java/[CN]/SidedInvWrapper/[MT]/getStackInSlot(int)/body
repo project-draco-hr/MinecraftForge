@@ -1,0 +1,4 @@
+{
+  int i=getSlot(inv,slot,side);
+  return i == -1 ? null : inv.getStackInSlot(i);
+}

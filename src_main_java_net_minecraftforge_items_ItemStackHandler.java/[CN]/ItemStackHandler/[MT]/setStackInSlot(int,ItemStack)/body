@@ -1,0 +1,6 @@
+{
+  validateSlotIndex(slot);
+  if (ItemStack.areItemStacksEqual(this.stacks[slot],stack))   return;
+  this.stacks[slot]=stack;
+  onContentsChanged(slot);
+}

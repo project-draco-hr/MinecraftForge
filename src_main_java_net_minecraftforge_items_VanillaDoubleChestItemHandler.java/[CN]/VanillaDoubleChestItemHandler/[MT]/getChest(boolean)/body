@@ -1,0 +1,6 @@
+{
+  if (accessingUpper == mainChestIsUpper)   return mainChest;
+ else {
+    return getOtherChest();
+  }
+}

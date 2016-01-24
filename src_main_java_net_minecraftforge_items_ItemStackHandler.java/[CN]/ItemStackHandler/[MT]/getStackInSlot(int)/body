@@ -1,0 +1,4 @@
+{
+  validateSlotIndex(slot);
+  return this.stacks[slot];
+}

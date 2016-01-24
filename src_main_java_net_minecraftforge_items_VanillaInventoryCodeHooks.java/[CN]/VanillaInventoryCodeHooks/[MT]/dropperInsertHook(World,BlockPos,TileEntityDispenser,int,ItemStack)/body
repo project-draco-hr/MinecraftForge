@@ -1,0 +1,21 @@
+{
+  EnumFacing enumfacing=world.getBlockState(pos).getValue(BlockDropper.FACING);
+  BlockPos offsetPos=pos.offset(enumfacing);
+  TileEntity tileEntity=world.getTileEntity(offsetPos);
+  if (tileEntity == null)   return false;
+  if (!tileEntity.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,enumfacing.getOpposite()))   return true;
+  IItemHandler capability=tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,enumfacing.getOpposite());
+  ItemStack result=ItemHandlerHelper.insertItem(capability,ItemHandlerHelper.copyStackWithSize(stack,1),false);
+  if (result == null) {
+    result=stack.copy();
+    if (--result.stackSize == 0) {
+      result=null;
+    }
+  }
+ else {
+    result=stack.copy();
+  }
+  dropper.setInventorySlotContents(slot,result);
+  dropper.markDirty();
+  return false;
+}

@@ -1,0 +1,22 @@
+{
+  if (stack == null || stack.stackSize == 0)   return null;
+  validateSlotIndex(slot);
+  ItemStack existing=this.stacks[slot];
+  int limit=getStackLimit(slot,stack);
+  if (existing != null) {
+    if (!ItemHandlerHelper.canItemStacksStack(stack,existing))     return stack;
+    limit-=existing.stackSize;
+  }
+  if (limit <= 0)   return stack;
+  boolean reachedLimit=stack.stackSize > limit;
+  if (!simulate) {
+    if (existing == null) {
+      this.stacks[slot]=reachedLimit ? ItemHandlerHelper.copyStackWithSize(stack,limit) : stack;
+    }
+ else {
+      existing.stackSize+=reachedLimit ? limit : stack.stackSize;
+    }
+    onContentsChanged(slot);
+  }
+  return reachedLimit ? ItemHandlerHelper.copyStackWithSize(stack,stack.stackSize - limit) : null;
+}

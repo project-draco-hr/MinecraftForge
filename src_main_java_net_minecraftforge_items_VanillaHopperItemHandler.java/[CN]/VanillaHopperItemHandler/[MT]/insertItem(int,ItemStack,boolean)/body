@@ -1,0 +1,10 @@
+{
+  if (stack == null)   return null;
+  if (simulate || !hopper.mayTransfer())   return super.insertItem(slot,stack,simulate);
+  int curStackSize=stack.stackSize;
+  ItemStack itemStack=super.insertItem(slot,stack,false);
+  if (itemStack == null || curStackSize != itemStack.stackSize) {
+    hopper.setTransferCooldown(8);
+  }
+  return itemStack;
+}

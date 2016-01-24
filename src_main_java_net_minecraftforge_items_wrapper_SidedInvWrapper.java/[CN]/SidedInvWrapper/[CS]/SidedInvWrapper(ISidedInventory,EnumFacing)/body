@@ -1,0 +1,4 @@
+{
+  this.inv=inv;
+  this.side=side;
+}

@@ -1,0 +1,53 @@
+{
+  if (stack == null)   return null;
+  if (!inv.isItemValidForSlot(slot,stack))   return stack;
+  ItemStack stackInSlot=inv.getStackInSlot(slot);
+  int m;
+  if (stackInSlot != null) {
+    if (!ItemHandlerHelper.canItemStacksStack(stack,stackInSlot))     return stack;
+    m=Math.min(stack.getMaxStackSize(),inv.getInventoryStackLimit()) - stackInSlot.stackSize;
+    if (stack.stackSize <= m) {
+      if (!simulate) {
+        ItemStack copy=stack.copy();
+        copy.stackSize+=stackInSlot.stackSize;
+        inv.setInventorySlotContents(slot,copy);
+        inv.markDirty();
+      }
+      return null;
+    }
+ else {
+      if (!simulate) {
+        ItemStack copy=stack.splitStack(m);
+        copy.stackSize+=stackInSlot.stackSize;
+        inv.setInventorySlotContents(slot,copy);
+        inv.markDirty();
+        return stack;
+      }
+ else {
+        stack.stackSize-=m;
+        return stack;
+      }
+    }
+  }
+ else {
+    m=Math.min(stack.getMaxStackSize(),inv.getInventoryStackLimit());
+    if (m < stack.stackSize) {
+      if (!simulate) {
+        inv.setInventorySlotContents(slot,stack.splitStack(m));
+        inv.markDirty();
+        return stack;
+      }
+ else {
+        stack.stackSize-=m;
+        return stack;
+      }
+    }
+ else {
+      if (!simulate) {
+        inv.setInventorySlotContents(slot,stack);
+        inv.markDirty();
+      }
+      return null;
+    }
+  }
+}

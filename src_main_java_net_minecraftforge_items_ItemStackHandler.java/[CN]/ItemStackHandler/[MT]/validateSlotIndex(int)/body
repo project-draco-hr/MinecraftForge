@@ -1,0 +1,3 @@
+{
+  if (slot < 0 || slot >= stacks.length)   throw new RuntimeException("Slot " + slot + " not in valid range - [0,"+ stacks.length+ ")");
+}

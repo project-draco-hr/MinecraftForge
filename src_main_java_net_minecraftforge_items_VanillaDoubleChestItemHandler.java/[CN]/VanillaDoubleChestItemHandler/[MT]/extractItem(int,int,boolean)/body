@@ -1,0 +1,6 @@
+{
+  boolean accessingUpperChest=slot < 27;
+  int targetSlot=accessingUpperChest ? slot : slot - 27;
+  TileEntityChest chest=getChest(accessingUpperChest);
+  return chest != null ? chest.getSingleChestHandler().extractItem(targetSlot,amount,simulate) : null;
+}

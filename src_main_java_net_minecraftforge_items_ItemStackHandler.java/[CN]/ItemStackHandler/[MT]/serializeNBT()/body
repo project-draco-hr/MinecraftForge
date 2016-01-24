@@ -1,0 +1,15 @@
+{
+  NBTTagList nbtTagList=new NBTTagList();
+  for (int i=0; i < stacks.length; i++) {
+    if (stacks[i] != null) {
+      NBTTagCompound itemTag=new NBTTagCompound();
+      itemTag.setInteger("Slot",i);
+      stacks[i].writeToNBT(itemTag);
+      nbtTagList.appendTag(itemTag);
+    }
+  }
+  NBTTagCompound nbt=new NBTTagCompound();
+  nbt.setTag("Items",nbtTagList);
+  nbt.setInteger("Size",stacks.length);
+  return nbt;
+}

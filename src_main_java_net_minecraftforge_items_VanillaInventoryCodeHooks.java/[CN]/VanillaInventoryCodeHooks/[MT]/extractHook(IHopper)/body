@@ -1,0 +1,24 @@
+{
+  TileEntity tileEntity=dest.getWorld().getTileEntity(new BlockPos(dest.getXPos(),dest.getYPos() + 1,dest.getZPos()));
+  if (tileEntity == null || !tileEntity.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,EnumFacing.DOWN))   return false;
+  IItemHandler handler=tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,EnumFacing.DOWN);
+  for (int i=0; i < handler.getSlots(); i++) {
+    ItemStack extractItem=handler.extractItem(i,1,true);
+    if (extractItem != null) {
+      for (int j=0; j < dest.getSizeInventory(); j++) {
+        ItemStack destStack=dest.getStackInSlot(j);
+        if (destStack == null || destStack.stackSize < destStack.getMaxStackSize() || ItemHandlerHelper.canItemStacksStack(extractItem,destStack)) {
+          extractItem=handler.extractItem(i,1,false);
+          if (destStack == null)           dest.setInventorySlotContents(j,extractItem);
+ else {
+            destStack.stackSize++;
+            dest.setInventorySlotContents(j,destStack);
+          }
+          dest.markDirty();
+          return true;
+        }
+      }
+    }
+  }
+  return true;
+}
