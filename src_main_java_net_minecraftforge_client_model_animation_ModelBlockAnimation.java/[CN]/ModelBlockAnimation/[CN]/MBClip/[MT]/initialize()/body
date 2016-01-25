@@ -6,21 +6,23 @@
     }
     jointClips=builder.build();
     events=Maps.newTreeMap();
-    TreeMap<Float,String> times=Maps.newTreeMap();
-    for (    String time : eventsRaw.keySet()) {
-      times.put(Float.parseFloat(time),time);
-    }
-    float lastTime=Float.POSITIVE_INFINITY;
-    if (loop) {
-      lastTime=times.firstKey();
-    }
-    for (    Map.Entry<Float,String> entry : times.descendingMap().entrySet()) {
-      float time=entry.getKey();
-      float offset=lastTime - time;
-      if (loop) {
-        offset=1 - (1 - offset) % 1;
+    if (!eventsRaw.isEmpty()) {
+      TreeMap<Float,String> times=Maps.newTreeMap();
+      for (      String time : eventsRaw.keySet()) {
+        times.put(Float.parseFloat(time),time);
       }
-      events.put(time,new Event(eventsRaw.get(entry.getValue()),offset));
+      float lastTime=Float.POSITIVE_INFINITY;
+      if (loop) {
+        lastTime=times.firstKey();
+      }
+      for (      Map.Entry<Float,String> entry : times.descendingMap().entrySet()) {
+        float time=entry.getKey();
+        float offset=lastTime - time;
+        if (loop) {
+          offset=1 - (1 - offset) % 1;
+        }
+        events.put(time,new Event(eventsRaw.get(entry.getValue()),offset));
+      }
     }
   }
 }
