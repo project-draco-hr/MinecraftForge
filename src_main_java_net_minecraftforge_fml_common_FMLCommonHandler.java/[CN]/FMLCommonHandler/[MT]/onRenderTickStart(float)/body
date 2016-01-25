@@ -1,3 +1,4 @@
 {
+  Animation.setClientPartialTickTime(timer);
   bus().post(new TickEvent.RenderTickEvent(Phase.START,timer));
 }

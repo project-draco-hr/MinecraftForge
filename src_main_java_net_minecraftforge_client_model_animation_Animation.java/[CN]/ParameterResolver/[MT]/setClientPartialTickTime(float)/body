@@ -1,0 +1,3 @@
+{
+  Animation.INSTANCE.clientPartialTickTime=clientPartialTickTime;
+}
