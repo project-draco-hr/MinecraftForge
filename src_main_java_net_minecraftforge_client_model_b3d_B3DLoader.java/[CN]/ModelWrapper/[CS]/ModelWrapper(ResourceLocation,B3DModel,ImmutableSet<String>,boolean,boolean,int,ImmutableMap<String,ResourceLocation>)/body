@@ -1,0 +1,9 @@
+{
+  this.modelLocation=modelLocation;
+  this.model=model;
+  this.meshes=meshes;
+  this.textures=textures;
+  this.smooth=smooth;
+  this.gui3d=gui3d;
+  this.defaultKey=defaultKey;
+}

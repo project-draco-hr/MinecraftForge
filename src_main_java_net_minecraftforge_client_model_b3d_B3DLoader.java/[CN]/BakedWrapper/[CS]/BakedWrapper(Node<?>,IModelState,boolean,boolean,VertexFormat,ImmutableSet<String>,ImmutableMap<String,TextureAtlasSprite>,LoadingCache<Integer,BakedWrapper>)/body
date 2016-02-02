@@ -1,0 +1,10 @@
+{
+  this.node=node;
+  this.state=state;
+  this.smooth=smooth;
+  this.gui3d=gui3d;
+  this.format=format;
+  this.meshes=meshes;
+  this.textures=textures;
+  this.cache=cache;
+}

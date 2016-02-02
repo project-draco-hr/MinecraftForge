@@ -1,0 +1,6 @@
+{
+  if (value == smooth) {
+    return this;
+  }
+  return new ModelWrapper(modelLocation,model,meshes,value,gui3d,defaultKey,textures);
+}

@@ -1,0 +1,6 @@
+{
+  if (value == gui3d) {
+    return this;
+  }
+  return new ModelWrapper(modelLocation,model,meshes,smooth,value,defaultKey,textures);
+}

@@ -1,0 +1,3 @@
+{
+  this(modelLocation,model,meshes,smooth,gui3d,defaultKey,buildTextures(model.getTextures()));
+}

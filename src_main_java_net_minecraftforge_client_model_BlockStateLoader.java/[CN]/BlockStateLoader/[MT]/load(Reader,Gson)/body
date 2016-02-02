@@ -11,9 +11,11 @@ case 1:
     List<ModelBlockDefinition.Variant> mcVars=Lists.newArrayList();
     for (    ForgeBlockStateV1.Variant var : entry.getValue()) {
       boolean uvLock=var.getUvLock().or(false);
+      boolean smooth=var.getSmooth().or(true);
+      boolean gui3d=var.getGui3d().or(true);
       int weight=var.getWeight().or(1);
       if (var.getModel() != null && var.getSubmodels().size() == 0 && var.getTextures().size() == 0 && var.getCustomData().size() == 0 && var.getState().orNull() instanceof ModelRotation)       mcVars.add(new ModelBlockDefinition.Variant(var.getModel(),(ModelRotation)var.getState().get(),uvLock,weight));
- else       mcVars.add(new ForgeVariant(var.getModel(),var.getState().or(TRSRTransformation.identity()),uvLock,weight,var.getTextures(),var.getOnlyPartsVariant(),var.getCustomData()));
+ else       mcVars.add(new ForgeVariant(var.getModel(),var.getState().or(TRSRTransformation.identity()),uvLock,smooth,gui3d,weight,var.getTextures(),var.getOnlyPartsVariant(),var.getCustomData()));
     }
     variants.add(new ModelBlockDefinition.Variants(entry.getKey(),mcVars));
   }

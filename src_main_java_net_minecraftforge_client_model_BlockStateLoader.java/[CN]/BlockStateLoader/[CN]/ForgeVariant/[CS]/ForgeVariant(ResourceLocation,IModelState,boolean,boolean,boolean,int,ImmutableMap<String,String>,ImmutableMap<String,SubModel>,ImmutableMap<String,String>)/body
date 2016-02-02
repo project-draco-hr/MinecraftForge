@@ -4,4 +4,6 @@
   this.parts=parts;
   this.customData=customData;
   this.state=state;
+  this.smooth=smooth;
+  this.gui3d=gui3d;
 }

@@ -111,6 +111,12 @@
   if (json.has("uvlock")) {
     ret.uvLock=Optional.of(JsonUtils.getBoolean(json,"uvlock"));
   }
+  if (json.has("smooth_lighting")) {
+    ret.smooth=Optional.of(JsonUtils.getBoolean(json,"smooth_lighting"));
+  }
+  if (json.has("gui3d")) {
+    ret.gui3d=Optional.of(JsonUtils.getBoolean(json,"gui3d"));
+  }
   if (json.has("weight")) {
     ret.weight=Optional.of(JsonUtils.getInt(json,"weight"));
   }

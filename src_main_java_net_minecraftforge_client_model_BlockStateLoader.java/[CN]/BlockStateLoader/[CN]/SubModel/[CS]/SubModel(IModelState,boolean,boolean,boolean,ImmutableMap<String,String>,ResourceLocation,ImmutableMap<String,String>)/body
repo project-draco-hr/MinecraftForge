@@ -1,0 +1,9 @@
+{
+  this.state=state;
+  this.uvLock=uvLock;
+  this.smooth=smooth;
+  this.gui3d=gui3d;
+  this.textures=textures;
+  this.model=model;
+  this.customData=customData;
+}

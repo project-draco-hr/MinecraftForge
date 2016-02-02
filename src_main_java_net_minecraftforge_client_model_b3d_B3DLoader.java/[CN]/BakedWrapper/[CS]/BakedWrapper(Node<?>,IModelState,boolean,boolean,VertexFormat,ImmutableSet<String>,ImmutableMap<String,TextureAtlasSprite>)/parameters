@@ -1,0 +1,7 @@
+Node<?> node
+IModelState state
+boolean smooth
+boolean gui3d
+VertexFormat format
+ImmutableSet<String> meshes
+ImmutableMap<String,TextureAtlasSprite> textures

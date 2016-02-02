@@ -1,0 +1,6 @@
+ResourceLocation modelLocation
+B3DModel model
+ImmutableSet<String> meshes
+boolean smooth
+boolean gui3d
+int defaultKey

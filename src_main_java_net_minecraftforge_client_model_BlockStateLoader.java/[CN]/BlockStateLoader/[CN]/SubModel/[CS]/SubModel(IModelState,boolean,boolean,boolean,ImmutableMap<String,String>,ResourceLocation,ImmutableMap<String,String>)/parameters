@@ -1,0 +1,7 @@
+IModelState state
+boolean uvLock
+boolean smooth
+boolean gui3d
+ImmutableMap<String,String> textures
+ResourceLocation model
+ImmutableMap<String,String> customData

@@ -1,7 +1,3 @@
 {
-  this.modelLocation=modelLocation;
-  this.model=model;
-  this.meshes=meshes;
-  this.textures=textures;
-  this.defaultKey=defaultKey;
+  this(modelLocation,model,meshes,true,true,defaultKey,textures);
 }

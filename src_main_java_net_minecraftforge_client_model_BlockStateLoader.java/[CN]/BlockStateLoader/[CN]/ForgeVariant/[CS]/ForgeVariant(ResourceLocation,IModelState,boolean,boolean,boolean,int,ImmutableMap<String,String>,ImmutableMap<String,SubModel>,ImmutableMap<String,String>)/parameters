@@ -1,6 +1,8 @@
 ResourceLocation model
 IModelState state
 boolean uvLock
+boolean smooth
+boolean gui3d
 int weight
 ImmutableMap<String,String> textures
 ImmutableMap<String,SubModel> parts

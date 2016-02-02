@@ -1,7 +1,3 @@
 {
-  this.state=state;
-  this.uvLock=uvLock;
-  this.textures=textures;
-  this.model=model;
-  this.customData=customData;
+  this(state,uvLock,true,true,textures,model,customData);
 }

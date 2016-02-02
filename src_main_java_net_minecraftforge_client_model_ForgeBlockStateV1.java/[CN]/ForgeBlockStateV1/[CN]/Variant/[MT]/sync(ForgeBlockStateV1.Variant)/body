@@ -5,6 +5,8 @@
   }
   if (!this.state.isPresent())   this.state=parent.state;
   if (!this.uvLock.isPresent())   this.uvLock=parent.uvLock;
+  if (!this.smooth.isPresent())   this.smooth=parent.smooth;
+  if (!this.gui3d.isPresent())   this.gui3d=parent.gui3d;
   if (!this.weight.isPresent())   this.weight=parent.weight;
   for (  Entry<String,String> e : parent.textures.entrySet()) {
     if (!this.textures.containsKey(e.getKey()))     this.textures.put(e.getKey(),e.getValue());
