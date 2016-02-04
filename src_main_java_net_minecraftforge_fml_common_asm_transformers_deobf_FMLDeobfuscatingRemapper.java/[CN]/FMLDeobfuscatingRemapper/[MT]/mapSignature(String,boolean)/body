@@ -1,0 +1,6 @@
+{
+  if (signature != null && signature.contains("!*")) {
+    return null;
+  }
+  return super.mapSignature(signature,typeSignature);
+}
