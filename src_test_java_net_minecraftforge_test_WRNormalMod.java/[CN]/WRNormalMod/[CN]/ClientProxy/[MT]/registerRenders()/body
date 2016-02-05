@@ -1,0 +1,3 @@
+{
+  RenderingRegistry.registerEntityRenderingHandler(EntityScaleTest.class,new RenderScaleTestFactory());
+}

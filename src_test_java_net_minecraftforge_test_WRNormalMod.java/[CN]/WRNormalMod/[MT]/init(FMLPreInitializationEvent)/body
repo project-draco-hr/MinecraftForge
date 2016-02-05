@@ -1,0 +1,4 @@
+{
+  EntityRegistry.registerModEntity(EntityScaleTest.class,"ScaleTest",0,instance,60,3,true);
+  proxy.registerRenders();
+}
