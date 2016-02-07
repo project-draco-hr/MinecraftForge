@@ -1,3 +1,3 @@
 {
-  return new ItemTransformVec3f(toLwjgl(getTranslation()),toLwjgl(toYXZ(getLeftRot())),toLwjgl(getScale()));
+  return new ItemTransformVec3f(toLwjgl(toYXZDegrees(getLeftRot())),toLwjgl(getTranslation()),toLwjgl(getScale()));
 }
