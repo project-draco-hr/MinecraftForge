@@ -1,0 +1,3 @@
+{
+  entityShaderMap.put(entityClass,shader);
+}
