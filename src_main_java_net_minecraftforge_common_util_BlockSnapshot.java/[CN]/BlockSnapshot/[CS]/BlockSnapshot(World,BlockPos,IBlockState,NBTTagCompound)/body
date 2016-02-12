@@ -1,7 +1,7 @@
 {
   this.world=world;
   this.dimId=world.provider.getDimensionId();
-  this.pos=pos;
+  this.pos=pos.getImmutable();
   this.replacedBlock=state;
   this.blockIdentifier=GameRegistry.findUniqueIdentifierFor(state.getBlock());
   this.meta=state.getBlock().getMetaFromState(state);
