@@ -1,10 +1,5 @@
 {
-  if (owner != null && GETCONTEXT) {
-    ThreadContext.put("mod",owner.getName());
-  }
- else   if (GETCONTEXT) {
-    ThreadContext.put("mod","");
-  }
+  if (GETCONTEXT)   ThreadContext.put("mod",owner == null ? "" : owner.getName());
   if (handler != null) {
     if (!event.isCancelable() || !event.isCanceled() || subInfo.receiveCanceled()) {
       handler.invoke(event);
