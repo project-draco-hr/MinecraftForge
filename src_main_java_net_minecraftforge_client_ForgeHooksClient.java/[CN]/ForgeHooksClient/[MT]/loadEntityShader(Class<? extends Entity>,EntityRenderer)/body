@@ -1,6 +1,0 @@
-{
-  ResourceLocation shader=ClientRegistry.getEntityShader(entityClass);
-  if (shader != null) {
-    entityRenderer.loadShader(shader);
-  }
-}
