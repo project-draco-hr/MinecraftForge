@@ -1,0 +1,3 @@
+{
+  return tryFillFluidContainerItem(container,tank,side,new PlayerMainInvWrapper(player.inventory),-1,player);
+}

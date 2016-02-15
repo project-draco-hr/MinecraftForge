@@ -1,0 +1,6 @@
+{
+  if (slot > getSlots()) {
+    return;
+  }
+  super.setStackInSlot(slot,stack);
+}

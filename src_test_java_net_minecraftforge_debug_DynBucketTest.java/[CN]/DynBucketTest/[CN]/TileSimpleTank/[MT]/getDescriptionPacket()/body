@@ -1,0 +1,5 @@
+{
+  NBTTagCompound tag=new NBTTagCompound();
+  writeToNBT(tag);
+  return new S35PacketUpdateTileEntity(this.getPos(),this.getBlockMetadata(),tag);
+}

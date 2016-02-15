@@ -1,0 +1,6 @@
+{
+  if (index <= 0 || index >= baseIndex.length) {
+    return 0;
+  }
+  return baseIndex[index - 1];
+}

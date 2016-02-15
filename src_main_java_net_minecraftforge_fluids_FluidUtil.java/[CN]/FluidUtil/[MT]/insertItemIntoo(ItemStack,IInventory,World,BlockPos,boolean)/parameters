@@ -1,0 +1,5 @@
+ItemStack stack
+IInventory inventory
+World world
+BlockPos pos
+boolean isCreative

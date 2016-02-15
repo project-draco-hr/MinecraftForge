@@ -1,0 +1,3 @@
+{
+  return tank.getFluidAmount() > 0;
+}

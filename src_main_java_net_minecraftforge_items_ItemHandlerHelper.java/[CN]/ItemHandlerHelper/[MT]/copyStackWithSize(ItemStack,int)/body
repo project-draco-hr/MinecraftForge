@@ -1,6 +1,6 @@
 {
   if (size == 0)   return null;
   ItemStack copy=ItemStack.copyItemStack(itemStack);
-  copy.stackSize=size;
+  if (copy != null)   copy.stackSize=size;
   return copy;
 }

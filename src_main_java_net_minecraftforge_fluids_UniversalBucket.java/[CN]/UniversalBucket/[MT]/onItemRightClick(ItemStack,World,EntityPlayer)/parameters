@@ -1,0 +1,3 @@
+ItemStack itemstack
+World world
+EntityPlayer player

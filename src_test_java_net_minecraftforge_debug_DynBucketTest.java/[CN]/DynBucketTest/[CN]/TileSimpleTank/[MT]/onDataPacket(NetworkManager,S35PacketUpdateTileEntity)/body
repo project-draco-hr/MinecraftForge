@@ -1,0 +1,4 @@
+{
+  super.onDataPacket(net,pkt);
+  readFromNBT(pkt.getNbtCompound());
+}

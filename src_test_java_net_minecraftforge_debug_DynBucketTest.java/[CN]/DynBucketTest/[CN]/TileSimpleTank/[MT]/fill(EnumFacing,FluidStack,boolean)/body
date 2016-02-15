@@ -1,0 +1,7 @@
+{
+  int filled=tank.fill(resource,doFill);
+  if (doFill && filled > 0) {
+    worldObj.markBlockForUpdate(pos);
+  }
+  return filled;
+}

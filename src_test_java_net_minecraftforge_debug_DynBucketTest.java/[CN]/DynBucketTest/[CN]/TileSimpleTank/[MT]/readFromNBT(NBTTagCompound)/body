@@ -1,0 +1,4 @@
+{
+  super.readFromNBT(tags);
+  tank.readFromNBT(tags);
+}

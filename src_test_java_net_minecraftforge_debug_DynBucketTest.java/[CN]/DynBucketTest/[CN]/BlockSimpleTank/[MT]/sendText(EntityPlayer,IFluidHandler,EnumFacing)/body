@@ -1,0 +1,12 @@
+{
+  if (player.worldObj.isRemote) {
+    String text;
+    if (tank.getTankInfo(side).length > 0 && tank.getTankInfo(side)[0] != null && tank.getTankInfo(side)[0].fluid != null) {
+      text=tank.getTankInfo(side)[0].fluid.amount + "x " + tank.getTankInfo(side)[0].fluid.getLocalizedName();
+    }
+ else {
+      text="empty";
+    }
+    player.addChatMessage(new ChatComponentText(text));
+  }
+}

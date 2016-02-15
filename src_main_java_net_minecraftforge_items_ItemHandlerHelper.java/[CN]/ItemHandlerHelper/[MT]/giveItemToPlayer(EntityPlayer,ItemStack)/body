@@ -1,0 +1,3 @@
+{
+  giveItemToPlayer(player,stack,-1);
+}

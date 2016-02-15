@@ -1,0 +1,14 @@
+{
+  FluidStack fluidStack=getFluid(stack);
+  if (fluidStack == null) {
+    if (empty != null) {
+      return empty.getDisplayName();
+    }
+    return super.getItemStackDisplayName(stack);
+  }
+  String unloc=this.getUnlocalizedNameInefficiently(stack);
+  if (StatCollector.canTranslate(unloc + "." + fluidStack.getFluid().getName())) {
+    return StatCollector.translateToFallback(unloc + "." + fluidStack.getFluid().getName());
+  }
+  return StatCollector.translateToLocalFormatted(unloc + ".name",fluidStack.getLocalizedName());
+}

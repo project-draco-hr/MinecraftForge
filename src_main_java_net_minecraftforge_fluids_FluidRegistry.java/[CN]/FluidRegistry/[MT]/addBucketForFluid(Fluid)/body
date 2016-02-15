@@ -1,0 +1,9 @@
+{
+  if (fluid == null) {
+    return false;
+  }
+  if (!isFluidRegistered(fluid)) {
+    registerFluid(fluid);
+  }
+  return bucketFluids.add(fluid);
+}

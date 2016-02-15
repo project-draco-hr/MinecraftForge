@@ -1,0 +1,8 @@
+{
+  if (a == null || b == null || a.getItem() != b.getItem())   return false;
+  if (!a.isStackable())   return false;
+  if (a.getHasSubtypes() && a.getMetadata() != b.getMetadata())   return false;
+  final NBTTagCompound aTag=a.getTagCompound();
+  final NBTTagCompound bTag=b.getTagCompound();
+  return (aTag != null || bTag == null) && (aTag == null || aTag.equals(bTag));
+}
