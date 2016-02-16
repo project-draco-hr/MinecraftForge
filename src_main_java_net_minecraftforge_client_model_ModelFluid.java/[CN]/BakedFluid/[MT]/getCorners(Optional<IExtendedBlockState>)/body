@@ -3,7 +3,8 @@
   if (stateOption.isPresent()) {
     IExtendedBlockState state=stateOption.get();
     for (int i=0; i < 4; i++) {
-      cornerRound[i]=Math.round(state.getValue(BlockFluidBase.LEVEL_CORNERS[i]) * 768);
+      Float level=state.getValue(BlockFluidBase.LEVEL_CORNERS[i]);
+      cornerRound[i]=Math.round((level == null ? 7f / 8 : level) * 768);
     }
   }
   return cornerRound;
