@@ -2,7 +2,7 @@
   List<Packet<INetHandlerPlayClient>> ret=Lists.newArrayList();
   byte[] data=payload.array();
   if (data.length < PART_SIZE) {
-    ret.add(new S3FPacketCustomPayload(channel,payload));
+    ret.add(new S3FPacketCustomPayload(channel,new PacketBuffer(payload.duplicate())));
   }
  else {
     int parts=(int)Math.ceil(data.length / (double)(PART_SIZE - 1));
