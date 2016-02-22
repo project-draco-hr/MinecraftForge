@@ -27,7 +27,7 @@
   }
   ImmutableSet.Builder<ResourceLocation> builder=ImmutableSet.builder();
   if (hasItemModel(model)) {
-    for (    String s : (List<String>)ItemModelGenerator.LAYERS) {
+    for (    String s : ItemModelGenerator.LAYERS) {
       String r=model.resolveTextureName(s);
       ResourceLocation loc=new ResourceLocation(r);
       if (!r.equals(s)) {
@@ -41,7 +41,7 @@
       }
     }
   }
-  for (  String s : (Iterable<String>)model.textures.values()) {
+  for (  String s : model.textures.values()) {
     if (!s.startsWith("#")) {
       builder.add(new ResourceLocation(s));
     }

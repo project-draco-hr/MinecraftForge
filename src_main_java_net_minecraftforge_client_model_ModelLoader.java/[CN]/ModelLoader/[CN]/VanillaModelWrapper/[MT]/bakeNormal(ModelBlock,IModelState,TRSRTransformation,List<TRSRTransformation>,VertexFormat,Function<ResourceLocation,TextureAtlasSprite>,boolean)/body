@@ -10,7 +10,7 @@
       if (rot == null)       rot=new BlockPartRotation(new org.lwjgl.util.vector.Vector3f(),EnumFacing.Axis.Y,0,false);
       part=new BlockPart(part.positionFrom,part.positionTo,part.mapFaces,rot,part.shade);
     }
-    for (    Map.Entry<EnumFacing,BlockPartFace> e : (Iterable<Map.Entry<EnumFacing,BlockPartFace>>)part.mapFaces.entrySet()) {
+    for (    Map.Entry<EnumFacing,BlockPartFace> e : part.mapFaces.entrySet()) {
       TextureAtlasSprite textureatlassprite1=bakedTextureGetter.apply(new ResourceLocation(model.resolveTextureName(e.getValue().texture)));
       if (e.getValue().cullFace == null || !TRSRTransformation.isInteger(transformation.getMatrix())) {
         builder.addGeneralQuad(makeBakedQuad(part,e.getValue(),textureatlassprite1,e.getKey(),transformation,uvLocked));

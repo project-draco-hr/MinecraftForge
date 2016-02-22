@@ -8,7 +8,7 @@
     itemVariants.addAll(getVariantNames(item));
   }
   Collections.sort(itemVariants);
-  itemBar=ProgressManager.push("ModelLoader: items",itemVariants.size());
+  ProgressBar itemBar=ProgressManager.push("ModelLoader: items",itemVariants.size());
   for (  String s : itemVariants) {
     ResourceLocation file=getItemLocation(s);
     ModelResourceLocation memory=getInventoryVariant(s);

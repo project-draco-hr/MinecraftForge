@@ -1,6 +1,21 @@
 {
   IBakedModel missingModel=modelRegistry.getObject(MODEL_MISSING);
   Map<String,Integer> modelErrors=Maps.newHashMap();
+  Multimap<ModelResourceLocation,IBlockState> reverseBlockMap=null;
+  Multimap<ModelResourceLocation,String> reverseItemMap=null;
+  if (enableVerboseMissingInfo) {
+    reverseBlockMap=HashMultimap.create();
+    for (    Map.Entry<IBlockState,ModelResourceLocation> entry : blockModelShapes.getBlockStateMapper().putAllStateModelLocations().entrySet()) {
+      reverseBlockMap.put(entry.getValue(),entry.getKey());
+    }
+    reverseItemMap=HashMultimap.create();
+    for (    Item item : GameData.getItemRegistry().typeSafeIterable()) {
+      for (      String s : getVariantNames(item)) {
+        ModelResourceLocation memory=getInventoryVariant(s);
+        reverseItemMap.put(memory,item.getRegistryName());
+      }
+    }
+  }
   for (  Map.Entry<ResourceLocation,Exception> entry : loadingExceptions.entrySet()) {
     if (entry.getKey() instanceof ModelResourceLocation) {
       ModelResourceLocation location=(ModelResourceLocation)entry.getKey();
@@ -11,7 +26,29 @@
         int errorCount=errorCountBox == null ? 0 : errorCountBox;
         errorCount++;
         if (errorCount < 5) {
-          FMLLog.getLogger().error("Exception loading model for variant " + entry.getKey(),entry.getValue());
+          String errorMsg="Exception loading model for variant " + entry.getKey();
+          if (enableVerboseMissingInfo) {
+            Collection<IBlockState> blocks=reverseBlockMap.get(location);
+            if (!blocks.isEmpty()) {
+              if (blocks.size() == 1) {
+                errorMsg+=" for blockstate \"" + blocks.iterator().next() + "\"";
+              }
+ else {
+                errorMsg+=" for blockstates [\"" + Joiner.on("\", \"").join(blocks) + "\"]";
+              }
+            }
+            Collection<String> items=reverseItemMap.get(location);
+            if (!items.isEmpty()) {
+              if (!blocks.isEmpty())               errorMsg+=" and";
+              if (items.size() == 1) {
+                errorMsg+=" for item \"" + items.iterator().next() + "\"";
+              }
+ else {
+                errorMsg+=" for items [\"" + Joiner.on("\", \"").join(items) + "\"]";
+              }
+            }
+          }
+          FMLLog.getLogger().error(errorMsg,entry.getValue());
         }
         modelErrors.put(domain,errorCount);
       }
@@ -38,7 +75,7 @@
   }
   for (  Map.Entry<String,Integer> e : modelErrors.entrySet()) {
     if (e.getValue() >= 5) {
-      FMLLog.severe("Supressed additional %s model loading errors for domain %s",e.getValue(),e.getKey());
+      FMLLog.severe("Suppressed additional %s model loading errors for domain %s",e.getValue(),e.getKey());
     }
   }
   isLoading=false;

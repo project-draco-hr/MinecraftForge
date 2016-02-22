@@ -1,34 +1,34 @@
 {
   if (textures.isEmpty())   return this;
   List<BlockPart> elements=Lists.newArrayList();
-  for (  BlockPart part : (List<BlockPart>)this.model.getElements()) {
+  for (  BlockPart part : this.model.getElements()) {
     elements.add(new BlockPart(part.positionFrom,part.positionTo,Maps.newHashMap(part.mapFaces),part.partRotation,part.shade));
   }
-  ModelBlock neweModel=new ModelBlock(this.model.getParentLocation(),elements,Maps.newHashMap(this.model.textures),this.model.isAmbientOcclusion(),this.model.isGui3d(),model.func_181682_g());
-  neweModel.name=this.model.name;
-  neweModel.parent=this.model.parent;
+  ModelBlock newModel=new ModelBlock(this.model.getParentLocation(),elements,Maps.newHashMap(this.model.textures),this.model.isAmbientOcclusion(),this.model.isGui3d(),model.func_181682_g());
+  newModel.name=this.model.name;
+  newModel.parent=this.model.parent;
   Set<String> removed=Sets.newHashSet();
   for (  Entry<String,String> e : textures.entrySet()) {
     if ("".equals(e.getValue())) {
       removed.add(e.getKey());
-      neweModel.textures.remove(e.getKey());
+      newModel.textures.remove(e.getKey());
     }
- else     neweModel.textures.put(e.getKey(),e.getValue());
+ else     newModel.textures.put(e.getKey(),e.getValue());
   }
   Map<String,String> remapped=Maps.newHashMap();
-  for (  Entry<String,String> e : (Set<Entry<String,String>>)neweModel.textures.entrySet()) {
+  for (  Entry<String,String> e : newModel.textures.entrySet()) {
     if (e.getValue().startsWith("#")) {
       String key=e.getValue().substring(1);
-      if (neweModel.textures.containsKey(key))       remapped.put(e.getKey(),(String)neweModel.textures.get(key));
+      if (newModel.textures.containsKey(key))       remapped.put(e.getKey(),newModel.textures.get(key));
     }
   }
-  neweModel.textures.putAll(remapped);
-  for (  BlockPart part : (List<BlockPart>)neweModel.getElements()) {
+  newModel.textures.putAll(remapped);
+  for (  BlockPart part : newModel.getElements()) {
     Iterator<Entry<EnumFacing,BlockPartFace>> itr=part.mapFaces.entrySet().iterator();
     while (itr.hasNext()) {
       Entry<EnumFacing,BlockPartFace> entry=itr.next();
       if (removed.contains(entry.getValue().texture))       itr.remove();
     }
   }
-  return new VanillaModelWrapper(location,neweModel,animation);
+  return new VanillaModelWrapper(location,newModel,animation);
 }

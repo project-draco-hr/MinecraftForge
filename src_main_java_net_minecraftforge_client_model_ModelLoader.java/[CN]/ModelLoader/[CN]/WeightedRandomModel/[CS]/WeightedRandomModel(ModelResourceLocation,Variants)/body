@@ -1,7 +1,7 @@
 {
   this.variants=variants.getVariants();
   ImmutableList.Builder<Pair<IModel,IModelState>> builder=ImmutableList.builder();
-  for (  Variant v : (List<Variant>)variants.getVariants()) {
+  for (  Variant v : variants.getVariants()) {
     ResourceLocation loc=v.getModelLocation();
     locations.add(loc);
     IModel model=null;
