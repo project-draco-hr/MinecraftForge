@@ -44,7 +44,9 @@
   if (isDelegated) {
     getExistingDelegate(thing).setResourceName(name);
   }
-  this.dummiedLocations.remove(name);
+  if (this.dummiedLocations.remove(name) && DEBUG) {
+    FMLLog.fine("Registry Dummy Remove: %s",name);
+  }
   if (DEBUG) {
     FMLLog.finer("Registry add: %s %d %s (req. id %d)",name,idToUse,thing,id);
   }

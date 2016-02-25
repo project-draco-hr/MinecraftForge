@@ -19,7 +19,7 @@
   newRegistry.loadBlocked(snapshotEntry.blocked);
   missing.put(registryName,Maps.<ResourceLocation,Integer>newLinkedHashMap());
   remaps.put(registryName,Maps.<ResourceLocation,Integer[]>newHashMap());
+  newRegistry.loadDummied(snapshotEntry.dummied);
   newRegistry.loadIds(snapshotEntry.ids,missing.get(registryName),remaps.get(registryName),currentRegistry,registryName);
   newRegistry.loadSubstitutions(substitutions);
-  newRegistry.loadDummied(snapshotEntry.dummied);
 }

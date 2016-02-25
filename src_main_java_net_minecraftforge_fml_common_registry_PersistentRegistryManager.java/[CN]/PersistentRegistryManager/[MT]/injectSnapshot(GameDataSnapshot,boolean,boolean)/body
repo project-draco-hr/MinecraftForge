@@ -16,6 +16,9 @@
       PersistentRegistry.STAGING.getRegistry(BLOCKS,Block.class).markDummy(dummy,id,new BlockDummyAir());
     }
  else     if (isLocalWorld) {
+      if (FMLControlledNamespacedRegistry.DEBUG) {
+        FMLLog.log(Level.DEBUG,"Registry: Resuscitating dummy block %s",dummy);
+      }
     }
  else {
       Integer id=PersistentRegistry.STAGING.getRegistry(BLOCKS,Block.class).getId(dummy);

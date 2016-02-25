@@ -1,3 +1,6 @@
 {
+  if (DEBUG && dummied.size() > 0) {
+    FMLLog.fine("Registry Dummy Load: [%s]",Joiner.on(", ").join(dummied));
+  }
   this.dummiedLocations.addAll(dummied);
 }

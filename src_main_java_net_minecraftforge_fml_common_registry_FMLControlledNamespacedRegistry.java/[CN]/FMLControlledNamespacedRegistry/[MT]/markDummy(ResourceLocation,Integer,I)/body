@@ -1,4 +1,7 @@
 {
+  if (DEBUG) {
+    FMLLog.finer("Registry Dummy Add: %s %d -> %s",rl,id,thing);
+  }
   this.dummiedLocations.add(rl);
   this.addObjectRaw(id,rl,thing);
 }
