@@ -1,0 +1,4 @@
+{
+  MovingObjectPosition movingObjectPosition=rayTraceEyes(entity,length);
+  return movingObjectPosition == null ? null : movingObjectPosition.hitVec;
+}
