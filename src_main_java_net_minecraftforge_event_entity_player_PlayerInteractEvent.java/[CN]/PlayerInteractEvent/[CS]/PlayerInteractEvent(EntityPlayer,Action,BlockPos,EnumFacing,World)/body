@@ -1,8 +1,3 @@
 {
-  super(player);
-  this.action=action;
-  this.pos=pos;
-  this.face=face;
-  if (face == null)   useBlock=DENY;
-  this.world=world;
+  this(player,action,pos,face,world,null);
 }
