@@ -1,0 +1,3 @@
+{
+  if (event.block.getMaterial() == Material.water)   event.setFOV(event.getFOV() / 60.0f * 50.0f);
+}
