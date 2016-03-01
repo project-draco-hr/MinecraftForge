@@ -1,6 +1,0 @@
-EntityRenderer renderer
-Entity entity
-Block block
-float partial
-int mode
-float distance

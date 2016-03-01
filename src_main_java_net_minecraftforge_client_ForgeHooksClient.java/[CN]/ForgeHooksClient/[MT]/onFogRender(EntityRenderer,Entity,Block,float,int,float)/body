@@ -1,3 +1,0 @@
-{
-  MinecraftForge.EVENT_BUS.post(new EntityViewRenderEvent.RenderFogEvent(renderer,entity,block,partial,mode,distance));
-}

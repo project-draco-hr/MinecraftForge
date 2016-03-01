@@ -1,6 +1,0 @@
-{
-  super(renderer,entity,block,renderPartialTicks);
-  this.yaw=yaw;
-  this.pitch=pitch;
-  this.roll=roll;
-}

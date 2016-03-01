@@ -1,7 +1,0 @@
-EntityRenderer renderer
-Entity entity
-Block block
-double renderPartialTicks
-float yaw
-float pitch
-float roll

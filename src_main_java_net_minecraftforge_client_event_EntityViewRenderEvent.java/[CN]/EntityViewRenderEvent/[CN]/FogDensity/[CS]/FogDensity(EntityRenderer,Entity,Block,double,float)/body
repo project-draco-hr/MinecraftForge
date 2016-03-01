@@ -1,4 +1,0 @@
-{
-  super(renderer,entity,block,renderPartialTicks);
-  this.density=density;
-}

@@ -1,5 +1,0 @@
-EntityRenderer renderer
-Entity entity
-Block block
-double renderPartialTicks
-float fov

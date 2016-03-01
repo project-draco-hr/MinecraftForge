@@ -1,5 +1,0 @@
-Entity entity
-ItemStack armor
-String _default
-int slot
-String type
