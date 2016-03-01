@@ -1,9 +1,0 @@
-{
-  if (general == null) {
-    ImmutableList.Builder<BakedQuad> genQuads=ImmutableList.builder();
-    if (base != null)     genQuads.addAll(base.getGeneralQuads());
-    for (    IFlexibleBakedModel bakedPart : parts.values())     genQuads.addAll(bakedPart.getGeneralQuads());
-    general=genQuads.build();
-  }
-  return general;
-}

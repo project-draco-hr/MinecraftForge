@@ -1,0 +1,4 @@
+IBakedModel originalModel
+ItemStack stack
+World world
+EntityLivingBase entity

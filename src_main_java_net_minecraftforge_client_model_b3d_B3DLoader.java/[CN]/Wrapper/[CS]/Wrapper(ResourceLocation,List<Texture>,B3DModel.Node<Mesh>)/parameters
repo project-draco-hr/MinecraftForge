@@ -1,3 +1,0 @@
-ResourceLocation location
-List<Texture> textures
-B3DModel.Node<Mesh> mesh

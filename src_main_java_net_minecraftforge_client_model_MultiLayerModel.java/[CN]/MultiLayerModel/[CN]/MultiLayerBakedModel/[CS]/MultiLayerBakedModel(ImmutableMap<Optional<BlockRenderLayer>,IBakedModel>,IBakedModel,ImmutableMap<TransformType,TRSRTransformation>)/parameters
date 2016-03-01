@@ -1,0 +1,3 @@
+ImmutableMap<Optional<BlockRenderLayer>,IBakedModel> models
+IBakedModel missing
+ImmutableMap<TransformType,TRSRTransformation> cameraTransforms

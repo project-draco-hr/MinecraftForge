@@ -1,5 +1,5 @@
 {
-  ImmutableMap.Builder<Optional<BlockRenderLayer>,IFlexibleBakedModel> builder=ImmutableMap.builder();
+  ImmutableMap.Builder<Optional<BlockRenderLayer>,IBakedModel> builder=ImmutableMap.builder();
   for (  Optional<BlockRenderLayer> key : models.keySet()) {
     IModel model;
     try {

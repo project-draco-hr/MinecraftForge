@@ -12,9 +12,10 @@
       float time=Animation.getWorldTime(getWorld(),partialTick);
       Pair<IModelState,Iterable<Event>> pair=te.asm().apply(time);
       handleEvents(te,time,pair.getRight());
-      IBakedModel model=getModel(exState,pair.getLeft());
+      IBakedModel model=blockRenderer.getBlockModelShapes().getModelForState(exState.getClean());
+      exState=exState.withProperty(Properties.AnimationProperty,pair.getLeft());
       renderer.setTranslation(x - pos.getX(),y - pos.getY(),z - pos.getZ());
-      blockRenderer.getBlockModelRenderer().renderModel(world,model,state,pos,renderer,false);
+      blockRenderer.getBlockModelRenderer().renderModel(world,model,exState,pos,renderer,false);
     }
   }
 }

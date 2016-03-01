@@ -1,0 +1,4 @@
+{
+  if (side == null)   return quads;
+  return ImmutableList.of();
+}

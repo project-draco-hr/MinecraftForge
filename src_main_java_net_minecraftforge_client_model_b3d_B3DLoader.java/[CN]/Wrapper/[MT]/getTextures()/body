@@ -1,8 +1,0 @@
-{
-  return Collections2.filter(textures.values(),new Predicate<ResourceLocation>(){
-    public boolean apply(    ResourceLocation loc){
-      return !loc.getResourcePath().startsWith("#");
-    }
-  }
-);
-}

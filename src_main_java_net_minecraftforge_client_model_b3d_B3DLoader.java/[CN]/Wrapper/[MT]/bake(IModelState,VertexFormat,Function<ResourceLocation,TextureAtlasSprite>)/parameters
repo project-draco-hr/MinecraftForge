@@ -1,3 +1,0 @@
-IModelState state
-VertexFormat format
-Function<ResourceLocation,TextureAtlasSprite> bakedTextureGetter

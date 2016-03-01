@@ -1,6 +1,0 @@
-{
-  super(quads,particle,format);
-  this.parent=parent;
-  this.transforms=transforms;
-  this.cache=cache;
-}

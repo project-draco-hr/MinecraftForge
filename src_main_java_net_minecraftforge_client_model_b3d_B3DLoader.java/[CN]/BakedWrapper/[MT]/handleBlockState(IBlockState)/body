@@ -17,7 +17,7 @@
           return cache.getUnchecked(s.getFrame());
         }
         B3DState newState=new B3DState(newAnimation,s.getFrame(),s.getNextFrame(),s.getProgress(),parent);
-        return new BakedWrapper(node,newState,format,meshes,textures);
+        return new BakedWrapper(node,newState,smooth,gui3d,format,meshes,textures);
       }
     }
  else     if (exState.getUnlistedNames().contains(Properties.AnimationProperty)) {
@@ -28,7 +28,7 @@
       }
       IModelState newState=exState.getValue(Properties.AnimationProperty);
       if (newState != null) {
-        return new BakedWrapper(node,new ModelStateComposition(parent,newState),format,meshes,textures);
+        return new BakedWrapper(node,new ModelStateComposition(parent,newState),smooth,gui3d,format,meshes,textures);
       }
     }
   }

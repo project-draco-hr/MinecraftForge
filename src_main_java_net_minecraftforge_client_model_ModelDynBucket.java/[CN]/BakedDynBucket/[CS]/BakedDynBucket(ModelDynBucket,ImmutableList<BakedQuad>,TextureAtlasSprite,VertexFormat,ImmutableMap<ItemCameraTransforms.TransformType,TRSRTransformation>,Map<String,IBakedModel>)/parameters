@@ -1,0 +1,6 @@
+ModelDynBucket parent
+ImmutableList<BakedQuad> quads
+TextureAtlasSprite particle
+VertexFormat format
+ImmutableMap<ItemCameraTransforms.TransformType,TRSRTransformation> transforms
+Map<String,IBakedModel> cache

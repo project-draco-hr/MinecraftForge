@@ -1,4 +1,0 @@
-ResourceLocation modelLocation
-B3DModel model
-ImmutableSet<String> meshes
-int defaultKey

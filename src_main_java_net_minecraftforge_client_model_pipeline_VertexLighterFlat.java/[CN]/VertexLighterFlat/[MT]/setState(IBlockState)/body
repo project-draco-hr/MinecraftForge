@@ -1,0 +1,3 @@
+{
+  blockInfo.setState(state);
+}

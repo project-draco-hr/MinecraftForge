@@ -2,7 +2,7 @@
   if (quads == null) {
     ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
     for (    Node<?> child : node.getNodes().values()) {
-      builder.addAll(new BakedWrapper(child,state,format,meshes,textures).getGeneralQuads());
+      builder.addAll(new BakedWrapper(child,state,smooth,gui3d,format,meshes,textures).getGeneralQuads());
     }
     if (node.getKind() instanceof Mesh && meshes.contains(node.getName())) {
       Mesh mesh=(Mesh)node.getKind();

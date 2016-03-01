@@ -1,0 +1,17 @@
+{
+  this.models=models;
+  this.cameraTransforms=cameraTransforms;
+  this.missing=missing;
+  if (models.containsKey(Optional.absent())) {
+    base=models.get(Optional.absent());
+  }
+ else {
+    base=missing;
+  }
+  ImmutableMap.Builder<Optional<EnumFacing>,ImmutableList<BakedQuad>> quadBuilder=ImmutableMap.builder();
+  quadBuilder.put(Optional.<EnumFacing>absent(),buildQuads(models,Optional.<EnumFacing>absent()));
+  for (  EnumFacing side : EnumFacing.values()) {
+    quadBuilder.put(Optional.of(side),buildQuads(models,Optional.of(side)));
+  }
+  quads=quadBuilder.build();
+}
