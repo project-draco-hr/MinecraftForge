@@ -3,6 +3,6 @@
   FMLLog.info("[%s] Server side %s connection established",Thread.currentThread().getName(),this.connectionType.name().toLowerCase(Locale.ENGLISH));
   this.state=ConnectionState.CONNECTED;
   MinecraftForge.EVENT_BUS.post(new FMLNetworkEvent.ServerConnectionFromClientEvent(manager));
-  if (DEBUG_HANDSHAKE)   manager.closeChannel(new ChatComponentText("Handshake Complete review log file for details."));
+  if (DEBUG_HANDSHAKE)   manager.closeChannel(new TextComponentString("Handshake Complete review log file for details."));
   scm.initializeConnectionToPlayer(manager,player,serverHandler);
 }

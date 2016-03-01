@@ -1,7 +1,0 @@
-VertexLighterFlat lighter
-IBlockAccess world
-IBakedModel model
-Block block
-BlockPos pos
-WorldRenderer wr
-boolean checkSides

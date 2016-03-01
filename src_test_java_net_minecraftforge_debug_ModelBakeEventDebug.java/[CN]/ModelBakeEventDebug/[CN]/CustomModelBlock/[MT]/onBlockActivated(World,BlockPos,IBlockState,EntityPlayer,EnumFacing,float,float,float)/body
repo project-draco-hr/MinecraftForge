@@ -2,7 +2,7 @@
   TileEntity te=world.getTileEntity(pos);
   if (te instanceof CustomTileEntity) {
     CustomTileEntity cte=(CustomTileEntity)te;
-    Vec3 vec=revRotate(new Vec3(hitX - .5,hitY - .5,hitZ - .5),side).addVector(.5,.5,.5);
+    Vec3d vec=revRotate(new Vec3d(hitX - .5,hitY - .5,hitZ - .5),side).addVector(.5,.5,.5);
     IUnlistedProperty<Integer> property=properties[side.ordinal()];
     Integer value=cte.getState().getValue(property);
     if (value == null)     value=0;

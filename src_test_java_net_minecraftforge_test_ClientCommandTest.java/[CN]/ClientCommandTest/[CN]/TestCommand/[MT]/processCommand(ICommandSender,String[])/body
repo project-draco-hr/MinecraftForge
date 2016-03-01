@@ -1,8 +1,0 @@
-{
-  if (args.length > 0) {
-    sender.addChatMessage(new ChatComponentText("Input: " + Arrays.toString(args)));
-  }
- else {
-    sender.addChatMessage(new ChatComponentText("No arguments."));
-  }
-}

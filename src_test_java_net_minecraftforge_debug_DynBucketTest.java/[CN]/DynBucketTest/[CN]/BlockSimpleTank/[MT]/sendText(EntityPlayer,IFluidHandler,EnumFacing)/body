@@ -7,6 +7,6 @@
  else {
       text="empty";
     }
-    player.addChatMessage(new ChatComponentText(text));
+    player.addChatMessage(new TextComponentString(text));
   }
 }

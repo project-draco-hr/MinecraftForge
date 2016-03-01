@@ -1,12 +1,12 @@
 {
-  final ChatComponentText chatcomponenttext=new ChatComponentText(message);
+  final TextComponentString TextComponentString=new TextComponentString(message);
   if (side == Side.CLIENT) {
-    manager.closeChannel(chatcomponenttext);
+    manager.closeChannel(TextComponentString);
   }
  else {
-    manager.sendPacket(new S40PacketDisconnect(chatcomponenttext),new GenericFutureListener<Future<? super Void>>(){
+    manager.sendPacket(new S40PacketDisconnect(TextComponentString),new GenericFutureListener<Future<? super Void>>(){
       @Override public void operationComplete(      Future<? super Void> result){
-        manager.closeChannel(chatcomponenttext);
+        manager.closeChannel(TextComponentString);
       }
     }
 ,new GenericFutureListener[0]);

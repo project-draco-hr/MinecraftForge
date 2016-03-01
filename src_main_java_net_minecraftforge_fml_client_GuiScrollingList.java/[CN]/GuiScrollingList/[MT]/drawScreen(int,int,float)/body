@@ -60,7 +60,7 @@
   }
   this.applyScrollLimits();
   Tessellator tess=Tessellator.getInstance();
-  WorldRenderer worldr=tess.getWorldRenderer();
+  VertexBuffer worldr=tess.getVertexBuffer();
   ScaledResolution res=new ScaledResolution(client);
   double scaleW=client.displayWidth / res.getScaledWidth_double();
   double scaleH=client.displayHeight / res.getScaledHeight_double();

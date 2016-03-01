@@ -5,7 +5,7 @@
   }
   IFluidHandler tank=(IFluidHandler)te;
   side=side.getOpposite();
-  ItemStack stack=playerIn.getHeldItem();
+  ItemStack stack=playerIn.inventory.getCurrentItem();
   if (stack == null) {
     sendText(playerIn,tank,side);
     return false;

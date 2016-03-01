@@ -3,7 +3,7 @@
     mc.mcProfiler.startSection("toolHighlight");
     if (this.remainingHighlightTicks > 0 && this.highlightingItemStack != null) {
       String name=this.highlightingItemStack.getDisplayName();
-      if (this.highlightingItemStack.hasDisplayName())       name=EnumChatFormatting.ITALIC + name;
+      if (this.highlightingItemStack.hasDisplayName())       name=TextFormatting.ITALIC + name;
       name=this.highlightingItemStack.getItem().getHighlightTip(this.highlightingItemStack,name);
       int opacity=(int)((float)this.remainingHighlightTicks * 256.0F / 10.0F);
       if (opacity > 255)       opacity=255;
