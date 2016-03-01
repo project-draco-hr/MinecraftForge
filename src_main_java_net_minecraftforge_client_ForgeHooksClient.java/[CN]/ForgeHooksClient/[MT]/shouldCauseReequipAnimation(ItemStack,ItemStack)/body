@@ -1,0 +1,6 @@
+{
+  if (!Objects.equal(from,to) || from == null) {
+    return false;
+  }
+  return from.getItem().shouldCauseReequipAnimation(from,to);
+}
