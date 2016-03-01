@@ -8,9 +8,9 @@
     if (matcher.matches()) {
       String lang=matcher.group(2);
       FMLLog.fine("Injecting found translation assets for lang %s at %s into language system",lang,currPath);
-      LanguageRegistry.instance().injectLanguage(lang,StringTranslate.parseLangFile(new FileInputStream(file)));
+      LanguageRegistry.instance().injectLanguage(lang,LanguageMap.parseLangFile(new FileInputStream(file)));
       if ("en_US".equals(lang) && side == Side.SERVER) {
-        StringTranslate.inject(new FileInputStream(file));
+        LanguageMap.inject(new FileInputStream(file));
       }
     }
   }

@@ -1,3 +1,4 @@
 {
-  return stack.getItem() instanceof ItemPotion || stack.getItem() == Items.glass_bottle;
+  Item item=stack.getItem();
+  return item == Items.potionitem || item == Items.field_185155_bH || item == Items.field_185156_bI || item == Items.glass_bottle;
 }

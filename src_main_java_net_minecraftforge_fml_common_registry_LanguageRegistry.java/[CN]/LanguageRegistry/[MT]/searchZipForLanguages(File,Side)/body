@@ -6,9 +6,9 @@
     if (matcher.matches()) {
       String lang=matcher.group(2);
       added.add(lang);
-      LanguageRegistry.instance().injectLanguage(lang,StringTranslate.parseLangFile(zf.getInputStream(ze)));
+      LanguageRegistry.instance().injectLanguage(lang,LanguageMap.parseLangFile(zf.getInputStream(ze)));
       if ("en_US".equals(lang) && side == Side.SERVER) {
-        StringTranslate.inject(zf.getInputStream(ze));
+        LanguageMap.inject(zf.getInputStream(ze));
       }
     }
   }
