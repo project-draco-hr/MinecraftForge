@@ -1,3 +1,0 @@
-{
-  return Minecraft.getMinecraft().mcDefaultResourcePack.getInputStream(location);
-}
