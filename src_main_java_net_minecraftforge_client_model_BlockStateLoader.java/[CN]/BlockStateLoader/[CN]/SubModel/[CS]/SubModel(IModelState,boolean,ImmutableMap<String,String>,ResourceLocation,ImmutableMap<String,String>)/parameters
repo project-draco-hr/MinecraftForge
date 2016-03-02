@@ -1,5 +1,0 @@
-IModelState state
-boolean uvLock
-ImmutableMap<String,String> textures
-ResourceLocation model
-ImmutableMap<String,String> customData

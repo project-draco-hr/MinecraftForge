@@ -1,3 +1,0 @@
-{
-  this(state,uvLock,true,true,textures,model,customData);
-}

@@ -1,0 +1,4 @@
+Block block
+ImmutableMap<IProperty<?>,Comparable<?>> properties
+ImmutableMap<IUnlistedProperty<?>,Optional<?>> unlistedProperties
+ImmutableTable<IProperty<?>,Comparable<?>,IBlockState> table
