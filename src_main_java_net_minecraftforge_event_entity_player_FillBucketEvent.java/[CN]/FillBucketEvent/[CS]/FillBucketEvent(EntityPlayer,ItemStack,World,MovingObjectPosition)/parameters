@@ -1,4 +1,0 @@
-EntityPlayer player
-ItemStack current
-World world
-MovingObjectPosition target

@@ -1,4 +1,0 @@
-{
-  PlayerUseItemEvent event=new PlayerUseItemEvent.Tick(player,item,duration);
-  return MinecraftForge.EVENT_BUS.post(event) ? -1 : event.duration;
-}

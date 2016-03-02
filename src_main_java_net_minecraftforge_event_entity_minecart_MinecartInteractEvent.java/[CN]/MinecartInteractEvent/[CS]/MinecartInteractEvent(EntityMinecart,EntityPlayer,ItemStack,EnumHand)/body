@@ -1,0 +1,6 @@
+{
+  super(minecart);
+  this.player=player;
+  this.item=item;
+  this.hand=hand;
+}

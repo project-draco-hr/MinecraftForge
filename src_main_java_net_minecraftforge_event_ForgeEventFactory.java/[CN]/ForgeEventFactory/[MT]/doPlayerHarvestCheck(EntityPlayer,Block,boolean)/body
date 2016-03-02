@@ -1,5 +1,0 @@
-{
-  PlayerEvent.HarvestCheck event=new PlayerEvent.HarvestCheck(player,block,success);
-  MinecraftForge.EVENT_BUS.post(event);
-  return event.success;
-}

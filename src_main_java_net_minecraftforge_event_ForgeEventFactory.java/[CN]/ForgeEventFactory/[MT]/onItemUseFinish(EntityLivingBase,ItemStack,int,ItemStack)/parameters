@@ -1,0 +1,4 @@
+EntityLivingBase entity
+ItemStack item
+int duration
+ItemStack result

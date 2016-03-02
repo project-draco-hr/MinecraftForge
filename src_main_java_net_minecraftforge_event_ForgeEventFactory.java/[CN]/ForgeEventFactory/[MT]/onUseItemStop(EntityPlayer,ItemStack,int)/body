@@ -1,3 +1,0 @@
-{
-  return MinecraftForge.EVENT_BUS.post(new PlayerUseItemEvent.Stop(player,item,duration));
-}

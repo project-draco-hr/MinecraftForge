@@ -1,0 +1,5 @@
+{
+  PlayerEvent.HarvestCheck event=new PlayerEvent.HarvestCheck(player,state,success);
+  MinecraftForge.EVENT_BUS.post(event);
+  return event.canHarvest();
+}
