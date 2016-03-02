@@ -1,0 +1,5 @@
+EntityPlayer player
+ItemStack item
+EnumHand hand
+World world
+boolean hasAmmo

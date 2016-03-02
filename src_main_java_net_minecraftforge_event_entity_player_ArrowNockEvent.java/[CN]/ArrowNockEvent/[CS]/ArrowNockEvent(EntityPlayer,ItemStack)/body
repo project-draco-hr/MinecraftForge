@@ -1,4 +1,0 @@
-{
-  super(player);
-  this.result=result;
-}

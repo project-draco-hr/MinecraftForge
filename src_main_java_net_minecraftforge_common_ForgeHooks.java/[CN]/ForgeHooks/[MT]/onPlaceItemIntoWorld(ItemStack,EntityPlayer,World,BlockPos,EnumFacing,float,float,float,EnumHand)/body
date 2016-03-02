@@ -8,9 +8,9 @@
   if (!(itemstack.getItem() instanceof ItemBucket)) {
     world.captureBlockSnapshots=true;
   }
-  boolean flag=itemstack.getItem().onItemUse(itemstack,player,world,pos,side,hitX,hitY,hitZ);
+  EnumActionResult ret=itemstack.getItem().onItemUse(itemstack,player,world,pos,hand,side,hitX,hitY,hitZ);
   world.captureBlockSnapshots=false;
-  if (flag) {
+  if (ret == EnumActionResult.SUCCESS) {
     int newMeta=itemstack.getItemDamage();
     int newSize=itemstack.stackSize;
     NBTTagCompound newNBT=null;
@@ -32,7 +32,7 @@
       placeEvent=ForgeEventFactory.onPlayerBlockPlace(player,blockSnapshots.get(0),side);
     }
     if (placeEvent != null && (placeEvent.isCanceled())) {
-      flag=false;
+      ret=EnumActionResult.FAIL;
       for (      net.minecraftforge.common.util.BlockSnapshot blocksnapshot : blockSnapshots) {
         world.restoringBlockSnapshots=true;
         blocksnapshot.restore(true,false);
@@ -54,9 +54,9 @@
         }
         world.markAndNotifyBlock(snap.pos,null,oldBlock,newBlock,updateFlag);
       }
-      player.addStat(StatList.objectUseStats[Item.getIdFromItem(itemstack.getItem())],1);
+      player.triggerAchievement(StatList.func_188060_a(itemstack.getItem()));
     }
   }
   world.capturedBlockSnapshots.clear();
-  return flag;
+  return ret;
 }

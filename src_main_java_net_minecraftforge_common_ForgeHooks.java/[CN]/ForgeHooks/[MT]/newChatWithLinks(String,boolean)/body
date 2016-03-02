@@ -31,7 +31,7 @@
     ClickEvent click=new ClickEvent(ClickEvent.Action.OPEN_URL,url);
     link.getChatStyle().setChatClickEvent(click);
     link.getChatStyle().setUnderlined(true);
-    link.getChatStyle().setColor(EnumChatFormatting.BLUE);
+    link.getChatStyle().setColor(TextFormatting.BLUE);
     if (ichat == null)     ichat=link;
  else     ichat.appendSibling(link);
   }

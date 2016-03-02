@@ -6,3 +6,4 @@ EnumFacing side
 float hitX
 float hitY
 float hitZ
+EnumHand hand

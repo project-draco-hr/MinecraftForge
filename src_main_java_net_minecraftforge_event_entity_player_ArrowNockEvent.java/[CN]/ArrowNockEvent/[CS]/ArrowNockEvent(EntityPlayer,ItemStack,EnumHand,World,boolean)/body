@@ -1,0 +1,7 @@
+{
+  super(player);
+  this.bow=item;
+  this.hand=hand;
+  this.world=world;
+  this.hasAmmo=hasAmmo;
+}
