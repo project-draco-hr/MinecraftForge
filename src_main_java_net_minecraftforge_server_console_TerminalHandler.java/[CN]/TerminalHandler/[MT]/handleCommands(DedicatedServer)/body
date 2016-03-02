@@ -24,7 +24,7 @@
  else {
     TerminalConsoleAppender.setFormatter(new Function<String,String>(){
       @Override public String apply(      String text){
-        return EnumChatFormatting.getTextWithoutFormattingCodes(text);
+        return TextFormatting.getTextWithoutFormattingCodes(text);
       }
     }
 );
