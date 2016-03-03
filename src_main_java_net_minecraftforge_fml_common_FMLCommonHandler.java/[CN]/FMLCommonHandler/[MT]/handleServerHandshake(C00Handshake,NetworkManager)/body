@@ -2,7 +2,7 @@
   if (!shouldAllowPlayerLogins()) {
     TextComponentString text=new TextComponentString("Server is still starting! Please wait before reconnecting.");
     FMLLog.info("Disconnecting Player: " + text.getUnformattedText());
-    manager.sendPacket(new S00PacketDisconnect(text));
+    manager.sendPacket(new SPacketDisconnect(text));
     manager.closeChannel(text);
     return false;
   }
@@ -10,7 +10,7 @@
     manager.setConnectionState(EnumConnectionState.LOGIN);
     TextComponentString text=new TextComponentString("This server requires FML/Forge to be installed. Contact your server admin for more details.");
     FMLLog.info("Disconnecting Player: " + text.getUnformattedText());
-    manager.sendPacket(new S00PacketDisconnect(text));
+    manager.sendPacket(new SPacketDisconnect(text));
     manager.closeChannel(text);
     return false;
   }
