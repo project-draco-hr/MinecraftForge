@@ -1,7 +1,4 @@
 {
   checkRegistration(biome);
-  if (biomeList[biome.biomeID] != null) {
-    return containsType(biomeList[biome.biomeID],type);
-  }
-  return false;
+  return containsType(getBiomeInfo(biome),type);
 }

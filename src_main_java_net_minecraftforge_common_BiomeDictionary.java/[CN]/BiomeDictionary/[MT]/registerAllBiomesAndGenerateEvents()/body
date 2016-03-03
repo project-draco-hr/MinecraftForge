@@ -1,9 +1,6 @@
 {
-  for (int i=0; i < BiomeGenBase.getBiomeGenArray().length; i++) {
-    BiomeGenBase biome=BiomeGenBase.getBiomeGenArray()[i];
-    if (biome == null) {
-      continue;
-    }
+  for (  ResourceLocation biomeResource : BiomeGenBase.field_185377_q.getKeys()) {
+    BiomeGenBase biome=BiomeGenBase.field_185377_q.getObject(biomeResource);
     if (biome.theBiomeDecorator instanceof DeferredBiomeDecorator) {
       DeferredBiomeDecorator decorator=(DeferredBiomeDecorator)biome.theBiomeDecorator;
       decorator.fireCreateEventAndReplace(biome);

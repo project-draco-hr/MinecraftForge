@@ -1,13 +1,9 @@
 {
-  int a=biomeA.biomeID;
-  int b=biomeB.biomeID;
   checkRegistration(biomeA);
   checkRegistration(biomeB);
-  if (biomeList[a] != null && biomeList[b] != null) {
-    for (    Type type : biomeList[a].typeList) {
-      if (containsType(biomeList[b],type)) {
-        return true;
-      }
+  for (  Type type : getTypesForBiome(biomeA)) {
+    if (containsType(getBiomeInfo(biomeB),type)) {
+      return true;
     }
   }
   return false;
