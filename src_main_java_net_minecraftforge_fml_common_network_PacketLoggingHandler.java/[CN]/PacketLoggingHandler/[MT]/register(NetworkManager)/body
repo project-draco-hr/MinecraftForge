@@ -26,7 +26,7 @@
 );
   }
  else {
-    pipeline.replace("splitter","splitter",new MessageDeserializer2(){
+    pipeline.replace("splitter","splitter",new NettyVarint21FrameDecoder(){
       String prefix=(direction == EnumPacketDirection.SERVERBOUND ? "SERVER: C->S" : "CLIENT: S->C");
       @Override protected void decode(      ChannelHandlerContext context,      ByteBuf input,      List<Object> output) throws Exception {
         super.decode(context,input,output);
@@ -40,7 +40,7 @@
       }
     }
 );
-    pipeline.replace("prepender","prepender",new MessageSerializer2(){
+    pipeline.replace("prepender","prepender",new NettyVarint21FrameEncoder(){
       String prefix=(direction == EnumPacketDirection.SERVERBOUND ? "SERVER: S->C" : "CLIENT: C->S");
       @Override protected void encode(      ChannelHandlerContext context,      ByteBuf input,      ByteBuf output) throws Exception {
         input.markReaderIndex();
