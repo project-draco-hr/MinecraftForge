@@ -1,5 +1,5 @@
 {
-  if (WorldChunkManager.allowedBiomes.contains(biome)) {
-    WorldChunkManager.allowedBiomes.remove(biome);
+  if (BiomeProvider.allowedBiomes.contains(biome)) {
+    BiomeProvider.allowedBiomes.remove(biome);
   }
 }
