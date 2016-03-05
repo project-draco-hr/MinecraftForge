@@ -1,6 +1,5 @@
 {
   this.modelManager=modelManager;
   this.modelRegistry=modelRegistry;
-  this.modelBakery=modelLoader;
   this.modelLoader=modelLoader;
 }

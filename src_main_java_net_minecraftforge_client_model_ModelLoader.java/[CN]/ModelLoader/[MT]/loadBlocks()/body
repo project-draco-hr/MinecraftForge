@@ -11,7 +11,7 @@
 );
   ProgressBar blockBar=ProgressManager.push("ModelLoader: blocks",variants.size());
   for (  ModelResourceLocation variant : variants) {
-    loadVariants(ImmutableList.of(variant));
+    loadVariant(variant);
     blockBar.step(variant.toString());
   }
   ProgressManager.pop(blockBar);

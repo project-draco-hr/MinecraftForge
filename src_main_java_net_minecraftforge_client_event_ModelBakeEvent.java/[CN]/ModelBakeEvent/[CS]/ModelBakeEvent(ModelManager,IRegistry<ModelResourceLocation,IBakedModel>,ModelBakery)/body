@@ -1,3 +1,0 @@
-{
-  this(modelManager,modelRegistry,(ModelLoader)modelBakery);
-}

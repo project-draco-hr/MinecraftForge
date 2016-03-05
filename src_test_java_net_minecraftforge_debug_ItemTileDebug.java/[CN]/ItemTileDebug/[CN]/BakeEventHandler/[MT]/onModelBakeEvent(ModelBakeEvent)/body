@@ -1,3 +1,3 @@
 {
-  event.modelManager.getBlockModelShapes().registerBuiltInBlocks(TestBlock.instance);
+  event.getModelManager().getBlockModelShapes().registerBuiltInBlocks(TestBlock.instance);
 }

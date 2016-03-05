@@ -5,5 +5,5 @@
   }
   ResourceLocation armatureLocation=new ResourceLocation(modelLocation.getResourceDomain(),"armatures/" + modelPath + ".json");
   ModelBlockAnimation animation=Animation.INSTANCE.loadVanillaAnimation(armatureLocation);
-  return loader.new VanillaModelWrapper(modelLocation,loader.loadModel(modelLocation),animation);
+  return loader.new VanillaModelWrapper(modelLocation,loader.loadModel(modelLocation),false,animation);
 }

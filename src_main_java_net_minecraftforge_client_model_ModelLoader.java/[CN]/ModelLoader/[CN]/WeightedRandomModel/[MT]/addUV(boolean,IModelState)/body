@@ -1,4 +1,0 @@
-{
-  if (uv)   return new UVLock(state);
-  return state;
-}

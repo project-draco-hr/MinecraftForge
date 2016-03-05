@@ -1,17 +1,3 @@
 {
-  VariantList variants=null;
-  try {
-    variants=definition.getVariants(location.getVariant());
-  }
- catch (  MissingVariantException e) {
-    missingVariants.add(location);
-  }
-  if (variants != null && !variants.getVariants().isEmpty()) {
-    try {
-      stateModels.put(location,new WeightedRandomModel(location,variants));
-    }
- catch (    Throwable e) {
-      throw new RuntimeException(e);
-    }
-  }
+  super.registerVariant(definition,location);
 }
