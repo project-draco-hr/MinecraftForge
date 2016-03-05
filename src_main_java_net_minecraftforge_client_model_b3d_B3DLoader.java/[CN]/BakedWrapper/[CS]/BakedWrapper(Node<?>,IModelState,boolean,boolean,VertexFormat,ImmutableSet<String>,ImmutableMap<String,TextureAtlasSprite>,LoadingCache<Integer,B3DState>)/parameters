@@ -5,4 +5,4 @@ boolean gui3d
 VertexFormat format
 ImmutableSet<String> meshes
 ImmutableMap<String,TextureAtlasSprite> textures
-LoadingCache<Integer,BakedWrapper> cache
+LoadingCache<Integer,B3DState> cache

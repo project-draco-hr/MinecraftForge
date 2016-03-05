@@ -1,4 +1,0 @@
-{
-  super(parent.models);
-  this.format=format;
-}

@@ -1,4 +1,6 @@
 {
+  if (side != null)   return ImmutableList.of();
+  IModelState modelState=this.state;
   if (state instanceof IExtendedBlockState) {
     IExtendedBlockState exState=(IExtendedBlockState)state;
     if (exState.getUnlistedNames().contains(B3DFrameProperty.instance)) {
@@ -14,10 +16,11 @@
           newAnimation=node.getAnimation();
         }
         if (s.getFrame() == s.getNextFrame()) {
-          return cache.getUnchecked(s.getFrame());
+          modelState=cache.getUnchecked(s.getFrame());
         }
-        B3DState newState=new B3DState(newAnimation,s.getFrame(),s.getNextFrame(),s.getProgress(),parent);
-        return new BakedWrapper(node,newState,smooth,gui3d,format,meshes,textures);
+ else {
+          modelState=new B3DState(newAnimation,s.getFrame(),s.getNextFrame(),s.getProgress(),parent);
+        }
       }
     }
  else     if (exState.getUnlistedNames().contains(Properties.AnimationProperty)) {
@@ -28,9 +31,14 @@
       }
       IModelState newState=exState.getValue(Properties.AnimationProperty);
       if (newState != null) {
-        return new BakedWrapper(node,new ModelStateComposition(parent,newState),smooth,gui3d,format,meshes,textures);
+        modelState=new ModelStateComposition(parent,newState);
       }
     }
   }
-  return this;
+  if (quads == null) {
+    ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
+    generateQuads(builder,node,modelState);
+    quads=builder.build();
+  }
+  return quads;
 }

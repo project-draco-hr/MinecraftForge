@@ -19,7 +19,7 @@
     }
   }
 );
-  IFlexibleBakedModel missingBaked=missingModel.bake(missingModel.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.instance);
+  IBakedModel missingBaked=missingModel.bake(missingModel.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.instance);
   for (  Entry<ModelResourceLocation,IModel> e : stateModels.entrySet()) {
     if (e.getValue() == getMissingModel()) {
       bakedRegistry.putObject(e.getKey(),missingBaked);

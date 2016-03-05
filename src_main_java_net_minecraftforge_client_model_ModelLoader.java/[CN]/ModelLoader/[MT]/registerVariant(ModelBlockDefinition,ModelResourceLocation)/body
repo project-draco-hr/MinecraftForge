@@ -1,5 +1,5 @@
 {
-  Variants variants=null;
+  VariantList variants=null;
   try {
     variants=definition.getVariants(location.getVariant());
   }

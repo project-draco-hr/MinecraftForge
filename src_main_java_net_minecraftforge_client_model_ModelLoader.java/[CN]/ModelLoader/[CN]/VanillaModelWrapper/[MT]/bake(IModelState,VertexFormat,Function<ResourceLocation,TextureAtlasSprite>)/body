@@ -22,6 +22,6 @@
   if (hasItemModel(model)) {
     return new ItemLayerModel(model).bake(perState,format,bakedTextureGetter);
   }
-  if (isCustomRenderer(model))   return new IFlexibleBakedModel.Wrapper(new BuiltInModel(transforms),format);
+  if (isCustomRenderer(model))   return new BuiltInModel(transforms);
   return bakeNormal(model,perState,state.apply(Optional.<IModelPart>absent()).or(TRSRTransformation.identity()),newTransforms,format,bakedTextureGetter,uvlock);
 }

@@ -33,12 +33,6 @@
       if (!r.equals(s)) {
         builder.add(loc);
       }
-      if (model.getRootModel() == MODEL_COMPASS && !loc.equals(TextureMap.LOCATION_MISSING_TEXTURE)) {
-        TextureAtlasSprite.setLocationNameCompass(loc.toString());
-      }
- else       if (model.getRootModel() == MODEL_CLOCK && !loc.equals(TextureMap.LOCATION_MISSING_TEXTURE)) {
-        TextureAtlasSprite.setLocationNameClock(loc.toString());
-      }
     }
   }
   for (  String s : model.textures.values()) {
