@@ -1,0 +1,3 @@
+{
+  return new ContextHell(getLPerlin1(),getLPerlin2(),getPerlin(),perlin2,perlin3,getScale(),getDepth());
+}

@@ -1,0 +1,6 @@
+boolean pre
+IChunkGenerator gen
+World world
+int x
+int z
+boolean hasVillageGenerated

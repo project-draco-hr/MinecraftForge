@@ -1,0 +1,7 @@
+NoiseGeneratorOctaves lperlin1
+NoiseGeneratorOctaves lperlin2
+NoiseGeneratorOctaves perlin
+NoiseGeneratorPerlin height
+NoiseGeneratorOctaves scale
+NoiseGeneratorOctaves depth
+NoiseGeneratorOctaves forest

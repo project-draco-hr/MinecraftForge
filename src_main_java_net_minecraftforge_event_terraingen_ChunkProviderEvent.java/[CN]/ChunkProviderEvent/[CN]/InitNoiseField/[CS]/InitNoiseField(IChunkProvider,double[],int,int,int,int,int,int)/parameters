@@ -1,8 +1,0 @@
-IChunkProvider chunkProvider
-double[] noisefield
-int posX
-int posY
-int posZ
-int sizeX
-int sizeY
-int sizeZ

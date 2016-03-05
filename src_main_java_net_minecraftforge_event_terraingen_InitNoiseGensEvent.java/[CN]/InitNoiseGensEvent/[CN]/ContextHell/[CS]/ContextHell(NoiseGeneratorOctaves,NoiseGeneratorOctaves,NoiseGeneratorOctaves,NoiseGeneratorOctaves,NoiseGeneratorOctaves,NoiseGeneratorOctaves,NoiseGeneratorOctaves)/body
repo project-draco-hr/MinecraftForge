@@ -1,0 +1,5 @@
+{
+  super(lperlin1,lperlin2,perlin,scale,depth);
+  this.perlin2=perlin2;
+  this.perlin3=perlin3;
+}

@@ -1,8 +1,0 @@
-{
-  super(chunkProvider);
-  this.world=world;
-  this.rand=rand;
-  this.chunkX=chunkX;
-  this.chunkZ=chunkZ;
-  this.hasVillageGenerated=hasVillageGenerated;
-}

@@ -1,0 +1,5 @@
+IChunkGenerator gen
+int x
+int z
+ChunkPrimer primer
+World world

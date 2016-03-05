@@ -1,0 +1,3 @@
+{
+  MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(gen,world,world.rand,x,z,hasVillageGenerated));
+}

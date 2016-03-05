@@ -1,0 +1,4 @@
+{
+  super(lperlin1,lperlin2,perlin,scale,depth);
+  this.island=island;
+}
