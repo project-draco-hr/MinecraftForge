@@ -1,0 +1,6 @@
+{
+  if (model instanceof IModelSimpleProperties) {
+    model=((IModelSimpleProperties)model).smoothLighting(smooth);
+  }
+  return model;
+}

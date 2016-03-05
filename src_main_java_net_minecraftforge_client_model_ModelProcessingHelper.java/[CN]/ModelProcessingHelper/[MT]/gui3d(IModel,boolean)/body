@@ -1,0 +1,6 @@
+{
+  if (model instanceof IModelSimpleProperties) {
+    model=((IModelSimpleProperties)model).gui3d(gui3d);
+  }
+  return model;
+}

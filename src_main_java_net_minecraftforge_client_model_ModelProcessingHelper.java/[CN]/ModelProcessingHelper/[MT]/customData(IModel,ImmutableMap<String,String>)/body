@@ -1,0 +1,6 @@
+{
+  if (model instanceof IModelCustomData) {
+    model=((IModelCustomData)model).process(customData);
+  }
+  return model;
+}

@@ -1,0 +1,6 @@
+{
+  if (model instanceof IRetexturableModel) {
+    model=((IRetexturableModel)model).retexture(textures);
+  }
+  return model;
+}
