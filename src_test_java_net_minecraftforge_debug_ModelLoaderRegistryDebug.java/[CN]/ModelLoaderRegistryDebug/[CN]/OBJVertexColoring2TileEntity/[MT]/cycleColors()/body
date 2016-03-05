@@ -1,41 +1,5 @@
 {
   if (this.worldObj.isRemote) {
     FMLLog.info("%b",shouldIncrement);
-    IBakedModel bakedModel=Minecraft.getMinecraft().getBlockRendererDispatcher().getModelFromBlockState(this.worldObj.getBlockState(this.pos),this.worldObj,this.pos);
-    if (bakedModel != null && bakedModel instanceof OBJBakedModel) {
-      OBJBakedModel objBaked=(OBJBakedModel)bakedModel;
-      ImmutableList<String> materialNames=objBaked.getModel().getMatLib().getMaterialNames();
-      if (!hasFilledList) {
-        for (        String name : materialNames) {
-          if (!name.equals(OBJModel.Material.WHITE_NAME)) {
-            colorList.add(objBaked.getModel().getMatLib().getMaterial(name).getColor());
-          }
-        }
-        hasFilledList=true;
-      }
-      maxIndex=materialNames.size();
-      if (this.shouldIncrement && index + 1 < maxIndex) {
-        FMLLog.info("incrementing");
-        String name=materialNames.get(index);
-        objBaked.getModel().getMatLib().changeMaterialColor(name,0xFF000000);
-        objBaked.scheduleRebake();
-        index++;
-      }
- else       if (index - 1 >= 0) {
-        index--;
-        this.shouldIncrement=index == 0;
-        int color=0;
-        color|=(int)(colorList.get(index).getW() * 255) << 24;
-        color|=(int)(colorList.get(index).getX() * 255) << 16;
-        color|=(int)(colorList.get(index).getY() * 255) << 8;
-        color|=(int)(colorList.get(index).getZ() * 255);
-        String name=materialNames.get(index);
-        if (!name.equals(OBJModel.Material.WHITE_NAME)) {
-          objBaked.getModel().getMatLib().changeMaterialColor(name,color);
-          objBaked.scheduleRebake();
-        }
-      }
-      this.worldObj.markBlockRangeForRenderUpdate(this.pos,this.pos);
-    }
   }
 }

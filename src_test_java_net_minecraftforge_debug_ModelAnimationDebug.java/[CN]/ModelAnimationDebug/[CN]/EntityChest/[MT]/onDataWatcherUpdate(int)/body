@@ -1,9 +1,0 @@
-{
-  super.onDataWatcherUpdate(id);
-  if (id == 6) {
-    if (cycleLength == null) {
-      cycleLength=new VariableValue(0);
-    }
-    cycleLength.setValue(getHealth() / 5);
-  }
-}

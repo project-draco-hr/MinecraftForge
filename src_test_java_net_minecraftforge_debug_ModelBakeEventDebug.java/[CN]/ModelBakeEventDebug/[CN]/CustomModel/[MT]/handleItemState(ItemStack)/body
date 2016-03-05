@@ -1,4 +1,0 @@
-{
-  IExtendedBlockState itemState=((IExtendedBlockState)CustomModelBlock.instance.getDefaultState()).withProperty(properties[1],(1 << (cubeSize * cubeSize)) - 1);
-  return new CustomModel(base,overlay,itemState);
-}

@@ -1,3 +1,0 @@
-{
-  return layer == BlockRenderLayer.SOLID || layer == BlockRenderLayer.TRANSLUCENT;
-}

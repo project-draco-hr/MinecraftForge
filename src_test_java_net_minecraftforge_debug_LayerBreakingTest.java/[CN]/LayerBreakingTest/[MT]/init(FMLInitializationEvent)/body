@@ -1,6 +1,0 @@
-{
-  if (ENABLE && event.getSide() == Side.CLIENT) {
-    MinecraftForge.EVENT_BUS.register(this);
-    GameRegistry.registerBlock(testBlock=new TestBlock(),"layer_breaking_test");
-  }
-}

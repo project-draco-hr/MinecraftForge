@@ -1,5 +1,0 @@
-{
-  this.base=base;
-  this.overlay=overlay;
-  this.state=state;
-}
