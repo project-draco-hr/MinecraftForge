@@ -1,4 +1,5 @@
 {
+  if (side != null)   return ImmutableList.of();
   if (quads == null) {
     quads=Collections.synchronizedSet(new LinkedHashSet<BakedQuad>());
     Set<Face> faces=Collections.synchronizedSet(new LinkedHashSet<Face>());
