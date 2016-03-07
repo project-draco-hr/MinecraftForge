@@ -3,4 +3,4 @@ Action action
 World world
 BlockPos pos
 EnumFacing face
-Vec3 localPos
+Vec3d localPos
