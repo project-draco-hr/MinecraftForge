@@ -2,14 +2,14 @@
   if (event.getResult() != Event.Result.DEFAULT) {
     return;
   }
-  if (event.current == null || !event.current.isItemEqual(empty) || (nbtSensitive && ItemStack.areItemStackTagsEqual(event.current,empty))) {
+  if (event.getEmptyBucket() == null || !event.getEmptyBucket().isItemEqual(empty) || (nbtSensitive && ItemStack.areItemStackTagsEqual(event.getEmptyBucket(),empty))) {
     return;
   }
-  if (event.target == null || event.target.typeOfHit != MovingObjectPosition.MovingObjectType.BLOCK) {
+  if (event.getTarget() == null || event.getTarget().typeOfHit != RayTraceResult.Type.BLOCK) {
     return;
   }
-  World world=event.world;
-  BlockPos pos=event.target.getBlockPos();
+  World world=event.getWorld();
+  BlockPos pos=event.getTarget().getBlockPos();
   IBlockState state=world.getBlockState(pos);
   if (state.getBlock() instanceof IFluidBlock) {
     IFluidBlock fluidBlock=(IFluidBlock)state.getBlock();
@@ -22,7 +22,7 @@
           drained=fluidBlock.drain(world,pos,true);
           this.fill(filledBucket,drained,true);
           event.setResult(Event.Result.ALLOW);
-          event.result=filledBucket;
+          event.setFilledBucket(filledBucket);
         }
  else {
           event.setCanceled(true);

@@ -1,0 +1,7 @@
+{
+  if (maxScaledLight == 0) {
+    return super.getLightValue(state,world,pos);
+  }
+  int data=quantaPerBlock - state.getValue(LEVEL) - 1;
+  return (int)(data / quantaPerBlockFloat * maxScaledLight);
+}

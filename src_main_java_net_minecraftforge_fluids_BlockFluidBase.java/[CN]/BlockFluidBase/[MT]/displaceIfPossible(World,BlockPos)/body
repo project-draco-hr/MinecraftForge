@@ -14,7 +14,7 @@
     }
     return false;
   }
-  Material material=block.getMaterial();
+  Material material=state.func_185904_a();
   if (material.blocksMovement() || material == Material.portal) {
     return false;
   }

@@ -1,6 +1,6 @@
 {
   boolean changed=false;
-  int quantaRemaining=((Integer)state.getValue(LEVEL)) + 1;
+  int quantaRemaining=state.getValue(LEVEL) + 1;
   int prevRemaining=quantaRemaining;
   quantaRemaining=tryToFlowVerticallyInto(world,pos,quantaRemaining);
   if (quantaRemaining < 1) {

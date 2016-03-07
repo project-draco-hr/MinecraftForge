@@ -1,5 +1,5 @@
 {
-  int quantaRemaining=quantaPerBlock - ((Integer)state.getValue(LEVEL)).intValue();
+  int quantaRemaining=quantaPerBlock - state.getValue(LEVEL);
   int expQuanta=-101;
   if (quantaRemaining < quantaPerBlock) {
     if (world.getBlockState(pos.add(0,-densityDir,0)).getBlock() == this || world.getBlockState(pos.add(-1,-densityDir,0)).getBlock() == this || world.getBlockState(pos.add(1,-densityDir,0)).getBlock() == this || world.getBlockState(pos.add(0,-densityDir,-1)).getBlock() == this || world.getBlockState(pos.add(0,-densityDir,1)).getBlock() == this) {
