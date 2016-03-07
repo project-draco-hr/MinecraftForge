@@ -5,7 +5,7 @@
   String type=args[1];
   int duration=parseInt(args[2],1,60);
   if ("te".equals(type)) {
-    doTurnOnTileEntityTracking(sender,duration);
+    doTurnOnTileEntityTracking(server,sender,duration);
   }
  else {
     throw new WrongUsageException("commands.forge.usage.tracking");
