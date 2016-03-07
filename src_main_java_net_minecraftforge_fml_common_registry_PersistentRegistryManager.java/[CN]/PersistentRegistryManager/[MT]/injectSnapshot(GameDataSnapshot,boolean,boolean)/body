@@ -6,7 +6,6 @@
   forAllRegistries(PersistentRegistry.ACTIVE,DumpRegistryFunction.OPERATION);
   forAllRegistries(PersistentRegistry.ACTIVE,ResetDelegatesFunction.OPERATION);
   GameData.getBlockStateIDMap().clear();
-  Arrays.fill(Potion.potionTypes,null);
   for (  Map.Entry<ResourceLocation,GameDataSnapshot.Entry> snapshotEntry : snapshot.entries.entrySet()) {
     loadPersistentDataToStagingRegistry(injectFrozenData,remaps,missing,snapshotEntry,PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(snapshotEntry.getKey()));
   }

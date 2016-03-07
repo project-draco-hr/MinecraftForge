@@ -1,3 +1,5 @@
 {
-  return ImmutableList.of((NetworkDispatcher)args);
+  EntityPlayerMP player=(EntityPlayerMP)args;
+  NetworkDispatcher dispatcher=player == null ? null : player.playerNetServerHandler.netManager.channel().attr(NetworkDispatcher.FML_DISPATCHER).get();
+  return dispatcher == null ? ImmutableList.<NetworkDispatcher>of() : ImmutableList.of(dispatcher);
 }

@@ -8,7 +8,7 @@
   if (!superType.isInstance(thing)) {
     throw new IllegalArgumentException("The object to be added to the registry is not of the right type. Reflection/ASM hackery? Registry bug?");
   }
-  underlyingIntegerMap.put(thing,id);
+  underlyingIntegerMap.func_186814_a(thing,id);
   super.putObject(name,thing);
   availabilityMap.set(id);
   if (addCallback != null) {
