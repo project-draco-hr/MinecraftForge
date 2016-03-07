@@ -1,6 +1,5 @@
 {
   if (button.id == 1) {
-    ObfuscationReflectionHelper.setPrivateValue(GuiSelectWorld.class,(GuiSelectWorld)parentScreen,false,"field_" + "146634_i");
     FMLClientHandler.instance().showGuiScreen(parent);
   }
  else {

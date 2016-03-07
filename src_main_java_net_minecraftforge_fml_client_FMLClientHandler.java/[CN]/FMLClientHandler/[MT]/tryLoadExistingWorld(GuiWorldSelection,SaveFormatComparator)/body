@@ -1,5 +1,5 @@
 {
-  File dir=new File(getSavesDir(),dirName);
+  File dir=new File(getSavesDir(),comparator.getFileName());
   NBTTagCompound leveldat;
   try {
     leveldat=CompressedStreamTools.readCompressed(new FileInputStream(new File(dir,"level.dat")));
@@ -9,17 +9,17 @@
       leveldat=CompressedStreamTools.readCompressed(new FileInputStream(new File(dir,"level.dat_old")));
     }
  catch (    Exception e1) {
-      FMLLog.warning("There appears to be a problem loading the save %s, both level files are unreadable.",dirName);
+      FMLLog.warning("There appears to be a problem loading the save %s, both level files are unreadable.",comparator.getFileName());
       return;
     }
   }
   NBTTagCompound fmlData=leveldat.getCompoundTag("FML");
   if (fmlData.hasKey("ModItemData")) {
-    showGuiScreen(new GuiOldSaveLoadConfirm(dirName,saveName,selectWorldGUI));
+    showGuiScreen(new GuiOldSaveLoadConfirm(comparator.getFileName(),comparator.getDisplayName(),selectWorldGUI));
   }
  else {
     try {
-      client.launchIntegratedServer(dirName,saveName,(WorldSettings)null);
+      client.launchIntegratedServer(comparator.getFileName(),comparator.getDisplayName(),(WorldSettings)null);
     }
  catch (    StartupQuery.AbortedException e) {
     }
