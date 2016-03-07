@@ -1,3 +1,0 @@
-{
-  while (iter.hasNext())   if (!test.apply(iter.next()))   iter.remove();
-}
