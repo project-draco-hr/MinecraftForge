@@ -1,5 +1,5 @@
 {
-  if (state == ConnectionState.AWAITING_HANDSHAKE && msg instanceof S01PacketJoinGame) {
+  if (state == ConnectionState.AWAITING_HANDSHAKE && msg instanceof SPacketJoinGame) {
     handshakeChannel.pipeline().fireUserEventTriggered(msg);
   }
  else {

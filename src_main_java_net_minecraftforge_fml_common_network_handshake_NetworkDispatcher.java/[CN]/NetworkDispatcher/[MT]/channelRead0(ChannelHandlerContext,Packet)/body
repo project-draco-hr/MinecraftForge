@@ -1,10 +1,10 @@
 {
   boolean handled=false;
-  if (msg instanceof C17PacketCustomPayload) {
-    handled=handleServerSideCustomPacket((C17PacketCustomPayload)msg,ctx);
+  if (msg instanceof CPacketCustomPayload) {
+    handled=handleServerSideCustomPacket((CPacketCustomPayload)msg,ctx);
   }
- else   if (msg instanceof S3FPacketCustomPayload) {
-    handled=handleClientSideCustomPacket((S3FPacketCustomPayload)msg,ctx);
+ else   if (msg instanceof SPacketCustomPayload) {
+    handled=handleClientSideCustomPacket((SPacketCustomPayload)msg,ctx);
   }
  else   if (state != ConnectionState.CONNECTED && state != ConnectionState.HANDSHAKECOMPLETE) {
     handled=handleVanilla(msg);

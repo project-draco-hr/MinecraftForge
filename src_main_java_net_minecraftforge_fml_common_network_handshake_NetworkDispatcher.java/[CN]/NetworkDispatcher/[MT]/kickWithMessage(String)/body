@@ -4,7 +4,7 @@
     manager.closeChannel(TextComponentString);
   }
  else {
-    manager.sendPacket(new S40PacketDisconnect(TextComponentString),new GenericFutureListener<Future<? super Void>>(){
+    manager.sendPacket(new SPacketDisconnect(TextComponentString),new GenericFutureListener<Future<? super Void>>(){
       @Override public void operationComplete(      Future<? super Void> result){
         manager.closeChannel(TextComponentString);
       }

@@ -1,2 +1,2 @@
-S3FPacketCustomPayload msg
+SPacketCustomPayload msg
 ChannelHandlerContext context
