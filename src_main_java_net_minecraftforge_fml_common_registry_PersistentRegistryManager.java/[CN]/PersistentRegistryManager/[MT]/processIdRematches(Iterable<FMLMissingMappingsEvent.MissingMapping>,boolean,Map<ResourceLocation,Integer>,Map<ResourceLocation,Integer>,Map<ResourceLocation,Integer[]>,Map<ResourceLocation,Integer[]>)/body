@@ -14,6 +14,7 @@
         currId=staging.getRegistry(BLOCKS,Block.class).getId((Block)remap.getTarget());
         newName=active.getRegistry(BLOCKS,Block.class).getNameForObject((Block)remap.getTarget());
         FMLLog.fine("The Block %s is being remapped to %s.",remap.name,newName);
+        missingBlocks.remove(new ResourceLocation(remap.name));
         newId=staging.getRegistry(BLOCKS,Block.class).add(remap.id,newName,(Block)remap.getTarget());
         staging.getRegistry(BLOCKS,Block.class).addAlias(remap.resourceLocation,newName);
       }
@@ -21,6 +22,7 @@
         currId=staging.getRegistry(ITEMS,Item.class).getId((Item)remap.getTarget());
         newName=active.getRegistry(ITEMS,Item.class).getNameForObject((Item)remap.getTarget());
         FMLLog.fine("The Item %s is being remapped to %s.",remap.name,newName);
+        missingItems.remove(new ResourceLocation(remap.name));
         newId=staging.getRegistry(ITEMS,Item.class).add(remap.id,newName,(Item)remap.getTarget());
         staging.getRegistry(ITEMS,Item.class).addAlias(remap.resourceLocation,newName);
       }
