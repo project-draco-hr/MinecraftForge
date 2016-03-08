@@ -9,7 +9,7 @@
     }
   }
   if (world.getTileEntity(pos) == null) {
-    S23PacketBlockChange packet=new S23PacketBlockChange(world,pos);
+    SPacketBlockChange packet=new SPacketBlockChange(world,pos);
     packet.blockState=Blocks.air.getDefaultState();
     entityPlayer.playerNetServerHandler.sendPacket(packet);
   }

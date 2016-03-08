@@ -1,4 +1,4 @@
 Entity entity
-String name
+SoundEvent name
 float volume
 float pitch
