@@ -1,6 +1,6 @@
 {
   this.world=world;
-  this.dimId=world.provider.getDimensionId();
+  this.dimId=world.provider.getDimension();
   this.pos=pos;
   this.replacedBlock=state;
   this.blockIdentifier=GameRegistry.findUniqueIdentifierFor(state.getBlock());
