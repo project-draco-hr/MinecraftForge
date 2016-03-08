@@ -1,0 +1,5 @@
+{
+  PlaySoundAtEntityEvent event=new PlaySoundAtEntityEvent(entity,name,category,volume,pitch);
+  MinecraftForge.EVENT_BUS.post(event);
+  return event;
+}
