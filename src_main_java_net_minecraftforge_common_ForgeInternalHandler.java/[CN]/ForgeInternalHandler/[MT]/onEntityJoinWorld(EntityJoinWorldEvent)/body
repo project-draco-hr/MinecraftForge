@@ -4,7 +4,7 @@
   }
   Entity entity=event.entity;
   if (entity.getClass().equals(EntityItem.class)) {
-    ItemStack stack=entity.getDataWatcher().getWatchableObjectItemStack(10);
+    ItemStack stack=((EntityItem)entity).getEntityItem();
     if (stack == null) {
       return;
     }
