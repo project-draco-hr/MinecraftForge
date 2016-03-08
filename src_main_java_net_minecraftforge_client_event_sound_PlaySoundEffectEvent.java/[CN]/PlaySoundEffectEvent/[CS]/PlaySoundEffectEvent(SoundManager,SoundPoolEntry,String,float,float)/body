@@ -1,3 +1,0 @@
-{
-  super(manager,source,name,volume,pitch);
-}

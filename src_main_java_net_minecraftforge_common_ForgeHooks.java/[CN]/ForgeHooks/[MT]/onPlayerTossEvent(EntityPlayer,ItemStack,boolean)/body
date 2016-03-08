@@ -10,6 +10,6 @@
   if (MinecraftForge.EVENT_BUS.post(event)) {
     return null;
   }
-  player.joinEntityItemWithWorld(event.entityItem);
+  player.getEntityWorld().spawnEntityInWorld(event.entityItem);
   return event.entityItem;
 }

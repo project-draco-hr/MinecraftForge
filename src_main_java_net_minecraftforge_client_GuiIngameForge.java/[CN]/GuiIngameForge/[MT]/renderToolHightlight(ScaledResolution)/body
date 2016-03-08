@@ -12,7 +12,7 @@
         if (!mc.playerController.shouldDrawHUD())         y+=14;
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
-        GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
+        GlStateManager.func_187428_a(GlStateManager.SourceFactor.SRC_ALPHA,GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,GlStateManager.SourceFactor.ONE,GlStateManager.DestFactor.ZERO);
         FontRenderer font=highlightingItemStack.getItem().getFontRenderer(highlightingItemStack);
         if (font != null) {
           int x=(res.getScaledWidth() - font.getStringWidth(name)) / 2;

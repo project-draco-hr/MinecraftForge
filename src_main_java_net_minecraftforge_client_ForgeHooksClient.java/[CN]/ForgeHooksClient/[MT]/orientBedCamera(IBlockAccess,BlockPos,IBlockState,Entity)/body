@@ -1,6 +1,6 @@
 {
   Block block=state.getBlock();
-  if (block != null && block.isBed(world,pos,entity)) {
-    glRotatef((float)(block.getBedDirection(world,pos).getHorizontalIndex() * 90),0.0F,1.0F,0.0F);
+  if (block != null && block.isBed(state,world,pos,entity)) {
+    glRotatef((float)(block.getBedDirection(state,world,pos).getHorizontalIndex() * 90),0.0F,1.0F,0.0F);
   }
 }

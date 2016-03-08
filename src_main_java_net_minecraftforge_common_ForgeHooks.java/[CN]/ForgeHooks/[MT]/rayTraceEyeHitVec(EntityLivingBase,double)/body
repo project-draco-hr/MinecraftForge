@@ -1,4 +1,4 @@
 {
-  MovingObjectPosition movingObjectPosition=rayTraceEyes(entity,length);
-  return movingObjectPosition == null ? null : movingObjectPosition.hitVec;
+  RayTraceResult git=rayTraceEyes(entity,length);
+  return git == null ? null : git.hitVec;
 }

@@ -1,9 +1,0 @@
-{
-  super(manager);
-  this.manager=manager;
-  this.source=source;
-  this.name=name;
-  this.volume=volume;
-  this.pitch=pitch;
-  this.result=source;
-}

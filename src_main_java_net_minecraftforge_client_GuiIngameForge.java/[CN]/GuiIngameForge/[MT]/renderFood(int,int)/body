@@ -16,7 +16,7 @@
     int y=top;
     int icon=16;
     byte backgound=0;
-    if (mc.thePlayer.isPotionActive(Potion.hunger)) {
+    if (mc.thePlayer.isPotionActive(MobEffects.hunger)) {
       icon+=36;
       backgound=13;
     }

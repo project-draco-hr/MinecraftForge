@@ -1,0 +1,6 @@
+{
+  if (pre(CROSSHAIRS))   return;
+  bind(Gui.icons);
+  super.func_184045_a(partialTicks,res);
+  post(CROSSHAIRS);
+}
