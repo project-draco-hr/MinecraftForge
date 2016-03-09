@@ -18,7 +18,7 @@
   event.setCanceled(preCancelEvent);
   MinecraftForge.EVENT_BUS.post(event);
   if (event.isCanceled()) {
-    entityPlayer.playerNetServerHandler.sendPacket(new S23PacketBlockChange(world,pos));
+    entityPlayer.playerNetServerHandler.sendPacket(new SPacketBlockChange(world,pos));
     TileEntity tileentity=world.getTileEntity(pos);
     if (tileentity != null) {
       Packet<?> pkt=tileentity.getDescriptionPacket();

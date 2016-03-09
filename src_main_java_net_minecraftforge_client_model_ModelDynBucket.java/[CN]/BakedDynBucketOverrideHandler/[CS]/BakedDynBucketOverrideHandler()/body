@@ -1,3 +1,3 @@
 {
-  super(ImmutableList.of());
+  super(ImmutableList.<ItemOverride>of());
 }
