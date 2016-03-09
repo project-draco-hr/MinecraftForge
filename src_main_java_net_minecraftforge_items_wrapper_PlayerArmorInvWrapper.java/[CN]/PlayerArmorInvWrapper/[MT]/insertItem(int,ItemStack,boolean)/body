@@ -1,5 +1,12 @@
 {
-  if (slot < 4 && stack != null && stack.getItem().isValidArmor(stack,3 - slot,inventoryPlayer.player)) {
+  EntityEquipmentSlot equ=null;
+  for (  EntityEquipmentSlot s : EntityEquipmentSlot.values()) {
+    if (s.func_188453_a() == EntityEquipmentSlot.Type.ARMOR && s.func_188454_b() == slot) {
+      equ=s;
+      break;
+    }
+  }
+  if (slot < 4 && stack != null && stack.getItem().isValidArmor(stack,equ,inventoryPlayer.player)) {
     return super.insertItem(slot + offset,stack,simulate);
   }
   return stack;

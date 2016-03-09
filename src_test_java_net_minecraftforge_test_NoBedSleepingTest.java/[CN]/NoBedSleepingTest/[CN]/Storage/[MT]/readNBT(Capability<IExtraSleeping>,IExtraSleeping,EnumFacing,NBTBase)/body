@@ -1,0 +1,3 @@
+{
+  instance.setSleeping(((NBTPrimitive)nbt).getByte() == 1);
+}

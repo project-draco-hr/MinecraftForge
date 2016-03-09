@@ -1,3 +1,0 @@
-{
-  evt.entity.registerExtendedProperties(ExtendedPropertySleeping.name,new ExtendedPropertySleeping());
-}

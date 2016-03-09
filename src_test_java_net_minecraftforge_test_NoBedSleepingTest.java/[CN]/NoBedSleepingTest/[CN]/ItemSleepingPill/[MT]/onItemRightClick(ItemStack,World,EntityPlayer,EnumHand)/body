@@ -1,0 +1,11 @@
+{
+  if (!world.isRemote) {
+    final EnumStatus result=player.trySleep(player.getPosition());
+    if (result == EnumStatus.OK) {
+      final IExtraSleeping sleep=player.getCapability(SLEEP_CAP,null);
+      if (sleep != null)       sleep.setSleeping(true);
+      return ActionResult.newResult(EnumActionResult.SUCCESS,stack);
+    }
+  }
+  return ActionResult.newResult(EnumActionResult.PASS,stack);
+}

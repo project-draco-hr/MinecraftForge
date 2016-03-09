@@ -1,3 +1,0 @@
-{
-  compound.setBoolean(TAG_NAME,isSleeping);
-}

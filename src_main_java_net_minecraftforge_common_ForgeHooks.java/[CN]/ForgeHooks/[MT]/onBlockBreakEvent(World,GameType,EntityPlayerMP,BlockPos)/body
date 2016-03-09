@@ -1,10 +1,10 @@
 {
   boolean preCancelEvent=false;
-  if (gameType.isCreative() && entityPlayer.getHeldItem() != null && entityPlayer.getHeldItem().getItem() instanceof ItemSword)   preCancelEvent=true;
+  if (gameType.isCreative() && entityPlayer.func_184614_ca() != null && entityPlayer.func_184614_ca().getItem() instanceof ItemSword)   preCancelEvent=true;
   if (gameType.isAdventure()) {
     if (gameType == WorldSettings.GameType.SPECTATOR)     preCancelEvent=true;
     if (!entityPlayer.isAllowEdit()) {
-      ItemStack itemstack=entityPlayer.getCurrentEquippedItem();
+      ItemStack itemstack=entityPlayer.func_184614_ca();
       if (itemstack == null || !itemstack.canDestroy(world.getBlockState(pos).getBlock()))       preCancelEvent=true;
     }
   }

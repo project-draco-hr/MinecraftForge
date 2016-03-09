@@ -1,4 +1,4 @@
 {
-  super(location,badEffect,potionColor);
+  super(badEffect,potionColor);
   setPotionName("potion." + location.getResourcePath());
 }

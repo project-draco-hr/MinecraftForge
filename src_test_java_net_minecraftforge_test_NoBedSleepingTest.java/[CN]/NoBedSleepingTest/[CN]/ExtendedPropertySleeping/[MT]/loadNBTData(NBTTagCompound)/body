@@ -1,3 +1,0 @@
-{
-  this.isSleeping=compound.getBoolean(TAG_NAME);
-}

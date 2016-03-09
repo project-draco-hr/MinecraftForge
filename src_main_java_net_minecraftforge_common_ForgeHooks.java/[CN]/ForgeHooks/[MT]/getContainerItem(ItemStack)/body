@@ -3,7 +3,7 @@
   if (stack.getItem().hasContainerItem(stack)) {
     stack=stack.getItem().getContainerItem(stack);
     if (stack != null && stack.isItemStackDamageable() && stack.getMetadata() > stack.getMaxDamage()) {
-      MinecraftForge.EVENT_BUS.post(new PlayerDestroyItemEvent(craftingPlayer.get(),stack));
+      ForgeEventFactory.onPlayerDestroyItem(craftingPlayer.get(),stack,null);
       return null;
     }
     return stack;
