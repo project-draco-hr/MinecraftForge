@@ -1,9 +1,0 @@
-{
-  Iterator<WeightedRandomChestContent> itr=contents.iterator();
-  while (itr.hasNext()) {
-    WeightedRandomChestContent cont=itr.next();
-    if (item.isItemEqual(cont.theItemId) || (item.getItemDamage() == OreDictionary.WILDCARD_VALUE && item.getItem() == cont.theItemId.getItem())) {
-      itr.remove();
-    }
-  }
-}

@@ -1,6 +1,0 @@
-{
-  if (!chestInfo.containsKey(category)) {
-    chestInfo.put(category,new ChestGenHooks(category));
-  }
-  return chestInfo.get(category);
-}
