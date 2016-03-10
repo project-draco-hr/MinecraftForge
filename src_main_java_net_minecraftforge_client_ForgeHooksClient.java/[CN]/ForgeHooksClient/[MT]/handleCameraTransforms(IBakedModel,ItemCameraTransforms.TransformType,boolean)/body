@@ -5,7 +5,7 @@
     return pair.getLeft();
   }
  else {
-    model.getItemCameraTransforms().applyTransform(cameraTransformType);
+    ItemCameraTransforms.func_188034_a(model.getItemCameraTransforms().getTransform(cameraTransformType),leftHandHackery);
   }
   return model;
 }
