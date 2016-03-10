@@ -5,6 +5,7 @@
       if (NetworkDispatcher.this.state == ConnectionState.FINALIZING) {
         completeServerSideConnection(ConnectionType.MODDED);
       }
+      if (this.playerEntity.playerNetServerHandler != this)       return;
       super.update();
     }
   }
