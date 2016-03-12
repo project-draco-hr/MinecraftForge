@@ -1,6 +1,6 @@
 {
   if (index <= 0 || index >= baseIndex.length) {
-    return 0;
+    return slot;
   }
-  return baseIndex[index - 1];
+  return slot - baseIndex[index - 1];
 }
