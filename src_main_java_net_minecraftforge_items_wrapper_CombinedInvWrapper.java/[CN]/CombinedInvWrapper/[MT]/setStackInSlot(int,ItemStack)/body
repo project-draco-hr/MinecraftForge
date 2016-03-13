@@ -1,6 +1,6 @@
 {
   int index=getIndexForSlot(slot);
   IItemHandlerModifiable handler=getHandlerFromIndex(index);
-  slot=slot - getSlotFromIndex(index);
+  slot=getSlotFromIndex(slot,index);
   handler.setStackInSlot(slot,stack);
 }
