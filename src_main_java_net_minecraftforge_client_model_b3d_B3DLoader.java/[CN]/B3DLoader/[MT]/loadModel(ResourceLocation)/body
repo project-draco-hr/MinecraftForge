@@ -16,8 +16,8 @@
       cache.put(file,model);
     }
  catch (    IOException e) {
+      FMLLog.log(Level.ERROR,e,"Exception loading model %s with B3D loader, skipping",modelLocation);
       cache.put(file,null);
-      throw e;
     }
   }
   B3DModel model=cache.get(file);

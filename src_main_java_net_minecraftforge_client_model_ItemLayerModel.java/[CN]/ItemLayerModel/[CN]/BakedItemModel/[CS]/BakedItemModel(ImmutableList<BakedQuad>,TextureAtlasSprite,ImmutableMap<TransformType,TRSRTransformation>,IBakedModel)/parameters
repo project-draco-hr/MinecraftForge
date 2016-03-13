@@ -1,4 +1,0 @@
-ImmutableList<BakedQuad> quads
-TextureAtlasSprite particle
-ImmutableMap<TransformType,TRSRTransformation> transforms
-IBakedModel otherModel

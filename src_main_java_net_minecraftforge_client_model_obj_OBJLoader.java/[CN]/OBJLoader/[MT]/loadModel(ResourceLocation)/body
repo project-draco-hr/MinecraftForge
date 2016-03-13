@@ -21,7 +21,7 @@
       }
     }
  catch (    IOException e) {
-      throw e;
+      cache.put(modelLocation,null);
     }
   }
   OBJModel model=cache.get(file);

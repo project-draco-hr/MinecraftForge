@@ -13,24 +13,20 @@
     ResourceLocation file=getItemLocation(s);
     ModelResourceLocation memory=getInventoryVariant(s);
     itemBar.step(memory.toString());
-    IModel model=null;
     try {
-      model=getModel(file);
-      if (model == null) {
-        model=getMissingModel();
+      IModel model=ModelLoaderRegistry.getModel(file);
+      if (model == getMissingModel()) {
+        FMLLog.fine("Item json isn't found for '" + memory + "', trying to load the variant from the blockstate json");
+        try {
+          model=ModelLoaderRegistry.getModel(memory);
+        }
+ catch (        Exception exception) {
+          storeException(memory,new Exception("Could not load item model either from the normal location " + file + " or from the blockstate",exception));
+        }
       }
       stateModels.put(memory,model);
     }
- catch (    FileNotFoundException e) {
-      FMLLog.fine("Item json isn't found for '" + memory + "', trying to load the variant from the blockstate json");
-      try {
-        registerVariant(getModelBlockDefinition(memory),memory);
-      }
- catch (      Exception exception) {
-        storeException(memory,new Exception("Could not load item model either from the normal location " + file + " or from the blockstate",exception));
-      }
-    }
-catch (    Exception exception) {
+ catch (    Exception exception) {
       storeException(memory,exception);
     }
   }
@@ -47,11 +43,9 @@ catch (    Exception exception) {
     }
     for (    String s : getVariantNames(Items.bucket)) {
       ModelResourceLocation memory=getInventoryVariant(s);
-      try {
-        IModel model=getModel(new ResourceLocation("forge","item/bucket"));
+      IModel model=ModelLoaderRegistry.getModel(new ResourceLocation("forge","item/bucket"));
+      if (model != getMissingModel()) {
         stateModels.put(memory,model);
-      }
- catch (      IOException e) {
       }
     }
     setBucketModel(Items.water_bucket);
@@ -66,11 +60,9 @@ catch (    Exception exception) {
  else {
       for (      String s : getVariantNames(Items.milk_bucket)) {
         ModelResourceLocation memory=getInventoryVariant(s);
-        try {
-          IModel model=getModel(new ResourceLocation("forge","item/bucket_milk"));
+        IModel model=ModelLoaderRegistry.getModel(new ResourceLocation("forge","item/bucket_milk"));
+        if (model != getMissingModel()) {
           stateModels.put(memory,model);
-        }
- catch (        IOException e) {
         }
       }
     }

@@ -2,13 +2,9 @@
   isLoading=true;
   loadBlocks();
   loadVariantItemModels();
-  try {
-    missingModel=getModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath()));
-  }
- catch (  IOException e) {
-    Throwables.propagate(e);
-  }
+  missingModel=ModelLoaderRegistry.getModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath()));
   stateModels.put(MODEL_MISSING,missingModel);
+  final Set<ResourceLocation> textures=Sets.newHashSet(ModelLoaderRegistry.getTextures());
   textures.remove(TextureMap.LOCATION_MISSING_TEXTURE);
   textures.addAll(LOCATIONS_BUILTIN_TEXTURES);
   textureMap.loadSprites(resourceManager,new IIconCreator(){
@@ -20,13 +16,17 @@
   }
 );
   IBakedModel missingBaked=missingModel.bake(missingModel.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.instance);
-  for (  Entry<ModelResourceLocation,IModel> e : stateModels.entrySet()) {
-    if (e.getValue() == getMissingModel()) {
-      bakedRegistry.putObject(e.getKey(),missingBaked);
+  Map<IModel,IBakedModel> bakedModels=Maps.newHashMap();
+  for (  IModel model : stateModels.values()) {
+    if (model == getMissingModel()) {
+      bakedModels.put(model,missingBaked);
     }
  else {
-      bakedRegistry.putObject(e.getKey(),e.getValue().bake(e.getValue().getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.instance));
+      bakedModels.put(model,model.bake(model.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.instance));
     }
+  }
+  for (  Entry<ModelResourceLocation,IModel> e : stateModels.entrySet()) {
+    bakedRegistry.putObject(e.getKey(),bakedModels.get(e.getValue()));
   }
   return bakedRegistry;
 }

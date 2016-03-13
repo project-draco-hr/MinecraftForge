@@ -1,0 +1,20 @@
+{
+  this.quads=quads;
+  this.particle=particle;
+  this.transforms=transforms;
+  this.overrides=overrides;
+  if (otherModel != null) {
+    this.otherModel=otherModel;
+    this.isCulled=true;
+  }
+ else {
+    ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
+    for (    BakedQuad quad : quads) {
+      if (quad.getFace() == EnumFacing.SOUTH) {
+        builder.add(quad);
+      }
+    }
+    this.otherModel=new BakedItemModel(builder.build(),particle,transforms,overrides,this);
+    isCulled=false;
+  }
+}

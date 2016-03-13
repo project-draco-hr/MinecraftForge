@@ -5,5 +5,15 @@
   }
   ResourceLocation armatureLocation=new ResourceLocation(modelLocation.getResourceDomain(),"armatures/" + modelPath + ".json");
   ModelBlockAnimation animation=Animation.INSTANCE.loadVanillaAnimation(armatureLocation);
-  return loader.new VanillaModelWrapper(modelLocation,loader.loadModel(modelLocation),false,animation);
+  ModelBlock model=null;
+  try {
+    model=loader.loadModel(modelLocation);
+  }
+ catch (  Exception e) {
+    FMLLog.getLogger().error("Unable to load vanilla model " + modelLocation,e);
+  }
+  if (model != null) {
+    return loader.new VanillaModelWrapper(modelLocation,model,false,animation);
+  }
+  return ModelLoaderRegistry.getMissingModel();
 }

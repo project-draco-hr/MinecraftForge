@@ -1,6 +1,11 @@
 {
   Set<ResourceLocation> set=Sets.newHashSet();
-  set.addAll(model.getOverrideLocations());
+  for (  ResourceLocation dep : model.getOverrideLocations()) {
+    if (!location.equals(dep)) {
+      set.add(dep);
+      stateModels.put(getInventoryVariant(dep.toString()),ModelLoaderRegistry.getModel(dep));
+    }
+  }
   if (model.getParentLocation() != null && !model.getParentLocation().getResourcePath().startsWith("builtin/")) {
     set.add(model.getParentLocation());
   }

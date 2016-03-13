@@ -1,0 +1,31 @@
+{
+  this.variants=variants.getVariantList();
+  ImmutableList.Builder<Pair<IModel,IModelState>> builder=ImmutableList.builder();
+  for (  Variant v : this.variants) {
+    ResourceLocation loc=v.getModelLocation();
+    locations.add(loc);
+    IModel model=null;
+    try {
+      model=ModelLoaderRegistry.getModel(loc);
+    }
+ catch (    Exception e) {
+      FMLLog.getLogger().error("Unable to load block model: \'" + loc + "\' for variant: \'"+ parent,e);
+      model=ModelLoaderRegistry.getMissingModel();
+    }
+    if (v instanceof ISmartVariant) {
+      model=((ISmartVariant)v).process(model);
+      for (      ResourceLocation location : model.getDependencies()) {
+        ModelLoaderRegistry.getModel(location);
+      }
+      textures.addAll(model.getTextures());
+    }
+    models.add(model);
+    builder.add(Pair.of(model,v.getState()));
+  }
+  if (models.size() == 0) {
+    IModel missing=ModelLoaderRegistry.getMissingModel();
+    models.add(missing);
+    builder.add(Pair.<IModel,IModelState>of(missing,TRSRTransformation.identity()));
+  }
+  defaultState=new MultiModelState(builder.build());
+}

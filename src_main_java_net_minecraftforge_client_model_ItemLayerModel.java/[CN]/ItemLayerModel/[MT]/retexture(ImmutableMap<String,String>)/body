@@ -8,5 +8,5 @@
       builder.add(this.textures.get(i));
     }
   }
-  return new ItemLayerModel(builder.build());
+  return new ItemLayerModel(builder.build(),overrides);
 }

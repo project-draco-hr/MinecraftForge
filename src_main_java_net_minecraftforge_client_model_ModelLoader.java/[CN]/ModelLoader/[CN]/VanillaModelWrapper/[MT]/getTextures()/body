@@ -4,24 +4,15 @@
       model.parent=MODEL_GENERATED;
     }
  else {
-      try {
-        IModel parent=getModel(model.getParentLocation());
-        if (parent instanceof VanillaModelWrapper) {
-          model.parent=((VanillaModelWrapper)parent).model;
-        }
- else {
-          throw new IllegalStateException("vanilla model '" + model + "' can't have non-vanilla parent");
-        }
+      IModel parent=ModelLoaderRegistry.getModel(model.getParentLocation());
+      if (parent == getMissingModel()) {
+        FMLLog.warning("Could not load vanilla model parent '" + model.getParentLocation() + "' for '"+ model);
       }
- catch (      IOException e) {
-        FMLLog.warning("Could not load vanilla model parent '" + model.getParentLocation() + "' for '"+ model+ "': "+ e.toString());
-        IModel missing=ModelLoader.this.getMissingModel();
-        if (missing instanceof VanillaModelWrapper) {
-          model.parent=((VanillaModelWrapper)missing).model;
-        }
+      if (parent instanceof VanillaModelWrapper) {
+        model.parent=((VanillaModelWrapper)parent).model;
+      }
  else {
-          throw new IllegalStateException("vanilla model '" + model + "' has missing parent, and missing model is not a vanilla model");
-        }
+        throw new IllegalStateException("vanilla model '" + model + "' can't have non-vanilla parent");
       }
     }
   }

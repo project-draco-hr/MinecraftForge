@@ -1,0 +1,5 @@
+ImmutableList<BakedQuad> quads
+TextureAtlasSprite particle
+ImmutableMap<TransformType,TRSRTransformation> transforms
+ItemOverrideList overrides
+IBakedModel otherModel

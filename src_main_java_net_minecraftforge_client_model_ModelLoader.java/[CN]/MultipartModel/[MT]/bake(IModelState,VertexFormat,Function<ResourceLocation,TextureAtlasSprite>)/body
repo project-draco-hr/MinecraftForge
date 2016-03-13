@@ -1,0 +1,8 @@
+{
+  MultipartBakedModel.Builder builder=new MultipartBakedModel.Builder();
+  for (  Selector selector : multipart.getSelectors()) {
+    builder.putModel(selector.getPredicate(multipart.getStateContainer()),partModels.get(selector).bake(partModels.get(selector).getDefaultState(),format,bakedTextureGetter));
+  }
+  IBakedModel bakedModel=builder.makeMultipartModel();
+  return bakedModel;
+}

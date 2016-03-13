@@ -1,14 +1,7 @@
 {
   ImmutableMap.Builder<Optional<BlockRenderLayer>,IBakedModel> builder=ImmutableMap.builder();
   for (  Optional<BlockRenderLayer> key : models.keySet()) {
-    IModel model;
-    try {
-      model=ModelLoaderRegistry.getModel(models.get(key));
-    }
- catch (    IOException e) {
-      FMLLog.log(Level.ERROR,e,"Couldn't load MultiLayerModel dependency: %s",models.get(key));
-      model=ModelLoaderRegistry.getMissingModel();
-    }
+    IModel model=ModelLoaderRegistry.getModel(models.get(key));
     builder.put(key,model.bake(new ModelStateComposition(state,model.getDefaultState()),format,bakedTextureGetter));
   }
   return builder.build();
