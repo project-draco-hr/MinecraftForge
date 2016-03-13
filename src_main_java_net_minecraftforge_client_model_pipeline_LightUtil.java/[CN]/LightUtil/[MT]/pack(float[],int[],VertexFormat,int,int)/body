@@ -1,6 +1,6 @@
 {
   VertexFormatElement element=formatTo.getElement(e);
-  int vertexStart=v * formatTo.getNextOffset() + formatTo.func_181720_d(e);
+  int vertexStart=v * formatTo.getNextOffset() + formatTo.getOffset(e);
   int count=element.getElementCount();
   VertexFormatElement.EnumType type=element.getType();
   int size=type.getSize();

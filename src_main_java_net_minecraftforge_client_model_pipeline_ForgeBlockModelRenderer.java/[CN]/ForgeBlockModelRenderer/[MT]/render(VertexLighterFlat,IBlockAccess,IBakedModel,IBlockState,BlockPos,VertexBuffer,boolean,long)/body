@@ -3,7 +3,7 @@
   lighter.setState(state);
   lighter.setBlockPos(pos);
   boolean empty=true;
-  List<BakedQuad> quads=model.func_188616_a(state,null,rand);
+  List<BakedQuad> quads=model.getQuads(state,null,rand);
   if (!quads.isEmpty()) {
     lighter.updateBlockInfo();
     empty=false;
@@ -12,9 +12,9 @@
     }
   }
   for (  EnumFacing side : EnumFacing.values()) {
-    quads=model.func_188616_a(state,side,rand);
+    quads=model.getQuads(state,side,rand);
     if (!quads.isEmpty()) {
-      if (!checkSides || state.func_185894_c(world,pos,side)) {
+      if (!checkSides || state.shouldSideBeRendered(world,pos,side)) {
         if (empty)         lighter.updateBlockInfo();
         empty=false;
         for (        BakedQuad quad : quads) {

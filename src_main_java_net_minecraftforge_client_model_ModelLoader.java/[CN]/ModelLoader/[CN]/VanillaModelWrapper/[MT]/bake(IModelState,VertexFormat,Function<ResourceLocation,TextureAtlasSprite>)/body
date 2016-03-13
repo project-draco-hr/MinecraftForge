@@ -9,7 +9,7 @@
     BlockPart part=model.getElements().get(i);
     newTransforms.add(animation.getPartTransform(state,part,i));
   }
-  ItemCameraTransforms transforms=model.func_181682_g();
+  ItemCameraTransforms transforms=model.getAllTransforms();
   Map<TransformType,TRSRTransformation> tMap=Maps.newHashMap();
   tMap.putAll(IPerspectiveAwareModel.MapWrapper.getTransforms(transforms));
   tMap.putAll(IPerspectiveAwareModel.MapWrapper.getTransforms(state));
@@ -17,6 +17,6 @@
   if (hasItemModel(model)) {
     return new ItemLayerModel(model).bake(perState,format,bakedTextureGetter);
   }
-  if (isCustomRenderer(model))   return new BuiltInModel(transforms,model.func_187967_g());
+  if (isCustomRenderer(model))   return new BuiltInModel(transforms,model.createOverrides());
   return bakeNormal(model,perState,state.apply(Optional.<IModelPart>absent()).or(TRSRTransformation.identity()),newTransforms,format,bakedTextureGetter,uvlock);
 }

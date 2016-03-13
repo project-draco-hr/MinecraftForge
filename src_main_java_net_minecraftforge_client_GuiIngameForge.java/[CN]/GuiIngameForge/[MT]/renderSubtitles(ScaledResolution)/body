@@ -1,5 +1,5 @@
 {
   if (pre(SUBTITLES))   return;
-  this.field_184049_t.func_184068_a(res);
+  this.overlaySubtitle.renderSubtitles(res);
   post(SUBTITLES);
 }

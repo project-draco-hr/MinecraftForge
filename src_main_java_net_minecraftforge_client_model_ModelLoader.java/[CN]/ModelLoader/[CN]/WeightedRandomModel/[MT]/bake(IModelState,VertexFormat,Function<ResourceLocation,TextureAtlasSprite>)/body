@@ -11,7 +11,7 @@
   for (int i=0; i < variants.size(); i++) {
     IModel model=models.get(i);
     Variant v=variants.get(i);
-    builder.add(model.bake(MultiModelState.getPartState(state,model,i),format,bakedTextureGetter),variants.get(i).func_188047_d());
+    builder.add(model.bake(MultiModelState.getPartState(state,model,i),format,bakedTextureGetter),variants.get(i).getWeight());
   }
   return builder.build();
 }

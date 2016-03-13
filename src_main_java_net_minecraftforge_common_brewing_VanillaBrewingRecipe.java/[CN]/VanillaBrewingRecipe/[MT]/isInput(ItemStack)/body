@@ -1,4 +1,4 @@
 {
   Item item=stack.getItem();
-  return item == Items.potionitem || item == Items.field_185155_bH || item == Items.field_185156_bI || item == Items.glass_bottle;
+  return item == Items.potionitem || item == Items.splash_potion || item == Items.lingering_potion || item == Items.glass_bottle;
 }

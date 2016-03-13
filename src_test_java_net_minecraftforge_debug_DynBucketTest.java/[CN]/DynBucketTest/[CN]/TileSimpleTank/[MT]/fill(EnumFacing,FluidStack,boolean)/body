@@ -2,7 +2,7 @@
   int filled=tank.fill(resource,doFill);
   if (doFill && filled > 0) {
     IBlockState state=worldObj.getBlockState(pos);
-    worldObj.func_184138_a(pos,state,state,8);
+    worldObj.notifyBlockUpdate(pos,state,state,8);
   }
   return filled;
 }

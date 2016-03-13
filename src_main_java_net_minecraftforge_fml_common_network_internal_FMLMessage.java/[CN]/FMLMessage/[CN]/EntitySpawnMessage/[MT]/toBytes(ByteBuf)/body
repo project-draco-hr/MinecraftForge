@@ -16,7 +16,7 @@
   ByteBuf tmpBuf=Unpooled.buffer();
   PacketBuffer pb=new PacketBuffer(tmpBuf);
   try {
-    entity.func_184212_Q().func_187216_a(pb);
+    entity.getDataManager().writeEntries(pb);
   }
  catch (  IOException e) {
     FMLLog.log(Level.FATAL,e,"Encountered fatal exception trying to send entity spawn data watchers");

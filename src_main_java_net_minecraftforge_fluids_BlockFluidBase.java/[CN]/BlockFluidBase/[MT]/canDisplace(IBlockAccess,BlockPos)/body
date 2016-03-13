@@ -7,7 +7,7 @@
   if (displacements.containsKey(state.getBlock())) {
     return displacements.get(state.getBlock());
   }
-  Material material=state.func_185904_a();
+  Material material=state.getMaterial();
   if (material.blocksMovement() || material == Material.portal) {
     return false;
   }

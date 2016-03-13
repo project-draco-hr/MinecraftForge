@@ -3,8 +3,8 @@
   eventParent=new RenderGameOverlayEvent(partialTicks,res);
   int width=res.getScaledWidth();
   int height=res.getScaledHeight();
-  renderHealthMount=mc.thePlayer.func_184187_bx() instanceof EntityLivingBase;
-  renderFood=mc.thePlayer.func_184187_bx() == null;
+  renderHealthMount=mc.thePlayer.getRidingEntity() instanceof EntityLivingBase;
+  renderFood=mc.thePlayer.getRidingEntity() == null;
   renderJumpBar=mc.thePlayer.isRidingHorse();
   right_height=39;
   left_height=39;
@@ -17,13 +17,13 @@
   }
  else {
     GlStateManager.enableDepth();
-    GlStateManager.func_187428_a(GlStateManager.SourceFactor.SRC_ALPHA,GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,GlStateManager.SourceFactor.ONE,GlStateManager.DestFactor.ZERO);
+    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,GlStateManager.SourceFactor.ONE,GlStateManager.DestFactor.ZERO);
   }
   if (renderHelmet)   renderHelmet(res,partialTicks);
   if (renderPortal && !mc.thePlayer.isPotionActive(MobEffects.confusion)) {
     renderPortal(res,partialTicks);
   }
-  if (renderHotbar)   renderTooltip(res,partialTicks);
+  if (renderHotbar)   renderHotbar(res,partialTicks);
   GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
   zLevel=-90.0F;
   rand.setSeed((long)(updateCounter * 312871));

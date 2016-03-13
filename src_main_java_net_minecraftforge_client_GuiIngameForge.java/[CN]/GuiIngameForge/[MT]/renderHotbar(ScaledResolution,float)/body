@@ -4,7 +4,7 @@
     this.spectatorGui.renderTooltip(res,partialTicks);
   }
  else {
-    super.renderTooltip(res,partialTicks);
+    super.renderHotbar(res,partialTicks);
   }
   post(HOTBAR);
 }

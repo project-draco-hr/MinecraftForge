@@ -1,6 +1,6 @@
 {
   if (ingredient != null && input != null && isIngredient(ingredient)) {
-    ItemStack result=PotionHelper.func_185212_d(ingredient,input);
+    ItemStack result=PotionHelper.doReaction(ingredient,input);
     if (result != input) {
       return result;
     }

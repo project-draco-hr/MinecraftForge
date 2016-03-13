@@ -21,7 +21,7 @@
   }
   this.playerHealth=health;
   int healthLast=this.lastPlayerHealth;
-  IAttributeInstance attrMaxHealth=player.getEntityAttribute(SharedMonsterAttributes.maxHealth);
+  IAttributeInstance attrMaxHealth=player.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
   float healthMax=(float)attrMaxHealth.getAttributeValue();
   float absorb=MathHelper.ceiling_float_int(player.getAbsorptionAmount());
   int healthRows=MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F / 10.0F);

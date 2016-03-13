@@ -10,6 +10,6 @@
     return render(lighterFlat.get(),world,model,state,pos,buffer,checkSides,rand);
   }
  else {
-    return super.func_187497_c(world,model,state,pos,buffer,checkSides,rand);
+    return super.renderModelFlat(world,model,state,pos,buffer,checkSides,rand);
   }
 }

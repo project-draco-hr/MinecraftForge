@@ -12,7 +12,7 @@
         if (!mc.playerController.shouldDrawHUD())         y+=14;
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
-        GlStateManager.func_187428_a(GlStateManager.SourceFactor.SRC_ALPHA,GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,GlStateManager.SourceFactor.ONE,GlStateManager.DestFactor.ZERO);
+        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,GlStateManager.SourceFactor.ONE,GlStateManager.DestFactor.ZERO);
         FontRenderer font=highlightingItemStack.getItem().getFontRenderer(highlightingItemStack);
         if (font != null) {
           int x=(res.getScaledWidth() - font.getStringWidth(name)) / 2;
@@ -29,6 +29,6 @@
     mc.mcProfiler.endSection();
   }
  else   if (this.mc.thePlayer.isSpectator()) {
-    this.spectatorGui.func_175263_a(res);
+    this.spectatorGui.renderSelectedItem(res);
   }
 }

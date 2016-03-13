@@ -1,5 +1,5 @@
 {
   if (pre(POTION_ICONS))   return;
-  super.func_184048_a(resolution);
+  super.renderPotionEffects(resolution);
   post(POTION_ICONS);
 }

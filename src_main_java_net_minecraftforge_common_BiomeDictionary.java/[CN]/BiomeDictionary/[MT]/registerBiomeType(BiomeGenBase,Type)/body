@@ -1,6 +1,6 @@
 {
   types=listSubTags(types);
-  if (BiomeGenBase.field_185377_q.getNameForObject(biome) != null) {
+  if (BiomeGenBase.biomeRegistry.getNameForObject(biome) != null) {
     for (    Type type : types) {
       if (typeInfoList[type.ordinal()] == null) {
         typeInfoList[type.ordinal()]=new ArrayList<BiomeGenBase>();
@@ -8,7 +8,7 @@
       typeInfoList[type.ordinal()].add(biome);
     }
     if (!isBiomeRegistered(biome)) {
-      ResourceLocation location=BiomeGenBase.field_185377_q.getNameForObject(biome);
+      ResourceLocation location=BiomeGenBase.biomeRegistry.getNameForObject(biome);
       biomeInfoMap.put(location,new BiomeInfo(types));
     }
  else {

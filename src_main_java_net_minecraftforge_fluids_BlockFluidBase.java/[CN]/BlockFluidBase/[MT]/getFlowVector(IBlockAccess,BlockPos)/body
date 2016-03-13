@@ -21,7 +21,7 @@ break;
 BlockPos pos2=new BlockPos(x2,pos.getY(),z2);
 int otherDecay=quantaPerBlock - getQuantaValue(world,pos2);
 if (otherDecay >= quantaPerBlock) {
-if (!world.getBlockState(pos2).func_185904_a().blocksMovement()) {
+if (!world.getBlockState(pos2).getMaterial().blocksMovement()) {
 otherDecay=quantaPerBlock - getQuantaValue(world,pos2.down());
 if (otherDecay >= 0) {
 int power=otherDecay - (decay - quantaPerBlock);

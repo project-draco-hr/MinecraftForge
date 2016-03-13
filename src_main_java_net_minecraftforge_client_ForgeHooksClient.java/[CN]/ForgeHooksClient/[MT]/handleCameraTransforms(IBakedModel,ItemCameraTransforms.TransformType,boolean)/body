@@ -10,7 +10,7 @@
     return pair.getLeft();
   }
  else {
-    ItemCameraTransforms.func_188034_a(model.getItemCameraTransforms().getTransform(cameraTransformType),leftHandHackery);
+    ItemCameraTransforms.applyTransformSide(model.getItemCameraTransforms().getTransform(cameraTransformType),leftHandHackery);
   }
   return model;
 }

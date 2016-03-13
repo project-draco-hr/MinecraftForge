@@ -1,6 +1,6 @@
 {
   ItemConsumer cons;
-  if (wr == Tessellator.getInstance().getWorldRenderer()) {
+  if (wr == Tessellator.getInstance().getBuffer()) {
     cons=getItemConsumer();
   }
  else {

@@ -10,5 +10,5 @@
  else {
     model=models.get(Optional.of(layer));
   }
-  return model.func_188616_a(state,side,rand);
+  return model.getQuads(state,side,rand);
 }

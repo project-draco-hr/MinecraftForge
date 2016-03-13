@@ -54,7 +54,7 @@
         }
         world.markAndNotifyBlock(snap.pos,null,oldBlock,newBlock,updateFlag);
       }
-      player.triggerAchievement(StatList.func_188060_a(itemstack.getItem()));
+      player.addStat(StatList.func_188060_a(itemstack.getItem()));
     }
   }
   world.capturedBlockSnapshots.clear();

@@ -1,5 +1,5 @@
 {
-  float hardness=state.func_185887_b(world,pos);
+  float hardness=state.getBlockHardness(world,pos);
   if (hardness < 0.0F) {
     return 0.0F;
   }

@@ -31,17 +31,17 @@
     return true;
   }
   if (te != null) {
-    Minecraft.getMinecraft().func_184119_a(result,te);
+    Minecraft.getMinecraft().storeTEInStack(result,te);
   }
   if (isCreative) {
     player.inventory.func_184434_a(result);
-    Minecraft.getMinecraft().playerController.sendSlotPacket(player.func_184586_b(EnumHand.MAIN_HAND),36 + player.inventory.currentItem);
+    Minecraft.getMinecraft().playerController.sendSlotPacket(player.getHeldItem(EnumHand.MAIN_HAND),36 + player.inventory.currentItem);
     return true;
   }
-  int slot=player.inventory.func_184429_b(result);
+  int slot=player.inventory.getSlotFor(result);
   if (slot != -1) {
-    if (InventoryPlayer.func_184435_e(slot))     player.inventory.currentItem=slot;
- else     Minecraft.getMinecraft().playerController.func_187100_a(slot);
+    if (InventoryPlayer.isHotbar(slot))     player.inventory.currentItem=slot;
+ else     Minecraft.getMinecraft().playerController.pickItem(slot);
     return true;
   }
   return false;

@@ -1,7 +1,7 @@
 {
   super(blockSnapshot.world,blockSnapshot.pos,blockSnapshot.getCurrentBlock());
   this.player=player;
-  this.itemInHand=player.func_184614_ca();
+  this.itemInHand=player.getHeldItemMainhand();
   this.blockSnapshot=blockSnapshot;
   this.placedBlock=blockSnapshot.getCurrentBlock();
   this.placedAgainst=placedAgainst;

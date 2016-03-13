@@ -10,7 +10,7 @@
       BlockPos targetPos=clickPos.offset(mop.sideHit);
       if (player.canPlayerEdit(targetPos,mop.sideHit,itemstack)) {
         if (this.tryPlaceFluid(fluidStack.getFluid().getBlock(),world,targetPos) && !player.capabilities.isCreativeMode) {
-          player.triggerAchievement(StatList.func_188057_b(this));
+          player.addStat(StatList.func_188057_b(this));
           itemstack.stackSize--;
           ItemStack emptyStack=empty != null ? empty.copy() : new ItemStack(this);
           if (itemstack.stackSize <= 0) {

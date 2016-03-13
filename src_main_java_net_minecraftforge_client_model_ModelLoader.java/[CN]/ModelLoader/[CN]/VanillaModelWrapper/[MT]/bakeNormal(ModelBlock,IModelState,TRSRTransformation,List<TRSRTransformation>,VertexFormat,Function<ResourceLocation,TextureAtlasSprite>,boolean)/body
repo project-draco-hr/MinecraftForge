@@ -1,6 +1,6 @@
 {
   TextureAtlasSprite particle=bakedTextureGetter.apply(new ResourceLocation(model.resolveTextureName("particle")));
-  SimpleBakedModel.Builder builder=(new SimpleBakedModel.Builder(model,model.func_187967_g())).setTexture(particle);
+  SimpleBakedModel.Builder builder=(new SimpleBakedModel.Builder(model,model.createOverrides())).setTexture(particle);
   for (int i=0; i < model.getElements().size(); i++) {
     BlockPart part=model.getElements().get(i);
     TRSRTransformation transformation=modelState;
@@ -21,18 +21,18 @@
     }
   }
   return new IPerspectiveAwareModel.MapWrapper(builder.makeBakedModel(),perState){
-    @Override public List<BakedQuad> func_188616_a(    IBlockState state,    EnumFacing side,    long rand){
+    @Override public List<BakedQuad> getQuads(    IBlockState state,    EnumFacing side,    long rand){
       if (state instanceof IExtendedBlockState) {
         IExtendedBlockState exState=(IExtendedBlockState)state;
         if (exState.getUnlistedNames().contains(Properties.AnimationProperty)) {
           IModelState newState=exState.getValue(Properties.AnimationProperty);
           IExtendedBlockState newExState=exState.withProperty(Properties.AnimationProperty,null);
           if (newState != null) {
-            return VanillaModelWrapper.this.bake(new ModelStateComposition(modelState,newState),format,bakedTextureGetter).func_188616_a(newExState,side,rand);
+            return VanillaModelWrapper.this.bake(new ModelStateComposition(modelState,newState),format,bakedTextureGetter).getQuads(newExState,side,rand);
           }
         }
       }
-      return super.func_188616_a(state,side,rand);
+      return super.getQuads(state,side,rand);
     }
   }
 ;

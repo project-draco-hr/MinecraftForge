@@ -1,6 +1,6 @@
 {
   IBlockState state=world.getBlockState(pos);
-  if (!state.func_185904_a().isLiquid()) {
+  if (!state.getMaterial().isLiquid()) {
     return -1000.0;
   }
   Vec3d vec=((BlockFluidBase)state.getBlock()).getFlowVector(world,pos);

@@ -13,7 +13,7 @@
   MinecraftServer mcServer=overworld.getMinecraftServer();
   ISaveHandler savehandler=overworld.getSaveHandler();
   WorldServer world=(dim == 0 ? overworld : (WorldServer)(new WorldServerMulti(mcServer,savehandler,dim,overworld,mcServer.theProfiler).init()));
-  world.addWorldAccess(new WorldManager(mcServer,world));
+  world.addEventListener(new WorldManager(mcServer,world));
   MinecraftForge.EVENT_BUS.post(new WorldEvent.Load(world));
   if (!mcServer.isSinglePlayer()) {
     world.getWorldInfo().setGameType(mcServer.getGameType());

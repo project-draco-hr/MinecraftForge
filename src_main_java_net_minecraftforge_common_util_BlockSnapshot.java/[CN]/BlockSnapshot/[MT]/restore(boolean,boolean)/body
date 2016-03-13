@@ -10,7 +10,7 @@
     }
   }
   world.setBlockState(pos,replaced,applyPhysics ? 3 : 2);
-  world.func_184138_a(pos,current,replaced,applyPhysics ? 3 : 2);
+  world.notifyBlockUpdate(pos,current,replaced,applyPhysics ? 3 : 2);
   TileEntity te=null;
   if (nbt != null) {
     te=world.getTileEntity(pos);

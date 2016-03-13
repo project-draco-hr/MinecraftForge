@@ -11,7 +11,7 @@
   }
   if (baseLocation != null) {
     IBakedModel model=(new ItemLayerModel(ImmutableList.of(baseLocation))).bake(state,format,bakedTextureGetter);
-    builder.addAll(model.func_188616_a(null,null,0));
+    builder.addAll(model.getQuads(null,null,0));
   }
   if (liquidLocation != null && fluidSprite != null) {
     TextureAtlasSprite liquid=bakedTextureGetter.apply(liquidLocation);

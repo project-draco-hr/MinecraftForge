@@ -2,7 +2,7 @@
   FluidStack drained=tank.drain(maxDrain,doDrain);
   if (doDrain && drained != null) {
     IBlockState state=worldObj.getBlockState(pos);
-    worldObj.func_184138_a(pos,state,state,8);
+    worldObj.notifyBlockUpdate(pos,state,state,8);
   }
   return drained;
 }

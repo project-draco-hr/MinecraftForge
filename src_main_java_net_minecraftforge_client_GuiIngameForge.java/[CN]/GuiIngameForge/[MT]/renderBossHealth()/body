@@ -1,10 +1,10 @@
 {
   if (pre(BOSSHEALTH))   return;
   bind(Gui.icons);
-  GlStateManager.func_187428_a(GlStateManager.SourceFactor.SRC_ALPHA,GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,GlStateManager.SourceFactor.ONE,GlStateManager.DestFactor.ZERO);
+  GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,GlStateManager.SourceFactor.ONE,GlStateManager.DestFactor.ZERO);
   mc.mcProfiler.startSection("bossHealth");
   GlStateManager.enableBlend();
-  this.field_184050_w.func_184051_a();
+  this.overlayBoss.renderBossHealth();
   GlStateManager.disableBlend();
   mc.mcProfiler.endSection();
   post(BOSSHEALTH);

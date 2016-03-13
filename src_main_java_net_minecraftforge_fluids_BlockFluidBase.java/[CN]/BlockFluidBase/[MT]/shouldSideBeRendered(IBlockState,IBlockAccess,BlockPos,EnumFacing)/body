@@ -1,6 +1,6 @@
 {
   IBlockState neighbor=world.getBlockState(pos.offset(side));
-  if (neighbor.func_185904_a() == state.func_185904_a()) {
+  if (neighbor.getMaterial() == state.getMaterial()) {
     return false;
   }
   if (densityDir == -1 && side == EnumFacing.UP) {

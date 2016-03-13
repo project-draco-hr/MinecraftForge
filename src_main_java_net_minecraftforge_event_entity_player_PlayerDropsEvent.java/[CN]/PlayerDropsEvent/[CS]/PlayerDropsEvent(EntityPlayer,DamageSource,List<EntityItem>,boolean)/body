@@ -1,4 +1,4 @@
 {
-  super(entity,source,drops,(source.getEntity() instanceof EntityPlayer) ? EnchantmentHelper.func_185283_h(((EntityPlayer)source.getEntity())) : 0,recentlyHit);
+  super(entity,source,drops,(source.getEntity() instanceof EntityPlayer) ? EnchantmentHelper.getLootingModifier(((EntityPlayer)source.getEntity())) : 0,recentlyHit);
   this.entityPlayer=entity;
 }

@@ -19,7 +19,7 @@
         base=ModelProcessingHelper.retexture(base,textures);
         ring=ModelProcessingHelper.retexture(base,textures);
         IModel model=new MultiModel(new ResourceLocation(ModelAnimationDebug.MODID,"builtin/engine"),ring,TRSRTransformation.identity(),ImmutableMap.of("base",Pair.<IModel,IModelState>of(base,TRSRTransformation.identity())));
-        return new RenderLiving<EntityChest>(manager,new AnimationModelBase<EntityChest>(model,new VertexLighterSmoothAo(Minecraft.getMinecraft().func_184125_al())){
+        return new RenderLiving<EntityChest>(manager,new AnimationModelBase<EntityChest>(model,new VertexLighterSmoothAo(Minecraft.getMinecraft().getBlockColors())){
           @Override public void handleEvents(          EntityChest chest,          float time,          Iterable<Event> pastEvents){
             chest.handleEvents(time,pastEvents);
           }
