@@ -1,0 +1,7 @@
+float tx
+float ty
+float tz
+float ax
+float ay
+float az
+float s

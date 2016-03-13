@@ -1,0 +1,10 @@
+{
+  Quat4f ret=new Quat4f(0,0,0,1), t=new Quat4f();
+  t.set((float)Math.sin(x / 2),0,0,(float)Math.cos(x / 2));
+  ret.mul(t);
+  t.set(0,(float)Math.sin(y / 2),0,(float)Math.cos(y / 2));
+  ret.mul(t);
+  t.set(0,0,(float)Math.sin(z / 2),(float)Math.cos(z / 2));
+  ret.mul(t);
+  return ret;
+}
