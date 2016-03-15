@@ -1,0 +1,3 @@
+{
+  ForgeHooks.seedList.add(seed);
+}

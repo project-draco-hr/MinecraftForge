@@ -3,5 +3,5 @@
   if (entry == null || entry.seed == null) {
     return null;
   }
-  return entry.seed.copy();
+  return entry.getStack(rand,fortune);
 }
