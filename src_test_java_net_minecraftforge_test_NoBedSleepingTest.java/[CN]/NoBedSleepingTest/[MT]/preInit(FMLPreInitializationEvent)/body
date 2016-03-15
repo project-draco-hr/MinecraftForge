@@ -1,5 +1,3 @@
 {
-  GameRegistry.registerItem(ItemSleepingPill.instance,ItemSleepingPill.name);
-  CapabilityManager.INSTANCE.register(IExtraSleeping.class,new Storage(),DefaultImpl.class);
-  MinecraftForge.EVENT_BUS.register(new EventHandler());
+  proxy.preInit(event);
 }

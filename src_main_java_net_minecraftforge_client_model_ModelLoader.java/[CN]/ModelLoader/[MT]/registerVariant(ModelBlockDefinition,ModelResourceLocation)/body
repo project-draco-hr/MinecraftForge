@@ -1,3 +1,11 @@
 {
-  stateModels.put(location,ModelLoaderRegistry.getModel(location));
+  IModel model;
+  try {
+    model=ModelLoaderRegistry.getModel(location);
+  }
+ catch (  Exception e) {
+    storeException(location,e);
+    model=getMissingModel();
+  }
+  stateModels.put(location,model);
 }

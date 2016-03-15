@@ -9,6 +9,6 @@
     if (definition.hasMultipartData()) {
       return new MultipartModel(new ResourceLocation(variant.getResourceDomain(),variant.getResourcePath()),definition.getMultipartData());
     }
+    throw e;
   }
-  return ModelLoaderRegistry.getMissingModel();
 }

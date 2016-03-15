@@ -2,7 +2,7 @@
   isLoading=true;
   loadBlocks();
   loadVariantItemModels();
-  missingModel=ModelLoaderRegistry.getModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath()));
+  missingModel=ModelLoaderRegistry.getMissingModel();
   stateModels.put(MODEL_MISSING,missingModel);
   final Set<ResourceLocation> textures=Sets.newHashSet(ModelLoaderRegistry.getTextures());
   textures.remove(TextureMap.LOCATION_MISSING_TEXTURE);

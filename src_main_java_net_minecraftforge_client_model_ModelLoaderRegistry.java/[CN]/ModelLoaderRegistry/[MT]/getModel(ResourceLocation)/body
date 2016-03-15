@@ -3,7 +3,7 @@
   if (cache.containsKey(location))   return cache.get(location);
   for (  ResourceLocation loading : loadingModels) {
     if (location.getClass() == loading.getClass() && location.equals(loading)) {
-      throw new IllegalStateException("circular model dependencies, stack: [" + Joiner.on(", ").join(loadingModels) + "]");
+      throw new LoaderException("circular model dependencies, stack: [" + Joiner.on(", ").join(loadingModels) + "]");
     }
   }
   loadingModels.addLast(location);
@@ -14,14 +14,13 @@
       try {
         if (loader.accepts(actual)) {
           if (accepted != null) {
-            FMLLog.severe("2 loaders (%s and %s) want to load the same model %s",accepted,loader,location);
-            throw new IllegalStateException("2 loaders want to load the same model");
+            throw new LoaderException(String.format("2 loaders (%s and %s) want to load the same model %s",accepted,loader,location));
           }
           accepted=loader;
         }
       }
  catch (      Exception e) {
-        FMLLog.log(Level.ERROR,e,"Exception checking if model %s can be loaded with loader %s, skipping",location,loader);
+        throw new LoaderException(String.format("Exception checking if model %s can be loaded with loader %s, skipping",location,loader),e);
       }
     }
     if (accepted == null) {
@@ -33,26 +32,21 @@
       }
     }
     if (accepted == null) {
-      FMLLog.severe("no suitable loader found for the model %s, skipping",location);
-      model=getMissingModel();
+      throw new LoaderException("no suitable loader found for the model " + location + ", skipping");
     }
- else {
-      try {
-        model=accepted.loadModel(actual);
-      }
- catch (      Exception e) {
-        FMLLog.log(Level.ERROR,e,"Exception loading model %s with loader %s, skipping",location,accepted);
-        model=getMissingModel();
-      }
-      if (model == getMissingModel()) {
-        FMLLog.log(Level.ERROR,"Loader %s returned missing model while loading model %s",accepted,location);
-      }
-      if (model == null) {
-        FMLLog.log(Level.ERROR,"Loader %s returned null while loading model %s",accepted,location);
-        model=getMissingModel();
-      }
-      textures.addAll(model.getTextures());
+    try {
+      model=accepted.loadModel(actual);
     }
+ catch (    Exception e) {
+      throw new LoaderException(String.format("Exception loading model %s with loader %s, skipping",location,accepted),e);
+    }
+    if (model == getMissingModel()) {
+      throw new LoaderException(String.format("Loader %s returned missing model while loading model %s",accepted,location));
+    }
+    if (model == null) {
+      throw new LoaderException(String.format("Loader %s returned null while loading model %s",accepted,location));
+    }
+    textures.addAll(model.getTextures());
   }
   finally {
     ResourceLocation popLoc=loadingModels.removeLast();
@@ -62,7 +56,7 @@
   }
   cache.put(location,model);
   for (  ResourceLocation dep : model.getDependencies()) {
-    getModel(dep);
+    getModelOrMissing(dep);
   }
   return model;
 }

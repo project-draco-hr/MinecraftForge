@@ -13,20 +13,22 @@
     ResourceLocation file=getItemLocation(s);
     ModelResourceLocation memory=getInventoryVariant(s);
     itemBar.step(memory.toString());
+    IModel model=ModelLoaderRegistry.getMissingModel();
+    Exception exception=null;
     try {
-      IModel model=ModelLoaderRegistry.getModel(file);
-      if (model == getMissingModel()) {
-        FMLLog.fine("Item json isn't found for '" + memory + "', trying to load the variant from the blockstate json");
-        try {
-          model=ModelLoaderRegistry.getModel(memory);
-        }
- catch (        Exception exception) {
-          storeException(memory,new Exception("Could not load item model either from the normal location " + file + " or from the blockstate",exception));
-        }
-      }
-      stateModels.put(memory,model);
+      model=ModelLoaderRegistry.getModel(file);
     }
- catch (    Exception exception) {
+ catch (    Exception e) {
+      FMLLog.fine("Item json isn't found for '" + memory + "', trying to load the variant from the blockstate json");
+      try {
+        model=ModelLoaderRegistry.getModel(memory);
+      }
+ catch (      Exception ex) {
+        exception=new Exception("Could not load item model either from the normal location " + file + " or from the blockstate",ex);
+      }
+    }
+    stateModels.put(memory,model);
+    if (exception != null) {
       storeException(memory,exception);
     }
   }
@@ -43,7 +45,7 @@
     }
     for (    String s : getVariantNames(Items.bucket)) {
       ModelResourceLocation memory=getInventoryVariant(s);
-      IModel model=ModelLoaderRegistry.getModel(new ResourceLocation("forge","item/bucket"));
+      IModel model=ModelLoaderRegistry.getModelOrMissing(new ResourceLocation("forge","item/bucket"));
       if (model != getMissingModel()) {
         stateModels.put(memory,model);
       }
@@ -60,7 +62,7 @@
  else {
       for (      String s : getVariantNames(Items.milk_bucket)) {
         ModelResourceLocation memory=getInventoryVariant(s);
-        IModel model=ModelLoaderRegistry.getModel(new ResourceLocation("forge","item/bucket_milk"));
+        IModel model=ModelLoaderRegistry.getModelOrMissing(new ResourceLocation("forge","item/bucket_milk"));
         if (model != getMissingModel()) {
           stateModels.put(memory,model);
         }

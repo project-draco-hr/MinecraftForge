@@ -1,3 +1,0 @@
-{
-  this(transformation,format,color,still,flowing,gas,Optional.<IExtendedBlockState>absent());
-}

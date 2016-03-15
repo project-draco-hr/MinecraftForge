@@ -4,10 +4,7 @@
       model.parent=MODEL_GENERATED;
     }
  else {
-      IModel parent=ModelLoaderRegistry.getModel(model.getParentLocation());
-      if (parent == getMissingModel()) {
-        FMLLog.warning("Could not load vanilla model parent '" + model.getParentLocation() + "' for '"+ model);
-      }
+      IModel parent=ModelLoaderRegistry.getModelOrLogError(model.getParentLocation(),"Could not load vanilla model parent '" + model.getParentLocation() + "' for '"+ model);
       if (parent instanceof VanillaModelWrapper) {
         model.parent=((VanillaModelWrapper)parent).model;
       }

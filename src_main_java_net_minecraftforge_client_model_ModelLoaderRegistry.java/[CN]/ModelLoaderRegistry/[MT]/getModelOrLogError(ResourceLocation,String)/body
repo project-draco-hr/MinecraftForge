@@ -1,0 +1,9 @@
+{
+  try {
+    return getModel(location);
+  }
+ catch (  Exception e) {
+    FMLLog.getLogger().error(error,e);
+    return getMissingModel();
+  }
+}

@@ -6,6 +6,7 @@
   int[][] pixels=new int[Minecraft.getMinecraft().gameSettings.mipmapLevels + 1][];
   pixels[0]=new int[image.getWidth() * image.getHeight()];
   image.getRGB(0,0,image.getWidth(),image.getHeight(),pixels[0],0,image.getWidth());
+  this.clearFramesTextureData();
   this.framesTextureData.add(pixels);
   return false;
 }

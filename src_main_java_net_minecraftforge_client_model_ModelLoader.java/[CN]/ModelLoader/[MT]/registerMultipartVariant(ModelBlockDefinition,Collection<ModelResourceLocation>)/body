@@ -1,5 +1,5 @@
 {
   for (  ModelResourceLocation location : locations) {
-    stateModels.put(location,ModelLoaderRegistry.getModel(location));
+    registerVariant(null,location);
   }
 }

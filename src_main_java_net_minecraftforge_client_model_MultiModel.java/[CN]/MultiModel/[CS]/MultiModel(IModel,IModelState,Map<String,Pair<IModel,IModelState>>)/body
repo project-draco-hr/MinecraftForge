@@ -1,3 +1,0 @@
-{
-  this(null,base,baseState,ImmutableMap.copyOf(parts));
-}

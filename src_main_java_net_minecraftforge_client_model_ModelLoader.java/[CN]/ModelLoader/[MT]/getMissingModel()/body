@@ -1,6 +1,11 @@
 {
   if (missingModel == null) {
-    missingModel=VanillaLoader.instance.loadModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath()));
+    try {
+      missingModel=VanillaLoader.instance.loadModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath()));
+    }
+ catch (    Exception e) {
+      throw new RuntimeException("Missing the missing model, this should never happen");
+    }
   }
   return missingModel;
 }

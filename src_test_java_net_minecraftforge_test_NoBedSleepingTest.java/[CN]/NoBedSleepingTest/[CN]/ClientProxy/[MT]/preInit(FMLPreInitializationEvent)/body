@@ -1,0 +1,4 @@
+{
+  super.preInit(event);
+  ModelLoader.setCustomModelResourceLocation(ItemSleepingPill.instance,0,new ModelResourceLocation(new ResourceLocation(MODID,ItemSleepingPill.name),"inventory"));
+}

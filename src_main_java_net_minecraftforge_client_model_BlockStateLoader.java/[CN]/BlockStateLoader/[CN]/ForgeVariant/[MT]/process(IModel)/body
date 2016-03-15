@@ -9,7 +9,7 @@
   ImmutableMap.Builder<String,Pair<IModel,IModelState>> models=ImmutableMap.builder();
   for (  Entry<String,SubModel> entry : parts.entrySet()) {
     SubModel part=entry.getValue();
-    IModel model=ModelLoaderRegistry.getModel(part.getModelLocation());
+    IModel model=ModelLoaderRegistry.getModelOrLogError(part.getModelLocation(),"Unable to load block sub-model: \'" + part.getModelLocation());
     IModelState partState=new ModelStateComposition(baseTr,part.getState());
     models.put(entry.getKey(),Pair.<IModel,IModelState>of(runModelHooks(model,part.smooth,part.gui3d,part.uvLock,part.getTextures(),part.getCustomData()),partState));
   }

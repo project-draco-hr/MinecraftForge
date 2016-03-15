@@ -3,7 +3,7 @@
   for (  ResourceLocation dep : model.getOverrideLocations()) {
     if (!location.equals(dep)) {
       set.add(dep);
-      stateModels.put(getInventoryVariant(dep.toString()),ModelLoaderRegistry.getModel(dep));
+      stateModels.put(getInventoryVariant(dep.toString()),ModelLoaderRegistry.getModelOrLogError(dep,"Could not load override model " + dep + " for model "+ location));
     }
   }
   if (model.getParentLocation() != null && !model.getParentLocation().getResourcePath().startsWith("builtin/")) {

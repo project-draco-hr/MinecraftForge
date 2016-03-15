@@ -1,3 +1,0 @@
-{
-  this(transformation,ImmutableMap.<TransformType,TRSRTransformation>of(),format,color,still,flowing,gas,stateOption);
-}

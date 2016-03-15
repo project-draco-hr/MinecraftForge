@@ -12,8 +12,8 @@
   EntityRegistry.registerModEntity(EntityChest.class,entityName,0,ModelAnimationDebug.instance,64,20,true,0xFFAAAA00,0xFFDDDD00);
   RenderingRegistry.registerEntityRenderingHandler(EntityChest.class,new IRenderFactory<EntityChest>(){
     public Render<EntityChest> createRenderFor(    RenderManager manager){
-      IModel base=ModelLoaderRegistry.getModel(new ResourceLocation(ModelAnimationDebug.MODID,"block/engine"));
-      IModel ring=ModelLoaderRegistry.getModel(new ResourceLocation(ModelAnimationDebug.MODID,"block/engine_ring"));
+      IModel base=ModelLoaderRegistry.getModelOrMissing(new ResourceLocation(ModelAnimationDebug.MODID,"block/engine"));
+      IModel ring=ModelLoaderRegistry.getModelOrMissing(new ResourceLocation(ModelAnimationDebug.MODID,"block/engine_ring"));
       ImmutableMap<String,String> textures=ImmutableMap.of("base","blocks/stone","front","blocks/log_oak","chamber","blocks/redstone_block","trunk","blocks/end_stone");
       base=ModelProcessingHelper.retexture(base,textures);
       ring=ModelProcessingHelper.retexture(base,textures);

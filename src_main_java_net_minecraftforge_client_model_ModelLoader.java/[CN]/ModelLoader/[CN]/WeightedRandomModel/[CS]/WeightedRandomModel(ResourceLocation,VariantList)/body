@@ -4,18 +4,11 @@
   for (  Variant v : this.variants) {
     ResourceLocation loc=v.getModelLocation();
     locations.add(loc);
-    IModel model=null;
-    try {
-      model=ModelLoaderRegistry.getModel(loc);
-    }
- catch (    Exception e) {
-      FMLLog.getLogger().error("Unable to load block model: \'" + loc + "\' for variant: \'"+ parent,e);
-      model=ModelLoaderRegistry.getMissingModel();
-    }
+    IModel model=ModelLoaderRegistry.getModel(loc);
     if (v instanceof ISmartVariant) {
       model=((ISmartVariant)v).process(model);
       for (      ResourceLocation location : model.getDependencies()) {
-        ModelLoaderRegistry.getModel(location);
+        ModelLoaderRegistry.getModelOrMissing(location);
       }
       textures.addAll(model.getTextures());
     }
