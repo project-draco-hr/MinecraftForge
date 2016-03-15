@@ -3,3 +3,4 @@ String textureName
 int durability
 int[] reductionAmounts
 int enchantability
+SoundEvent soundOnEquip
