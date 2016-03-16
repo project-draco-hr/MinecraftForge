@@ -17,7 +17,11 @@
 );
   IBakedModel missingBaked=missingModel.bake(missingModel.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.instance);
   Map<IModel,IBakedModel> bakedModels=Maps.newHashMap();
-  for (  IModel model : stateModels.values()) {
+  HashMultimap<IModel,ModelResourceLocation> models=HashMultimap.create();
+  Multimaps.invertFrom(Multimaps.forMap(stateModels),models);
+  ProgressBar bakeBar=ProgressManager.push("ModelLoader: baking",models.keySet().size());
+  for (  IModel model : models.keySet()) {
+    bakeBar.step("[" + Joiner.on(", ").join(models.get(model)) + "]");
     if (model == getMissingModel()) {
       bakedModels.put(model,missingBaked);
     }
@@ -25,6 +29,7 @@
       bakedModels.put(model,model.bake(model.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.instance));
     }
   }
+  ProgressManager.pop(bakeBar);
   for (  Entry<ModelResourceLocation,IModel> e : stateModels.entrySet()) {
     bakedRegistry.putObject(e.getKey(),bakedModels.get(e.getValue()));
   }
