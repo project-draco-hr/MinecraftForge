@@ -3,6 +3,7 @@
   if (quad.hasTintIndex()) {
     consumer.setQuadTint(quad.getTintIndex());
   }
+  consumer.setApplyDiffuseLighting(quad.shouldApplyDiffuseLighting());
   float[] data=new float[4];
   VertexFormat formatFrom=consumer.getVertexFormat();
   VertexFormat formatTo=quad.getFormat();

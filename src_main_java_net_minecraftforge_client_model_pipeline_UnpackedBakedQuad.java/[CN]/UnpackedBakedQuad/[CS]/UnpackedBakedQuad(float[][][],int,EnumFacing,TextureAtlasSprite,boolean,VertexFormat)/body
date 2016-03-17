@@ -1,0 +1,5 @@
+{
+  super(new int[format.getNextOffset()],tint,orientation,texture,applyDiffuseLighting,format);
+  this.unpackedData=unpackedData;
+  this.format=format;
+}

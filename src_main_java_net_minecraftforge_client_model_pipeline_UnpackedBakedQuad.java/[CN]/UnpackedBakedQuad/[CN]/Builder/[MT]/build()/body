@@ -2,5 +2,5 @@
   if (!full) {
     throw new IllegalStateException("not enough data");
   }
-  return new UnpackedBakedQuad(unpackedData,tint,orientation,texture,format);
+  return new UnpackedBakedQuad(unpackedData,tint,orientation,texture,applyDiffuseLighting,format);
 }
