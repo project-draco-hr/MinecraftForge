@@ -3,7 +3,6 @@
   UnpackedBakedQuad.Builder builder=new UnpackedBakedQuad.Builder(format);
   builder.setQuadTint(-1);
   builder.setQuadOrientation(side);
-  builder.setQuadColored();
   if (side == EnumFacing.NORTH) {
     putVertex(builder,format,transform,side,x1,y1,z,u1,v2,color);
     putVertex(builder,format,transform,side,x2,y1,z,u2,v2,color);

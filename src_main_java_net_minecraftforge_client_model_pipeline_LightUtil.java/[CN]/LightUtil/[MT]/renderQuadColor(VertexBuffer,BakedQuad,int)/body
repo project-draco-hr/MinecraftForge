@@ -1,9 +1,4 @@
 {
   wr.addVertexData(quad.getVertexData());
-  if (quad instanceof IColoredBakedQuad) {
-    ForgeHooksClient.putQuadColor(wr,quad,auxColor);
-  }
- else {
-    wr.putColor4(auxColor);
-  }
+  ForgeHooksClient.putQuadColor(wr,quad,auxColor);
 }

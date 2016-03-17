@@ -1,10 +1,13 @@
 {
-  float cr=color & 0xFF;
+  float cb=color & 0xFF;
   float cg=(color >>> 8) & 0xFF;
-  float cb=(color >>> 16) & 0xFF;
+  float cr=(color >>> 16) & 0xFF;
   float ca=(color >>> 24) & 0xFF;
+  VertexFormat format=quad.getFormat();
+  int size=format.getIntegerSize();
+  int offset=format.getColorOffset() / 4;
   for (int i=0; i < 4; i++) {
-    int vc=quad.getVertexData()[3 + 7 * i];
+    int vc=quad.getVertexData()[offset + size * i];
     float vcr=vc & 0xFF;
     float vcg=(vc >>> 8) & 0xFF;
     float vcb=(vc >>> 16) & 0xFF;

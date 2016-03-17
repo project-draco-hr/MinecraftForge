@@ -11,8 +11,7 @@ case POSITION:
   builder.put(e,data);
 break;
 case COLOR:
-float d=LightUtil.diffuseLight(side);
-builder.put(e,d * ((color >> 16) & 0xFF) / 255f,d * ((color >> 8) & 0xFF) / 255f,d * (color & 0xFF) / 255f,((color >> 24) & 0xFF) / 255f);
+builder.put(e,((color >> 16) & 0xFF) / 255f,((color >> 8) & 0xFF) / 255f,(color & 0xFF) / 255f,((color >> 24) & 0xFF) / 255f);
 break;
 case UV:
 if (format.getElement(e).getIndex() == 0) {

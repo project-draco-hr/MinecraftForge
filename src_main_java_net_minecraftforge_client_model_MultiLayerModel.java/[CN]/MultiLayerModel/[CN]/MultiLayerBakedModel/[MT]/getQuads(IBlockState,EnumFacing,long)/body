@@ -4,7 +4,7 @@
   if (layer == null) {
     return quads.get(Optional.fromNullable(side));
   }
- else   if (!models.containsKey(layer)) {
+ else   if (!models.containsKey(Optional.of(layer))) {
     model=missing;
   }
  else {

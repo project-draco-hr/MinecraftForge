@@ -1,3 +1,0 @@
-{
-  super(unpackedData,tint,orientation,texture,format);
-}

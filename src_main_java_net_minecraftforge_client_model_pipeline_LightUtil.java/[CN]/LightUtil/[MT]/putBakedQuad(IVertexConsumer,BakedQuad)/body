@@ -3,9 +3,6 @@
   if (quad.hasTintIndex()) {
     consumer.setQuadTint(quad.getTintIndex());
   }
-  if (quad instanceof IColoredBakedQuad) {
-    consumer.setQuadColored();
-  }
   float[] data=new float[4];
   VertexFormat formatFrom=consumer.getVertexFormat();
   VertexFormat formatTo=quad.getFormat();
