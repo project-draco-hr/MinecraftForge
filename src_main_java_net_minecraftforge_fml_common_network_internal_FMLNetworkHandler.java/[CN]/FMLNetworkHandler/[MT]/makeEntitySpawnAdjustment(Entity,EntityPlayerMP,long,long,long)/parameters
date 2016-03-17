@@ -1,5 +1,0 @@
-Entity entity
-EntityPlayerMP player
-long serverX
-long serverY
-long serverZ

@@ -2,7 +2,4 @@
   if (msg.getClass().equals(FMLMessage.EntitySpawnMessage.class)) {
     spawnEntity((FMLMessage.EntitySpawnMessage)msg);
   }
- else   if (msg.getClass().equals(FMLMessage.EntityAdjustMessage.class)) {
-    adjustEntity((FMLMessage.EntityAdjustMessage)msg);
-  }
 }
