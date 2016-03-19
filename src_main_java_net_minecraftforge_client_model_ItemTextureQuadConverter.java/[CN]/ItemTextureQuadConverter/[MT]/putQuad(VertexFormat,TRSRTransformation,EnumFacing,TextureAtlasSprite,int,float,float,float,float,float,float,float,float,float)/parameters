@@ -1,6 +1,7 @@
 VertexFormat format
 TRSRTransformation transform
 EnumFacing side
+TextureAtlasSprite sprite
 int color
 float x1
 float y1

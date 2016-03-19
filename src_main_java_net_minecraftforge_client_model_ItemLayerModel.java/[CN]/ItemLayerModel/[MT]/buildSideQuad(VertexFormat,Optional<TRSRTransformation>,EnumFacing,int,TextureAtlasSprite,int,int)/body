@@ -65,5 +65,5 @@ break;
 default :
 throw new IllegalArgumentException("can't handle z-oriented side");
 }
-return buildQuad(format,transform,side.getOpposite(),tint,x0,y0,z1,sprite.getInterpolatedU(u0),sprite.getInterpolatedV(v0),x1,y1,z1,sprite.getInterpolatedU(u1),sprite.getInterpolatedV(v1),x1,y1,z2,sprite.getInterpolatedU(u1),sprite.getInterpolatedV(v1),x0,y0,z2,sprite.getInterpolatedU(u0),sprite.getInterpolatedV(v0));
+return buildQuad(format,transform,side.getOpposite(),sprite,tint,x0,y0,z1,sprite.getInterpolatedU(u0),sprite.getInterpolatedV(v0),x1,y1,z1,sprite.getInterpolatedU(u1),sprite.getInterpolatedV(v1),x1,y1,z2,sprite.getInterpolatedU(u1),sprite.getInterpolatedV(v1),x0,y0,z2,sprite.getInterpolatedU(u0),sprite.getInterpolatedV(v0));
 }
