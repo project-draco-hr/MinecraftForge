@@ -1,5 +1,5 @@
 {
-  if (worldIn.isRemote)   return itemStackIn;
+  if (worldIn.isRemote)   return new ActionResult<ItemStack>(EnumActionResult.PASS,itemStackIn);
   ItemStackHandler handler=new ItemStackHandler(5);
   ItemStackHandler handler2=new ItemStackHandler(5);
   IItemHandler joined=new CombinedInvWrapper(handler,handler2);
@@ -22,5 +22,5 @@
   for (int i=0; i < joined.getSlots(); i++) {
     System.out.println("Joined: " + joined.getStackInSlot(i));
   }
-  return itemStackIn;
+  return new ActionResult<ItemStack>(EnumActionResult.SUCCESS,itemStackIn);
 }
