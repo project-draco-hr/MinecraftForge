@@ -1,4 +1,5 @@
 {
+  GameRegistry.registerItem(new TestItem(),"testitem");
   GameRegistry.registerBlock(new BlockSimpleTank(),"simpletank");
   GameRegistry.registerTileEntity(TileSimpleTank.class,"simpletank");
   FluidRegistry.addBucketForFluid(FluidRegistry.getFluid(TestFluid.name));
