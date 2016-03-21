@@ -1,6 +1,6 @@
 ModelBlock model
 IModelState perState
-TRSRTransformation modelState
+IModelState modelState
 List<TRSRTransformation> newTransforms
 VertexFormat format
 Function<ResourceLocation,TextureAtlasSprite> bakedTextureGetter

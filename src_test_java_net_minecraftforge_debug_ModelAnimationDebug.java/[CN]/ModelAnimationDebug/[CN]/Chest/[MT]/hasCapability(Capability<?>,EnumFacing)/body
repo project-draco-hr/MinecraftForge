@@ -1,0 +1,6 @@
+{
+  if (capability == CapabilityAnimation.ANIMATION_CAPABILITY) {
+    return true;
+  }
+  return super.hasCapability(capability,side);
+}

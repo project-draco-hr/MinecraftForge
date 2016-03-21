@@ -18,5 +18,5 @@
     return new ItemLayerModel(model).bake(perState,format,bakedTextureGetter);
   }
   if (isCustomRenderer(model))   return new BuiltInModel(transforms,model.createOverrides());
-  return bakeNormal(model,perState,state.apply(Optional.<IModelPart>absent()).or(TRSRTransformation.identity()),newTransforms,format,bakedTextureGetter,uvlock);
+  return bakeNormal(model,perState,state,newTransforms,format,bakedTextureGetter,uvlock);
 }

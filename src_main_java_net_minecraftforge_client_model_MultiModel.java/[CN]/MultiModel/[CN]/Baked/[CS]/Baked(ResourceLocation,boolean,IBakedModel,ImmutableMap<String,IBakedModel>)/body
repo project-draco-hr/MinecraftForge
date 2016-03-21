@@ -1,4 +1,5 @@
 {
+  this.location=location;
   this.base=base;
   this.parts=parts;
   if (base != null)   internalBase=base;

@@ -1,4 +1,7 @@
 {
+  if (!te.hasCapability(CapabilityAnimation.ANIMATION_CAPABILITY,null)) {
+    return;
+  }
   if (blockRenderer == null)   blockRenderer=Minecraft.getMinecraft().getBlockRendererDispatcher();
   BlockPos pos=te.getPos();
   IBlockAccess world=MinecraftForgeClient.getRegionRenderCache(te.getWorld(),pos);
@@ -10,7 +13,7 @@
     IExtendedBlockState exState=(IExtendedBlockState)state;
     if (exState.getUnlistedNames().contains(Properties.AnimationProperty)) {
       float time=Animation.getWorldTime(getWorld(),partialTick);
-      Pair<IModelState,Iterable<Event>> pair=te.asm().apply(time);
+      Pair<IModelState,Iterable<Event>> pair=te.getCapability(CapabilityAnimation.ANIMATION_CAPABILITY,null).apply(time);
       handleEvents(te,time,pair.getRight());
       IBakedModel model=blockRenderer.getBlockModelShapes().getModelForState(exState.getClean());
       exState=exState.withProperty(Properties.AnimationProperty,pair.getLeft());

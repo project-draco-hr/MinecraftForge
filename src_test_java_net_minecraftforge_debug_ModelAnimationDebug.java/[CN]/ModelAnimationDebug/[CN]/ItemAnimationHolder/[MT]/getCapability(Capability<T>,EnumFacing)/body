@@ -1,0 +1,6 @@
+{
+  if (capability == CapabilityAnimation.ANIMATION_CAPABILITY) {
+    return (T)asm;
+  }
+  return null;
+}

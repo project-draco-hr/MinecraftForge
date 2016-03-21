@@ -1,0 +1,7 @@
+{
+  super(overrides);
+  this.model=model;
+  this.state=state;
+  this.format=format;
+  this.bakedTextureGetter=bakedTextureGetter;
+}

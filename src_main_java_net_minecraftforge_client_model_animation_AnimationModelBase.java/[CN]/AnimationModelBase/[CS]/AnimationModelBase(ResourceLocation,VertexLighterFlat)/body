@@ -1,0 +1,4 @@
+{
+  this.modelLocation=modelLocation;
+  this.lighter=lighter;
+}

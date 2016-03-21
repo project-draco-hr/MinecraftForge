@@ -41,6 +41,12 @@
       return true;
     }
   }
+,null,blockName);
+  GameRegistry.registerItem(new ItemBlock(GameRegistry.findBlock(MODID,blockName)){
+    @Override public ICapabilityProvider initCapabilities(    ItemStack stack,    NBTTagCompound nbt){
+      return new ItemAnimationHolder();
+    }
+  }
 ,blockName);
   GameRegistry.registerTileEntity(Chest.class,MODID + ":" + "tile_"+ blockName);
 }

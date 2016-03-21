@@ -4,7 +4,7 @@
   ImmutableMap.Builder<String,IBakedModel> mapBuilder=ImmutableMap.builder();
   for (  Entry<String,Pair<IModel,IModelState>> entry : parts.entrySet()) {
     Pair<IModel,IModelState> pair=entry.getValue();
-    mapBuilder.put(entry.getKey(),pair.getLeft().bake(pair.getRight(),format,bakedTextureGetter));
+    mapBuilder.put(entry.getKey(),pair.getLeft().bake(new ModelStateComposition(state,pair.getRight()),format,bakedTextureGetter));
   }
   if (bakedBase == null && parts.isEmpty()) {
     FMLLog.log(Level.ERROR,"MultiModel %s is empty (no base model or parts were provided/resolved)",location);

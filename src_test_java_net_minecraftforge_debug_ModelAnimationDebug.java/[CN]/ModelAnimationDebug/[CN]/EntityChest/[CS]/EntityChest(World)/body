@@ -1,8 +1,5 @@
 {
   super(world);
   setSize(1,1);
-  if (cycleLength == null) {
-    cycleLength=new VariableValue(getHealth() / 5);
-  }
   asm=proxy.load(new ResourceLocation(MODID.toLowerCase(),"asms/block/engine.json"),ImmutableMap.<String,ITimeValue>of("cycle_length",cycleLength));
 }
