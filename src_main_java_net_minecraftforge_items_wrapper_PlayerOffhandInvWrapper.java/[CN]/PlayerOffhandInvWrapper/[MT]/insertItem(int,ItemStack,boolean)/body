@@ -1,0 +1,3 @@
+{
+  return super.insertItem(slot + offset,stack,simulate);
+}

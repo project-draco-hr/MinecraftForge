@@ -1,0 +1,5 @@
+{
+  super(inv);
+  inventoryPlayer=inv;
+  offset=inventoryPlayer.mainInventory.length + inventoryPlayer.armorInventory.length;
+}
