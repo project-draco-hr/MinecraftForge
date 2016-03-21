@@ -1,0 +1,21 @@
+{
+  try {
+    IResource resource=null;
+    try {
+      resource=manager.getResource(armatureLocation);
+    }
+ catch (    FileNotFoundException e) {
+      return defaultModelBlockAnimation;
+    }
+    ModelBlockAnimation mba=mbaGson.fromJson(new InputStreamReader(resource.getInputStream(),"UTF-8"),ModelBlockAnimation.class);
+    return mba;
+  }
+ catch (  IOException e) {
+    FMLLog.log(Level.ERROR,e,"Exception loading vanilla model aniamtion %s, skipping",armatureLocation);
+    return defaultModelBlockAnimation;
+  }
+catch (  JsonParseException e) {
+    FMLLog.log(Level.ERROR,e,"Exception loading vanilla model aniamtion %s, skipping",armatureLocation);
+    return defaultModelBlockAnimation;
+  }
+}

@@ -4,7 +4,7 @@
     modelPath=modelPath.substring("models/".length());
   }
   ResourceLocation armatureLocation=new ResourceLocation(modelLocation.getResourceDomain(),"armatures/" + modelPath + ".json");
-  ModelBlockAnimation animation=Animation.INSTANCE.loadVanillaAnimation(armatureLocation);
+  ModelBlockAnimation animation=ModelBlockAnimation.loadVanillaAnimation(loader.resourceManager,armatureLocation);
   ModelBlock model=loader.loadModel(modelLocation);
   return loader.new VanillaModelWrapper(modelLocation,model,false,animation);
 }

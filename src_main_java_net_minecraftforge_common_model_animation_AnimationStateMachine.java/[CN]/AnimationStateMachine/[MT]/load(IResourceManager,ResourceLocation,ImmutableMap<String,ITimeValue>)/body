@@ -1,0 +1,26 @@
+{
+  try {
+    ClipResolver clipResolver=new ClipResolver();
+    ParameterResolver parameterResolver=new ParameterResolver(customParameters);
+    Clips.CommonClipTypeAdapterFactory.INSTANCE.setClipResolver(clipResolver);
+    TimeValues.CommonTimeValueTypeAdapterFactory.INSTANCE.setValueResolver(parameterResolver);
+    IResource resource=manager.getResource(location);
+    AnimationStateMachine asm=asmGson.fromJson(new InputStreamReader(resource.getInputStream(),"UTF-8"),AnimationStateMachine.class);
+    clipResolver.asm=asm;
+    parameterResolver.asm=asm;
+    asm.initialize();
+    return asm;
+  }
+ catch (  IOException e) {
+    FMLLog.log(Level.ERROR,e,"Exception loading Animation State Machine %s, skipping",location);
+    return missing;
+  }
+catch (  JsonParseException e) {
+    FMLLog.log(Level.ERROR,e,"Exception loading Animation State Machine %s, skipping",location);
+    return missing;
+  }
+ finally {
+    Clips.CommonClipTypeAdapterFactory.INSTANCE.setClipResolver(null);
+    TimeValues.CommonTimeValueTypeAdapterFactory.INSTANCE.setValueResolver(null);
+  }
+}

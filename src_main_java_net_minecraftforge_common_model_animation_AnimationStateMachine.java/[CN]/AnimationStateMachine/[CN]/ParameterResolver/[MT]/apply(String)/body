@@ -1,0 +1,6 @@
+{
+  if (asm.parameters.containsKey(name)) {
+    return asm.parameters.get(name);
+  }
+  return customParameters.get(name);
+}
