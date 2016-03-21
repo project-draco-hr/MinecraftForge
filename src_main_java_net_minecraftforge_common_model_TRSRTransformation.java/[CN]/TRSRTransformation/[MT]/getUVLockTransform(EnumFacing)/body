@@ -1,0 +1,9 @@
+{
+  EnumFacing newSide=rotate(originalSide);
+  try {
+    return blockCenterToCorner(vanillaUvTransformGlobalToLocal.get(originalSide).compose(blockCornerToCenter(this.inverse())).compose(vanillaUvTransformLocalToGlobal.get(newSide)));
+  }
+ catch (  SingularMatrixException e) {
+    return new TRSRTransformation(null,null,new Vector3f(0,0,0),null);
+  }
+}
