@@ -3,7 +3,12 @@
     setBucketModelDefinition(ForgeModContainer.getInstance().universalBucket);
   }
   registerVariantNames();
-  List<Item> items=Lists.newArrayList(GameData.getItemRegistry().typeSafeIterable());
+  List<Item> items=Lists.newArrayList(Iterables.filter(Item.itemRegistry,new Predicate<Item>(){
+    public boolean apply(    Item item){
+      return item.getRegistryName() != null;
+    }
+  }
+));
   Collections.sort(items,new Comparator<Item>(){
     public int compare(    Item i1,    Item i2){
       return i1.getRegistryName().compareTo(i2.getRegistryName());

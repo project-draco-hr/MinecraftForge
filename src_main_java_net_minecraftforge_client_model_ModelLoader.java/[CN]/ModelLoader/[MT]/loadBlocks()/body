@@ -1,5 +1,10 @@
 {
-  List<Block> blocks=Lists.newArrayList(Block.blockRegistry);
+  List<Block> blocks=Lists.newArrayList(Iterables.filter(Block.blockRegistry,new Predicate<Block>(){
+    public boolean apply(    Block block){
+      return block.getRegistryName() != null;
+    }
+  }
+));
   Collections.sort(blocks,new Comparator<Block>(){
     public int compare(    Block b1,    Block b2){
       return b1.getRegistryName().compareTo(b2.getRegistryName());
