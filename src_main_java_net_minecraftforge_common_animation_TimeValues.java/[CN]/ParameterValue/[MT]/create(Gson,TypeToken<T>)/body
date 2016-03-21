@@ -54,7 +54,7 @@ return p;
 case STRING:
 String string=in.nextString();
 if (string.equals("#identity")) {
-return IdentityValue.instance;
+return IdentityValue.INSTANCE;
 }
 if (!string.startsWith("#")) {
 throw new IOException("Expected TimeValue reference, got \"" + string + "\"");

@@ -3,8 +3,8 @@
   IModelState modelState=this.state;
   if (state instanceof IExtendedBlockState) {
     IExtendedBlockState exState=(IExtendedBlockState)state;
-    if (exState.getUnlistedNames().contains(B3DFrameProperty.instance)) {
-      B3DState s=exState.getValue(B3DFrameProperty.instance);
+    if (exState.getUnlistedNames().contains(B3DFrameProperty.INSTANCE)) {
+      B3DState s=exState.getValue(B3DFrameProperty.INSTANCE);
       if (s != null) {
         IModelState parent=this.state;
         Animation newAnimation=s.getAnimation();

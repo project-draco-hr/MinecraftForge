@@ -24,11 +24,11 @@
       }
     }
     if (accepted == null) {
-      if (VariantLoader.instance.accepts(actual)) {
-        accepted=VariantLoader.instance;
+      if (VariantLoader.INSTANCE.accepts(actual)) {
+        accepted=VariantLoader.INSTANCE;
       }
- else       if (VanillaLoader.instance.accepts(actual)) {
-        accepted=VanillaLoader.instance;
+ else       if (VanillaLoader.INSTANCE.accepts(actual)) {
+        accepted=VanillaLoader.INSTANCE;
       }
     }
     if (accepted == null) {

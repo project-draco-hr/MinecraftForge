@@ -1,20 +1,16 @@
 {
-  B3DLoader.instance.addDomain(MODID.toLowerCase());
+  B3DLoader.INSTANCE.addDomain(MODID.toLowerCase());
   Item item=Item.getItemFromBlock(CustomModelBlock.instance);
   ModelLoader.setCustomModelResourceLocation(item,0,new ModelResourceLocation(MODID.toLowerCase() + ":" + CustomModelBlock.name,"inventory"));
-  OBJLoader.instance.addDomain(MODID.toLowerCase());
+  OBJLoader.INSTANCE.addDomain(MODID.toLowerCase());
   Item item2=Item.getItemFromBlock(OBJTesseractBlock.instance);
   ModelLoader.setCustomModelResourceLocation(item2,0,new ModelResourceLocation(MODID.toLowerCase() + ":" + OBJTesseractBlock.name,"inventory"));
   Item item3=Item.getItemFromBlock(OBJVertexColoring1.instance);
   ModelLoader.setCustomModelResourceLocation(item3,0,new ModelResourceLocation(MODID.toLowerCase() + ":" + OBJVertexColoring1.name,"inventory"));
-  Item item4=Item.getItemFromBlock(OBJDirectionEye.instance);
-  ModelLoader.setCustomModelResourceLocation(item4,0,new ModelResourceLocation(MODID.toLowerCase() + ":" + OBJDirectionEye.name,"inventory"));
   Item item5=Item.getItemFromBlock(OBJVertexColoring2.instance);
   ModelLoader.setCustomModelResourceLocation(item5,0,new ModelResourceLocation(MODID.toLowerCase() + ":" + OBJVertexColoring2.name,"inventory"));
   Item item6=Item.getItemFromBlock(OBJDirectionBlock.instance);
   ModelLoader.setCustomModelResourceLocation(item6,0,new ModelResourceLocation(MODID.toLowerCase() + ":" + OBJDirectionBlock.name,"inventory"));
   Item item7=Item.getItemFromBlock(OBJCustomDataBlock.instance);
   ModelLoader.setCustomModelResourceLocation(item7,0,new ModelResourceLocation(MODID.toLowerCase() + ":" + OBJCustomDataBlock.name,"inventory"));
-  Item item8=Item.getItemFromBlock(OBJDynamicEye.instance);
-  ModelLoader.setCustomModelResourceLocation(item8,0,new ModelResourceLocation(MODID.toLowerCase() + ":" + OBJDynamicEye.name,"inventory"));
 }

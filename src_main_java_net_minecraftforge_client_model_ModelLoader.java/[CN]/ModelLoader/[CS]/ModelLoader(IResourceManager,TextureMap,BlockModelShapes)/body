@@ -1,6 +1,6 @@
 {
   super(manager,map,shapes);
-  VanillaLoader.instance.setLoader(this);
-  VariantLoader.instance.setLoader(this);
+  VanillaLoader.INSTANCE.setLoader(this);
+  VariantLoader.INSTANCE.setLoader(this);
   ModelLoaderRegistry.clearModelCache(manager);
 }

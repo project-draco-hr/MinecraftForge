@@ -69,7 +69,7 @@ return clip;
 case STRING:
 String string=in.nextString();
 if (string.equals("#identity")) {
-return IdentityClip.instance;
+return IdentityClip.INSTANCE;
 }
 if (string.startsWith("#")) {
 return new ClipReference(string.substring(1),clipResolver.get());

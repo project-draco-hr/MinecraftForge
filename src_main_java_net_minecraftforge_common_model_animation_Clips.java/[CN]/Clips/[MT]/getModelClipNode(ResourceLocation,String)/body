@@ -7,5 +7,5 @@
     }
     FMLLog.getLogger().error("Unable to find clip " + clipName + " in the model "+ modelLocation);
   }
-  return new ModelClip(IdentityClip.instance,modelLocation,clipName);
+  return new ModelClip(IdentityClip.INSTANCE,modelLocation,clipName);
 }

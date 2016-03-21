@@ -15,7 +15,7 @@
     }
   }
 );
-  IBakedModel missingBaked=missingModel.bake(missingModel.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.instance);
+  IBakedModel missingBaked=missingModel.bake(missingModel.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.INSTANCE);
   Map<IModel,IBakedModel> bakedModels=Maps.newHashMap();
   HashMultimap<IModel,ModelResourceLocation> models=HashMultimap.create();
   Multimaps.invertFrom(Multimaps.forMap(stateModels),models);
@@ -26,7 +26,7 @@
       bakedModels.put(model,missingBaked);
     }
  else {
-      bakedModels.put(model,model.bake(model.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.instance));
+      bakedModels.put(model,model.bake(model.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.INSTANCE));
     }
   }
   ProgressManager.pop(bakeBar);

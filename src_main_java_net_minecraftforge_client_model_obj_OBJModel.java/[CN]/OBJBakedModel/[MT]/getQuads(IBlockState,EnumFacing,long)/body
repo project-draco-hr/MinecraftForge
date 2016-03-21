@@ -46,7 +46,7 @@
             v.setMaterial(this.model.getMatLib().getMaterial(v.getMaterial().getName()));
           }
         }
-        sprite=ModelLoader.White.instance;
+        sprite=ModelLoader.White.INSTANCE;
       }
  else       sprite=this.textures.get(f.getMaterialName());
       UnpackedBakedQuad.Builder builder=new UnpackedBakedQuad.Builder(format);

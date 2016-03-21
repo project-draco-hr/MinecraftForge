@@ -11,6 +11,6 @@
     }
   }
   ImmutableMap<Optional<BlockRenderLayer>,ModelResourceLocation> models=builder.build();
-  if (models.isEmpty())   return instance;
+  if (models.isEmpty())   return INSTANCE;
   return new MultiLayerModel(models);
 }

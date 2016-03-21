@@ -1,4 +1,4 @@
 {
   B3DLoader.B3DState newState=new B3DLoader.B3DState(null,counter);
-  return ((IExtendedBlockState)state).withProperty(B3DLoader.B3DFrameProperty.instance,newState);
+  return ((IExtendedBlockState)state).withProperty(B3DLoader.B3DFrameProperty.INSTANCE,newState);
 }

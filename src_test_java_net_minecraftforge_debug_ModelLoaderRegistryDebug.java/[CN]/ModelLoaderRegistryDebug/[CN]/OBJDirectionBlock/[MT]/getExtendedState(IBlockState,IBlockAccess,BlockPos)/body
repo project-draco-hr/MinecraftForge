@@ -2,5 +2,5 @@
   EnumFacing facing=(EnumFacing)state.getValue(FACING);
   TRSRTransformation transform=new TRSRTransformation(facing);
   OBJModel.OBJState newState=new OBJModel.OBJState(Lists.newArrayList(OBJModel.Group.ALL),true,transform);
-  return ((IExtendedBlockState)state).withProperty(OBJModel.OBJProperty.instance,newState);
+  return ((IExtendedBlockState)state).withProperty(OBJModel.OBJProperty.INSTANCE,newState);
 }

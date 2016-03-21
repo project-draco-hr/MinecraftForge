@@ -1,3 +1,0 @@
-{
-  return enabledDomains.contains(modelLocation.getResourceDomain()) && modelLocation.getResourcePath().endsWith(".b3d");
-}

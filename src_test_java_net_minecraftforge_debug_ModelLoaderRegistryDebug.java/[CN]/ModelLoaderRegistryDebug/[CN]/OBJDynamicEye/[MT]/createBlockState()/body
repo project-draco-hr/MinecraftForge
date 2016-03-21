@@ -1,3 +1,3 @@
 {
-  return new ExtendedBlockState(this,new IProperty[0],new IUnlistedProperty[]{OBJModel.OBJProperty.instance});
+  return new ExtendedBlockState(this,new IProperty[0],new IUnlistedProperty[]{OBJModel.OBJProperty.INSTANCE});
 }
