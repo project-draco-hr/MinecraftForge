@@ -10,7 +10,7 @@
   if (MinecraftForge.EVENT_BUS.post(event)) {
     return null;
   }
-  if (player.isServerWorld()) {
+  if (!player.worldObj.isRemote) {
     player.getEntityWorld().spawnEntityInWorld(event.entityItem);
   }
   return event.entityItem;
