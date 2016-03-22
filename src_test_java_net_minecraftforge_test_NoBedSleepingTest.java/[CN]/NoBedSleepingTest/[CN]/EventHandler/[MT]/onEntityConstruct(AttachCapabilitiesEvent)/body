@@ -4,8 +4,8 @@
     @Override public boolean hasCapability(    Capability<?> capability,    EnumFacing facing){
       return capability == SLEEP_CAP;
     }
-    @SuppressWarnings("unchecked") @Override public <T>T getCapability(    Capability<T> capability,    EnumFacing facing){
-      return capability == SLEEP_CAP ? (T)inst : null;
+    @Override public <T>T getCapability(    Capability<T> capability,    EnumFacing facing){
+      return capability == SLEEP_CAP ? SLEEP_CAP.cast(inst) : null;
     }
     @Override public NBTPrimitive serializeNBT(){
       return (NBTPrimitive)SLEEP_CAP.getStorage().writeNBT(SLEEP_CAP,inst,null);

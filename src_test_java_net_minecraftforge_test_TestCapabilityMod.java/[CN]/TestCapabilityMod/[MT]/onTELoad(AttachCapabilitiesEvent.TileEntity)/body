@@ -7,8 +7,8 @@ class Provider implements ICapabilityProvider, IExampleCapability {
     @Override public boolean hasCapability(    Capability<?> capability,    EnumFacing facing){
       return TEST_CAP != null && capability == TEST_CAP;
     }
-    @SuppressWarnings("unchecked") @Override public <T>T getCapability(    Capability<T> capability,    EnumFacing facing){
-      if (TEST_CAP != null && capability == TEST_CAP)       return (T)this;
+    @Override public <T>T getCapability(    Capability<T> capability,    EnumFacing facing){
+      if (TEST_CAP != null && capability == TEST_CAP)       return TEST_CAP.cast(this);
       return null;
     }
     @Override public String getOwnerType(){

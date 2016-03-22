@@ -1,6 +1,6 @@
 {
   if (capability == ANIMATION_CAPABILITY) {
-    return (T)asm;
+    return ANIMATION_CAPABILITY.cast(asm);
   }
   return null;
 }
