@@ -7,5 +7,5 @@
     changed=slot != slotMainHand;
     slotMainHand=slot;
   }
-  return !from.getItem().shouldCauseReequipAnimation(from,to,changed);
+  return from.getItem().shouldCauseReequipAnimation(from,to,changed);
 }
