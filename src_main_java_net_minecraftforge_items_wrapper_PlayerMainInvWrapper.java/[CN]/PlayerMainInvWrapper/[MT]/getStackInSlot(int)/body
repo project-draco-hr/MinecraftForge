@@ -1,6 +1,0 @@
-{
-  if (slot > getSlots()) {
-    return null;
-  }
-  return super.getStackInSlot(slot);
-}

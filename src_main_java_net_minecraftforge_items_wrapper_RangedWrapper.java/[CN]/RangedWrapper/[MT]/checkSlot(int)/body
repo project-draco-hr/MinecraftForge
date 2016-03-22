@@ -1,0 +1,3 @@
+{
+  return localSlot + minSlot < maxSlot;
+}

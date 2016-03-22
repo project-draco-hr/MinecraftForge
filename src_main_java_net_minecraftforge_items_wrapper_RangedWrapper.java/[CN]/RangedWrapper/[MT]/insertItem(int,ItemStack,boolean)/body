@@ -1,0 +1,6 @@
+{
+  if (checkSlot(slot)) {
+    return compose.insertItem(slot + minSlot,stack,simulate);
+  }
+  return stack;
+}

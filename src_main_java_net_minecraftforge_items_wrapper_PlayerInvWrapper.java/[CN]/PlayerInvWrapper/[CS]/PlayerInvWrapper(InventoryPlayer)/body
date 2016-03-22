@@ -1,3 +1,3 @@
 {
-  super(new PlayerMainInvWrapper(inv),new PlayerArmorInvWrapper(inv));
+  super(new PlayerMainInvWrapper(inv),new PlayerArmorInvWrapper(inv),new PlayerOffhandInvWrapper(inv));
 }
