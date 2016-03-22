@@ -1,0 +1,5 @@
+{
+  if (checkSlot(slot)) {
+    compose.setStackInSlot(slot + minSlot,stack);
+  }
+}

@@ -1,7 +1,4 @@
 {
-  if (slot > getSlots()) {
-    return stack;
-  }
   ItemStack rest=super.insertItem(slot,stack,simulate);
   if (rest == null || rest.stackSize != stack.stackSize) {
     ItemStack inSlot=getStackInSlot(slot);

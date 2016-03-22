@@ -1,5 +1,3 @@
 {
-  super(inv);
-  inventoryPlayer=inv;
-  offset=inventoryPlayer.mainInventory.length + inventoryPlayer.armorInventory.length;
+  super(new InvWrapper(inv),inv.mainInventory.length + inv.armorInventory.length,inv.mainInventory.length + inv.armorInventory.length + inv.offHandInventory.length);
 }

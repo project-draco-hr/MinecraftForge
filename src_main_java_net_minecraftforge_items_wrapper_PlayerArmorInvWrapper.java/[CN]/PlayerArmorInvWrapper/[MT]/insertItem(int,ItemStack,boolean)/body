@@ -7,7 +7,7 @@
     }
   }
   if (slot < 4 && stack != null && stack.getItem().isValidArmor(stack,equ,inventoryPlayer.player)) {
-    return super.insertItem(slot + offset,stack,simulate);
+    return super.insertItem(slot,stack,simulate);
   }
   return stack;
 }
