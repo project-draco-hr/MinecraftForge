@@ -1,7 +1,12 @@
 {
   Builder<String,EventBus> eventBus=ImmutableMap.builder();
-  for (  ModContainer mod : loader.getModList()) {
-    EventBus bus=new EventBus(mod.getModId());
+  for (  final ModContainer mod : loader.getModList()) {
+    EventBus bus=new EventBus(new SubscriberExceptionHandler(){
+      @Override public void handleException(      final Throwable exception,      final SubscriberExceptionContext context){
+        LoadController.this.errorOccurred(mod,exception);
+      }
+    }
+);
     boolean isActive=mod.registerBus(bus,this);
     if (isActive) {
       activeModList.add(mod);
