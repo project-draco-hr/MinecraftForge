@@ -1,0 +1,2 @@
+Class<? extends Enum<?>> enumType
+Class<?>[] paramTypes

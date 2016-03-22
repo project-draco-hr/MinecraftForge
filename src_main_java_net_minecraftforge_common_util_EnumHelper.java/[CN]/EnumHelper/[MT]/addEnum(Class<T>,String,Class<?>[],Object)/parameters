@@ -1,4 +1,4 @@
 Class<T> enumType
 String enumName
 Class<?>[] paramTypes
-Object[] paramValues
+Object paramValues

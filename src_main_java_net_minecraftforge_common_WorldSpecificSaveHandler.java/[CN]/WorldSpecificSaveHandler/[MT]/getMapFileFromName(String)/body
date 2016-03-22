@@ -4,16 +4,15 @@
     dataDir.mkdirs();
   }
   File file=new File(dataDir,name + ".dat");
-  if (!file.exists() && name.equalsIgnoreCase("FORTRESS") && world.provider.getDimension() == -1) {
-    File parentFile=parent.getMapFileFromName(name);
-    if (parentFile.exists()) {
-      try {
-        Files.copy(parentFile,file);
-      }
- catch (      IOException e) {
-        FMLLog.log(Level.ERROR,e,"A critical error occured copying fortress.dat to world specific dat folder - new file will be created.");
-      }
-    }
-  }
-  return file;
+  if (!file.exists()) {
+switch (world.provider.getDimension()) {
+case -1:
+      if (name.equalsIgnoreCase("FORTRESS"))       copyFile(name,file);
+    break;
+case 1:
+  if (name.equalsIgnoreCase("VILLAGES_END"))   copyFile(name,file);
+break;
+}
+}
+return file;
 }

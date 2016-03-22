@@ -3,10 +3,7 @@
     return;
   }
   hasInit=true;
-  registerProviderType(0,WorldProviderSurface.class,true);
-  registerProviderType(-1,WorldProviderHell.class,true);
-  registerProviderType(1,WorldProviderEnd.class,false);
-  registerDimension(0,0);
-  registerDimension(-1,-1);
-  registerDimension(1,1);
+  registerDimension(0,DimensionType.OVERWORLD);
+  registerDimension(-1,DimensionType.NETHER);
+  registerDimension(1,DimensionType.THE_END);
 }

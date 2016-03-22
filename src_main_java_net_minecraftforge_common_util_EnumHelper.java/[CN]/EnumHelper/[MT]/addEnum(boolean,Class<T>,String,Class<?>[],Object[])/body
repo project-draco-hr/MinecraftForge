@@ -1,0 +1,91 @@
+{
+  if (!isSetup) {
+    setup();
+  }
+  Field valuesField=null;
+  Field[] fields=enumType.getDeclaredFields();
+  for (  Field field : fields) {
+    String name=field.getName();
+    if (name.equals("$VALUES") || name.equals("ENUM$VALUES")) {
+      valuesField=field;
+      break;
+    }
+  }
+  int flags=(FMLForgePlugin.RUNTIME_DEOBF ? Modifier.PUBLIC : Modifier.PRIVATE) | Modifier.STATIC | Modifier.FINAL| 0x1000;
+  if (valuesField == null) {
+    String valueType=String.format("[L%s;",enumType.getName().replace('.','/'));
+    for (    Field field : fields) {
+      if ((field.getModifiers() & flags) == flags && field.getType().getName().replace('.','/').equals(valueType)) {
+        valuesField=field;
+        break;
+      }
+    }
+  }
+  if (valuesField == null) {
+    final List<String> lines=Lists.newArrayList();
+    lines.add(String.format("Could not find $VALUES field for enum: %s",enumType.getName()));
+    lines.add(String.format("Runtime Deobf: %s",FMLForgePlugin.RUNTIME_DEOBF));
+    lines.add(String.format("Flags: %s",String.format("%16s",Integer.toBinaryString(flags)).replace(' ','0')));
+    lines.add("Fields:");
+    for (    Field field : fields) {
+      String mods=String.format("%16s",Integer.toBinaryString(field.getModifiers())).replace(' ','0');
+      lines.add(String.format("       %s %s: %s",mods,field.getName(),field.getType().getName()));
+    }
+    for (    String line : lines)     FMLLog.severe(line);
+    if (test) {
+      throw new EnhancedRuntimeException("Could not find $VALUES field for enum: " + enumType.getName()){
+        @Override protected void printStackTrace(        WrappedPrintStream stream){
+          for (          String line : lines)           stream.println(line);
+        }
+      }
+;
+    }
+    return null;
+  }
+  if (test) {
+    Object ctr=null;
+    Exception ex=null;
+    try {
+      ctr=getConstructorAccessor(enumType,paramTypes);
+    }
+ catch (    Exception e) {
+      ex=e;
+    }
+    if (ctr == null || ex != null) {
+      throw new EnhancedRuntimeException(String.format("Could not find constructor for Enum %s",enumType.getName()),ex){
+        private String toString(        Class<?>[] cls){
+          StringBuilder b=new StringBuilder();
+          for (int x=0; x < cls.length; x++) {
+            b.append(cls[x].getName());
+            if (x != cls.length - 1)             b.append(", ");
+          }
+          return b.toString();
+        }
+        @Override protected void printStackTrace(        WrappedPrintStream stream){
+          stream.println("Target Arguments:");
+          stream.println("    java.lang.String, int, " + toString(paramTypes));
+          stream.println("Found Constructors:");
+          for (          Constructor<?> ctr : enumType.getDeclaredConstructors()) {
+            stream.println("    " + toString(ctr.getParameterTypes()));
+          }
+        }
+      }
+;
+    }
+    return null;
+  }
+  valuesField.setAccessible(true);
+  try {
+    T[] previousValues=(T[])valuesField.get(enumType);
+    List<T> values=new ArrayList<T>(Arrays.asList(previousValues));
+    T newValue=(T)makeEnum(enumType,enumName,values.size(),paramTypes,paramValues);
+    values.add(newValue);
+    setFailsafeFieldValue(valuesField,null,values.toArray((T[])Array.newInstance(enumType,0)));
+    cleanEnumCache(enumType);
+    return newValue;
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    throw new RuntimeException(e.getMessage(),e);
+  }
+}
