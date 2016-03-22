@@ -2,8 +2,8 @@
   super.toBytes(buf);
   ByteBufUtils.writeUTF8String(buf,modId);
   buf.writeInt(modEntityTypeId);
-  buf.writeLong(entityUUID.getMostSignificantBits());
-  buf.writeLong(entityUUID.getLeastSignificantBits());
+  buf.writeLong(entity.getUniqueID().getMostSignificantBits());
+  buf.writeLong(entity.getUniqueID().getLeastSignificantBits());
   buf.writeDouble(entity.posX);
   buf.writeDouble(entity.posY);
   buf.writeDouble(entity.posZ);
