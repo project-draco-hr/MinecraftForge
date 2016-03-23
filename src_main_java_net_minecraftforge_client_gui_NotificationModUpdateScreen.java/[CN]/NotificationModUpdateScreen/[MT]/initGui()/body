@@ -1,0 +1,13 @@
+{
+  if (!hasCheckedForUpdates) {
+    if (modButton != null) {
+      for (      ModContainer mod : Loader.instance().getModList()) {
+        Status status=ForgeVersion.getResult(mod).status;
+        if (status == Status.OUTDATED || status == Status.BETA_OUTDATED) {
+          showNotification=Status.OUTDATED;
+        }
+      }
+    }
+    hasCheckedForUpdates=true;
+  }
+}

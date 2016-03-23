@@ -1,0 +1,14 @@
+{
+  if (showNotification == null || !showNotification.shouldDraw() || ForgeModContainer.disableVersionCheck) {
+    return;
+  }
+  Minecraft.getMinecraft().getTextureManager().bindTexture(VERSION_CHECK_ICONS);
+  GlStateManager.color(1,1,1,1);
+  GlStateManager.pushMatrix();
+  int x=modButton.xPosition;
+  int y=modButton.yPosition;
+  int w=modButton.width;
+  int h=modButton.height;
+  drawModalRectWithCustomSizedTexture(x + w - (h / 2 + 4),y + (h / 2 - 4),showNotification.getSheetOffset() * 8,(showNotification.isAnimated() && ((System.currentTimeMillis() / 800 & 1) == 1)) ? 8 : 0,8,8,64,16);
+  GlStateManager.popMatrix();
+}
