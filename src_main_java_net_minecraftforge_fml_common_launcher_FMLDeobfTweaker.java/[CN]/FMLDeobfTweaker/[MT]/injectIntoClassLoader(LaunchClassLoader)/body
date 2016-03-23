@@ -15,7 +15,7 @@
     FMLRelaunchLog.fine("Minecraft validated, launching...");
   }
  catch (  Exception e) {
-    System.out.println("A CRITICAL PROBLEM OCCURED INITIALIZING MINECRAFT - LIKELY YOU HAVE AN INCORRECT VERSION FOR THIS FML");
+    System.out.println("A CRITICAL PROBLEM OCCURRED INITIALIZING MINECRAFT - LIKELY YOU HAVE AN INCORRECT VERSION FOR THIS FML");
     throw new RuntimeException(e);
   }
 }

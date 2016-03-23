@@ -23,7 +23,7 @@
       stripInterface(classNode,(String)optional.getAnnotationInfo().get("iface"),stripRefs);
     }
  else {
-      stripMethod(classNode,(String)optional.getObjectName());
+      stripMethod(classNode,optional.getObjectName());
     }
   }
   if (logDebugInfo)   FMLRelaunchLog.finer("Optional removal - class %s processed",name);

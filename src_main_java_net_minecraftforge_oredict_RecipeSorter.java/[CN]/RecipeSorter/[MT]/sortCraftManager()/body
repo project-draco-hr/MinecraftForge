@@ -1,6 +1,6 @@
 {
   bake();
-  FMLLog.fine("Sorting recipies");
+  FMLLog.fine("Sorting recipes");
   warned.clear();
   Collections.sort(CraftingManager.getInstance().getRecipeList(),INSTANCE);
 }

@@ -16,7 +16,7 @@
     }
     rawMethodMaps=Maps.newHashMap();
     rawFieldMaps=Maps.newHashMap();
-    Builder<String,String> builder=ImmutableBiMap.<String,String>builder();
+    Builder<String,String> builder=ImmutableBiMap.builder();
     Splitter splitter=Splitter.on(CharMatcher.anyOf(": ")).omitEmptyStrings().trimResults();
     for (    String line : srgList) {
       String[] parts=Iterables.toArray(splitter.split(line),String.class);

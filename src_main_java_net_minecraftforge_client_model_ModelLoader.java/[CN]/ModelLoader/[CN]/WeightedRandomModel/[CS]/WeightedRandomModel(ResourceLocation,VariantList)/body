@@ -5,13 +5,11 @@
     ResourceLocation loc=v.getModelLocation();
     locations.add(loc);
     IModel model=ModelLoaderRegistry.getModel(loc);
-    if (v instanceof ISmartVariant) {
-      model=((ISmartVariant)v).process(model);
-      for (      ResourceLocation location : model.getDependencies()) {
-        ModelLoaderRegistry.getModelOrMissing(location);
-      }
-      textures.addAll(model.getTextures());
+    model=v.process(model);
+    for (    ResourceLocation location : model.getDependencies()) {
+      ModelLoaderRegistry.getModelOrMissing(location);
     }
+    textures.addAll(model.getTextures());
     models.add(model);
     builder.add(Pair.of(model,v.getState()));
   }

@@ -1,1 +1,1 @@
-SimpleChannelInboundHandler<Packet>
+SimpleChannelInboundHandler<Packet<?>>

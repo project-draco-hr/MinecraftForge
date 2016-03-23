@@ -4,7 +4,7 @@
     String type=jsonData.get("type").getAsString();
     JsonArray modDataArray=jsonData.get("modList").getAsJsonArray();
     boolean moddedClientAllowed=jsonData.has("clientModsAllowed") ? jsonData.get("clientModsAllowed").getAsBoolean() : true;
-    Builder<String,String> modListBldr=ImmutableMap.<String,String>builder();
+    Builder<String,String> modListBldr=ImmutableMap.builder();
     for (    JsonElement obj : modDataArray) {
       JsonObject modObj=obj.getAsJsonObject();
       modListBldr.put(modObj.get("modid").getAsString(),modObj.get("version").getAsString());

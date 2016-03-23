@@ -1,5 +1,5 @@
 {
-  super(name,(Object)null,type,langKey,minValue,maxValue);
+  super(name,null,type,langKey,minValue,maxValue);
   this.defaultValues=defaultValues;
   this.values=defaultValues;
   this.isListFixedLength=isListFixedLength;

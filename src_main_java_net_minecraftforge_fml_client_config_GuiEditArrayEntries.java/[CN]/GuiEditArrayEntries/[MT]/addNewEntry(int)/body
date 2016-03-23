@@ -1,5 +1,5 @@
 {
-  if (configElement.isList() && configElement.getType() == ConfigGuiType.BOOLEAN)   listEntries.add(index,new BooleanEntry(this.owningGui,this,this.configElement,Boolean.valueOf(true)));
+  if (configElement.isList() && configElement.getType() == ConfigGuiType.BOOLEAN)   listEntries.add(index,new BooleanEntry(this.owningGui,this,this.configElement,true));
  else   if (configElement.isList() && configElement.getType() == ConfigGuiType.INTEGER)   listEntries.add(index,new IntegerEntry(this.owningGui,this,this.configElement,0));
  else   if (configElement.isList() && configElement.getType() == ConfigGuiType.DOUBLE)   listEntries.add(index,new DoubleEntry(this.owningGui,this,this.configElement,0.0D));
  else   if (configElement.isList())   listEntries.add(index,new StringEntry(this.owningGui,this,this.configElement,""));

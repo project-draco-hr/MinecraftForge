@@ -76,8 +76,8 @@
  catch (    Throwable throwable) {
       CrashReport crashreport=CrashReport.makeCrashReport(throwable,"Adding item to inventory");
       CrashReportCategory crashreportcategory=crashreport.makeCategory("Item being added");
-      crashreportcategory.addCrashSection("Item ID",Integer.valueOf(Item.getIdFromItem(itemstack.getItem())));
-      crashreportcategory.addCrashSection("Item data",Integer.valueOf(itemstack.getMetadata()));
+      crashreportcategory.addCrashSection("Item ID",Item.getIdFromItem(itemstack.getItem()));
+      crashreportcategory.addCrashSection("Item data",itemstack.getMetadata());
       crashreportcategory.addCrashSectionCallable("Item name",new Callable<String>(){
         public String call() throws Exception {
           return itemstack.getDisplayName();

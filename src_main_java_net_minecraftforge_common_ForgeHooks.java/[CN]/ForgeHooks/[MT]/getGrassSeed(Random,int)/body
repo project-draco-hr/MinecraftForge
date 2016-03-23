@@ -1,5 +1,5 @@
 {
-  SeedEntry entry=(SeedEntry)WeightedRandom.getRandomItem(rand,seedList);
+  SeedEntry entry=WeightedRandom.getRandomItem(rand,seedList);
   if (entry == null || entry.seed == null) {
     return null;
   }

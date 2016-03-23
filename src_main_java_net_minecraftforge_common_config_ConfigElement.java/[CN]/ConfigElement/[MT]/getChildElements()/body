@@ -1,8 +1,8 @@
 {
   if (!isProperty) {
     List<IConfigElement> elements=new ArrayList<IConfigElement>();
-    Iterator<ConfigCategory> ccI=ctgy.getChildren().iterator();
-    Iterator<Property> pI=ctgy.getOrderedValues().iterator();
+    Iterator<ConfigCategory> ccI=category.getChildren().iterator();
+    Iterator<Property> pI=category.getOrderedValues().iterator();
     @SuppressWarnings("unused") int index=0;
     if (categoriesFirst)     while (ccI.hasNext()) {
       ConfigElement temp=new ConfigElement(ccI.next());

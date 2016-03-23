@@ -2,7 +2,7 @@
   this.dimId=dimension;
   this.pos=pos.getImmutable();
   this.flag=flag;
-  this.blockIdentifier=new UniqueIdentifier(modid + ":" + blockName);
+  this.blockIdentifier=new UniqueIdentifier(modId + ":" + blockName);
   this.meta=meta;
   this.nbt=nbt;
 }

@@ -9,7 +9,7 @@
   ITextComponent line=lines.get(lineIdx);
   if (line != null) {
     int k=-4;
-    for (    ITextComponent part : (Iterable<ITextComponent>)line) {
+    for (    ITextComponent part : line) {
       if (!(part instanceof TextComponentString))       continue;
       k+=GuiModList.this.fontRendererObj.getStringWidth(((TextComponentString)part).getChatComponentText_TextValue());
       if (k >= x) {

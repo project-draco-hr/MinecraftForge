@@ -3,7 +3,7 @@
   if (size != second.getNextOffset())   return false;
   int padding=0;
   int j=0;
-  for (  VertexFormatElement firstAttr : (List<VertexFormatElement>)first.getElements()) {
+  for (  VertexFormatElement firstAttr : first.getElements()) {
     while (j < second.getElementCount() && second.getElement(j).getUsage() == EnumUsage.PADDING) {
       padding+=second.getElement(j++).getSize();
     }

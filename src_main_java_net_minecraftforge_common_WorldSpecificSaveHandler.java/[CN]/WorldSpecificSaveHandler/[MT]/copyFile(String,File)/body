@@ -5,7 +5,7 @@
       Files.copy(parentFile,to);
     }
  catch (    IOException e) {
-      FMLLog.log(Level.ERROR,e,"A critical error occured copying %s to world specific dat folder - new file will be created.",parentFile.getName());
+      FMLLog.log(Level.ERROR,e,"A critical error occurred copying %s to world specific dat folder - new file will be created.",parentFile.getName());
     }
   }
 }

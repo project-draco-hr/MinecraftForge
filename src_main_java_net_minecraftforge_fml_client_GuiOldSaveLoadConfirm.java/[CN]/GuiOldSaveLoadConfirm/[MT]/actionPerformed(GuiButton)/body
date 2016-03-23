@@ -20,7 +20,7 @@
     }
     FMLClientHandler.instance().showGuiScreen(null);
     try {
-      mc.launchIntegratedServer(dirName,saveName,(WorldSettings)null);
+      mc.launchIntegratedServer(dirName,saveName,null);
     }
  catch (    StartupQuery.AbortedException e) {
     }

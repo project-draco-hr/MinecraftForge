@@ -1,6 +1,6 @@
 {
   if (!isCancelable()) {
-    throw new IllegalArgumentException("Attempted to cancel a uncancelable event");
+    throw new IllegalArgumentException("Attempted to cancel a non cancellable event");
   }
   isCanceled=cancel;
 }

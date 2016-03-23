@@ -1,8 +1,4 @@
 {
-  ImmutableList.Builder<NetworkDispatcher> builder=ImmutableList.<NetworkDispatcher>builder();
-  for (  EntityPlayerMP player : (List<EntityPlayerMP>)FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerList()) {
-    NetworkDispatcher dispatcher=player.playerNetServerHandler.netManager.channel().attr(NetworkDispatcher.FML_DISPATCHER).get();
-    if (dispatcher != null)     builder.add(dispatcher);
-  }
-  return builder.build();
+  NetworkManager clientConnection=FMLCommonHandler.instance().getClientToServerNetworkManager();
+  return clientConnection == null || clientConnection.channel().attr(NetworkDispatcher.FML_DISPATCHER).get() == null ? ImmutableList.<NetworkDispatcher>of() : ImmutableList.of(clientConnection.channel().attr(NetworkDispatcher.FML_DISPATCHER).get());
 }

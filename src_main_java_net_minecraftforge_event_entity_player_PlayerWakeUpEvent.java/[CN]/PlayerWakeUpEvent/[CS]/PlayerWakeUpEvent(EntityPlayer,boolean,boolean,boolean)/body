@@ -1,6 +1,6 @@
 {
   super(player);
-  this.wakeImmediatly=wakeImmediatly;
+  this.wakeImmediately=wakeImmediately;
   this.updateWorld=updateWorld;
   this.setSpawn=setSpawn;
 }

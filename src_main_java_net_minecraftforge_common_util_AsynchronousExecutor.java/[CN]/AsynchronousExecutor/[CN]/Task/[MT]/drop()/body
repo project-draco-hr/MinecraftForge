@@ -1,5 +1,5 @@
 {
-  if (set(this,PENDING,FINISHED)) {
+  if (STATE.compareAndSet(this,PENDING,FINISHED)) {
     tasks.remove(parameter);
     return true;
   }

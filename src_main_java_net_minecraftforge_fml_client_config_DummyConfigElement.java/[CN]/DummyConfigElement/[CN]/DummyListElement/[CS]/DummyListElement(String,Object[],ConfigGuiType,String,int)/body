@@ -1,3 +1,3 @@
 {
-  this(name,defaultValues,type,langKey,false,maxListLength,(Pattern)null,(Object)null,(Object)null);
+  this(name,defaultValues,type,langKey,false,maxListLength,null,null,null);
 }

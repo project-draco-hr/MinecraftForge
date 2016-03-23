@@ -1,3 +1,3 @@
 {
-  this(name,defaultValues,type,langKey,false,-1,(Pattern)null,(Object)null,(Object)null);
+  this(name,defaultValues,type,langKey,false,-1,null,null,null);
 }

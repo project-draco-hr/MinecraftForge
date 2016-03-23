@@ -1,7 +1,7 @@
 {
   modMetadata=mc.getMetadataForId(getModId(),descriptor);
   if (descriptor.containsKey("useMetadata")) {
-    overridesMetadata=!((Boolean)descriptor.get("useMetadata")).booleanValue();
+    overridesMetadata=!((Boolean)descriptor.get("useMetadata"));
   }
   if (overridesMetadata || !modMetadata.useDependencyInformation) {
     Set<ArtifactVersion> requirements=Sets.newHashSet();

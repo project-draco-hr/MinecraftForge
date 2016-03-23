@@ -19,7 +19,7 @@
   }
  else {
     try {
-      client.launchIntegratedServer(comparator.getFileName(),comparator.getDisplayName(),(WorldSettings)null);
+      client.launchIntegratedServer(comparator.getFileName(),comparator.getDisplayName(),null);
     }
  catch (    StartupQuery.AbortedException e) {
     }

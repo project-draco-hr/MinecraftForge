@@ -1,4 +1,4 @@
 EntityPlayer player
-boolean wakeImmediatly
+boolean wakeImmediately
 boolean updateWorldFlag
 boolean setSpawn

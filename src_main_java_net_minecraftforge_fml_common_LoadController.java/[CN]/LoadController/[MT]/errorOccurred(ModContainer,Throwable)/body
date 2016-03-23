@@ -1,6 +1,6 @@
 {
   if (exception instanceof InvocationTargetException) {
-    errors.put(modContainer.getModId(),((InvocationTargetException)exception).getCause());
+    errors.put(modContainer.getModId(),exception.getCause());
   }
  else {
     errors.put(modContainer.getModId(),exception);

@@ -1,0 +1,6 @@
+String name
+Class<?> typeClass
+int maxNumber
+Material material
+boolean peaceful
+boolean animal

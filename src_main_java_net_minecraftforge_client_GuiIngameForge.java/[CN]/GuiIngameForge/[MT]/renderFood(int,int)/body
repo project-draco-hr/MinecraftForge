@@ -15,16 +15,16 @@
     int x=left - i * 8 - 9;
     int y=top;
     int icon=16;
-    byte backgound=0;
+    byte background=0;
     if (mc.thePlayer.isPotionActive(MobEffects.hunger)) {
       icon+=36;
-      backgound=13;
+      background=13;
     }
-    if (unused)     backgound=1;
+    if (unused)     background=1;
     if (player.getFoodStats().getSaturationLevel() <= 0.0F && updateCounter % (level * 3 + 1) == 0) {
       y=top + (rand.nextInt(3) - 1);
     }
-    drawTexturedModalRect(x,y,16 + backgound * 9,27,9,9);
+    drawTexturedModalRect(x,y,16 + background * 9,27,9,9);
     if (unused) {
       if (idx < levelLast)       drawTexturedModalRect(x,y,icon + 54,27,9,9);
  else       if (idx == levelLast)       drawTexturedModalRect(x,y,icon + 63,27,9,9);

@@ -22,7 +22,7 @@
         f=clz.getDeclaredField(targets.getObjectName());
         f.setAccessible(true);
         isStatic=Modifier.isStatic(f.getModifiers());
-        injectedMod=retreiver.apply(mc);
+        injectedMod=retriever.apply(mc);
       }
  catch (      Exception e) {
         Throwables.propagateIfPossible(e);

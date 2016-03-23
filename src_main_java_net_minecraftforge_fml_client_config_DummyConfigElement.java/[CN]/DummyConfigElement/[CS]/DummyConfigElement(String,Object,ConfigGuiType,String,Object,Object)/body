@@ -1,3 +1,3 @@
 {
-  this(name,defaultValue,type,langKey,(String[])null,(Pattern)null,minValue,maxValue);
+  this(name,defaultValue,type,langKey,null,null,minValue,maxValue);
 }

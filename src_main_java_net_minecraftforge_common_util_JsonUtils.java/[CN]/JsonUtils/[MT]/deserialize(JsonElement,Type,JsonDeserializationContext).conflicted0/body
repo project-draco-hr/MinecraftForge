@@ -1,6 +1,6 @@
 {
   final Type[] typeArguments=((ParameterizedType)type).getActualTypeArguments();
-  final Type parameterizedType=listOf(typeArguments[0]).getType();
-  final List<?> list=context.deserialize(json,parameterizedType);
+  final Type parametrizedType=listOf(typeArguments[0]).getType();
+  final List<?> list=context.deserialize(json,parametrizedType);
   return ImmutableList.copyOf(list);
 }

@@ -10,7 +10,7 @@
     }
   }
  catch (  Exception e) {
-    FMLCommonHandler.instance().getFMLLogger().log(Level.ERROR,String.format("An error occured trying to create an instance of WorldProvider %d (%s)",dim,getProviderType(dim)),e);
+    FMLCommonHandler.instance().getFMLLogger().log(Level.ERROR,String.format("An error occurred trying to create an instance of WorldProvider %d (%s)",dim,getProviderType(dim)),e);
     throw new RuntimeException(e);
   }
 }

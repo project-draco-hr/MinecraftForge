@@ -1,4 +1,4 @@
 {
   checkRegistration(biome);
-  return (Type[])getBiomeInfo(biome).typeList.toArray(new Type[0]);
+  return getBiomeInfo(biome).typeList.toArray(new Type[0]);
 }

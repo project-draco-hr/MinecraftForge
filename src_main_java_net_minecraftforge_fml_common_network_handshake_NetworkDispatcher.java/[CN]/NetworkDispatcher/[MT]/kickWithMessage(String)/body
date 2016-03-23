@@ -9,7 +9,7 @@
         manager.closeChannel(TextComponentString);
       }
     }
-,new GenericFutureListener[0]);
+,(GenericFutureListener<? extends Future<? super Void>>[])null);
   }
   manager.channel().config().setAutoRead(false);
 }

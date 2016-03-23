@@ -1,10 +1,10 @@
 {
-  if (set(this,PENDING,STAGE_1_COMPLETE)) {
+  if (STATE.compareAndSet(this,PENDING,STAGE_1_COMPLETE)) {
     init();
   }
- else   if (set(this,STAGE_1_ASYNC,STAGE_1_SYNC)) {
+ else   if (STATE.compareAndSet(this,STAGE_1_ASYNC,STAGE_1_SYNC)) {
 synchronized (this) {
-      if (set(this,STAGE_1_SYNC,PENDING)) {
+      if (STATE.compareAndSet(this,STAGE_1_SYNC,PENDING)) {
         while (state != STAGE_1_COMPLETE) {
           try {
             this.wait();

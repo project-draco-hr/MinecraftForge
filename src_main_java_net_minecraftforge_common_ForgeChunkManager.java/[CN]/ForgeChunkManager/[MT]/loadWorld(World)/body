@@ -1,5 +1,5 @@
 {
-  ArrayListMultimap<String,Ticket> newTickets=ArrayListMultimap.<String,Ticket>create();
+  ArrayListMultimap<String,Ticket> newTickets=ArrayListMultimap.create();
   tickets.put(world,newTickets);
   forcedChunks.put(world,ImmutableSetMultimap.<ChunkCoordIntPair,Ticket>of());
   if (!(world instanceof WorldServer)) {
@@ -10,7 +10,7 @@
   File chunkDir=worldServer.getChunkSaveLocation();
   File chunkLoaderData=new File(chunkDir,"forcedchunks.dat");
   if (chunkLoaderData.exists() && chunkLoaderData.isFile()) {
-    ArrayListMultimap<String,Ticket> loadedTickets=ArrayListMultimap.<String,Ticket>create();
+    ArrayListMultimap<String,Ticket> loadedTickets=ArrayListMultimap.create();
     Map<String,ListMultimap<String,Ticket>> playerLoadedTickets=Maps.newHashMap();
     NBTTagCompound forcedChunkData;
     try {
@@ -22,7 +22,7 @@
     }
     NBTTagList ticketList=forcedChunkData.getTagList("TicketList",Constants.NBT.TAG_COMPOUND);
     for (int i=0; i < ticketList.tagCount(); i++) {
-      NBTTagCompound ticketHolder=(NBTTagCompound)ticketList.getCompoundTagAt(i);
+      NBTTagCompound ticketHolder=ticketList.getCompoundTagAt(i);
       String modId=ticketHolder.getString("Owner");
       boolean isPlayer="Forge".equals(modId);
       if (!isPlayer && !Loader.isModLoaded(modId)) {
@@ -35,7 +35,7 @@
       }
       NBTTagList tickets=ticketHolder.getTagList("Tickets",Constants.NBT.TAG_COMPOUND);
       for (int j=0; j < tickets.tagCount(); j++) {
-        NBTTagCompound ticket=(NBTTagCompound)tickets.getCompoundTagAt(j);
+        NBTTagCompound ticket=tickets.getCompoundTagAt(j);
         modId=ticket.hasKey("ModId") ? ticket.getString("ModId") : modId;
         Type type=Type.values()[ticket.getByte("Type")];
         Ticket tick=new Ticket(modId,type,world);

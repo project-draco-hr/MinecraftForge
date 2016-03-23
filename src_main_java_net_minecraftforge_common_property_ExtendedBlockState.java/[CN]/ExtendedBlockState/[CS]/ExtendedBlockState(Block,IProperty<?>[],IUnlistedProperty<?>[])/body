@@ -1,6 +1,6 @@
 {
   super(blockIn,properties,buildUnlistedMap(unlistedProperties));
-  ImmutableSet.Builder<IUnlistedProperty<?>> builder=ImmutableSet.<IUnlistedProperty<?>>builder();
+  ImmutableSet.Builder<IUnlistedProperty<?>> builder=ImmutableSet.builder();
   for (  IUnlistedProperty<?> property : unlistedProperties) {
     builder.add(property);
   }

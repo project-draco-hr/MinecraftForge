@@ -1,4 +1,4 @@
 {
-  this.ctgy=ctgy;
+  this.category=category;
   isProperty=false;
 }
