@@ -1,4 +1,4 @@
 {
-  ((IItemHandlerModifiable)this.itemHandler).setStackInSlot(index,stack);
+  ((IItemHandlerModifiable)this.getItemHandler()).setStackInSlot(index,stack);
   this.onSlotChanged();
 }

@@ -1,6 +1,6 @@
 {
   Property prop=this.get(category,name,defaultValue);
   prop.setLanguageKey(langKey);
-  prop.comment=comment + " [default: " + defaultValue+ "]";
+  prop.setComment(comment + " [default: " + defaultValue+ "]");
   return prop.getBoolean(defaultValue);
 }

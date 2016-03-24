@@ -2,7 +2,7 @@
   if (event.getResult() != Event.Result.DEFAULT) {
     return;
   }
-  if (event.getEmptyBucket() == null || !event.getEmptyBucket().isItemEqual(empty) || (nbtSensitive && ItemStack.areItemStackTagsEqual(event.getEmptyBucket(),empty))) {
+  if (event.getEmptyBucket() == null || !event.getEmptyBucket().isItemEqual(getEmpty()) || (isNbtSensitive() && ItemStack.areItemStackTagsEqual(event.getEmptyBucket(),getEmpty()))) {
     return;
   }
   if (event.getTarget() == null || event.getTarget().typeOfHit != RayTraceResult.Type.BLOCK) {
@@ -15,7 +15,7 @@
     IFluidBlock fluidBlock=(IFluidBlock)state.getBlock();
     if (fluidBlock.canDrain(world,pos)) {
       FluidStack drained=fluidBlock.drain(world,pos,false);
-      if (drained != null && drained.amount == capacity) {
+      if (drained != null && drained.amount == getCapacity()) {
         ItemStack filledBucket=new ItemStack(this);
         int filled=this.fill(filledBucket,drained,false);
         if (filled == drained.amount) {

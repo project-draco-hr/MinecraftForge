@@ -1,3 +1,3 @@
 {
-  return inv.getSizeInventory();
+  return getInv().getSizeInventory();
 }

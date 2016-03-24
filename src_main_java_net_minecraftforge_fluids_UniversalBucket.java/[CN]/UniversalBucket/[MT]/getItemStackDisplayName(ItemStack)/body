@@ -1,8 +1,8 @@
 {
   FluidStack fluidStack=getFluid(stack);
   if (fluidStack == null) {
-    if (empty != null) {
-      return empty.getDisplayName();
+    if (getEmpty() != null) {
+      return getEmpty().getDisplayName();
     }
     return super.getItemStackDisplayName(stack);
   }

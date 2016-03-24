@@ -12,7 +12,7 @@
         if (this.tryPlaceFluid(fluidStack.getFluid().getBlock(),world,targetPos) && !player.capabilities.isCreativeMode) {
           player.addStat(StatList.func_188057_b(this));
           itemstack.stackSize--;
-          ItemStack emptyStack=empty != null ? empty.copy() : new ItemStack(this);
+          ItemStack emptyStack=getEmpty() != null ? getEmpty().copy() : new ItemStack(this);
           if (itemstack.stackSize <= 0) {
             return ActionResult.newResult(EnumActionResult.SUCCESS,emptyStack);
           }

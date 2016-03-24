@@ -1,5 +1,0 @@
-{
-  String[] parts=string.split(":");
-  this.modId=parts[0];
-  this.name=parts[1];
-}

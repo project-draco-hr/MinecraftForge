@@ -1,6 +1,6 @@
 {
   for (  Fluid fluid : FluidRegistry.getRegisteredFluids().values()) {
-    FluidStack fs=new FluidStack(fluid,capacity);
+    FluidStack fs=new FluidStack(fluid,getCapacity());
     ItemStack stack=new ItemStack(this);
     if (fill(stack,fs,true) == fs.amount) {
       subItems.add(stack);

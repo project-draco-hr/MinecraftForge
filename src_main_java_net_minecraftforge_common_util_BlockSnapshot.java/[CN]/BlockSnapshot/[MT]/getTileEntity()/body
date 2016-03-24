@@ -1,4 +1,4 @@
 {
-  if (nbt != null)   return TileEntity.createTileEntity(getWorld().getMinecraftServer(),nbt);
+  if (getNbt() != null)   return TileEntity.createTileEntity(getWorld().getMinecraftServer(),getNbt());
  else   return null;
 }

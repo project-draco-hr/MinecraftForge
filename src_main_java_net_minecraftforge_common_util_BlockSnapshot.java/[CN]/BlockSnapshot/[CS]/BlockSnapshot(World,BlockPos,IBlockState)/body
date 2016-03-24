@@ -1,18 +1,18 @@
 {
-  this.world=world;
+  this.setWorld(world);
   this.dimId=world.provider.getDimension();
   this.pos=pos;
-  this.replacedBlock=state;
-  this.blockIdentifier=GameRegistry.findUniqueIdentifierFor(state.getBlock());
+  this.setReplacedBlock(state);
+  this.registryName=new ResourceLocation(state.getBlock().getRegistryName());
   this.meta=state.getBlock().getMetaFromState(state);
-  this.flag=3;
+  this.setFlag(3);
   TileEntity te=world.getTileEntity(pos);
   if (te != null) {
     nbt=new NBTTagCompound();
-    te.writeToNBT(nbt);
+    te.writeToNBT(getNbt());
   }
  else   nbt=null;
   if (DEBUG) {
-    System.out.printf("Created BlockSnapshot - [World: %s ][Location: %d,%d,%d ][Block: %s ][Meta: %d ]",world.getWorldInfo().getWorldName(),pos.getX(),pos.getY(),pos.getZ(),blockIdentifier,meta);
+    System.out.printf("Created BlockSnapshot - [World: %s ][Location: %d,%d,%d ][Block: %s ][Meta: %d ]",world.getWorldInfo().getWorldName(),pos.getX(),pos.getY(),pos.getZ(),getRegistryName(),getMeta());
   }
 }

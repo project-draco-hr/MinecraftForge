@@ -1,5 +1,5 @@
 {
   ItemStack stack=new ItemStack(item);
-  item.fill(stack,new FluidStack(fluid,item.capacity),true);
+  item.fill(stack,new FluidStack(fluid,item.getCapacity()),true);
   return stack;
 }

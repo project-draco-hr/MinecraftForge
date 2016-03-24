@@ -1,6 +1,6 @@
 {
   if (amount == 0)   return null;
-  ItemStack stackInSlot=inv.getStackInSlot(slot);
+  ItemStack stackInSlot=getInv().getStackInSlot(slot);
   if (stackInSlot == null)   return null;
   if (simulate) {
     if (stackInSlot.stackSize < amount) {
@@ -14,8 +14,8 @@
   }
  else {
     int m=Math.min(stackInSlot.stackSize,amount);
-    ItemStack decrStackSize=inv.decrStackSize(slot,m);
-    inv.markDirty();
+    ItemStack decrStackSize=getInv().decrStackSize(slot,m);
+    getInv().markDirty();
     return decrStackSize;
   }
 }
