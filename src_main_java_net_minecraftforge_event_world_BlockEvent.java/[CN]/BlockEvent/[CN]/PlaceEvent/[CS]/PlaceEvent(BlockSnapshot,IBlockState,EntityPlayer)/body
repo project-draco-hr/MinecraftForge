@@ -6,6 +6,6 @@
   this.placedBlock=blockSnapshot.getCurrentBlock();
   this.placedAgainst=placedAgainst;
   if (DEBUG) {
-    System.out.printf("Created PlaceEvent - [PlacedBlock: %s ][PlacedAgainst: %s ][ItemStack: %s ][Player: %s ]\n",placedBlock,placedAgainst,itemInHand,player);
+    System.out.printf("Created PlaceEvent - [PlacedBlock: %s ][PlacedAgainst: %s ][ItemStack: %s ][Player: %s ]\n",getPlacedBlock(),placedAgainst,getItemInHand(),player);
   }
 }

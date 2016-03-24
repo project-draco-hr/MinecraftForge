@@ -1,5 +1,5 @@
 {
   PlayerSleepInBedEvent event=new PlayerSleepInBedEvent(player,pos);
   MinecraftForge.EVENT_BUS.post(event);
-  return event.result;
+  return event.getResultStatus();
 }

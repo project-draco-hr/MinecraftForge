@@ -1,5 +1,5 @@
 {
   super(parent,ElementType.CHAT);
-  this.posX=posX;
-  this.posY=posY;
+  this.setPosX(posX);
+  this.setPosY(posY);
 }

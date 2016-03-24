@@ -1,8 +1,8 @@
 {
-  if (!event.world.isRemote) {
-    ForgeChunkManager.loadEntity(event.entity);
+  if (!event.getWorld().isRemote) {
+    ForgeChunkManager.loadEntity(event.getEntity());
   }
-  Entity entity=event.entity;
+  Entity entity=event.getEntity();
   if (entity.getClass().equals(EntityItem.class)) {
     ItemStack stack=((EntityItem)entity).getEntityItem();
     if (stack == null) {
@@ -16,11 +16,11 @@
       return;
     }
     if (item.hasCustomEntity(stack)) {
-      Entity newEntity=item.createEntity(event.world,entity,stack);
+      Entity newEntity=item.createEntity(event.getWorld(),entity,stack);
       if (newEntity != null) {
         entity.setDead();
         event.setCanceled(true);
-        event.world.spawnEntityInWorld(newEntity);
+        event.getWorld().spawnEntityInWorld(newEntity);
       }
     }
   }

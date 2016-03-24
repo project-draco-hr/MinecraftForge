@@ -1,9 +1,9 @@
 {
   AnvilUpdateEvent e=new AnvilUpdateEvent(left,right,name,baseCost);
   if (MinecraftForge.EVENT_BUS.post(e))   return false;
-  if (e.output == null)   return true;
-  outputSlot.setInventorySlotContents(0,e.output);
-  container.maximumCost=e.cost;
-  container.materialCost=e.materialCost;
+  if (e.getOutput() == null)   return true;
+  outputSlot.setInventorySlotContents(0,e.getOutput());
+  container.maximumCost=e.getCost();
+  container.materialCost=e.getMaterialCost();
   return false;
 }

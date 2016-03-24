@@ -15,8 +15,8 @@
     if (icommand.checkPermission(this.getServer(),sender)) {
       CommandEvent event=new CommandEvent(icommand,sender,args);
       if (MinecraftForge.EVENT_BUS.post(event)) {
-        if (event.exception != null) {
-          throw event.exception;
+        if (event.getException() != null) {
+          throw event.getException();
         }
         return 0;
       }

@@ -1,3 +1,3 @@
 {
-  this.gui=gui;
+  this.setGui(gui);
 }

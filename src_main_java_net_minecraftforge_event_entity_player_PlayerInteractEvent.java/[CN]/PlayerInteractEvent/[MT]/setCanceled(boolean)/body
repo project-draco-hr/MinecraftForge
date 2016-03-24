@@ -1,5 +1,5 @@
 {
   super.setCanceled(cancel);
-  useBlock=(cancel ? DENY : useBlock == DENY ? DEFAULT : useBlock);
-  useItem=(cancel ? DENY : useItem == DENY ? DEFAULT : useItem);
+  setUseBlock((cancel ? DENY : getUseBlock() == DENY ? DEFAULT : getUseBlock()));
+  setUseItem((cancel ? DENY : getUseItem() == DENY ? DEFAULT : getUseItem()));
 }

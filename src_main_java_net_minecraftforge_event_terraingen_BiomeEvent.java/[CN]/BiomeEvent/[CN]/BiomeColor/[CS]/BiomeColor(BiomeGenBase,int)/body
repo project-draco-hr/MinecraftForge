@@ -1,5 +1,5 @@
 {
   super(biome);
   originalColor=original;
-  newColor=original;
+  setNewColor(original);
 }

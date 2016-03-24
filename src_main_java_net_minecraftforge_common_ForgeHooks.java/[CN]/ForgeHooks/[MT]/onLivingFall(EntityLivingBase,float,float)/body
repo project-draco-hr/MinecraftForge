@@ -1,4 +1,4 @@
 {
   LivingFallEvent event=new LivingFallEvent(entity,distance,damageMultiplier);
-  return (MinecraftForge.EVENT_BUS.post(event) ? null : new float[]{event.distance,event.damageMultiplier});
+  return (MinecraftForge.EVENT_BUS.post(event) ? null : new float[]{event.getDistance(),event.getDamageMultiplier()});
 }

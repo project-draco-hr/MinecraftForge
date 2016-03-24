@@ -1,5 +1,5 @@
 {
   AnvilRepairEvent e=new AnvilRepairEvent(player,left,right,output);
   MinecraftForge.EVENT_BUS.post(e);
-  return e.breakChance;
+  return e.getBreakChance();
 }

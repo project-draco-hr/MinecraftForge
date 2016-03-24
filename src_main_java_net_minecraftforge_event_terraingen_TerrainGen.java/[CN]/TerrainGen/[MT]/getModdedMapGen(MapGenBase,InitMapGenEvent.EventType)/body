@@ -1,5 +1,5 @@
 {
   InitMapGenEvent event=new InitMapGenEvent(type,original);
   MinecraftForge.TERRAIN_GEN_BUS.post(event);
-  return event.newGen;
+  return event.getNewGen();
 }

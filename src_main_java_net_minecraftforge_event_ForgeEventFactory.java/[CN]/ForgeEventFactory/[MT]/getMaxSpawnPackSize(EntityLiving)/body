@@ -1,5 +1,5 @@
 {
   LivingPackSizeEvent maxCanSpawnEvent=new LivingPackSizeEvent(entity);
   MinecraftForge.EVENT_BUS.post(maxCanSpawnEvent);
-  return maxCanSpawnEvent.getResult() == Result.ALLOW ? maxCanSpawnEvent.maxPackSize : entity.getMaxSpawnedInChunk();
+  return maxCanSpawnEvent.getResult() == Result.ALLOW ? maxCanSpawnEvent.getMaxPackSize() : entity.getMaxSpawnedInChunk();
 }

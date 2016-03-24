@@ -3,7 +3,7 @@
   this.action=action;
   this.pos=pos;
   this.face=face;
-  if (face == null)   useBlock=DENY;
+  if (face == null)   setUseBlock(DENY);
   this.world=world;
   this.localPos=localPos;
 }

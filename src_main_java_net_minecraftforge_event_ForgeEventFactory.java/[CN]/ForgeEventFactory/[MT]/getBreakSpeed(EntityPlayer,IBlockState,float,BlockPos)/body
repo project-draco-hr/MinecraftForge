@@ -1,4 +1,4 @@
 {
   PlayerEvent.BreakSpeed event=new PlayerEvent.BreakSpeed(player,state,original,pos);
-  return (MinecraftForge.EVENT_BUS.post(event) ? -1 : event.newSpeed);
+  return (MinecraftForge.EVENT_BUS.post(event) ? -1 : event.getNewSpeed());
 }

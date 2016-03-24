@@ -1,5 +1,5 @@
 {
   EntityEvent.CanUpdate event=new EntityEvent.CanUpdate(entity);
   MinecraftForge.EVENT_BUS.post(event);
-  return event.canUpdate;
+  return event.getCanUpdate();
 }

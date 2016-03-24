@@ -1,5 +1,5 @@
 {
   super(player);
   this.username=username;
-  this.displayname=username;
+  this.setDisplayname(username);
 }

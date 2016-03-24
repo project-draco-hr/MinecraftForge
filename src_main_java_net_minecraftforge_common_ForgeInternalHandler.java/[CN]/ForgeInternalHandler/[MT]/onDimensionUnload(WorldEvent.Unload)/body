@@ -1,4 +1,4 @@
 {
-  ForgeChunkManager.unloadWorld(event.world);
-  if (event.world instanceof WorldServer)   FakePlayerFactory.unloadWorld((WorldServer)event.world);
+  ForgeChunkManager.unloadWorld(event.getWorld());
+  if (event.getWorld() instanceof WorldServer)   FakePlayerFactory.unloadWorld((WorldServer)event.getWorld());
 }

@@ -1,4 +1,4 @@
 {
   super(entity);
-  this.amount=amount;
+  this.setAmount(amount);
 }

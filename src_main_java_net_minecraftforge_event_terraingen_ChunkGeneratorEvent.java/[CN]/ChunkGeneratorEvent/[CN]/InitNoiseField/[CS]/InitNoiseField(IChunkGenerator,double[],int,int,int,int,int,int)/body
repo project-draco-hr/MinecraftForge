@@ -1,6 +1,6 @@
 {
   super(chunkProvider);
-  this.noisefield=noisefield;
+  this.setNoisefield(noisefield);
   this.posX=posX;
   this.posY=posY;
   this.posZ=posZ;

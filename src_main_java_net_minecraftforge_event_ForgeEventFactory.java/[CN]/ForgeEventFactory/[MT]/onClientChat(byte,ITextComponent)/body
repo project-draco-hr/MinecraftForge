@@ -1,4 +1,4 @@
 {
   ClientChatReceivedEvent event=new ClientChatReceivedEvent(type,message);
-  return MinecraftForge.EVENT_BUS.post(event) ? null : event.message;
+  return MinecraftForge.EVENT_BUS.post(event) ? null : event.getMessage();
 }

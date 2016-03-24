@@ -1,4 +1,4 @@
 {
   super(world,pos,state,note);
-  this.instrument=Instrument.fromId(instrument);
+  this.setInstrument(Instrument.fromId(instrument));
 }

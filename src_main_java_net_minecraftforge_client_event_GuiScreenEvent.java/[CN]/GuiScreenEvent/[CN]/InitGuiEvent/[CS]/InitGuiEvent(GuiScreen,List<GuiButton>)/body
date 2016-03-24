@@ -1,4 +1,4 @@
 {
   super(gui);
-  this.buttonList=buttonList;
+  this.setButtonList(buttonList);
 }

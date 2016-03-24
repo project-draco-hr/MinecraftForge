@@ -1,5 +1,5 @@
 {
   PlaySoundEvent e=new PlaySoundEvent(manager,sound);
   MinecraftForge.EVENT_BUS.post(e);
-  return e.result;
+  return e.getResultSound();
 }

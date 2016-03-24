@@ -3,5 +3,5 @@
   this.output=output;
   this.left=left;
   this.right=right;
-  this.breakChance=0.12f;
+  this.setBreakChance(0.12f);
 }

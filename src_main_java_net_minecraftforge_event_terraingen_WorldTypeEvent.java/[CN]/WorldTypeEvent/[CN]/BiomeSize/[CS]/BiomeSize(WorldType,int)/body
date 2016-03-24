@@ -1,5 +1,5 @@
 {
   super(worldType);
   originalSize=original;
-  newSize=original;
+  setNewSize(original);
 }
