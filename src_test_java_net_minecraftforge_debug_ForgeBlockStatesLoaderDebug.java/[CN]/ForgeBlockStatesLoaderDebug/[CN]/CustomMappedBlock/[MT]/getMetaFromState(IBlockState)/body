@@ -1,3 +1,0 @@
-{
-  return ((CustomVariant)state.getValue(VARIANT)).ordinal();
-}
