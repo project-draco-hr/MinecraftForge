@@ -1,4 +1,0 @@
-{
-  List<?> asGeneric=list;
-  return Lists.transform(asGeneric,new TypeCastFunction<T>(elementType));
-}

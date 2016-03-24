@@ -1,3 +1,2 @@
 {
-  LanguageRegistry.instance().loadLanguagesFor(container,Side.SERVER);
 }

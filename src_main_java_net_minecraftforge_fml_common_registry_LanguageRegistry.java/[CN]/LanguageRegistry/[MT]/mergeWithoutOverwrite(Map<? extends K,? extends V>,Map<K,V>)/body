@@ -1,7 +1,0 @@
-{
-  for (  Entry<? extends K,? extends V> e : from.entrySet()) {
-    if (!to.containsKey(e.getKey())) {
-      to.put(e.getKey(),e.getValue());
-    }
-  }
-}
