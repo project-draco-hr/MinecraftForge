@@ -13,7 +13,7 @@
   this.btnDefaultAll.enabled=this.entryList.areAnyEntriesEnabled(this.chkApplyGlobally.isChecked()) && !this.entryList.areAllEntriesDefault(this.chkApplyGlobally.isChecked());
   super.drawScreen(mouseX,mouseY,partialTicks);
   this.entryList.drawScreenPost(mouseX,mouseY,partialTicks);
-  if (this.undoHoverChecker.checkHover(mouseX,mouseY))   this.drawToolTip(this.mc.fontRendererObj.listFormattedStringToWidth(I18n.format("fml.configgui.tooltip.undoAll"),300),mouseX,mouseY);
-  if (this.resetHoverChecker.checkHover(mouseX,mouseY))   this.drawToolTip(this.mc.fontRendererObj.listFormattedStringToWidth(I18n.format("fml.configgui.tooltip.resetAll"),300),mouseX,mouseY);
-  if (this.checkBoxHoverChecker.checkHover(mouseX,mouseY))   this.drawToolTip(this.mc.fontRendererObj.listFormattedStringToWidth(I18n.format("fml.configgui.tooltip.applyGlobally"),300),mouseX,mouseY);
+  if (this.undoHoverChecker.checkHover(mouseX,mouseY))   this.drawToolTip(Arrays.asList(I18n.format("fml.configgui.tooltip.undoAll").split("\n")),mouseX,mouseY);
+  if (this.resetHoverChecker.checkHover(mouseX,mouseY))   this.drawToolTip(Arrays.asList(I18n.format("fml.configgui.tooltip.resetAll").split("\n")),mouseX,mouseY);
+  if (this.checkBoxHoverChecker.checkHover(mouseX,mouseY))   this.drawToolTip(Arrays.asList(I18n.format("fml.configgui.tooltip.applyGlobally").split("\n")),mouseX,mouseY);
 }

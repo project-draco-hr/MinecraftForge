@@ -1,3 +1,3 @@
 {
-  this.drawHoveringText(stringList,x,y);
+  GuiUtils.drawHoveringText(stringList,x,y,width,height,300,fontRendererObj);
 }
