@@ -1,6 +1,6 @@
 {
   this.dimId=dimension;
-  this.pos=pos.getImmutable();
+  this.pos=pos.toImmutable();
   this.setFlag(flag);
   this.registryName=new ResourceLocation(modId,blockName);
   this.meta=meta;
