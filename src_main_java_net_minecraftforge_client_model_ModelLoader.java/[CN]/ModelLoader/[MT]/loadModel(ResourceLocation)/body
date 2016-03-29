@@ -1,5 +1,5 @@
 {
-  if (modelLocation.equals(MODEL_MISSING)) {
+  if (modelLocation.equals(MODEL_MISSING) && loader.missingModel != null) {
     return loader.getMissingModel();
   }
   String modelPath=modelLocation.getResourcePath();
@@ -9,5 +9,9 @@
   ResourceLocation armatureLocation=new ResourceLocation(modelLocation.getResourceDomain(),"armatures/" + modelPath + ".json");
   ModelBlockAnimation animation=ModelBlockAnimation.loadVanillaAnimation(loader.resourceManager,armatureLocation);
   ModelBlock model=loader.loadModel(modelLocation);
-  return loader.new VanillaModelWrapper(modelLocation,model,false,animation);
+  IModel iModel=loader.new VanillaModelWrapper(modelLocation,model,false,animation);
+  if (loader.missingModel == null && modelLocation.equals(MODEL_MISSING)) {
+    loader.missingModel=iModel;
+  }
+  return iModel;
 }

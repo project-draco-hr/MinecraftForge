@@ -4,7 +4,13 @@
   for (  Variant v : this.variants) {
     ResourceLocation loc=v.getModelLocation();
     locations.add(loc);
-    IModel model=ModelLoaderRegistry.getModel(loc);
+    IModel model;
+    if (loc.equals(MODEL_MISSING)) {
+      model=ModelLoaderRegistry.getMissingModel();
+    }
+ else {
+      model=ModelLoaderRegistry.getModel(loc);
+    }
     model=v.process(model);
     for (    ResourceLocation location : model.getDependencies()) {
       ModelLoaderRegistry.getModelOrMissing(location);
