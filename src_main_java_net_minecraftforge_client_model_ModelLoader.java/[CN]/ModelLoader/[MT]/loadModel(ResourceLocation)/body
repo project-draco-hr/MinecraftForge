@@ -1,4 +1,7 @@
 {
+  if (modelLocation.equals(MODEL_MISSING)) {
+    return loader.getMissingModel();
+  }
   String modelPath=modelLocation.getResourcePath();
   if (modelLocation.getResourcePath().startsWith("models/")) {
     modelPath=modelPath.substring("models/".length());
