@@ -1,0 +1,3 @@
+{
+  return storage.writeNBT(this,instance,side);
+}
