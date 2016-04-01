@@ -3,7 +3,7 @@
   this.dimId=world.provider.getDimension();
   this.pos=pos.toImmutable();
   this.setReplacedBlock(state);
-  this.registryName=new ResourceLocation(state.getBlock().getRegistryName());
+  this.registryName=state.getBlock().getRegistryName();
   this.meta=state.getBlock().getMetaFromState(state);
   this.setFlag(3);
   this.nbt=nbt;

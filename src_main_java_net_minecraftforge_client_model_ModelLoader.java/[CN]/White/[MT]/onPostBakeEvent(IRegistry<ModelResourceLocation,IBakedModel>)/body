@@ -12,7 +12,7 @@
     for (    Item item : GameData.getItemRegistry().typeSafeIterable()) {
       for (      String s : getVariantNames(item)) {
         ModelResourceLocation memory=getInventoryVariant(s);
-        reverseItemMap.put(memory,item.getRegistryName());
+        reverseItemMap.put(memory,item.getRegistryName().toString());
       }
     }
   }

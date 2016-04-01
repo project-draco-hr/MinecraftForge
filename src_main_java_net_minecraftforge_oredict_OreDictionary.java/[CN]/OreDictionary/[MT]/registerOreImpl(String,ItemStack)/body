@@ -5,7 +5,7 @@
     return;
   }
   int oreID=getOreID(name);
-  ResourceLocation registryName=ore.getItem().delegate.getResourceName();
+  ResourceLocation registryName=ore.getItem().delegate.name();
   int hash;
   if (registryName == null) {
     FMLLog.bigWarning("A broken ore dictionary registration with name %s has occurred. It adds an item (type: %s) which is currently unknown to the game registry. This dictionary item can only support a single value when" + " registered with ores like this, and NO I am not going to turn this spam off. Just register your ore dictionary entries after the GameRegistry.\n" + "TO USERS: YES this is a BUG in the mod " + Loader.instance().activeModContainer().getName() + " report it to them!",name,ore.getItem().getClass());

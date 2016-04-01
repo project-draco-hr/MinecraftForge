@@ -7,6 +7,7 @@
   if (currentRegistry == null) {
     FMLLog.severe("An unknown persistent registry type \"%s\" has been encountered. This Forge instance cannot understand it.",registryName);
     StartupQuery.abort();
+    return;
   }
   FMLControlledNamespacedRegistry<T> newRegistry=PersistentRegistry.STAGING.getOrShallowCopyRegistry(registryName,regType,currentRegistry);
   newRegistry.getPersistentSubstitutions().putAll(currentRegistry.getPersistentSubstitutions());

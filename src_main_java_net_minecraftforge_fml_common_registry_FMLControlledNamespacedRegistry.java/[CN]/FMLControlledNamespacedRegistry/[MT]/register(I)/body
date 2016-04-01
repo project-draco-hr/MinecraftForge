@@ -1,0 +1,8 @@
+{
+  ResourceLocation key=value.getRegistryName();
+  if (key == null) {
+    FMLLog.severe("Attempted to register a entry with a null name: %s",value);
+    throw new NullPointerException(String.format("Attempted to register a entry with a null name: %s",value));
+  }
+  add(-1,key,value);
+}

@@ -1,3 +1,0 @@
-{
-  return PersistentRegistry.ACTIVE.createRegistry(registryName,registryType,optionalDefaultKey,minId,maxId,hasDelegates,addCallback);
-}

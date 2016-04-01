@@ -42,7 +42,7 @@
   }
   addObjectRaw(idToUse,name,thing);
   if (isDelegated) {
-    getExistingDelegate(thing).setResourceName(name);
+    getExistingDelegate(thing).setName(name);
   }
   if (this.dummiedLocations.remove(name) && DEBUG) {
     FMLLog.fine("Registry Dummy Remove: %s",name);

@@ -1,0 +1,5 @@
+{
+  final IForgeRegistry<K> registry=PersistentRegistryManager.findRegistry(object);
+  registry.register(object);
+  return object;
+}

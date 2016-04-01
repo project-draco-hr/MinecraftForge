@@ -1,0 +1,3 @@
+{
+  return this.careers.get(rand.nextInt(this.careers.size())).id;
+}

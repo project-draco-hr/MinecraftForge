@@ -1,5 +1,5 @@
 {
   this.name=new ResourceLocation(name);
   this.texture=new ResourceLocation(texture);
-  ((RegistryDelegate.Delegate<VillagerProfession>)delegate).setResourceName(this.name);
+  this.setRegistryName(this.name);
 }

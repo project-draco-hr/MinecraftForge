@@ -1,0 +1,6 @@
+{
+  iBlockRegistry=PersistentRegistryManager.createRegistry(PersistentRegistryManager.BLOCKS,Block.class,new ResourceLocation("minecraft:air"),MIN_BLOCK_ID,MAX_BLOCK_ID,true,BlockCallbacks.INSTANCE,BlockCallbacks.INSTANCE,BlockCallbacks.INSTANCE);
+  iItemRegistry=PersistentRegistryManager.createRegistry(PersistentRegistryManager.ITEMS,Item.class,null,MIN_ITEM_ID,MAX_ITEM_ID,true,ItemCallbacks.INSTANCE,ItemCallbacks.INSTANCE,ItemCallbacks.INSTANCE);
+  iPotionRegistry=PersistentRegistryManager.createRegistry(PersistentRegistryManager.POTIONS,Potion.class,null,MIN_POTION_ID,MAX_POTION_ID,false,PotionCallbacks.INSTANCE,PotionCallbacks.INSTANCE,PotionCallbacks.INSTANCE);
+  iBiomeRegistry=PersistentRegistryManager.createRegistry(PersistentRegistryManager.BIOMES,BiomeGenBase.class,null,MIN_BIOME_ID,MAX_BIOME_ID,false,BiomeCallbacks.INSTANCE,BiomeCallbacks.INSTANCE,BiomeCallbacks.INSTANCE);
+}

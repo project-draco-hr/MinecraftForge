@@ -1,0 +1,6 @@
+{
+  for (  VillagerCareer car : this.careers) {
+    if (car.id == id)     return car;
+  }
+  return this.careers.get(0);
+}

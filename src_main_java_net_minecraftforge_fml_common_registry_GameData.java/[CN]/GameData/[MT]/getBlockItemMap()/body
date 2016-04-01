@@ -1,3 +1,3 @@
 {
-  return BLOCK_TO_ITEM;
+  return (BiMap<Block,Item>)getMain().iItemRegistry.getSlaveMap(BLOCK_TO_ITEM,BiMap.class);
 }

@@ -1,7 +1,0 @@
-{
-  if (newVillagerIds.contains(id)) {
-    FMLLog.severe("Attempt to register duplicate villager id %d",id);
-    throw new RuntimeException();
-  }
-  newVillagerIds.add(id);
-}

@@ -1,7 +1,7 @@
 {
   if (stack == null || stack.getItem() == null)   throw new IllegalArgumentException("Stack can not be null!");
   Set<Integer> set=new HashSet<Integer>();
-  ResourceLocation registryName=stack.getItem().delegate.getResourceName();
+  ResourceLocation registryName=stack.getItem().delegate.name();
   int id;
   if (registryName == null) {
     FMLLog.log(Level.DEBUG,"Attempted to find the oreIDs for an unregistered object (%s). This won't work very well.",stack);

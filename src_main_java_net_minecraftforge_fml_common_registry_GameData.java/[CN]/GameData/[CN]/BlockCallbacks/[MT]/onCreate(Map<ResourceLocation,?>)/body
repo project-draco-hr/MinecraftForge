@@ -1,0 +1,4 @@
+{
+  final ClearableObjectIntIdentityMap<Block> idMap=new ClearableObjectIntIdentityMap<Block>();
+  ((Map<ResourceLocation,Object>)slaveset).put(BLOCKSTATE_TO_ID,idMap);
+}

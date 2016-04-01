@@ -1,6 +1,0 @@
-{
-  if (item instanceof ItemBlock) {
-    ItemBlock itemBlock=(ItemBlock)item;
-    BLOCK_TO_ITEM.forcePut(itemBlock.getBlock().delegate.get(),item);
-  }
-}

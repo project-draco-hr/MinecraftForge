@@ -11,13 +11,13 @@
 ));
   Collections.sort(items,new Comparator<Item>(){
     public int compare(    Item i1,    Item i2){
-      return i1.getRegistryName().compareTo(i2.getRegistryName());
+      return i1.getRegistryName().toString().compareTo(i2.getRegistryName().toString());
     }
   }
 );
   ProgressBar itemBar=ProgressManager.push("ModelLoader: items",items.size());
   for (  Item item : items) {
-    itemBar.step(item.getRegistryName());
+    itemBar.step(item.getRegistryName().toString());
     for (    String s : getVariantNames(item)) {
       ResourceLocation file=getItemLocation(s);
       ModelResourceLocation memory=getInventoryVariant(s);

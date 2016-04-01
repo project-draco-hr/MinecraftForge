@@ -1,6 +1,0 @@
-{
-  if (newVillagers == null) {
-    newVillagers=Maps.newHashMap();
-  }
-  newVillagers.put(villagerId,villagerSkin);
-}

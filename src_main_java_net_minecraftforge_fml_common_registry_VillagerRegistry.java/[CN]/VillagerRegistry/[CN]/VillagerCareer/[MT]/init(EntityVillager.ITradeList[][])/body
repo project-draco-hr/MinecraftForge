@@ -1,3 +1,4 @@
 {
+  this.trades=trades;
   return this;
 }

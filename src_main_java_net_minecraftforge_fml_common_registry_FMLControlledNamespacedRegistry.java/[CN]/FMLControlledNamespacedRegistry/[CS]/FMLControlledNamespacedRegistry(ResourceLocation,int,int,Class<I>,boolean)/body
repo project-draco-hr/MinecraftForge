@@ -1,3 +1,0 @@
-{
-  this(defaultKey,maxIdValue,minIdValue,type,isDelegated,null);
-}

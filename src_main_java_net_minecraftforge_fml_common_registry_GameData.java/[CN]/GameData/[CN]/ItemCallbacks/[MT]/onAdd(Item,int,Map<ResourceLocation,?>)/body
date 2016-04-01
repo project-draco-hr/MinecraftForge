@@ -1,0 +1,7 @@
+{
+  if (item instanceof ItemBlock) {
+    ItemBlock itemBlock=(ItemBlock)item;
+    @SuppressWarnings("unchecked") BiMap<Block,Item> blockToItem=(BiMap<Block,Item>)slaves.get(BLOCK_TO_ITEM);
+    blockToItem.forcePut(itemBlock.getBlock().delegate.get(),item);
+  }
+}

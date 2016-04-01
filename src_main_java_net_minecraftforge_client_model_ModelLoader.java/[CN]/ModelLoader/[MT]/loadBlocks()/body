@@ -7,14 +7,14 @@
 ));
   Collections.sort(blocks,new Comparator<Block>(){
     public int compare(    Block b1,    Block b2){
-      return b1.getRegistryName().compareTo(b2.getRegistryName());
+      return b1.getRegistryName().toString().compareTo(b2.getRegistryName().toString());
     }
   }
 );
   ProgressBar blockBar=ProgressManager.push("ModelLoader: blocks",blocks.size());
   BlockStateMapper mapper=this.blockModelShapes.getBlockStateMapper();
   for (  Block block : blocks) {
-    blockBar.step(block.getRegistryName());
+    blockBar.step(block.getRegistryName().toString());
     for (    ResourceLocation location : mapper.getBlockstateLocations(block)) {
       loadBlock(mapper,block,location);
     }
