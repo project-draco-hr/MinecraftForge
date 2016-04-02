@@ -1,0 +1,9 @@
+{
+  FMLLog.fine("Creating vanilla freeze snapshot");
+  for (  Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> r : PersistentRegistry.ACTIVE.registries.entrySet()) {
+    final Class<? extends IForgeRegistryEntry> registrySuperType=PersistentRegistry.ACTIVE.getRegistrySuperType(r.getKey());
+    loadRegistry(r.getKey(),PersistentRegistry.ACTIVE,PersistentRegistry.VANILLA,registrySuperType);
+  }
+  forAllRegistries(PersistentRegistry.VANILLA,ValidateRegistryFunction.OPERATION);
+  FMLLog.fine("Vanilla freeze snapshot created");
+}
