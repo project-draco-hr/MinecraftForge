@@ -2,5 +2,48 @@
   if (!full) {
     throw new IllegalStateException("not enough data");
   }
+  if (contractUVs) {
+    float tX=texture.getOriginX() / texture.getMinU();
+    float tY=texture.getOriginY() / texture.getMinV();
+    float tS=tX > tY ? tX : tY;
+    float ep=1f / (tS * 0x100);
+    int uve=0;
+    while (uve < format.getElementCount()) {
+      VertexFormatElement e=format.getElement(uve);
+      if (e.getUsage() == VertexFormatElement.EnumUsage.UV && e.getIndex() == 0) {
+        break;
+      }
+      uve++;
+    }
+    if (uve == format.getElementCount()) {
+      throw new IllegalStateException("Can't contract UVs: format doesn't contain UVs");
+    }
+    float[] uvc=new float[4];
+    for (int v=0; v < 4; v++) {
+      for (int i=0; i < 4; i++) {
+        uvc[i]+=unpackedData[v][uve][i] / 4;
+      }
+    }
+    for (int v=0; v < 4; v++) {
+      for (int i=0; i < 4; i++) {
+        float uo=unpackedData[v][uve][i];
+        float un=uo * (1 - eps) + uvc[i] * eps;
+        float ud=uo - un;
+        float aud=ud;
+        if (aud < 0)         aud=-aud;
+        if (aud < ep) {
+          float udc=uo - uvc[i];
+          if (udc < 0)           udc=-udc;
+          if (udc < 2 * ep) {
+            un=(uo + uvc[i]) / 2;
+          }
+ else {
+            un=uo + (ud < 0 ? ep : -ep);
+          }
+        }
+        unpackedData[v][uve][i]=un;
+      }
+    }
+  }
   return new UnpackedBakedQuad(unpackedData,tint,orientation,texture,applyDiffuseLighting,format);
 }
