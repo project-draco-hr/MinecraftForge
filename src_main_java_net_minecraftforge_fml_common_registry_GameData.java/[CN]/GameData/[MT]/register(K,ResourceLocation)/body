@@ -1,5 +1,8 @@
 {
-  final IForgeRegistry<K> registry=PersistentRegistryManager.findRegistry(object);
-  registry.register(object);
-  return object;
+  if (object == null) {
+    FMLLog.getLogger().log(Level.ERROR,"Attempt to register a null object");
+    throw new NullPointerException("Attempt to register a null object");
+  }
+  object.setRegistryName(location);
+  return register(object);
 }
