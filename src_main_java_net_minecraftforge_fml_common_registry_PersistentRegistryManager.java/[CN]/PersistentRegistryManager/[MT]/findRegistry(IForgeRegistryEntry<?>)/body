@@ -1,5 +1,5 @@
 {
-  final Class<V> registryType=(Class<V>)entry.getRegistryType();
+  final Class<V> registryType=(Class<V>)(Class)entry.getRegistryType();
   final FMLControlledNamespacedRegistry<V> registry=PersistentRegistry.ACTIVE.getRegistry(registryType);
   if (registry == null) {
     FMLLog.getLogger().log(Level.ERROR,"Unable to locate registry for registered object of type {}",entry.getClass().getName());
