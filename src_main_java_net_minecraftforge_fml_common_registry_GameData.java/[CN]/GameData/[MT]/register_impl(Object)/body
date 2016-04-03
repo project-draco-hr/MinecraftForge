@@ -1,13 +1,14 @@
 {
+  K castedObj=(K)object;
   if (object == null) {
     FMLLog.getLogger().log(Level.ERROR,"Attempt to register a null object");
     throw new NullPointerException("Attempt to register a null object");
   }
-  if (object.getRegistryName() == null) {
+  if (castedObj.getRegistryName() == null) {
     FMLLog.getLogger().log(Level.ERROR,"Attempt to register object without having set a registry name {} (type {})",object,object.getClass().getName());
     throw new IllegalArgumentException(String.format("No registry name set for object %s (%s)",object,object.getClass().getName()));
   }
-  final IForgeRegistry<K> registry=PersistentRegistryManager.findRegistry(object);
-  registry.register(object);
-  return object;
+  final IForgeRegistry<K> registry=PersistentRegistryManager.findRegistry(castedObj);
+  registry.register(castedObj);
+  return castedObj;
 }

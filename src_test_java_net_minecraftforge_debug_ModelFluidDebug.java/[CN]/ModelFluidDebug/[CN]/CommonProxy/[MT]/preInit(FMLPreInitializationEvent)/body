@@ -2,7 +2,10 @@
   FluidRegistry.registerFluid(TestFluid.instance);
   FluidRegistry.registerFluid(TestGas.instance);
   FluidRegistry.registerFluid(milkFluid);
-  GameRegistry.registerBlock(TestFluidBlock.instance,TestFluidBlock.name);
-  GameRegistry.registerBlock(TestGasBlock.instance,TestGasBlock.name);
-  GameRegistry.registerBlock(MilkFluidBlock.instance,MilkFluidBlock.name);
+  GameRegistry.register(TestFluidBlock.instance);
+  GameRegistry.register(new ItemBlock(TestFluidBlock.instance).setRegistryName(TestFluidBlock.instance.getRegistryName()));
+  GameRegistry.register(TestGasBlock.instance);
+  GameRegistry.register(new ItemBlock(TestGasBlock.instance).setRegistryName(TestGasBlock.instance.getRegistryName()));
+  GameRegistry.register(MilkFluidBlock.instance);
+  GameRegistry.register(new ItemBlock(MilkFluidBlock.instance).setRegistryName(MilkFluidBlock.instance.getRegistryName()));
 }

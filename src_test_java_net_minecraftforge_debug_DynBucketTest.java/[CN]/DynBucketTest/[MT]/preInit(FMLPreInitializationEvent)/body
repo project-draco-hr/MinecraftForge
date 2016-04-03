@@ -1,10 +1,12 @@
 {
-  GameRegistry.registerItem(new TestItem(),"testitem");
-  GameRegistry.registerBlock(new BlockSimpleTank(),"simpletank");
+  GameRegistry.register(new TestItem(),testItemName);
+  Block tank=new BlockSimpleTank();
+  GameRegistry.register(tank,simpleTankName);
+  GameRegistry.register(new ItemBlock(tank),simpleTankName);
   GameRegistry.registerTileEntity(TileSimpleTank.class,"simpletank");
   FluidRegistry.addBucketForFluid(FluidRegistry.getFluid(TestFluid.name));
   FluidRegistry.addBucketForFluid(FluidRegistry.getFluid(TestGas.name));
-  GameRegistry.registerItem(dynBottle,"dynbottle");
+  GameRegistry.register(dynBottle);
   int i=0;
   i=0;
   FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluid("milk"),new ItemStack(Items.milk_bucket),FluidContainerRegistry.EMPTY_BUCKET);

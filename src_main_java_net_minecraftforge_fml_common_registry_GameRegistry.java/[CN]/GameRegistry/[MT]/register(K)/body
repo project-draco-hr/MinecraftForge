@@ -1,3 +1,3 @@
 {
-  return GameData.register(object);
+  return (K)GameData.register_impl(object);
 }

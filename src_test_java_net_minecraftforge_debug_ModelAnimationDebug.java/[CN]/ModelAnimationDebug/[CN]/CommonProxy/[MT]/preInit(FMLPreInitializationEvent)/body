@@ -1,8 +1,9 @@
 {
-  GameRegistry.registerBlock(new Block(Material.wood){
+  GameRegistry.register(new Block(Material.wood){
 {
       setCreativeTab(CreativeTabs.tabBlock);
       setUnlocalizedName(MODID + "." + blockName);
+      setRegistryName(blockId);
     }
     @Override public ExtendedBlockState createBlockState(){
       return new ExtendedBlockState(this,new IProperty[]{FACING,Properties.StaticProperty},new IUnlistedProperty[]{Properties.AnimationProperty});
@@ -41,12 +42,12 @@
       return true;
     }
   }
-,null,blockName);
-  GameRegistry.registerItem(new ItemBlock(GameRegistry.findBlock(MODID,blockName)){
+);
+  GameRegistry.register(new ItemBlock(Block.blockRegistry.getObject(blockId)){
     @Override public ICapabilityProvider initCapabilities(    ItemStack stack,    NBTTagCompound nbt){
       return new ItemAnimationHolder();
     }
   }
-,blockName);
+.setRegistryName(blockId));
   GameRegistry.registerTileEntity(Chest.class,MODID + ":" + "tile_"+ blockName);
 }

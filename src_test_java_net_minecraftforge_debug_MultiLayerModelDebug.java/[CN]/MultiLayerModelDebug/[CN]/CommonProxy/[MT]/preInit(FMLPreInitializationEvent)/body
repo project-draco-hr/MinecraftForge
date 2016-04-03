@@ -1,8 +1,9 @@
 {
-  GameRegistry.registerBlock(new Block(Material.wood){
+  GameRegistry.register(new Block(Material.wood){
 {
       setCreativeTab(CreativeTabs.tabBlock);
       setUnlocalizedName(MODID + "." + blockName);
+      setRegistryName(blockId);
     }
     @Override public boolean isOpaqueCube(    IBlockState state){
       return false;
@@ -14,5 +15,6 @@
       return layer == BlockRenderLayer.SOLID || layer == BlockRenderLayer.TRANSLUCENT;
     }
   }
-,blockName);
+);
+  GameRegistry.register(new ItemBlock(Block.blockRegistry.getObject(blockId)).setRegistryName(blockId));
 }
