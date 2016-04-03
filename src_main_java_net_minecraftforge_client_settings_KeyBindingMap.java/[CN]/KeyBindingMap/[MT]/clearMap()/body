@@ -1,5 +1,0 @@
-{
-  for (  IntHashMap<Collection<KeyBinding>> bindings : map.values()) {
-    bindings.clearMap();
-  }
-}
