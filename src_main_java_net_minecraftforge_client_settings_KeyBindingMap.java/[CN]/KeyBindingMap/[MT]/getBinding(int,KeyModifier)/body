@@ -1,0 +1,11 @@
+{
+  Collection<KeyBinding> bindings=map.get(keyModifier).lookup(keyCode);
+  if (bindings != null) {
+    for (    KeyBinding binding : bindings) {
+      if (binding.isActiveAndMatches(keyCode)) {
+        return binding;
+      }
+    }
+  }
+  return null;
+}
