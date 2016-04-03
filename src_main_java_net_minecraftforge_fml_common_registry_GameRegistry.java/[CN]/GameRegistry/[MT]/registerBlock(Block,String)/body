@@ -1,3 +1,5 @@
 {
-  return registerBlock(block,ItemBlock.class,name);
+  if (block.getRegistryName() == null && Strings.isNullOrEmpty(name))   throw new IllegalArgumentException("Attempted to register a Block with no name: " + block);
+  if (block.getRegistryName() != null && !block.getRegistryName().toString().equals(name))   throw new IllegalArgumentException("Attempted to register a Block with conflicting names. Old: " + block.getRegistryName() + " New: "+ name);
+  return registerBlock(block.getRegistryName() != null ? block : block.setRegistryName(name));
 }
