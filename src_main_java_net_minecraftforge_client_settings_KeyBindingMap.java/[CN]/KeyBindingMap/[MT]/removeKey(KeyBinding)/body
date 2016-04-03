@@ -1,0 +1,12 @@
+{
+  KeyModifier keyModifier=keyBinding.getKeyModifier();
+  int keyCode=keyBinding.getKeyCode();
+  IntHashMap<Collection<KeyBinding>> bindingsMap=map.get(keyModifier);
+  Collection<KeyBinding> bindingsForKey=bindingsMap.lookup(keyCode);
+  if (bindingsForKey != null) {
+    bindingsForKey.remove(keyBinding);
+    if (bindingsForKey.isEmpty()) {
+      bindingsMap.removeObject(keyCode);
+    }
+  }
+}
