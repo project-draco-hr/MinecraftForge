@@ -49,7 +49,14 @@
               }
             }
           }
-          FMLLog.getLogger().error(errorMsg,entry.getValue());
+          if (entry.getValue() instanceof ItemLoadingException) {
+            ItemLoadingException ex=(ItemLoadingException)entry.getValue();
+            FMLLog.getLogger().error(errorMsg + ", normal location exception: ",ex.normalException);
+            FMLLog.getLogger().error(errorMsg + ", blockstate location exception: ",ex.blockstateException);
+          }
+ else {
+            FMLLog.getLogger().error(errorMsg,entry.getValue());
+          }
           ResourceLocation blockstateLocation=new ResourceLocation(location.getResourceDomain(),location.getResourcePath());
           if (loadingExceptions.containsKey(blockstateLocation) && !printedBlockStateErrors.contains(blockstateLocation)) {
             FMLLog.getLogger().error("Exception loading blockstate for the variant " + location + ": ",loadingExceptions.get(blockstateLocation));

@@ -26,13 +26,13 @@
       try {
         model=ModelLoaderRegistry.getModel(file);
       }
- catch (      Exception e) {
+ catch (      Exception normalException) {
         FMLLog.fine("Item json isn't found for '" + memory + "', trying to load the variant from the blockstate json");
         try {
           model=ModelLoaderRegistry.getModel(memory);
         }
- catch (        Exception ex) {
-          exception=new Exception("Could not load item model either from the normal location " + file + " or from the blockstate",ex);
+ catch (        Exception blockstateException) {
+          exception=new ItemLoadingException("Could not load item model either from the normal location " + file + " or from the blockstate",normalException,blockstateException);
         }
       }
       stateModels.put(memory,model);
