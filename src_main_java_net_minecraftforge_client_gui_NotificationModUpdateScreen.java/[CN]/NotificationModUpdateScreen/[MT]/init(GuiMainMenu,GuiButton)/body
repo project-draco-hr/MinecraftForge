@@ -1,0 +1,6 @@
+{
+  NotificationModUpdateScreen notificationModUpdateScreen=new NotificationModUpdateScreen(modButton);
+  notificationModUpdateScreen.setGuiSize(guiMainMenu.width,guiMainMenu.height);
+  notificationModUpdateScreen.initGui();
+  return notificationModUpdateScreen;
+}

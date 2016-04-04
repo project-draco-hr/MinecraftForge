@@ -6,24 +6,19 @@
   CheckResult vercheck=ForgeVersion.getResult(mc);
   if (Loader.instance().getModState(mc) == ModState.DISABLED) {
     font.drawString(font.trimStringToWidth(name,listWidth - 10),this.left + 3,top + 2,0xFF2222);
-    font.drawString(font.trimStringToWidth(version,listWidth - 10),this.left + 3,top + 12,0xFF2222);
+    font.drawString(font.trimStringToWidth(version,listWidth - (5 + height)),this.left + 3,top + 12,0xFF2222);
     font.drawString(font.trimStringToWidth("DISABLED",listWidth - 10),this.left + 3,top + 22,0xFF2222);
   }
  else {
     font.drawString(font.trimStringToWidth(name,listWidth - 10),this.left + 3,top + 2,0xFFFFFF);
-    font.drawString(font.trimStringToWidth(version,listWidth - 10),this.left + 3,top + 12,0xCCCCCC);
+    font.drawString(font.trimStringToWidth(version,listWidth - (5 + height)),this.left + 3,top + 12,0xCCCCCC);
     font.drawString(font.trimStringToWidth(mc.getMetadata() != null ? mc.getMetadata().getChildModCountString() : "Metadata not found",listWidth - 10),this.left + 3,top + 22,0xCCCCCC);
-switch (vercheck.status) {
-case BETA_OUTDATED:
-case OUTDATED:
-      font.drawString("U",right - font.getCharWidth('U') - 1,top + height - font.FONT_HEIGHT + 2,0x22FF22);
-    break;
-case AHEAD:
-case BETA:
-case FAILED:
-case PENDING:
-case UP_TO_DATE:
-  break;
-}
-}
+    if (vercheck.status.shouldDraw()) {
+      Minecraft.getMinecraft().getTextureManager().bindTexture(VERSION_CHECK_ICONS);
+      GlStateManager.color(1,1,1,1);
+      GlStateManager.pushMatrix();
+      Gui.drawModalRectWithCustomSizedTexture(right - (height / 2 + 4),top + (height / 2 - 4),vercheck.status.getSheetOffset() * 8,(vercheck.status.isAnimated() && ((System.currentTimeMillis() / 800 & 1)) == 1) ? 8 : 0,8,8,64,16);
+      GlStateManager.popMatrix();
+    }
+  }
 }

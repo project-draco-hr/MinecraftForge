@@ -1,5 +1,0 @@
-{
-  super(parent.getMinecraftInstance(),listWidth,parent.height,32,parent.height - 88 + 4,10,35,parent.width,parent.height);
-  this.parent=parent;
-  this.mods=mods;
-}
