@@ -1,0 +1,4 @@
+{
+  if (!ENABLE)   return;
+  if (evt.getItemStack() != null && (evt.getTarget() instanceof EntityHorse || evt.getTarget() instanceof EntityCreeper))   evt.setCanceled(true);
+}

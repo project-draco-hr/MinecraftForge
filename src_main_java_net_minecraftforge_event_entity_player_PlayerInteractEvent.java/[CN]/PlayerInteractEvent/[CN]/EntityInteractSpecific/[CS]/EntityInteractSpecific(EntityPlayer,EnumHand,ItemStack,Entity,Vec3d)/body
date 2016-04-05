@@ -1,0 +1,5 @@
+{
+  super(player,hand,stack,new BlockPos(target),null);
+  this.localPos=localPos;
+  this.target=target;
+}

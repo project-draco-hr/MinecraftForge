@@ -1,0 +1,4 @@
+{
+  logger=event.getModLog();
+  MinecraftForge.EVENT_BUS.register(this);
+}

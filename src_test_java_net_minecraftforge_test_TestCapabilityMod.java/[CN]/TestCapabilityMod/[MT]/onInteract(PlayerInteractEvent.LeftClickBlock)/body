@@ -1,0 +1,14 @@
+{
+  if (event.getItemStack() == null)   return;
+  if (event.getItemStack().getItem() != Items.stick)   return;
+  TileEntity te=event.getWorld().getTileEntity(event.getPos());
+  if (te != null && te.hasCapability(TEST_CAP,event.getFace())) {
+    event.setCanceled(true);
+    IExampleCapability inv=te.getCapability(TEST_CAP,event.getFace());
+    System.out.println("Hi I'm a " + inv.getOwnerType());
+  }
+  if (event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.dirt) {
+    event.getEntityPlayer().addChatMessage(new TextComponentString(TextFormatting.RED + "" + TextFormatting.ITALIC+ "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST"));
+    event.setCanceled(true);
+  }
+}

@@ -1,0 +1,5 @@
+EntityPlayer player
+Entity entity
+RayTraceResult ray
+ItemStack stack
+EnumHand hand
