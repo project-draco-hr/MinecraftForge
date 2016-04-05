@@ -1,8 +1,7 @@
 {
-  KeyModifier activeModifier=KeyModifier.isKeyCodeModifier(keyCode) ? KeyModifier.NONE : KeyModifier.getActiveModifier();
-  KeyBinding binding=getBinding(keyCode,activeModifier);
-  if (binding != null) {
-    return binding;
+  KeyModifier activeModifier=KeyModifier.getActiveModifier();
+  if (activeModifier.matches(keyCode)) {
+    activeModifier=KeyModifier.NONE;
   }
-  return getBinding(keyCode,KeyModifier.NOT_SUPPORTED);
+  return getBinding(keyCode,activeModifier);
 }
