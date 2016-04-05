@@ -1,2 +1,29 @@
 {
+  String langFile="assets/" + container.getModId().toLowerCase() + "/lang/en_US.lang";
+  File source=container.getSource();
+  InputStream stream=null;
+  ZipFile zip=null;
+  try {
+    if (source.isDirectory() && (Boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment")) {
+      stream=new FileInputStream(new File(source.toURI().resolve(langFile).getPath()));
+    }
+ else {
+      try {
+        zip=new ZipFile(source);
+        stream=zip.getInputStream(zip.getEntry(langFile));
+      }
+  finally {
+        if (zip != null)         zip.close();
+      }
+    }
+    LanguageMap.inject(stream);
+  }
+ catch (  IOException e) {
+  }
+catch (  Exception e) {
+    FMLLog.getLogger().error(e);
+  }
+ finally {
+    IOUtils.closeQuietly(stream);
+  }
 }
