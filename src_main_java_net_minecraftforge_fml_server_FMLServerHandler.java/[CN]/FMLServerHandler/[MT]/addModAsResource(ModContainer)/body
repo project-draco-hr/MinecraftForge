@@ -8,13 +8,10 @@
       stream=new FileInputStream(new File(source.toURI().resolve(langFile).getPath()));
     }
  else {
-      try {
-        zip=new ZipFile(source);
-        stream=zip.getInputStream(zip.getEntry(langFile));
-      }
-  finally {
-        if (zip != null)         zip.close();
-      }
+      zip=new ZipFile(source);
+      ZipEntry entry=zip.getEntry(langFile);
+      if (entry == null)       throw new FileNotFoundException();
+      stream=zip.getInputStream(entry);
     }
     LanguageMap.inject(stream);
   }
@@ -25,5 +22,10 @@ catch (  Exception e) {
   }
  finally {
     IOUtils.closeQuietly(stream);
+    try {
+      zip.close();
+    }
+ catch (    IOException e) {
+    }
   }
 }
