@@ -1,0 +1,5 @@
+{
+  PlayerInteractEvent.RightClickBlock evt=new PlayerInteractEvent.RightClickBlock(player,hand,stack,pos,face,hitVec);
+  MinecraftForge.EVENT_BUS.post(evt);
+  return evt;
+}

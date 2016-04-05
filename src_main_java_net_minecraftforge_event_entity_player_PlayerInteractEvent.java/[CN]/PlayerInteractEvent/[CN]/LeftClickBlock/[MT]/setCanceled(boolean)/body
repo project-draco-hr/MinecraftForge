@@ -1,0 +1,5 @@
+{
+  super.setCanceled(canceled);
+  useBlock=DENY;
+  useItem=DENY;
+}

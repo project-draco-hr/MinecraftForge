@@ -1,0 +1,3 @@
+{
+  return MinecraftForge.EVENT_BUS.post(new PlayerInteractEvent.EntityInteract(player,hand,item,entity));
+}

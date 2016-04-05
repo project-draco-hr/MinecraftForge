@@ -1,0 +1,3 @@
+EntityPlayer player
+EnumHand hand
+ItemStack stack

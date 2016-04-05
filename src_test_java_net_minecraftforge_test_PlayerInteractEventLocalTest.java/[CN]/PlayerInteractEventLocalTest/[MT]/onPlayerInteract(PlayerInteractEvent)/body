@@ -1,5 +1,0 @@
-{
-  if (ENABLE && event.getLocalPos() != null) {
-    System.out.println(event.getLocalPos().toString());
-  }
-}

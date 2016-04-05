@@ -1,5 +1,0 @@
-{
-  super.setCanceled(cancel);
-  setUseBlock((cancel ? DENY : getUseBlock() == DENY ? DEFAULT : getUseBlock()));
-  setUseItem((cancel ? DENY : getUseItem() == DENY ? DEFAULT : getUseItem()));
-}
