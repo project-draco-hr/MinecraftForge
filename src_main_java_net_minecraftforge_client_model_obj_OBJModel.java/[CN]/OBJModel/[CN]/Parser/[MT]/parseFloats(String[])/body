@@ -1,0 +1,5 @@
+{
+  float[] ret=new float[data.length];
+  for (int i=0; i < data.length; i++)   ret[i]=Float.parseFloat(data[i]);
+  return ret;
+}
