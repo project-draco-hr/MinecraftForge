@@ -1,6 +1,11 @@
 {
   this.loader=loader;
-  this.masterChannel=new EventBus("FMLMainChannel");
+  this.masterChannel=new EventBus(new SubscriberExceptionHandler(){
+    @Override public void handleException(    Throwable exception,    SubscriberExceptionContext context){
+      FMLLog.log("FMLMainChannel",Level.ERROR,exception,"Could not dispatch event: %s to %s",context.getEvent(),context.getSubscriberMethod());
+    }
+  }
+);
   this.masterChannel.register(this);
   state=LoaderState.NOINIT;
   packageOwners=ArrayListMultimap.create();
