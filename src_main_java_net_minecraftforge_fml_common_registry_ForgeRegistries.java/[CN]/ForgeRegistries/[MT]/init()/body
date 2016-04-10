@@ -1,0 +1,4 @@
+{
+  GameData.getMain();
+  VillagerRegistry.instance();
+}

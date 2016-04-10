@@ -1,0 +1,3 @@
+{
+  return PersistentRegistry.ACTIVE.getRegistry(registryType);
+}
