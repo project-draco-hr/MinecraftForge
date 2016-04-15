@@ -1,0 +1,5 @@
+ScaledResolution res
+BossInfoLerping bossInfo
+int x
+int y
+int increment

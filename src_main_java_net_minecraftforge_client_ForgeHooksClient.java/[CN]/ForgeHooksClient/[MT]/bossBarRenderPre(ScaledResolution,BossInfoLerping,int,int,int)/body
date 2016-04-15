@@ -1,0 +1,5 @@
+{
+  RenderGameOverlayEvent.BossInfo evt=new RenderGameOverlayEvent.BossInfo(new RenderGameOverlayEvent(Animation.getPartialTickTime(),res),BOSSINFO,bossInfo,x,y,increment);
+  MinecraftForge.EVENT_BUS.post(evt);
+  return evt;
+}
