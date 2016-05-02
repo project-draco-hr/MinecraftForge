@@ -16,6 +16,7 @@
     te=getWorld().getTileEntity(getPos());
     if (te != null) {
       te.readFromNBT(getNbt());
+      te.markDirty();
     }
   }
   if (DEBUG) {
