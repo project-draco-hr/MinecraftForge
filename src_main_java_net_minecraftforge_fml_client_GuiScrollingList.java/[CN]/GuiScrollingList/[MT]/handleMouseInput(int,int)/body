@@ -1,0 +1,8 @@
+{
+  boolean isHovering=mouseX >= this.left && mouseX <= this.left + this.listWidth && mouseY >= this.top && mouseY <= this.bottom;
+  if (!isHovering)   return;
+  int scroll=Mouse.getEventDWheel();
+  if (scroll != 0) {
+    this.scrollDistance+=(float)((-1 * scroll / 120.0F) * this.slotHeight / 2);
+  }
+}
