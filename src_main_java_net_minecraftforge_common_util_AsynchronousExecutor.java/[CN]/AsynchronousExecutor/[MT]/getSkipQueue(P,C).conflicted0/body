@@ -1,5 +1,0 @@
-{
-  final T object=skipQueue(parameter);
-  provider.callStage3(parameter,object,callback);
-  return object;
-}

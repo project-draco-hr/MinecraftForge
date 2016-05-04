@@ -1,4 +1,4 @@
 {
   int size=Math.max(BASE_THREADS,(int)Math.ceil(players / PLAYERS_PER_THREAD));
-  instance.setActiveThreads(size);
+  pool.setCorePoolSize(size);
 }

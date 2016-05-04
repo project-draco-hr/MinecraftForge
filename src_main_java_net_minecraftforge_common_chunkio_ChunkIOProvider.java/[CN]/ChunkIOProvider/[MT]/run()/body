@@ -1,0 +1,18 @@
+{
+synchronized (this) {
+    AnvilChunkLoader loader=chunkInfo.loader;
+    Object[] data=null;
+    try {
+      data=loader.loadChunk__Async(chunkInfo.world,chunkInfo.x,chunkInfo.z);
+    }
+ catch (    IOException e) {
+      e.printStackTrace();
+    }
+    if (data != null) {
+      this.nbt=(NBTTagCompound)data[1];
+      this.chunk=(Chunk)data[0];
+    }
+    this.ran=true;
+    this.notifyAll();
+  }
+}

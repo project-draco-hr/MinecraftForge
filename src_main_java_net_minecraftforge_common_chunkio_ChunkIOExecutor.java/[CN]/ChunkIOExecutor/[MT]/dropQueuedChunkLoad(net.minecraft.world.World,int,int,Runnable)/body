@@ -1,3 +1,0 @@
-{
-  instance.drop(new QueuedChunk(x,z,null,world,null),runnable);
-}

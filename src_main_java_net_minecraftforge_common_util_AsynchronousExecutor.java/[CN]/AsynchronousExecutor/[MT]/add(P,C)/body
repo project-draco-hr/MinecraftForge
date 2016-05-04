@@ -1,8 +1,0 @@
-{
-  Task task=tasks.get(parameter);
-  if (task == null) {
-    tasks.put(parameter,task=new Task(parameter));
-    pool.execute(task);
-  }
-  task.callbacks.add(callback);
-}
