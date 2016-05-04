@@ -2,13 +2,15 @@
   QueuedChunk key=new QueuedChunk(x,z,loader,world,provider);
   ChunkIOProvider task=tasks.get(key);
   if (task != null) {
-    if (!pool.remove(task) && !task.runFinished()) {
+    if (!pool.remove(task)) {
+      while (!task.runFinished()) {
 synchronized (task) {
-        try {
-          task.wait();
-        }
- catch (        InterruptedException e) {
-          e.printStackTrace();
+          try {
+            task.wait();
+          }
+ catch (          InterruptedException e) {
+            e.printStackTrace();
+          }
         }
       }
     }
