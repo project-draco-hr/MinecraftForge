@@ -1,0 +1,5 @@
+{
+  Property prop=config.get(Configuration.CATEGORY_CLIENT,"java8Reminder",java8Reminder);
+  prop.set((new Date()).getTime());
+  config.save();
+}

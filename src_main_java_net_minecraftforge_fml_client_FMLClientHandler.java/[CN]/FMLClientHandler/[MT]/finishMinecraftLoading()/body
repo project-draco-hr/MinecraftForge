@@ -1,5 +1,5 @@
 {
-  if (modsMissing != null || wrongMC != null || customError != null || dupesFound != null || modSorting != null) {
+  if (modsMissing != null || wrongMC != null || customError != null || dupesFound != null || modSorting != null || j8onlymods != null) {
     SplashProgress.finish();
     return;
   }
@@ -37,4 +37,6 @@ catch (  LoaderException le) {
   }
   loading=false;
   client.gameSettings.loadOptions();
+  Loader.instance().loadingComplete();
+  SplashProgress.finish();
 }

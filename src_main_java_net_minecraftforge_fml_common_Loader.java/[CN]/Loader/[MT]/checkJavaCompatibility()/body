@@ -1,0 +1,12 @@
+{
+  if (java8)   return;
+  List<ModContainer> j8mods=Lists.newArrayList();
+  for (  ModContainer mc : getActiveModList()) {
+    if (mc.getClassVersion() >= 52) {
+      j8mods.add(mc);
+    }
+  }
+  if (!j8mods.isEmpty()) {
+    throw new Java8VersionException(j8mods);
+  }
+}

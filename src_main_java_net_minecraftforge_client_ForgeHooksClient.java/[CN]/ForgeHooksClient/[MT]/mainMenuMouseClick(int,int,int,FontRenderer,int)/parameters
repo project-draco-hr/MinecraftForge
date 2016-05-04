@@ -1,0 +1,5 @@
+int mouseX
+int mouseY
+int mouseButton
+FontRenderer font
+int width

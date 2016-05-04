@@ -1,0 +1,7 @@
+{
+  stream.println("Mods requiring Java 8:");
+  for (  ModContainer mc : mods) {
+    stream.println(String.format("\t%s : %s",mc.getName(),mc.getModId()));
+  }
+  stream.println("");
+}

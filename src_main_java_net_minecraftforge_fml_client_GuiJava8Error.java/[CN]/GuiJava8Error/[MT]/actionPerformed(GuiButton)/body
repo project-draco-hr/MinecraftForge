@@ -1,0 +1,16 @@
+{
+  if (button.id == 1) {
+    try {
+      Desktop.getDesktop().browse(new URI("http://www.oracle.com/technetwork/java/javase/downloads/index.html"));
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.ERROR,e,"Problem launching browser");
+    }
+  }
+ else   if (button.id == 2) {
+    FMLCommonHandler.instance().exitJava(1,true);
+  }
+ else   if (button.id == 3) {
+    FMLClientHandler.instance().showGuiScreen(null);
+  }
+}

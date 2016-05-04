@@ -10,6 +10,7 @@
   ModAPIManager.INSTANCE.manageAPI(modClassLoader,discoverer);
   disableRequestedMods();
   modController.distributeStateMessage(FMLLoadEvent.class);
+  checkJavaCompatibility();
   sortModList();
   ModAPIManager.INSTANCE.cleanupAPIContainers(modController.getActiveModList());
   ModAPIManager.INSTANCE.cleanupAPIContainers(mods);

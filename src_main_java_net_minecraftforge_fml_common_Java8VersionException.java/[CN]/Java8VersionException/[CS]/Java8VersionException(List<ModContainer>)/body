@@ -1,0 +1,4 @@
+{
+  super("Mods require Java 8");
+  this.mods=mods;
+}

@@ -19,6 +19,9 @@
 catch (  DuplicateModsFoundException dupes) {
     dupesFound=dupes;
   }
+catch (  Java8VersionException j8mods) {
+    j8onlymods=j8mods;
+  }
 catch (  MissingModsException missing) {
     modsMissing=missing;
   }

@@ -6,6 +6,15 @@
     line=I18n.format("forge.update.beta.2");
     gui.drawString(font,line,(width - font.getStringWidth(line)) / 2,4 + (1 * (font.FONT_HEIGHT + 1)),-1);
   }
+  if (!Loader.instance().java8) {
+    String line=I18n.format("fml.messages.java8warning.1",TextFormatting.RED,TextFormatting.RESET);
+    gui.drawString(font,line,(width - font.getStringWidth(line)) / 2,4 + (8 * (font.FONT_HEIGHT + 1)),-1);
+    line=I18n.format("fml.messages.java8warning.2");
+    gui.drawString(font,line,(width - font.getStringWidth(line)) / 2,4 + (9 * (font.FONT_HEIGHT + 1)),-1);
+    splashText=updatescrollcounter < 50 ? "UPDATE!" : "JAVA!";
+    updatescrollcounter+=1;
+    updatescrollcounter%=100;
+  }
   String line=null;
 switch (status) {
 case OUTDATED:
@@ -18,4 +27,5 @@ break;
 if (line != null) {
 gui.drawString(font,line,width - font.getStringWidth(line) - 2,height - (2 * (font.FONT_HEIGHT + 1)),-1);
 }
+return splashText;
 }
