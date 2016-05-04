@@ -1,7 +1,0 @@
-ResourceLocation registryName
-Class<T> type
-ResourceLocation defaultObjectKey
-int minId
-int maxId
-boolean isDelegated
-FMLControlledNamespacedRegistry.AddCallback<T> addCallback

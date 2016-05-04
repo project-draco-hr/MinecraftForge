@@ -1,6 +1,6 @@
 {
   EntityPlayer player=(EntityPlayer)mc.getRenderViewEntity();
-  Entity tmp=player.ridingEntity;
+  Entity tmp=player.getRidingEntity();
   if (!(tmp instanceof EntityLivingBase))   return;
   bind(icons);
   if (pre(HEALTHMOUNT))   return;

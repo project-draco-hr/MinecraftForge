@@ -1,3 +1,3 @@
 {
-  return fullHit && ((Integer)state.getValue(LEVEL)) == quantaPerBlock - 1;
+  return fullHit && state.getValue(LEVEL) == quantaPerBlock - 1;
 }

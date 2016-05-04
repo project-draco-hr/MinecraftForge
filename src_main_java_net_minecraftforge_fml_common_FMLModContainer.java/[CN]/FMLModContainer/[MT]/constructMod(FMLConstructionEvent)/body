@@ -10,7 +10,7 @@
     if (certificates != null) {
       len=certificates.length;
     }
-    Builder<String> certBuilder=ImmutableList.<String>builder();
+    Builder<String> certBuilder=ImmutableList.builder();
     for (int i=0; i < len; i++) {
       certBuilder.add(CertificateHelper.getFingerprint(certificates[i]));
     }
@@ -33,7 +33,7 @@
     }
     @SuppressWarnings("unchecked") List<Map<String,Object>> props=(List<Map<String,Object>>)descriptor.get("customProperties");
     if (props != null) {
-      com.google.common.collect.ImmutableMap.Builder<String,String> builder=ImmutableMap.<String,String>builder();
+      com.google.common.collect.ImmutableMap.Builder<String,String> builder=ImmutableMap.builder();
       for (      Map<String,Object> p : props) {
         builder.put((String)p.get("k"),(String)p.get("v"));
       }

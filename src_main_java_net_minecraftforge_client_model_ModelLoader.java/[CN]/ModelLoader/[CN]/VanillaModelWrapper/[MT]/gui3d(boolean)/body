@@ -2,8 +2,8 @@
   if (model.isGui3d() == value) {
     return this;
   }
-  ModelBlock newModel=new ModelBlock(model.getParentLocation(),model.getElements(),model.textures,model.ambientOcclusion,value,model.func_181682_g());
+  ModelBlock newModel=new ModelBlock(model.getParentLocation(),model.getElements(),model.textures,model.ambientOcclusion,value,model.getAllTransforms(),Lists.newArrayList(model.getOverrides()));
   newModel.parent=model.parent;
   newModel.name=model.name;
-  return new VanillaModelWrapper(location,newModel,animation);
+  return new VanillaModelWrapper(location,newModel,uvlock,animation);
 }

@@ -1,3 +1,0 @@
-{
-  return quads.get(Optional.of(side));
-}

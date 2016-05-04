@@ -12,6 +12,6 @@
   super.putObject(name,thing);
   availabilityMap.set(id);
   if (addCallback != null) {
-    addCallback.onAdd(thing,id);
+    addCallback.onAdd(thing,id,slaves);
   }
 }

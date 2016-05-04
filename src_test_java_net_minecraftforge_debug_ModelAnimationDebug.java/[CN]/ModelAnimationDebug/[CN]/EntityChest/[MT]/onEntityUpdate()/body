@@ -1,0 +1,6 @@
+{
+  super.onEntityUpdate();
+  if (worldObj.isRemote && cycleLength != null) {
+    cycleLength.setValue(getHealth() / 5);
+  }
+}

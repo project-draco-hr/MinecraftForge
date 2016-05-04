@@ -1,9 +1,0 @@
-{
-  texture=sprite;
-  if (top) {
-    list.add(new BakedQuad(Ints.concat(vertexToInts(0.5f,1.0f,0,-1,texture,8,0),vertexToInts(0.5f,1.0f,1,-1,texture,8,16),vertexToInts(1,1.0f,1,-1,texture,16,16),vertexToInts(1,1.0f,0,-1,texture,16,0)),-1,EnumFacing.UP));
-  }
- else {
-    list.add(new BakedQuad(Ints.concat(vertexToInts(0,1.0f,0,-1,texture,0,0),vertexToInts(0,1.0f,1,-1,texture,0,16),vertexToInts(0.5f,1.0f,1,-1,texture,8,16),vertexToInts(0.5f,1.0f,0,-1,texture,8,0)),-1,EnumFacing.DOWN));
-  }
-}

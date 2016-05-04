@@ -1,0 +1,6 @@
+{
+  super(world);
+  this.rand=rand;
+  this.original=original;
+  this.newValues=(T)original.clone();
+}

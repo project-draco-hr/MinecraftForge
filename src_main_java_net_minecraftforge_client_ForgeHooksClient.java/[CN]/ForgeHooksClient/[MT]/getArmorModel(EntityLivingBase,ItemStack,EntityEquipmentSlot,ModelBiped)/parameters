@@ -1,0 +1,4 @@
+EntityLivingBase entityLiving
+ItemStack itemStack
+EntityEquipmentSlot slot
+ModelBiped _default

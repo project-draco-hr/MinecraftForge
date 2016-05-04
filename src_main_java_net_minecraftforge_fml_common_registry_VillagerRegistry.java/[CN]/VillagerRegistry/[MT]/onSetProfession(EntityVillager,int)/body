@@ -1,0 +1,7 @@
+{
+  VillagerProfession prof=INSTANCE.professions.getObjectById(network);
+  if (prof == null || INSTANCE.professions.getId(prof) != network) {
+    throw new RuntimeException("Attempted to set villager profession to unregistered profession: " + network + " "+ prof);
+  }
+  if (prof != entity.getProfessionForge())   entity.setProfession(prof);
+}

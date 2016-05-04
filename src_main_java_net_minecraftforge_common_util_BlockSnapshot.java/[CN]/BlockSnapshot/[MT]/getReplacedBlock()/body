@@ -1,6 +1,6 @@
 {
   if (this.replacedBlock == null) {
-    this.replacedBlock=GameRegistry.findBlock(this.blockIdentifier.modId,this.blockIdentifier.name).getStateFromMeta(meta);
+    this.replacedBlock=GameRegistry.findBlock(this.getRegistryName().getResourceDomain(),this.getRegistryName().getResourcePath()).getStateFromMeta(getMeta());
   }
   return this.replacedBlock;
 }

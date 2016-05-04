@@ -1,5 +1,5 @@
 {
   PlayerOpenContainerEvent event=new PlayerOpenContainerEvent(player,openContainer);
   MinecraftForge.EVENT_BUS.post(event);
-  return event.getResult() == Event.Result.DEFAULT ? event.canInteractWith : event.getResult() == Event.Result.ALLOW ? true : false;
+  return event.getResult() == Event.Result.DEFAULT ? event.isCanInteractWith() : event.getResult() == Event.Result.ALLOW ? true : false;
 }

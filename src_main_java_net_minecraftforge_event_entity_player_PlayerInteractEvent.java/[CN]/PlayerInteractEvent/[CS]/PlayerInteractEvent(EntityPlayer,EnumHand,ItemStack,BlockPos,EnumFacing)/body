@@ -1,0 +1,7 @@
+{
+  super(Preconditions.checkNotNull(player,"Null player in PlayerInteractEvent!"));
+  this.hand=Preconditions.checkNotNull(hand,"Null hand in PlayerInteractEvent!");
+  this.stack=stack;
+  this.pos=Preconditions.checkNotNull(pos,"Null position in PlayerInteractEvent!");
+  this.face=face;
+}

@@ -1,0 +1,18 @@
+{
+  if (model instanceof IPerspectiveAwareModel) {
+    Pair<? extends IBakedModel,Matrix4f> pair=((IPerspectiveAwareModel)model).handlePerspective(cameraTransformType);
+    if (pair.getRight() != null) {
+      Matrix4f matrix=new Matrix4f(pair.getRight());
+      if (leftHandHackery) {
+        matrix.mul(flipX,matrix);
+        matrix.mul(matrix,flipX);
+      }
+      multiplyCurrentGlMatrix(matrix);
+    }
+    return pair.getLeft();
+  }
+ else {
+    ItemCameraTransforms.applyTransformSide(model.getItemCameraTransforms().getTransform(cameraTransformType),leftHandHackery);
+  }
+  return model;
+}

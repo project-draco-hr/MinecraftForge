@@ -1,0 +1,14 @@
+{
+  if (args.length == 1) {
+    return getListOfStringsMatchingLastWord(args,"tps","track");
+  }
+ else   if (args.length == 2) {
+    if ("tps".equals(args[0])) {
+      return getListOfStringsMatchingLastWord(args,server.worldTickTimes.keySet());
+    }
+ else     if ("track".equals(args[0])) {
+      return getListOfStringsMatchingLastWord(args,"te");
+    }
+  }
+  return null;
+}

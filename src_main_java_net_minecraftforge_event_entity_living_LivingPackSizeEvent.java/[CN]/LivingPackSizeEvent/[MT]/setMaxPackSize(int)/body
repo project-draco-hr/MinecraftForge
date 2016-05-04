@@ -1,0 +1,3 @@
+{
+  this.maxPackSize=maxPackSize;
+}

@@ -1,0 +1,14 @@
+{
+  IBakedModel model;
+  BlockRenderLayer layer=MinecraftForgeClient.getRenderLayer();
+  if (layer == null) {
+    return quads.get(Optional.fromNullable(side));
+  }
+ else   if (!models.containsKey(Optional.of(layer))) {
+    model=missing;
+  }
+ else {
+    model=models.get(Optional.of(layer));
+  }
+  return model.getQuads(state,side,rand);
+}

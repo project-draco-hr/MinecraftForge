@@ -11,8 +11,8 @@
       findAndMergeSuperMaps(parentThing);
     }
   }
-  Map<String,String> methodMap=Maps.<String,String>newHashMap();
-  Map<String,String> fieldMap=Maps.<String,String>newHashMap();
+  Map<String,String> methodMap=Maps.newHashMap();
+  Map<String,String> fieldMap=Maps.newHashMap();
   for (  String parentThing : allParents) {
     if (methodNameMaps.containsKey(parentThing)) {
       methodMap.putAll(methodNameMaps.get(parentThing));

@@ -1,0 +1,3 @@
+{
+  return getWorld().isRemote ? Side.CLIENT : Side.SERVER;
+}

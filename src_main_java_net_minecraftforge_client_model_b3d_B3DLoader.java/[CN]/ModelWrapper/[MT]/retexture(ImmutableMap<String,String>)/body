@@ -12,5 +12,5 @@
       builder.put(e);
     }
   }
-  return new ModelWrapper(modelLocation,model,meshes,defaultKey,builder.build());
+  return new ModelWrapper(modelLocation,model,meshes,smooth,gui3d,defaultKey,builder.build());
 }

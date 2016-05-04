@@ -1,5 +1,5 @@
 {
-  ImmutableMap.Builder<IUnlistedProperty<?>,Optional<?>> builder=ImmutableMap.<IUnlistedProperty<?>,Optional<?>>builder();
+  ImmutableMap.Builder<IUnlistedProperty<?>,Optional<?>> builder=ImmutableMap.builder();
   for (  IUnlistedProperty<?> p : unlistedProperties) {
     builder.put(p,Optional.absent());
   }

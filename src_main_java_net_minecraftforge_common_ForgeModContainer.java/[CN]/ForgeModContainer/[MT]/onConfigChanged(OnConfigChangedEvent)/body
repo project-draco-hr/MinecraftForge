@@ -1,13 +1,13 @@
 {
-  if (getMetadata().modId.equals(event.modID) && !event.isWorldRunning) {
-    if (Configuration.CATEGORY_GENERAL.equals(event.configID)) {
+  if (getMetadata().modId.equals(event.getModID()) && !event.isWorldRunning()) {
+    if (Configuration.CATEGORY_GENERAL.equals(event.getConfigID())) {
       syncConfig(false);
     }
- else     if ("chunkLoader".equals(event.configID)) {
+ else     if ("chunkLoader".equals(event.getConfigID())) {
       ForgeChunkManager.syncConfigDefaults();
       ForgeChunkManager.loadConfiguration();
     }
- else     if (VERSION_CHECK_CAT.equals(event.configID)) {
+ else     if (VERSION_CHECK_CAT.equals(event.getConfigID())) {
       syncConfig(false);
     }
   }

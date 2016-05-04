@@ -1,0 +1,24 @@
+{
+  this.location=location;
+  this.base=base;
+  this.parts=parts;
+  if (base != null)   internalBase=base;
+ else {
+    Iterator<IBakedModel> iter=parts.values().iterator();
+    if (iter.hasNext())     internalBase=iter.next();
+ else     throw new IllegalArgumentException("No base model or submodel provided for MultiModel.Baked " + location + ".");
+  }
+  if (perspective && base instanceof IPerspectiveAwareModel) {
+    IPerspectiveAwareModel perBase=(IPerspectiveAwareModel)base;
+    ImmutableMap.Builder<TransformType,Pair<Baked,TRSRTransformation>> builder=ImmutableMap.builder();
+    for (    TransformType type : TransformType.values()) {
+      Pair<? extends IBakedModel,Matrix4f> p=perBase.handlePerspective(type);
+      IBakedModel newBase=p.getLeft();
+      builder.put(type,Pair.of(new Baked(location,false,newBase,parts),new TRSRTransformation(p.getRight())));
+    }
+    transforms=builder.build();
+  }
+ else {
+    transforms=ImmutableMap.of();
+  }
+}

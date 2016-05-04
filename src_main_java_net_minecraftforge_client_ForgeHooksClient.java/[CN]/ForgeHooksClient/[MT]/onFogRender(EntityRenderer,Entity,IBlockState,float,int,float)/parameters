@@ -1,0 +1,6 @@
+EntityRenderer renderer
+Entity entity
+IBlockState state
+float partial
+int mode
+float distance

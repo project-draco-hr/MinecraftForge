@@ -1,6 +1,0 @@
-ResourceLocation registryName
-Class<T> registryType
-ResourceLocation optionalDefaultKey
-int maxId
-int minId
-boolean hasDelegates

@@ -1,0 +1,5 @@
+{
+  this.sheetOffset=sheetOffset;
+  this.draw=draw;
+  this.animated=animated;
+}

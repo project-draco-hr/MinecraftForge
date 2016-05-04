@@ -6,6 +6,6 @@
   if (state.getBlock() != this) {
     return -1;
   }
-  int quantaRemaining=quantaPerBlock - ((Integer)state.getValue(LEVEL)).intValue();
+  int quantaRemaining=quantaPerBlock - state.getValue(LEVEL);
   return quantaRemaining;
 }

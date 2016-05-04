@@ -1,0 +1,3 @@
+{
+  this(model,state,format,bakedTextureGetter,overrides.getOverrides());
+}

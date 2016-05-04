@@ -1,0 +1,4 @@
+ImmutableMap<Optional<BlockRenderLayer>,ModelResourceLocation> models
+IModelState state
+VertexFormat format
+Function<ResourceLocation,TextureAtlasSprite> bakedTextureGetter

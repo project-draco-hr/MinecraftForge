@@ -1,5 +1,5 @@
 {
-  Pair<? extends IFlexibleBakedModel,Matrix4f> pair=IPerspectiveAwareModel.MapWrapper.handlePerspective(this,transforms,type);
+  Pair<? extends IBakedModel,Matrix4f> pair=IPerspectiveAwareModel.MapWrapper.handlePerspective(this,transforms,type);
   if (type == TransformType.GUI && !isCulled && pair.getRight() == null) {
     return Pair.of(otherModel,null);
   }

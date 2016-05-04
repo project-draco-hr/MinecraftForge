@@ -1,3 +1,0 @@
-{
-  super(potionID,location,badEffect,potionColor);
-}

@@ -2,5 +2,5 @@
   if (this == o)   return true;
   if (o == null || getClass() != o.getClass())   return false;
   InvWrapper that=(InvWrapper)o;
-  return inv.equals(that.inv);
+  return getInv().equals(that.getInv());
 }

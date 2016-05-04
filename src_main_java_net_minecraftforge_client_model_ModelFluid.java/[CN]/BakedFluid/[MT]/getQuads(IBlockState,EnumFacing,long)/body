@@ -1,0 +1,18 @@
+{
+  BakedFluid model=this;
+  if (state instanceof IExtendedBlockState) {
+    IExtendedBlockState exState=(IExtendedBlockState)state;
+    int[] cornerRound=getCorners(Optional.of(exState));
+    int flowRound=getFlow(Optional.of(exState));
+    long key=flowRound + 1024;
+    for (int i=3; i >= 0; i--) {
+      key<<=10;
+      key|=cornerRound[i];
+    }
+    key<<=1;
+    key|=1;
+    model=modelCache.getUnchecked(key);
+  }
+  if (side == null)   return ImmutableList.of();
+  return model.faceQuads.get(side);
+}

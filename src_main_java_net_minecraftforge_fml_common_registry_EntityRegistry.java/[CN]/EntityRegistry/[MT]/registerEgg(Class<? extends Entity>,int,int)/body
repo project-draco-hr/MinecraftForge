@@ -1,6 +1,10 @@
 {
-  if (!EntityList.classToStringMapping.containsKey(entityClass))   throw new IllegalArgumentException("Entity not registered in classToString map: " + entityClass);
-  String name=(String)EntityList.classToStringMapping.get(entityClass);
-  EntityRegistry.instance().entityEggs.put(name,new EntityList.EntityEggInfo(name,primary,secondary));
-  FMLLog.fine("Registering entity egg '%s' for %s",name,entityClass);
+  if (EntityList.classToStringMapping.containsKey(entityClass)) {
+    String name=EntityList.classToStringMapping.get(entityClass);
+    EntityList.entityEggs.put(name,new EntityList.EntityEggInfo(name,primary,secondary));
+    FMLLog.fine("Registering entity egg '%s' for %s",name,entityClass);
+  }
+ else {
+    FMLLog.fine("Failed registering entity egg %s (No entity found)",entityClass.getName());
+  }
 }

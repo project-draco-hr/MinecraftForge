@@ -1,0 +1,95 @@
+{
+  IBakedModel missingModel=modelRegistry.getObject(MODEL_MISSING);
+  Map<String,Integer> modelErrors=Maps.newHashMap();
+  Set<ResourceLocation> printedBlockStateErrors=Sets.newHashSet();
+  Multimap<ModelResourceLocation,IBlockState> reverseBlockMap=null;
+  Multimap<ModelResourceLocation,String> reverseItemMap=null;
+  if (enableVerboseMissingInfo) {
+    reverseBlockMap=HashMultimap.create();
+    for (    Map.Entry<IBlockState,ModelResourceLocation> entry : blockModelShapes.getBlockStateMapper().putAllStateModelLocations().entrySet()) {
+      reverseBlockMap.put(entry.getValue(),entry.getKey());
+    }
+    reverseItemMap=HashMultimap.create();
+    for (    Item item : GameData.getItemRegistry().typeSafeIterable()) {
+      for (      String s : getVariantNames(item)) {
+        ModelResourceLocation memory=getInventoryVariant(s);
+        reverseItemMap.put(memory,item.getRegistryName().toString());
+      }
+    }
+  }
+  for (  Map.Entry<ResourceLocation,Exception> entry : loadingExceptions.entrySet()) {
+    if (entry.getKey() instanceof ModelResourceLocation) {
+      ModelResourceLocation location=(ModelResourceLocation)entry.getKey();
+      IBakedModel model=modelRegistry.getObject(location);
+      if (model == null || model == missingModel) {
+        String domain=entry.getKey().getResourceDomain();
+        Integer errorCountBox=modelErrors.get(domain);
+        int errorCount=errorCountBox == null ? 0 : errorCountBox;
+        errorCount++;
+        if (errorCount < verboseMissingInfoCount) {
+          String errorMsg="Exception loading model for variant " + entry.getKey();
+          if (enableVerboseMissingInfo) {
+            Collection<IBlockState> blocks=reverseBlockMap.get(location);
+            if (!blocks.isEmpty()) {
+              if (blocks.size() == 1) {
+                errorMsg+=" for blockstate \"" + blocks.iterator().next() + "\"";
+              }
+ else {
+                errorMsg+=" for blockstates [\"" + Joiner.on("\", \"").join(blocks) + "\"]";
+              }
+            }
+            Collection<String> items=reverseItemMap.get(location);
+            if (!items.isEmpty()) {
+              if (!blocks.isEmpty())               errorMsg+=" and";
+              if (items.size() == 1) {
+                errorMsg+=" for item \"" + items.iterator().next() + "\"";
+              }
+ else {
+                errorMsg+=" for items [\"" + Joiner.on("\", \"").join(items) + "\"]";
+              }
+            }
+          }
+          if (entry.getValue() instanceof ItemLoadingException) {
+            ItemLoadingException ex=(ItemLoadingException)entry.getValue();
+            FMLLog.getLogger().error(errorMsg + ", normal location exception: ",ex.normalException);
+            FMLLog.getLogger().error(errorMsg + ", blockstate location exception: ",ex.blockstateException);
+          }
+ else {
+            FMLLog.getLogger().error(errorMsg,entry.getValue());
+          }
+          ResourceLocation blockstateLocation=new ResourceLocation(location.getResourceDomain(),location.getResourcePath());
+          if (loadingExceptions.containsKey(blockstateLocation) && !printedBlockStateErrors.contains(blockstateLocation)) {
+            FMLLog.getLogger().error("Exception loading blockstate for the variant " + location + ": ",loadingExceptions.get(blockstateLocation));
+            printedBlockStateErrors.add(blockstateLocation);
+          }
+        }
+        modelErrors.put(domain,errorCount);
+      }
+      if (model == null) {
+        modelRegistry.putObject(location,missingModel);
+      }
+    }
+  }
+  for (  ModelResourceLocation missing : missingVariants) {
+    IBakedModel model=modelRegistry.getObject(missing);
+    if (model == null || model == missingModel) {
+      String domain=missing.getResourceDomain();
+      Integer errorCountBox=modelErrors.get(domain);
+      int errorCount=errorCountBox == null ? 0 : errorCountBox;
+      errorCount++;
+      if (errorCount < verboseMissingInfoCount) {
+        FMLLog.severe("Model definition for location %s not found",missing);
+      }
+      modelErrors.put(domain,errorCount);
+    }
+    if (model == null) {
+      modelRegistry.putObject(missing,missingModel);
+    }
+  }
+  for (  Map.Entry<String,Integer> e : modelErrors.entrySet()) {
+    if (e.getValue() >= verboseMissingInfoCount) {
+      FMLLog.severe("Suppressed additional %s model loading errors for domain %s",e.getValue() - verboseMissingInfoCount,e.getKey());
+    }
+  }
+  isLoading=false;
+}

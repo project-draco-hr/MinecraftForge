@@ -1,5 +1,0 @@
-{
-  this.renderer=renderer;
-  this.chunkCache=chunkCache;
-  this.pass=pass;
-}

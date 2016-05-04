@@ -1,3 +1,0 @@
-{
-  return this.createRegistry(registryName,registryType,optionalDefaultKey,minId,maxId,hasDelegates,null);
-}

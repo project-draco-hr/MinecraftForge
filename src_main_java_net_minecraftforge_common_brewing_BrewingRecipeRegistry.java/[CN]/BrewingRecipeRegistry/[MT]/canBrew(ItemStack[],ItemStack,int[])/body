@@ -1,7 +1,7 @@
 {
   if (ingredient == null || ingredient.stackSize <= 0)   return false;
   for (  int i : inputIndexes) {
-    if (hasOuput(inputs[i],ingredient)) {
+    if (hasOutput(inputs[i],ingredient)) {
       return true;
     }
   }

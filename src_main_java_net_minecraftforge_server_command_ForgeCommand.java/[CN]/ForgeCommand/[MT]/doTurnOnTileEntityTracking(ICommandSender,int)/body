@@ -1,5 +1,0 @@
-{
-  ForgeTimeTracker.tileEntityTrackingDuration=duration;
-  ForgeTimeTracker.tileEntityTracking=true;
-  sender.addChatMessage(new ChatComponentTranslation("commands.forge.tracking.te.enabled",duration));
-}

@@ -1,0 +1,5 @@
+int x
+int y
+PotionEffect effect
+Minecraft mc
+float alpha

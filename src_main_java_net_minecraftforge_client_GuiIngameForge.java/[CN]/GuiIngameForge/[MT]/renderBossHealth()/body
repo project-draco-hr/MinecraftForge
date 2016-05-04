@@ -1,10 +1,10 @@
 {
   if (pre(BOSSHEALTH))   return;
   bind(Gui.icons);
-  GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
+  GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,GlStateManager.SourceFactor.ONE,GlStateManager.DestFactor.ZERO);
   mc.mcProfiler.startSection("bossHealth");
   GlStateManager.enableBlend();
-  super.renderBossHealth();
+  this.overlayBoss.renderBossHealth();
   GlStateManager.disableBlend();
   mc.mcProfiler.endSection();
   post(BOSSHEALTH);

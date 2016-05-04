@@ -1,5 +1,4 @@
 {
   Set<ResourceLocation> entries=INSTANCE.professions.getKeys();
-  int prof=rand.nextInt(entries.size());
-  entity.setProfession(rand.nextInt(5));
+  entity.setProfession(rand.nextInt(entries.size()));
 }

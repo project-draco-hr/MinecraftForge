@@ -1,8 +1,8 @@
 {
   this.dimId=dimension;
-  this.pos=pos.getImmutable();
-  this.flag=flag;
-  this.blockIdentifier=new UniqueIdentifier(modid + ":" + blockName);
+  this.pos=pos.toImmutable();
+  this.setFlag(flag);
+  this.registryName=new ResourceLocation(modId,blockName);
   this.meta=meta;
   this.nbt=nbt;
 }

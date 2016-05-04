@@ -1,3 +1,3 @@
 {
-  VillagerRegistry.instance();
+  if (ForgeRegistries.ITEMS == null)   throw new RuntimeException("Something horrible went wrong in init, ForgeRegistres didn't create...");
 }

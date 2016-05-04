@@ -2,7 +2,7 @@
   PlayerDropsEvent event=new PlayerDropsEvent(player,cause,capturedDrops,recentlyHit);
   if (!MinecraftForge.EVENT_BUS.post(event)) {
     for (    EntityItem item : capturedDrops) {
-      player.joinEntityItemWithWorld(item);
+      player.dropItemAndGetStack(item);
     }
   }
 }

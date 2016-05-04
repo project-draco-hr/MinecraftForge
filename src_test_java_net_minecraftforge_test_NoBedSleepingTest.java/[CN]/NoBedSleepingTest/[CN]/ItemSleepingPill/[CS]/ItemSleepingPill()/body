@@ -1,4 +1,5 @@
 {
   setCreativeTab(CreativeTabs.tabMisc);
   setUnlocalizedName(MODID + ":" + name);
+  setRegistryName(new ResourceLocation(MODID,name));
 }

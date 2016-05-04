@@ -1,8 +1,0 @@
-{
-  final CallBackProvider<P,T,C,E> provider=this.provider;
-  final T object=skipQueue(parameter);
-  for (  C callback : callbacks) {
-    provider.callStage3(parameter,object,callback);
-  }
-  return object;
-}

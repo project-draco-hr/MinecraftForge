@@ -11,7 +11,7 @@
   final String input=buffer;
   Future<List<String>> tabComplete=this.server.callFromMainThread(new Callable<List<String>>(){
     @Override public List<String> call() throws Exception {
-      return ConsoleCommandCompleter.this.server.getTabCompletions(ConsoleCommandCompleter.this.server,input,ConsoleCommandCompleter.this.server.getPosition());
+      return ConsoleCommandCompleter.this.server.getTabCompletions(ConsoleCommandCompleter.this.server,input,ConsoleCommandCompleter.this.server.getPosition(),false);
     }
   }
 );

@@ -1,0 +1,28 @@
+{
+  return Sets.newHashSet(new Iterator<Entry<ResourceLocation,I>>(){
+    Iterator<I> itr=FMLControlledNamespacedRegistry.this.iterator();
+    @Override public boolean hasNext(){
+      return itr.hasNext();
+    }
+    @Override public Entry<ResourceLocation,I> next(){
+      final I value=itr.next();
+      final ResourceLocation key=FMLControlledNamespacedRegistry.this.getKey(value);
+      return new Entry<ResourceLocation,I>(){
+        @Override public ResourceLocation getKey(){
+          return key;
+        }
+        @Override public I getValue(){
+          return value;
+        }
+        @Override public I setValue(        I value){
+          throw new UnsupportedOperationException("Setting the value in an iterator is not allowed");
+        }
+      }
+;
+    }
+    @Override public void remove(){
+      throw new UnsupportedOperationException("This is a READ ONLY view of this registry.");
+    }
+  }
+);
+}

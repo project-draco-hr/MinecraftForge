@@ -1,5 +1,5 @@
 {
   FOVUpdateEvent fovUpdateEvent=new FOVUpdateEvent(entity,fov);
   MinecraftForge.EVENT_BUS.post(fovUpdateEvent);
-  return fovUpdateEvent.newfov;
+  return fovUpdateEvent.getNewfov();
 }

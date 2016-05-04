@@ -1,0 +1,4 @@
+{
+  super(player,EnumHand.MAIN_HAND,player.getHeldItem(EnumHand.MAIN_HAND),pos,face);
+  this.hitVec=hitVec;
+}

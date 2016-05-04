@@ -1,3 +1,10 @@
 {
-  instance.finishActive();
+  Iterator<ChunkIOProvider> itr=tasks.values().iterator();
+  while (itr.hasNext()) {
+    ChunkIOProvider task=itr.next();
+    if (task.runFinished() && task.hasCallback()) {
+      task.syncCallback();
+    }
+    itr.remove();
+  }
 }

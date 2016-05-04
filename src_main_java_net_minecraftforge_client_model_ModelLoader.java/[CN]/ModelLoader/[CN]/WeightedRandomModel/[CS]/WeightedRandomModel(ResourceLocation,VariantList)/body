@@ -1,0 +1,28 @@
+{
+  this.variants=variants.getVariantList();
+  ImmutableList.Builder<Pair<IModel,IModelState>> builder=ImmutableList.builder();
+  for (  Variant v : this.variants) {
+    ResourceLocation loc=v.getModelLocation();
+    locations.add(loc);
+    IModel model;
+    if (loc.equals(MODEL_MISSING)) {
+      model=ModelLoaderRegistry.getMissingModel();
+    }
+ else {
+      model=ModelLoaderRegistry.getModel(loc);
+    }
+    model=v.process(model);
+    for (    ResourceLocation location : model.getDependencies()) {
+      ModelLoaderRegistry.getModelOrMissing(location);
+    }
+    textures.addAll(model.getTextures());
+    models.add(model);
+    builder.add(Pair.of(model,v.getState()));
+  }
+  if (models.size() == 0) {
+    IModel missing=ModelLoaderRegistry.getMissingModel();
+    models.add(missing);
+    builder.add(Pair.<IModel,IModelState>of(missing,TRSRTransformation.identity()));
+  }
+  defaultState=new MultiModelState(builder.build());
+}

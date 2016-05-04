@@ -10,8 +10,8 @@
     fluidSprite=bakedTextureGetter.apply(fluid.getStill());
   }
   if (baseLocation != null) {
-    IFlexibleBakedModel model=(new ItemLayerModel(ImmutableList.of(baseLocation))).bake(state,format,bakedTextureGetter);
-    builder.addAll(model.getGeneralQuads());
+    IBakedModel model=(new ItemLayerModel(ImmutableList.of(baseLocation))).bake(state,format,bakedTextureGetter);
+    builder.addAll(model.getQuads(null,null,0));
   }
   if (liquidLocation != null && fluidSprite != null) {
     TextureAtlasSprite liquid=bakedTextureGetter.apply(liquidLocation);
@@ -23,5 +23,5 @@
     builder.add(ItemTextureQuadConverter.genQuad(format,transform,0,0,16,16,NORTH_Z_BASE,base,EnumFacing.NORTH,0xffffffff));
     builder.add(ItemTextureQuadConverter.genQuad(format,transform,0,0,16,16,SOUTH_Z_BASE,base,EnumFacing.SOUTH,0xffffffff));
   }
-  return new BakedDynBucket(this,builder.build(),fluidSprite,format,Maps.immutableEnumMap(transformMap),Maps.<String,IFlexibleBakedModel>newHashMap());
+  return new BakedDynBucket(this,builder.build(),fluidSprite,format,Maps.immutableEnumMap(transformMap),Maps.<String,IBakedModel>newHashMap());
 }

@@ -91,7 +91,7 @@ break;
 case '}':
 if (tmpList != null) break;
 if (currentCat == null) {
-throw new RuntimeException(String.format("Config file corrupt, attepted to close to many categories '%s:%d'",fileName,lineNum));
+throw new RuntimeException(String.format("Config file corrupt, attempted to close to many categories '%s:%d'",fileName,lineNum));
 }
 currentCat=currentCat.parent;
 break;

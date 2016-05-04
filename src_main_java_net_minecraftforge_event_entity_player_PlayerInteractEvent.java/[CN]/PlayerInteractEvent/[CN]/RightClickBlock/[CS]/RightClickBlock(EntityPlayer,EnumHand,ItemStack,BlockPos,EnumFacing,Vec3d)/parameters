@@ -1,0 +1,6 @@
+EntityPlayer player
+EnumHand hand
+ItemStack stack
+BlockPos pos
+EnumFacing face
+Vec3d hitVec

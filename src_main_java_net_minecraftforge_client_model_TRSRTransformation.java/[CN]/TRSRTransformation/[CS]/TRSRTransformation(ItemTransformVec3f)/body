@@ -1,3 +1,0 @@
-{
-  this(getMatrix(transform));
-}

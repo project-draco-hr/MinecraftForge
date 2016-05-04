@@ -1,4 +1,0 @@
-ImmutableMap<Optional<EnumWorldBlockLayer>,IFlexibleBakedModel> models
-IFlexibleBakedModel missing
-VertexFormat format
-ImmutableMap<TransformType,TRSRTransformation> cameraTransforms

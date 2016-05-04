@@ -11,10 +11,10 @@
       ret=priorities.get(cls);
       if (ret != null) {
         priorities.put(recipe.getClass(),ret);
-        FMLLog.fine("    Parent Found: %d - %s",ret.intValue(),cls.getName());
-        return ret.intValue();
+        FMLLog.fine("    Parent Found: %d - %s",ret,cls.getName());
+        return ret;
       }
     }
   }
-  return ret == null ? 0 : ret.intValue();
+  return ret == null ? 0 : ret;
 }

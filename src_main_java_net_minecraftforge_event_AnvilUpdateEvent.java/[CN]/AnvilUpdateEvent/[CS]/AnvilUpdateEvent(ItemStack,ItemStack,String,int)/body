@@ -2,6 +2,6 @@
   this.left=left;
   this.right=right;
   this.name=name;
-  this.cost=cost;
-  this.materialCost=0;
+  this.setCost(cost);
+  this.setMaterialCost(0);
 }

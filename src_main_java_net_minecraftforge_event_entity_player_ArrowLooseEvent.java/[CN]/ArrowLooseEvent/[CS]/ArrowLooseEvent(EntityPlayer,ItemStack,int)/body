@@ -1,5 +1,0 @@
-{
-  super(player);
-  this.bow=bow;
-  this.charge=charge;
-}

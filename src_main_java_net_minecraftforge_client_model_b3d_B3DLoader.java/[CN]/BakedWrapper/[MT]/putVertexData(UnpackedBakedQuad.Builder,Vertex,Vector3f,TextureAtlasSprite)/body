@@ -5,13 +5,12 @@ case POSITION:
       builder.put(e,v.getPos().x,v.getPos().y,v.getPos().z,1);
     break;
 case COLOR:
-  float d=LightUtil.diffuseLight(faceNormal.x,faceNormal.y,faceNormal.z);
-if (v.getColor() != null) {
-  builder.put(e,d * v.getColor().x,d * v.getColor().y,d * v.getColor().z,v.getColor().w);
-}
+  if (v.getColor() != null) {
+    builder.put(e,v.getColor().x,v.getColor().y,v.getColor().z,v.getColor().w);
+  }
  else {
-  builder.put(e,d,d,d,1);
-}
+    builder.put(e,1,1,1,1);
+  }
 break;
 case UV:
 if (format.getElement(e).getIndex() < v.getTexCoords().length) {

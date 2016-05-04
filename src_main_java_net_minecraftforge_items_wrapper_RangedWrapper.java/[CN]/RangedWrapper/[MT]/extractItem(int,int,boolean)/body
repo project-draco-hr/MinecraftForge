@@ -1,0 +1,6 @@
+{
+  if (checkSlot(slot)) {
+    return compose.extractItem(slot + minSlot,amount,simulate);
+  }
+  return null;
+}

@@ -1,3 +1,0 @@
-{
-  instance().addNameForObject(objectToName,"en_US",name);
-}

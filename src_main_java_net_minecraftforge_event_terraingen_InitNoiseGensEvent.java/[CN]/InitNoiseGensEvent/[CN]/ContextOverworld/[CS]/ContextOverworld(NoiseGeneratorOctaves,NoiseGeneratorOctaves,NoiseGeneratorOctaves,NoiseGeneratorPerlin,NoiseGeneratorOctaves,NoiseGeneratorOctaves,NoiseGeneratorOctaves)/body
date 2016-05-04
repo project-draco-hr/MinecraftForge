@@ -1,0 +1,5 @@
+{
+  super(lperlin1,lperlin2,perlin,scale,depth);
+  this.height=height;
+  this.forest=forest;
+}

@@ -1,5 +1,5 @@
 {
-  Vec3 vec=new Vec3(0.0D,0.0D,0.0D);
+  Vec3d vec=new Vec3d(0.0D,0.0D,0.0D);
   int decay=quantaPerBlock - getQuantaValue(world,pos);
   for (int side=0; side < 4; ++side) {
     int x2=pos.getX();
@@ -21,7 +21,7 @@ break;
 BlockPos pos2=new BlockPos(x2,pos.getY(),z2);
 int otherDecay=quantaPerBlock - getQuantaValue(world,pos2);
 if (otherDecay >= quantaPerBlock) {
-if (!world.getBlockState(pos2).getBlock().getMaterial().blocksMovement()) {
+if (!world.getBlockState(pos2).getMaterial().blocksMovement()) {
 otherDecay=quantaPerBlock - getQuantaValue(world,pos2.down());
 if (otherDecay >= 0) {
 int power=otherDecay - (decay - quantaPerBlock);

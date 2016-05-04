@@ -1,0 +1,9 @@
+{
+  super(entity);
+  this.name=name;
+  this.category=category;
+  this.volume=volume;
+  this.pitch=pitch;
+  this.newVolume=volume;
+  this.newPitch=pitch;
+}

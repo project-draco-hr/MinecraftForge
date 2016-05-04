@@ -1,0 +1,4 @@
+ResourceLocation location
+ModelBlock model
+boolean uvlock
+ModelBlockAnimation animation

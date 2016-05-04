@@ -1,4 +1,4 @@
 {
   super.preInit(event);
-  ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(GameRegistry.findBlock(MODID,blockName)),0,new ModelResourceLocation(MODID.toLowerCase() + ":" + blockName,"inventory"));
+  ModelLoader.setCustomModelResourceLocation(Item.itemRegistry.getObject(blockId),0,new ModelResourceLocation(blockId,"inventory"));
 }

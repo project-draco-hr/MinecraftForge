@@ -1,7 +1,0 @@
-{
-  if (provider == null) {
-    throw new IllegalArgumentException("Provider cannot be null");
-  }
-  this.provider=provider;
-  pool=new ThreadPoolExecutor(coreSize,Integer.MAX_VALUE,60l,TimeUnit.SECONDS,new LinkedBlockingQueue<Runnable>(),provider);
-}

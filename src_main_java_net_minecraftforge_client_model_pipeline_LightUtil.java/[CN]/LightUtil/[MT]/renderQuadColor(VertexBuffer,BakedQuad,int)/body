@@ -1,0 +1,4 @@
+{
+  wr.addVertexData(quad.getVertexData());
+  ForgeHooksClient.putQuadColor(wr,quad,auxColor);
+}

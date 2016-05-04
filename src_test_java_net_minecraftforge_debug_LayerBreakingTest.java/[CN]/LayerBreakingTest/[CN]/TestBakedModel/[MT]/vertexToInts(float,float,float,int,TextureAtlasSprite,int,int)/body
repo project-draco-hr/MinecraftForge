@@ -1,3 +1,0 @@
-{
-  return new int[]{Float.floatToRawIntBits(x),Float.floatToRawIntBits(y),Float.floatToRawIntBits(z),color,Float.floatToRawIntBits(texture.getInterpolatedU(u)),Float.floatToRawIntBits(texture.getInterpolatedV(v)),0};
-}

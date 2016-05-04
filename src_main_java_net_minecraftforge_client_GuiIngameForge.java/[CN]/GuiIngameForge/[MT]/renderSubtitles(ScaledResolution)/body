@@ -1,0 +1,5 @@
+{
+  if (pre(SUBTITLES))   return;
+  this.overlaySubtitle.renderSubtitles(res);
+  post(SUBTITLES);
+}

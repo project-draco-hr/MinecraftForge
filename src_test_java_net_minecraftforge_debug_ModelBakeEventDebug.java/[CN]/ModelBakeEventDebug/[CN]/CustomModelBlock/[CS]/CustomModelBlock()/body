@@ -2,4 +2,5 @@
   super(Material.iron);
   setCreativeTab(CreativeTabs.tabBlock);
   setUnlocalizedName(MODID + ":" + name);
+  setRegistryName(blockName);
 }

@@ -3,15 +3,13 @@
     throw new IllegalArgumentException("can't bake vanilla weighted models to the format that doesn't fit into the default one: " + format);
   }
   if (variants.size() == 1) {
-    Variant v=variants.get(0);
     IModel model=models.get(0);
-    return model.bake(addUV(v.isUvLocked(),MultiModelState.getPartState(state,model,0)),format,bakedTextureGetter);
+    return model.bake(MultiModelState.getPartState(state,model,0),format,bakedTextureGetter);
   }
   WeightedBakedModel.Builder builder=new WeightedBakedModel.Builder();
   for (int i=0; i < variants.size(); i++) {
     IModel model=models.get(i);
-    Variant v=variants.get(i);
-    builder.add(model.bake(addUV(v.isUvLocked(),MultiModelState.getPartState(state,model,i)),format,bakedTextureGetter),variants.get(i).getWeight());
+    builder.add(model.bake(MultiModelState.getPartState(state,model,i),format,bakedTextureGetter),variants.get(i).getWeight());
   }
-  return new FlexibleWeightedBakedModel(builder.build(),Attributes.DEFAULT_BAKED_FORMAT);
+  return builder.build();
 }

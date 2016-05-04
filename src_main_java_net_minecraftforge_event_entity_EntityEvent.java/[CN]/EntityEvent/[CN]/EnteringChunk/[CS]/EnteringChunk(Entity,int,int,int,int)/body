@@ -1,7 +1,7 @@
 {
   super(entity);
-  this.newChunkX=newChunkX;
-  this.newChunkZ=newChunkZ;
-  this.oldChunkX=oldChunkX;
-  this.oldChunkZ=oldChunkZ;
+  this.setNewChunkX(newChunkX);
+  this.setNewChunkZ(newChunkZ);
+  this.setOldChunkX(oldChunkX);
+  this.setOldChunkZ(oldChunkZ);
 }

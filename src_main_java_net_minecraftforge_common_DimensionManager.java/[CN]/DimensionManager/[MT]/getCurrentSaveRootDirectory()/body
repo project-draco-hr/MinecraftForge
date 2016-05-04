@@ -1,11 +1,6 @@
 {
   if (DimensionManager.getWorld(0) != null) {
-    return ((SaveHandler)DimensionManager.getWorld(0).getSaveHandler()).getWorldDirectory();
-  }
- else   if (MinecraftServer.getServer() != null) {
-    MinecraftServer srv=MinecraftServer.getServer();
-    SaveHandler saveHandler=(SaveHandler)srv.getActiveAnvilConverter().getSaveLoader(srv.getFolderName(),false);
-    return saveHandler.getWorldDirectory();
+    return DimensionManager.getWorld(0).getSaveHandler().getWorldDirectory();
   }
  else {
     return null;

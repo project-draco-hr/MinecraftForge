@@ -1,2 +1,0 @@
-ItemTransformVec3f transform
-Optional<? extends IModelPart> part

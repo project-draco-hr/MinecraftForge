@@ -1,5 +1,5 @@
 {
   if (!DimensionManager.isDimensionRegistered(msg.dimensionId)) {
-    DimensionManager.registerDimension(msg.dimensionId,msg.providerId);
+    DimensionManager.registerDimension(msg.dimensionId,DimensionType.valueOf(msg.providerId));
   }
 }

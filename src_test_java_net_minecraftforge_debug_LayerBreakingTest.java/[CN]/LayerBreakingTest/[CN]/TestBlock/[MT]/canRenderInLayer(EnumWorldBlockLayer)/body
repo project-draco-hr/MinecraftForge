@@ -1,3 +1,0 @@
-{
-  return layer == EnumWorldBlockLayer.SOLID || layer == EnumWorldBlockLayer.TRANSLUCENT;
-}

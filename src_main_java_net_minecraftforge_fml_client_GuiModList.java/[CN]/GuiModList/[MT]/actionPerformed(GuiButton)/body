@@ -2,7 +2,7 @@
   if (button.enabled) {
     SortType type=SortType.getTypeForButton(button);
     if (type != null) {
-      for (      GuiButton b : (List<GuiButton>)buttonList) {
+      for (      GuiButton b : buttonList) {
         if (SortType.getTypeForButton(b) != null) {
           b.enabled=true;
         }

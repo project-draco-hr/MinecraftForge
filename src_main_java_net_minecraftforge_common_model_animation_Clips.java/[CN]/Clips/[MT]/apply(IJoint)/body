@@ -1,0 +1,3 @@
+{
+  return JointClips.IdentityJointClip.INSTANCE;
+}

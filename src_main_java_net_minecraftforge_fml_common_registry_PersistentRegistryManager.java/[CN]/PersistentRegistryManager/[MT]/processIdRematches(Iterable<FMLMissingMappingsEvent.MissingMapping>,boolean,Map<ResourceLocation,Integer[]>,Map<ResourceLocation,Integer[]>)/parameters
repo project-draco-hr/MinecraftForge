@@ -1,4 +1,0 @@
-Iterable<FMLMissingMappingsEvent.MissingMapping> missedMappings
-boolean isLocalWorld
-Map<ResourceLocation,Integer[]> remapBlocks
-Map<ResourceLocation,Integer[]> remapItems

@@ -1,5 +1,0 @@
-{
-  super(Material.glass);
-  setHardness(7);
-  setCreativeTab(CreativeTabs.tabBlock);
-}

@@ -1,0 +1,5 @@
+{
+  ChunkGeneratorEvent.ReplaceBiomeBlocks event=new ChunkGeneratorEvent.ReplaceBiomeBlocks(gen,x,z,primer,world);
+  net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event);
+  return event.getResult() != net.minecraftforge.fml.common.eventhandler.Event.Result.DENY;
+}

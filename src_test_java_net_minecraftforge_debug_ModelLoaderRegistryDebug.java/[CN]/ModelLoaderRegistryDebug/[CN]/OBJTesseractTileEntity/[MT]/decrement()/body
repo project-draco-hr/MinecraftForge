@@ -6,6 +6,6 @@
   }
   this.visible.remove(Integer.toString(this.counter));
   this.counter--;
-  ChatComponentText text=new ChatComponentText("" + this.counter);
+  TextComponentString text=new TextComponentString("" + this.counter);
   if (this.worldObj.isRemote)   Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(text);
 }

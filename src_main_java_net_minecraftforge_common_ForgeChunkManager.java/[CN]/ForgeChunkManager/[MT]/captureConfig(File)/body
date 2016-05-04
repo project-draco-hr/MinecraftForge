@@ -10,7 +10,7 @@
       dest.delete();
     }
     cfgFile.renameTo(dest);
-    FMLLog.log(Level.ERROR,e,"A critical error occured reading the forgeChunkLoading.cfg file, defaults will be used - the invalid file is backed up at forgeChunkLoading.cfg.bak");
+    FMLLog.log(Level.ERROR,e,"A critical error occurred reading the forgeChunkLoading.cfg file, defaults will be used - the invalid file is backed up at forgeChunkLoading.cfg.bak");
   }
   syncConfigDefaults();
 }

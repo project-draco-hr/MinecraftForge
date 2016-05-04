@@ -1,5 +1,0 @@
-{
-  for (  IBlockState state : block.getBlockState().getValidStates()) {
-    GameData.BLOCKSTATE_TO_ID.put(state,blockId << 4 | block.getMetaFromState(state));
-  }
-}

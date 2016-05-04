@@ -1,0 +1,6 @@
+{
+  super(renderer,entity,state,renderPartialTicks);
+  this.setRed(red);
+  this.setGreen(green);
+  this.setBlue(blue);
+}

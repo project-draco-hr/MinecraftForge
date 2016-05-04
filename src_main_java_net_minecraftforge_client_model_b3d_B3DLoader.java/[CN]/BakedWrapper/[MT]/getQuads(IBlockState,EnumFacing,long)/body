@@ -1,0 +1,49 @@
+{
+  if (side != null)   return ImmutableList.of();
+  IModelState modelState=this.state;
+  if (state instanceof IExtendedBlockState) {
+    IExtendedBlockState exState=(IExtendedBlockState)state;
+    if (exState.getUnlistedNames().contains(B3DFrameProperty.INSTANCE)) {
+      B3DState s=exState.getValue(B3DFrameProperty.INSTANCE);
+      if (s != null) {
+        IModelState parent=this.state;
+        Animation newAnimation=s.getAnimation();
+        if (parent instanceof B3DState) {
+          B3DState ps=(B3DState)parent;
+          parent=ps.getParent();
+        }
+        if (newAnimation == null) {
+          newAnimation=node.getAnimation();
+        }
+        if (s.getFrame() == s.getNextFrame()) {
+          modelState=cache.getUnchecked(s.getFrame());
+        }
+ else {
+          modelState=new B3DState(newAnimation,s.getFrame(),s.getNextFrame(),s.getProgress(),parent);
+        }
+      }
+    }
+ else     if (exState.getUnlistedNames().contains(Properties.AnimationProperty)) {
+      IModelState parent=this.state;
+      if (parent instanceof B3DState) {
+        B3DState ps=(B3DState)parent;
+        parent=ps.getParent();
+      }
+      IModelState newState=exState.getValue(Properties.AnimationProperty);
+      if (newState != null) {
+        modelState=new ModelStateComposition(parent,newState);
+      }
+    }
+  }
+  if (quads == null) {
+    ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
+    generateQuads(builder,node,this.state);
+    quads=builder.build();
+  }
+  if (this.state != modelState) {
+    ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
+    generateQuads(builder,node,modelState);
+    return builder.build();
+  }
+  return quads;
+}

@@ -1,5 +1,0 @@
-{
-  PlayerInteractEvent event=new PlayerInteractEvent(player,action,pos,face,world,localPos);
-  MinecraftForge.EVENT_BUS.post(event);
-  return event;
-}

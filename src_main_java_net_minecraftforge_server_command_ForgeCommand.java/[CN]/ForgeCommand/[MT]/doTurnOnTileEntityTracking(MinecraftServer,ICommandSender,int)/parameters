@@ -1,0 +1,3 @@
+MinecraftServer server
+ICommandSender sender
+int duration

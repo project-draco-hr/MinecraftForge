@@ -1,7 +1,0 @@
-T te
-double x
-double y
-double z
-float partialTicks
-int destroyStage
-WorldRenderer worldRenderer

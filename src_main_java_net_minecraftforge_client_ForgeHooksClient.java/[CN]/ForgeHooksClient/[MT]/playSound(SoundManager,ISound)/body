@@ -1,6 +1,5 @@
 {
-  SoundEventAccessorComposite accessor=manager.sndHandler.getSound(sound.getSoundLocation());
-  PlaySoundEvent e=new PlaySoundEvent(manager,sound,(accessor == null ? null : accessor.getSoundCategory()));
+  PlaySoundEvent e=new PlaySoundEvent(manager,sound);
   MinecraftForge.EVENT_BUS.post(e);
-  return e.result;
+  return e.getResultSound();
 }

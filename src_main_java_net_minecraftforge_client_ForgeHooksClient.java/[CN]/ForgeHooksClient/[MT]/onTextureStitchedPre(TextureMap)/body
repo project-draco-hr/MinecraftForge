@@ -1,4 +1,4 @@
 {
   MinecraftForge.EVENT_BUS.post(new TextureStitchEvent.Pre(map));
-  ModelLoader.White.instance.register(map);
+  ModelLoader.White.INSTANCE.register(map);
 }

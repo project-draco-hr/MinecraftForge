@@ -1,4 +1,0 @@
-ResourceLocation location
-boolean perspective
-IFlexibleBakedModel base
-ImmutableMap<String,IFlexibleBakedModel> parts

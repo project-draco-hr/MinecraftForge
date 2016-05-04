@@ -1,0 +1,8 @@
+{
+  if (object == null) {
+    FMLLog.getLogger().log(Level.ERROR,"Attempt to register a null object");
+    throw new NullPointerException("Attempt to register a null object");
+  }
+  ((K)object).setRegistryName(location);
+  return GameData.<K>register_impl(object);
+}

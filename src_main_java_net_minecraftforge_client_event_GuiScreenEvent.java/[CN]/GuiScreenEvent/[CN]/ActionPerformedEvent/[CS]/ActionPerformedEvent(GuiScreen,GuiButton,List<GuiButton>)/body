@@ -1,5 +1,5 @@
 {
   super(gui);
-  this.button=button;
-  this.buttonList=new ArrayList<GuiButton>(buttonList);
+  this.setButton(button);
+  this.setButtonList(new ArrayList<GuiButton>(buttonList));
 }

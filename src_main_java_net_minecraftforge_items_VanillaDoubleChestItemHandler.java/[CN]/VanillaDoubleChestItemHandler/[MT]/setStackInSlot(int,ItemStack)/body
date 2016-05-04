@@ -1,0 +1,11 @@
+{
+  boolean accessingUpperChest=slot < 27;
+  int targetSlot=accessingUpperChest ? slot : slot - 27;
+  TileEntityChest chest=getChest(accessingUpperChest);
+  if (chest != null) {
+    IItemHandler singleHandler=chest.getSingleChestHandler();
+    if (singleHandler instanceof IItemHandlerModifiable) {
+      ((IItemHandlerModifiable)singleHandler).setStackInSlot(targetSlot,stack);
+    }
+  }
+}

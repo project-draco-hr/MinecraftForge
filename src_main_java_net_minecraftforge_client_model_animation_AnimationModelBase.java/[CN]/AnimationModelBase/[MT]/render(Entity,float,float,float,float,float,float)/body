@@ -1,24 +1,25 @@
 {
-  if (!(entity instanceof IAnimationProvider)) {
-    throw new ClassCastException("AnimationModelBase expects IAnimationProvider");
+  if (!(entity.hasCapability(CapabilityAnimation.ANIMATION_CAPABILITY,null))) {
+    return;
   }
-  Pair<IModelState,Iterable<Event>> pair=((IAnimationProvider)entity).asm().apply(timeAlive / 20);
+  Pair<IModelState,Iterable<Event>> pair=entity.getCapability(CapabilityAnimation.ANIMATION_CAPABILITY,null).apply(timeAlive / 20);
   handleEvents((T)entity,timeAlive / 20,pair.getRight());
+  IModel model=ModelLoaderRegistry.getModelOrMissing(modelLocation);
   IBakedModel bakedModel=model.bake(pair.getLeft(),DefaultVertexFormats.ITEM,ModelLoader.defaultTextureGetter());
   BlockPos pos=new BlockPos(entity.posX,entity.posY + entity.height,entity.posZ);
   RenderHelper.disableStandardItemLighting();
   GlStateManager.pushMatrix();
   GlStateManager.rotate(180,0,0,1);
   Tessellator tessellator=Tessellator.getInstance();
-  WorldRenderer worldRenderer=tessellator.getWorldRenderer();
-  worldRenderer.begin(GL11.GL_QUADS,DefaultVertexFormats.BLOCK);
-  worldRenderer.setTranslation(-0.5,-1.5,-0.5);
-  lighter.setParent(new WorldRendererConsumer(worldRenderer));
+  VertexBuffer VertexBuffer=tessellator.getBuffer();
+  VertexBuffer.begin(GL11.GL_QUADS,DefaultVertexFormats.BLOCK);
+  VertexBuffer.setTranslation(-0.5,-1.5,-0.5);
+  lighter.setParent(new VertexBufferConsumer(VertexBuffer));
   lighter.setWorld(entity.worldObj);
-  lighter.setBlock(Blocks.air);
+  lighter.setState(Blocks.air.getDefaultState());
   lighter.setBlockPos(pos);
   boolean empty=true;
-  List<BakedQuad> quads=bakedModel.getGeneralQuads();
+  List<BakedQuad> quads=bakedModel.getQuads(null,null,0);
   if (!quads.isEmpty()) {
     lighter.updateBlockInfo();
     empty=false;
@@ -27,7 +28,7 @@
     }
   }
   for (  EnumFacing side : EnumFacing.values()) {
-    quads=bakedModel.getFaceQuads(side);
+    quads=bakedModel.getQuads(null,side,0);
     if (!quads.isEmpty()) {
       if (empty)       lighter.updateBlockInfo();
       empty=false;
@@ -36,7 +37,7 @@
       }
     }
   }
-  worldRenderer.setTranslation(0,0,0);
+  VertexBuffer.setTranslation(0,0,0);
   tessellator.draw();
   GlStateManager.popMatrix();
   RenderHelper.enableStandardItemLighting();

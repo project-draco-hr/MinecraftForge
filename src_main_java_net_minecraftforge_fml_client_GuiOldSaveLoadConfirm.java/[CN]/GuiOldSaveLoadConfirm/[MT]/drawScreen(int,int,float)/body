@@ -6,9 +6,9 @@
   this.drawCenteredString(this.fontRendererObj,String.format("Do you wish to continue loading?"),this.width / 2,110,16777215);
   int k;
   for (k=0; k < this.buttonList.size(); ++k) {
-    ((GuiButton)this.buttonList.get(k)).drawButton(this.mc,mouseX,mouseY);
+    this.buttonList.get(k).drawButton(this.mc,mouseX,mouseY);
   }
   for (k=0; k < this.labelList.size(); ++k) {
-    ((GuiLabel)this.labelList.get(k)).drawLabel(this.mc,mouseX,mouseY);
+    this.labelList.get(k).drawLabel(this.mc,mouseX,mouseY);
   }
 }

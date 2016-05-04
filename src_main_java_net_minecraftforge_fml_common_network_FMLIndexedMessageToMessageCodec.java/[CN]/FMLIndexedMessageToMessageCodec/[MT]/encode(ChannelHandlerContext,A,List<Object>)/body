@@ -1,7 +1,6 @@
 {
   PacketBuffer buffer=new PacketBuffer(Unpooled.buffer());
-  @SuppressWarnings("unchecked") Class<? extends A> clazz=(Class<? extends A>)msg.getClass();
-  byte discriminator=types.get(clazz);
+  byte discriminator=types.get(msg.getClass());
   buffer.writeByte(discriminator);
   encodeInto(ctx,msg,buffer);
   FMLProxyPacket proxy=new FMLProxyPacket(buffer,ctx.channel().attr(NetworkRegistry.FML_CHANNEL).get());

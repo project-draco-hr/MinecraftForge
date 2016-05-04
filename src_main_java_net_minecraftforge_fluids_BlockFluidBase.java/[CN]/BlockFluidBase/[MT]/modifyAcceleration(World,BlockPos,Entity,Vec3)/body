@@ -1,5 +1,0 @@
-{
-  if (densityDir > 0)   return vec;
-  Vec3 vec_flow=this.getFlowVector(world,pos);
-  return vec.addVector(vec_flow.xCoord * (quantaPerBlock * 4),vec_flow.yCoord * (quantaPerBlock * 4),vec_flow.zCoord * (quantaPerBlock * 4));
-}

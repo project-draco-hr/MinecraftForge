@@ -1,3 +1,0 @@
-{
-  chestInfo.put(category,new ChestGenHooks(category,items,min,max));
-}

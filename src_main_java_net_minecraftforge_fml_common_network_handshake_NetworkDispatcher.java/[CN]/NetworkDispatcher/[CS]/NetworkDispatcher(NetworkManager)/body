@@ -1,5 +1,5 @@
 {
-  super(Packet.class,false);
+  super(false);
   this.manager=manager;
   this.scm=null;
   this.side=Side.CLIENT;

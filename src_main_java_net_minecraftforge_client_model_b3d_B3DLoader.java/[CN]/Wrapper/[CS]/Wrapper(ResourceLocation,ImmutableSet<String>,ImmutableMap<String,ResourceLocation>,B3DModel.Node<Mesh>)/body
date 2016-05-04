@@ -1,6 +1,0 @@
-{
-  super(mesh);
-  this.location=location;
-  this.meshes=meshes;
-  this.textures=textures;
-}

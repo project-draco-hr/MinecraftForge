@@ -1,4 +1,0 @@
-{
-  super(domain,path);
-  this.mesh=mesh;
-}

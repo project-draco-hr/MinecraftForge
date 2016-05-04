@@ -1,0 +1,10 @@
+{
+  DimensionType.getById(type.getId());
+  if (dimensions.containsKey(id)) {
+    throw new IllegalArgumentException(String.format("Failed to register dimension for id %d, One is already registered",id));
+  }
+  dimensions.put(id,type);
+  if (id >= 0) {
+    dimensionMap.set(id);
+  }
+}

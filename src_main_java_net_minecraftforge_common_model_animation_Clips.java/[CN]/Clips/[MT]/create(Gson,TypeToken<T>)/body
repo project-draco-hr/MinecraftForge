@@ -1,0 +1,96 @@
+{
+  if (type.getRawType() != IClip.class) {
+    return null;
+  }
+  final TypeAdapter<ITimeValue> parameterAdapter=gson.getAdapter(ITimeValue.class);
+  return (TypeAdapter<T>)new TypeAdapter<IClip>(){
+    public void write(    JsonWriter out,    IClip clip) throws IOException {
+      if (clip instanceof IStringSerializable) {
+        out.value("#" + ((IStringSerializable)clip).getName());
+        return;
+      }
+ else       if (clip instanceof TimeClip) {
+        out.beginArray();
+        out.value("apply");
+        TimeClip timeClip=(TimeClip)clip;
+        write(out,timeClip.childClip);
+        parameterAdapter.write(out,timeClip.time);
+        out.endArray();
+        return;
+      }
+ else       if (clip instanceof SlerpClip) {
+        out.beginArray();
+        out.value("slerp");
+        SlerpClip slerpClip=(SlerpClip)clip;
+        write(out,slerpClip.from);
+        write(out,slerpClip.to);
+        parameterAdapter.write(out,slerpClip.input);
+        parameterAdapter.write(out,slerpClip.progress);
+        out.endArray();
+        return;
+      }
+ else       if (clip instanceof TriggerClip) {
+        out.beginArray();
+        out.value("trigger_positive");
+        TriggerClip triggerClip=(TriggerClip)clip;
+        write(out,triggerClip.clip);
+        parameterAdapter.write(out,triggerClip.parameter);
+        out.value(triggerClip.event);
+        out.endArray();
+        return;
+      }
+ else       if (clip instanceof ModelClip) {
+        ModelClip modelClip=(ModelClip)clip;
+        out.value(modelClip.modelLocation + "@" + modelClip.clipName);
+        return;
+      }
+      throw new NotImplementedException("unknown Clip to json: " + clip);
+    }
+    public IClip read(    JsonReader in) throws IOException {
+switch (in.peek()) {
+case BEGIN_ARRAY:
+        in.beginArray();
+      String type=in.nextString();
+    IClip clip;
+  if ("apply".equals(type)) {
+    clip=new TimeClip(read(in),parameterAdapter.read(in));
+  }
+ else   if ("slerp".equals(type)) {
+    clip=new SlerpClip(read(in),read(in),parameterAdapter.read(in),parameterAdapter.read(in));
+  }
+ else   if ("trigger_positive".equals(type)) {
+    clip=new TriggerClip(read(in),parameterAdapter.read(in),in.nextString());
+  }
+ else {
+    throw new IOException("Unknown Clip type \"" + type + "\"");
+  }
+in.endArray();
+return clip;
+case STRING:
+String string=in.nextString();
+if (string.equals("#identity")) {
+return IdentityClip.INSTANCE;
+}
+if (string.startsWith("#")) {
+return new ClipReference(string.substring(1),clipResolver.get());
+}
+ else {
+int at=string.lastIndexOf('@');
+String location=string.substring(0,at);
+String clipName=string.substring(at + 1,string.length());
+ResourceLocation model;
+if (location.indexOf('#') != -1) {
+model=new ModelResourceLocation(location);
+}
+ else {
+model=new ResourceLocation(location);
+}
+return getModelClipNode(model,clipName);
+}
+default :
+throw new IOException("expected Clip, got " + in.peek());
+}
+}
+}
+;
+}

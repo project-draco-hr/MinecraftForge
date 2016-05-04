@@ -9,7 +9,7 @@
     for (    World w : allWorlds) {
       int leakCount=leakedWorlds.count(System.identityHashCode(w));
       if (leakCount == 5) {
-        FMLLog.fine("The world %x (%s) may have leaked: first encounter (5 occurences).\n",System.identityHashCode(w),w.getWorldInfo().getWorldName());
+        FMLLog.fine("The world %x (%s) may have leaked: first encounter (5 occurrences).\n",System.identityHashCode(w),w.getWorldInfo().getWorldName());
       }
  else       if (leakCount % 5 == 0) {
         FMLLog.fine("The world %x (%s) may have leaked: seen %d times.\n",System.identityHashCode(w),w.getWorldInfo().getWorldName(),leakCount);

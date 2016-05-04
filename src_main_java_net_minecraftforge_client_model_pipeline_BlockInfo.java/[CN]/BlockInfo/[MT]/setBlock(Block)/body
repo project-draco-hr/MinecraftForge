@@ -1,5 +1,0 @@
-{
-  this.block=block;
-  cachedTint=-1;
-  cachedMultiplier=-1;
-}

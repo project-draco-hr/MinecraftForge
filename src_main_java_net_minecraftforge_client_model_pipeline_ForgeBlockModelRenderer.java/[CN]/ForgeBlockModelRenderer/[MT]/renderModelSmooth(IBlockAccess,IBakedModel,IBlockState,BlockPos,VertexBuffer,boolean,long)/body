@@ -1,0 +1,15 @@
+{
+  if (ForgeModContainer.forgeLightPipelineEnabled) {
+    if (buffer != lastRendererSmooth.get()) {
+      lastRendererSmooth.set(buffer);
+      VertexBufferConsumer newCons=new VertexBufferConsumer(buffer);
+      wrSmooth.set(newCons);
+      lighterSmooth.get().setParent(newCons);
+    }
+    wrSmooth.get().setOffset(pos);
+    return render(lighterSmooth.get(),world,model,state,pos,buffer,checkSides,rand);
+  }
+ else {
+    return super.renderModelSmooth(world,model,state,pos,buffer,checkSides,rand);
+  }
+}

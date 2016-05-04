@@ -1,0 +1,3 @@
+{
+  storage.readNBT(this,instance,side,nbt);
+}

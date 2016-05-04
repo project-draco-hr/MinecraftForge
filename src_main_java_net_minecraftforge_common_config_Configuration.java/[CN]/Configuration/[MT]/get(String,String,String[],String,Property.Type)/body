@@ -10,13 +10,13 @@
       cat.put(key,prop);
     }
     prop.setDefaultValues(defaultValues);
-    prop.comment=comment;
+    prop.setComment(comment);
     return prop;
   }
  else   if (defaultValues != null) {
     Property prop=new Property(key,defaultValues,type);
     prop.setDefaultValues(defaultValues);
-    prop.comment=comment;
+    prop.setComment(comment);
     cat.put(key,prop);
     return prop;
   }

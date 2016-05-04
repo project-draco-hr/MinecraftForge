@@ -1,0 +1,4 @@
+{
+  ClearableObjectIntIdentityMap<IBlockState> blockstateMap=(ClearableObjectIntIdentityMap<IBlockState>)slaveset.get(BLOCKSTATE_TO_ID);
+  blockstateMap.clear();
+}

@@ -2,6 +2,6 @@
   super(player);
   this.state=state;
   this.originalSpeed=original;
-  this.newSpeed=original;
+  this.setNewSpeed(original);
   this.pos=pos;
 }

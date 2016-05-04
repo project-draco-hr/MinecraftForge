@@ -1,4 +1,0 @@
-String category
-List<WeightedRandomChestContent> items
-int min
-int max

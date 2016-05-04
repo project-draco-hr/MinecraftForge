@@ -1,0 +1,4 @@
+{
+  Vector3f xyz=toXYZ(q);
+  return new Vector3f((float)Math.toDegrees(xyz.x),(float)Math.toDegrees(xyz.y),(float)Math.toDegrees(xyz.z));
+}

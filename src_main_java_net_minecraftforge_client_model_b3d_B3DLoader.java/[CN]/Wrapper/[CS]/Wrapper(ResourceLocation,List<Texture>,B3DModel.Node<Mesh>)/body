@@ -1,3 +1,0 @@
-{
-  this(location,ImmutableSet.<String>of(),buildTextures(textures),mesh);
-}

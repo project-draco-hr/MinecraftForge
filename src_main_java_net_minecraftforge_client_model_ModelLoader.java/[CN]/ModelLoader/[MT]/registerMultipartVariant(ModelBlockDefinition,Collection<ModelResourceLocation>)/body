@@ -1,0 +1,5 @@
+{
+  for (  ModelResourceLocation location : locations) {
+    registerVariant(null,location);
+  }
+}

@@ -1,7 +1,0 @@
-IChunkProvider chunkProvider
-World world
-Random rand
-int chunkX
-int chunkZ
-boolean hasVillageGenerated
-EventType type

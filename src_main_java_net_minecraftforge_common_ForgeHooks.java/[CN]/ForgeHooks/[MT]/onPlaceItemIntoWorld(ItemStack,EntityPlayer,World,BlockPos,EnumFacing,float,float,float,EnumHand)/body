@@ -1,0 +1,62 @@
+{
+  int meta=itemstack.getItemDamage();
+  int size=itemstack.stackSize;
+  NBTTagCompound nbt=null;
+  if (itemstack.getTagCompound() != null) {
+    nbt=(NBTTagCompound)itemstack.getTagCompound().copy();
+  }
+  if (!(itemstack.getItem() instanceof ItemBucket)) {
+    world.captureBlockSnapshots=true;
+  }
+  EnumActionResult ret=itemstack.getItem().onItemUse(itemstack,player,world,pos,hand,side,hitX,hitY,hitZ);
+  world.captureBlockSnapshots=false;
+  if (ret == EnumActionResult.SUCCESS) {
+    int newMeta=itemstack.getItemDamage();
+    int newSize=itemstack.stackSize;
+    NBTTagCompound newNBT=null;
+    if (itemstack.getTagCompound() != null) {
+      newNBT=(NBTTagCompound)itemstack.getTagCompound().copy();
+    }
+    net.minecraftforge.event.world.BlockEvent.PlaceEvent placeEvent=null;
+    @SuppressWarnings("unchecked") List<net.minecraftforge.common.util.BlockSnapshot> blockSnapshots=(List<BlockSnapshot>)world.capturedBlockSnapshots.clone();
+    world.capturedBlockSnapshots.clear();
+    itemstack.setItemDamage(meta);
+    itemstack.stackSize=size;
+    if (nbt != null) {
+      itemstack.setTagCompound(nbt);
+    }
+    if (blockSnapshots.size() > 1) {
+      placeEvent=ForgeEventFactory.onPlayerMultiBlockPlace(player,blockSnapshots,side);
+    }
+ else     if (blockSnapshots.size() == 1) {
+      placeEvent=ForgeEventFactory.onPlayerBlockPlace(player,blockSnapshots.get(0),side);
+    }
+    if (placeEvent != null && (placeEvent.isCanceled())) {
+      ret=EnumActionResult.FAIL;
+      for (      net.minecraftforge.common.util.BlockSnapshot blocksnapshot : blockSnapshots) {
+        world.restoringBlockSnapshots=true;
+        blocksnapshot.restore(true,false);
+        world.restoringBlockSnapshots=false;
+      }
+    }
+ else {
+      itemstack.setItemDamage(newMeta);
+      itemstack.stackSize=newSize;
+      if (nbt != null) {
+        itemstack.setTagCompound(newNBT);
+      }
+      for (      BlockSnapshot snap : blockSnapshots) {
+        int updateFlag=snap.getFlag();
+        IBlockState oldBlock=snap.getReplacedBlock();
+        IBlockState newBlock=world.getBlockState(snap.getPos());
+        if (newBlock != null && !(newBlock.getBlock().hasTileEntity(newBlock))) {
+          newBlock.getBlock().onBlockAdded(world,snap.getPos(),newBlock);
+        }
+        world.markAndNotifyBlock(snap.getPos(),null,oldBlock,newBlock,updateFlag);
+      }
+      player.addStat(StatList.func_188060_a(itemstack.getItem()));
+    }
+  }
+  world.capturedBlockSnapshots.clear();
+  return ret;
+}

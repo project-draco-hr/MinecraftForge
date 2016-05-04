@@ -14,7 +14,7 @@
     }
     return false;
   }
-  Material material=block.getMaterial();
+  Material material=state.getMaterial();
   if (material.blocksMovement() || material == Material.portal) {
     return false;
   }

@@ -1,0 +1,14 @@
+{
+  ModelResourceLocation variant=(ModelResourceLocation)modelLocation;
+  ModelBlockDefinition definition=loader.getModelBlockDefinition(variant);
+  try {
+    VariantList variants=definition.getVariant(variant.getVariant());
+    return new WeightedRandomModel(variant,variants);
+  }
+ catch (  MissingVariantException e) {
+    if (definition.hasMultipartData()) {
+      return new MultipartModel(new ResourceLocation(variant.getResourceDomain(),variant.getResourcePath()),definition.getMultipartData());
+    }
+    throw e;
+  }
+}

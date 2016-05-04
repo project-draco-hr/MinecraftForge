@@ -1,16 +1,16 @@
 {
   try {
     if (dimensions.containsKey(dim)) {
-      WorldProvider provider=providers.get(getProviderType(dim)).newInstance();
-      provider.setDimension(dim);
-      return provider;
+      WorldProvider ret=getProviderType(dim).createDimension();
+      ret.setDimension(dim);
+      return ret;
     }
  else {
       throw new RuntimeException(String.format("No WorldProvider bound for dimension %d",dim));
     }
   }
  catch (  Exception e) {
-    FMLCommonHandler.instance().getFMLLogger().log(Level.ERROR,String.format("An error occured trying to create an instance of WorldProvider %d (%s)",dim,providers.get(getProviderType(dim)).getSimpleName()),e);
+    FMLCommonHandler.instance().getFMLLogger().log(Level.ERROR,String.format("An error occurred trying to create an instance of WorldProvider %d (%s)",dim,getProviderType(dim)),e);
     throw new RuntimeException(e);
   }
 }

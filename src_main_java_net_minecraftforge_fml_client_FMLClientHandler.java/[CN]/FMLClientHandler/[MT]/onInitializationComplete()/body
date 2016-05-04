@@ -4,6 +4,9 @@
   if (wrongMC != null) {
     showGuiScreen(new GuiWrongMinecraft(wrongMC));
   }
+ else   if (j8onlymods != null) {
+    showGuiScreen(new GuiJava8Error(j8onlymods));
+  }
  else   if (modsMissing != null) {
     showGuiScreen(new GuiModsMissing(modsMissing));
   }
@@ -17,8 +20,12 @@
     showGuiScreen(new GuiCustomModLoadingErrorScreen(customError));
   }
  else {
-    Loader.instance().loadingComplete();
-    SplashProgress.finish();
+    logMissingTextureErrors();
+    if (!Loader.instance().java8) {
+      if ((new Date()).getTime() >= ForgeModContainer.java8Reminder + (1000 * 60 * 60* 24)) {
+        showGuiScreen(new GuiJava8Error(new Java8VersionException(Collections.<ModContainer>emptyList())));
+        ForgeModContainer.updateNag();
+      }
+    }
   }
-  logMissingTextureErrors();
 }

@@ -1,0 +1,3 @@
+{
+  super(gen,world,rand,chunkX,chunkZ,hasVillageGenerated);
+}

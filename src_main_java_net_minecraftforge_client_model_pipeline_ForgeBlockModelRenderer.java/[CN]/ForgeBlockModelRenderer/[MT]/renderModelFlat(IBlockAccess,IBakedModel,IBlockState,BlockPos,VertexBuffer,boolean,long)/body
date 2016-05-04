@@ -1,0 +1,15 @@
+{
+  if (ForgeModContainer.forgeLightPipelineEnabled) {
+    if (buffer != lastRendererFlat.get()) {
+      lastRendererFlat.set(buffer);
+      VertexBufferConsumer newCons=new VertexBufferConsumer(buffer);
+      wrFlat.set(newCons);
+      lighterFlat.get().setParent(newCons);
+    }
+    wrFlat.get().setOffset(pos);
+    return render(lighterFlat.get(),world,model,state,pos,buffer,checkSides,rand);
+  }
+ else {
+    return super.renderModelFlat(world,model,state,pos,buffer,checkSides,rand);
+  }
+}

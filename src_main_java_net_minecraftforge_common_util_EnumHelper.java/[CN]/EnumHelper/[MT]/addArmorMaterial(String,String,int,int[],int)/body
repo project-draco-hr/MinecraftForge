@@ -1,3 +1,0 @@
-{
-  return addEnum(ArmorMaterial.class,name,textureName,durability,reductionAmounts,enchantability);
-}

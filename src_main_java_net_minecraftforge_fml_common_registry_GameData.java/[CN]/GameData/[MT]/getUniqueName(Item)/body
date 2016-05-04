@@ -1,7 +1,0 @@
-{
-  if (item == null) {
-    return null;
-  }
-  Object name=getMain().iItemRegistry.getNameForObject(item);
-  return new GameRegistry.UniqueIdentifier(name);
-}

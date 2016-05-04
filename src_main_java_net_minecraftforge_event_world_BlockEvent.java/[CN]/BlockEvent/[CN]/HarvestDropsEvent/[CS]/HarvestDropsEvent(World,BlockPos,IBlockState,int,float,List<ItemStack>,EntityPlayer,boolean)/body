@@ -1,7 +1,7 @@
 {
   super(world,pos,state);
   this.fortuneLevel=fortuneLevel;
-  this.dropChance=dropChance;
+  this.setDropChance(dropChance);
   this.drops=drops;
   this.isSilkTouching=isSilkTouching;
   this.harvester=harvester;

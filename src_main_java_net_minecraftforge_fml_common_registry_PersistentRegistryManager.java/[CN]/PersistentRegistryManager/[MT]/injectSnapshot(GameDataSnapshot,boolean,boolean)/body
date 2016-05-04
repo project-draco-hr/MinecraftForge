@@ -5,10 +5,9 @@
   forAllRegistries(PersistentRegistry.ACTIVE,ValidateRegistryFunction.OPERATION);
   forAllRegistries(PersistentRegistry.ACTIVE,DumpRegistryFunction.OPERATION);
   forAllRegistries(PersistentRegistry.ACTIVE,ResetDelegatesFunction.OPERATION);
-  GameData.getBlockStateIDMap().clear();
-  Arrays.fill(Potion.potionTypes,null);
   for (  Map.Entry<ResourceLocation,GameDataSnapshot.Entry> snapshotEntry : snapshot.entries.entrySet()) {
-    loadPersistentDataToStagingRegistry(injectFrozenData,remaps,missing,snapshotEntry,PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(snapshotEntry.getKey()));
+    final Class<? extends IForgeRegistryEntry> registrySuperType=PersistentRegistry.ACTIVE.getRegistrySuperType(snapshotEntry.getKey());
+    loadPersistentDataToStagingRegistry(injectFrozenData,remaps,missing,snapshotEntry,registrySuperType);
   }
   for (  ResourceLocation dummy : snapshot.entries.get(BLOCKS).dummied) {
     if (missing.get(BLOCKS).containsKey(dummy)) {
@@ -40,12 +39,14 @@
   }
   if (injectFrozenData) {
     for (    Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> r : PersistentRegistry.ACTIVE.registries.entrySet()) {
-      loadFrozenDataToStagingRegistry(remaps,r.getKey(),PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(r.getKey()));
+      final Class<? extends IForgeRegistryEntry> registrySuperType=PersistentRegistry.ACTIVE.getRegistrySuperType(r.getKey());
+      loadFrozenDataToStagingRegistry(remaps,r.getKey(),registrySuperType);
     }
   }
   forAllRegistries(PersistentRegistry.STAGING,ValidateRegistryFunction.OPERATION);
   for (  Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> r : PersistentRegistry.ACTIVE.registries.entrySet()) {
-    loadRegistry(r.getKey(),PersistentRegistry.STAGING,PersistentRegistry.ACTIVE,PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(r.getKey()));
+    final Class<? extends IForgeRegistryEntry> registrySuperType=PersistentRegistry.ACTIVE.getRegistrySuperType(r.getKey());
+    loadRegistry(r.getKey(),PersistentRegistry.STAGING,PersistentRegistry.ACTIVE,registrySuperType);
   }
   forAllRegistries(PersistentRegistry.ACTIVE,DumpRegistryFunction.OPERATION);
   Loader.instance().fireRemapEvent(remaps.get(BLOCKS),remaps.get(ITEMS),false);

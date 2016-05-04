@@ -1,0 +1,5 @@
+{
+  super(entity);
+  this.item=item;
+  this.setDuration(duration);
+}

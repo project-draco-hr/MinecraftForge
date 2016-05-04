@@ -1,4 +1,0 @@
-{
-  super(minecart);
-  this.player=player;
-}

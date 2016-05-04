@@ -1,3 +1,3 @@
 {
-  return isProperty ? prop.getLanguageKey() : ctgy.getLanguagekey();
+  return isProperty ? prop.getLanguageKey() : category.getLanguagekey();
 }

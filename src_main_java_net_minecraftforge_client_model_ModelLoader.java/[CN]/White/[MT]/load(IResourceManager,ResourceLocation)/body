@@ -3,13 +3,10 @@
   Graphics2D graphics=image.createGraphics();
   graphics.setBackground(Color.WHITE);
   graphics.clearRect(0,0,16,16);
-  BufferedImage[] images=new BufferedImage[Minecraft.getMinecraft().gameSettings.mipmapLevels + 1];
-  images[0]=image;
-  try {
-    loadSprite(images,null);
-  }
- catch (  IOException e) {
-    throw new RuntimeException(e);
-  }
+  int[][] pixels=new int[Minecraft.getMinecraft().gameSettings.mipmapLevels + 1][];
+  pixels[0]=new int[image.getWidth() * image.getHeight()];
+  image.getRGB(0,0,image.getWidth(),image.getHeight(),pixels[0],0,image.getWidth());
+  this.clearFramesTextureData();
+  this.framesTextureData.add(pixels);
   return false;
 }

@@ -1,6 +1,0 @@
-{
-  cache.clear();
-  cache.put(new ResourceLocation("minecraft:builtin/generated"),ModelLoader.VanillaLoader.instance.getLoader().getItemModel());
-  cache.put(new ResourceLocation("minecraft:block/builtin/generated"),ModelLoader.VanillaLoader.instance.getLoader().getItemModel());
-  cache.put(new ResourceLocation("minecraft:item/builtin/generated"),ModelLoader.VanillaLoader.instance.getLoader().getItemModel());
-}

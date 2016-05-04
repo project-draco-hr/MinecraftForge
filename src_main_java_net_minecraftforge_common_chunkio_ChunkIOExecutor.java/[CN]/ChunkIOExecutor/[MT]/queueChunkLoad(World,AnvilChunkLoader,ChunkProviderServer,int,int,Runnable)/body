@@ -1,0 +1,13 @@
+{
+  QueuedChunk key=new QueuedChunk(x,z,loader,world,provider);
+  ChunkIOProvider task=tasks.get(key);
+  if (task == null) {
+    task=new ChunkIOProvider(key);
+    task.addCallback(runnable);
+    tasks.put(key,task);
+    pool.execute(task);
+  }
+ else {
+    task.addCallback(runnable);
+  }
+}

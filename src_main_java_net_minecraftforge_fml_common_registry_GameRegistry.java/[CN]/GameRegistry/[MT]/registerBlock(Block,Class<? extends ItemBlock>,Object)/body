@@ -1,3 +1,3 @@
 {
-  return registerBlock(block,itemclass,block.getRegistryName(),itemCtorArgs);
+  return registerBlock(block,itemclass,block.getRegistryName().toString(),itemCtorArgs);
 }

@@ -1,0 +1,11 @@
+{
+  if (from == null && to != null)   return true;
+  if (from == null && to == null)   return false;
+  if (from != null && to == null)   return true;
+  boolean changed=false;
+  if (slot != -1) {
+    changed=slot != slotMainHand;
+    slotMainHand=slot;
+  }
+  return from.getItem().shouldCauseReequipAnimation(from,to,changed);
+}

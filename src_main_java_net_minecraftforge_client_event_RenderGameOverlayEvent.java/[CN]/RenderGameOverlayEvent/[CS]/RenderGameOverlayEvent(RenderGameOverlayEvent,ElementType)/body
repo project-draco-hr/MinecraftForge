@@ -1,5 +1,5 @@
 {
-  this.partialTicks=parent.partialTicks;
-  this.resolution=parent.resolution;
+  this.partialTicks=parent.getPartialTicks();
+  this.resolution=parent.getResolution();
   this.type=type;
 }

@@ -1,0 +1,15 @@
+{
+  boolean handled=false;
+  if (msg instanceof CPacketCustomPayload) {
+    handled=handleServerSideCustomPacket((CPacketCustomPayload)msg,ctx);
+  }
+ else   if (msg instanceof SPacketCustomPayload) {
+    handled=handleClientSideCustomPacket((SPacketCustomPayload)msg,ctx);
+  }
+ else   if (state != ConnectionState.CONNECTED && state != ConnectionState.HANDSHAKECOMPLETE) {
+    handled=handleVanilla(msg);
+  }
+  if (!handled) {
+    ctx.fireChannelRead(msg);
+  }
+}

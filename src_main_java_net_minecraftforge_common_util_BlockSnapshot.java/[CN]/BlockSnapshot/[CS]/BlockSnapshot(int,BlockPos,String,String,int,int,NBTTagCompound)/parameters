@@ -1,6 +1,6 @@
 int dimension
 BlockPos pos
-String modid
+String modId
 String blockName
 int meta
 int flag

@@ -1,0 +1,5 @@
+boolean test
+Class<T> enumType
+String enumName
+Class<?>[] paramTypes
+Object[] paramValues

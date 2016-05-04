@@ -1,3 +1,0 @@
-{
-  instance.add(new QueuedChunk(x,z,loader,world,provider),runnable);
-}

@@ -1,18 +1,23 @@
 {
-  Map<IBlockState,ModelResourceLocation> stateMap=blockModelShapes.getBlockStateMapper().putAllStateModelLocations();
-  List<ModelResourceLocation> variants=Lists.newArrayList(stateMap.values());
-  variants.add(new ModelResourceLocation("minecraft:item_frame","normal"));
-  variants.add(new ModelResourceLocation("minecraft:item_frame","map"));
-  Collections.sort(variants,new Comparator<ModelResourceLocation>(){
-    public int compare(    ModelResourceLocation v1,    ModelResourceLocation v2){
-      return v1.toString().compareTo(v2.toString());
+  List<Block> blocks=Lists.newArrayList(Iterables.filter(Block.blockRegistry,new Predicate<Block>(){
+    public boolean apply(    Block block){
+      return block.getRegistryName() != null;
+    }
+  }
+));
+  Collections.sort(blocks,new Comparator<Block>(){
+    public int compare(    Block b1,    Block b2){
+      return b1.getRegistryName().toString().compareTo(b2.getRegistryName().toString());
     }
   }
 );
-  ProgressBar blockBar=ProgressManager.push("ModelLoader: blocks",variants.size());
-  for (  ModelResourceLocation variant : variants) {
-    loadVariants(ImmutableList.of(variant));
-    blockBar.step(variant.toString());
+  ProgressBar blockBar=ProgressManager.push("ModelLoader: blocks",blocks.size());
+  BlockStateMapper mapper=this.blockModelShapes.getBlockStateMapper();
+  for (  Block block : blocks) {
+    blockBar.step(block.getRegistryName().toString());
+    for (    ResourceLocation location : mapper.getBlockstateLocations(block)) {
+      loadBlock(mapper,block,location);
+    }
   }
   ProgressManager.pop(blockBar);
 }

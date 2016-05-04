@@ -1,0 +1,13 @@
+{
+  float w2=q.w * q.w;
+  float x2=q.x * q.x;
+  float y2=q.y * q.y;
+  float z2=q.z * q.z;
+  float l=w2 + x2 + y2+ z2;
+  float sy=2 * q.w * q.x - 2 * q.y * q.z;
+  float y=(float)Math.asin(sy / l);
+  if (Math.abs(sy) > .999f * l) {
+    return new Vector3f(2 * (float)Math.atan2(q.x,q.w),y,0);
+  }
+  return new Vector3f((float)Math.atan2(2 * q.y * q.z + 2 * q.x * q.w,w2 - x2 - y2 + z2),y,(float)Math.atan2(2 * q.x * q.y + 2 * q.w * q.z,w2 + x2 - y2 - z2));
+}

@@ -1,0 +1,3 @@
+{
+  enqueueMessage(sourceMod,modId,new IMCMessage(key,value));
+}

@@ -1,13 +1,13 @@
 {
-  this.world=world;
-  this.dimId=world.provider.getDimensionId();
-  this.pos=pos.getImmutable();
-  this.replacedBlock=state;
-  this.blockIdentifier=GameRegistry.findUniqueIdentifierFor(state.getBlock());
+  this.setWorld(world);
+  this.dimId=world.provider.getDimension();
+  this.pos=pos.toImmutable();
+  this.setReplacedBlock(state);
+  this.registryName=state.getBlock().getRegistryName();
   this.meta=state.getBlock().getMetaFromState(state);
-  this.flag=3;
+  this.setFlag(3);
   this.nbt=nbt;
   if (DEBUG) {
-    System.out.printf("Created BlockSnapshot - [World: %s ][Location: %d,%d,%d ][Block: %s ][Meta: %d ]",world.getWorldInfo().getWorldName(),pos.getX(),pos.getY(),pos.getZ(),blockIdentifier,meta);
+    System.out.printf("Created BlockSnapshot - [World: %s ][Location: %d,%d,%d ][Block: %s ][Meta: %d ]",world.getWorldInfo().getWorldName(),pos.getX(),pos.getY(),pos.getZ(),getRegistryName(),getMeta());
   }
 }

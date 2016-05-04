@@ -1,0 +1,6 @@
+IModel base
+boolean smooth
+boolean gui3d
+boolean uvlock
+ImmutableMap<String,String> textureMap
+ImmutableMap<String,String> customData

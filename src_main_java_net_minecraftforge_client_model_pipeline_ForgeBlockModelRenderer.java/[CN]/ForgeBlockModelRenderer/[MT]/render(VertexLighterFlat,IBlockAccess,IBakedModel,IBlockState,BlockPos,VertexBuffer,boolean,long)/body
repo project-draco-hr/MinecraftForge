@@ -1,0 +1,27 @@
+{
+  lighter.setWorld(world);
+  lighter.setState(state);
+  lighter.setBlockPos(pos);
+  boolean empty=true;
+  List<BakedQuad> quads=model.getQuads(state,null,rand);
+  if (!quads.isEmpty()) {
+    lighter.updateBlockInfo();
+    empty=false;
+    for (    BakedQuad quad : quads) {
+      quad.pipe(lighter);
+    }
+  }
+  for (  EnumFacing side : EnumFacing.values()) {
+    quads=model.getQuads(state,side,rand);
+    if (!quads.isEmpty()) {
+      if (!checkSides || state.shouldSideBeRendered(world,pos,side)) {
+        if (empty)         lighter.updateBlockInfo();
+        empty=false;
+        for (        BakedQuad quad : quads) {
+          quad.pipe(lighter);
+        }
+      }
+    }
+  }
+  return !empty;
+}

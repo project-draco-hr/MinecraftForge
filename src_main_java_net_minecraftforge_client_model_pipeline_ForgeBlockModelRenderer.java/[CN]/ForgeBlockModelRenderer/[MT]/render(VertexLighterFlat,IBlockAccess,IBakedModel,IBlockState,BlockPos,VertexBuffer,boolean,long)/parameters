@@ -1,0 +1,8 @@
+VertexLighterFlat lighter
+IBlockAccess world
+IBakedModel model
+IBlockState state
+BlockPos pos
+VertexBuffer wr
+boolean checkSides
+long rand

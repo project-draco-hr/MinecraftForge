@@ -1,7 +1,0 @@
-{
-  SeedEntry entry=(SeedEntry)WeightedRandom.getRandomItem(rand,seedList);
-  if (entry == null || entry.seed == null) {
-    return null;
-  }
-  return entry.seed.copy();
-}

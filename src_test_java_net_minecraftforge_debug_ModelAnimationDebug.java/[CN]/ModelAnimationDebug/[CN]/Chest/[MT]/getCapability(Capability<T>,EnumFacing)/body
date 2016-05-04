@@ -1,0 +1,6 @@
+{
+  if (capability == CapabilityAnimation.ANIMATION_CAPABILITY) {
+    return CapabilityAnimation.ANIMATION_CAPABILITY.cast(asm);
+  }
+  return super.getCapability(capability,side);
+}

@@ -1,6 +1,6 @@
 {
   if (brandings == null) {
-    Builder<String> brd=ImmutableList.<String>builder();
+    Builder<String> brd=ImmutableList.builder();
     brd.add(Loader.instance().getMCVersionString());
     brd.add(Loader.instance().getMCPVersionString());
     brd.add("Powered by Forge " + ForgeVersion.getVersion());

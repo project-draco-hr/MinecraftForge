@@ -1,4 +1,0 @@
-{
-  registerItem(item,name);
-  return item;
-}

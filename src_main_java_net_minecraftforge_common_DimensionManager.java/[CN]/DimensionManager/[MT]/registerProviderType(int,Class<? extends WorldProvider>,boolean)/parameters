@@ -1,3 +1,0 @@
-int id
-Class<? extends WorldProvider> provider
-boolean keepLoaded

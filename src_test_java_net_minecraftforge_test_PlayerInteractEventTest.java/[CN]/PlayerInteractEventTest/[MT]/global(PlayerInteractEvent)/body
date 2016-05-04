@@ -1,0 +1,6 @@
+{
+  if (!ENABLE)   return;
+  logger.info("{} | {}",evt.getClass().getSimpleName(),evt.getSide().name());
+  logger.info("{} | stack: {}",evt.getHand(),evt.getItemStack());
+  logger.info("{} | face: {}",evt.getPos(),evt.getFace());
+}

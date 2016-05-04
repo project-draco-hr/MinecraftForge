@@ -1,0 +1,7 @@
+IChunkGenerator chunkProvider
+World world
+Random rand
+int chunkX
+int chunkZ
+boolean hasVillageGenerated
+Populate.EventType type

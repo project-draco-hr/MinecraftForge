@@ -1,12 +1,12 @@
 {
   int hash=7;
-  hash=73 * hash + this.pos.getX();
-  hash=73 * hash + this.pos.getY();
-  hash=73 * hash + this.pos.getZ();
-  hash=73 * hash + this.meta;
-  hash=73 * hash + this.dimId;
-  hash=73 * hash + (this.nbt != null ? this.nbt.hashCode() : 0);
-  hash=73 * hash + (this.world != null ? this.world.hashCode() : 0);
-  hash=73 * hash + (this.blockIdentifier != null ? this.blockIdentifier.hashCode() : 0);
+  hash=73 * hash + this.getPos().getX();
+  hash=73 * hash + this.getPos().getY();
+  hash=73 * hash + this.getPos().getZ();
+  hash=73 * hash + this.getMeta();
+  hash=73 * hash + this.getDimId();
+  hash=73 * hash + (this.getNbt() != null ? this.getNbt().hashCode() : 0);
+  hash=73 * hash + (this.getWorld() != null ? this.getWorld().hashCode() : 0);
+  hash=73 * hash + (this.getRegistryName() != null ? this.getRegistryName().hashCode() : 0);
   return hash;
 }

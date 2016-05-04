@@ -1,3 +1,3 @@
 {
-  return this.itemHandler.getStackInSlot(index);
+  return this.getItemHandler().getStackInSlot(index);
 }

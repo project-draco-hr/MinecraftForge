@@ -1,0 +1,15 @@
+{
+  final ImmutableSetMultimap<ChunkCoordIntPair,Ticket> persistentChunksFor=getPersistentChunksFor(world);
+  final ImmutableSet.Builder<Chunk> builder=ImmutableSet.builder();
+  world.theProfiler.startSection("forcedChunkLoading");
+  builder.addAll(Iterators.transform(persistentChunksFor.keys().iterator(),new Function<ChunkCoordIntPair,Chunk>(){
+    @Nullable @Override public Chunk apply(    @Nullable ChunkCoordIntPair input){
+      return world.getChunkFromChunkCoords(input.chunkXPos,input.chunkZPos);
+    }
+  }
+));
+  world.theProfiler.endStartSection("regularChunkLoading");
+  builder.addAll(chunkIterator);
+  world.theProfiler.endSection();
+  return builder.build().iterator();
+}

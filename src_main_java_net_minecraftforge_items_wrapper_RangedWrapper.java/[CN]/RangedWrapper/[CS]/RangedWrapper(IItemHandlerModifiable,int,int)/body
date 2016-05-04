@@ -1,0 +1,6 @@
+{
+  Preconditions.checkArgument(maxSlotExclusive > minSlot,"Max slot must be greater than min slot");
+  this.compose=compose;
+  this.minSlot=minSlot;
+  this.maxSlot=maxSlotExclusive;
+}

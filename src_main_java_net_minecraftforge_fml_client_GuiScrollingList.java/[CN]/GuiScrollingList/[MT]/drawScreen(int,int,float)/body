@@ -48,19 +48,11 @@
     }
   }
  else {
-    while (isHovering && Mouse.next()) {
-      int scroll=Mouse.getEventDWheel();
-      if (scroll != 0) {
-        if (scroll > 0)         scroll=-1;
- else         if (scroll < 0)         scroll=1;
-        this.scrollDistance+=(float)(scroll * this.slotHeight / 2);
-      }
-    }
     this.initialMouseClickY=-1.0F;
   }
   this.applyScrollLimits();
   Tessellator tess=Tessellator.getInstance();
-  WorldRenderer worldr=tess.getWorldRenderer();
+  VertexBuffer worldr=tess.getBuffer();
   ScaledResolution res=new ScaledResolution(client);
   double scaleW=client.displayWidth / res.getScaledWidth_double();
   double scaleH=client.displayHeight / res.getScaledHeight_double();
@@ -111,9 +103,9 @@
     }
   }
   GlStateManager.disableDepth();
-  int extraHeight=this.getContentHeight() - viewHeight - border;
+  int extraHeight=(this.getContentHeight() + border) - viewHeight;
   if (extraHeight > 0) {
-    int height=viewHeight * viewHeight / this.getContentHeight();
+    int height=(viewHeight * viewHeight) / this.getContentHeight();
     if (height < 32)     height=32;
     if (height > viewHeight - border * 2)     height=viewHeight - border * 2;
     int barTop=(int)this.scrollDistance * (viewHeight - height) / extraHeight + this.top;

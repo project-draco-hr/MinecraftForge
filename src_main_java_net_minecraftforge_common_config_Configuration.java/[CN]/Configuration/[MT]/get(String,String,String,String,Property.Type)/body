@@ -10,7 +10,7 @@
       cat.put(key,prop);
     }
     prop.setDefaultValue(defaultValue);
-    prop.comment=comment;
+    prop.setComment(comment);
     return prop;
   }
  else   if (defaultValue != null) {
@@ -18,7 +18,7 @@
     prop.setValue(defaultValue);
     cat.put(key,prop);
     prop.setDefaultValue(defaultValue);
-    prop.comment=comment;
+    prop.setComment(comment);
     return prop;
   }
  else {

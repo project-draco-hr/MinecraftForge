@@ -13,9 +13,9 @@
  catch (  IllegalArgumentException e) {
     FMLLog.log(Level.ERROR,"The entity ID %d for mod %s is not an unsigned byte and may not work",id,Loader.instance().activeModContainer().getModId());
   }
-  if (!availableIndicies.get(realId)) {
+  if (!availableIndices.get(realId)) {
     FMLLog.severe("The mod %s has attempted to register an entity ID %d which is already reserved. This could cause severe problems",Loader.instance().activeModContainer().getModId(),id);
   }
-  availableIndicies.clear(realId);
+  availableIndices.clear(realId);
   return realId;
 }

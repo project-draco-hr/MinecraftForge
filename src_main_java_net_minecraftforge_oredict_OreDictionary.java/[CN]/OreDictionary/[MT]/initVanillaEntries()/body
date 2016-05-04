@@ -188,7 +188,7 @@
       if (output != null && containsMatch(false,exclusions,output)) {
         continue;
       }
-      if (containsMatch(true,(ItemStack[])recipe.recipeItems.toArray(new ItemStack[recipe.recipeItems.size()]),replaceStacks)) {
+      if (containsMatch(true,recipe.recipeItems.toArray(new ItemStack[recipe.recipeItems.size()]),replaceStacks)) {
         recipesToRemove.add((IRecipe)obj);
         IRecipe newRecipe=new ShapelessOreRecipe(recipe,replacements);
         recipesToAdd.add(newRecipe);
@@ -198,6 +198,6 @@
   recipes.removeAll(recipesToRemove);
   recipes.addAll(recipesToAdd);
   if (recipesToRemove.size() > 0) {
-    FMLLog.info("Replaced %d ore recipies",recipesToRemove.size());
+    FMLLog.info("Replaced %d ore recipes",recipesToRemove.size());
   }
 }

@@ -4,7 +4,7 @@
   }
   forcedChunks.remove(world);
   dormantChunkCache.remove(world);
-  if (!MinecraftServer.getServer().isServerRunning()) {
+  if (!FMLCommonHandler.instance().getMinecraftServerInstance().isServerRunning()) {
     playerTickets.clear();
     tickets.clear();
   }

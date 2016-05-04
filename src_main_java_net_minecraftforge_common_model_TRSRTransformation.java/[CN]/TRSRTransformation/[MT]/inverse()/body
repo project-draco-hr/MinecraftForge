@@ -1,0 +1,6 @@
+{
+  if (this == identity)   return this;
+  Matrix4f m=getMatrix();
+  m.invert();
+  return new TRSRTransformation(m);
+}

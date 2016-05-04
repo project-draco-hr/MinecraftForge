@@ -1,0 +1,7 @@
+ResourceLocation defaultKey
+int minIdValue
+int maxIdValue
+Class<I> type
+AddCallback<I> addCallback
+ClearCallback<I> clearCallback
+CreateCallback<I> createCallback

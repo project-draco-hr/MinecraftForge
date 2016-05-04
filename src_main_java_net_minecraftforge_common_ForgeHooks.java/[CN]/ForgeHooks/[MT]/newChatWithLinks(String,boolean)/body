@@ -1,5 +1,5 @@
 {
-  IChatComponent ichat=null;
+  ITextComponent ichat=null;
   Matcher matcher=URL_PATTERN.matcher(string);
   int lastEnd=0;
   while (matcher.find()) {
@@ -7,16 +7,16 @@
     int end=matcher.end();
     String part=string.substring(lastEnd,start);
     if (part.length() > 0) {
-      if (ichat == null)       ichat=new ChatComponentText(part);
+      if (ichat == null)       ichat=new TextComponentString(part);
  else       ichat.appendText(part);
     }
     lastEnd=end;
     String url=string.substring(start,end);
-    IChatComponent link=new ChatComponentText(url);
+    ITextComponent link=new TextComponentString(url);
     try {
       if ((new URI(url)).getScheme() == null) {
         if (!allowMissingHeader) {
-          if (ichat == null)           ichat=new ChatComponentText(url);
+          if (ichat == null)           ichat=new TextComponentString(url);
  else           ichat.appendText(url);
           continue;
         }
@@ -24,19 +24,19 @@
       }
     }
  catch (    URISyntaxException e) {
-      if (ichat == null)       ichat=new ChatComponentText(url);
+      if (ichat == null)       ichat=new TextComponentString(url);
  else       ichat.appendText(url);
       continue;
     }
     ClickEvent click=new ClickEvent(ClickEvent.Action.OPEN_URL,url);
     link.getChatStyle().setChatClickEvent(click);
     link.getChatStyle().setUnderlined(true);
-    link.getChatStyle().setColor(EnumChatFormatting.BLUE);
+    link.getChatStyle().setColor(TextFormatting.BLUE);
     if (ichat == null)     ichat=link;
  else     ichat.appendSibling(link);
   }
   String end=string.substring(lastEnd);
-  if (ichat == null)   ichat=new ChatComponentText(end);
+  if (ichat == null)   ichat=new TextComponentString(end);
  else   if (end.length() > 0)   ichat.appendText(string.substring(lastEnd));
   return ichat;
 }

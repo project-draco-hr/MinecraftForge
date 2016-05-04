@@ -1,11 +1,11 @@
 {
-  IBlockState state=event.world.getBlockState(event.target.getBlockPos());
+  IBlockState state=event.getWorld().getBlockState(event.getTarget().getBlockPos());
   if (state.getBlock() instanceof IFluidBlock) {
     Fluid fluid=((IFluidBlock)state.getBlock()).getFluid();
     FluidStack fs=new FluidStack(fluid,FluidContainerRegistry.BUCKET_VOLUME);
-    ItemStack filled=FluidContainerRegistry.fillFluidContainer(fs,event.current);
+    ItemStack filled=FluidContainerRegistry.fillFluidContainer(fs,event.getEmptyBucket());
     if (filled != null) {
-      event.result=filled;
+      event.setFilledBucket(filled);
       event.setResult(Result.ALLOW);
     }
   }

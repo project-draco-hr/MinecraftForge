@@ -2,9 +2,11 @@
   super.toBytes(buf);
   ByteBufUtils.writeUTF8String(buf,modId);
   buf.writeInt(modEntityTypeId);
-  buf.writeInt(MathHelper.floor_double(entity.posX * 32D));
-  buf.writeInt(MathHelper.floor_double(entity.posY * 32D));
-  buf.writeInt(MathHelper.floor_double(entity.posZ * 32D));
+  buf.writeLong(entity.getUniqueID().getMostSignificantBits());
+  buf.writeLong(entity.getUniqueID().getLeastSignificantBits());
+  buf.writeDouble(entity.posX);
+  buf.writeDouble(entity.posY);
+  buf.writeDouble(entity.posZ);
   buf.writeByte((byte)(entity.rotationYaw * 256.0F / 360.0F));
   buf.writeByte((byte)(entity.rotationPitch * 256.0F / 360.0F));
   if (entity instanceof EntityLivingBase) {
@@ -16,7 +18,7 @@
   ByteBuf tmpBuf=Unpooled.buffer();
   PacketBuffer pb=new PacketBuffer(tmpBuf);
   try {
-    entity.getDataWatcher().writeTo(pb);
+    entity.getDataManager().writeEntries(pb);
   }
  catch (  IOException e) {
     FMLLog.log(Level.FATAL,e,"Encountered fatal exception trying to send entity spawn data watchers");

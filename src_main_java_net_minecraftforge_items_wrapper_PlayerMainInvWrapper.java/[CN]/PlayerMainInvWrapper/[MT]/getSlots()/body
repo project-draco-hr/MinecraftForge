@@ -1,3 +1,0 @@
-{
-  return inventoryPlayer.mainInventory.length;
-}

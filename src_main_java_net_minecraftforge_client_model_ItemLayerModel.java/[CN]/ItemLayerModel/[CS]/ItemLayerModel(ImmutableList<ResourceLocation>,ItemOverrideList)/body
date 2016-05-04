@@ -1,0 +1,4 @@
+{
+  this.textures=textures;
+  this.overrides=overrides;
+}

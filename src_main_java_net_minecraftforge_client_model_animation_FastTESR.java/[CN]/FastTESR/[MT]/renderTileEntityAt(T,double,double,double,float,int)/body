@@ -1,6 +1,6 @@
 {
   Tessellator tessellator=Tessellator.getInstance();
-  WorldRenderer worldRenderer=tessellator.getWorldRenderer();
+  VertexBuffer VertexBuffer=tessellator.getBuffer();
   this.bindTexture(TextureMap.locationBlocksTexture);
   RenderHelper.disableStandardItemLighting();
   GlStateManager.blendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -12,9 +12,9 @@
  else {
     GlStateManager.shadeModel(GL11.GL_FLAT);
   }
-  worldRenderer.begin(GL11.GL_QUADS,DefaultVertexFormats.BLOCK);
-  renderTileEntityFast(te,x,y,z,partialTicks,destroyStage,worldRenderer);
-  worldRenderer.setTranslation(0,0,0);
+  VertexBuffer.begin(GL11.GL_QUADS,DefaultVertexFormats.BLOCK);
+  renderTileEntityFast(te,x,y,z,partialTicks,destroyStage,VertexBuffer);
+  VertexBuffer.setTranslation(0,0,0);
   tessellator.draw();
   RenderHelper.enableStandardItemLighting();
 }

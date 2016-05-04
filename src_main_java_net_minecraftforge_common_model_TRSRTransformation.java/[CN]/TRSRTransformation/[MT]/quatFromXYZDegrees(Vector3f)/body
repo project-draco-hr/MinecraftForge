@@ -1,0 +1,3 @@
+{
+  return quatFromXYZ((float)Math.toRadians(xyz.x),(float)Math.toRadians(xyz.y),(float)Math.toRadians(xyz.z));
+}

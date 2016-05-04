@@ -1,17 +1,11 @@
 {
-  Variants variants=null;
+  IModel model;
   try {
-    variants=definition.getVariants(location.getVariant());
+    model=ModelLoaderRegistry.getModel(location);
   }
- catch (  MissingVariantException e) {
-    missingVariants.add(location);
+ catch (  Exception e) {
+    storeException(location,e);
+    model=getMissingModel();
   }
-  if (variants != null && !variants.getVariants().isEmpty()) {
-    try {
-      stateModels.put(location,new WeightedRandomModel(location,variants));
-    }
- catch (    Throwable e) {
-      throw new RuntimeException(e);
-    }
-  }
+  stateModels.put(location,model);
 }

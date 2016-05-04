@@ -1,5 +1,0 @@
-{
-  if (initAsync()) {
-    finished.add(this);
-  }
-}

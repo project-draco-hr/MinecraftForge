@@ -1,0 +1,23 @@
+{
+  if (stack == null) {
+    return false;
+  }
+  if (inventory != null && addItemStackToInventory(stack,inventory,isCreative)) {
+    if (world != null && pos != null) {
+      world.playSound(null,pos.getX(),pos.getY(),pos.getZ(),SoundEvents.entity_item_pickup,SoundCategory.PLAYERS,0.2F,((world.rand.nextFloat() - world.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+    }
+    return true;
+  }
+ else   if (world != null && pos != null) {
+    double d0=pos.getY() + 0.5d;
+    EntityItem entityitem=new EntityItem(world,pos.getX(),d0,pos.getZ(),stack);
+    entityitem.setPickupDelay(40);
+    entityitem.motionX=0;
+    entityitem.motionZ=0;
+    if (!world.isRemote) {
+      world.spawnEntityInWorld(entityitem);
+    }
+    return true;
+  }
+  return false;
+}

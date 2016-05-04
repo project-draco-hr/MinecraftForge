@@ -1,0 +1,25 @@
+{
+  if (world != null) {
+    worlds.put(id,world);
+    weakWorldMap.put(world,world);
+    server.worldTickTimes.put(id,new long[100]);
+    FMLLog.info("Loading dimension %d (%s) (%s)",id,world.getWorldInfo().getWorldName(),world.getMinecraftServer());
+  }
+ else {
+    worlds.remove(id);
+    server.worldTickTimes.remove(id);
+    FMLLog.info("Unloading dimension %d",id);
+  }
+  ArrayList<WorldServer> tmp=new ArrayList<WorldServer>();
+  if (worlds.get(0) != null)   tmp.add(worlds.get(0));
+  if (worlds.get(-1) != null)   tmp.add(worlds.get(-1));
+  if (worlds.get(1) != null)   tmp.add(worlds.get(1));
+  for (  Entry<Integer,WorldServer> entry : worlds.entrySet()) {
+    int dim=entry.getKey();
+    if (dim >= -1 && dim <= 1) {
+      continue;
+    }
+    tmp.add(entry.getValue());
+  }
+  server.worldServers=tmp.toArray(new WorldServer[tmp.size()]);
+}

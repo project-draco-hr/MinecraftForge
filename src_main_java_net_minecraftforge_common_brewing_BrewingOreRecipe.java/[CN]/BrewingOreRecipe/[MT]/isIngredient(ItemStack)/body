@@ -1,5 +1,5 @@
 {
-  for (  ItemStack target : this.ingredient) {
+  for (  ItemStack target : this.getIngredient()) {
     if (OreDictionary.itemMatches(target,stack,false)) {
       return true;
     }

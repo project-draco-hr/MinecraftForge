@@ -6,20 +6,20 @@
 switch (marker.forge_marker) {
 case 1:
       ForgeBlockStateV1 v1=GSON.fromJson(reader,ForgeBlockStateV1.class);
-    List<ModelBlockDefinition.Variants> variants=Lists.newArrayList();
+    Map<String,VariantList> variants=Maps.newHashMap();
   for (  Entry<String,Collection<ForgeBlockStateV1.Variant>> entry : v1.variants.asMap().entrySet()) {
-    List<ModelBlockDefinition.Variant> mcVars=Lists.newArrayList();
+    List<Variant> mcVars=Lists.newArrayList();
     for (    ForgeBlockStateV1.Variant var : entry.getValue()) {
       boolean uvLock=var.getUvLock().or(false);
       boolean smooth=var.getSmooth().or(true);
       boolean gui3d=var.getGui3d().or(true);
       int weight=var.getWeight().or(1);
-      if (var.getModel() != null && var.getSubmodels().size() == 0 && var.getTextures().size() == 0 && var.getCustomData().size() == 0 && var.getState().orNull() instanceof ModelRotation)       mcVars.add(new ModelBlockDefinition.Variant(var.getModel(),(ModelRotation)var.getState().get(),uvLock,weight));
+      if (var.getModel() != null && var.getSubmodels().size() == 0 && var.getTextures().size() == 0 && var.getCustomData().size() == 0 && var.getState().orNull() instanceof ModelRotation)       mcVars.add(new Variant(var.getModel(),(ModelRotation)var.getState().get(),uvLock,weight));
  else       mcVars.add(new ForgeVariant(var.getModel(),var.getState().or(TRSRTransformation.identity()),uvLock,smooth,gui3d,weight,var.getTextures(),var.getOnlyPartsVariant(),var.getCustomData()));
     }
-    variants.add(new ModelBlockDefinition.Variants(entry.getKey(),mcVars));
+    variants.put(entry.getKey(),new VariantList(mcVars));
   }
-return new ModelBlockDefinition(variants);
+return new ModelBlockDefinition(variants,null);
 default :
 return vanillaGSON.fromJson(reader,ModelBlockDefinition.class);
 }

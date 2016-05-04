@@ -1,0 +1,9 @@
+ResourceLocation registryName
+Class<T> registryType
+ResourceLocation optionalDefaultKey
+int minId
+int maxId
+boolean hasDelegates
+IForgeRegistry.AddCallback<T> addCallback
+IForgeRegistry.ClearCallback<T> clearCallback
+IForgeRegistry.CreateCallback<T> createCallback

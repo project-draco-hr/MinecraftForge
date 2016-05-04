@@ -1,5 +1,5 @@
 {
   PlayerEvent.NameFormat event=new PlayerEvent.NameFormat(player,username);
   MinecraftForge.EVENT_BUS.post(event);
-  return event.displayname;
+  return event.getDisplayname();
 }

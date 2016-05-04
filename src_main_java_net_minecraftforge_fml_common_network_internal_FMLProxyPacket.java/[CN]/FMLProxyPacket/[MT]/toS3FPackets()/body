@@ -2,7 +2,7 @@
   List<Packet<INetHandlerPlayClient>> ret=Lists.newArrayList();
   byte[] data=payload.array();
   if (data.length < PART_SIZE) {
-    ret.add(new S3FPacketCustomPayload(channel,new PacketBuffer(payload.duplicate())));
+    ret.add(new SPacketCustomPayload(channel,new PacketBuffer(payload.duplicate())));
   }
  else {
     int parts=(int)Math.ceil(data.length / (double)(PART_SIZE - 1));
@@ -13,7 +13,7 @@
     preamble.writeString(channel);
     preamble.writeByte(parts);
     preamble.writeInt(data.length);
-    ret.add(new S3FPacketCustomPayload("FML|MP",preamble));
+    ret.add(new SPacketCustomPayload("FML|MP",preamble));
     int offset=0;
     for (int x=0; x < parts; x++) {
       int length=Math.min(PART_SIZE,data.length - offset + 1);
@@ -21,7 +21,7 @@
       tmp[0]=(byte)(x & 0xFF);
       System.arraycopy(data,offset,tmp,1,tmp.length - 1);
       offset+=tmp.length - 1;
-      ret.add(new S3FPacketCustomPayload("FML|MP",new PacketBuffer(Unpooled.wrappedBuffer(tmp))));
+      ret.add(new SPacketCustomPayload("FML|MP",new PacketBuffer(Unpooled.wrappedBuffer(tmp))));
     }
   }
   return ret;

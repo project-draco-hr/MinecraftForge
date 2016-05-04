@@ -1,17 +1,17 @@
 {
-  if (block.getMaterial().isToolNotRequired()) {
+  IBlockState state=world.getBlockState(pos);
+  state=state.getBlock().getActualState(state,world,pos);
+  if (state.getMaterial().isToolNotRequired()) {
     return true;
   }
   ItemStack stack=player.inventory.getCurrentItem();
-  IBlockState state=world.getBlockState(pos);
-  state=state.getBlock().getActualState(state,world,pos);
   String tool=block.getHarvestTool(state);
   if (stack == null || tool == null) {
-    return player.canHarvestBlock(block);
+    return player.canHarvestBlock(state);
   }
   int toolLevel=stack.getItem().getHarvestLevel(stack,tool);
   if (toolLevel < 0) {
-    return player.canHarvestBlock(block);
+    return player.canHarvestBlock(state);
   }
   return toolLevel >= block.getHarvestLevel(state);
 }

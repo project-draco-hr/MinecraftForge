@@ -1,14 +1,14 @@
 {
   FluidStack fluidStack=getFluid(stack);
   if (fluidStack == null) {
-    if (empty != null) {
-      return empty.getDisplayName();
+    if (getEmpty() != null) {
+      return getEmpty().getDisplayName();
     }
     return super.getItemStackDisplayName(stack);
   }
   String unloc=this.getUnlocalizedNameInefficiently(stack);
-  if (StatCollector.canTranslate(unloc + "." + fluidStack.getFluid().getName())) {
-    return StatCollector.translateToLocal(unloc + "." + fluidStack.getFluid().getName());
+  if (I18n.canTranslate(unloc + "." + fluidStack.getFluid().getName())) {
+    return I18n.translateToLocal(unloc + "." + fluidStack.getFluid().getName());
   }
-  return StatCollector.translateToLocalFormatted(unloc + ".name",fluidStack.getLocalizedName());
+  return I18n.translateToLocalFormatted(unloc + ".name",fluidStack.getLocalizedName());
 }

@@ -1,3 +1,31 @@
 {
-  LanguageRegistry.instance().loadLanguagesFor(container,Side.SERVER);
+  String langFile="assets/" + container.getModId().toLowerCase() + "/lang/en_US.lang";
+  File source=container.getSource();
+  InputStream stream=null;
+  ZipFile zip=null;
+  try {
+    if (source.isDirectory() && (Boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment")) {
+      stream=new FileInputStream(new File(source.toURI().resolve(langFile).getPath()));
+    }
+ else {
+      zip=new ZipFile(source);
+      ZipEntry entry=zip.getEntry(langFile);
+      if (entry == null)       throw new FileNotFoundException();
+      stream=zip.getInputStream(entry);
+    }
+    LanguageMap.inject(stream);
+  }
+ catch (  IOException e) {
+  }
+catch (  Exception e) {
+    FMLLog.getLogger().error(e);
+  }
+ finally {
+    IOUtils.closeQuietly(stream);
+    try {
+      if (zip != null)       zip.close();
+    }
+ catch (    IOException e) {
+    }
+  }
 }

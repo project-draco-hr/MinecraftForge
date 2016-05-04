@@ -1,5 +1,0 @@
-{
-  ModelLoader loader=(ModelLoader)modelBakery;
-  MinecraftForge.EVENT_BUS.post(new ModelBakeEvent(modelManager,modelRegistry,loader));
-  loader.onPostBakeEvent(modelRegistry);
-}

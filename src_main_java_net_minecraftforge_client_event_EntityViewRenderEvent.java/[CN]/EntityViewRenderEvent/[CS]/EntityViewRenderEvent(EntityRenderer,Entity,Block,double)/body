@@ -1,6 +1,0 @@
-{
-  this.renderer=renderer;
-  this.entity=entity;
-  this.block=block;
-  this.renderPartialTicks=renderPartialTicks;
-}

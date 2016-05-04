@@ -1,0 +1,81 @@
+{
+  if (FluidRegistry.isUniversalBucketEnabled()) {
+    setBucketModelDefinition(ForgeModContainer.getInstance().universalBucket);
+  }
+  registerVariantNames();
+  List<Item> items=Lists.newArrayList(Iterables.filter(Item.itemRegistry,new Predicate<Item>(){
+    public boolean apply(    Item item){
+      return item.getRegistryName() != null;
+    }
+  }
+));
+  Collections.sort(items,new Comparator<Item>(){
+    public int compare(    Item i1,    Item i2){
+      return i1.getRegistryName().toString().compareTo(i2.getRegistryName().toString());
+    }
+  }
+);
+  ProgressBar itemBar=ProgressManager.push("ModelLoader: items",items.size());
+  for (  Item item : items) {
+    itemBar.step(item.getRegistryName().toString());
+    for (    String s : getVariantNames(item)) {
+      ResourceLocation file=getItemLocation(s);
+      ModelResourceLocation memory=getInventoryVariant(s);
+      IModel model=ModelLoaderRegistry.getMissingModel();
+      Exception exception=null;
+      try {
+        model=ModelLoaderRegistry.getModel(file);
+      }
+ catch (      Exception normalException) {
+        FMLLog.fine("Item json isn't found for '" + memory + "', trying to load the variant from the blockstate json");
+        try {
+          model=ModelLoaderRegistry.getModel(memory);
+        }
+ catch (        Exception blockstateException) {
+          exception=new ItemLoadingException("Could not load item model either from the normal location " + file + " or from the blockstate",normalException,blockstateException);
+        }
+      }
+      stateModels.put(memory,model);
+      if (exception != null) {
+        storeException(memory,exception);
+      }
+    }
+  }
+  ProgressManager.pop(itemBar);
+  if (ForgeModContainer.replaceVanillaBucketModel) {
+    if (!stateModels.containsKey(ModelDynBucket.LOCATION)) {
+      try {
+        registerVariant(getModelBlockDefinition(ModelDynBucket.LOCATION),ModelDynBucket.LOCATION);
+      }
+ catch (      Exception exception) {
+        FMLLog.getLogger().error("Could not load the forge bucket model from the blockstate",exception);
+        return;
+      }
+    }
+    for (    String s : getVariantNames(Items.bucket)) {
+      ModelResourceLocation memory=getInventoryVariant(s);
+      IModel model=ModelLoaderRegistry.getModelOrMissing(new ResourceLocation("forge","item/bucket"));
+      if (model != getMissingModel()) {
+        stateModels.put(memory,model);
+      }
+    }
+    setBucketModel(Items.water_bucket);
+    setBucketModel(Items.lava_bucket);
+    if (FluidRegistry.isFluidRegistered("milk")) {
+      Fluid milk=FluidRegistry.getFluid("milk");
+      FluidStack milkStack=new FluidStack(milk,FluidContainerRegistry.BUCKET_VOLUME);
+      if (FluidContainerRegistry.getContainerCapacity(milkStack,new ItemStack(Items.bucket)) == FluidContainerRegistry.BUCKET_VOLUME) {
+        setBucketModel(Items.milk_bucket);
+      }
+    }
+ else {
+      for (      String s : getVariantNames(Items.milk_bucket)) {
+        ModelResourceLocation memory=getInventoryVariant(s);
+        IModel model=ModelLoaderRegistry.getModelOrMissing(new ResourceLocation("forge","item/bucket_milk"));
+        if (model != getMissingModel()) {
+          stateModels.put(memory,model);
+        }
+      }
+    }
+  }
+}

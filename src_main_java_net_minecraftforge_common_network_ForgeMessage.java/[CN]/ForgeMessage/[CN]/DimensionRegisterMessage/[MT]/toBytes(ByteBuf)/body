@@ -1,4 +1,6 @@
 {
   bytes.writeInt(this.dimensionId);
-  bytes.writeInt(this.providerId);
+  byte[] data=this.providerId.getBytes(Charsets.UTF_8);
+  bytes.writeShort(data.length);
+  bytes.writeBytes(data);
 }

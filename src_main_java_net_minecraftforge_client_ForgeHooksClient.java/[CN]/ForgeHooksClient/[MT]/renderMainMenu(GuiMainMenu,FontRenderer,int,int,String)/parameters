@@ -1,0 +1,5 @@
+GuiMainMenu gui
+FontRenderer font
+int width
+int height
+String splashText

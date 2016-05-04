@@ -1,0 +1,6 @@
+{
+  if (checkSlot(slot)) {
+    return compose.getStackInSlot(slot + minSlot);
+  }
+  return null;
+}

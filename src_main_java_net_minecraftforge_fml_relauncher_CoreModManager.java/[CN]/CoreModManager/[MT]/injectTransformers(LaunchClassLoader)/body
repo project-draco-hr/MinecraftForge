@@ -1,5 +1,5 @@
 {
   Launch.blackboard.put("fml.deobfuscatedEnvironment",deobfuscatedEnvironment);
   tweaker.injectCascadingTweak("net.minecraftforge.fml.common.launcher.FMLDeobfTweaker");
-  tweakSorting.put("net.minecraftforge.fml.common.launcher.FMLDeobfTweaker",Integer.valueOf(1000));
+  tweakSorting.put("net.minecraftforge.fml.common.launcher.FMLDeobfTweaker",1000);
 }

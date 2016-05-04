@@ -1,0 +1,3 @@
+{
+  return (K)GameData.register_impl(object,name);
+}

@@ -1,0 +1,4 @@
+{
+  LivingEntityUseItemEvent event=new LivingEntityUseItemEvent.Tick(entity,item,duration);
+  return MinecraftForge.EVENT_BUS.post(event) ? -1 : event.getDuration();
+}

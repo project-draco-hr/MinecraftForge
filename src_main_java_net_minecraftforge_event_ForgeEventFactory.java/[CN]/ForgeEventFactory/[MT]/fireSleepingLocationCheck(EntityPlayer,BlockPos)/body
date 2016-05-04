@@ -2,6 +2,9 @@
   SleepingLocationCheckEvent evt=new SleepingLocationCheckEvent(player,sleepingLocation);
   MinecraftForge.EVENT_BUS.post(evt);
   Result canContinueSleep=evt.getResult();
-  if (canContinueSleep == Result.DEFAULT)   return player.worldObj.getBlockState(player.playerLocation).getBlock().isBed(player.worldObj,player.playerLocation,player);
+  if (canContinueSleep == Result.DEFAULT) {
+    IBlockState state=player.worldObj.getBlockState(player.playerLocation);
+    return state.getBlock().isBed(state,player.worldObj,player.playerLocation,player);
+  }
  else   return canContinueSleep == Result.ALLOW;
 }

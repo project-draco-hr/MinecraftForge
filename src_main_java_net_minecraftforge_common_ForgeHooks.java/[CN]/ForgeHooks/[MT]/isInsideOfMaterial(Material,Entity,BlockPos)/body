@@ -11,9 +11,9 @@
   }
   if (filled < 0) {
     filled*=-1;
-    return eyes > (double)(pos.getY() + 1 + (1 - filled));
+    return eyes > pos.getY() + 1 + (1 - filled);
   }
  else {
-    return eyes < (double)(pos.getY() + 1 + filled);
+    return eyes < pos.getY() + 1 + filled;
   }
 }

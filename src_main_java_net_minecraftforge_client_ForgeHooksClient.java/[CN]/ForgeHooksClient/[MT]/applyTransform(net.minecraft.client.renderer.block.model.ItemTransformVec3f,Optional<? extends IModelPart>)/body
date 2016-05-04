@@ -1,0 +1,4 @@
+{
+  if (part.isPresent())   return Optional.absent();
+  return Optional.of(TRSRTransformation.blockCenterToCorner(new TRSRTransformation(transform)));
+}

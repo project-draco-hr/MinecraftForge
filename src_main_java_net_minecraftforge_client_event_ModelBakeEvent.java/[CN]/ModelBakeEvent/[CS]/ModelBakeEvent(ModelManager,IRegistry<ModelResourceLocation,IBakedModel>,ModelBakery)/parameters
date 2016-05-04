@@ -1,3 +1,0 @@
-ModelManager modelManager
-IRegistry<ModelResourceLocation,IBakedModel> modelRegistry
-ModelBakery modelBakery

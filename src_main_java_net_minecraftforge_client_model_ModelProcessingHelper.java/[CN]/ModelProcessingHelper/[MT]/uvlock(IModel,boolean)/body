@@ -1,0 +1,6 @@
+{
+  if (model instanceof IModelUVLock) {
+    model=((IModelUVLock)model).uvlock(uvlock);
+  }
+  return model;
+}

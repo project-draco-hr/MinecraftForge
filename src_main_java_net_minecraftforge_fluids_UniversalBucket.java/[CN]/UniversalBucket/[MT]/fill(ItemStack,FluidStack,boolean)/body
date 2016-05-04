@@ -2,7 +2,7 @@
   if (container.stackSize != 1) {
     return 0;
   }
-  if (resource == null || resource.amount != capacity) {
+  if (resource == null || resource.amount != getCapacity()) {
     return 0;
   }
   if (!FluidRegistry.getBucketFluids().contains(resource.getFluid())) {
@@ -16,5 +16,5 @@
     resource.writeToNBT(tag);
     container.setTagCompound(tag);
   }
-  return capacity;
+  return getCapacity();
 }

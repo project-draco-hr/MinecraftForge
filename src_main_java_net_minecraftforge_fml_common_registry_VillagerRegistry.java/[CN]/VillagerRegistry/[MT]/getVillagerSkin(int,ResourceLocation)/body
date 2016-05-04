@@ -1,6 +1,0 @@
-{
-  if (instance().newVillagers != null && instance().newVillagers.containsKey(villagerType)) {
-    return instance().newVillagers.get(villagerType);
-  }
-  return defaultSkin;
-}

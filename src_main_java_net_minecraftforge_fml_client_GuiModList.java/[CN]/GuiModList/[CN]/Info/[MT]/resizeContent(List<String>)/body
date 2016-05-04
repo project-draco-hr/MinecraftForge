@@ -1,12 +1,12 @@
 {
-  List<IChatComponent> ret=new ArrayList<IChatComponent>();
+  List<ITextComponent> ret=new ArrayList<ITextComponent>();
   for (  String line : lines) {
     if (line == null) {
       ret.add(null);
       continue;
     }
-    IChatComponent chat=ForgeHooks.newChatWithLinks(line,false);
-    ret.addAll(GuiUtilRenderComponents.func_178908_a(chat,this.listWidth - 8,GuiModList.this.fontRendererObj,false,true));
+    ITextComponent chat=ForgeHooks.newChatWithLinks(line,false);
+    ret.addAll(GuiUtilRenderComponents.splitText(chat,this.listWidth - 8,GuiModList.this.fontRendererObj,false,true));
   }
   return ret;
 }

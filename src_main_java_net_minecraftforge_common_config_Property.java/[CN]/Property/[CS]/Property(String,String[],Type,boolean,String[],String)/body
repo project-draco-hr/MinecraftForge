@@ -15,5 +15,5 @@
   this.minValue=String.valueOf(Integer.MIN_VALUE);
   this.maxValue=String.valueOf(Integer.MAX_VALUE);
   this.langKey=langKey;
-  this.comment="";
+  this.setComment("");
 }

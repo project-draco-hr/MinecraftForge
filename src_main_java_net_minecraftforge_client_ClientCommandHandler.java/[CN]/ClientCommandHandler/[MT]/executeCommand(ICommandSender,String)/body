@@ -7,20 +7,20 @@
   String[] args=new String[temp.length - 1];
   String commandName=temp[0];
   System.arraycopy(temp,1,args,0,args.length);
-  ICommand icommand=(ICommand)getCommands().get(commandName);
+  ICommand icommand=getCommands().get(commandName);
   try {
     if (icommand == null) {
       return 0;
     }
-    if (icommand.canCommandSenderUseCommand(sender)) {
+    if (icommand.checkPermission(this.getServer(),sender)) {
       CommandEvent event=new CommandEvent(icommand,sender,args);
       if (MinecraftForge.EVENT_BUS.post(event)) {
-        if (event.exception != null) {
-          throw event.exception;
+        if (event.getException() != null) {
+          throw event.getException();
         }
         return 0;
       }
-      icommand.processCommand(sender,args);
+      this.tryExecute(sender,args,icommand,message);
       return 1;
     }
  else {

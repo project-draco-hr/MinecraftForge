@@ -1,0 +1,5 @@
+Entity entity
+SoundEvent name
+SoundCategory category
+float volume
+float pitch

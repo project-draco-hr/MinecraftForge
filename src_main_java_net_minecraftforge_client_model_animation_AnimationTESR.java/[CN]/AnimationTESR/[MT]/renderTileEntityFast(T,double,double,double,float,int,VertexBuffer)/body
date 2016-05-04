@@ -1,0 +1,24 @@
+{
+  if (!te.hasCapability(CapabilityAnimation.ANIMATION_CAPABILITY,null)) {
+    return;
+  }
+  if (blockRenderer == null)   blockRenderer=Minecraft.getMinecraft().getBlockRendererDispatcher();
+  BlockPos pos=te.getPos();
+  IBlockAccess world=MinecraftForgeClient.getRegionRenderCache(te.getWorld(),pos);
+  IBlockState state=world.getBlockState(pos);
+  if (state.getPropertyNames().contains(Properties.StaticProperty)) {
+    state=state.withProperty(Properties.StaticProperty,false);
+  }
+  if (state instanceof IExtendedBlockState) {
+    IExtendedBlockState exState=(IExtendedBlockState)state;
+    if (exState.getUnlistedNames().contains(Properties.AnimationProperty)) {
+      float time=Animation.getWorldTime(getWorld(),partialTick);
+      Pair<IModelState,Iterable<Event>> pair=te.getCapability(CapabilityAnimation.ANIMATION_CAPABILITY,null).apply(time);
+      handleEvents(te,time,pair.getRight());
+      IBakedModel model=blockRenderer.getBlockModelShapes().getModelForState(exState.getClean());
+      exState=exState.withProperty(Properties.AnimationProperty,pair.getLeft());
+      renderer.setTranslation(x - pos.getX(),y - pos.getY(),z - pos.getZ());
+      blockRenderer.getBlockModelRenderer().renderModel(world,model,exState,pos,renderer,false);
+    }
+  }
+}

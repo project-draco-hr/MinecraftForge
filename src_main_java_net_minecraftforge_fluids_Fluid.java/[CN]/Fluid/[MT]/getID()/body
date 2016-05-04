@@ -1,3 +1,0 @@
-{
-  return FluidRegistry.getFluidID(this.fluidName);
-}

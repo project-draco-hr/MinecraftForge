@@ -1,0 +1,11 @@
+{
+  FillBucketEvent event=new FillBucketEvent(player,stack,world,target);
+  if (MinecraftForge.EVENT_BUS.post(event))   return new ActionResult<ItemStack>(EnumActionResult.FAIL,stack);
+  if (event.getResult() == Result.ALLOW) {
+    if (player.capabilities.isCreativeMode)     return new ActionResult<ItemStack>(EnumActionResult.SUCCESS,stack);
+    if (--stack.stackSize <= 0)     return new ActionResult<ItemStack>(EnumActionResult.SUCCESS,event.getFilledBucket());
+    if (!player.inventory.addItemStackToInventory(event.getFilledBucket()))     player.dropPlayerItemWithRandomChoice(event.getFilledBucket(),false);
+    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS,stack);
+  }
+  return null;
+}

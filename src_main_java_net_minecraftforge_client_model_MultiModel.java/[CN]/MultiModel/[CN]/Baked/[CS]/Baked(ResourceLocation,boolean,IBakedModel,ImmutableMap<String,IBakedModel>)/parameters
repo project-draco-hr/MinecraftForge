@@ -1,0 +1,4 @@
+ResourceLocation location
+boolean perspective
+IBakedModel base
+ImmutableMap<String,IBakedModel> parts

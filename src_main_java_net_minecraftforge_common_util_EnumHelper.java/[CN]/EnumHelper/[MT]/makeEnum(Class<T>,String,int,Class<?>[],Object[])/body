@@ -1,7 +1,7 @@
 {
-  Object[] parms=new Object[additionalValues.length + 2];
-  parms[0]=value;
-  parms[1]=Integer.valueOf(ordinal);
-  System.arraycopy(additionalValues,0,parms,2,additionalValues.length);
-  return enumClass.cast(newInstance.invoke(getConstructorAccessor(enumClass,additionalTypes),new Object[]{parms}));
+  Object[] params=new Object[additionalValues.length + 2];
+  params[0]=value;
+  params[1]=ordinal;
+  System.arraycopy(additionalValues,0,params,2,additionalValues.length);
+  return enumClass.cast(newInstance.invoke(getConstructorAccessor(enumClass,additionalTypes),new Object[]{params}));
 }

@@ -16,7 +16,7 @@
       if (w != null) {
         MinecraftForge.EVENT_BUS.post(new WorldEvent.Unload(w));
         w.flush();
-        setWorld(id,null);
+        setWorld(id,null,w.getMinecraftServer());
       }
     }
   }

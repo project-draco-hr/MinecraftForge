@@ -1,7 +1,0 @@
-{
-  if (block == null) {
-    return null;
-  }
-  Object name=getMain().iBlockRegistry.getNameForObject(block);
-  return new GameRegistry.UniqueIdentifier(name);
-}

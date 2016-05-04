@@ -4,7 +4,7 @@
   for (  BlockPart part : this.model.getElements()) {
     elements.add(new BlockPart(part.positionFrom,part.positionTo,Maps.newHashMap(part.mapFaces),part.partRotation,part.shade));
   }
-  ModelBlock newModel=new ModelBlock(this.model.getParentLocation(),elements,Maps.newHashMap(this.model.textures),this.model.isAmbientOcclusion(),this.model.isGui3d(),model.func_181682_g());
+  ModelBlock newModel=new ModelBlock(this.model.getParentLocation(),elements,Maps.newHashMap(this.model.textures),this.model.isAmbientOcclusion(),this.model.isGui3d(),model.getAllTransforms(),Lists.newArrayList(model.getOverrides()));
   newModel.name=this.model.name;
   newModel.parent=this.model.parent;
   Set<String> removed=Sets.newHashSet();
@@ -30,5 +30,5 @@
       if (removed.contains(entry.getValue().texture))       itr.remove();
     }
   }
-  return new VanillaModelWrapper(location,newModel,animation);
+  return new VanillaModelWrapper(location,newModel,uvlock,animation);
 }

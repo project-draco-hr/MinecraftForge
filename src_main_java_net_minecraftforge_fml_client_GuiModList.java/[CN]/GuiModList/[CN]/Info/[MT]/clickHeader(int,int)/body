@@ -6,12 +6,12 @@
   if (offset <= 0)   return;
   int lineIdx=offset / 10;
   if (lineIdx >= lines.size())   return;
-  IChatComponent line=lines.get(lineIdx);
+  ITextComponent line=lines.get(lineIdx);
   if (line != null) {
     int k=-4;
-    for (    IChatComponent part : (Iterable<IChatComponent>)line) {
-      if (!(part instanceof ChatComponentText))       continue;
-      k+=GuiModList.this.fontRendererObj.getStringWidth(((ChatComponentText)part).getChatComponentText_TextValue());
+    for (    ITextComponent part : line) {
+      if (!(part instanceof TextComponentString))       continue;
+      k+=GuiModList.this.fontRendererObj.getStringWidth(((TextComponentString)part).getChatComponentText_TextValue());
       if (k >= x) {
         GuiModList.this.handleComponentClick(part);
         break;

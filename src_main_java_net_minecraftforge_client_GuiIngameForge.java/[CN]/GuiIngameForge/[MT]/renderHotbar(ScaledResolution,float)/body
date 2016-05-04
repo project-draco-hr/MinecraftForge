@@ -1,0 +1,10 @@
+{
+  if (pre(HOTBAR))   return;
+  if (mc.playerController.isSpectator()) {
+    this.spectatorGui.renderTooltip(res,partialTicks);
+  }
+ else {
+    super.renderHotbar(res,partialTicks);
+  }
+  post(HOTBAR);
+}

@@ -1,7 +1,7 @@
 {
   super(entity);
-  this.targetX=targetX;
-  this.targetY=targetY;
-  this.targetZ=targetZ;
-  this.attackDamage=attackDamage;
+  this.setTargetX(targetX);
+  this.setTargetY(targetY);
+  this.setTargetZ(targetZ);
+  this.setAttackDamage(attackDamage);
 }

@@ -1,0 +1,4 @@
+{
+  DefaultResourcePack pack=Minecraft.getMinecraft().mcDefaultResourcePack;
+  return new SimpleResource(pack.getPackName(),location,pack.getInputStream(location),null,null);
+}

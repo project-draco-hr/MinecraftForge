@@ -1,0 +1,98 @@
+{
+  List<String> failed=Lists.newArrayList();
+  List<String> ignored=Lists.newArrayList();
+  List<String> warned=Lists.newArrayList();
+  List<String> defaulted=Lists.newArrayList();
+  final PersistentRegistry staging=PersistentRegistry.STAGING;
+  final PersistentRegistry active=PersistentRegistry.ACTIVE;
+  for (  FMLMissingMappingsEvent.MissingMapping remap : missedMappings) {
+    FMLMissingMappingsEvent.Action action=remap.getAction();
+    if (action == FMLMissingMappingsEvent.Action.REMAP) {
+      int currId=-1, newId=-1;
+      ResourceLocation newName;
+      if (remap.type == GameRegistry.Type.BLOCK) {
+        currId=staging.getRegistry(BLOCKS,Block.class).getId((Block)remap.getTarget());
+        newName=active.getRegistry(BLOCKS,Block.class).getNameForObject((Block)remap.getTarget());
+        FMLLog.fine("The Block %s is being remapped to %s.",remap.name,newName);
+        missingBlocks.remove(new ResourceLocation(remap.name));
+        newId=staging.getRegistry(BLOCKS,Block.class).add(remap.id,newName,(Block)remap.getTarget());
+        staging.getRegistry(BLOCKS,Block.class).addAlias(remap.resourceLocation,newName);
+      }
+ else       if (remap.type == GameRegistry.Type.ITEM) {
+        currId=staging.getRegistry(ITEMS,Item.class).getId((Item)remap.getTarget());
+        newName=active.getRegistry(ITEMS,Item.class).getNameForObject((Item)remap.getTarget());
+        FMLLog.fine("The Item %s is being remapped to %s.",remap.name,newName);
+        missingItems.remove(new ResourceLocation(remap.name));
+        newId=staging.getRegistry(ITEMS,Item.class).add(remap.id,newName,(Item)remap.getTarget());
+        staging.getRegistry(ITEMS,Item.class).addAlias(remap.resourceLocation,newName);
+      }
+ else {
+        continue;
+      }
+      if (newId != remap.id) {
+        throw new IllegalStateException();
+      }
+      if (currId != newId) {
+        FMLLog.info("Fixed %s id mismatch %s: %d (init) -> %d (map).",remap.type == GameRegistry.Type.BLOCK ? "block" : "item",newName,currId,newId);
+        (remap.type == GameRegistry.Type.BLOCK ? remapBlocks : remapItems).put(newName,new Integer[]{currId,newId});
+      }
+    }
+ else     if (action == FMLMissingMappingsEvent.Action.BLOCKONLY) {
+      FMLLog.fine("The ItemBlock %s is no longer present in the game. The residual block will remain",remap.name);
+    }
+ else {
+      if (action == FMLMissingMappingsEvent.Action.DEFAULT) {
+        defaulted.add(remap.name);
+      }
+ else       if (action == FMLMissingMappingsEvent.Action.IGNORE) {
+        ignored.add(remap.name);
+      }
+ else       if (action == FMLMissingMappingsEvent.Action.FAIL) {
+        failed.add(remap.name);
+      }
+ else       if (action == FMLMissingMappingsEvent.Action.WARN) {
+        warned.add(remap.name);
+      }
+      if (remap.type == GameRegistry.Type.BLOCK) {
+        staging.getRegistry(BLOCKS,Block.class).blockId(remap.id);
+      }
+ else       if (remap.type == GameRegistry.Type.ITEM) {
+        staging.getRegistry(ITEMS,Item.class).blockId(remap.id);
+      }
+    }
+  }
+  if (!defaulted.isEmpty()) {
+    String text="Forge Mod Loader detected missing blocks/items.\n\n" + "There are " + defaulted.size() + " missing blocks and items in this save.\n"+ "If you continue the missing blocks/items will get removed.\n"+ "A world backup will be automatically created in your saves directory.\n\n"+ "Missing Blocks/Items:\n";
+    for (    String s : defaulted)     text+=s + "\n";
+    boolean confirmed=StartupQuery.confirm(text);
+    if (!confirmed) {
+      StartupQuery.abort();
+    }
+    try {
+      String skip=System.getProperty("fml.doNotBackup");
+      if (skip == null || !"true".equals(skip)) {
+        ZipperUtil.backupWorld();
+      }
+ else {
+        for (int x=0; x < 10; x++)         FMLLog.severe("!!!!!!!!!! UPDATING WORLD WITHOUT DOING BACKUP !!!!!!!!!!!!!!!!");
+      }
+    }
+ catch (    IOException e) {
+      StartupQuery.notify("The world backup couldn't be created.\n\n" + e);
+      StartupQuery.abort();
+    }
+    warned.addAll(defaulted);
+  }
+  if (!failed.isEmpty()) {
+    FMLLog.severe("This world contains blocks and items that refuse to be remapped. The world will not be loaded");
+    return failed;
+  }
+  if (!warned.isEmpty()) {
+    FMLLog.warning("This world contains block and item mappings that may cause world breakage");
+    return failed;
+  }
+ else   if (!ignored.isEmpty()) {
+    FMLLog.fine("There were %d missing mappings that have been ignored",ignored.size());
+  }
+  return failed;
+}

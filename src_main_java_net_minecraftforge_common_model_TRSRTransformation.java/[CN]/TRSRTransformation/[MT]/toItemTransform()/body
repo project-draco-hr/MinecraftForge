@@ -1,0 +1,3 @@
+{
+  return new net.minecraft.client.renderer.block.model.ItemTransformVec3f(toLwjgl(toXYZDegrees(getLeftRot())),toLwjgl(getTranslation()),toLwjgl(getScale()));
+}

@@ -4,14 +4,14 @@
     for (int y=0; y <= 2; y++) {
       for (int z=0; z <= 2; z++) {
         BlockPos pos=blockPos.add(x - 1,y - 1,z - 1);
-        Block block=world.getBlockState(pos).getBlock();
-        translucent[x][y][z]=block.isTranslucent();
-        int brightness=this.block.getMixedBrightnessForBlock(world,pos);
+        IBlockState state=world.getBlockState(pos);
+        translucent[x][y][z]=state.isTranslucent();
+        int brightness=state.getPackedLightmapCoords(world,pos);
         s[x][y][z]=(brightness >> 0x14) & 0xF;
         b[x][y][z]=(brightness >> 0x04) & 0xF;
-        ao[x][y][z]=block.getAmbientOcclusionLightValue();
+        ao[x][y][z]=state.getAmbientOcclusionLightValue();
         if (x == 1 && y == 1 && z == 1) {
-          full=block.isFullCube();
+          full=state.isFullCube();
         }
       }
     }

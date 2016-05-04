@@ -1,0 +1,3 @@
+VertexBuffer renderer
+BakedQuad quad
+int color

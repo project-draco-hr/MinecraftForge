@@ -1,0 +1,6 @@
+{
+  if (uvlock == value) {
+    return this;
+  }
+  return new VanillaModelWrapper(location,model,value,animation);
+}

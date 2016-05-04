@@ -1,15 +1,15 @@
 {
   boolean preCancelEvent=false;
-  if (gameType.isCreative() && entityPlayer.getHeldItem() != null && entityPlayer.getHeldItem().getItem() instanceof ItemSword)   preCancelEvent=true;
+  if (gameType.isCreative() && entityPlayer.getHeldItemMainhand() != null && entityPlayer.getHeldItemMainhand().getItem() instanceof ItemSword)   preCancelEvent=true;
   if (gameType.isAdventure()) {
     if (gameType == WorldSettings.GameType.SPECTATOR)     preCancelEvent=true;
     if (!entityPlayer.isAllowEdit()) {
-      ItemStack itemstack=entityPlayer.getCurrentEquippedItem();
+      ItemStack itemstack=entityPlayer.getHeldItemMainhand();
       if (itemstack == null || !itemstack.canDestroy(world.getBlockState(pos).getBlock()))       preCancelEvent=true;
     }
   }
   if (world.getTileEntity(pos) == null) {
-    S23PacketBlockChange packet=new S23PacketBlockChange(world,pos);
+    SPacketBlockChange packet=new SPacketBlockChange(world,pos);
     packet.blockState=Blocks.air.getDefaultState();
     entityPlayer.playerNetServerHandler.sendPacket(packet);
   }
@@ -18,7 +18,7 @@
   event.setCanceled(preCancelEvent);
   MinecraftForge.EVENT_BUS.post(event);
   if (event.isCanceled()) {
-    entityPlayer.playerNetServerHandler.sendPacket(new S23PacketBlockChange(world,pos));
+    entityPlayer.playerNetServerHandler.sendPacket(new SPacketBlockChange(world,pos));
     TileEntity tileentity=world.getTileEntity(pos);
     if (tileentity != null) {
       Packet<?> pkt=tileentity.getDescriptionPacket();

@@ -1,4 +1,0 @@
-{
-  if (meta > CustomVariant.values().length || meta < 0)   meta=0;
-  return this.getDefaultState().withProperty(VARIANT,CustomVariant.values()[meta]);
-}

@@ -1,0 +1,5 @@
+{
+  InitNoiseGensEvent<T> event=new InitNoiseGensEvent<T>(world,rand,original);
+  MinecraftForge.TERRAIN_GEN_BUS.post(event);
+  return event.getNewValues();
+}

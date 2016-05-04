@@ -1,5 +1,5 @@
 {
   super(player);
   this.distance=distance;
-  this.multipler=multiplier;
+  this.multiplier=multiplier;
 }

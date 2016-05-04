@@ -1,0 +1,28 @@
+{
+  FluidStack fluidStack=FluidContainerRegistry.getFluidForFilledItem(stack);
+  if (fluidStack == null) {
+    if (stack.getItem() instanceof IFluidContainerItem) {
+      fluidStack=((IFluidContainerItem)stack.getItem()).getFluid(stack);
+    }
+  }
+  if (fluidStack == null) {
+    return originalModel;
+  }
+  BakedDynBucket model=(BakedDynBucket)originalModel;
+  Fluid fluid=fluidStack.getFluid();
+  String name=fluid.getName();
+  if (!model.cache.containsKey(name)) {
+    IModel parent=model.parent.process(ImmutableMap.of("fluid",name));
+    Function<ResourceLocation,TextureAtlasSprite> textureGetter;
+    textureGetter=new Function<ResourceLocation,TextureAtlasSprite>(){
+      public TextureAtlasSprite apply(      ResourceLocation location){
+        return Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString());
+      }
+    }
+;
+    IBakedModel bakedModel=parent.bake(new SimpleModelState(model.transforms),model.format,textureGetter);
+    model.cache.put(name,bakedModel);
+    return bakedModel;
+  }
+  return model.cache.get(name);
+}

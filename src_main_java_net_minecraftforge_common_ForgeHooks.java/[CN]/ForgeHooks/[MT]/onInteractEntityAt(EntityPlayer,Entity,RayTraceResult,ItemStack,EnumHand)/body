@@ -1,0 +1,4 @@
+{
+  Vec3d vec3d=new Vec3d(ray.hitVec.xCoord - entity.posX,ray.hitVec.yCoord - entity.posY,ray.hitVec.zCoord - entity.posZ);
+  return onInteractEntityAt(player,entity,vec3d,stack,hand);
+}

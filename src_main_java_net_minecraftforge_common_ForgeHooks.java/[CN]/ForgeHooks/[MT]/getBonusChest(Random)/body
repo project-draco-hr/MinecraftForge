@@ -1,3 +1,0 @@
-{
-  return new WorldGeneratorBonusChest(ChestGenHooks.getItems(ChestGenHooks.BONUS_CHEST,rand),ChestGenHooks.getCount(ChestGenHooks.BONUS_CHEST,rand));
-}

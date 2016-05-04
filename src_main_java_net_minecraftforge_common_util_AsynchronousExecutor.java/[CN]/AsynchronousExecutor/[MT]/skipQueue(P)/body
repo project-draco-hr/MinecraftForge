@@ -1,9 +1,0 @@
-{
-  Task task=tasks.get(parameter);
-  if (task != null) {
-    return task.get();
-  }
-  T object=provider.callStage1(parameter);
-  provider.callStage2(parameter,object);
-  return object;
-}

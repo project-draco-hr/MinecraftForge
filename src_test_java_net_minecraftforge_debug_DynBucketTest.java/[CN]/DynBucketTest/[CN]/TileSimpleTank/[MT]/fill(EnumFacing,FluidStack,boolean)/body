@@ -1,7 +1,8 @@
 {
   int filled=tank.fill(resource,doFill);
   if (doFill && filled > 0) {
-    worldObj.markBlockForUpdate(pos);
+    IBlockState state=worldObj.getBlockState(pos);
+    worldObj.notifyBlockUpdate(pos,state,state,8);
   }
   return filled;
 }

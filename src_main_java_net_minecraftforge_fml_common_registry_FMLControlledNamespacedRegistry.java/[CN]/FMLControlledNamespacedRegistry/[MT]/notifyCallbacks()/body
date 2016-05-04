@@ -1,6 +1,6 @@
 {
   if (addCallback == null)   return;
   for (  I i : this.underlyingIntegerMap) {
-    addCallback.onAdd(i,this.underlyingIntegerMap.get(i));
+    addCallback.onAdd(i,this.underlyingIntegerMap.add(i),slaves);
   }
 }

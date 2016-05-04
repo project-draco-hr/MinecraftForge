@@ -1,4 +1,4 @@
 {
   String s=this.getUnlocalizedName();
-  return s == null ? "" : StatCollector.translateToLocal(s);
+  return s == null ? "" : I18n.translateToLocal(s);
 }

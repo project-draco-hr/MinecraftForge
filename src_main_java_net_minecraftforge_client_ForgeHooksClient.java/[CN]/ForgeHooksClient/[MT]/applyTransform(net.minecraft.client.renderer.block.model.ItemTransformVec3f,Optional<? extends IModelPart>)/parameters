@@ -1,0 +1,2 @@
+net.minecraft.client.renderer.block.model.ItemTransformVec3f transform
+Optional<? extends IModelPart> part

@@ -1,3 +1,0 @@
-Block block
-ImmutableMap<IProperty,Comparable> properties
-ImmutableMap<IUnlistedProperty<?>,Optional<?>> unlistedProperties

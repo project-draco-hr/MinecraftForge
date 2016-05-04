@@ -1,3 +1,4 @@
 {
-  TestPotion INSTANCE=new TestPotion(30,new ResourceLocation(modID,"test_potion"),false,0xff00ff);
+  TestPotion INSTANCE=new TestPotion(new ResourceLocation(modID,"test_potion"),false,0xff00ff);
+  GameData.getPotionRegistry().register(-1,new ResourceLocation(modID,"test_potion"),INSTANCE);
 }

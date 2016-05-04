@@ -1,0 +1,4 @@
+{
+  Map<Block,Item> map=(Map<Block,Item>)slaveset.get(BLOCK_TO_ITEM);
+  map.clear();
+}

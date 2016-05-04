@@ -1,53 +1,62 @@
 {
   IModel model;
-  if (location instanceof ModelResourceLocation) {
-    ModelLoader loader=ModelLoader.VanillaLoader.instance.getLoader();
-    if (loader != null) {
-      model=loader.getVariantModel((ModelResourceLocation)location);
-    }
- else {
-      FMLLog.log(Level.ERROR,"Loading model too early, skipping: %s",location);
-      model=getMissingModel();
+  if (cache.containsKey(location))   return cache.get(location);
+  for (  ResourceLocation loading : loadingModels) {
+    if (location.getClass() == loading.getClass() && location.equals(loading)) {
+      throw new LoaderException("circular model dependencies, stack: [" + Joiner.on(", ").join(loadingModels) + "]");
     }
   }
- else {
-    if (cache.containsKey(location))     return cache.get(location);
+  loadingModels.addLast(location);
+  try {
     ResourceLocation actual=getActualLocation(location);
     ICustomModelLoader accepted=null;
     for (    ICustomModelLoader loader : loaders) {
       try {
         if (loader.accepts(actual)) {
           if (accepted != null) {
-            FMLLog.severe("2 loaders (%s and %s) want to load the same model %s",accepted,loader,location);
-            throw new IllegalStateException("2 loaders want to load the same model");
+            throw new LoaderException(String.format("2 loaders (%s and %s) want to load the same model %s",accepted,loader,location));
           }
           accepted=loader;
         }
       }
  catch (      Exception e) {
-        FMLLog.log(Level.ERROR,e,"Exception checking if model %s can be loaded with loader %s, skipping",location,loader);
+        throw new LoaderException(String.format("Exception checking if model %s can be loaded with loader %s, skipping",location,loader),e);
       }
     }
     if (accepted == null) {
-      if (VanillaLoader.instance.accepts(actual))       accepted=VanillaLoader.instance;
+      if (VariantLoader.INSTANCE.accepts(actual)) {
+        accepted=VariantLoader.INSTANCE;
+      }
+ else       if (VanillaLoader.INSTANCE.accepts(actual)) {
+        accepted=VanillaLoader.INSTANCE;
+      }
     }
     if (accepted == null) {
-      FMLLog.severe("no suitable loader found for the model %s, skipping",location);
-      model=getMissingModel();
+      throw new LoaderException("no suitable loader found for the model " + location + ", skipping");
     }
- else {
-      try {
-        model=accepted.loadModel(actual);
-      }
- catch (      IOException e) {
-        throw e;
-      }
-catch (      Exception e) {
-        FMLLog.log(Level.ERROR,e,"Exception loading model %s with loader %s, skipping",location,accepted);
-        model=getMissingModel();
-      }
+    try {
+      model=accepted.loadModel(actual);
+    }
+ catch (    Exception e) {
+      throw new LoaderException(String.format("Exception loading model %s with loader %s, skipping",location,accepted),e);
+    }
+    if (model == getMissingModel()) {
+      throw new LoaderException(String.format("Loader %s returned missing model while loading model %s",accepted,location));
+    }
+    if (model == null) {
+      throw new LoaderException(String.format("Loader %s returned null while loading model %s",accepted,location));
+    }
+    textures.addAll(model.getTextures());
+  }
+  finally {
+    ResourceLocation popLoc=loadingModels.removeLast();
+    if (popLoc != location) {
+      throw new IllegalStateException("Corrupted loading model stack: " + popLoc + " != "+ location);
     }
   }
   cache.put(location,model);
+  for (  ResourceLocation dep : model.getDependencies()) {
+    getModelOrMissing(dep);
+  }
   return model;
 }

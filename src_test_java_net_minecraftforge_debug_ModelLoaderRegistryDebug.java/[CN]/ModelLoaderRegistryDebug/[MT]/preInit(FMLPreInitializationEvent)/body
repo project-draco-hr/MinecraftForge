@@ -1,14 +1,16 @@
 {
-  GameRegistry.registerBlock(CustomModelBlock.instance,CustomModelBlock.name);
-  GameRegistry.registerBlock(OBJTesseractBlock.instance,OBJTesseractBlock.name);
-  GameRegistry.registerBlock(OBJVertexColoring1.instance,OBJVertexColoring1.name);
-  GameRegistry.registerBlock(OBJDirectionEye.instance,OBJDirectionEye.name);
-  GameRegistry.registerBlock(OBJVertexColoring2.instance,OBJVertexColoring2.name);
-  GameRegistry.registerBlock(OBJDirectionBlock.instance,OBJDirectionBlock.name);
-  GameRegistry.registerBlock(OBJCustomDataBlock.instance,OBJCustomDataBlock.name);
-  GameRegistry.registerBlock(OBJDynamicEye.instance,OBJDynamicEye.name);
+  List<Block> blocks=Lists.newArrayList();
+  blocks.add(CustomModelBlock.instance);
+  blocks.add(OBJTesseractBlock.instance);
+  blocks.add(OBJVertexColoring1.instance);
+  blocks.add(OBJVertexColoring2.instance);
+  blocks.add(OBJDirectionBlock.instance);
+  blocks.add(OBJCustomDataBlock.instance);
+  for (  Block block : blocks) {
+    GameRegistry.register(block);
+    GameRegistry.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+  }
   GameRegistry.registerTileEntity(OBJTesseractTileEntity.class,OBJTesseractBlock.name);
   GameRegistry.registerTileEntity(OBJVertexColoring2TileEntity.class,OBJVertexColoring2.name);
-  GameRegistry.registerTileEntity(OBJDynamicEyeTileEntity.class,OBJDynamicEye.name);
   if (event.getSide() == Side.CLIENT)   clientPreInit();
 }

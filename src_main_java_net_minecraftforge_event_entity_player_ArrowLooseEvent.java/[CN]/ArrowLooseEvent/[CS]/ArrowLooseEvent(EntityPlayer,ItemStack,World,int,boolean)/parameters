@@ -1,0 +1,5 @@
+EntityPlayer player
+ItemStack bow
+World world
+int charge
+boolean hasAmmo

@@ -1,0 +1,3 @@
+VertexBuffer wr
+BakedQuad quad
+int auxColor

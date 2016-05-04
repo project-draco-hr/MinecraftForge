@@ -1,13 +1,13 @@
 {
-  this(node,state,smooth,gui3d,format,meshes,textures,CacheBuilder.newBuilder().maximumSize(128).expireAfterAccess(2,TimeUnit.MINUTES).<Integer,BakedWrapper>build(new CacheLoader<Integer,BakedWrapper>(){
-    public BakedWrapper load(    Integer frame) throws Exception {
+  this(node,state,smooth,gui3d,format,meshes,textures,CacheBuilder.newBuilder().maximumSize(128).expireAfterAccess(2,TimeUnit.MINUTES).<Integer,B3DState>build(new CacheLoader<Integer,B3DState>(){
+    public B3DState load(    Integer frame) throws Exception {
       IModelState parent=state;
       Animation newAnimation=node.getAnimation();
       if (parent instanceof B3DState) {
         B3DState ps=(B3DState)parent;
         parent=ps.getParent();
       }
-      return new BakedWrapper(node,new B3DState(newAnimation,frame,frame,0,parent),smooth,gui3d,format,meshes,textures);
+      return new B3DState(newAnimation,frame,frame,0,parent);
     }
   }
 ));

@@ -1,19 +1,20 @@
 {
   ResourceLocation nameToSubstitute=new ResourceLocation(name);
+  final BiMap<Block,Item> blockItemMap=getBlockItemMap();
   if (type == GameRegistry.Type.BLOCK) {
     iBlockRegistry.addSubstitutionAlias(Loader.instance().activeModContainer().getModId(),nameToSubstitute,(Block)toReplace);
     Block orig=iBlockRegistry.activateSubstitution(nameToSubstitute);
-    if (BLOCK_TO_ITEM.containsKey(orig)) {
-      Item i=BLOCK_TO_ITEM.get(orig);
-      BLOCK_TO_ITEM.forcePut((Block)toReplace,i);
+    if (blockItemMap.containsKey(orig)) {
+      Item i=blockItemMap.get(orig);
+      blockItemMap.forcePut((Block)toReplace,i);
     }
   }
  else   if (type == GameRegistry.Type.ITEM) {
     iItemRegistry.addSubstitutionAlias(Loader.instance().activeModContainer().getModId(),nameToSubstitute,(Item)toReplace);
     Item orig=iItemRegistry.activateSubstitution(nameToSubstitute);
-    if (BLOCK_TO_ITEM.containsValue(orig)) {
-      Block b=BLOCK_TO_ITEM.inverse().get(orig);
-      BLOCK_TO_ITEM.forcePut(b,(Item)toReplace);
+    if (blockItemMap.containsValue(orig)) {
+      Block b=blockItemMap.inverse().get(orig);
+      blockItemMap.forcePut(b,(Item)toReplace);
     }
   }
 }

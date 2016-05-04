@@ -1,0 +1,3 @@
+{
+  return vanillaUvTransformGlobalToLocal.get(side);
+}

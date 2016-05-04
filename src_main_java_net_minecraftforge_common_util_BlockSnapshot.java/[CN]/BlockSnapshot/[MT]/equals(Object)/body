@@ -6,22 +6,22 @@
     return false;
   }
   final BlockSnapshot other=(BlockSnapshot)obj;
-  if (!this.pos.equals(other.pos)) {
+  if (!this.getPos().equals(other.getPos())) {
     return false;
   }
-  if (this.meta != other.meta) {
+  if (this.getMeta() != other.getMeta()) {
     return false;
   }
-  if (this.dimId != other.dimId) {
+  if (this.getDimId() != other.getDimId()) {
     return false;
   }
-  if (this.nbt != other.nbt && (this.nbt == null || !this.nbt.equals(other.nbt))) {
+  if (this.getNbt() != other.getNbt() && (this.getNbt() == null || !this.getNbt().equals(other.getNbt()))) {
     return false;
   }
-  if (this.world != other.world && (this.world == null || !this.world.equals(other.world))) {
+  if (this.getWorld() != other.getWorld() && (this.getWorld() == null || !this.getWorld().equals(other.getWorld()))) {
     return false;
   }
-  if (this.blockIdentifier != other.blockIdentifier && (this.blockIdentifier == null || !this.blockIdentifier.equals(other.blockIdentifier))) {
+  if (this.getRegistryName() != other.getRegistryName() && (this.getRegistryName() == null || !this.getRegistryName().equals(other.getRegistryName()))) {
     return false;
   }
   return true;

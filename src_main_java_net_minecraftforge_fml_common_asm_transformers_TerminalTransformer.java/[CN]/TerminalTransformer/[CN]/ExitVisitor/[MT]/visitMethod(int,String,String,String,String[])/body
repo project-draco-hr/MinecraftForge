@@ -1,12 +1,12 @@
 {
-  final boolean warn=!(clsName.equals("net/minecraft/client/Minecraft") || clsName.equals("net/minecraft/server/dedicated/DedicatedServer") || clsName.equals("net/minecraft/server/dedicated/ServerHangWatchdog")|| clsName.equals("net/minecraft/server/dedicated/ServerHangWatchdog$1")|| clsName.equals("net/minecraftforge/fml/common/FMLCommonHandler")|| clsName.startsWith("com/jcraft/jogg/")|| clsName.startsWith("scala/sys/")|| clsName.startsWith("net/minecraft/server/gui/MinecraftServerGui"));
+  final boolean warn=!(clsName.equals("net/minecraft/client/Minecraft") || clsName.equals("net/minecraft/server/dedicated/DedicatedServer") || clsName.equals("net/minecraft/server/dedicated/ServerHangWatchdog")|| clsName.equals("net/minecraft/server/dedicated/ServerHangWatchdog$1")|| clsName.equals("net/minecraftforge/fml/common/FMLCommonHandler")|| clsName.startsWith("com/jcraft/jogg/")|| clsName.startsWith("scala/sys/")|| clsName.startsWith("net/minecraft/server/gui/MinecraftServerGui")|| clsName.startsWith("com/sun/jna/"));
   return new MethodVisitor(Opcodes.ASM5,super.visitMethod(mAccess,mName,mDesc,mSignature,mExceptions)){
     @Override public void visitMethodInsn(    int opcode,    String owner,    String name,    String desc,    boolean isIntf){
       if (opcode == Opcodes.INVOKESTATIC && owner.equals("java/lang/System") && name.equals("exit") && desc.equals("(I)V")) {
         if (warn) {
           FMLRelaunchLog.warning("=============================================================");
           FMLRelaunchLog.warning("MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FML!");
-          FMLRelaunchLog.warning("Offendor: %s.%s%s",ExitVisitor.this.clsName,mName,mDesc);
+          FMLRelaunchLog.warning("Offender: %s.%s%s",ExitVisitor.this.clsName,mName,mDesc);
           FMLRelaunchLog.warning("Use FMLCommonHandler.exitJava instead");
           FMLRelaunchLog.warning("=============================================================");
         }
@@ -17,7 +17,7 @@
         if (warn) {
           FMLRelaunchLog.warning("=============================================================");
           FMLRelaunchLog.warning("MOD HAS DIRECT REFERENCE Runtime.exit() THIS IS NOT ALLOWED REROUTING TO FML!");
-          FMLRelaunchLog.warning("Offendor: %s.%s%s",ExitVisitor.this.clsName,mName,mDesc);
+          FMLRelaunchLog.warning("Offender: %s.%s%s",ExitVisitor.this.clsName,mName,mDesc);
           FMLRelaunchLog.warning("Use FMLCommonHandler.exitJava instead");
           FMLRelaunchLog.warning("=============================================================");
         }

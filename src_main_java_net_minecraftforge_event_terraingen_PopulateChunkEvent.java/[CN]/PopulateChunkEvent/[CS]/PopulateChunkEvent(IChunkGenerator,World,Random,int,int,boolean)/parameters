@@ -1,0 +1,6 @@
+IChunkGenerator gen
+World world
+Random rand
+int chunkX
+int chunkZ
+boolean hasVillageGenerated

@@ -1,8 +1,0 @@
-{
-  this.context=context;
-  this.player=player;
-  this.target=target;
-  this.subID=subID;
-  this.currentItem=currentItem;
-  this.partialTicks=partialTicks;
-}

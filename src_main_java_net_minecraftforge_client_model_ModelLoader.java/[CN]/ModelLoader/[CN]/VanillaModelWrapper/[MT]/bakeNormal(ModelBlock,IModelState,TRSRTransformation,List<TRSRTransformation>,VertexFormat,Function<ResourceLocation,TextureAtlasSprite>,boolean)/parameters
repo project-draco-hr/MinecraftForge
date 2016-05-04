@@ -1,7 +1,0 @@
-ModelBlock model
-IModelState perState
-TRSRTransformation modelState
-List<TRSRTransformation> newTransforms
-VertexFormat format
-Function<ResourceLocation,TextureAtlasSprite> bakedTextureGetter
-boolean uvLocked

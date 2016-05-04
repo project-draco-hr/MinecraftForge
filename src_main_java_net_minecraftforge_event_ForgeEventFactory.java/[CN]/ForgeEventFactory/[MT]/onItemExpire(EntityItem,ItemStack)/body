@@ -2,5 +2,5 @@
   if (item == null)   return -1;
   ItemExpireEvent event=new ItemExpireEvent(entity,(item.getItem() == null ? 6000 : item.getItem().getEntityLifespan(item,entity.worldObj)));
   if (!MinecraftForge.EVENT_BUS.post(event))   return -1;
-  return event.extraLife;
+  return event.getExtraLife();
 }

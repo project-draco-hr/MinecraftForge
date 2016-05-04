@@ -1,5 +1,5 @@
 {
   BlockEvent.HarvestDropsEvent event=new BlockEvent.HarvestDropsEvent(world,pos,state,fortune,dropChance,drops,player,silkTouch);
   MinecraftForge.EVENT_BUS.post(event);
-  return event.dropChance;
+  return event.getDropChance();
 }

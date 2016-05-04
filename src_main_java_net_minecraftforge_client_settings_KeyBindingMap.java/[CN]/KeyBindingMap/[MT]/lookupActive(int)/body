@@ -1,0 +1,10 @@
+{
+  KeyModifier activeModifier=KeyModifier.getActiveModifier();
+  if (!activeModifier.matches(keyCode)) {
+    KeyBinding binding=getBinding(keyCode,activeModifier);
+    if (binding != null) {
+      return binding;
+    }
+  }
+  return getBinding(keyCode,KeyModifier.NONE);
+}

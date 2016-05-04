@@ -1,0 +1,13 @@
+{
+  IBlockState neighbor=world.getBlockState(pos.offset(side));
+  if (neighbor.getMaterial() == state.getMaterial()) {
+    return false;
+  }
+  if (densityDir == -1 && side == EnumFacing.UP) {
+    return true;
+  }
+  if (densityDir == 1 && side == EnumFacing.DOWN) {
+    return true;
+  }
+  return super.shouldSideBeRendered(state,world,pos,side);
+}

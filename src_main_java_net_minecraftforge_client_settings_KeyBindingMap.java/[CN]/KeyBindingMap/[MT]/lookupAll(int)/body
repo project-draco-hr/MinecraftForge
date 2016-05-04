@@ -1,0 +1,10 @@
+{
+  List<KeyBinding> matchingBindings=new ArrayList<KeyBinding>();
+  for (  IntHashMap<Collection<KeyBinding>> bindingsMap : map.values()) {
+    Collection<KeyBinding> bindings=bindingsMap.lookup(keyCode);
+    if (bindings != null) {
+      matchingBindings.addAll(bindings);
+    }
+  }
+  return matchingBindings;
+}

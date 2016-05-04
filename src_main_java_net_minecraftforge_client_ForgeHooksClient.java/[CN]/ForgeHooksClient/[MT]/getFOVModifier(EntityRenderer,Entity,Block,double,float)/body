@@ -1,5 +1,0 @@
-{
-  EntityViewRenderEvent.FOVModifier event=new EntityViewRenderEvent.FOVModifier(renderer,entity,block,renderPartialTicks,fov);
-  MinecraftForge.EVENT_BUS.post(event);
-  return event.getFOV();
-}

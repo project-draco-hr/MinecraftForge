@@ -1,0 +1,6 @@
+{
+  this.location=location;
+  this.model=model;
+  this.uvlock=uvlock;
+  this.animation=animation;
+}

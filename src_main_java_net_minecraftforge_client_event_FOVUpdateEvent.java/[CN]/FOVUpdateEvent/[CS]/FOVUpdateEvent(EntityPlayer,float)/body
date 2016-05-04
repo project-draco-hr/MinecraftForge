@@ -1,5 +1,5 @@
 {
   this.entity=entity;
   this.fov=fov;
-  this.newfov=fov;
+  this.setNewfov(fov);
 }

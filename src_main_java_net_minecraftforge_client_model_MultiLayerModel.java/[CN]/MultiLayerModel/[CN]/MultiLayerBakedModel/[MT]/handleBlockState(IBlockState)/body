@@ -1,7 +1,0 @@
-{
-  Optional<EnumWorldBlockLayer> layer=Optional.of(MinecraftForgeClient.getRenderLayer());
-  if (!models.containsKey(layer)) {
-    return missing;
-  }
-  return models.get(layer);
-}

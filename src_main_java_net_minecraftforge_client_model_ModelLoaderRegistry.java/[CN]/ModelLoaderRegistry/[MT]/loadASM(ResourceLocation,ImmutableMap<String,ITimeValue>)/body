@@ -1,0 +1,3 @@
+{
+  return AnimationStateMachine.load(manager,location,customParameters);
+}

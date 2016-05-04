@@ -1,6 +1,0 @@
-{
-  super.fromBytes(buf);
-  serverX=buf.readInt();
-  serverY=buf.readInt();
-  serverZ=buf.readInt();
-}

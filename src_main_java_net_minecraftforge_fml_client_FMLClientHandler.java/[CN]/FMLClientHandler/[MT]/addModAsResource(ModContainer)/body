@@ -1,5 +1,4 @@
 {
-  LanguageRegistry.instance().loadLanguagesFor(container,Side.CLIENT);
   Class<?> resourcePackType=container.getCustomResourcePackClass();
   if (resourcePackType != null) {
     try {

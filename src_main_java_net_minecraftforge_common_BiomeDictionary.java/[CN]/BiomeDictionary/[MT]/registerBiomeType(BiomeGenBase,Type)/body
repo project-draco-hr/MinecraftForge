@@ -1,18 +1,19 @@
 {
   types=listSubTags(types);
-  if (BiomeGenBase.getBiomeGenArray()[biome.biomeID] != null) {
+  if (BiomeGenBase.biomeRegistry.getNameForObject(biome) != null) {
     for (    Type type : types) {
       if (typeInfoList[type.ordinal()] == null) {
         typeInfoList[type.ordinal()]=new ArrayList<BiomeGenBase>();
       }
       typeInfoList[type.ordinal()].add(biome);
     }
-    if (biomeList[biome.biomeID] == null) {
-      biomeList[biome.biomeID]=new BiomeInfo(types);
+    if (!isBiomeRegistered(biome)) {
+      ResourceLocation location=BiomeGenBase.biomeRegistry.getNameForObject(biome);
+      biomeInfoMap.put(location,new BiomeInfo(types));
     }
  else {
       for (      Type type : types) {
-        biomeList[biome.biomeID].typeList.add(type);
+        getBiomeInfo(biome).typeList.add(type);
       }
     }
     return true;

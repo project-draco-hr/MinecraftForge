@@ -1,3 +1,0 @@
-{
-  return biomeList[biomeID] != null;
-}

@@ -1,0 +1,3 @@
+{
+  return getMain().iSoundEventRegistry;
+}

@@ -26,7 +26,7 @@
     loadCoreMod(classLoader,rootPluginName,new File(FMLTweaker.getJarLocation()));
   }
   if (loadPlugins.isEmpty()) {
-    throw new RuntimeException("A fatal error has occured - no valid fml load plugin was found - this is a completely corrupt FML installation.");
+    throw new RuntimeException("A fatal error has occurred - no valid fml load plugin was found - this is a completely corrupt FML installation.");
   }
   FMLRelaunchLog.fine("All fundamental core mods are successfully located");
   String commandLineCoremods=System.getProperty("fml.coreMods.load","");

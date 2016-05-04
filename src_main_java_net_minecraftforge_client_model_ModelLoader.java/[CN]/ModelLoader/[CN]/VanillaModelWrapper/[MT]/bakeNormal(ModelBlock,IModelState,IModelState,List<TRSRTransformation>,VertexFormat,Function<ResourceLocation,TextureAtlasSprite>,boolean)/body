@@ -1,0 +1,44 @@
+{
+  final TRSRTransformation baseState=modelState.apply(Optional.<IModelPart>absent()).or(TRSRTransformation.identity());
+  TextureAtlasSprite particle=bakedTextureGetter.apply(new ResourceLocation(model.resolveTextureName("particle")));
+  SimpleBakedModel.Builder builder=(new SimpleBakedModel.Builder(model,model.createOverrides())).setTexture(particle);
+  for (int i=0; i < model.getElements().size(); i++) {
+    BlockPart part=model.getElements().get(i);
+    TRSRTransformation transformation=baseState;
+    if (newTransforms.get(i) != null) {
+      transformation=transformation.compose(newTransforms.get(i));
+      BlockPartRotation rot=part.partRotation;
+      if (rot == null)       rot=new BlockPartRotation(new org.lwjgl.util.vector.Vector3f(),EnumFacing.Axis.Y,0,false);
+      part=new BlockPart(part.positionFrom,part.positionTo,part.mapFaces,rot,part.shade);
+    }
+    for (    Map.Entry<EnumFacing,BlockPartFace> e : part.mapFaces.entrySet()) {
+      TextureAtlasSprite textureatlassprite1=bakedTextureGetter.apply(new ResourceLocation(model.resolveTextureName(e.getValue().texture)));
+      if (e.getValue().cullFace == null || !TRSRTransformation.isInteger(transformation.getMatrix())) {
+        builder.addGeneralQuad(makeBakedQuad(part,e.getValue(),textureatlassprite1,e.getKey(),transformation,uvLocked));
+      }
+ else {
+        builder.addFaceQuad(baseState.rotate(e.getValue().cullFace),makeBakedQuad(part,e.getValue(),textureatlassprite1,e.getKey(),transformation,uvLocked));
+      }
+    }
+  }
+  return new IPerspectiveAwareModel.MapWrapper(builder.makeBakedModel(),perState){
+    private final ItemOverrideList overrides=new AnimationItemOverrideList(VanillaModelWrapper.this,modelState,format,bakedTextureGetter,super.getOverrides());
+    @Override public List<BakedQuad> getQuads(    IBlockState state,    EnumFacing side,    long rand){
+      if (state instanceof IExtendedBlockState) {
+        IExtendedBlockState exState=(IExtendedBlockState)state;
+        if (exState.getUnlistedNames().contains(Properties.AnimationProperty)) {
+          IModelState newState=exState.getValue(Properties.AnimationProperty);
+          IExtendedBlockState newExState=exState.withProperty(Properties.AnimationProperty,null);
+          if (newState != null) {
+            return VanillaModelWrapper.this.bake(new ModelStateComposition(modelState,newState),format,bakedTextureGetter).getQuads(newExState,side,rand);
+          }
+        }
+      }
+      return super.getQuads(state,side,rand);
+    }
+    @Override public ItemOverrideList getOverrides(){
+      return overrides;
+    }
+  }
+;
+}

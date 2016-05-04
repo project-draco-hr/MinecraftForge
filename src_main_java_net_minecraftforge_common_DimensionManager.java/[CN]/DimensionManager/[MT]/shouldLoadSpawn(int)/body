@@ -1,4 +1,0 @@
-{
-  int id=getProviderType(dim);
-  return spawnSettings.containsKey(id) && spawnSettings.get(id);
-}

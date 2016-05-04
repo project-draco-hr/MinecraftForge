@@ -1,0 +1,20 @@
+{
+  if (!ENABLE)   return;
+  logger.info("HIT VEC: {}",evt.getHitVec());
+  TileEntity te=evt.getWorld().getTileEntity(evt.getPos());
+  if (te instanceof TileEntityDropper) {
+    evt.setUseBlock(Event.Result.ALLOW);
+    evt.setUseItem(Event.Result.ALLOW);
+  }
+  if (te instanceof TileEntityChest) {
+    evt.setUseBlock(Event.Result.ALLOW);
+    evt.setUseItem(Event.Result.DENY);
+  }
+  if (evt.getItemStack() != null && evt.getItemStack().getItem() == Items.flint_and_steel)   evt.setUseBlock(Event.Result.DENY);
+  if (evt.getHand() == EnumHand.MAIN_HAND && evt.getItemStack() != null && evt.getItemStack().getItem() == Items.painting) {
+    evt.setUseItem(Event.Result.ALLOW);
+  }
+  if (evt.getItemStack() != null && evt.getItemStack().getItem() == Items.spawn_egg) {
+    evt.setCanceled(true);
+  }
+}

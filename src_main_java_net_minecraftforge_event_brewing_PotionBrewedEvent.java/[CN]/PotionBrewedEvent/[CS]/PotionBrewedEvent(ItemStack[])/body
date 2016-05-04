@@ -1,4 +1,0 @@
-{
-  super(brewingStacks);
-  this.brewingStacks=brewingStacks;
-}

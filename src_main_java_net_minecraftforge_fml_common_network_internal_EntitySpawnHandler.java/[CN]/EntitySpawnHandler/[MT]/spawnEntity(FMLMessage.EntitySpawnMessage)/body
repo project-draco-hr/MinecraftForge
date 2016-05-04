@@ -2,7 +2,7 @@
   ModContainer mc=Loader.instance().getIndexedModList().get(spawnMsg.modId);
   EntityRegistration er=EntityRegistry.instance().lookupModSpawn(mc,spawnMsg.modEntityTypeId);
   if (er == null) {
-    throw new RuntimeException("Could not spawn mod entity ModID: " + spawnMsg.modId + " EntityID: "+ spawnMsg.modEntityTypeId+ " at ( "+ spawnMsg.scaledX+ ","+ spawnMsg.scaledY+ ", "+ spawnMsg.scaledZ+ ") Please contact mod author or server admin.");
+    throw new RuntimeException("Could not spawn mod entity ModID: " + spawnMsg.modId + " EntityID: "+ spawnMsg.modEntityTypeId+ " at ( "+ spawnMsg.rawX+ ","+ spawnMsg.rawY+ ", "+ spawnMsg.rawZ+ ") Please contact mod author or server admin.");
   }
   WorldClient wc=FMLClientHandler.instance().getWorldClient();
   Class<? extends Entity> cls=er.getEntityClass();
@@ -12,10 +12,11 @@
       entity=er.doCustomSpawning(spawnMsg);
     }
  else {
-      entity=(Entity)(cls.getConstructor(World.class).newInstance(wc));
+      entity=cls.getConstructor(World.class).newInstance(wc);
       int offset=spawnMsg.entityId - entity.getEntityId();
       entity.setEntityId(spawnMsg.entityId);
-      entity.setLocationAndAngles(spawnMsg.scaledX,spawnMsg.scaledY,spawnMsg.scaledZ,spawnMsg.scaledYaw,spawnMsg.scaledPitch);
+      entity.setUniqueId(spawnMsg.entityUUID);
+      entity.setLocationAndAngles(spawnMsg.rawX,spawnMsg.rawY,spawnMsg.rawZ,spawnMsg.scaledYaw,spawnMsg.scaledPitch);
       if (entity instanceof EntityLiving) {
         ((EntityLiving)entity).rotationYawHead=spawnMsg.scaledHeadYaw;
       }
@@ -26,16 +27,14 @@
         }
       }
     }
-    entity.serverPosX=spawnMsg.rawX;
-    entity.serverPosY=spawnMsg.rawY;
-    entity.serverPosZ=spawnMsg.rawZ;
+    EntityTracker.func_187254_a(entity,spawnMsg.rawX,spawnMsg.rawY,spawnMsg.rawZ);
     EntityPlayerSP clientPlayer=FMLClientHandler.instance().getClientPlayerEntity();
     if (entity instanceof IThrowableEntity) {
       Entity thrower=clientPlayer.getEntityId() == spawnMsg.throwerId ? clientPlayer : wc.getEntityByID(spawnMsg.throwerId);
       ((IThrowableEntity)entity).setThrower(thrower);
     }
     if (spawnMsg.dataWatcherList != null) {
-      entity.getDataWatcher().updateWatchedObjectsFromList(spawnMsg.dataWatcherList);
+      entity.getDataManager().setEntryValues(spawnMsg.dataWatcherList);
     }
     if (spawnMsg.throwerId > 0) {
       entity.setVelocity(spawnMsg.speedScaledX,spawnMsg.speedScaledY,spawnMsg.speedScaledZ);
@@ -46,7 +45,7 @@
     wc.addEntityToWorld(spawnMsg.entityId,entity);
   }
  catch (  Exception e) {
-    FMLLog.log(Level.ERROR,e,"A severe problem occurred during the spawning of an entity at ( " + spawnMsg.scaledX + ","+ spawnMsg.scaledY+ ", "+ spawnMsg.scaledZ+ ")");
+    FMLLog.log(Level.ERROR,e,"A severe problem occurred during the spawning of an entity at ( " + spawnMsg.rawX + ","+ spawnMsg.rawY+ ", "+ spawnMsg.rawZ+ ")");
     throw Throwables.propagate(e);
   }
 }

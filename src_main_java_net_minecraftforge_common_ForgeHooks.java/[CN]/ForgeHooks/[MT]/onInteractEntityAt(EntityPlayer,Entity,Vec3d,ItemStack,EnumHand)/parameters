@@ -1,0 +1,5 @@
+EntityPlayer player
+Entity entity
+Vec3d vec3d
+ItemStack stack
+EnumHand hand

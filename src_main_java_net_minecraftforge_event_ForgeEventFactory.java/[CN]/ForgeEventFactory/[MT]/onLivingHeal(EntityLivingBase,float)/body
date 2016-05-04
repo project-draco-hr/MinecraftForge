@@ -1,4 +1,4 @@
 {
   LivingHealEvent event=new LivingHealEvent(entity,amount);
-  return (MinecraftForge.EVENT_BUS.post(event) ? 0 : event.amount);
+  return (MinecraftForge.EVENT_BUS.post(event) ? 0 : event.getAmount());
 }

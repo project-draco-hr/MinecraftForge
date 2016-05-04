@@ -1,8 +1,8 @@
 {
   if (tessellator == null) {
     Tessellator tes=Tessellator.getInstance();
-    WorldRenderer wr=tes.getWorldRenderer();
-    tessellator=new WorldRendererConsumer(wr);
+    VertexBuffer wr=tes.getBuffer();
+    tessellator=new VertexBufferConsumer(wr);
   }
   return tessellator;
 }

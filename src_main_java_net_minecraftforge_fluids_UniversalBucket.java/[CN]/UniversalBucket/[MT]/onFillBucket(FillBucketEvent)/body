@@ -2,27 +2,27 @@
   if (event.getResult() != Event.Result.DEFAULT) {
     return;
   }
-  if (event.current == null || !event.current.isItemEqual(empty) || (nbtSensitive && ItemStack.areItemStackTagsEqual(event.current,empty))) {
+  if (event.getEmptyBucket() == null || !event.getEmptyBucket().isItemEqual(getEmpty()) || (isNbtSensitive() && ItemStack.areItemStackTagsEqual(event.getEmptyBucket(),getEmpty()))) {
     return;
   }
-  if (event.target == null || event.target.typeOfHit != MovingObjectPosition.MovingObjectType.BLOCK) {
+  if (event.getTarget() == null || event.getTarget().typeOfHit != RayTraceResult.Type.BLOCK) {
     return;
   }
-  World world=event.world;
-  BlockPos pos=event.target.getBlockPos();
+  World world=event.getWorld();
+  BlockPos pos=event.getTarget().getBlockPos();
   IBlockState state=world.getBlockState(pos);
   if (state.getBlock() instanceof IFluidBlock) {
     IFluidBlock fluidBlock=(IFluidBlock)state.getBlock();
     if (fluidBlock.canDrain(world,pos)) {
       FluidStack drained=fluidBlock.drain(world,pos,false);
-      if (drained != null && drained.amount == capacity) {
+      if (drained != null && drained.amount == getCapacity()) {
         ItemStack filledBucket=new ItemStack(this);
         int filled=this.fill(filledBucket,drained,false);
         if (filled == drained.amount) {
           drained=fluidBlock.drain(world,pos,true);
           this.fill(filledBucket,drained,true);
           event.setResult(Event.Result.ALLOW);
-          event.result=filledBucket;
+          event.setFilledBucket(filledBucket);
         }
  else {
           event.setCanceled(true);

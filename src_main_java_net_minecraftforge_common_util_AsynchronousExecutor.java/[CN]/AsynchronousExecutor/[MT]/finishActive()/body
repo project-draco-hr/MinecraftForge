@@ -1,6 +1,0 @@
-{
-  final Queue<Task> finished=this.finished;
-  while (!finished.isEmpty()) {
-    finished.poll().finish();
-  }
-}

@@ -16,7 +16,8 @@
     block.setHarvestLevel("axe",0);
   }
   Blocks.obsidian.setHarvestLevel("pickaxe",3);
-  for (  Block block : new Block[]{emerald_ore,emerald_block,diamond_ore,diamond_block,gold_ore,gold_block,redstone_ore,lit_redstone_ore}) {
+  Block[] oreBlocks=new Block[]{Blocks.emerald_ore,Blocks.emerald_block,Blocks.diamond_ore,Blocks.diamond_block,Blocks.gold_ore,Blocks.gold_block,Blocks.redstone_ore,Blocks.lit_redstone_ore};
+  for (  Block block : oreBlocks) {
     block.setHarvestLevel("pickaxe",2);
   }
   Blocks.iron_ore.setHarvestLevel("pickaxe",1);

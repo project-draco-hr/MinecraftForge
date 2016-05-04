@@ -1,0 +1,3 @@
+EntityPlayerMP player
+String message
+ITextComponent component

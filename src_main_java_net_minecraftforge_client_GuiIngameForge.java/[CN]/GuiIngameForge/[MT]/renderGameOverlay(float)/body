@@ -3,8 +3,8 @@
   eventParent=new RenderGameOverlayEvent(partialTicks,res);
   int width=res.getScaledWidth();
   int height=res.getScaledHeight();
-  renderHealthMount=mc.thePlayer.ridingEntity instanceof EntityLivingBase;
-  renderFood=mc.thePlayer.ridingEntity == null;
+  renderHealthMount=mc.thePlayer.getRidingEntity() instanceof EntityLivingBase;
+  renderFood=mc.thePlayer.getRidingEntity() == null;
   renderJumpBar=mc.thePlayer.isRidingHorse();
   right_height=39;
   left_height=39;
@@ -16,18 +16,20 @@
     renderVignette(mc.thePlayer.getBrightness(partialTicks),res);
   }
  else {
-    GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA,1,0);
+    GlStateManager.enableDepth();
+    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,GlStateManager.SourceFactor.ONE,GlStateManager.DestFactor.ZERO);
   }
   if (renderHelmet)   renderHelmet(res,partialTicks);
-  if (renderPortal && !mc.thePlayer.isPotionActive(Potion.confusion)) {
+  if (renderPortal && !mc.thePlayer.isPotionActive(MobEffects.confusion)) {
     renderPortal(res,partialTicks);
   }
-  if (renderHotbar)   renderTooltip(res,partialTicks);
+  if (renderHotbar)   renderHotbar(res,partialTicks);
   GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
   zLevel=-90.0F;
   rand.setSeed((long)(updateCounter * 312871));
-  if (renderCrosshairs)   renderCrosshairs(width,height);
+  if (renderCrosshairs)   renderCrosshairs(partialTicks);
   if (renderBossHealth)   renderBossHealth();
+  GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
   if (this.mc.playerController.shouldDrawHUD() && this.mc.getRenderViewEntity() instanceof EntityPlayer) {
     if (renderHealth)     renderHealth(width,height);
     if (renderArmor)     renderArmor(width,height);
@@ -42,9 +44,11 @@
  else   if (renderExperiance) {
     renderExperience(width,height);
   }
-  renderToolHightlight(res);
+  renderToolHighlight(res);
   renderHUDText(width,height);
+  renderPotionIcons(res);
   renderRecordOverlay(width,height,partialTicks);
+  renderSubtitles(res);
   renderTitle(width,height,partialTicks);
   Scoreboard scoreboard=this.mc.theWorld.getScoreboard();
   ScoreObjective objective=null;

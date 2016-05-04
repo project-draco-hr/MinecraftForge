@@ -1,5 +1,0 @@
-{
-  super(player);
-  this.item=item;
-  this.duration=duration;
-}

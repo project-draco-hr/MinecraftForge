@@ -1,0 +1,6 @@
+float[][][] unpackedData
+int tint
+EnumFacing orientation
+TextureAtlasSprite texture
+boolean applyDiffuseLighting
+VertexFormat format

@@ -1,5 +1,5 @@
 {
   super(biome);
   originalBiomeDecorator=original;
-  newBiomeDecorator=original;
+  setNewBiomeDecorator(original);
 }

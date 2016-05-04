@@ -1,0 +1,3 @@
+{
+  return addEnum(false,enumType,enumName,paramTypes,paramValues);
+}

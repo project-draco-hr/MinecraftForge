@@ -1,6 +1,0 @@
-{
-  super.toBytes(buf);
-  buf.writeInt(serverX);
-  buf.writeInt(serverY);
-  buf.writeInt(serverZ);
-}

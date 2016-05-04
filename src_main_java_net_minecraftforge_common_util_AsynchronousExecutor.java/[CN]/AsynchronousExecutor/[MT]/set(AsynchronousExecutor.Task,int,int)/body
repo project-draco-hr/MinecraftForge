@@ -1,3 +1,0 @@
-{
-  return STATE_FIELD.compareAndSet($this,expected,value);
-}

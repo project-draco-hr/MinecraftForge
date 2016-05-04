@@ -10,7 +10,7 @@
           if (!event.getResult().equals(Result.DENY))           MinecraftForge.EVENT_BUS.post(new PostConfigChangedEvent(modID,configID,isWorldRunning,requiresMcRestart));
           if (requiresMcRestart) {
             flag=false;
-            mc.displayGuiScreen(new GuiMessageDialog(parentScreen,"fml.configgui.gameRestartTitle",new ChatComponentText(I18n.format("fml.configgui.gameRestartRequired")),"fml.configgui.confirmRestartMessage"));
+            mc.displayGuiScreen(new GuiMessageDialog(parentScreen,"fml.configgui.gameRestartTitle",new TextComponentString(I18n.format("fml.configgui.gameRestartRequired")),"fml.configgui.confirmRestartMessage"));
           }
           if (this.parentScreen instanceof GuiConfig)           ((GuiConfig)this.parentScreen).needsRefresh=true;
         }

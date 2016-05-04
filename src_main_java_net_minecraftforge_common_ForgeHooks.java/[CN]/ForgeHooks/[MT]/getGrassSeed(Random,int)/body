@@ -1,0 +1,7 @@
+{
+  SeedEntry entry=WeightedRandom.getRandomItem(rand,seedList);
+  if (entry == null || entry.seed == null) {
+    return null;
+  }
+  return entry.getStack(rand,fortune);
+}

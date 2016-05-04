@@ -1,0 +1,2 @@
+ImmutableMap<Optional<BlockRenderLayer>,IBakedModel> models
+Optional<EnumFacing> side

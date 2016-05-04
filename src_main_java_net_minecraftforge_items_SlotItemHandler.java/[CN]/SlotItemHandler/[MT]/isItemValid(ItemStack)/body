@@ -1,5 +1,5 @@
 {
   if (stack == null)   return false;
-  ItemStack remainder=this.itemHandler.insertItem(index,stack,true);
+  ItemStack remainder=this.getItemHandler().insertItem(index,stack,true);
   return remainder == null || remainder.stackSize < stack.stackSize;
 }

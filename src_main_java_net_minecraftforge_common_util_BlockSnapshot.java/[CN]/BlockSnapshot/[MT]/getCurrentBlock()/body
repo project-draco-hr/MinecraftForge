@@ -1,3 +1,3 @@
 {
-  return world.getBlockState(pos);
+  return getWorld().getBlockState(getPos());
 }

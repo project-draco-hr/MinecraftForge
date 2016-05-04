@@ -10,5 +10,5 @@
   float tmp=y1;
   y1=1f - y2;
   y2=1f - tmp;
-  return putQuad(format,transform,facing,color,x1,y1,x2,y2,z,u1,v1,u2,v2);
+  return putQuad(format,transform,facing,sprite,color,x1,y1,x2,y2,z,u1,v1,u2,v2);
 }

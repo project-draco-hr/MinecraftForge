@@ -1,5 +1,0 @@
-{
-  this.location=location;
-  this.model=model;
-  this.animation=animation;
-}

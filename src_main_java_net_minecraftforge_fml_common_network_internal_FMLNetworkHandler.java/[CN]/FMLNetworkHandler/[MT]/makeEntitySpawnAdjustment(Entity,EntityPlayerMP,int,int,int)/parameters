@@ -1,5 +1,0 @@
-Entity entity
-EntityPlayerMP player
-int serverX
-int serverY
-int serverZ

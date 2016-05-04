@@ -3,7 +3,7 @@
   if (logoPath != null) {
     GlStateManager.enableBlend();
     GuiModList.this.mc.renderEngine.bindTexture(logoPath);
-    WorldRenderer wr=tess.getWorldRenderer();
+    VertexBuffer wr=tess.getBuffer();
     int offset=(this.left + this.listWidth / 2) - (logoDims.width / 2);
     wr.begin(7,DefaultVertexFormats.POSITION_TEX);
     wr.pos(offset,top + logoDims.height,zLevel).tex(0,1).endVertex();
@@ -14,7 +14,7 @@
     GlStateManager.disableBlend();
     top+=logoDims.height + 10;
   }
-  for (  IChatComponent line : lines) {
+  for (  ITextComponent line : lines) {
     if (line != null) {
       GlStateManager.enableBlend();
       GuiModList.this.fontRendererObj.drawStringWithShadow(line.getFormattedText(),this.left + 4,top,0xFFFFFF);

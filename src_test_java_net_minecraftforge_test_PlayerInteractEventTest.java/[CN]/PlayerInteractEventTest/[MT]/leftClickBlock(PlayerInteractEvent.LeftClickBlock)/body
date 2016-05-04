@@ -1,0 +1,9 @@
+{
+  if (!ENABLE)   return;
+  logger.info("HIT VEC: {}",evt.getHitVec());
+  if (evt.getItemStack() != null) {
+    if (evt.getItemStack().getItem() == Items.golden_pickaxe)     evt.setCanceled(true);
+    if (evt.getItemStack().getItem() == Items.diamond_pickaxe)     evt.setUseBlock(Event.Result.DENY);
+    if (evt.getItemStack().getItem() == Items.iron_pickaxe)     evt.setUseItem(Event.Result.DENY);
+  }
+}

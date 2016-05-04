@@ -1,3 +1,3 @@
 {
-  return isProperty ? prop.getName() : ctgy.getQualifiedName();
+  return isProperty ? prop.getName() : category.getQualifiedName();
 }

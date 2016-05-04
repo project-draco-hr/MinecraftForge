@@ -1,3 +1,0 @@
-{
-  this(modelLocation,model,meshes,true,true,defaultKey,textures);
-}

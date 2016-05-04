@@ -1,4 +1,6 @@
 {
   dimensionId=bytes.readInt();
-  providerId=bytes.readInt();
+  byte[] data=new byte[bytes.readShort()];
+  bytes.readBytes(data);
+  providerId=new String(data,Charsets.UTF_8);
 }

@@ -1,8 +1,8 @@
 {
-  Block block=world.getBlockState(pos).getBlock();
-  if (!block.getMaterial().isLiquid()) {
+  IBlockState state=world.getBlockState(pos);
+  if (!state.getMaterial().isLiquid()) {
     return -1000.0;
   }
-  Vec3 vec=((BlockFluidBase)block).getFlowVector(world,pos);
+  Vec3d vec=((BlockFluidBase)state.getBlock()).getFlowVector(world,pos);
   return vec.xCoord == 0.0D && vec.zCoord == 0.0D ? -1000.0D : Math.atan2(vec.zCoord,vec.xCoord) - Math.PI / 2D;
 }

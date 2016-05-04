@@ -1,3 +1,0 @@
-{
-  super(chunkProvider,world,rand,chunkX,chunkZ,hasVillageGenerated);
-}

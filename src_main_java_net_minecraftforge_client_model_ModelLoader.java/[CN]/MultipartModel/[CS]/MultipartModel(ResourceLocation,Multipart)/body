@@ -1,0 +1,9 @@
+{
+  this.location=location;
+  this.multipart=multipart;
+  ImmutableMap.Builder<Selector,IModel> builder=ImmutableMap.builder();
+  for (  Selector selector : multipart.getSelectors()) {
+    builder.put(selector,new WeightedRandomModel(location,selector.getVariantList()));
+  }
+  partModels=builder.build();
+}

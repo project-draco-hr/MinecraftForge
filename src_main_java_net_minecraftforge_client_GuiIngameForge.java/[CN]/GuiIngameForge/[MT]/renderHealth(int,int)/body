@@ -21,9 +21,9 @@
   }
   this.playerHealth=health;
   int healthLast=this.lastPlayerHealth;
-  IAttributeInstance attrMaxHealth=player.getEntityAttribute(SharedMonsterAttributes.maxHealth);
+  IAttributeInstance attrMaxHealth=player.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
   float healthMax=(float)attrMaxHealth.getAttributeValue();
-  float absorb=player.getAbsorptionAmount();
+  float absorb=MathHelper.ceiling_float_int(player.getAbsorptionAmount());
   int healthRows=MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F / 10.0F);
   int rowHeight=Math.max(10 - (healthRows - 2),3);
   this.rand.setSeed((long)(updateCounter * 312871));
@@ -32,14 +32,14 @@
   left_height+=(healthRows * rowHeight);
   if (rowHeight != 10)   left_height+=10 - rowHeight;
   int regen=-1;
-  if (player.isPotionActive(Potion.regeneration)) {
+  if (player.isPotionActive(MobEffects.regeneration)) {
     regen=updateCounter % 25;
   }
   final int TOP=9 * (mc.theWorld.getWorldInfo().isHardcoreModeEnabled() ? 5 : 0);
   final int BACKGROUND=(highlight ? 25 : 16);
   int MARGIN=16;
-  if (player.isPotionActive(Potion.poison))   MARGIN+=36;
- else   if (player.isPotionActive(Potion.wither))   MARGIN+=72;
+  if (player.isPotionActive(MobEffects.poison))   MARGIN+=36;
+ else   if (player.isPotionActive(MobEffects.wither))   MARGIN+=72;
   float absorbRemaining=absorb;
   for (int i=MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F) - 1; i >= 0; --i) {
     int row=MathHelper.ceiling_float_int((float)(i + 1) / 10.0F) - 1;
@@ -53,9 +53,14 @@
  else       if (i * 2 + 1 == healthLast)       drawTexturedModalRect(x,y,MARGIN + 63,TOP,9,9);
     }
     if (absorbRemaining > 0.0F) {
-      if (absorbRemaining == absorb && absorb % 2.0F == 1.0F)       drawTexturedModalRect(x,y,MARGIN + 153,TOP,9,9);
- else       drawTexturedModalRect(x,y,MARGIN + 144,TOP,9,9);
-      absorbRemaining-=2.0F;
+      if (absorbRemaining == absorb && absorb % 2.0F == 1.0F) {
+        drawTexturedModalRect(x,y,MARGIN + 153,TOP,9,9);
+        absorbRemaining-=1.0F;
+      }
+ else {
+        drawTexturedModalRect(x,y,MARGIN + 144,TOP,9,9);
+        absorbRemaining-=2.0F;
+      }
     }
  else {
       if (i * 2 + 1 < health)       drawTexturedModalRect(x,y,MARGIN + 36,TOP,9,9);

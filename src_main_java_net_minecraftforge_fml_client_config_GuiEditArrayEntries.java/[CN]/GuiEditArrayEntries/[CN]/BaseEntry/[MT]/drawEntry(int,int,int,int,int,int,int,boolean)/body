@@ -1,5 +1,5 @@
 {
-  if (this.getValue() != null && this.isValidated)   owningEntryList.mc.fontRendererObj.drawString(isValidValue ? EnumChatFormatting.GREEN + VALID : EnumChatFormatting.RED + INVALID,listWidth / 4 - owningEntryList.mc.fontRendererObj.getStringWidth(VALID) - 2,y + slotHeight / 2 - owningEntryList.mc.fontRendererObj.FONT_HEIGHT / 2,16777215);
+  if (this.getValue() != null && this.isValidated)   owningEntryList.mc.fontRendererObj.drawString(isValidValue ? TextFormatting.GREEN + VALID : TextFormatting.RED + INVALID,listWidth / 4 - owningEntryList.mc.fontRendererObj.getStringWidth(VALID) - 2,y + slotHeight / 2 - owningEntryList.mc.fontRendererObj.FONT_HEIGHT / 2,16777215);
   int half=listWidth / 2;
   if (owningEntryList.canAddMoreEntries) {
     this.btnAddNewEntryAbove.visible=true;

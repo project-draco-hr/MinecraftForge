@@ -34,7 +34,7 @@
       }
     }
  else {
-      List<MethodNode> nowOverridable=Lists.newArrayList();
+      List<MethodNode> nowOverrideable=Lists.newArrayList();
       for (      MethodNode n : classNode.methods) {
         if ((n.name.equals(m.name) && n.desc.equals(m.desc)) || m.name.equals("*")) {
           n.access=getFixedAccess(n.access,m);
@@ -42,7 +42,7 @@
             boolean wasPrivate=(m.oldAccess & ACC_PRIVATE) == ACC_PRIVATE;
             boolean isNowPrivate=(m.newAccess & ACC_PRIVATE) == ACC_PRIVATE;
             if (wasPrivate && !isNowPrivate) {
-              nowOverridable.add(n);
+              nowOverrideable.add(n);
             }
           }
           if (DEBUG) {
@@ -53,7 +53,7 @@
           }
         }
       }
-      replaceInvokeSpecial(classNode,nowOverridable);
+      replaceInvokeSpecial(classNode,nowOverrideable);
     }
   }
   ClassWriter writer=new ClassWriter(ClassWriter.COMPUTE_MAXS);

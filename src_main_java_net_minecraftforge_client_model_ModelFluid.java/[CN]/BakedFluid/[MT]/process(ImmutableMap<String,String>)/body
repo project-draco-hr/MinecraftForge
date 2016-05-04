@@ -5,7 +5,7 @@
   String fluid=e.getAsString();
   if (!FluidRegistry.isFluidRegistered(fluid)) {
     FMLLog.severe("fluid '%s' not found",fluid);
-    return waterModel;
+    return WATER;
   }
   return new ModelFluid(FluidRegistry.getFluid(fluid));
 }

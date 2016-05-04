@@ -1,0 +1,5 @@
+{
+  super(player);
+  this.state=state;
+  this.success=success;
+}

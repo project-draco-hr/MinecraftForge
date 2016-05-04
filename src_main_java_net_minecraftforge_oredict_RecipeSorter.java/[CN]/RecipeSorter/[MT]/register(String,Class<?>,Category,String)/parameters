@@ -1,4 +1,4 @@
 String name
 Class<?> recipe
 Category category
-String dependancies
+String dependencies

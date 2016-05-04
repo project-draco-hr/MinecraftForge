@@ -1,0 +1,10 @@
+{
+  iBlockRegistry=PersistentRegistryManager.createRegistry(PersistentRegistryManager.BLOCKS,Block.class,new ResourceLocation("minecraft:air"),MIN_BLOCK_ID,MAX_BLOCK_ID,true,BlockCallbacks.INSTANCE,BlockCallbacks.INSTANCE,BlockCallbacks.INSTANCE);
+  iItemRegistry=PersistentRegistryManager.createRegistry(PersistentRegistryManager.ITEMS,Item.class,null,MIN_ITEM_ID,MAX_ITEM_ID,true,ItemCallbacks.INSTANCE,ItemCallbacks.INSTANCE,ItemCallbacks.INSTANCE);
+  iPotionRegistry=PersistentRegistryManager.createRegistry(PersistentRegistryManager.POTIONS,Potion.class,null,MIN_POTION_ID,MAX_POTION_ID,false,PotionCallbacks.INSTANCE,PotionCallbacks.INSTANCE,PotionCallbacks.INSTANCE);
+  iBiomeRegistry=PersistentRegistryManager.createRegistry(PersistentRegistryManager.BIOMES,BiomeGenBase.class,null,MIN_BIOME_ID,MAX_BIOME_ID,false,BiomeCallbacks.INSTANCE,BiomeCallbacks.INSTANCE,BiomeCallbacks.INSTANCE);
+  iSoundEventRegistry=PersistentRegistryManager.createRegistry(PersistentRegistryManager.SOUNDEVENTS,SoundEvent.class,null,MIN_SOUND_ID,MAX_SOUND_ID,false,null,null,null);
+  ResourceLocation WATER=new ResourceLocation("water");
+  iPotionTypeRegistry=PersistentRegistryManager.createRegistry(PersistentRegistryManager.POTIONTYPES,PotionType.class,WATER,MIN_POTIONTYPE_ID,MAX_POTIONTYPE_ID,false,null,null,null);
+  iEnchantmentRegistry=PersistentRegistryManager.createRegistry(PersistentRegistryManager.ENCHANTMENTS,Enchantment.class,null,MIN_ENCHANTMENT_ID,MAX_ENCHANTMENT_ID,false,null,null,null);
+}

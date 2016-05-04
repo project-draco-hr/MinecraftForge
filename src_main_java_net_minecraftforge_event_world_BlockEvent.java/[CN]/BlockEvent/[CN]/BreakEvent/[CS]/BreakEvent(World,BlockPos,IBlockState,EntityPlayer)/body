@@ -1,11 +1,11 @@
 {
   super(world,pos,state);
   this.player=player;
-  if (state == null || !ForgeHooks.canHarvestBlock(state.getBlock(),player,world,pos) || (state.getBlock().canSilkHarvest(world,pos,world.getBlockState(pos),player) && EnchantmentHelper.getSilkTouchModifier(player))) {
+  if (state == null || !ForgeHooks.canHarvestBlock(state.getBlock(),player,world,pos) || (state.getBlock().canSilkHarvest(world,pos,world.getBlockState(pos),player) && EnchantmentHelper.getEnchantmentLevel(Enchantments.silkTouch,player.getHeldItemMainhand()) > 0)) {
     this.exp=0;
   }
  else {
-    int bonusLevel=EnchantmentHelper.getFortuneModifier(player);
-    this.exp=state.getBlock().getExpDrop(world,pos,bonusLevel);
+    int bonusLevel=EnchantmentHelper.getEnchantmentLevel(Enchantments.fortune,player.getHeldItemMainhand());
+    this.exp=state.getBlock().getExpDrop(state,world,pos,bonusLevel);
   }
 }

@@ -1,0 +1,3 @@
+{
+  return biomeInfoMap.get(BiomeGenBase.biomeRegistry.getNameForObject(biome));
+}

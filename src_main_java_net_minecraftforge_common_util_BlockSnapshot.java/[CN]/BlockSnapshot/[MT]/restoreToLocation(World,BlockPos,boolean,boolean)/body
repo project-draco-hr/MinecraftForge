@@ -10,12 +10,12 @@
     }
   }
   world.setBlockState(pos,replaced,applyPhysics ? 3 : 2);
-  world.markBlockForUpdate(pos);
+  world.notifyBlockUpdate(pos,current,replaced,applyPhysics ? 3 : 2);
   TileEntity te=null;
-  if (nbt != null) {
+  if (getNbt() != null) {
     te=world.getTileEntity(pos);
     if (te != null) {
-      te.readFromNBT(nbt);
+      te.readFromNBT(getNbt());
       te.markDirty();
     }
   }

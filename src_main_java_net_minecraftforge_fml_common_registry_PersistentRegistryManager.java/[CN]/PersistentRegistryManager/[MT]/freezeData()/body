@@ -1,7 +1,8 @@
 {
   FMLLog.fine("Freezing block and item id maps");
   for (  Map.Entry<ResourceLocation,FMLControlledNamespacedRegistry<?>> r : PersistentRegistry.ACTIVE.registries.entrySet()) {
-    loadRegistry(r.getKey(),PersistentRegistry.ACTIVE,PersistentRegistry.FROZEN,PersistentRegistry.ACTIVE.registrySuperTypes.inverse().get(r.getKey()));
+    final Class<? extends IForgeRegistryEntry> registrySuperType=PersistentRegistry.ACTIVE.getRegistrySuperType(r.getKey());
+    loadRegistry(r.getKey(),PersistentRegistry.ACTIVE,PersistentRegistry.FROZEN,registrySuperType);
   }
   forAllRegistries(PersistentRegistry.FROZEN,ValidateRegistryFunction.OPERATION);
 }

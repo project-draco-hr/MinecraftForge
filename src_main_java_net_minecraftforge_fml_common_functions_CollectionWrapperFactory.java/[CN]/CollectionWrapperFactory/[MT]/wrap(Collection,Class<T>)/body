@@ -1,4 +1,0 @@
-{
-  Collection<?> asGeneric=coll;
-  return Collections2.transform(asGeneric,new TypeCastFunction<T>(elementType));
-}

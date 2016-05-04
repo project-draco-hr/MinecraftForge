@@ -2,17 +2,15 @@
   super.fromBytes(dat);
   modId=ByteBufUtils.readUTF8String(dat);
   modEntityTypeId=dat.readInt();
-  rawX=dat.readInt();
-  rawY=dat.readInt();
-  rawZ=dat.readInt();
-  scaledX=rawX / 32D;
-  scaledY=rawY / 32D;
-  scaledZ=rawZ / 32D;
+  entityUUID=new UUID(dat.readLong(),dat.readLong());
+  rawX=dat.readDouble();
+  rawY=dat.readDouble();
+  rawZ=dat.readDouble();
   scaledYaw=dat.readByte() * 360F / 256F;
   scaledPitch=dat.readByte() * 360F / 256F;
   scaledHeadYaw=dat.readByte() * 360F / 256F;
   try {
-    dataWatcherList=DataWatcher.readWatchedListFromPacketBuffer(new PacketBuffer(dat));
+    dataWatcherList=EntityDataManager.readEntries(new PacketBuffer(dat));
   }
  catch (  IOException e) {
     FMLLog.log(Level.FATAL,e,"There was a critical error decoding the datawatcher stream for a mod entity.");

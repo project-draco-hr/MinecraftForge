@@ -1,0 +1,7 @@
+{
+  super(parent,type);
+  this.bossInfo=bossInfo;
+  this.x=x;
+  this.y=y;
+  this.increment=increment;
+}

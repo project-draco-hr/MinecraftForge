@@ -1,4 +1,4 @@
 {
   if ("dat".equals(suffix))   throw new IllegalArgumentException("The suffix 'dat' is reserved");
-  return new File(this.playerDirectory,this.playerUUID + "." + suffix);
+  return new File(this.getPlayerDirectory(),this.getPlayerUUID() + "." + suffix);
 }

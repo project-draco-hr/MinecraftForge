@@ -1,0 +1,2 @@
+ResourceLocation location
+ImmutableMap<String,ITimeValue> customParameters

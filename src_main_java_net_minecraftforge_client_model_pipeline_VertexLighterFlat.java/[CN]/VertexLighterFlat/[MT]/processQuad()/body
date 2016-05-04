@@ -48,6 +48,12 @@
       if (skyLight > lightmap[v][1])       lightmap[v][1]=skyLight;
     }
     updateColor(normal[v],color[v],x,y,z,tint,multiplier);
+    if (diffuse) {
+      float d=LightUtil.diffuseLight(normal[v][0],normal[v][1],normal[v][2]);
+      for (int i=0; i < 3; i++) {
+        color[v][i]*=d;
+      }
+    }
     if (EntityRenderer.anaglyphEnable) {
       applyAnaglyph(color[v]);
     }

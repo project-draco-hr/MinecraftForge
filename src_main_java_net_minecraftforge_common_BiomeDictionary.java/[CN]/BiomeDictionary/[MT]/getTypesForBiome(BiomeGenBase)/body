@@ -1,7 +1,4 @@
 {
   checkRegistration(biome);
-  if (biomeList[biome.biomeID] != null) {
-    return (Type[])biomeList[biome.biomeID].typeList.toArray(new Type[0]);
-  }
-  return new Type[0];
+  return getBiomeInfo(biome).typeList.toArray(new Type[0]);
 }

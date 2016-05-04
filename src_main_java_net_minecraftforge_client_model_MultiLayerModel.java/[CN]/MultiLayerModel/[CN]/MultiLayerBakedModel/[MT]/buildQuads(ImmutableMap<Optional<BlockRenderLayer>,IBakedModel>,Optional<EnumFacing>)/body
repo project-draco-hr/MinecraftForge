@@ -1,0 +1,7 @@
+{
+  ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
+  for (  IBakedModel model : models.values()) {
+    builder.addAll(model.getQuads(null,side.orNull(),0));
+  }
+  return builder.build();
+}

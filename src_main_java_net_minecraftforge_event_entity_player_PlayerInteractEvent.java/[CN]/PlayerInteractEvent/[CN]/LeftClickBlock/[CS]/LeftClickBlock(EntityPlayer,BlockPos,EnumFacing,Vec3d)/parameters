@@ -1,0 +1,4 @@
+EntityPlayer player
+BlockPos pos
+EnumFacing face
+Vec3d hitVec

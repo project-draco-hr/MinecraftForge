@@ -1,0 +1,7 @@
+{
+  this.lperlin1=lperlin1;
+  this.lperlin2=lperlin2;
+  this.perlin=perlin;
+  this.scale=scale;
+  this.depth=depth;
+}

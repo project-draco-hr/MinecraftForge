@@ -4,7 +4,7 @@
     List<ItemStack> ores=idToStack.get(id);
     if (ores == null)     continue;
     for (    ItemStack ore : ores) {
-      ResourceLocation name=ore.getItem().delegate.getResourceName();
+      ResourceLocation name=ore.getItem().delegate.name();
       int hash;
       if (name == null) {
         FMLLog.log(Level.DEBUG,"Defaulting unregistered ore dictionary entry for ore dictionary %s: type %s to -1",getOreName(id),ore.getItem().getClass());

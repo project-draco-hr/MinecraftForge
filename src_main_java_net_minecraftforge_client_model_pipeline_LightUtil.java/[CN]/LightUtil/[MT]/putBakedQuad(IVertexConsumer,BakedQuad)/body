@@ -3,17 +3,17 @@
   if (quad.hasTintIndex()) {
     consumer.setQuadTint(quad.getTintIndex());
   }
-  if (quad instanceof IColoredBakedQuad) {
-    consumer.setQuadColored();
-  }
+  consumer.setApplyDiffuseLighting(quad.shouldApplyDiffuseLighting());
   float[] data=new float[4];
-  VertexFormat format=consumer.getVertexFormat();
-  int count=format.getElementCount();
-  int[] eMap=formatMaps.getUnchecked(format);
+  VertexFormat formatFrom=consumer.getVertexFormat();
+  VertexFormat formatTo=quad.getFormat();
+  int countFrom=formatFrom.getElementCount();
+  int countTo=formatTo.getElementCount();
+  int[] eMap=formatMaps.getUnchecked(Pair.of(formatFrom,formatTo));
   for (int v=0; v < 4; v++) {
-    for (int e=0; e < count; e++) {
-      if (eMap[e] != itemCount) {
-        unpack(quad.getVertexData(),data,DefaultVertexFormats.ITEM,v,eMap[e]);
+    for (int e=0; e < countFrom; e++) {
+      if (eMap[e] != countTo) {
+        unpack(quad.getVertexData(),data,quad.getFormat(),v,eMap[e]);
         consumer.put(e,data);
       }
  else {

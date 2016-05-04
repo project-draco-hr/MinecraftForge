@@ -1,8 +1,0 @@
-{
-  Properties p=modLanguageData.get(language);
-  if (p == null) {
-    p=new Properties();
-    modLanguageData.put(language,p);
-  }
-  p.putAll(parsedLangFile);
-}

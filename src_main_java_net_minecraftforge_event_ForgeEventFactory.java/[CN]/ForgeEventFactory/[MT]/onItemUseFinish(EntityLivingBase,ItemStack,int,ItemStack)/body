@@ -1,0 +1,5 @@
+{
+  LivingEntityUseItemEvent.Finish event=new LivingEntityUseItemEvent.Finish(entity,item,duration,result);
+  MinecraftForge.EVENT_BUS.post(event);
+  return event.getResultStack();
+}

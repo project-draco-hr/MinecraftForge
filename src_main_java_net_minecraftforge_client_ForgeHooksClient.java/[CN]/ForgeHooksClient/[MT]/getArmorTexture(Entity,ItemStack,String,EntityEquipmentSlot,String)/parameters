@@ -1,0 +1,5 @@
+Entity entity
+ItemStack armor
+String _default
+EntityEquipmentSlot slot
+String type

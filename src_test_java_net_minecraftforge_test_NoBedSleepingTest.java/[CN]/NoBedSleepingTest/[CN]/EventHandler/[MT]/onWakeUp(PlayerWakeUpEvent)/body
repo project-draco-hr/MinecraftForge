@@ -1,4 +1,4 @@
 {
-  final IExtendedEntityProperties property=evt.entityPlayer.getExtendedProperties(ExtendedPropertySleeping.name);
-  if (property instanceof ExtendedPropertySleeping)   ((ExtendedPropertySleeping)property).isSleeping=false;
+  final IExtraSleeping sleep=evt.getEntityPlayer().getCapability(SLEEP_CAP,null);
+  if (sleep != null)   sleep.setSleeping(false);
 }

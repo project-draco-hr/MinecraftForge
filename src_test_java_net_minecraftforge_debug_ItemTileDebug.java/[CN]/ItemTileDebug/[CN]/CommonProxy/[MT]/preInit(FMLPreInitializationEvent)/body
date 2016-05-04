@@ -1,4 +1,5 @@
 {
-  GameRegistry.registerBlock(TestBlock.instance,TestBlock.name);
+  GameRegistry.register(TestBlock.instance);
+  GameRegistry.register(new ItemBlock(TestBlock.instance).setRegistryName(TestBlock.instance.getRegistryName()));
   GameRegistry.registerTileEntity(CustomTileEntity.class,MODID.toLowerCase() + ":custom_tile_entity");
 }

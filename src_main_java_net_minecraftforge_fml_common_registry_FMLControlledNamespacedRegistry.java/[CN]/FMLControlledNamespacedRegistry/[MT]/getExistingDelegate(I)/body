@@ -1,9 +1,8 @@
 {
-  try {
-    return (Delegate<I>)delegateAccessor.get(thing);
+  if (isDelegated) {
+    return (Delegate<I>)((IForgeRegistryEntry.Impl<I>)thing).delegate;
   }
- catch (  IllegalAccessException e) {
-    FMLLog.log(Level.ERROR,e,"Illegal attempt to access delegate");
-    throw Throwables.propagate(e);
+ else {
+    return null;
   }
 }

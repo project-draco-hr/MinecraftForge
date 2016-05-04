@@ -1,6 +1,6 @@
 {
   ImmutableMap.Builder<String,TextureAtlasSprite> builder=ImmutableMap.builder();
-  builder.put(ModelLoader.White.loc.toString(),ModelLoader.White.instance);
+  builder.put(ModelLoader.White.LOCATION.toString(),ModelLoader.White.INSTANCE);
   TextureAtlasSprite missing=bakedTextureGetter.apply(new ResourceLocation("missingno"));
   for (  Map.Entry<String,Material> e : matLib.materials.entrySet()) {
     if (e.getValue().getTexture().getTextureLocation().getResourcePath().startsWith("#")) {

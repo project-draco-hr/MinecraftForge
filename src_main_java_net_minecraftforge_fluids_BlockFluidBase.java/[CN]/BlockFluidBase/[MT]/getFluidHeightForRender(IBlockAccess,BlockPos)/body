@@ -2,12 +2,12 @@
   IBlockState here=world.getBlockState(pos);
   IBlockState up=world.getBlockState(pos.down(densityDir));
   if (here.getBlock() == this) {
-    if (up.getBlock().getMaterial().isLiquid() || up.getBlock() instanceof IFluidBlock) {
+    if (up.getMaterial().isLiquid() || up.getBlock() instanceof IFluidBlock) {
       return 1;
     }
     if (getMetaFromState(here) == getMaxRenderHeightMeta()) {
       return 0.875F;
     }
   }
-  return !here.getBlock().getMaterial().isSolid() && up.getBlock() == this ? 1 : this.getQuantaPercentage(world,pos) * 0.875F;
+  return !here.getMaterial().isSolid() && up.getBlock() == this ? 1 : this.getQuantaPercentage(world,pos) * 0.875F;
 }

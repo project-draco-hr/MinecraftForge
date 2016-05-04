@@ -1,3 +1,0 @@
-{
-  this(buildModels(models,TRSRTransformation.identity(),format,defaultTextureGetter),ModelLoaderRegistry.getMissingModel().bake(ModelLoaderRegistry.getMissingModel().getDefaultState(),format,defaultTextureGetter),format,cameraTransforms);
-}

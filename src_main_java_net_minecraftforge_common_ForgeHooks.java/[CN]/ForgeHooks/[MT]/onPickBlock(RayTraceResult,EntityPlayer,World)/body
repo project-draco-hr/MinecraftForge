@@ -1,0 +1,48 @@
+{
+  ItemStack result=null;
+  boolean isCreative=player.capabilities.isCreativeMode;
+  TileEntity te=null;
+  if (target.typeOfHit == RayTraceResult.Type.BLOCK) {
+    IBlockState state=world.getBlockState(target.getBlockPos());
+    if (state.getBlock().isAir(state,world,target.getBlockPos())) {
+      return false;
+    }
+    if (isCreative && GuiScreen.isCtrlKeyDown() && state.getBlock().hasTileEntity(state))     te=world.getTileEntity(target.getBlockPos());
+    result=state.getBlock().getPickBlock(state,target,world,target.getBlockPos(),player);
+  }
+ else {
+    if (target.typeOfHit != RayTraceResult.Type.ENTITY || target.entityHit == null || !isCreative) {
+      return false;
+    }
+    result=target.entityHit.getPickedResult(target);
+  }
+  if (result == null) {
+    return false;
+  }
+  if (result.getItem() == null) {
+    String s1="";
+    if (target.typeOfHit == RayTraceResult.Type.BLOCK) {
+      s1=Block.blockRegistry.getNameForObject(world.getBlockState(target.getBlockPos()).getBlock()).toString();
+    }
+ else     if (target.typeOfHit == RayTraceResult.Type.ENTITY) {
+      s1=EntityList.getEntityString(target.entityHit);
+    }
+    FMLLog.warning("Picking on: [%s] %s gave null item",target.typeOfHit,s1);
+    return true;
+  }
+  if (te != null) {
+    Minecraft.getMinecraft().storeTEInStack(result,te);
+  }
+  if (isCreative) {
+    player.inventory.func_184434_a(result);
+    Minecraft.getMinecraft().playerController.sendSlotPacket(player.getHeldItem(EnumHand.MAIN_HAND),36 + player.inventory.currentItem);
+    return true;
+  }
+  int slot=player.inventory.getSlotFor(result);
+  if (slot != -1) {
+    if (InventoryPlayer.isHotbar(slot))     player.inventory.currentItem=slot;
+ else     Minecraft.getMinecraft().playerController.pickItem(slot);
+    return true;
+  }
+  return false;
+}

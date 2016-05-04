@@ -1,0 +1,8 @@
+{
+  base=ModelProcessingHelper.customData(base,customData);
+  base=ModelProcessingHelper.retexture(base,textureMap);
+  base=ModelProcessingHelper.smoothLighting(base,smooth);
+  base=ModelProcessingHelper.gui3d(base,gui3d);
+  base=ModelProcessingHelper.uvlock(base,uvlock);
+  return base;
+}

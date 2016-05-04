@@ -1,6 +1,6 @@
 {
   if (MinecraftForge.EVENT_BUS.post(new AttackEntityEvent(player,target)))   return false;
-  ItemStack stack=player.getCurrentEquippedItem();
+  ItemStack stack=player.getHeldItemMainhand();
   if (stack != null && stack.getItem().onLeftClickEntity(stack,player,target))   return false;
   return true;
 }

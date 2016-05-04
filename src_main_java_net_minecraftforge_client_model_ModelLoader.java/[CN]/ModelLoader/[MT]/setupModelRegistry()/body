@@ -1,14 +1,10 @@
 {
   isLoading=true;
   loadBlocks();
-  loadItems();
-  try {
-    missingModel=getModel(new ResourceLocation(MODEL_MISSING.getResourceDomain(),MODEL_MISSING.getResourcePath()));
-  }
- catch (  IOException e) {
-    Throwables.propagate(e);
-  }
+  loadVariantItemModels();
+  missingModel=ModelLoaderRegistry.getMissingModel();
   stateModels.put(MODEL_MISSING,missingModel);
+  final Set<ResourceLocation> textures=Sets.newHashSet(ModelLoaderRegistry.getTextures());
   textures.remove(TextureMap.LOCATION_MISSING_TEXTURE);
   textures.addAll(LOCATIONS_BUILTIN_TEXTURES);
   textureMap.loadSprites(resourceManager,new IIconCreator(){
@@ -19,14 +15,23 @@
     }
   }
 );
-  IFlexibleBakedModel missingBaked=missingModel.bake(missingModel.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.instance);
-  for (  Entry<ModelResourceLocation,IModel> e : stateModels.entrySet()) {
-    if (e.getValue() == getMissingModel()) {
-      bakedRegistry.putObject(e.getKey(),missingBaked);
+  IBakedModel missingBaked=missingModel.bake(missingModel.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.INSTANCE);
+  Map<IModel,IBakedModel> bakedModels=Maps.newHashMap();
+  HashMultimap<IModel,ModelResourceLocation> models=HashMultimap.create();
+  Multimaps.invertFrom(Multimaps.forMap(stateModels),models);
+  ProgressBar bakeBar=ProgressManager.push("ModelLoader: baking",models.keySet().size());
+  for (  IModel model : models.keySet()) {
+    bakeBar.step("[" + Joiner.on(", ").join(models.get(model)) + "]");
+    if (model == getMissingModel()) {
+      bakedModels.put(model,missingBaked);
     }
  else {
-      bakedRegistry.putObject(e.getKey(),e.getValue().bake(e.getValue().getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.instance));
+      bakedModels.put(model,model.bake(model.getDefaultState(),DefaultVertexFormats.ITEM,DefaultTextureGetter.INSTANCE));
     }
+  }
+  ProgressManager.pop(bakeBar);
+  for (  Entry<ModelResourceLocation,IModel> e : stateModels.entrySet()) {
+    bakedRegistry.putObject(e.getKey(),bakedModels.get(e.getValue()));
   }
   return bakedRegistry;
 }

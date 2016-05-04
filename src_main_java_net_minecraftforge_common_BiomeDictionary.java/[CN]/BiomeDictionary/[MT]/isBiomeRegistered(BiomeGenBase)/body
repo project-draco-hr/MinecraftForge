@@ -1,3 +1,3 @@
 {
-  return biomeList[biome.biomeID] != null;
+  return biomeInfoMap.containsKey(BiomeGenBase.biomeRegistry.getNameForObject(biome));
 }
