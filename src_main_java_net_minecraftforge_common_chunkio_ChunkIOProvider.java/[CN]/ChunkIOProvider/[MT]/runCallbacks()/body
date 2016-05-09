@@ -1,0 +1,6 @@
+{
+  for (  Runnable r : this.callbacks) {
+    r.run();
+  }
+  this.callbacks.clear();
+}

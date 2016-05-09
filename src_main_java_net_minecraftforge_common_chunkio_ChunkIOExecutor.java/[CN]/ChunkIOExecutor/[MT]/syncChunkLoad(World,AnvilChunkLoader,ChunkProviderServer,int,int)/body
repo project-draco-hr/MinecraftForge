@@ -3,8 +3,8 @@
   ChunkIOProvider task=tasks.get(key);
   if (task != null) {
     if (!pool.remove(task)) {
-      while (!task.runFinished()) {
 synchronized (task) {
+        while (!task.runFinished()) {
           try {
             task.wait();
           }

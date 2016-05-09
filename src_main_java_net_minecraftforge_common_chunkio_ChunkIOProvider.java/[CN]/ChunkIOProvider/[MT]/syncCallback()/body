@@ -1,7 +1,8 @@
 {
   ChunkProviderServer provider=this.chunkInfo.provider;
   if (chunk == null) {
-    provider.originalLoadChunk(this.chunkInfo.x,this.chunkInfo.z);
+    this.chunk=provider.originalLoadChunk(this.chunkInfo.x,this.chunkInfo.z);
+    this.runCallbacks();
     return;
   }
   this.chunkInfo.loader.loadEntities(this.chunkInfo.world,this.nbt.getCompoundTag("Level"),this.chunk);
@@ -14,8 +15,5 @@
     provider.chunkGenerator.recreateStructures(this.chunk,this.chunkInfo.x,this.chunkInfo.z);
   }
   this.chunk.populateChunk(provider,provider.chunkGenerator);
-  for (  Runnable r : this.callbacks) {
-    r.run();
-  }
-  this.callbacks.clear();
+  this.runCallbacks();
 }
