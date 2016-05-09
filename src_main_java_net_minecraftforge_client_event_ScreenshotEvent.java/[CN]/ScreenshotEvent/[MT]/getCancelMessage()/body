@@ -1,0 +1,3 @@
+{
+  return getResultMessage() != null ? getResultMessage() : DEFAULT_CANCEL_REASON;
+}

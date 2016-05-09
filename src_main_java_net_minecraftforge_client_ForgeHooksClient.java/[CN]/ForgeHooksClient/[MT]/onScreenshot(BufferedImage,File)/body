@@ -1,0 +1,5 @@
+{
+  ScreenshotEvent event=new ScreenshotEvent(image,screenshotFile);
+  MinecraftForge.EVENT_BUS.post(event);
+  return event;
+}
