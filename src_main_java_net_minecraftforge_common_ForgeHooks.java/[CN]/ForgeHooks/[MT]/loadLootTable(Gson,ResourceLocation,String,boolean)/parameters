@@ -1,0 +1,4 @@
+Gson gson
+ResourceLocation name
+String data
+boolean custom

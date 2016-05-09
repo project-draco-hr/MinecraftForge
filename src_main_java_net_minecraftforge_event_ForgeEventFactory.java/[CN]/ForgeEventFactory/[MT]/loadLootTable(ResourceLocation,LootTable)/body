@@ -1,0 +1,5 @@
+{
+  LootTableLoadEvent event=new LootTableLoadEvent(name,table);
+  if (MinecraftForge.EVENT_BUS.post(event))   return LootTable.EMPTY_LOOT_TABLE;
+  return event.getTable();
+}

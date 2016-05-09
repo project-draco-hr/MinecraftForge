@@ -1,0 +1,5 @@
+{
+  LootTableContext ctx=lootContext.get().peek();
+  if (ctx == null)   throw new JsonParseException("Invalid call stack, could to grab json context!");
+  return ctx;
+}

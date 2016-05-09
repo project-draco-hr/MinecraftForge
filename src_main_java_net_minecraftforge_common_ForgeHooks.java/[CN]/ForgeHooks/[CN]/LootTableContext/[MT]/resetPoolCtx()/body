@@ -1,0 +1,4 @@
+{
+  this.entryCount=0;
+  this.entryNames.clear();
+}

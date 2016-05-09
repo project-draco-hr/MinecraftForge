@@ -1,0 +1,12 @@
+{
+  if (!this.entryNames.contains(name)) {
+    this.entryNames.add(name);
+    return name;
+  }
+  if (!this.vanilla)   throw new JsonParseException("Loot Table \"" + this.name.toString() + "\" Duplicate entry name \""+ name+ "\" for pool #"+ (this.poolCount - 1)+ " entry #"+ (this.entryCount - 1));
+  int x=0;
+  while (this.entryNames.contains(name + "#" + x))   x++;
+  name=name + "#" + x;
+  this.entryNames.add(name);
+  return name;
+}

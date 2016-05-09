@@ -1,0 +1,5 @@
+String type
+JsonObject json
+int weight
+int quality
+LootCondition[] conditions

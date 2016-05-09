@@ -1,0 +1,9 @@
+{
+  LootTableContext ctx=ForgeHooks.getLootTableContext();
+  ctx.resetPoolCtx();
+  if (json.has("name"))   return JsonUtils.getString(json,"name");
+  if (ctx.custom)   return "custom#" + json.hashCode();
+  ctx.poolCount++;
+  if (!ctx.vanilla)   throw new JsonParseException("Loot Table \"" + ctx.name.toString() + "\" Missing `name` entry for pool #"+ (ctx.poolCount - 1));
+  return ctx.poolCount == 1 ? "main" : "pool" + (ctx.poolCount - 1);
+}
