@@ -15,5 +15,6 @@
     throw e;
   }
   if (!custom)   ret=ForgeEventFactory.loadLootTable(name,ret);
+  if (ret != null)   ret.freeze();
   return ret;
 }

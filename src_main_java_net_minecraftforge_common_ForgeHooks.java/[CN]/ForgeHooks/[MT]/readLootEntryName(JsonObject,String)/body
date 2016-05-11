@@ -1,7 +1,7 @@
 {
   LootTableContext ctx=ForgeHooks.getLootTableContext();
   ctx.entryCount++;
-  if (json.has("entryName"))   return ctx.validateEntryName(JsonUtils.getString(json,"EntryName"));
+  if (json.has("entryName"))   return ctx.validateEntryName(JsonUtils.getString(json,"entryName"));
   if (ctx.custom)   return "custom#" + json.hashCode();
   String name=null;
   if ("item".equals(type))   name=JsonUtils.getString(json,"name");
