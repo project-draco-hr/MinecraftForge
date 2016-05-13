@@ -1,7 +1,13 @@
 {
-  this.parameters=parameters;
-  this.clips=clips;
-  this.states=states;
-  this.transitions=transitions;
-  this.startState=startState;
+  this(parameters,clips,states,ImmutableMultimap.copyOf(Multimaps.newSetMultimap(Maps.transformValues(transitions,new Function<String,Collection<String>>(){
+    public Collection<String> apply(    String input){
+      return ImmutableSet.of(input);
+    }
+  }
+),new Supplier<Set<String>>(){
+    public Set<String> get(){
+      return Sets.newHashSet();
+    }
+  }
+)),startState);
 }

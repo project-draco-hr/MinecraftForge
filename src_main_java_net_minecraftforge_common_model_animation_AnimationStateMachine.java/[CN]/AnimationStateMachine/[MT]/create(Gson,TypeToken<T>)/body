@@ -1,0 +1,40 @@
+{
+  if (type.getRawType() != ImmutableMultimap.class || !(type.getType() instanceof ParameterizedType)) {
+    return null;
+  }
+  final Type[] typeArguments=((ParameterizedType)type.getType()).getActualTypeArguments();
+  if (typeArguments.length != 2 || typeArguments[0] != String.class || typeArguments[1] != String.class) {
+    return null;
+  }
+  final TypeAdapter<Map<String,Collection<String>>> mapAdapter=gson.getAdapter(new TypeToken<Map<String,Collection<String>>>(){
+  }
+);
+  final TypeAdapter<Collection<String>> collectionAdapter=gson.getAdapter(new TypeToken<Collection<String>>(){
+  }
+);
+  return (TypeAdapter<T>)new TypeAdapter<ImmutableMultimap<String,String>>(){
+    @Override public void write(    JsonWriter out,    ImmutableMultimap<String,String> value) throws IOException {
+      mapAdapter.write(out,value.asMap());
+    }
+    @Override public ImmutableMultimap<String,String> read(    JsonReader in) throws IOException {
+      ImmutableMultimap.Builder<String,String> builder=ImmutableMultimap.builder();
+      in.beginObject();
+      while (in.hasNext()) {
+        String key=in.nextName();
+switch (in.peek()) {
+case STRING:
+          builder.put(key,in.nextString());
+        break;
+case BEGIN_ARRAY:
+      builder.putAll(key,collectionAdapter.read(in));
+    break;
+default :
+  throw new JsonParseException("Expected String or Array, got " + in.peek());
+}
+}
+in.endObject();
+return builder.build();
+}
+}
+;
+}
