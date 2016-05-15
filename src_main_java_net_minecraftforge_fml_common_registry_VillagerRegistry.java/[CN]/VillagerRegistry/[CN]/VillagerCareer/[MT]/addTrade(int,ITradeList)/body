@@ -1,0 +1,20 @@
+{
+  if (level <= 0)   throw new IllegalArgumentException("Levels start at 1");
+  List<ITradeList> levelTrades=level <= this.trades.size() ? this.trades.get(level - 1) : null;
+  if (levelTrades == null) {
+    List<ITradeList> tmp=null;
+    while (this.trades.size() < level) {
+      tmp=Lists.newArrayList();
+      this.trades.add(tmp);
+      this.imm.add(Collections.unmodifiableList(tmp));
+    }
+    levelTrades=tmp;
+  }
+  if (levelTrades == null) {
+    levelTrades=Lists.newArrayList();
+    this.trades.set(level - 1,levelTrades);
+    this.imm.set(level - 1,Collections.unmodifiableList(levelTrades));
+  }
+  for (  ITradeList t : trades)   levelTrades.add(t);
+  return this;
+}

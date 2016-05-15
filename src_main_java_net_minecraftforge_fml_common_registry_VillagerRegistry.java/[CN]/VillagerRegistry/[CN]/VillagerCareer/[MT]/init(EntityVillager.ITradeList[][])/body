@@ -1,4 +1,4 @@
 {
-  this.trades=trades;
+  for (int x=0; x < trades.length; x++)   this.trades.add(Lists.newArrayList(trades[x]));
   return this;
 }
