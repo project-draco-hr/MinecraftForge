@@ -23,6 +23,8 @@
           this.fill(filledBucket,drained,true);
           event.setResult(Event.Result.ALLOW);
           event.setFilledBucket(filledBucket);
+          SoundEvent soundevent=drained.getFluid().getFillSound(drained);
+          event.getEntityPlayer().playSound(soundevent,1.0F,1.0F);
         }
  else {
           event.setCanceled(true);

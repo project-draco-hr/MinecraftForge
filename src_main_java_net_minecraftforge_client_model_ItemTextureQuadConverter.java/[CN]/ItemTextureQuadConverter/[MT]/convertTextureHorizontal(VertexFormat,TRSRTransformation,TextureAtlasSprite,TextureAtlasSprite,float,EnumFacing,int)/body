@@ -1,6 +1,8 @@
 {
   int w=template.getIconWidth();
   int h=template.getIconHeight();
+  float wScale=16f / (float)w;
+  float hScale=16f / (float)h;
   int[] data=template.getFrameTextureData(0)[0];
   List<UnpackedBakedQuad> quads=Lists.newArrayList();
   int start=-1;
@@ -26,7 +28,7 @@
             endY++;
           }
         }
-        quads.add(genQuad(format,transform,start,y,x,endY,z,sprite,facing,color));
+        quads.add(genQuad(format,transform,(float)start * wScale,(float)y * hScale,(float)x * wScale,(float)endY * hScale,z,sprite,facing,color));
         if (endY - y > 1) {
           y=endY - 1;
         }

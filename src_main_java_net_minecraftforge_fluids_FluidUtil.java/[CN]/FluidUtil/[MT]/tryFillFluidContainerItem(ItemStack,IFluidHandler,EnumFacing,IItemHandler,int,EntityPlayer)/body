@@ -21,13 +21,15 @@
  else {
         return false;
       }
-      ItemStack remainder=ItemHandlerHelper.insertItemStacked(inventory,toFill,true);
-      if (remainder != null && player == null) {
-        return false;
-      }
-      remainder=ItemHandlerHelper.insertItemStacked(inventory,toFill,false);
-      if (remainder != null && player != null) {
-        ItemHandlerHelper.giveItemToPlayer(player,remainder);
+      if (player == null || !player.worldObj.isRemote) {
+        ItemStack remainder=ItemHandlerHelper.insertItemStacked(inventory,toFill,true);
+        if (remainder != null && player == null) {
+          return false;
+        }
+        remainder=ItemHandlerHelper.insertItemStacked(inventory,toFill,false);
+        if (remainder != null && player != null) {
+          ItemHandlerHelper.giveItemToPlayer(player,remainder);
+        }
       }
       tank.drain(side,filled,true);
       container.stackSize--;
@@ -41,6 +43,10 @@
         return false;
       }
       tank.drain(side,filled,true);
+    }
+    if (player != null) {
+      SoundEvent soundevent=liquid.getFluid().getFillSound(liquid);
+      player.playSound(soundevent,1f,1f);
     }
     return true;
   }

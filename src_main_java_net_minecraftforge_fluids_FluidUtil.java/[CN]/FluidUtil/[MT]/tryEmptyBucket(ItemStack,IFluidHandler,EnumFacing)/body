@@ -1,14 +1,3 @@
 {
-  if (!FluidContainerRegistry.isFilledContainer(bucket)) {
-    return null;
-  }
-  FluidStack liquid=FluidContainerRegistry.getFluidForFilledItem(bucket);
-  if (tank.canFill(side,liquid.getFluid())) {
-    int amount=tank.fill(side,liquid,false);
-    if (amount == liquid.amount) {
-      tank.fill(side,liquid,true);
-      return FluidContainerRegistry.drainFluidContainer(bucket);
-    }
-  }
-  return null;
+  return tryEmptyBucket(bucket,tank,side,null);
 }

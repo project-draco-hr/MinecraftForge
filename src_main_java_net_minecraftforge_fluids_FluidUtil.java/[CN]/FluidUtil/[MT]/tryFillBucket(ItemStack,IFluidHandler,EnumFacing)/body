@@ -1,16 +1,3 @@
 {
-  FluidTankInfo[] info=tank.getTankInfo(side);
-  if (info == null || info.length == 0) {
-    return null;
-  }
-  if (!FluidContainerRegistry.isEmptyContainer(bucket)) {
-    return null;
-  }
-  FluidStack inTank=info[0].fluid;
-  FluidStack liquid=tank.drain(side,FluidContainerRegistry.getContainerCapacity(inTank,bucket),false);
-  if (liquid != null && liquid.amount > 0) {
-    tank.drain(side,FluidContainerRegistry.getContainerCapacity(liquid,bucket),true);
-    return FluidContainerRegistry.fillFluidContainer(liquid,bucket);
-  }
-  return null;
+  return tryFillBucket(bucket,tank,side,null);
 }

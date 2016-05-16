@@ -1,0 +1,36 @@
+{
+  if (block == null) {
+    return false;
+  }
+  if (worldIn == null && player != null) {
+    worldIn=player.getEntityWorld();
+  }
+  Material material=worldIn.getBlockState(pos).getMaterial();
+  boolean isSolid=material.isSolid();
+  if (!worldIn.isAirBlock(pos) && isSolid) {
+    return false;
+  }
+  if (worldIn.provider.doesWaterVaporize() && (block == Blocks.flowing_water || block == Blocks.water)) {
+    int i=pos.getX();
+    int j=pos.getY();
+    int k=pos.getZ();
+    worldIn.playSound(null,pos,SoundEvents.block_fire_extinguish,SoundCategory.BLOCKS,0.5F,2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
+    for (int l=0; l < 8; ++l) {
+      worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE,(double)i + Math.random(),(double)j + Math.random(),(double)k + Math.random(),0.0D,0.0D,0.0D);
+    }
+  }
+ else {
+    if (!worldIn.isRemote && !isSolid && !material.isLiquid()) {
+      worldIn.destroyBlock(pos,true);
+    }
+    if (player != null && block instanceof IFluidBlock) {
+      Fluid fluid=((IFluidBlock)block).getFluid();
+      if (fluid != null) {
+        worldIn.setBlockState(pos,block.getDefaultState(),3);
+        SoundEvent soundevent=fluid.getEmptySound(worldIn,pos);
+        worldIn.playSound(player,pos,soundevent,SoundCategory.BLOCKS,1.0F,1.0F);
+      }
+    }
+  }
+  return true;
+}

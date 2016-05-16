@@ -1,26 +1,3 @@
 {
-  if (block == null) {
-    return false;
-  }
-  Material material=worldIn.getBlockState(pos).getMaterial();
-  boolean isSolid=material.isSolid();
-  if (!worldIn.isAirBlock(pos) && isSolid) {
-    return false;
-  }
-  if (worldIn.provider.doesWaterVaporize() && (block == Blocks.flowing_water || block == Blocks.water)) {
-    int i=pos.getX();
-    int j=pos.getY();
-    int k=pos.getZ();
-    worldIn.playSound(null,pos,SoundEvents.block_fire_extinguish,SoundCategory.BLOCKS,0.5F,2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
-    for (int l=0; l < 8; ++l) {
-      worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE,(double)i + Math.random(),(double)j + Math.random(),(double)k + Math.random(),0.0D,0.0D,0.0D);
-    }
-  }
- else {
-    if (!worldIn.isRemote && !isSolid && !material.isLiquid()) {
-      worldIn.destroyBlock(pos,true);
-    }
-    worldIn.setBlockState(pos,block.getDefaultState(),3);
-  }
-  return true;
+  return tryPlaceFluid(null,worldIn,block,pos);
 }

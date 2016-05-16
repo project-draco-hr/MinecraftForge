@@ -1,0 +1,18 @@
+{
+  if (!FluidContainerRegistry.isFilledContainer(bucket)) {
+    return null;
+  }
+  FluidStack liquid=FluidContainerRegistry.getFluidForFilledItem(bucket);
+  if (tank.canFill(side,liquid.getFluid())) {
+    int amount=tank.fill(side,liquid,false);
+    if (amount == liquid.amount) {
+      if (player != null) {
+        SoundEvent soundevent=liquid.getFluid().getEmptySound(liquid);
+        player.playSound(soundevent,1f,1f);
+      }
+      tank.fill(side,liquid,true);
+      return FluidContainerRegistry.drainFluidContainer(bucket);
+    }
+  }
+  return null;
+}

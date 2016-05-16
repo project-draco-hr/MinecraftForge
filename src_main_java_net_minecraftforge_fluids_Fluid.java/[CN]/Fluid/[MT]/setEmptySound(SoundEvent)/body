@@ -1,0 +1,4 @@
+{
+  this.emptySound=emptySound;
+  return this;
+}
