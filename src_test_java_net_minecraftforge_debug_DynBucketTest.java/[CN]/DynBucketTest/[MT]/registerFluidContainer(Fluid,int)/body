@@ -2,5 +2,5 @@
   if (fluid == null)   return;
   FluidStack fs=new FluidStack(fluid,FluidContainerRegistry.BUCKET_VOLUME);
   ItemStack stack=new ItemStack(dynBucket,1,meta);
-  FluidContainerRegistry.registerFluidContainer(fs,stack,new ItemStack(Items.bucket));
+  FluidContainerRegistry.registerFluidContainer(fs,stack,new ItemStack(Items.BUCKET));
 }

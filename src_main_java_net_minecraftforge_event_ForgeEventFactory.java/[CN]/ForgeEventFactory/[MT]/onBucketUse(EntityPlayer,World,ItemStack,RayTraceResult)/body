@@ -4,7 +4,7 @@
   if (event.getResult() == Result.ALLOW) {
     if (player.capabilities.isCreativeMode)     return new ActionResult<ItemStack>(EnumActionResult.SUCCESS,stack);
     if (--stack.stackSize <= 0)     return new ActionResult<ItemStack>(EnumActionResult.SUCCESS,event.getFilledBucket());
-    if (!player.inventory.addItemStackToInventory(event.getFilledBucket()))     player.dropPlayerItemWithRandomChoice(event.getFilledBucket(),false);
+    if (!player.inventory.addItemStackToInventory(event.getFilledBucket()))     player.dropItem(event.getFilledBucket(),false);
     return new ActionResult<ItemStack>(EnumActionResult.SUCCESS,stack);
   }
   return null;

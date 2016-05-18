@@ -9,7 +9,7 @@
   TileEntity te=world.getTileEntity(pos);
   if (te != null) {
     nbt=new NBTTagCompound();
-    te.func_189515_b(getNbt());
+    te.writeToNBT(getNbt());
   }
  else   nbt=null;
   if (DEBUG) {

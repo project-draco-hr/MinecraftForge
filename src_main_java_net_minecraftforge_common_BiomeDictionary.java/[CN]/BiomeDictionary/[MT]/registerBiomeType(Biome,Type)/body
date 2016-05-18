@@ -1,6 +1,6 @@
 {
   types=listSubTags(types);
-  if (Biome.biomeRegistry.getNameForObject(biome) != null) {
+  if (Biome.REGISTRY.getNameForObject(biome) != null) {
     for (    Type type : types) {
       if (typeInfoList[type.ordinal()] == null) {
         typeInfoList[type.ordinal()]=new ArrayList<Biome>();
@@ -8,7 +8,7 @@
       typeInfoList[type.ordinal()].add(biome);
     }
     if (!isBiomeRegistered(biome)) {
-      ResourceLocation location=Biome.biomeRegistry.getNameForObject(biome);
+      ResourceLocation location=Biome.REGISTRY.getNameForObject(biome);
       biomeInfoMap.put(location,new BiomeInfo(types));
     }
  else {

@@ -1,5 +1,5 @@
 {
-  bind(icons);
+  bind(ICONS);
   if (pre(EXPERIENCE))   return;
   GlStateManager.color(1.0F,1.0F,1.0F,1.0F);
   GlStateManager.disableBlend();

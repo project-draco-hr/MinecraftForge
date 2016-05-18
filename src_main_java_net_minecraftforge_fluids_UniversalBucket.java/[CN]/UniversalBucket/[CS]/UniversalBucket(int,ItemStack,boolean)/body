@@ -3,5 +3,5 @@
   this.empty=empty;
   this.nbtSensitive=nbtSensitive;
   this.setMaxStackSize(1);
-  this.setCreativeTab(CreativeTabs.tabMisc);
+  this.setCreativeTab(CreativeTabs.MISC);
 }

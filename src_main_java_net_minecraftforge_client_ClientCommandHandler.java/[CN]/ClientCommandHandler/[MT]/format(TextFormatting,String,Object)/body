@@ -1,5 +1,5 @@
 {
   TextComponentTranslation ret=new TextComponentTranslation(str,args);
-  ret.getChatStyle().setColor(color);
+  ret.getStyle().setColor(color);
   return ret;
 }

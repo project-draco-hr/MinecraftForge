@@ -2,5 +2,5 @@
   setUnlocalizedName("dynbucket");
   setMaxStackSize(1);
   setHasSubtypes(true);
-  setCreativeTab(CreativeTabs.tabMisc);
+  setCreativeTab(CreativeTabs.MISC);
 }

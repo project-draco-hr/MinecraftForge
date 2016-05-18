@@ -1,5 +1,5 @@
 {
   NBTTagCompound tag=new NBTTagCompound();
-  func_189515_b(tag);
+  tag=writeToNBT(tag);
   return new SPacketUpdateTileEntity(this.getPos(),this.getBlockMetadata(),tag);
 }

@@ -12,7 +12,7 @@
   this.activeSubstitutions.clear();
   this.dummiedLocations.clear();
   this.dummiedLocations.addAll(otherRegistry.dummiedLocations);
-  underlyingIntegerMap.func_186812_a();
+  underlyingIntegerMap.clear();
   registryObjects.clear();
   for (  I thing : otherRegistry.typeSafeIterable()) {
     addObjectRaw(otherRegistry.getId(thing),otherRegistry.getNameForObject(thing),thing);

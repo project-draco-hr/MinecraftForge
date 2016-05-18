@@ -1,7 +1,7 @@
 {
-  if (EntityList.classToStringMapping.containsKey(entityClass)) {
-    String name=EntityList.classToStringMapping.get(entityClass);
-    EntityList.entityEggs.put(name,new EntityList.EntityEggInfo(name,primary,secondary));
+  if (EntityList.CLASS_TO_NAME.containsKey(entityClass)) {
+    String name=EntityList.CLASS_TO_NAME.get(entityClass);
+    EntityList.ENTITY_EGGS.put(name,new EntityList.EntityEggInfo(name,primary,secondary));
     FMLLog.fine("Registering entity egg '%s' for %s",name,entityClass);
   }
  else {

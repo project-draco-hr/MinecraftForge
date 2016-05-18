@@ -8,7 +8,7 @@
     return displacements.get(state.getBlock());
   }
   Material material=state.getMaterial();
-  if (material.blocksMovement() || material == Material.water || material == Material.lava || material == Material.portal) {
+  if (material.blocksMovement() || material == Material.WATER || material == Material.LAVA || material == Material.PORTAL) {
     return false;
   }
   int density=getDensity(world,pos);

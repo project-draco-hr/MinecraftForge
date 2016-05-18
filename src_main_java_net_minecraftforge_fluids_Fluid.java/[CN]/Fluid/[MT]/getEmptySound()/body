@@ -1,10 +1,10 @@
 {
   if (emptySound == null) {
-    if (getBlock() != null && getBlock().getDefaultState().getMaterial() == Material.lava) {
-      emptySound=SoundEvents.item_bucket_empty_lava;
+    if (getBlock() != null && getBlock().getDefaultState().getMaterial() == Material.LAVA) {
+      emptySound=SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
     }
  else {
-      emptySound=SoundEvents.item_bucket_empty;
+      emptySound=SoundEvents.ITEM_BUCKET_EMPTY;
     }
   }
   return emptySound;

@@ -1,4 +1,4 @@
 {
-  super(Material.rock);
-  setCreativeTab(CreativeTabs.tabMisc);
+  super(Material.ROCK);
+  setCreativeTab(CreativeTabs.MISC);
 }

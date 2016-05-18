@@ -1,6 +1,6 @@
 {
   ScoreObjective scoreobjective=this.mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(0);
-  NetHandlerPlayClient handler=mc.thePlayer.sendQueue;
+  NetHandlerPlayClient handler=mc.thePlayer.connection;
   if (mc.gameSettings.keyBindPlayerList.isKeyDown() && (!mc.isIntegratedServerRunning() || handler.getPlayerInfoMap().size() > 1 || scoreobjective != null)) {
     this.overlayPlayerList.updatePlayerList(true);
     if (pre(PLAYER_LIST))     return;

@@ -1,5 +1,5 @@
 {
-  if (!(args instanceof TargetPoint)) {
-    throw new RuntimeException("ALLAROUNDPOINT expects a TargetPoint argument");
+  if (!(args instanceof NetworkDispatcher)) {
+    throw new RuntimeException("DISPATCHER expects a NetworkDispatcher");
   }
 }

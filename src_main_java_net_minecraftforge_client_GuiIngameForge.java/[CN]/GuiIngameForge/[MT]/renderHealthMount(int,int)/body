@@ -2,7 +2,7 @@
   EntityPlayer player=(EntityPlayer)mc.getRenderViewEntity();
   Entity tmp=player.getRidingEntity();
   if (!(tmp instanceof EntityLivingBase))   return;
-  bind(icons);
+  bind(ICONS);
   if (pre(HEALTHMOUNT))   return;
   boolean unused=false;
   int left_align=width / 2 + 91;

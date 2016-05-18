@@ -29,9 +29,9 @@
       continue;
     }
     ClickEvent click=new ClickEvent(ClickEvent.Action.OPEN_URL,url);
-    link.getChatStyle().setChatClickEvent(click);
-    link.getChatStyle().setUnderlined(true);
-    link.getChatStyle().setColor(TextFormatting.BLUE);
+    link.getStyle().setClickEvent(click);
+    link.getStyle().setUnderlined(true);
+    link.getStyle().setColor(TextFormatting.BLUE);
     if (ichat == null)     ichat=link;
  else     ichat.appendSibling(link);
   }

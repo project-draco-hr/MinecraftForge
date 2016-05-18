@@ -1,7 +1,0 @@
-{
-  int res=instance().availableIndices.nextSetBit(0);
-  if (res < 0) {
-    throw new RuntimeException("No more entity indices left");
-  }
-  return res;
-}

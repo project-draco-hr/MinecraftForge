@@ -8,6 +8,6 @@
   }
 );
   ModelBakery.registerItemVariants(dynBottle,bottle);
-  ModelLoader.setCustomModelResourceLocation(Item.itemRegistry.getObject(simpleTankName),0,new ModelResourceLocation(simpleTankName,"normal"));
-  ModelLoader.setCustomModelResourceLocation(Item.itemRegistry.getObject(testItemName),0,new ModelResourceLocation(new ResourceLocation("minecraft","stick"),"inventory"));
+  ModelLoader.setCustomModelResourceLocation(Item.REGISTRY.getObject(simpleTankName),0,new ModelResourceLocation(simpleTankName,"normal"));
+  ModelLoader.setCustomModelResourceLocation(Item.REGISTRY.getObject(testItemName),0,new ModelResourceLocation(new ResourceLocation("minecraft","stick"),"inventory"));
 }

@@ -15,14 +15,14 @@
   for (  Block block : blocks) {
     block.setHarvestLevel("axe",0);
   }
-  Blocks.obsidian.setHarvestLevel("pickaxe",3);
-  Block[] oreBlocks=new Block[]{Blocks.emerald_ore,Blocks.emerald_block,Blocks.diamond_ore,Blocks.diamond_block,Blocks.gold_ore,Blocks.gold_block,Blocks.redstone_ore,Blocks.lit_redstone_ore};
+  Blocks.OBSIDIAN.setHarvestLevel("pickaxe",3);
+  Block[] oreBlocks=new Block[]{Blocks.EMERALD_ORE,Blocks.EMERALD_BLOCK,Blocks.DIAMOND_ORE,Blocks.DIAMOND_BLOCK,Blocks.GOLD_ORE,Blocks.GOLD_BLOCK,Blocks.REDSTONE_ORE,Blocks.LIT_REDSTONE_ORE};
   for (  Block block : oreBlocks) {
     block.setHarvestLevel("pickaxe",2);
   }
-  Blocks.iron_ore.setHarvestLevel("pickaxe",1);
-  Blocks.iron_block.setHarvestLevel("pickaxe",1);
-  Blocks.lapis_ore.setHarvestLevel("pickaxe",1);
-  Blocks.lapis_block.setHarvestLevel("pickaxe",1);
-  Blocks.quartz_ore.setHarvestLevel("pickaxe",0);
+  Blocks.IRON_ORE.setHarvestLevel("pickaxe",1);
+  Blocks.IRON_BLOCK.setHarvestLevel("pickaxe",1);
+  Blocks.LAPIS_ORE.setHarvestLevel("pickaxe",1);
+  Blocks.LAPIS_BLOCK.setHarvestLevel("pickaxe",1);
+  Blocks.QUARTZ_ORE.setHarvestLevel("pickaxe",0);
 }

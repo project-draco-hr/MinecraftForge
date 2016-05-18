@@ -1,7 +1,2 @@
 {
-  availableIndices=new BitSet(256);
-  availableIndices.set(1,255);
-  for (  Object id : EntityList.idToClassMapping.keySet()) {
-    availableIndices.clear((Integer)id);
-  }
 }

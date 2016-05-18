@@ -22,7 +22,7 @@
   if (result.getItem() == null) {
     String s1="";
     if (target.typeOfHit == RayTraceResult.Type.BLOCK) {
-      s1=Block.blockRegistry.getNameForObject(world.getBlockState(target.getBlockPos()).getBlock()).toString();
+      s1=Block.REGISTRY.getNameForObject(world.getBlockState(target.getBlockPos()).getBlock()).toString();
     }
  else     if (target.typeOfHit == RayTraceResult.Type.ENTITY) {
       s1=EntityList.getEntityString(target.entityHit);
@@ -34,7 +34,7 @@
     Minecraft.getMinecraft().storeTEInStack(result,te);
   }
   if (isCreative) {
-    player.inventory.func_184434_a(result);
+    player.inventory.setPickedItemStack(result);
     Minecraft.getMinecraft().playerController.sendSlotPacket(player.getHeldItem(EnumHand.MAIN_HAND),36 + player.inventory.currentItem);
     return true;
   }

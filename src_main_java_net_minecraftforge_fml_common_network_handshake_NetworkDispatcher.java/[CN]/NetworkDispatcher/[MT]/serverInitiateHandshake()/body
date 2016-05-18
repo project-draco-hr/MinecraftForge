@@ -5,13 +5,13 @@
       if (NetworkDispatcher.this.state == ConnectionState.FINALIZING) {
         completeServerSideConnection(ConnectionType.MODDED);
       }
-      if (this.playerEntity.playerNetServerHandler != this)       return;
+      if (this.playerEntity.connection != this)       return;
       super.update();
     }
   }
 ;
   this.netHandler=serverHandler;
-  player.playerNetServerHandler=null;
+  player.connection=null;
   this.manager.setConnectionState(EnumConnectionState.PLAY);
   NBTTagCompound playerNBT=scm.getPlayerNBT(player);
   if (playerNBT != null) {

@@ -1,7 +1,7 @@
 {
   super.preInit(event);
   B3DLoader.INSTANCE.addDomain(MODID);
-  ModelLoader.setCustomModelResourceLocation(Item.itemRegistry.getObject(blockId),0,new ModelResourceLocation(blockId,"inventory"));
+  ModelLoader.setCustomModelResourceLocation(Item.REGISTRY.getObject(blockId),0,new ModelResourceLocation(blockId,"inventory"));
   ClientRegistry.bindTileEntitySpecialRenderer(Chest.class,new AnimationTESR<Chest>(){
     @Override public void handleEvents(    Chest chest,    float time,    Iterable<Event> pastEvents){
       chest.handleEvents(time,pastEvents);
@@ -20,7 +20,7 @@
       }
 ,0.5f){
         protected ResourceLocation getEntityTexture(        EntityChest entity){
-          return TextureMap.locationBlocksTexture;
+          return TextureMap.LOCATION_BLOCKS_TEXTURE;
         }
       }
 ;

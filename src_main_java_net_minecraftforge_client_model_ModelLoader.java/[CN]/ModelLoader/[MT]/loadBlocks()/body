@@ -1,5 +1,5 @@
 {
-  List<Block> blocks=Lists.newArrayList(Iterables.filter(Block.blockRegistry,new Predicate<Block>(){
+  List<Block> blocks=Lists.newArrayList(Iterables.filter(Block.REGISTRY,new Predicate<Block>(){
     public boolean apply(    Block block){
       return block.getRegistryName() != null;
     }

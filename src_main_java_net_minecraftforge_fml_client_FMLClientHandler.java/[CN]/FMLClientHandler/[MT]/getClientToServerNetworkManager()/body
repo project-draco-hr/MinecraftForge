@@ -1,3 +1,3 @@
 {
-  return this.client.getNetHandler() != null ? this.client.getNetHandler().getNetworkManager() : null;
+  return this.client.getConnection() != null ? this.client.getConnection().getNetworkManager() : null;
 }

@@ -13,7 +13,7 @@
         return;
       }
  else {
-        ResourceLocation tmp=isBlock ? GameData.getBlockRegistry().getNameForObject((Block)existing) : isItem ? GameData.getItemRegistry().getNameForObject((Item)existing) : null;
+        ResourceLocation tmp=isBlock ? ForgeRegistries.BLOCKS.getKey((Block)existing) : isItem ? ForgeRegistries.ITEMS.getKey((Item)existing) : null;
         this.injectedObject=tmp;
       }
     }

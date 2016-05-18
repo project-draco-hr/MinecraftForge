@@ -1,6 +1,6 @@
 {
   IBlockState state=world.getBlockState(pos);
-  if (state.getBlock() == Blocks.air) {
+  if (state.getBlock() == Blocks.AIR) {
     return 0;
   }
   if (state.getBlock() != this) {

@@ -3,7 +3,7 @@
   if (fluidStack == null) {
     return ActionResult.newResult(EnumActionResult.PASS,itemstack);
   }
-  RayTraceResult mop=this.getMovingObjectPositionFromPlayer(world,player,false);
+  RayTraceResult mop=this.rayTrace(world,player,false);
   if (mop == null || mop.typeOfHit != RayTraceResult.Type.BLOCK) {
     return ActionResult.newResult(EnumActionResult.PASS,itemstack);
   }
@@ -12,7 +12,7 @@
     BlockPos targetPos=clickPos.offset(mop.sideHit);
     if (player.canPlayerEdit(targetPos,mop.sideHit,itemstack)) {
       if (this.tryPlaceFluid(player,player.getEntityWorld(),fluidStack.getFluid().getBlock(),targetPos) && !player.capabilities.isCreativeMode) {
-        player.addStat(StatList.func_188057_b(this));
+        player.addStat(StatList.getObjectUseStats(this));
         itemstack.stackSize--;
         ItemStack emptyStack=getEmpty() != null ? getEmpty().copy() : new ItemStack(this);
         if (itemstack.stackSize <= 0) {
