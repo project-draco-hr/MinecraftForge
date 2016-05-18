@@ -6,7 +6,7 @@
     return;
   }
   if (ticket.requestedChunks != null) {
-    for (    ChunkCoordIntPair chunk : ImmutableSet.copyOf(ticket.requestedChunks)) {
+    for (    ChunkPos chunk : ImmutableSet.copyOf(ticket.requestedChunks)) {
       unforceChunk(ticket,chunk);
     }
   }

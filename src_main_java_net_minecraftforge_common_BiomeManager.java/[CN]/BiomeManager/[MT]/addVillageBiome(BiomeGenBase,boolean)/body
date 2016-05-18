@@ -1,7 +1,0 @@
-{
-  if (!MapGenVillage.villageSpawnBiomes.contains(biome)) {
-    ArrayList<BiomeGenBase> biomes=new ArrayList<BiomeGenBase>(MapGenVillage.villageSpawnBiomes);
-    biomes.add(biome);
-    MapGenVillage.villageSpawnBiomes=biomes;
-  }
-}

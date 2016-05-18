@@ -1,3 +1,0 @@
-BiomeGenBase potion
-int id
-Map<ResourceLocation,?> slaves

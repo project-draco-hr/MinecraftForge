@@ -1,4 +1,0 @@
-WorldServer world
-EnumCreatureType type
-BlockPos pos
-List<BiomeGenBase.SpawnListEntry> oldList

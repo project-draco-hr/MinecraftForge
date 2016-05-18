@@ -21,7 +21,7 @@
     entityPlayer.playerNetServerHandler.sendPacket(new SPacketBlockChange(world,pos));
     TileEntity tileentity=world.getTileEntity(pos);
     if (tileentity != null) {
-      Packet<?> pkt=tileentity.getDescriptionPacket();
+      Packet<?> pkt=tileentity.func_189518_D_();
       if (pkt != null) {
         entityPlayer.playerNetServerHandler.sendPacket(pkt);
       }

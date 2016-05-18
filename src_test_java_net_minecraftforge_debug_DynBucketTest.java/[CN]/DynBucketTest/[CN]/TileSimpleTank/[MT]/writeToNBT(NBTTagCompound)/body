@@ -1,4 +1,0 @@
-{
-  super.writeToNBT(tags);
-  tank.writeToNBT(tags);
-}

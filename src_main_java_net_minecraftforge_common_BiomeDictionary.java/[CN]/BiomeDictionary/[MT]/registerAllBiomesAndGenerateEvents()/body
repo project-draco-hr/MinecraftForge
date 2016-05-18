@@ -1,6 +1,6 @@
 {
-  for (  ResourceLocation biomeResource : BiomeGenBase.biomeRegistry.getKeys()) {
-    BiomeGenBase biome=BiomeGenBase.biomeRegistry.getObject(biomeResource);
+  for (  ResourceLocation biomeResource : Biome.biomeRegistry.getKeys()) {
+    Biome biome=Biome.biomeRegistry.getObject(biomeResource);
     if (biome.theBiomeDecorator instanceof DeferredBiomeDecorator) {
       DeferredBiomeDecorator decorator=(DeferredBiomeDecorator)biome.theBiomeDecorator;
       decorator.fireCreateEventAndReplace(biome);

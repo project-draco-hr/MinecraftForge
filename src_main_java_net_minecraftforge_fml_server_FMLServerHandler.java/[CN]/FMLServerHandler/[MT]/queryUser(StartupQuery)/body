@@ -12,7 +12,7 @@
       if (Thread.interrupted())       throw new InterruptedException();
       DedicatedServer dedServer=(DedicatedServer)server;
 synchronized (dedServer.pendingCommandList) {
-        for (Iterator<ServerCommand> it=GenericIterableFactory.newCastingIterable(dedServer.pendingCommandList,ServerCommand.class).iterator(); it.hasNext(); ) {
+        for (Iterator<PendingCommand> it=GenericIterableFactory.newCastingIterable(dedServer.pendingCommandList,PendingCommand.class).iterator(); it.hasNext(); ) {
           String cmd=it.next().command.trim().toLowerCase();
           if (cmd.equals("/fml confirm")) {
             FMLLog.info("confirmed");

@@ -1,0 +1,6 @@
+String entityName
+int weightedProb
+int min
+int max
+EnumCreatureType typeOfCreature
+Biome biomes

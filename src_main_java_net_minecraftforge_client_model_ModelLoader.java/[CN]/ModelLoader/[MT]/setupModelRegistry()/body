@@ -7,7 +7,7 @@
   final Set<ResourceLocation> textures=Sets.newHashSet(ModelLoaderRegistry.getTextures());
   textures.remove(TextureMap.LOCATION_MISSING_TEXTURE);
   textures.addAll(LOCATIONS_BUILTIN_TEXTURES);
-  textureMap.loadSprites(resourceManager,new IIconCreator(){
+  textureMap.loadSprites(resourceManager,new ITextureMapPopulator(){
     public void registerSprites(    TextureMap map){
       for (      ResourceLocation t : textures) {
         map.registerSprite(t);
