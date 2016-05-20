@@ -1,0 +1,25 @@
+{
+  for (  Method method : EnumHelper.class.getDeclaredMethods()) {
+    String name=method.getName();
+    if (!name.equals("addEnum") && name.startsWith("add")) {
+      System.out.println("  " + method);
+      Class<?> returnType=method.getReturnType();
+      Constructor<?>[] declaredConstructors=returnType.getDeclaredConstructors();
+      Class<?>[] actualParameters=method.getParameterTypes();
+      Assert.assertTrue(actualParameters.length >= 1);
+      Assert.assertEquals("First parameter of add method should be String (name)",String.class,actualParameters[0]);
+      Assert.assertEquals(String.class,actualParameters[0]);
+      for (      Constructor<?> declaredConstructor : declaredConstructors) {
+        System.out.println("    " + declaredConstructor.toString());
+        Class<?>[] expectedParameters=declaredConstructor.getParameterTypes();
+        Assert.assertTrue(expectedParameters.length >= 2);
+        Assert.assertEquals("First parameter of enum constructor should be String (name)",String.class,expectedParameters[0]);
+        Assert.assertEquals("Second parameter of enum should be int (ordinal)",int.class,expectedParameters[1]);
+        for (int i=1, j=2; i < actualParameters.length && j < expectedParameters.length; i++, j++) {
+          Assert.assertEquals("method Parameter " + i + " ("+ actualParameters[i].getName()+ ") "+ "should match constructor parameter"+ j+ " ("+ expectedParameters[j]+ ")",expectedParameters[j],actualParameters[i]);
+        }
+        Assert.assertEquals("Length of parameters incorrect",(expectedParameters.length - 2),(actualParameters.length - 1));
+      }
+    }
+  }
+}
