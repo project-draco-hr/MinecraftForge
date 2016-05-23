@@ -1,0 +1,5 @@
+{
+  if (other == null)   return this.writers.length == 0;
+  if (this.writers.length == 0)   return other.writers.length == 0;
+  return this.serializeNBT().equals(other.serializeNBT());
+}
