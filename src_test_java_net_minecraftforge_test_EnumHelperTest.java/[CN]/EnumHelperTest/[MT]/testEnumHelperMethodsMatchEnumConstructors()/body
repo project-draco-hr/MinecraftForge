@@ -1,25 +1,50 @@
 {
-  for (  Method method : EnumHelper.class.getDeclaredMethods()) {
+  setBootstrap();
+  boolean failed=false;
+  Set<Constructor<?>> seenCtrs=new HashSet<Constructor<?>>();
+  Set<Constructor<?>> matchedCtrs=new HashSet<Constructor<?>>();
+  List<Method> mtds=new ArrayList<Method>();
+  mtds.addAll(Arrays.asList(EnumHelper.class.getDeclaredMethods()));
+  mtds.addAll(Arrays.asList(EnumHelperClient.class.getDeclaredMethods()));
+  for (  Method method : mtds) {
     String name=method.getName();
-    if (!name.equals("addEnum") && name.startsWith("add")) {
-      System.out.println("  " + method);
+    if (!name.equals("addEnum") && name.startsWith("add") && Modifier.isPublic(method.getModifiers())) {
       Class<?> returnType=method.getReturnType();
       Constructor<?>[] declaredConstructors=returnType.getDeclaredConstructors();
       Class<?>[] actualParameters=method.getParameterTypes();
       Assert.assertTrue(actualParameters.length >= 1);
       Assert.assertEquals("First parameter of add method should be String (name)",String.class,actualParameters[0]);
-      Assert.assertEquals(String.class,actualParameters[0]);
+      actualParameters=Arrays.copyOfRange(actualParameters,1,actualParameters.length);
+      String info="  Method: " + method.getDeclaringClass().getSimpleName() + "."+ method.getName()+ "\n"+ "  Class: "+ returnType.getName()+ "\n"+ "  Actual:   "+ COMMA.join(actualParameters);
+      boolean found=false;
       for (      Constructor<?> declaredConstructor : declaredConstructors) {
-        System.out.println("    " + declaredConstructor.toString());
+        seenCtrs.add(declaredConstructor);
         Class<?>[] expectedParameters=declaredConstructor.getParameterTypes();
         Assert.assertTrue(expectedParameters.length >= 2);
         Assert.assertEquals("First parameter of enum constructor should be String (name)",String.class,expectedParameters[0]);
         Assert.assertEquals("Second parameter of enum should be int (ordinal)",int.class,expectedParameters[1]);
-        for (int i=1, j=2; i < actualParameters.length && j < expectedParameters.length; i++, j++) {
-          Assert.assertEquals("method Parameter " + i + " ("+ actualParameters[i].getName()+ ") "+ "should match constructor parameter"+ j+ " ("+ expectedParameters[j]+ ")",expectedParameters[j],actualParameters[i]);
+        expectedParameters=Arrays.copyOfRange(expectedParameters,2,expectedParameters.length);
+        info+="\n  Expected: " + COMMA.join(expectedParameters);
+        if (Arrays.equals(actualParameters,expectedParameters)) {
+          matchedCtrs.add(declaredConstructor);
+          found=true;
         }
-        Assert.assertEquals("Length of parameters incorrect",(expectedParameters.length - 2),(actualParameters.length - 1));
+      }
+      if (!found) {
+        System.out.println("Pamaters did not Match:");
+        System.out.println(info);
+        failed=true;
       }
     }
   }
+  seenCtrs.removeAll(matchedCtrs);
+  if (!seenCtrs.isEmpty()) {
+    for (    Constructor<?> ctr : seenCtrs) {
+      System.out.println("Missing accessor for Enum:");
+      System.out.println("  Class: " + ctr.getName());
+      System.out.println("  Params: " + COMMA.join(Arrays.copyOfRange(ctr.getParameterTypes(),2,ctr.getParameterTypes().length)));
+    }
+    failed=true;
+  }
+  Assert.assertFalse(failed);
 }

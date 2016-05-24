@@ -1,0 +1,13 @@
+{
+  try {
+    for (    Field f : Bootstrap.class.getDeclaredFields()) {
+      if (Modifier.isPrivate(f.getModifiers()) && Modifier.isStatic(f.getModifiers()) && f.getType() == boolean.class) {
+        f.setAccessible(true);
+        f.set(null,true);
+      }
+    }
+  }
+ catch (  Exception e) {
+    Throwables.propagate(e);
+  }
+}
