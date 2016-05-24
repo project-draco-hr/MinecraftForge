@@ -3,7 +3,7 @@
   Object[][] types=(Object[][])ReflectionHelper.getPrivateValue(EnumHelper.class,null,"commonTypes");
   for (  Object[] o : types)   testType(o);
   System.out.println("Testing EnumHelperClient:");
-  types=(Object[][])ReflectionHelper.getPrivateValue(EnumHelperClient.class,null,"clentTypes");
+  types=(Object[][])ReflectionHelper.getPrivateValue(EnumHelperClient.class,null,"clientTypes");
   for (  Object[] o : types)   testType(o);
   if (failed)   throw new RuntimeException("Enum Helper test failed!");
   Assert.assertEquals(BiomeDictionary.Type.BEACH,BiomeDictionary.Type.getType("BEACH"));
