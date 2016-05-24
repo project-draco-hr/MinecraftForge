@@ -1,0 +1,7 @@
+String name
+String langName
+boolean isSlider
+boolean isToggle
+float valMin
+float valMax
+float valStep

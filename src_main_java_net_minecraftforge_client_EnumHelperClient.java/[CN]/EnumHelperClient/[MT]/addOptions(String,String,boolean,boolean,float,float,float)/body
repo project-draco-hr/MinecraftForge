@@ -1,0 +1,3 @@
+{
+  return addEnum(Options.class,name,new Class<?>[]{String.class,boolean.class,boolean.class,float.class,float.class,float.class},langName,isSlider,isToggle,valMin,valMax,valStep);
+}

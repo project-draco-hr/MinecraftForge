@@ -4,3 +4,4 @@ int durability
 int[] reductionAmounts
 int enchantability
 SoundEvent soundOnEquip
+float toughness
