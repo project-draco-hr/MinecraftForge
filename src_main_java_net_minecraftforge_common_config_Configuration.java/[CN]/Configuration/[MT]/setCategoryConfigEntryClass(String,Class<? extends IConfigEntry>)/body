@@ -1,5 +1,4 @@
 {
-  if (!caseSensitiveCustomCategories)   category=category.toLowerCase(Locale.ENGLISH);
   getCategory(category).setConfigEntryClass(clazz);
   return this;
 }
