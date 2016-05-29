@@ -4,4 +4,5 @@
   UsernameCache.load();
   FluidRegistry.validateFluidRegistry();
   ForgeHooks.initTools();
+  new CrashReport("ThisIsFake",new Exception("Not real"));
 }

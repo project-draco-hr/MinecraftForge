@@ -1,0 +1,3 @@
+ASMDataTable table
+String modID
+Set<String> classes

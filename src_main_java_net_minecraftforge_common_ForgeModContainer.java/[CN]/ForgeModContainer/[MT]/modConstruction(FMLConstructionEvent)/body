@@ -1,4 +1,23 @@
 {
+  List<String> all=Lists.newArrayList();
+  for (  ASMData asm : evt.getASMHarvestedData().getAll(ICrashReportDetail.class.getName().replace('.','/')))   all.add(asm.getClassName());
+  for (  ASMData asm : evt.getASMHarvestedData().getAll(ICrashCallable.class.getName().replace('.','/')))   all.add(asm.getClassName());
+  Iterator<String> itr=all.iterator();
+  while (itr.hasNext()) {
+    String cls=itr.next();
+    if (!cls.startsWith("net/minecraft/") && !cls.startsWith("net/minecraftforge/"))     itr.remove();
+  }
+  FMLLog.log("Forge",Level.DEBUG,"Preloading CrashReport Classes");
+  Collections.sort(all);
+  for (  String name : all) {
+    FMLLog.log("Forge",Level.DEBUG,"\t" + name);
+    try {
+      Class.forName(name.replace('/','.'),false,MinecraftForge.class.getClassLoader());
+    }
+ catch (    Exception e) {
+      e.printStackTrace();
+    }
+  }
   NetworkRegistry.INSTANCE.register(this,this.getClass(),"*",evt.getASMHarvestedData());
   ForgeNetworkHandler.registerChannel(this,evt.getSide());
 }

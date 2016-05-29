@@ -1,0 +1,18 @@
+{
+  List<String> all=Lists.newArrayList();
+  for (  ASMData asm : table.getAll(ICrashReportDetail.class.getName().replace('.','/')))   all.add(asm.getClassName());
+  for (  ASMData asm : table.getAll(ICrashCallable.class.getName().replace('.','/')))   all.add(asm.getClassName());
+  all.retainAll(classes);
+  if (all.size() == 0)   return;
+  FMLLog.log(modID,Level.DEBUG,"Preloading CrashReport Classes");
+  Collections.sort(all);
+  for (  String name : all) {
+    FMLLog.log(modID,Level.DEBUG,"\t" + name);
+    try {
+      Class.forName(name.replace('/','.'),false,MinecraftForge.class.getClassLoader());
+    }
+ catch (    Exception e) {
+      e.printStackTrace();
+    }
+  }
+}
