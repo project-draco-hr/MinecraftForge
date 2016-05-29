@@ -1,8 +1,12 @@
 {
+  ImmutableList.Builder<String> pathBuilder=ImmutableList.builder();
+  pathBuilder.addAll(path);
+  pathBuilder.add(node.getName());
+  ImmutableList<String> newPath=pathBuilder.build();
   for (  Node<?> child : node.getNodes().values()) {
-    generateQuads(builder,child,state);
+    generateQuads(builder,child,state,newPath);
   }
-  if (node.getKind() instanceof Mesh && meshes.contains(node.getName())) {
+  if (node.getKind() instanceof Mesh && meshes.contains(node.getName()) && !state.apply(Optional.of(Models.getHiddenModelPart(newPath))).isPresent()) {
     Mesh mesh=(Mesh)node.getKind();
     Collection<Face> faces=mesh.bake(new Function<Node<?>,Matrix4f>(){
       private final TRSRTransformation global=state.apply(Optional.<IModelPart>absent()).or(TRSRTransformation.identity());

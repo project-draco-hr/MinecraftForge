@@ -1,3 +1,3 @@
 {
-  return new ExtendedBlockState(this,new IProperty[]{FACING},new IUnlistedProperty[]{OBJModel.OBJProperty.INSTANCE});
+  return new BlockStateContainer(this,FACING);
 }

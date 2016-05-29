@@ -37,12 +37,12 @@
   }
   if (quads == null) {
     ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
-    generateQuads(builder,node,this.state);
+    generateQuads(builder,node,this.state,ImmutableList.<String>of());
     quads=builder.build();
   }
   if (this.state != modelState) {
     ImmutableList.Builder<BakedQuad> builder=ImmutableList.builder();
-    generateQuads(builder,node,modelState);
+    generateQuads(builder,node,modelState,ImmutableList.<String>of());
     return builder.build();
   }
   return quads;

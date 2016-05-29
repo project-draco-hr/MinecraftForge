@@ -21,9 +21,7 @@
     Matrix4f matrix=new Matrix4f();
     matrix.setIdentity();
     matrix.setRotation(rot);
-    TRSRTransformation transform=new TRSRTransformation(matrix);
-    transform=TRSRTransformation.blockCenterToCorner(transform);
-    this.state=new OBJModel.OBJState(Lists.newArrayList(OBJModel.Group.ALL),true,transform);
+    transform=TRSRTransformation.blockCenterToCorner(new TRSRTransformation(matrix));
     this.worldObj.markBlockRangeForRenderUpdate(this.pos,this.pos);
   }
 }

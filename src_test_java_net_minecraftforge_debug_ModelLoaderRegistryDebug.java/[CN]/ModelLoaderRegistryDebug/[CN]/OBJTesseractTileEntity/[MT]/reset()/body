@@ -1,6 +1,0 @@
-{
-  this.counter=1;
-  this.max=2;
-  this.visible.clear();
-  this.visible.add(Integer.toString(this.counter));
-}

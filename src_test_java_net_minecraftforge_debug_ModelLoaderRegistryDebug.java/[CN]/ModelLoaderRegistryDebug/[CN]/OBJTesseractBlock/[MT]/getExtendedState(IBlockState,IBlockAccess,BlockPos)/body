@@ -1,5 +1,7 @@
 {
-  OBJTesseractTileEntity tileEntity=(OBJTesseractTileEntity)world.getTileEntity(pos);
-  OBJModel.OBJState retState=new OBJModel.OBJState(tileEntity == null ? Lists.newArrayList(OBJModel.Group.ALL) : tileEntity.visible,true);
-  return ((IExtendedBlockState)this.state.getBaseState()).withProperty(OBJModel.OBJProperty.INSTANCE,retState);
+  if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof OBJTesseractTileEntity) {
+    OBJTesseractTileEntity te=(OBJTesseractTileEntity)world.getTileEntity(pos);
+    return ((IExtendedBlockState)state).withProperty(Properties.AnimationProperty,te.state);
+  }
+  return state;
 }

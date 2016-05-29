@@ -1,3 +1,4 @@
 ImmutableList.Builder<BakedQuad> builder
 Node<?> node
 IModelState state
+ImmutableList<String> path

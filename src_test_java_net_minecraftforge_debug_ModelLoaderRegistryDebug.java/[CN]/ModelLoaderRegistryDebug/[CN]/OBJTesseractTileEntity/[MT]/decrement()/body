@@ -1,10 +1,9 @@
 {
-  if (this.visible.contains(OBJModel.Group.ALL))   this.visible.remove(OBJModel.Group.ALL);
   if (this.counter == 1) {
     this.counter=max + 1;
-    for (int i=1; i < max; i++)     this.visible.add(Integer.toString(i));
+    for (int i=1; i < max; i++)     this.hidden.add(Integer.toString(i));
   }
-  this.visible.remove(Integer.toString(this.counter));
+  this.hidden.remove(Integer.toString(this.counter));
   this.counter--;
   TextComponentString text=new TextComponentString("" + this.counter);
   if (this.worldObj.isRemote)   Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(text);

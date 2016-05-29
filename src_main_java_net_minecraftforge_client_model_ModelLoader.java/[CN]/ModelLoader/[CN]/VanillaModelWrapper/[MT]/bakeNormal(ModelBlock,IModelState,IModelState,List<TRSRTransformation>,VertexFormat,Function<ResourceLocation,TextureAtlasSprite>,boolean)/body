@@ -3,6 +3,9 @@
   TextureAtlasSprite particle=bakedTextureGetter.apply(new ResourceLocation(model.resolveTextureName("particle")));
   SimpleBakedModel.Builder builder=(new SimpleBakedModel.Builder(model,model.createOverrides())).setTexture(particle);
   for (int i=0; i < model.getElements().size(); i++) {
+    if (modelState.apply(Optional.of(Models.getHiddenModelPart(ImmutableList.of(Integer.toString(i))))).isPresent()) {
+      continue;
+    }
     BlockPart part=model.getElements().get(i);
     TRSRTransformation transformation=baseState;
     if (newTransforms.get(i) != null) {

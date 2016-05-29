@@ -1,8 +1,8 @@
 {
   if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof OBJDynamicEyeTileEntity) {
     OBJDynamicEyeTileEntity te=(OBJDynamicEyeTileEntity)world.getTileEntity(pos);
-    if (te.state != null) {
-      return ((IExtendedBlockState)this.state.getBaseState()).withProperty(OBJModel.OBJProperty.INSTANCE,te.state);
+    if (te.transform != TRSRTransformation.identity()) {
+      return ((IExtendedBlockState)state).withProperty(Properties.AnimationProperty,te.transform);
     }
   }
   return state;
