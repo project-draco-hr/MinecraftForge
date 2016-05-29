@@ -3,4 +3,5 @@
   OreDictionary.getOreName(0);
   UsernameCache.load();
   FluidRegistry.validateFluidRegistry();
+  ForgeHooks.initTools();
 }
