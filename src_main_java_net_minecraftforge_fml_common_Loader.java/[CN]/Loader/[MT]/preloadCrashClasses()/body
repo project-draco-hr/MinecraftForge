@@ -1,0 +1,20 @@
+{
+  new CrashReport("ThisIsFake",new Exception("Not real"));
+  FMLLog.log(Level.DEBUG,"Preloading CrashReport Classes");
+  List<String> classes=Lists.newArrayList();
+  for (  ASMData asm : discoverer.getASMTable().getAll(ICrashReportDetail.class.getName().replace('.','/'))) {
+    classes.add(asm.getClassName());
+  }
+  for (  ASMData asm : discoverer.getASMTable().getAll(ICrashCallable.class.getName().replace('.','/'))) {
+    classes.add(asm.getClassName());
+  }
+  Collections.sort(classes);
+  for (  String name : classes) {
+    FMLLog.log(Level.DEBUG,"\t" + name);
+    try {
+      Class<?> cls=Class.forName(name,false,getClass().getClassLoader());
+    }
+ catch (    Exception e) {
+    }
+  }
+}

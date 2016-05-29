@@ -26,6 +26,7 @@
       }
     }
   }
+  preloadCrashClasses();
   modController.transition(LoaderState.CONSTRUCTING,false);
   modController.distributeStateMessage(LoaderState.CONSTRUCTING,modClassLoader,discoverer.getASMTable(),reverseDependencies);
   List<ModContainer> mods=Lists.newArrayList();
