@@ -1,14 +1,16 @@
 {
   for (  Biome biome : biomes) {
     List<SpawnListEntry> spawns=biome.getSpawnableList(typeOfCreature);
+    boolean found=false;
     for (    SpawnListEntry entry : spawns) {
       if (entry.entityClass == entityClass) {
         entry.itemWeight=weightedProb;
         entry.minGroupCount=min;
         entry.maxGroupCount=max;
+        found=true;
         break;
       }
     }
-    spawns.add(new SpawnListEntry(entityClass,weightedProb,min,max));
+    if (!found)     spawns.add(new SpawnListEntry(entityClass,weightedProb,min,max));
   }
 }
