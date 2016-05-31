@@ -1,0 +1,7 @@
+{
+  if (MapGenVillage.VILLAGE_SPAWN_BIOMES.contains(biome)) {
+    ArrayList<Biome> biomes=new ArrayList<Biome>(MapGenVillage.VILLAGE_SPAWN_BIOMES);
+    biomes.remove(biome);
+    MapGenVillage.VILLAGE_SPAWN_BIOMES=biomes;
+  }
+}

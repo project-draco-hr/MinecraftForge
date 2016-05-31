@@ -9,6 +9,6 @@
   GameRegistry.register(dynBottle);
   int i=0;
   i=0;
-  FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluid("milk"),new ItemStack(Items.milk_bucket),FluidContainerRegistry.EMPTY_BUCKET);
+  FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluid("milk"),new ItemStack(Items.MILK_BUCKET),FluidContainerRegistry.EMPTY_BUCKET);
   proxy.setupModels();
 }

@@ -4,9 +4,9 @@
     return 0.0F;
   }
   if (!canHarvestBlock(state.getBlock(),player,world,pos)) {
-    return player.getBreakSpeed(state,pos) / hardness / 100F;
+    return player.getDigSpeed(state,pos) / hardness / 100F;
   }
  else {
-    return player.getBreakSpeed(state,pos) / hardness / 30F;
+    return player.getDigSpeed(state,pos) / hardness / 30F;
   }
 }

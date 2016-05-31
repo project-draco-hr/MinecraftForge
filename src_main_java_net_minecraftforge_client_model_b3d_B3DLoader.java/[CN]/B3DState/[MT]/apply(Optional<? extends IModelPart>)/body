@@ -1,5 +1,10 @@
 {
-  if (!part.isPresent())   return parent.apply(part);
+  if (!part.isPresent()) {
+    if (parent != null) {
+      return parent.apply(part);
+    }
+    return Optional.absent();
+  }
   if (!(part.get() instanceof NodeJoint)) {
     return Optional.absent();
   }

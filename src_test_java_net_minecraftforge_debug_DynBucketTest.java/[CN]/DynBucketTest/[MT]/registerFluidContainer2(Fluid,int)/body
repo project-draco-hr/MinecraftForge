@@ -2,5 +2,5 @@
   if (fluid == null)   return;
   FluidStack fs=new FluidStack(fluid,250);
   ItemStack stack=new ItemStack(dynBottle,1,meta);
-  FluidContainerRegistry.registerFluidContainer(fs,stack,new ItemStack(Items.glass_bottle));
+  FluidContainerRegistry.registerFluidContainer(fs,stack,new ItemStack(Items.GLASS_BOTTLE));
 }

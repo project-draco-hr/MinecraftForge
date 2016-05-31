@@ -1,6 +1,6 @@
 {
   if (pre(BOSSHEALTH))   return;
-  bind(Gui.icons);
+  bind(Gui.ICONS);
   GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,GlStateManager.SourceFactor.ONE,GlStateManager.DestFactor.ZERO);
   mc.mcProfiler.startSection("bossHealth");
   GlStateManager.enableBlend();

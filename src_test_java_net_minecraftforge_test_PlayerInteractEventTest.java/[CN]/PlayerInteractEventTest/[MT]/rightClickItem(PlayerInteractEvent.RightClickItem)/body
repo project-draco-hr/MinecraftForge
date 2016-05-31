@@ -1,4 +1,4 @@
 {
   if (!ENABLE)   return;
-  if (evt.getItemStack() != null && evt.getItemStack().getItem() == Items.ender_pearl)   evt.setCanceled(true);
+  if (evt.getItemStack() != null && evt.getItemStack().getItem() == Items.ENDER_PEARL)   evt.setCanceled(true);
 }

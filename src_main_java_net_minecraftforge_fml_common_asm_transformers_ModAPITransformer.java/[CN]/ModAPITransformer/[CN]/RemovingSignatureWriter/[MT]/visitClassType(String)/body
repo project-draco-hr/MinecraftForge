@@ -1,0 +1,8 @@
+{
+  if (name.equals(ifaceName)) {
+    super.visitClassType("java/lang/Object");
+  }
+ else {
+    super.visitClassType(name);
+  }
+}

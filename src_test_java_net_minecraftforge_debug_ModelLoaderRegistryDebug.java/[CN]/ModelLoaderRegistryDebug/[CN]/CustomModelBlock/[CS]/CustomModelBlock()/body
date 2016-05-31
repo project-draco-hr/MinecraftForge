@@ -1,7 +1,7 @@
 {
-  super(Material.iron);
+  super(Material.IRON);
   this.setDefaultState(this.blockState.getBaseState().withProperty(FACING,EnumFacing.NORTH));
-  setCreativeTab(CreativeTabs.tabBlock);
+  setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
   setUnlocalizedName(MODID + ":" + name);
   setRegistryName(new ResourceLocation(MODID,name));
 }

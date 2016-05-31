@@ -1,0 +1,6 @@
+{
+  this.asmType=Type.getObjectType(typeQName);
+  this.classVersion=classVersion;
+  this.asmSuperType=!Strings.isNullOrEmpty(superClassQName) ? Type.getObjectType(superClassQName) : null;
+  for (  String intf : interfaces)   this.interfaces.add(intf);
+}

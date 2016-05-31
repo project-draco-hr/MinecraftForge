@@ -1,0 +1,3 @@
+World world
+BlockPos position
+ChunkCache cache

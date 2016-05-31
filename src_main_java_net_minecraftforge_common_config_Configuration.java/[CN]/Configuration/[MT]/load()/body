@@ -77,6 +77,7 @@ case '"':
 case '{':
 if (tmpList != null) break;
 name=line.substring(nameStart,nameEnd + 1);
+if (!caseSensitiveCustomCategories) name=name.toLowerCase(Locale.ENGLISH);
 String qualifiedName=ConfigCategory.getQualifiedName(name,currentCat);
 ConfigCategory cat=categories.get(qualifiedName);
 if (cat == null) {

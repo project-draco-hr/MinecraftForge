@@ -1,0 +1,4 @@
+{
+  setBootstrap();
+  Assert.assertEquals(BiomeDictionary.Type.BEACH,BiomeDictionary.Type.getType("BEACH"));
+}

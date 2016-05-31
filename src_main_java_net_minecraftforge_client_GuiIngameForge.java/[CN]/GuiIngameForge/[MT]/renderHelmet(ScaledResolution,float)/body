@@ -2,7 +2,7 @@
   if (pre(HELMET))   return;
   ItemStack itemstack=this.mc.thePlayer.inventory.armorItemInSlot(3);
   if (this.mc.gameSettings.thirdPersonView == 0 && itemstack != null && itemstack.getItem() != null) {
-    if (itemstack.getItem() == Item.getItemFromBlock(Blocks.pumpkin)) {
+    if (itemstack.getItem() == Item.getItemFromBlock(Blocks.PUMPKIN)) {
       renderPumpkinOverlay(res);
     }
  else {

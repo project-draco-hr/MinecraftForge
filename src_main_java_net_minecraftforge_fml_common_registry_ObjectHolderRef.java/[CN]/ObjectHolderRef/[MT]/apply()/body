@@ -1,13 +1,13 @@
 {
   Object thing;
   if (isBlock) {
-    thing=GameData.getBlockRegistry().getObject(injectedObject);
-    if (thing == Blocks.air) {
+    thing=ForgeRegistries.BLOCKS.getValue(injectedObject);
+    if (thing == Blocks.AIR) {
       thing=null;
     }
   }
  else   if (isItem) {
-    thing=GameData.getItemRegistry().getObject(injectedObject);
+    thing=ForgeRegistries.ITEMS.getValue(injectedObject);
   }
  else {
     thing=null;

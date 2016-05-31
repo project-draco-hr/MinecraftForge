@@ -1,4 +1,5 @@
 {
-  super.writeToNBT(tags);
+  tags=super.writeToNBT(tags);
   tank.writeToNBT(tags);
+  return tags;
 }

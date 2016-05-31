@@ -20,7 +20,7 @@
     GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,GlStateManager.SourceFactor.ONE,GlStateManager.DestFactor.ZERO);
   }
   if (renderHelmet)   renderHelmet(res,partialTicks);
-  if (renderPortal && !mc.thePlayer.isPotionActive(MobEffects.confusion)) {
+  if (renderPortal && !mc.thePlayer.isPotionActive(MobEffects.NAUSEA)) {
     renderPortal(res,partialTicks);
   }
   if (renderHotbar)   renderHotbar(res,partialTicks);

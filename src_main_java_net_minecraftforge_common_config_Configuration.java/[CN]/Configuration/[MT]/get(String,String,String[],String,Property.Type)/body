@@ -1,7 +1,4 @@
 {
-  if (!caseSensitiveCustomCategories) {
-    category=category.toLowerCase(Locale.ENGLISH);
-  }
   ConfigCategory cat=getCategory(category);
   if (cat.containsKey(key)) {
     Property prop=cat.get(key);

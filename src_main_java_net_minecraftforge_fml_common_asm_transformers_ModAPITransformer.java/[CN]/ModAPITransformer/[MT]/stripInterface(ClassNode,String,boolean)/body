@@ -1,6 +1,13 @@
 {
-  String ifaceName=interfaceName.replace('.','/');
+  final String ifaceName=interfaceName.replace('.','/');
   boolean found=classNode.interfaces.remove(ifaceName);
+  if (found && classNode.signature != null) {
+    SignatureReader sr=new SignatureReader(classNode.signature);
+    final RemovingSignatureWriter signatureWriter=new RemovingSignatureWriter(ifaceName);
+    sr.accept(signatureWriter);
+    classNode.signature=signatureWriter.toString();
+    if (logDebugInfo)     FMLRelaunchLog.finer("Optional removal - interface %s removed from type signature");
+  }
   if (found && logDebugInfo)   FMLRelaunchLog.finer("Optional removal - interface %s removed",interfaceName);
   if (!found && logDebugInfo)   FMLRelaunchLog.finer("Optional removal - interface %s NOT removed - not found",interfaceName);
   if (found && stripRefs) {

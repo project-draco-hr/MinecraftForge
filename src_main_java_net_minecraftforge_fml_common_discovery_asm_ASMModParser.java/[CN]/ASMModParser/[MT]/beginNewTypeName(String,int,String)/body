@@ -1,5 +1,0 @@
-{
-  this.asmType=Type.getObjectType(typeQName);
-  this.classVersion=classVersion;
-  this.asmSuperType=!Strings.isNullOrEmpty(superClassQName) ? Type.getObjectType(superClassQName) : null;
-}

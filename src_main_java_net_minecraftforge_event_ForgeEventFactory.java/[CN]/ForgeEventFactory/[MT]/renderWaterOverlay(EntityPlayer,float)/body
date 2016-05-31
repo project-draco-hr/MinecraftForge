@@ -1,3 +1,3 @@
 {
-  return renderBlockOverlay(player,renderPartialTicks,OverlayType.WATER,Blocks.water.getDefaultState(),new BlockPos(player));
+  return renderBlockOverlay(player,renderPartialTicks,OverlayType.WATER,Blocks.WATER.getDefaultState(),new BlockPos(player));
 }

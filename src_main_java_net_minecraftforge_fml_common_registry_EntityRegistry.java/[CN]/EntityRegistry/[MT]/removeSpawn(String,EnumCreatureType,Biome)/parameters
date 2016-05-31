@@ -1,0 +1,3 @@
+String entityName
+EnumCreatureType typeOfCreature
+Biome biomes

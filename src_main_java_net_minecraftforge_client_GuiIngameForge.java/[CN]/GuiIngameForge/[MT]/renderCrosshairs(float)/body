@@ -1,6 +1,6 @@
 {
   if (pre(CROSSHAIRS))   return;
-  bind(Gui.icons);
+  bind(Gui.ICONS);
   GlStateManager.enableBlend();
   super.renderAttackIndicator(partialTicks,res);
   post(CROSSHAIRS);

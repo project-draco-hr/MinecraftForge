@@ -1,5 +1,5 @@
 {
-  bind(icons);
+  bind(ICONS);
   if (pre(HEALTH))   return;
   mc.mcProfiler.startSection("health");
   GlStateManager.enableBlend();
@@ -32,14 +32,14 @@
   left_height+=(healthRows * rowHeight);
   if (rowHeight != 10)   left_height+=10 - rowHeight;
   int regen=-1;
-  if (player.isPotionActive(MobEffects.regeneration)) {
+  if (player.isPotionActive(MobEffects.REGENERATION)) {
     regen=updateCounter % 25;
   }
   final int TOP=9 * (mc.theWorld.getWorldInfo().isHardcoreModeEnabled() ? 5 : 0);
   final int BACKGROUND=(highlight ? 25 : 16);
   int MARGIN=16;
-  if (player.isPotionActive(MobEffects.poison))   MARGIN+=36;
- else   if (player.isPotionActive(MobEffects.wither))   MARGIN+=72;
+  if (player.isPotionActive(MobEffects.POISON))   MARGIN+=36;
+ else   if (player.isPotionActive(MobEffects.WITHER))   MARGIN+=72;
   float absorbRemaining=absorb;
   for (int i=MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F) - 1; i >= 0; --i) {
     int row=MathHelper.ceiling_float_int((float)(i + 1) / 10.0F) - 1;

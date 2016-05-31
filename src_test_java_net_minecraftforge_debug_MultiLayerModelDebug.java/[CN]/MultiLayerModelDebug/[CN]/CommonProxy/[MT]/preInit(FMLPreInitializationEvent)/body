@@ -1,7 +1,7 @@
 {
-  GameRegistry.register(new Block(Material.wood){
+  GameRegistry.register(new Block(Material.WOOD){
 {
-      setCreativeTab(CreativeTabs.tabBlock);
+      setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
       setUnlocalizedName(MODID + "." + blockName);
       setRegistryName(blockId);
     }
@@ -16,5 +16,5 @@
     }
   }
 );
-  GameRegistry.register(new ItemBlock(Block.blockRegistry.getObject(blockId)).setRegistryName(blockId));
+  GameRegistry.register(new ItemBlock(Block.REGISTRY.getObject(blockId)).setRegistryName(blockId));
 }

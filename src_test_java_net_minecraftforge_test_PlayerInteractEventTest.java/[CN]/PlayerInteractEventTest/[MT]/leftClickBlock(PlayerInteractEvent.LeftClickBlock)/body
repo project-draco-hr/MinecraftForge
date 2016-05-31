@@ -2,8 +2,8 @@
   if (!ENABLE)   return;
   logger.info("HIT VEC: {}",evt.getHitVec());
   if (evt.getItemStack() != null) {
-    if (evt.getItemStack().getItem() == Items.golden_pickaxe)     evt.setCanceled(true);
-    if (evt.getItemStack().getItem() == Items.diamond_pickaxe)     evt.setUseBlock(Event.Result.DENY);
-    if (evt.getItemStack().getItem() == Items.iron_pickaxe)     evt.setUseItem(Event.Result.DENY);
+    if (evt.getItemStack().getItem() == Items.GOLDEN_PICKAXE)     evt.setCanceled(true);
+    if (evt.getItemStack().getItem() == Items.DIAMOND_PICKAXE)     evt.setUseBlock(Event.Result.DENY);
+    if (evt.getItemStack().getItem() == Items.IRON_PICKAXE)     evt.setUseItem(Event.Result.DENY);
   }
 }

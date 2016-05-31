@@ -1,6 +1,6 @@
 {
   if (typeInfoList[type.ordinal()] != null) {
-    return typeInfoList[type.ordinal()].toArray(new BiomeGenBase[0]);
+    return typeInfoList[type.ordinal()].toArray(new Biome[0]);
   }
-  return new BiomeGenBase[0];
+  return new Biome[0];
 }

@@ -1,5 +1,2 @@
 {
-  if (!(args instanceof Integer)) {
-    throw new RuntimeException("DIMENSION expects an integer argument");
-  }
 }

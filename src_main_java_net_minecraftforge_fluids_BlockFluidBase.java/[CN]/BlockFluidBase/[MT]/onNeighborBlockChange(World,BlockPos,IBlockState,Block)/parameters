@@ -1,4 +1,0 @@
-World world
-BlockPos pos
-IBlockState state
-Block neighborBlock

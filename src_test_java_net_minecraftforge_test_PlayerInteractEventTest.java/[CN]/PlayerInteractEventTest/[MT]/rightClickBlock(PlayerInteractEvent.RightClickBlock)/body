@@ -10,11 +10,11 @@
     evt.setUseBlock(Event.Result.ALLOW);
     evt.setUseItem(Event.Result.DENY);
   }
-  if (evt.getItemStack() != null && evt.getItemStack().getItem() == Items.flint_and_steel)   evt.setUseBlock(Event.Result.DENY);
-  if (evt.getHand() == EnumHand.MAIN_HAND && evt.getItemStack() != null && evt.getItemStack().getItem() == Items.painting) {
+  if (evt.getItemStack() != null && evt.getItemStack().getItem() == Items.FLINT_AND_STEEL)   evt.setUseBlock(Event.Result.DENY);
+  if (evt.getHand() == EnumHand.MAIN_HAND && evt.getItemStack() != null && evt.getItemStack().getItem() == Items.PAINTING) {
     evt.setUseItem(Event.Result.ALLOW);
   }
-  if (evt.getItemStack() != null && evt.getItemStack().getItem() == Items.spawn_egg) {
+  if (evt.getItemStack() != null && evt.getItemStack().getItem() == Items.SPAWN_EGG) {
     evt.setCanceled(true);
   }
 }

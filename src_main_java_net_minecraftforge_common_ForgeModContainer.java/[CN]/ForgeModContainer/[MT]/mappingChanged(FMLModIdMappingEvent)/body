@@ -1,3 +1,4 @@
 {
   OreDictionary.rebakeMap();
+  StatList.reinit();
 }

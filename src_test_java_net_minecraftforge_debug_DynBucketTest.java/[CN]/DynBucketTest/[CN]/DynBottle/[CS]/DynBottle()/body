@@ -1,8 +1,8 @@
 {
-  super(250,new ItemStack(Items.glass_bottle),true);
+  super(250,new ItemStack(Items.GLASS_BOTTLE),true);
   setUnlocalizedName("dynbottle");
   setRegistryName(new ResourceLocation(MODID,"dynbottle"));
   setMaxStackSize(16);
   setHasSubtypes(true);
-  setCreativeTab(CreativeTabs.tabMisc);
+  setCreativeTab(CreativeTabs.MISC);
 }

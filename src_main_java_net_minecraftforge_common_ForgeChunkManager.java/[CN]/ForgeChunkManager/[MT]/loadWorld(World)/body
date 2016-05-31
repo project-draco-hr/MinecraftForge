@@ -1,7 +1,7 @@
 {
   ArrayListMultimap<String,Ticket> newTickets=ArrayListMultimap.create();
   tickets.put(world,newTickets);
-  forcedChunks.put(world,ImmutableSetMultimap.<ChunkCoordIntPair,Ticket>of());
+  forcedChunks.put(world,ImmutableSetMultimap.<ChunkPos,Ticket>of());
   if (!(world instanceof WorldServer)) {
     return;
   }

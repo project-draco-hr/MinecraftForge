@@ -1,0 +1,11 @@
+{
+  if (ticket == null || chunk == null) {
+    return;
+  }
+  ticket.requestedChunks.remove(chunk);
+  MinecraftForge.EVENT_BUS.post(new UnforceChunkEvent(ticket,chunk));
+  LinkedHashMultimap<ChunkPos,Ticket> copy=LinkedHashMultimap.create(forcedChunks.get(ticket.world));
+  copy.remove(chunk,ticket);
+  ImmutableSetMultimap<ChunkPos,Ticket> newMap=ImmutableSetMultimap.copyOf(copy);
+  forcedChunks.put(ticket.world,newMap);
+}

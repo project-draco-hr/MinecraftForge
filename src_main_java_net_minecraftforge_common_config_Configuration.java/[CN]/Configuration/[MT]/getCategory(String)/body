@@ -1,4 +1,5 @@
 {
+  if (!caseSensitiveCustomCategories)   category=category.toLowerCase(Locale.ENGLISH);
   ConfigCategory ret=categories.get(category);
   if (ret == null) {
     if (category.contains(CATEGORY_SPLITTER)) {

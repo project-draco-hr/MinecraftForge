@@ -1,0 +1,5 @@
+{
+  NBTTagCompound tag=new NBTTagCompound();
+  tag=writeToNBT(tag);
+  return new SPacketUpdateTileEntity(this.getPos(),this.getBlockMetadata(),tag);
+}
