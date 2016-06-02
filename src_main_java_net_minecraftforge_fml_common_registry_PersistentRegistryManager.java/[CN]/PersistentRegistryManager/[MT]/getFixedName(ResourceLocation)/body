@@ -1,0 +1,6 @@
+{
+  if ("fml:blocks".equals(registryName.toString()))   registryName=PersistentRegistryManager.BLOCKS;
+ else   if ("fml:items".equals(registryName.toString()))   registryName=PersistentRegistryManager.ITEMS;
+ else   if ("fmlgr:villagerprofessions".equals(registryName.toString()))   registryName=VillagerRegistry.PROFESSIONS;
+  return registryName;
+}

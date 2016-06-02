@@ -1,12 +1,7 @@
 {
-  ResourceLocation registryName=snapEntry.getKey();
-  if ("fml:blocks".equals(registryName.toString()))   registryName=PersistentRegistryManager.BLOCKS;
- else   if ("fml:items".equals(registryName.toString()))   registryName=PersistentRegistryManager.ITEMS;
- else   if ("fmlgr:villagerprofessions".equals(registryName.toString()))   registryName=VillagerRegistry.PROFESSIONS;
+  ResourceLocation registryName=getFixedName(snapEntry.getKey());
   FMLControlledNamespacedRegistry<T> currentRegistry=PersistentRegistry.ACTIVE.getRegistry(registryName,regType);
   if (currentRegistry == null) {
-    FMLLog.severe("An unknown persistent registry type \"%s\" has been encountered. This Forge instance cannot understand it.",registryName);
-    StartupQuery.abort();
     return;
   }
   FMLControlledNamespacedRegistry<T> newRegistry=PersistentRegistry.STAGING.getOrShallowCopyRegistry(registryName,regType,currentRegistry);
