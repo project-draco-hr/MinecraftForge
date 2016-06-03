@@ -1,0 +1,6 @@
+{
+  this.name=new ResourceLocation(name);
+  this.texture=new ResourceLocation(texture);
+  this.zombie=new ResourceLocation(zombie);
+  this.setRegistryName(this.name);
+}

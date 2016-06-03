@@ -1,0 +1,3 @@
+{
+  return INSTANCE.professions.getId(prof);
+}

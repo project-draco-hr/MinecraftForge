@@ -1,4 +1,4 @@
 {
   List<VillagerProfession> entries=INSTANCE.professions.getValues();
-  entity.setProfession(entries.get(rand.nextInt(entries.size())));
+  entity.setVillagerType(entries.get(rand.nextInt(entries.size())));
 }

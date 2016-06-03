@@ -1,5 +1,3 @@
 {
-  this.name=new ResourceLocation(name);
-  this.texture=new ResourceLocation(texture);
-  this.setRegistryName(this.name);
+  this(name,texture,"minecraft:textures/entity/zombie_villager/zombie_villager.png");
 }
