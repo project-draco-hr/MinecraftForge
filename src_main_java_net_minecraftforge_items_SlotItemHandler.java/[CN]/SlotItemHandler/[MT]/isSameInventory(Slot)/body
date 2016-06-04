@@ -1,0 +1,3 @@
+{
+  return other instanceof SlotItemHandler && ((SlotItemHandler)other).getItemHandler() == this.itemHandler;
+}
