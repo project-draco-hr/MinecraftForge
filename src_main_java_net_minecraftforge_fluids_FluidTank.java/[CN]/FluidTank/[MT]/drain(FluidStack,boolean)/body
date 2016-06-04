@@ -1,6 +1,6 @@
 {
-  if (resource == null || !resource.isFluidEqual(getFluid())) {
+  if (!canDrainFluidType(getFluid())) {
     return null;
   }
-  return drain(resource.amount,doDrain);
+  return drainInternal(resource,doDrain);
 }

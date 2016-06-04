@@ -1,0 +1,21 @@
+{
+  if (fluid == null || maxDrain <= 0) {
+    return null;
+  }
+  int drained=maxDrain;
+  if (fluid.amount < drained) {
+    drained=fluid.amount;
+  }
+  FluidStack stack=new FluidStack(fluid,drained);
+  if (doDrain) {
+    fluid.amount-=drained;
+    if (fluid.amount <= 0) {
+      fluid=null;
+    }
+    onContentsChanged();
+    if (tile != null) {
+      FluidEvent.fireEvent(new FluidEvent.FluidDrainingEvent(fluid,tile.getWorld(),tile.getPos(),this,drained));
+    }
+  }
+  return stack;
+}
