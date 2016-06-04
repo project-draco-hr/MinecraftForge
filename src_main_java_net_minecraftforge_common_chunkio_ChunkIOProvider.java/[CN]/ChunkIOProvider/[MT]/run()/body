@@ -1,9 +1,8 @@
 {
 synchronized (this) {
-    AnvilChunkLoader loader=chunkInfo.loader;
     Object[] data=null;
     try {
-      data=loader.loadChunk__Async(chunkInfo.world,chunkInfo.x,chunkInfo.z);
+      data=this.loader.loadChunk__Async(chunkInfo.world,chunkInfo.x,chunkInfo.z);
     }
  catch (    IOException e) {
       e.printStackTrace();

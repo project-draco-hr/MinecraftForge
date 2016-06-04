@@ -1,7 +1,5 @@
 {
   this.x=x;
   this.z=z;
-  this.loader=loader;
   this.world=world;
-  this.provider=provider;
 }

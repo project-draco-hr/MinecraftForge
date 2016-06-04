@@ -1,4 +1,3 @@
 {
-  int size=Math.max(BASE_THREADS,(int)Math.ceil(players / PLAYERS_PER_THREAD));
-  pool.setCorePoolSize(size);
+  pool.setCorePoolSize(Math.max(BASE_THREADS,players / PLAYERS_PER_THREAD));
 }

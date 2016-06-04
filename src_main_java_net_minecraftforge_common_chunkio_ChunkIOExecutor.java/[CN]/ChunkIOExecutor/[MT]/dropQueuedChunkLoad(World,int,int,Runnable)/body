@@ -1,5 +1,5 @@
 {
-  QueuedChunk key=new QueuedChunk(x,z,null,world,null);
+  QueuedChunk key=new QueuedChunk(x,z,world);
   ChunkIOProvider task=tasks.get(key);
   if (task == null) {
     FMLLog.warning("Attempted to dequeue chunk that wasn't queued? %d @ (%d, %d)",world.provider.getDimension(),x,z);

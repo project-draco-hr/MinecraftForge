@@ -1,0 +1,5 @@
+{
+  this.chunkInfo=chunk;
+  this.loader=loader;
+  this.provider=provider;
+}

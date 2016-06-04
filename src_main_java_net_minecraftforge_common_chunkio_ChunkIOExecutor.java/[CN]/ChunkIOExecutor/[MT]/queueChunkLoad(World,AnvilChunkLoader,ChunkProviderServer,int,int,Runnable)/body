@@ -1,8 +1,8 @@
 {
-  QueuedChunk key=new QueuedChunk(x,z,loader,world,provider);
+  QueuedChunk key=new QueuedChunk(x,z,world);
   ChunkIOProvider task=tasks.get(key);
   if (task == null) {
-    task=new ChunkIOProvider(key);
+    task=new ChunkIOProvider(key,loader,provider);
     task.addCallback(runnable);
     tasks.put(key,task);
     pool.execute(task);

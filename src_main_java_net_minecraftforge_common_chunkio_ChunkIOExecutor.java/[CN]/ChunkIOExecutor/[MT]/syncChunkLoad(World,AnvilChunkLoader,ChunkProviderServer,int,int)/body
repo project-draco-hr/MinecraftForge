@@ -1,6 +1,6 @@
 {
-  QueuedChunk key=new QueuedChunk(x,z,loader,world,provider);
-  ChunkIOProvider task=tasks.get(key);
+  QueuedChunk key=new QueuedChunk(x,z,world);
+  ChunkIOProvider task=tasks.remove(key);
   if (task != null) {
     if (!pool.remove(task)) {
 synchronized (task) {
@@ -14,9 +14,12 @@ synchronized (task) {
         }
       }
     }
+ else {
+      task.run();
+    }
   }
  else {
-    task=new ChunkIOProvider(key);
+    task=new ChunkIOProvider(key,loader,provider);
     task.run();
   }
   task.syncCallback();
