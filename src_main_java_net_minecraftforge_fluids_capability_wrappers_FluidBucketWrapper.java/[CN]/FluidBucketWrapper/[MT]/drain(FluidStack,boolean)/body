@@ -1,0 +1,13 @@
+{
+  if (container.stackSize != 1 || resource == null || resource.amount < Fluid.BUCKET_VOLUME) {
+    return null;
+  }
+  FluidStack fluidStack=getFluid();
+  if (fluidStack != null && fluidStack.isFluidEqual(resource)) {
+    if (doDrain) {
+      setFluid(null);
+    }
+    return fluidStack;
+  }
+  return null;
+}

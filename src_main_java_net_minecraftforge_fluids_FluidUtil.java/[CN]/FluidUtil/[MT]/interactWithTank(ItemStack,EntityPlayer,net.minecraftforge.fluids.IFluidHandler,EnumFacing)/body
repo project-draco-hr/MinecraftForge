@@ -1,0 +1,4 @@
+{
+  IFluidHandler fluidHandler=new FluidHandlerWrapper(tank,side);
+  return interactWithFluidHandler(stack,fluidHandler,player);
+}

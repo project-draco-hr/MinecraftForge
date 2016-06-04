@@ -1,0 +1,17 @@
+{
+  IBlockState state=world.getBlockState(blockPos);
+  Block block=state.getBlock();
+  if (block.hasTileEntity(state)) {
+    TileEntity tileEntity=world.getTileEntity(blockPos);
+    if (tileEntity != null && tileEntity.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,side)) {
+      return tileEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,side);
+    }
+  }
+ else   if (block instanceof IFluidBlock) {
+    return new FluidBlockWrapper((IFluidBlock)block,world,blockPos);
+  }
+ else   if (block instanceof BlockLiquid) {
+    return new BlockLiquidWrapper((BlockLiquid)block,world,blockPos);
+  }
+  return null;
+}

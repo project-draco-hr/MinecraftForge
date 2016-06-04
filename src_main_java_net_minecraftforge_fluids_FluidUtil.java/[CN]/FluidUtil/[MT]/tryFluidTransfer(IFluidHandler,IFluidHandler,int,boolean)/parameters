@@ -1,0 +1,4 @@
+IFluidHandler fluidDestination
+IFluidHandler fluidSource
+int maxAmount
+boolean doTransfer

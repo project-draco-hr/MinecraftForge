@@ -1,0 +1,4 @@
+{
+  IFluidHandler newFluidHandler=new FluidHandlerWrapper(tank,side);
+  return tryFillContainer(bucket,newFluidHandler,Fluid.BUCKET_VOLUME,player,true);
+}

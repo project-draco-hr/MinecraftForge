@@ -1,0 +1,3 @@
+ItemStack bucket
+net.minecraftforge.fluids.IFluidHandler tank
+EnumFacing side

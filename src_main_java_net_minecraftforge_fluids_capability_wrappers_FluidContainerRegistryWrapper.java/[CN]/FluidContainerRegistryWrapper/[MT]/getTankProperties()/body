@@ -1,0 +1,5 @@
+{
+  FluidStack fluid=FluidContainerRegistry.getFluidForFilledItem(container);
+  int capacity=FluidContainerRegistry.getContainerCapacity(fluid,container);
+  return new FluidTankProperties[]{new FluidTankProperties(fluid,capacity)};
+}

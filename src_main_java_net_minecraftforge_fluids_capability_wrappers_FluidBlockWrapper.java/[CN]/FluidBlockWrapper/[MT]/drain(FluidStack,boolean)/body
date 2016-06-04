@@ -1,0 +1,15 @@
+{
+  if (resource == null || !fluidBlock.canDrain(world,blockPos)) {
+    return null;
+  }
+  FluidStack simulatedDrain=fluidBlock.drain(world,blockPos,false);
+  if (resource.containsFluid(simulatedDrain)) {
+    if (doDrain) {
+      return fluidBlock.drain(world,blockPos,true);
+    }
+ else {
+      return simulatedDrain;
+    }
+  }
+  return null;
+}

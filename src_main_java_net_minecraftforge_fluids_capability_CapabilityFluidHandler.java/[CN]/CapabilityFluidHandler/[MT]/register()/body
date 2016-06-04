@@ -1,0 +1,31 @@
+{
+  CapabilityManager.INSTANCE.register(IFluidHandler.class,new Capability.IStorage<IFluidHandler>(){
+    @Override public NBTBase writeNBT(    Capability<IFluidHandler> capability,    IFluidHandler instance,    EnumFacing side){
+      if (!(instance instanceof IFluidTank))       throw new RuntimeException("IFluidHandler instance does not implement IFluidTank");
+      NBTTagCompound nbt=new NBTTagCompound();
+      IFluidTank tank=(IFluidTank)instance;
+      FluidStack fluid=tank.getFluid();
+      if (fluid != null) {
+        fluid.writeToNBT(nbt);
+      }
+ else {
+        nbt.setString("Empty","");
+      }
+      nbt.setInteger("Capacity",tank.getCapacity());
+      return nbt;
+    }
+    @Override public void readNBT(    Capability<IFluidHandler> capability,    IFluidHandler instance,    EnumFacing side,    NBTBase nbt){
+      if (!(instance instanceof IFluidTank))       throw new RuntimeException("IFluidHandler instance is not instance of FluidTank");
+      NBTTagCompound tags=(NBTTagCompound)nbt;
+      FluidTank tank=(FluidTank)instance;
+      tank.setCapacity(tags.getInteger("Capacity"));
+      tank.readFromNBT(tags);
+    }
+  }
+,new Callable<IFluidHandler>(){
+    @Override public IFluidHandler call() throws Exception {
+      return new FluidTank(Fluid.BUCKET_VOLUME);
+    }
+  }
+);
+}

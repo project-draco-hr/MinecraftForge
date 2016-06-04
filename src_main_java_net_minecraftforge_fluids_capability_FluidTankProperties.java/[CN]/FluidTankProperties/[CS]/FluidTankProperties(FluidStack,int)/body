@@ -1,0 +1,3 @@
+{
+  this(contents,capacity,true,true);
+}

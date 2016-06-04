@@ -1,0 +1,7 @@
+{
+  if (stack == null || fluidHandler == null || player == null) {
+    return false;
+  }
+  IItemHandler playerInventory=new InvWrapper(player.inventory);
+  return tryFillContainerAndStow(stack,fluidHandler,playerInventory,Integer.MAX_VALUE,player) || tryEmptyContainerAndStow(stack,fluidHandler,playerInventory,Integer.MAX_VALUE,player);
+}

@@ -1,0 +1,3 @@
+{
+  return new FluidTankProperties[]{new FluidTankProperties(getFluid(),capacity)};
+}

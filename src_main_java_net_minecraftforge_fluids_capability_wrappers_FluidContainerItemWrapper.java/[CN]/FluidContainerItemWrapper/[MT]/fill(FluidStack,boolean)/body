@@ -1,0 +1,6 @@
+{
+  if (container.stackSize != 1) {
+    return 0;
+  }
+  return handler.fill(container,resource,doFill);
+}

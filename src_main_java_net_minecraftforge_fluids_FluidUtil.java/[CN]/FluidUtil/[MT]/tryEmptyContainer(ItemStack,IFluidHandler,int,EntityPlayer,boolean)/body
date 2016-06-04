@@ -1,0 +1,22 @@
+{
+  container=container.copy();
+  container.stackSize=1;
+  IFluidHandler containerFluidHandler=getFluidHandler(container);
+  if (containerFluidHandler != null) {
+    FluidStack simulatedTransfer=tryFluidTransfer(fluidDestination,containerFluidHandler,maxAmount,false);
+    if (simulatedTransfer != null) {
+      if (doDrain) {
+        tryFluidTransfer(fluidDestination,containerFluidHandler,maxAmount,true);
+        if (player != null) {
+          SoundEvent soundevent=simulatedTransfer.getFluid().getEmptySound(simulatedTransfer);
+          player.playSound(soundevent,1f,1f);
+        }
+      }
+ else {
+        containerFluidHandler.drain(simulatedTransfer,true);
+      }
+      return container;
+    }
+  }
+  return null;
+}

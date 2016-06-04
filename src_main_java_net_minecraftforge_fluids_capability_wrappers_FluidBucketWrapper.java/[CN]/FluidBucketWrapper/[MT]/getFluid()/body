@@ -1,0 +1,18 @@
+{
+  Item item=container.getItem();
+  if (item == Items.WATER_BUCKET) {
+    return new FluidStack(FluidRegistry.WATER,Fluid.BUCKET_VOLUME);
+  }
+ else   if (item == Items.LAVA_BUCKET) {
+    return new FluidStack(FluidRegistry.LAVA,Fluid.BUCKET_VOLUME);
+  }
+ else   if (item == Items.MILK_BUCKET) {
+    return FluidRegistry.getFluidStack("milk",Fluid.BUCKET_VOLUME);
+  }
+ else   if (item == ForgeModContainer.getInstance().universalBucket) {
+    return ForgeModContainer.getInstance().universalBucket.getFluid(container);
+  }
+ else {
+    return null;
+  }
+}

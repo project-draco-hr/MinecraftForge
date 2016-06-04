@@ -1,10 +1,5 @@
 {
-  FluidStack fluidStack=FluidContainerRegistry.getFluidForFilledItem(stack);
-  if (fluidStack == null) {
-    if (stack.getItem() instanceof IFluidContainerItem) {
-      fluidStack=((IFluidContainerItem)stack.getItem()).getFluid(stack);
-    }
-  }
+  FluidStack fluidStack=FluidUtil.getFluidContained(stack);
   if (fluidStack == null) {
     return originalModel;
   }

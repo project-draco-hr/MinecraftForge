@@ -1,0 +1,5 @@
+ItemStack container
+IFluidHandler fluidSource
+int maxAmount
+EntityPlayer player
+boolean doFill

@@ -1,0 +1,2 @@
+net.minecraftforge.fluids.IFluidHandler handler
+EnumFacing side

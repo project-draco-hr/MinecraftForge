@@ -1,3 +1,3 @@
 {
-  this(FluidContainerRegistry.BUCKET_VOLUME,FluidContainerRegistry.EMPTY_BUCKET,false);
+  this(Fluid.BUCKET_VOLUME,new ItemStack(Items.BUCKET),false);
 }

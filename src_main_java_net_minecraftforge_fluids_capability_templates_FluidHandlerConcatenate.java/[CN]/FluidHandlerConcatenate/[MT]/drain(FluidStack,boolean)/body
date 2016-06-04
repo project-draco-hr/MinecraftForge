@@ -1,0 +1,15 @@
+{
+  if (resource == null || resource.amount <= 0)   return null;
+  resource=resource.copy();
+  FluidStack totalDrained=null;
+  for (  IFluidHandler handler : subHandlers) {
+    FluidStack drain=handler.drain(resource,doDrain);
+    if (drain != null) {
+      if (totalDrained == null)       totalDrained=drain;
+ else       totalDrained.amount+=drain.amount;
+      resource.amount-=drain.amount;
+      if (resource.amount <= 0)       break;
+    }
+  }
+  return totalDrained;
+}

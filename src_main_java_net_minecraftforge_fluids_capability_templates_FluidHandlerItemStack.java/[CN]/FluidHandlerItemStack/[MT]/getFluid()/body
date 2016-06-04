@@ -1,0 +1,7 @@
+{
+  NBTTagCompound tagCompound=container.getTagCompound();
+  if (tagCompound == null || !tagCompound.hasKey(FLUID_NBT_KEY)) {
+    return null;
+  }
+  return FluidStack.loadFluidStackFromNBT(tagCompound.getCompoundTag(FLUID_NBT_KEY));
+}

@@ -1,0 +1,4 @@
+{
+  if (resource == null || !handler.canDrain(side,resource.getFluid()))   return null;
+  return handler.drain(side,resource,doDrain);
+}

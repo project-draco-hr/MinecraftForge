@@ -1,0 +1,18 @@
+{
+  if (itemStack == null) {
+    return null;
+  }
+  if (itemStack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,null)) {
+    return itemStack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,null);
+  }
+  Item item=itemStack.getItem();
+  if (item instanceof IFluidContainerItem) {
+    return new FluidContainerItemWrapper((IFluidContainerItem)item,itemStack);
+  }
+ else   if (FluidContainerRegistry.isContainer(itemStack)) {
+    return new FluidContainerRegistryWrapper(itemStack);
+  }
+ else {
+    return null;
+  }
+}

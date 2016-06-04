@@ -1,5 +1,5 @@
 {
-  if (resource == null) {
+  if (resource == null || resource.amount <= 0 || !canFillFluidType(resource)) {
     return 0;
   }
   if (!doFill) {
@@ -13,6 +13,7 @@
   }
   if (fluid == null) {
     fluid=new FluidStack(resource,Math.min(capacity,resource.amount));
+    onContentsChanged();
     if (tile != null) {
       FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid,tile.getWorld(),tile.getPos(),this,fluid.amount));
     }
@@ -29,6 +30,7 @@
  else {
     fluid.amount=capacity;
   }
+  onContentsChanged();
   if (tile != null) {
     FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid,tile.getWorld(),tile.getPos(),this,filled));
   }

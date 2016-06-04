@@ -1,0 +1,6 @@
+{
+  this.contents=contents;
+  this.capacity=capacity;
+  this.canFill=canFill;
+  this.canDrain=canDrain;
+}

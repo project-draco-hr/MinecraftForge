@@ -1,5 +1,6 @@
 {
   CapabilityItemHandler.register();
+  CapabilityFluidHandler.register();
   CapabilityAnimation.register();
   MinecraftForge.EVENT_BUS.register(MinecraftForge.INTERNAL_HANDLER);
   ForgeChunkManager.captureConfig(evt.getModConfigurationDirectory());

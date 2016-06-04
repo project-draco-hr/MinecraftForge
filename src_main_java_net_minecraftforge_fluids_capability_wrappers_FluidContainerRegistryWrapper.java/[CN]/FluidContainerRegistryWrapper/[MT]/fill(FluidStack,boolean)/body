@@ -1,0 +1,17 @@
+{
+  if (container.stackSize != 1 || resource == null) {
+    return 0;
+  }
+  FluidStack originalContained=FluidContainerRegistry.getFluidForFilledItem(container);
+  ItemStack result=FluidContainerRegistry.fillFluidContainer(resource,container);
+  if (result == null) {
+    return 0;
+  }
+  if (doFill) {
+    updateContainer(result);
+  }
+  FluidStack newContained=FluidContainerRegistry.getFluidForFilledItem(result);
+  int originalAmount=originalContained == null ? 0 : originalContained.amount;
+  int newAmount=newContained == null ? 0 : newContained.amount;
+  return newAmount - originalAmount;
+}

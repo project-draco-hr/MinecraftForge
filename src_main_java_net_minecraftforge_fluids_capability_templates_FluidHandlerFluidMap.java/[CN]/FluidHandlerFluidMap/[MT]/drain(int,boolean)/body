@@ -1,0 +1,7 @@
+{
+  for (  IFluidHandler handler : handlers.values()) {
+    FluidStack drain=handler.drain(maxDrain,doDrain);
+    if (drain != null)     return drain;
+  }
+  return null;
+}

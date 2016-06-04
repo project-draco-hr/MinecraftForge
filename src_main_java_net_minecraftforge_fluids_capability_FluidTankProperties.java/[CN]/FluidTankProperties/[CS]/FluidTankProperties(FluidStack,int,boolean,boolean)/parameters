@@ -1,0 +1,4 @@
+FluidStack contents
+int capacity
+boolean canFill
+boolean canDrain

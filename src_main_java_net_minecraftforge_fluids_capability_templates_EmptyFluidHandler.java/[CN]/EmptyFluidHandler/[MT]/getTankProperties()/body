@@ -1,0 +1,3 @@
+{
+  return EMPTY_TANK_PROPERTIES_ARRAY;
+}

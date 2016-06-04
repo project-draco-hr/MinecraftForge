@@ -1,0 +1,3 @@
+{
+  return FluidTankProperties.convert(handler.getTankInfo(side));
+}

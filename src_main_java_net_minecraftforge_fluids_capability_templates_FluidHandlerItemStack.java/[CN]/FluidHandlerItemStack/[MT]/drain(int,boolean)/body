@@ -1,0 +1,22 @@
+{
+  if (container.stackSize != 1 || maxDrain <= 0) {
+    return null;
+  }
+  FluidStack contained=getFluid();
+  if (contained == null || contained.amount <= 0 || !canDrainFluidType(contained)) {
+    return null;
+  }
+  final int drainAmount=Math.min(contained.amount,maxDrain);
+  FluidStack drained=contained.copy();
+  drained.amount=drainAmount;
+  if (doDrain) {
+    contained.amount-=drainAmount;
+    if (contained.amount == 0) {
+      setContainerToEmpty();
+    }
+ else {
+      setFluid(contained);
+    }
+  }
+  return drained;
+}

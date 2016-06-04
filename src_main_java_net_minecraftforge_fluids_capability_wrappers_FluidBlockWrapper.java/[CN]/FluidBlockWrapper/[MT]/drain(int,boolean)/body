@@ -1,0 +1,15 @@
+{
+  if (maxDrain <= 0 || !fluidBlock.canDrain(world,blockPos)) {
+    return null;
+  }
+  FluidStack simulatedDrain=fluidBlock.drain(world,blockPos,false);
+  if (simulatedDrain != null && simulatedDrain.amount <= maxDrain) {
+    if (doDrain) {
+      return fluidBlock.drain(world,blockPos,true);
+    }
+ else {
+      return simulatedDrain;
+    }
+  }
+  return null;
+}

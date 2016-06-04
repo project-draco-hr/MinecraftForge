@@ -2,34 +2,24 @@
   if (event.getResult() != Event.Result.DEFAULT) {
     return;
   }
-  if (event.getEmptyBucket() == null || !event.getEmptyBucket().isItemEqual(getEmpty()) || (isNbtSensitive() && ItemStack.areItemStackTagsEqual(event.getEmptyBucket(),getEmpty()))) {
+  ItemStack emptyBucket=event.getEmptyBucket();
+  if (emptyBucket == null || !emptyBucket.isItemEqual(getEmpty()) || (isNbtSensitive() && ItemStack.areItemStackTagsEqual(emptyBucket,getEmpty()))) {
     return;
   }
-  if (event.getTarget() == null || event.getTarget().typeOfHit != RayTraceResult.Type.BLOCK) {
+  RayTraceResult target=event.getTarget();
+  if (target == null || target.typeOfHit != RayTraceResult.Type.BLOCK) {
     return;
   }
   World world=event.getWorld();
-  BlockPos pos=event.getTarget().getBlockPos();
-  IBlockState state=world.getBlockState(pos);
-  if (state.getBlock() instanceof IFluidBlock) {
-    IFluidBlock fluidBlock=(IFluidBlock)state.getBlock();
-    if (fluidBlock.canDrain(world,pos)) {
-      FluidStack drained=fluidBlock.drain(world,pos,false);
-      if (drained != null && drained.amount == getCapacity()) {
-        ItemStack filledBucket=new ItemStack(this);
-        int filled=this.fill(filledBucket,drained,false);
-        if (filled == drained.amount) {
-          drained=fluidBlock.drain(world,pos,true);
-          this.fill(filledBucket,drained,true);
-          event.setResult(Event.Result.ALLOW);
-          event.setFilledBucket(filledBucket);
-          SoundEvent soundevent=drained.getFluid().getFillSound(drained);
-          event.getEntityPlayer().playSound(soundevent,1.0F,1.0F);
-        }
+  BlockPos pos=target.getBlockPos();
+  ItemStack singleBucket=emptyBucket.copy();
+  singleBucket.stackSize=1;
+  ItemStack filledBucket=FluidUtil.tryPickUpFluid(singleBucket,event.getEntityPlayer(),world,pos,target.sideHit);
+  if (filledBucket != null) {
+    event.setResult(Event.Result.ALLOW);
+    event.setFilledBucket(filledBucket);
+  }
  else {
-          event.setCanceled(true);
-        }
-      }
-    }
+    event.setCanceled(true);
   }
 }

@@ -1,0 +1,4 @@
+{
+  handlers.put(fluid,handler);
+  return this;
+}

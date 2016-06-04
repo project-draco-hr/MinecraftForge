@@ -1,0 +1,6 @@
+{
+  if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+    return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(new FluidHandlerWrapper(this,facing));
+  }
+  return super.getCapability(capability,facing);
+}

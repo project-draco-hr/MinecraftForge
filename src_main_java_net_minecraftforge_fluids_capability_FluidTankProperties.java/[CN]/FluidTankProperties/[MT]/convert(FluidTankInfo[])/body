@@ -1,0 +1,8 @@
+{
+  FluidTankProperties[] properties=new FluidTankProperties[fluidTankInfos.length];
+  for (int i=0; i < fluidTankInfos.length; i++) {
+    FluidTankInfo info=fluidTankInfos[i];
+    properties[i]=new FluidTankProperties(info.fluid,info.capacity);
+  }
+  return properties;
+}

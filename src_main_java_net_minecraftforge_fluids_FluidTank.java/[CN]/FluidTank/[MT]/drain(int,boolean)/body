@@ -1,5 +1,5 @@
 {
-  if (fluid == null) {
+  if (fluid == null || maxDrain <= 0 || !canDrainFluidType(fluid)) {
     return null;
   }
   int drained=maxDrain;
@@ -12,6 +12,7 @@
     if (fluid.amount <= 0) {
       fluid=null;
     }
+    onContentsChanged();
     if (tile != null) {
       FluidEvent.fireEvent(new FluidEvent.FluidDrainingEvent(fluid,tile.getWorld(),tile.getPos(),this,drained));
     }

@@ -1,0 +1,4 @@
+{
+  IFluidHandler destination=new FluidHandlerWrapper(tank,side);
+  return tryEmptyContainer(bucket,destination,Fluid.BUCKET_VOLUME,player,true);
+}

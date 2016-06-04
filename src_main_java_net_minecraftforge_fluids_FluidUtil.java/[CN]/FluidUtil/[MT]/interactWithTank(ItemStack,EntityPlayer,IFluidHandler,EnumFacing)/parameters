@@ -1,4 +1,0 @@
-ItemStack stack
-EntityPlayer player
-IFluidHandler tank
-EnumFacing side

@@ -1,0 +1,21 @@
+{
+  if (container.stackSize != 1) {
+    return null;
+  }
+  FluidStack contained=FluidContainerRegistry.getFluidForFilledItem(container);
+  if (contained != null) {
+    if (contained.amount <= maxDrain) {
+      ItemStack emptyContainer=FluidContainerRegistry.drainFluidContainer(container);
+      if (emptyContainer != null) {
+        if (doDrain) {
+          if (FluidContainerRegistry.hasNullEmptyContainer(container)) {
+            emptyContainer.stackSize=0;
+          }
+          updateContainer(emptyContainer);
+        }
+        return contained;
+      }
+    }
+  }
+  return null;
+}

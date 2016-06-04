@@ -1,5 +1,5 @@
 {
-  final FluidStack fluidStack=new FluidStack(getFluid(),MathHelper.floor_float(getQuantaPercentage(world,pos) * FluidContainerRegistry.BUCKET_VOLUME));
+  final FluidStack fluidStack=new FluidStack(getFluid(),MathHelper.floor_float(getQuantaPercentage(world,pos) * Fluid.BUCKET_VOLUME));
   if (doDrain) {
     world.setBlockToAir(pos);
   }

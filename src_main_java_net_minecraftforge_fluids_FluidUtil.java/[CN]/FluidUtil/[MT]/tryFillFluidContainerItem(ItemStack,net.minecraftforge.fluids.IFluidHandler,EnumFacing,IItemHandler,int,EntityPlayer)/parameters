@@ -1,0 +1,6 @@
+ItemStack container
+net.minecraftforge.fluids.IFluidHandler tank
+EnumFacing side
+IItemHandler inventory
+int max
+EntityPlayer player

@@ -11,7 +11,7 @@
   if (world.isBlockModifiable(player,clickPos)) {
     BlockPos targetPos=clickPos.offset(mop.sideHit);
     if (player.canPlayerEdit(targetPos,mop.sideHit,itemstack)) {
-      if (this.tryPlaceFluid(player,player.getEntityWorld(),fluidStack.getFluid().getBlock(),targetPos) && !player.capabilities.isCreativeMode) {
+      if (FluidUtil.tryPlaceFluid(player,player.getEntityWorld(),fluidStack,targetPos) && !player.capabilities.isCreativeMode) {
         player.addStat(StatList.getObjectUseStats(this));
         itemstack.stackSize--;
         ItemStack emptyStack=getEmpty() != null ? getEmpty().copy() : new ItemStack(this);

@@ -1,0 +1,3 @@
+{
+  return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
+}

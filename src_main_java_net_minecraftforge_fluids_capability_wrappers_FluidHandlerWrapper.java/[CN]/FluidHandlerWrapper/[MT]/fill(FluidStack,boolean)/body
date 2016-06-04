@@ -1,0 +1,4 @@
+{
+  if (resource == null || !handler.canFill(side,resource.getFluid()))   return 0;
+  return handler.fill(side,resource,doFill);
+}

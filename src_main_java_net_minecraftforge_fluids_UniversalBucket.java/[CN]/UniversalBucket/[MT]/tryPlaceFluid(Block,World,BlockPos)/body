@@ -1,3 +1,13 @@
 {
-  return tryPlaceFluid(null,worldIn,block,pos);
+  if (block instanceof IFluidBlock) {
+    IFluidBlock fluidBlock=(IFluidBlock)block;
+    return FluidUtil.tryPlaceFluid(null,worldIn,new FluidStack(fluidBlock.getFluid(),Fluid.BUCKET_VOLUME),pos);
+  }
+ else   if (block.getDefaultState().getMaterial() == Material.WATER) {
+    FluidUtil.tryPlaceFluid(null,worldIn,new FluidStack(FluidRegistry.WATER,Fluid.BUCKET_VOLUME),pos);
+  }
+ else   if (block.getDefaultState().getMaterial() == Material.LAVA) {
+    FluidUtil.tryPlaceFluid(null,worldIn,new FluidStack(FluidRegistry.LAVA,Fluid.BUCKET_VOLUME),pos);
+  }
+  return false;
 }

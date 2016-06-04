@@ -1,6 +1,0 @@
-ItemStack container
-IFluidHandler tank
-EnumFacing side
-IItemHandler inventory
-int max
-EntityPlayer player

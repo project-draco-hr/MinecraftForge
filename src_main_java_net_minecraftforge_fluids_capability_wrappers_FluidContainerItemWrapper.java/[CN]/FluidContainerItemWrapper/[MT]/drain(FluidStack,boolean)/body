@@ -1,0 +1,12 @@
+{
+  if (container.stackSize != 1 || resource == null) {
+    return null;
+  }
+  FluidStack canDrain=drain(resource.amount,false);
+  if (canDrain != null) {
+    if (canDrain.isFluidEqual(resource)) {
+      return drain(resource.amount,doDrain);
+    }
+  }
+  return null;
+}

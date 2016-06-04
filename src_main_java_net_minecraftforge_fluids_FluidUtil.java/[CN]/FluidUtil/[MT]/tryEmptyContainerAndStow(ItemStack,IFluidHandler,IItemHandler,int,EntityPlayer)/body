@@ -1,0 +1,48 @@
+{
+  if (container == null || container.stackSize < 1) {
+    return false;
+  }
+  if (player != null && player.capabilities.isCreativeMode) {
+    ItemStack emptiedReal=tryEmptyContainer(container,fluidSource,maxAmount,player,true);
+    if (emptiedReal != null) {
+      return true;
+    }
+  }
+ else   if (container.stackSize == 1) {
+    ItemStack emptiedReal=tryEmptyContainer(container,fluidSource,maxAmount,player,true);
+    if (emptiedReal != null) {
+      if (emptiedReal.stackSize <= 0) {
+        container.stackSize--;
+      }
+ else {
+        container.setItem(emptiedReal.getItem());
+        container.setTagCompound(emptiedReal.getTagCompound());
+        container.setItemDamage(emptiedReal.getItemDamage());
+      }
+      return true;
+    }
+  }
+ else {
+    ItemStack emptiedSimulated=tryEmptyContainer(container,fluidSource,maxAmount,player,false);
+    if (emptiedSimulated != null) {
+      if (emptiedSimulated.stackSize <= 0) {
+        tryEmptyContainer(container,fluidSource,maxAmount,player,true);
+        container.stackSize--;
+        return true;
+      }
+ else {
+        ItemStack remainder=ItemHandlerHelper.insertItemStacked(inventory,emptiedSimulated,true);
+        if (remainder == null || player != null) {
+          ItemStack emptiedReal=tryEmptyContainer(container,fluidSource,maxAmount,player,true);
+          remainder=ItemHandlerHelper.insertItemStacked(inventory,emptiedReal,false);
+          if (remainder != null && player != null) {
+            ItemHandlerHelper.giveItemToPlayer(player,remainder);
+          }
+          container.stackSize--;
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}

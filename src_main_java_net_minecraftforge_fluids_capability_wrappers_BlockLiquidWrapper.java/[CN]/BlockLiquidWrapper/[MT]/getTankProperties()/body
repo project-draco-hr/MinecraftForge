@@ -1,0 +1,8 @@
+{
+  FluidStack containedStack=null;
+  IBlockState blockState=world.getBlockState(blockPos);
+  if (blockState.getBlock() == blockLiquid) {
+    containedStack=getStack(blockState);
+  }
+  return new FluidTankProperties[]{new FluidTankProperties(containedStack,Fluid.BUCKET_VOLUME,false,true)};
+}

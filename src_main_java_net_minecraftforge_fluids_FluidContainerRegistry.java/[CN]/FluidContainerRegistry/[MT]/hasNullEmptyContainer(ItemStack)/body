@@ -1,0 +1,10 @@
+{
+  if (container == null) {
+    return false;
+  }
+  FluidContainerData data=containerFluidMap.get(new ContainerKey(container));
+  if (data != null) {
+    return data.emptyContainer == NULL_EMPTYCONTAINER;
+  }
+  return false;
+}

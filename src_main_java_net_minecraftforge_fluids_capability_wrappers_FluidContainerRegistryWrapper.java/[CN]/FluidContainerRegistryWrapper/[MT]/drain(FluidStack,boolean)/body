@@ -1,0 +1,10 @@
+{
+  if (container.stackSize != 1 || resource == null) {
+    return null;
+  }
+  FluidStack contained=FluidContainerRegistry.getFluidForFilledItem(container);
+  if (contained != null && contained.isFluidEqual(resource)) {
+    return drain(resource.amount,doDrain);
+  }
+  return null;
+}

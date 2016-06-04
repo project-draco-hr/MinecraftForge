@@ -1,0 +1,6 @@
+{
+  if (container.stackSize != 1) {
+    return null;
+  }
+  return handler.drain(container,maxDrain,doDrain);
+}

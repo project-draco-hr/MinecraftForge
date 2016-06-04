@@ -1,2 +1,2 @@
-FluidStack stack
+FluidStack fluidStack
 int capacity

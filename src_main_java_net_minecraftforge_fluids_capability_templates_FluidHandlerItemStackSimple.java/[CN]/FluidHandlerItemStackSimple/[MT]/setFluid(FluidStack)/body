@@ -1,0 +1,8 @@
+{
+  if (!container.hasTagCompound()) {
+    container.setTagCompound(new NBTTagCompound());
+  }
+  NBTTagCompound fluidTag=new NBTTagCompound();
+  fluid.writeToNBT(fluidTag);
+  container.getTagCompound().setTag(FLUID_NBT_KEY,fluidTag);
+}

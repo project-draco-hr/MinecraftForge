@@ -1,4 +1,4 @@
 {
   super(fluid,material);
-  stack=new FluidStack(fluid,FluidContainerRegistry.BUCKET_VOLUME);
+  stack=new FluidStack(fluid,Fluid.BUCKET_VOLUME);
 }

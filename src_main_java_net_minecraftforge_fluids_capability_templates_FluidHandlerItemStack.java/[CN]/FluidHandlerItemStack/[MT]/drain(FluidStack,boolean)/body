@@ -1,0 +1,6 @@
+{
+  if (container.stackSize != 1 || resource == null || resource.amount <= 0 || !resource.isFluidEqual(getFluid())) {
+    return null;
+  }
+  return drain(resource.amount,doDrain);
+}

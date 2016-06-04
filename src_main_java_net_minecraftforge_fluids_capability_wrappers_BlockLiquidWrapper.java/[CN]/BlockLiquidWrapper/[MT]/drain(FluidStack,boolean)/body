@@ -1,0 +1,16 @@
+{
+  if (resource == null || resource.amount < Fluid.BUCKET_VOLUME) {
+    return null;
+  }
+  IBlockState blockState=world.getBlockState(blockPos);
+  if (blockState.getBlock() == blockLiquid && blockState.getValue(BlockLiquid.LEVEL) == 0) {
+    FluidStack containedStack=getStack(blockState);
+    if (containedStack != null && resource.containsFluid(containedStack)) {
+      if (doDrain) {
+        world.setBlockState(blockPos,Blocks.AIR.getDefaultState(),11);
+      }
+      return containedStack;
+    }
+  }
+  return null;
+}

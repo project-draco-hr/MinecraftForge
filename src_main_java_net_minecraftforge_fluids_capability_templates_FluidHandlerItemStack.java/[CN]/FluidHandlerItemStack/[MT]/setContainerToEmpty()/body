@@ -1,0 +1,3 @@
+{
+  container.getTagCompound().removeTag(FLUID_NBT_KEY);
+}

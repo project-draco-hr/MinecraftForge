@@ -1,0 +1,12 @@
+{
+  if (resource == null || resource.amount <= 0)   return 0;
+  resource=resource.copy();
+  int totalFillAmount=0;
+  for (  IFluidHandler handler : subHandlers) {
+    int fillAmount=handler.fill(resource,doFill);
+    totalFillAmount+=fillAmount;
+    resource.amount-=fillAmount;
+    if (resource.amount <= 0)     break;
+  }
+  return totalFillAmount;
+}

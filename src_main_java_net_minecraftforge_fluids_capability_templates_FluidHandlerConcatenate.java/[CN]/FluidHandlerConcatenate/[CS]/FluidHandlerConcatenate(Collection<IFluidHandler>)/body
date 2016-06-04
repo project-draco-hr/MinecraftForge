@@ -1,0 +1,3 @@
+{
+  this.subHandlers=subHandlers.toArray(new IFluidHandler[subHandlers.size()]);
+}

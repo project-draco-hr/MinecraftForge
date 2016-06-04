@@ -1,0 +1,5 @@
+ItemStack container
+IFluidHandler fluidDestination
+int maxAmount
+EntityPlayer player
+boolean doDrain

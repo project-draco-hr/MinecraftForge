@@ -1,0 +1,3 @@
+ItemStack container
+ItemStack emptyContainer
+int capacity

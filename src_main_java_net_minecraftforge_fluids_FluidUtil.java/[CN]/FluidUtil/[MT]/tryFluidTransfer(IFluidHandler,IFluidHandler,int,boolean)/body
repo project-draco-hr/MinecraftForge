@@ -1,0 +1,14 @@
+{
+  FluidStack drainable=fluidSource.drain(maxAmount,false);
+  if (drainable != null && drainable.amount > 0) {
+    int fillableAmount=fluidDestination.fill(drainable,false);
+    if (fillableAmount > 0) {
+      FluidStack drained=fluidSource.drain(fillableAmount,doTransfer);
+      if (drained != null) {
+        drained.amount=fluidDestination.fill(drained,doTransfer);
+        return drained;
+      }
+    }
+  }
+  return null;
+}

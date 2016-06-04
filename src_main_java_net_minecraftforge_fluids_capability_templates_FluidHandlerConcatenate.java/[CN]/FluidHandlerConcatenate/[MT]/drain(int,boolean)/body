@@ -1,0 +1,23 @@
+{
+  if (maxDrain == 0)   return null;
+  FluidStack totalDrained=null;
+  for (  IFluidHandler handler : subHandlers) {
+    if (totalDrained == null) {
+      totalDrained=handler.drain(maxDrain,doDrain);
+      if (totalDrained != null) {
+        maxDrain-=totalDrained.amount;
+      }
+    }
+ else {
+      FluidStack copy=totalDrained.copy();
+      copy.amount=maxDrain;
+      FluidStack drain=handler.drain(copy,doDrain);
+      if (drain != null) {
+        totalDrained.amount+=drain.amount;
+        maxDrain-=drain.amount;
+      }
+    }
+    if (maxDrain <= 0)     break;
+  }
+  return totalDrained;
+}

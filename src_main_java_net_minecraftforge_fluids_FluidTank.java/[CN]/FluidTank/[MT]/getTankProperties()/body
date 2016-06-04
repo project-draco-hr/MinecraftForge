@@ -1,0 +1,6 @@
+{
+  if (this.tankProperties == null) {
+    this.tankProperties=new IFluidTankProperties[]{new FluidTankPropertiesWrapper(this)};
+  }
+  return this.tankProperties;
+}

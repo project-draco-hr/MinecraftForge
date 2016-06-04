@@ -1,0 +1,4 @@
+ItemStack stack
+EntityPlayer player
+net.minecraftforge.fluids.IFluidHandler tank
+EnumFacing side

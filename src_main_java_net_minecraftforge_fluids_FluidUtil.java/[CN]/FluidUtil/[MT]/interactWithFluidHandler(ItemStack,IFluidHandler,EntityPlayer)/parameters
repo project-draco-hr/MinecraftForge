@@ -1,0 +1,3 @@
+ItemStack stack
+IFluidHandler fluidHandler
+EntityPlayer player

@@ -1,0 +1,9 @@
+{
+  if (container.stackSize != 1 || resource == null || resource.amount < Fluid.BUCKET_VOLUME || getFluid() != null || !canFillFluidType(resource)) {
+    return 0;
+  }
+  if (doFill) {
+    setFluid(resource.getFluid());
+  }
+  return Fluid.BUCKET_VOLUME;
+}

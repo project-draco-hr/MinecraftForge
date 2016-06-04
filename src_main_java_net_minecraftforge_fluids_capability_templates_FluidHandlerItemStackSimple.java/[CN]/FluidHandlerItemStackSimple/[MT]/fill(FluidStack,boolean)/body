@@ -1,0 +1,18 @@
+{
+  if (container.stackSize != 1 || resource == null || resource.amount <= 0 || !canFillFluidType(resource)) {
+    return 0;
+  }
+  FluidStack contained=getFluid();
+  if (contained == null) {
+    int fillAmount=Math.min(capacity,resource.amount);
+    if (fillAmount == capacity) {
+      if (doFill) {
+        FluidStack filled=resource.copy();
+        filled.amount=fillAmount;
+        setFluid(filled);
+      }
+      return fillAmount;
+    }
+  }
+  return 0;
+}

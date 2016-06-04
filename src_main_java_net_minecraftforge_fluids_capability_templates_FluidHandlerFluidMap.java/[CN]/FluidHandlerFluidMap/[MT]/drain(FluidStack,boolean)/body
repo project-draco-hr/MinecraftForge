@@ -1,0 +1,6 @@
+{
+  if (resource == null)   return null;
+  IFluidHandler handler=handlers.get(resource.getFluid());
+  if (handler == null)   return null;
+  return handler.drain(resource,doDrain);
+}

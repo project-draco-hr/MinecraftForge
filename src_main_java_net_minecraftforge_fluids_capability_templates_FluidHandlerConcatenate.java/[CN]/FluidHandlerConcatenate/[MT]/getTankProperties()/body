@@ -1,0 +1,7 @@
+{
+  List<IFluidTankProperties> tanks=Lists.newArrayList();
+  for (  IFluidHandler handler : subHandlers) {
+    Collections.addAll(tanks,handler.getTankProperties());
+  }
+  return tanks.toArray(new IFluidTankProperties[tanks.size()]);
+}

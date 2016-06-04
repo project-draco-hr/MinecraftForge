@@ -1,0 +1,3 @@
+IFluidBlock fluidBlock
+World world
+BlockPos blockPos

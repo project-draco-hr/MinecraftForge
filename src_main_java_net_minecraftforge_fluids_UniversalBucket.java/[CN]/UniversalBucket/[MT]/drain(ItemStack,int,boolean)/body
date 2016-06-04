@@ -1,5 +1,8 @@
 {
-  if (maxDrain < getCapacity()) {
+  if (container.stackSize != 1) {
+    return null;
+  }
+  if (maxDrain < getCapacity(container)) {
     return null;
   }
   FluidStack fluidStack=getFluid(container);
