@@ -1,5 +1,7 @@
 {
   super.setCanceled(canceled);
-  useBlock=DENY;
-  useItem=DENY;
+  if (canceled) {
+    useBlock=DENY;
+    useItem=DENY;
+  }
 }

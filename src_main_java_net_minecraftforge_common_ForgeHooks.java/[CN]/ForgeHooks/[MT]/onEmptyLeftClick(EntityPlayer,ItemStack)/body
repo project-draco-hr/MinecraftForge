@@ -1,0 +1,3 @@
+{
+  MinecraftForge.EVENT_BUS.post(new PlayerInteractEvent.LeftClickEmpty(player,stack));
+}
