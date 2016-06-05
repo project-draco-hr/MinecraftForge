@@ -9,5 +9,8 @@
       return 0.875F;
     }
   }
+  if (here.getBlock() instanceof BlockLiquid) {
+    return Math.min(1 - BlockLiquid.getLiquidHeightPercent(here.getValue(BlockLiquid.LEVEL)),14f / 16);
+  }
   return !here.getMaterial().isSolid() && up.getBlock() == this ? 1 : this.getQuantaPercentage(world,pos) * 0.875F;
 }
