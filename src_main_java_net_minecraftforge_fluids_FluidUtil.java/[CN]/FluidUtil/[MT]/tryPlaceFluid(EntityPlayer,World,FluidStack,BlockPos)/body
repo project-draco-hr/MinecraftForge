@@ -1,5 +1,9 @@
 {
-  if (worldIn == null || fluid == null || fluid.getFluid() == null || pos == null) {
+  if (worldIn == null || fluidStack == null || pos == null) {
+    return false;
+  }
+  Fluid fluid=fluidStack.getFluid();
+  if (fluid == null || !fluid.canBePlacedInWorld()) {
     return false;
   }
   IBlockState destBlockState=worldIn.getBlockState(pos);
@@ -9,19 +13,16 @@
   if (!worldIn.isAirBlock(pos) && !isDestNonSolid && !isDestReplaceable) {
     return false;
   }
-  IBlockState fluidBlockState=fluid.getFluid().getBlock().getDefaultState();
-  if (worldIn.provider.doesWaterVaporize() && fluidBlockState.getMaterial() == Material.WATER) {
-    worldIn.playSound(player,pos,SoundEvents.BLOCK_FIRE_EXTINGUISH,SoundCategory.BLOCKS,0.5F,2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
-    for (int l=0; l < 8; ++l) {
-      worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE,(double)pos.getX() + Math.random(),(double)pos.getY() + Math.random(),(double)pos.getZ() + Math.random(),0.0D,0.0D,0.0D);
-    }
+  if (worldIn.provider.doesWaterVaporize() && fluid.doesVaporize(fluidStack)) {
+    fluid.vaporize(player,worldIn,pos,fluidStack);
   }
  else {
     if (!worldIn.isRemote && (isDestNonSolid || isDestReplaceable) && !destMaterial.isLiquid()) {
       worldIn.destroyBlock(pos,true);
     }
-    SoundEvent soundevent=fluid.getFluid().getEmptySound(worldIn,pos);
+    SoundEvent soundevent=fluid.getEmptySound(fluidStack);
     worldIn.playSound(player,pos,soundevent,SoundCategory.BLOCKS,1.0F,1.0F);
+    IBlockState fluidBlockState=fluid.getBlock().getDefaultState();
     worldIn.setBlockState(pos,fluidBlockState,11);
   }
   return true;

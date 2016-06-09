@@ -1,4 +1,4 @@
 EntityPlayer player
 World worldIn
-FluidStack fluidStack
 BlockPos pos
+FluidStack fluidStack

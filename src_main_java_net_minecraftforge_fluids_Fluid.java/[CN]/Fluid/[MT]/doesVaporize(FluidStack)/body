@@ -1,0 +1,4 @@
+{
+  if (block == null)   return false;
+  return block.getDefaultState().getMaterial() == Material.WATER;
+}

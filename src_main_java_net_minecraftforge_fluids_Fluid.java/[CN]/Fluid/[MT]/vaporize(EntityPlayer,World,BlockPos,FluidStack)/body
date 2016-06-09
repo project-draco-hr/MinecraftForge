@@ -1,0 +1,6 @@
+{
+  worldIn.playSound(player,pos,SoundEvents.BLOCK_FIRE_EXTINGUISH,SoundCategory.BLOCKS,0.5F,2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
+  for (int l=0; l < 8; ++l) {
+    worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE,(double)pos.getX() + Math.random(),(double)pos.getY() + Math.random(),(double)pos.getZ() + Math.random(),0.0D,0.0D,0.0D);
+  }
+}
