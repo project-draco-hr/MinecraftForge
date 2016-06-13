@@ -1,3 +1,3 @@
 {
-  FMLCommonHandler.instance().beginLoading(this);
+  injectedModContainers=FMLCommonHandler.instance().beginLoading(this);
 }

@@ -1,4 +1,5 @@
 {
   sidedDelegate=handler;
   MinecraftForge.initialize();
+  return ImmutableList.<String>of();
 }

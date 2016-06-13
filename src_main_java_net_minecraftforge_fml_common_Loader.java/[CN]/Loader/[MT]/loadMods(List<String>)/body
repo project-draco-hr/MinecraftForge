@@ -6,7 +6,7 @@
   namedMods=Maps.newHashMap();
   modController=new LoadController(this);
   modController.transition(LoaderState.LOADING,false);
-  discoverer=identifyMods();
+  discoverer=identifyMods(injectedModContainers);
   ModAPIManager.INSTANCE.manageAPI(modClassLoader,discoverer);
   disableRequestedMods();
   modController.distributeStateMessage(FMLLoadEvent.class);
