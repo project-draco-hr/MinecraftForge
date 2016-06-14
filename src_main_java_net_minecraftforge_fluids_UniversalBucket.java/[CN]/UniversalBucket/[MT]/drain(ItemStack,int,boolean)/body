@@ -8,9 +8,7 @@
   FluidStack fluidStack=getFluid(container);
   if (doDrain && fluidStack != null) {
     if (getEmpty() != null) {
-      container.setItem(getEmpty().getItem());
-      container.setTagCompound(getEmpty().getTagCompound());
-      container.setItemDamage(getEmpty().getItemDamage());
+      container.deserializeNBT(getEmpty().serializeNBT());
     }
  else {
       container.stackSize=0;

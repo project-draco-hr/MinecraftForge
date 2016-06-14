@@ -11,9 +11,7 @@
  else   if (container.stackSize == 1) {
     ItemStack filledReal=tryFillContainer(container,fluidSource,maxAmount,player,true);
     if (filledReal != null) {
-      container.setItem(filledReal.getItem());
-      container.setTagCompound(filledReal.getTagCompound());
-      container.setItemDamage(filledReal.getItemDamage());
+      container.deserializeNBT(filledReal.serializeNBT());
       return true;
     }
   }

@@ -21,15 +21,13 @@
   }
  else   if (resource.getFluid() == FluidRegistry.WATER) {
     if (doFill) {
-      container.setItem(Items.WATER_BUCKET);
-      container.setTagCompound(null);
+      container.deserializeNBT(new ItemStack(Items.WATER_BUCKET).serializeNBT());
     }
     return getCapacity();
   }
  else   if (resource.getFluid() == FluidRegistry.LAVA) {
     if (doFill) {
-      container.setItem(Items.LAVA_BUCKET);
-      container.setTagCompound(null);
+      container.deserializeNBT(new ItemStack(Items.LAVA_BUCKET).serializeNBT());
     }
     return getCapacity();
   }

@@ -11,7 +11,7 @@
           if (FluidContainerRegistry.hasNullEmptyContainer(container)) {
             emptyContainer.stackSize=0;
           }
-          updateContainer(emptyContainer);
+          container.deserializeNBT(emptyContainer.serializeNBT());
         }
         return contained;
       }

@@ -1,6 +1,0 @@
-{
-  container.setItem(newContainerData.getItem());
-  container.setTagCompound(newContainerData.getTagCompound());
-  container.setItemDamage(newContainerData.getItemDamage());
-  container.stackSize=newContainerData.stackSize;
-}

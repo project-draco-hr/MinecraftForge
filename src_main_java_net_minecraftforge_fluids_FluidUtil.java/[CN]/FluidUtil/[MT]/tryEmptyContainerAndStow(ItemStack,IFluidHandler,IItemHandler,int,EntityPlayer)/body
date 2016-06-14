@@ -15,9 +15,7 @@
         container.stackSize--;
       }
  else {
-        container.setItem(emptiedReal.getItem());
-        container.setTagCompound(emptiedReal.getTagCompound());
-        container.setItemDamage(emptiedReal.getItemDamage());
+        container.deserializeNBT(emptiedReal.serializeNBT());
       }
       return true;
     }

@@ -8,7 +8,7 @@
     return 0;
   }
   if (doFill) {
-    updateContainer(result);
+    container.deserializeNBT(result.serializeNBT());
   }
   FluidStack newContained=FluidContainerRegistry.getFluidForFilledItem(result);
   int originalAmount=originalContained == null ? 0 : originalContained.amount;
