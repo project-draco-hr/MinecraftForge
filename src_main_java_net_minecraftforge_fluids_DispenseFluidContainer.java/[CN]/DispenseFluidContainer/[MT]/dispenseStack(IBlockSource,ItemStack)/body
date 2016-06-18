@@ -1,0 +1,8 @@
+{
+  if (FluidUtil.getFluidContained(stack) != null) {
+    return dumpContainer(source,stack);
+  }
+ else {
+    return fillContainer(source,stack);
+  }
+}

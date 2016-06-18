@@ -1,0 +1,17 @@
+{
+  World world=source.getWorld();
+  EnumFacing dispenserFacing=BlockDispenser.getFacing(source.getBlockMetadata());
+  BlockPos blockpos=source.getBlockPos().offset(dispenserFacing);
+  ItemStack result=FluidUtil.tryPickUpFluid(stack,null,world,blockpos,dispenserFacing.getOpposite());
+  if (result == null) {
+    return super.dispenseStack(source,stack);
+  }
+  world.setBlockToAir(blockpos);
+  if (--stack.stackSize == 0) {
+    stack.deserializeNBT(result.serializeNBT());
+  }
+ else   if (((TileEntityDispenser)source.getBlockTileEntity()).addItemStack(result) < 0) {
+    this.dispenseBehavior.dispense(source,result);
+  }
+  return stack;
+}

@@ -4,4 +4,5 @@
   this.nbtSensitive=nbtSensitive;
   this.setMaxStackSize(1);
   this.setCreativeTab(CreativeTabs.MISC);
+  BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this,DispenseFluidContainer.getInstance());
 }
