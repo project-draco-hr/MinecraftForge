@@ -1,0 +1,19 @@
+{
+  if (button.id == 1) {
+    try {
+      File modsDir=new File(minecraftDir,"mods");
+      Desktop.getDesktop().open(modsDir);
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.ERROR,e,"Problem opening mods folder");
+    }
+  }
+ else   if (button.id == 2) {
+    try {
+      Desktop.getDesktop().open(clientLog);
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.ERROR,e,"Problem opening log file " + clientLog);
+    }
+  }
+}
