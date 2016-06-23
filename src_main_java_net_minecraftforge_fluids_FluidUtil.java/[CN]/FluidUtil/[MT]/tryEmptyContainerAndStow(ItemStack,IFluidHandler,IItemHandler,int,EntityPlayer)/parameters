@@ -1,5 +1,5 @@
 ItemStack container
-IFluidHandler fluidSource
+IFluidHandler fluidDestination
 IItemHandler inventory
 int maxAmount
 EntityPlayer player
