@@ -4,7 +4,11 @@
   }
  else   if (args.length == 2) {
     if ("tps".equals(args[0])) {
-      return getListOfStringsMatchingLastWord(args,server.worldTickTimes.keySet());
+      ArrayList list=new ArrayList();
+      for (      Integer l : server.worldTickTimes.keySet()) {
+        list.add(l.toString());
+      }
+      return list;
     }
  else     if ("track".equals(args[0])) {
       return getListOfStringsMatchingLastWord(args,"te");
