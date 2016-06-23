@@ -1,4 +1,4 @@
 {
-  if (getNbt() != null)   return TileEntity.create(getNbt());
+  if (getNbt() != null)   return TileEntity.func_190200_a(getWorld(),getNbt());
  else   return null;
 }

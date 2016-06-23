@@ -1,6 +1,6 @@
 {
   World world=source.getWorld();
-  EnumFacing dispenserFacing=BlockDispenser.getFacing(source.getBlockMetadata());
+  EnumFacing dispenserFacing=source.func_189992_e().getValue(BlockDispenser.FACING);
   BlockPos blockpos=source.getBlockPos().offset(dispenserFacing);
   ItemStack result=FluidUtil.tryPickUpFluid(stack,null,world,blockpos,dispenserFacing.getOpposite());
   if (result == null) {

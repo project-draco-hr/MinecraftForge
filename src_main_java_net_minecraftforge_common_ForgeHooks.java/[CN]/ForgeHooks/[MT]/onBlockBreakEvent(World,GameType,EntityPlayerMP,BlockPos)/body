@@ -2,7 +2,7 @@
   boolean preCancelEvent=false;
   if (gameType.isCreative() && entityPlayer.getHeldItemMainhand() != null && entityPlayer.getHeldItemMainhand().getItem() instanceof ItemSword)   preCancelEvent=true;
   if (gameType.isAdventure()) {
-    if (gameType == WorldSettings.GameType.SPECTATOR)     preCancelEvent=true;
+    if (gameType == GameType.SPECTATOR)     preCancelEvent=true;
     if (!entityPlayer.isAllowEdit()) {
       ItemStack itemstack=entityPlayer.getHeldItemMainhand();
       if (itemstack == null || !itemstack.canDestroy(world.getBlockState(pos).getBlock()))       preCancelEvent=true;

@@ -1,0 +1,13 @@
+{
+  if (type == ZombieType.NORMAL || type == ZombieType.HUSK) {
+    if (entity.getVillagerTypeForge() != null)     entity.setVillagerType(null);
+    return;
+  }
+  int realID=network - 1;
+  if (type == null)   realID=network * -1;
+  VillagerProfession prof=INSTANCE.professions.getObjectById(realID);
+  if (prof == null && network != 0 || INSTANCE.professions.getId(prof) != realID) {
+    throw new RuntimeException("Attempted to set villager profession to unregistered profession: " + realID + " "+ prof);
+  }
+  if (prof != entity.getVillagerTypeForge())   entity.setVillagerType(prof);
+}

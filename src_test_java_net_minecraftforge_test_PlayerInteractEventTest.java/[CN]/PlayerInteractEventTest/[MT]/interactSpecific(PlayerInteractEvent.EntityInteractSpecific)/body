@@ -3,7 +3,7 @@
   logger.info("LOCAL POS: {}",evt.getLocalPos());
   if (evt.getItemStack() != null && evt.getTarget() instanceof EntityArmorStand && evt.getItemStack().getItem() == Items.IRON_HELMET)   evt.setCanceled(true);
   if (evt.getWorld().isRemote && evt.getTarget() instanceof EntitySkeleton && evt.getLocalPos().yCoord > evt.getTarget().height / 2.0) {
-    ((EntitySkeleton)evt.getTarget()).setSkeletonType(1);
+    ((EntitySkeleton)evt.getTarget()).func_189768_a(SkeletonType.WITHER);
     evt.setCanceled(true);
   }
 }

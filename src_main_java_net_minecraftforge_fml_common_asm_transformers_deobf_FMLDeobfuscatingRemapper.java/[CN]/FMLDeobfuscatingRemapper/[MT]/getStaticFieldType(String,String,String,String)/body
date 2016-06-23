@@ -1,5 +1,5 @@
 {
-  String fType=getFieldType(oldType,oldName);
+  String fType=getFieldType(newType,newName);
   if (oldType.equals(newType)) {
     return fType;
   }
