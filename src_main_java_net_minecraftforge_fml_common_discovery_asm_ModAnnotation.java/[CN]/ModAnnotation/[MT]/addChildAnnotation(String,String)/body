@@ -1,7 +1,5 @@
 {
   ModAnnotation child=new ModAnnotation(AnnotationType.SUBTYPE,Type.getType(desc),this);
-  if (arrayList != null) {
-    arrayList.add(child.getValues());
-  }
+  addProperty(name,child.getValues());
   return child;
 }
