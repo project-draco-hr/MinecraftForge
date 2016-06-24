@@ -1,3 +1,4 @@
 {
   super(LOCATION.toString());
+  this.width=this.height=16;
 }
