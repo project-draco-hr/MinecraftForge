@@ -16,7 +16,10 @@
     String text="Forge Mod Loader detected missing/unknown registrie(s).\n\n" + "There are " + missingRegs.size() + " missing registries in this save.\n"+ "If you continue the missing registries will get removed.\n"+ "This may cause issues, it is advised that you create a world backup before continuing.\n\n"+ "Missing Registries:\n";
     for (    ResourceLocation s : missingRegs)     text+=s.toString() + "\n";
     boolean confirmed=StartupQuery.confirm(text);
-    if (!confirmed)     StartupQuery.abort();
+    if (!confirmed) {
+      StartupQuery.abort();
+      ;
+    }
   }
   for (  Map.Entry<ResourceLocation,GameDataSnapshot.Entry> snapshotEntry : snapshot.entries.entrySet()) {
     final Class<? extends IForgeRegistryEntry> registrySuperType=PersistentRegistry.ACTIVE.getRegistrySuperType(snapshotEntry.getKey());
