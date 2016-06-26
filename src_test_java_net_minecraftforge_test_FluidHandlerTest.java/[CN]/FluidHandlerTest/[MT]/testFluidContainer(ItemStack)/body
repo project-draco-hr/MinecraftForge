@@ -1,0 +1,18 @@
+{
+  ItemStack drainedStack=stack.copy();
+  IFluidHandler fluidHandler=FluidUtil.getFluidHandler(drainedStack);
+  if (fluidHandler != null) {
+    FluidStack drain=fluidHandler.drain(Integer.MAX_VALUE,true);
+    FMLLog.info("Draining " + stackString(stack) + " gives "+ fluidString(drain)+ " and "+ stackString(drainedStack));
+    for (    Fluid fluid : FluidRegistry.getRegisteredFluids().values()) {
+      ItemStack filledStack=stack.copy();
+      fluidHandler=FluidUtil.getFluidHandler(filledStack);
+      if (fluidHandler != null) {
+        int filled=fluidHandler.fill(new FluidStack(fluid,Integer.MAX_VALUE),true);
+        if (filled > 0) {
+          FMLLog.info("Filling " + stackString(stack) + " with "+ fluidString(new FluidStack(fluid,filled))+ " gives "+ stackString(filledStack));
+        }
+      }
+    }
+  }
+}

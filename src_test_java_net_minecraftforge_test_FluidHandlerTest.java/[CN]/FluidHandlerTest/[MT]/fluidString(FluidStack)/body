@@ -1,0 +1,8 @@
+{
+  if (stack == null) {
+    return "no fluid";
+  }
+ else {
+    return stack.amount + "mB " + stack.getLocalizedName();
+  }
+}

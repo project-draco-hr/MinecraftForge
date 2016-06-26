@@ -1,0 +1,15 @@
+{
+  if (stack == null || stack.stackSize <= 0) {
+    return "no item";
+  }
+ else {
+    String resourceDomain;
+    if (stack.getItem() == null || stack.getItem().getRegistryName() == null) {
+      resourceDomain="unknown";
+    }
+ else {
+      resourceDomain=stack.getItem().getRegistryName().getResourceDomain();
+    }
+    return stack.stackSize + " " + stack.getDisplayName()+ " ("+ resourceDomain+ ")";
+  }
+}
