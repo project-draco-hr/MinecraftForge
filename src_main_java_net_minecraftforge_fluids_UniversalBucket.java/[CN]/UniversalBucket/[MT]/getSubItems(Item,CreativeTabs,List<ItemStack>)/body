@@ -1,9 +1,11 @@
 {
   for (  Fluid fluid : FluidRegistry.getRegisteredFluids().values()) {
-    FluidStack fs=new FluidStack(fluid,getCapacity());
-    ItemStack stack=new ItemStack(this);
-    if (fill(stack,fs,true) == fs.amount) {
-      subItems.add(stack);
+    if (fluid != FluidRegistry.WATER && fluid != FluidRegistry.LAVA && !fluid.getName().equals("milk")) {
+      FluidStack fs=new FluidStack(fluid,getCapacity());
+      ItemStack stack=new ItemStack(this);
+      if (fill(stack,fs,true) == fs.amount) {
+        subItems.add(stack);
+      }
     }
   }
 }
