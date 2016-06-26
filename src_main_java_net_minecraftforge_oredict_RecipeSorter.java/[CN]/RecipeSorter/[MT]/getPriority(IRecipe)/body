@@ -3,7 +3,7 @@
   Integer ret=priorities.get(cls);
   if (ret == null) {
     if (!warned.contains(cls)) {
-      FMLLog.info("  Unknown recipe class! %s Modder please refer to %s",cls.getName(),RecipeSorter.class.getName());
+      FMLLog.bigWarning("Unknown recipe class! %s Modders need to register their recipe types with %s",cls.getName(),RecipeSorter.class.getName());
       warned.add(cls);
     }
     cls=cls.getSuperclass();
