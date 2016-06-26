@@ -1,0 +1,9 @@
+{
+  Result result=canEntitySpawn(entity,world,x,y,z);
+  if (result == Result.DEFAULT) {
+    return entity.getCanSpawnHere() && entity.isNotColliding();
+  }
+ else {
+    return result == Result.ALLOW;
+  }
+}
