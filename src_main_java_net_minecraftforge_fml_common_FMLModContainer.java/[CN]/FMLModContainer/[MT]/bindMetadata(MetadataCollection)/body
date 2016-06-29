@@ -41,7 +41,7 @@
   }
   String mcVersionString=(String)descriptor.get("acceptedMinecraftVersions");
   if ("[1.8.8]".equals(mcVersionString))   mcVersionString="[1.8.8,1.8.9]";
-  if ("[1.9.4]".equals(mcVersionString) || "[1.9,1.9.4]".equals(mcVersionString) || "[1.9.4,1.10)".equals(mcVersionString))   mcVersionString="[1.9.4,1.10]";
+  if ("[1.9.4]".equals(mcVersionString) || "[1.9,1.9.4]".equals(mcVersionString) || "[1.9.4,1.10)".equals(mcVersionString)|| "[1.10]".equals(mcVersionString))   mcVersionString="[1.9.4,1.10.2]";
   if (!Strings.isNullOrEmpty(mcVersionString)) {
     minecraftAccepted=VersionParser.parseRange(mcVersionString);
   }
