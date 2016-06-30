@@ -13,4 +13,8 @@
       tryAddFile(modFile,null,modFile);
     }
   }
+  String[] extras=new String[]{"mods/mod_list.json","mods/" + FMLInjectionData.mccversion + "/mod_list.json"};
+  for (  String extra : extras) {
+    if ((new File(mcDirectory,extra)).exists())     parseListFile(extra);
+  }
 }
