@@ -1,0 +1,6 @@
+{
+  if (this.mc.gameSettings.showDebugInfo && this.mc.gameSettings.showLagometer && !pre(FPS_GRAPH)) {
+    this.debugOverlay.renderLagometer();
+    post(FPS_GRAPH);
+  }
+}

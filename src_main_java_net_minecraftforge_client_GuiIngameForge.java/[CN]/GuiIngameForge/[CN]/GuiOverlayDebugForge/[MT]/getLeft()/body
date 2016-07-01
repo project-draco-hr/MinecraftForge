@@ -1,3 +1,7 @@
 {
-  return this.call();
+  List<String> ret=this.call();
+  ret.add("");
+  ret.add("Debug: Pie [shift]: " + (this.mc.gameSettings.showDebugProfilerChart ? "visible" : "hidden") + " FPS [alt]: "+ (this.mc.gameSettings.showLagometer ? "visible" : "hidden"));
+  ret.add("For help: press F3 + Q");
+  return ret;
 }

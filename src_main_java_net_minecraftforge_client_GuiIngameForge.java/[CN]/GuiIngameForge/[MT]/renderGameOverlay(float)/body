@@ -46,6 +46,7 @@
   }
   renderToolHighlight(res);
   renderHUDText(width,height);
+  renderFPSGraph();
   renderPotionIcons(res);
   renderRecordOverlay(width,height,partialTicks);
   renderSubtitles(res);
