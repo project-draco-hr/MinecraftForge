@@ -1,0 +1,5 @@
+{
+  super(entity);
+  this.damageSource=damageSource;
+  this.lootingLevel=lootingLevel;
+}

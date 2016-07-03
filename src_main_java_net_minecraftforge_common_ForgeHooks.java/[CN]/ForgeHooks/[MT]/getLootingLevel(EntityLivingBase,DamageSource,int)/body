@@ -1,0 +1,5 @@
+{
+  LootingLevelEvent event=new LootingLevelEvent(target,cause,level);
+  MinecraftForge.EVENT_BUS.post(event);
+  return event.getLootingLevel();
+}
