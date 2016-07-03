@@ -1,6 +1,6 @@
 {
   TileEntity tileEntity=dest.getWorld().getTileEntity(new BlockPos(dest.getXPos(),dest.getYPos() + 1,dest.getZPos()));
-  if (tileEntity == null || !tileEntity.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,EnumFacing.DOWN))   return false;
+  if (tileEntity == null || !tileEntity.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,EnumFacing.DOWN))   return null;
   IItemHandler handler=tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,EnumFacing.DOWN);
   for (int i=0; i < handler.getSlots(); i++) {
     ItemStack extractItem=handler.extractItem(i,1,true);
@@ -20,5 +20,5 @@
       }
     }
   }
-  return true;
+  return false;
 }
