@@ -1,0 +1,5 @@
+{
+  this.pos=pos;
+  this.searchBox=searchBox;
+  this.redstonePower=-1;
+}
