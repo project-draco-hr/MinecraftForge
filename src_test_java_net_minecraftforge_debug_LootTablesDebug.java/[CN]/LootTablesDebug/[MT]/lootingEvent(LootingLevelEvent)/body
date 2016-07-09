@@ -1,0 +1,6 @@
+{
+  DamageSource damageSource=event.getDamageSource();
+  if (damageSource.isProjectile() && damageSource.getEntity() instanceof EntityPlayer && damageSource.getSourceOfDamage() instanceof EntityArrow) {
+    event.setLootingLevel(3);
+  }
+}
