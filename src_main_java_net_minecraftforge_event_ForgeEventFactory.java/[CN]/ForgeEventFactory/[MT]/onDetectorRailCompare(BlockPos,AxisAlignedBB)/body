@@ -1,5 +1,0 @@
-{
-  DetectorRailComparatorEvent evt=new DetectorRailComparatorEvent(pos,box);
-  MinecraftForge.EVENT_BUS.post(evt);
-  return evt.getRedstonePower();
-}
