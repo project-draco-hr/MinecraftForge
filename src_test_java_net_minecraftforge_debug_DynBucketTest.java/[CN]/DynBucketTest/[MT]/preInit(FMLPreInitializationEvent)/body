@@ -1,4 +1,5 @@
 {
+  if (!ENABLE)   return;
   GameRegistry.register(new TestItem(),testItemName);
   Block tank=new BlockSimpleTank();
   GameRegistry.register(tank,simpleTankName);

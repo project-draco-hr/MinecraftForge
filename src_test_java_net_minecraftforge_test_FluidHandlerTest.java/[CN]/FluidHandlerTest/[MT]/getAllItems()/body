@@ -1,0 +1,9 @@
+{
+  List<ItemStack> list=new ArrayList<ItemStack>();
+  for (  Item item : ForgeRegistries.ITEMS.getValues()) {
+    for (    CreativeTabs tab : item.getCreativeTabs()) {
+      item.getSubItems(item,tab,list);
+    }
+  }
+  return list;
+}

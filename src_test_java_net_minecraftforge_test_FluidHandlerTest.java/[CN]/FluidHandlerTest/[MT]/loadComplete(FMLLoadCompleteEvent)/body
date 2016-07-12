@@ -1,0 +1,6 @@
+{
+  if (!ENABLE || FMLCommonHandler.instance().getSide() != Side.CLIENT)   return;
+  for (  ItemStack stack : getAllItems()) {
+    testFluidContainer(stack);
+  }
+}

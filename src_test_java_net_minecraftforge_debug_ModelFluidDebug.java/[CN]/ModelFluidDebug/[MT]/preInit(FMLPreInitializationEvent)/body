@@ -1,3 +1,5 @@
 {
-  proxy.preInit(event);
+  if (ENABLE) {
+    proxy.preInit(event);
+  }
 }
