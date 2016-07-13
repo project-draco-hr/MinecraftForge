@@ -1,0 +1,3 @@
+String name
+int textureId
+int mipmapLevels
