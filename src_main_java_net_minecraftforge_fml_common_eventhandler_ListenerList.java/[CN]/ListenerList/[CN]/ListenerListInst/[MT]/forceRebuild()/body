@@ -1,0 +1,6 @@
+{
+  this.rebuild=true;
+  if (this.children != null) {
+    for (    ListenerListInst child : this.children)     child.forceRebuild();
+  }
+}

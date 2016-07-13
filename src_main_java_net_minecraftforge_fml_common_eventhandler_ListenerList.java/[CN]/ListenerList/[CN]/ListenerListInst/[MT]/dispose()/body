@@ -5,4 +5,5 @@
   priorities.clear();
   parent=null;
   listeners=null;
+  if (children != null)   children.clear();
 }

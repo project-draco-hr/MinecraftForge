@@ -1,6 +1,7 @@
 {
   this.owner=owner;
-  handler=(IEventListener)createWrapper(method).getConstructor(Object.class).newInstance(target);
+  if (Modifier.isStatic(method.getModifiers()))   handler=(IEventListener)createWrapper(method).newInstance();
+ else   handler=(IEventListener)createWrapper(method).getConstructor(Object.class).newInstance(target);
   subInfo=method.getAnnotation(SubscribeEvent.class);
   readable="ASM: " + target + " "+ method.getName()+ Type.getMethodDescriptor(method);
 }

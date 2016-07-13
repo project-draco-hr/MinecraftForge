@@ -1,4 +1,4 @@
 {
   priorities.get(priority.ordinal()).add(listener);
-  rebuild=true;
+  this.forceRebuild();
 }

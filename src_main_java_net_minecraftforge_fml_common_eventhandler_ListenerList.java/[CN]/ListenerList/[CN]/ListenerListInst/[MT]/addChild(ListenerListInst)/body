@@ -1,0 +1,4 @@
+{
+  if (this.children == null)   this.children=Lists.newArrayList();
+  this.children.add(child);
+}
