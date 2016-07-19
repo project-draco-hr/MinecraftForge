@@ -1,0 +1,8 @@
+{
+  try {
+    return (Description)innerRunnerClass.getMethod("getDescription").invoke(innerRunner);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Could not get description",e);
+  }
+}

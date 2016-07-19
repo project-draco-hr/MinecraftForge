@@ -1,0 +1,18 @@
+{
+  boolean quarantine=false;
+  for (  String quarantinedPattern : quarantinedClassNames) {
+    if (name.startsWith(quarantinedPattern)) {
+      quarantine=true;
+      break;
+    }
+  }
+  if (quarantine) {
+    try {
+      return findClass(name);
+    }
+ catch (    ClassNotFoundException e) {
+      throw e;
+    }
+  }
+  return super.loadClass(name);
+}

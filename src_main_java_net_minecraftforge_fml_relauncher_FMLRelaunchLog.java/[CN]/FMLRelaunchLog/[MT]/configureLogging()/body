@@ -1,5 +1,6 @@
 {
   log.myLog=LogManager.getLogger("FML");
+  if (side == null)   side=Side.CLIENT;
   ThreadContext.put("side",side.name().toLowerCase(Locale.ENGLISH));
   configured=true;
   FMLRelaunchLog.fine("Injecting tracing printstreams for STDOUT/STDERR.");

@@ -1,0 +1,26 @@
+{
+  Loader.instance();
+  System.setProperty("fml.queryResult","confirm");
+  registry=PersistentRegistryManager.createRegistry(resloc,RTest.class,null,0,255,false,null,null,null);
+  PersistentRegistryManager.createRegistry(PersistentRegistryManager.BLOCKS,Block.class,null,0,255,false,null,null,null);
+  PersistentRegistryManager.createRegistry(PersistentRegistryManager.ITEMS,Item.class,null,0,255,false,null,null,null);
+  r1=new RTest("test1");
+  r2=new RTest("test2");
+  r3=new RTest("test3");
+  r4=new RTest("test4");
+  r5=new RTest("test5");
+  r6=new RTest("test6");
+  ss=new PersistentRegistryManager.GameDataSnapshot();
+  ss.entries.put(PersistentRegistryManager.BLOCKS,new PersistentRegistryManager.GameDataSnapshot.Entry());
+  ss.entries.put(PersistentRegistryManager.ITEMS,new PersistentRegistryManager.GameDataSnapshot.Entry());
+  PersistentRegistryManager.findRegistryByType(RTest.class).register(r1);
+  PersistentRegistryManager.findRegistryByType(RTest.class).register(r2);
+  PersistentRegistryManager.findRegistryByType(RTest.class).register(r3);
+  PersistentRegistryManager.findRegistryByType(RTest.class).register(r4);
+  ss.entries.put(resloc,new PersistentRegistryManager.GameDataSnapshot.Entry(PersistentRegistryManager.PersistentRegistry.ACTIVE.getRegistry(RTest.class)));
+  PersistentRegistryManager.PersistentRegistry.ACTIVE.clean();
+  PersistentRegistryManager.PersistentRegistry.FROZEN.clean();
+  registry=PersistentRegistryManager.createRegistry(resloc,RTest.class,null,0,255,false,null,null,null);
+  PersistentRegistryManager.createRegistry(PersistentRegistryManager.BLOCKS,Block.class,null,0,255,false,null,null,null);
+  PersistentRegistryManager.createRegistry(PersistentRegistryManager.ITEMS,Item.class,null,0,255,false,null,null,null);
+}

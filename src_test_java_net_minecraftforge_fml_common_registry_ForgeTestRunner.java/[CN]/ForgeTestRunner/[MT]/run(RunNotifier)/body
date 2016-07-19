@@ -1,0 +1,8 @@
+{
+  try {
+    innerRunnerClass.getMethod("run",RunNotifier.class).invoke(innerRunner,notifier);
+  }
+ catch (  Exception e) {
+    notifier.fireTestFailure(new Failure(getDescription(),e));
+  }
+}

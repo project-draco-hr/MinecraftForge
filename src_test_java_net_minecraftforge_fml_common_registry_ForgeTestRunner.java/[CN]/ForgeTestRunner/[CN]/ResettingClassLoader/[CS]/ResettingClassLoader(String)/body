@@ -1,0 +1,6 @@
+{
+  super(((URLClassLoader)getSystemClassLoader()).getURLs());
+  this.quarantinedClassNames=Sets.newHashSet();
+  Collections.addAll(this.quarantinedClassNames,quarantinedClassNames);
+  Collections.addAll(this.quarantinedClassNames,"net.minecraft","net.minecraftforge");
+}

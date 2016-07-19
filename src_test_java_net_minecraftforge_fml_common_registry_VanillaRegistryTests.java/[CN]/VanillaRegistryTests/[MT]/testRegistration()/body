@@ -1,0 +1,10 @@
+{
+  Block myBlock=GameRegistry.register(new Block(Material.CAKE){
+  }
+,new ResourceLocation("minecraft:testy"));
+  assertNotNull("Registered my block",myBlock);
+  final IForgeRegistry<Block> blocks=PersistentRegistryManager.findRegistry(myBlock);
+  assertEquals("We have the right blocks for a block",blocks,Block.REGISTRY);
+  Block found=blocks.getValue(new ResourceLocation("minecraft:testy"));
+  assertEquals("Registry lookup works",myBlock,found);
+}

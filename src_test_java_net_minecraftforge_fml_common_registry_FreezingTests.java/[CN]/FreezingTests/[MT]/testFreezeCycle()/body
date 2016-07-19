@@ -1,0 +1,37 @@
+{
+  PersistentRegistryManager.findRegistryByType(RTest.class).register(r6);
+  PersistentRegistryManager.findRegistryByType(RTest.class).register(r5);
+  PersistentRegistryManager.findRegistryByType(RTest.class).register(r4);
+  PersistentRegistryManager.findRegistryByType(RTest.class).register(r3);
+  FMLControlledNamespacedRegistry<RTest> r=(FMLControlledNamespacedRegistry)PersistentRegistryManager.findRegistry(r3);
+  int r3id=r.getId(r3);
+  PersistentRegistryManager.freezeData();
+  RTest q1=PersistentRegistryManager.PersistentRegistry.FROZEN.getRegistry(RTest.class).getValue(new ResourceLocation("test3"));
+  assertEquals("Frozen object is the same",r3,q1);
+  q1=PersistentRegistryManager.PersistentRegistry.ACTIVE.getRegistry(RTest.class).getValue(new ResourceLocation("test3"));
+  assertEquals("Active object is the same",r3,q1);
+  PersistentRegistryManager.injectSnapshot(ss,false,false);
+  assertNotEquals("IDs don't match",r3id,r.getId(r3));
+  q1=PersistentRegistryManager.PersistentRegistry.FROZEN.getRegistry(RTest.class).getValue(new ResourceLocation("test3"));
+  assertEquals("Frozen object is the same",r3,q1);
+  q1=PersistentRegistryManager.PersistentRegistry.ACTIVE.getRegistry(RTest.class).getValue(new ResourceLocation("test3"));
+  assertEquals("Active object is the same",r3,q1);
+  PersistentRegistryManager.revertToFrozen();
+  assertEquals("IDs match",r3id,r.getId(r3));
+  q1=PersistentRegistryManager.PersistentRegistry.FROZEN.getRegistry(RTest.class).getValue(new ResourceLocation("test3"));
+  assertEquals("Frozen object is the same",r3,q1);
+  q1=PersistentRegistryManager.PersistentRegistry.ACTIVE.getRegistry(RTest.class).getValue(new ResourceLocation("test3"));
+  assertEquals("Active object is the same",r3,q1);
+  PersistentRegistryManager.injectSnapshot(ss,true,true);
+  assertNotEquals("IDs don't match",r3id,r.getId(r3));
+  q1=PersistentRegistryManager.PersistentRegistry.FROZEN.getRegistry(RTest.class).getValue(new ResourceLocation("test3"));
+  assertEquals("Frozen object is the same",r3,q1);
+  q1=PersistentRegistryManager.PersistentRegistry.ACTIVE.getRegistry(RTest.class).getValue(new ResourceLocation("test3"));
+  assertEquals("Active object is the same",r3,q1);
+  PersistentRegistryManager.revertToFrozen();
+  assertEquals("IDs match",r3id,r.getId(r3));
+  q1=PersistentRegistryManager.PersistentRegistry.FROZEN.getRegistry(RTest.class).getValue(new ResourceLocation("test3"));
+  assertEquals("Frozen object is the same",r3,q1);
+  q1=PersistentRegistryManager.PersistentRegistry.ACTIVE.getRegistry(RTest.class).getValue(new ResourceLocation("test3"));
+  assertEquals("Active object is the same",r3,q1);
+}

@@ -6,7 +6,7 @@
     FMLLog.severe("The game is not running with Java 8. Forge recommends Java 8 for maximum compatibility with mods");
   }
   modClassLoader=new ModClassLoader(getClass().getClassLoader());
-  if (!mccversion.equals(MC_VERSION)) {
+  if (mccversion != null && !mccversion.equals(MC_VERSION)) {
     FMLLog.severe("This version of FML is built for Minecraft %s, we have detected Minecraft %s in your minecraft jar file",mccversion,MC_VERSION);
     throw new LoaderException(String.format("This version of FML is built for Minecraft %s, we have detected Minecraft %s in your minecraft jar file",mccversion,MC_VERSION));
   }

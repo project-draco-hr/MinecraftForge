@@ -1,0 +1,16 @@
+{
+  assertEquals("We have all the blocks via GameData",219,Block.REGISTRY.getKeys().size());
+  assertEquals("We have all the items via GameData",371,Item.REGISTRY.getKeys().size());
+  final IForgeRegistry<Block> blocks=PersistentRegistryManager.findRegistry(Blocks.AIR);
+  assertEquals("We have the right blocks for a block",blocks,Block.REGISTRY);
+  Block bl=blocks.getValue(new ResourceLocation("minecraft:air"));
+  assertEquals("We got air when we asked for it",Blocks.AIR,bl);
+  Block blch=blocks.getValue(new ResourceLocation("minecraft:cheese"));
+  assertEquals("We got air when we asked for cheese",Blocks.AIR,blch);
+  final IForgeRegistry<Item> items=PersistentRegistryManager.findRegistry(Items.BED);
+  assertEquals("We have the right items for an item",items,Item.REGISTRY);
+  Item it=items.getValue(new ResourceLocation("minecraft:bed"));
+  assertEquals("We got a bed item when we asked for it",Items.BED,it);
+  Item none=items.getValue(new ResourceLocation("minecraft:cheese"));
+  assertEquals("We got nothing (items) when we asked for cheese",null,none);
+}

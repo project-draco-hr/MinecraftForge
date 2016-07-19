@@ -1,0 +1,4 @@
+{
+  Loader.instance();
+  Bootstrap.register();
+}

@@ -1,0 +1,15 @@
+{
+  Class<? extends Runner> delegateRunningTo=JUnit4.class;
+  String testFileClassName=testFileClass.getName();
+  String delegateRunningToClassName=delegateRunningTo.getName();
+  String[] allPatterns=new String[]{testFileClassName,delegateRunningToClassName};
+  ResettingClassLoader classLoader=new ResettingClassLoader(allPatterns);
+  try {
+    innerRunnerClass=classLoader.loadClass(delegateRunningToClassName);
+    Class<?> testClass=classLoader.loadClass(testFileClassName);
+    innerRunner=innerRunnerClass.cast(innerRunnerClass.getConstructor(Class.class).newInstance(testClass));
+  }
+ catch (  Exception e) {
+    throw new InitializationError(e);
+  }
+}

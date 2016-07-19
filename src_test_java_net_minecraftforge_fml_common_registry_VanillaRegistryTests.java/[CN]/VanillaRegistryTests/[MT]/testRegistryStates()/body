@@ -1,0 +1,12 @@
+{
+  final FMLControlledNamespacedRegistry<Block> blockVanilla=PersistentRegistryManager.PersistentRegistry.VANILLA.getRegistry(Block.class);
+  final FMLControlledNamespacedRegistry<Block> blockActive=PersistentRegistryManager.PersistentRegistry.ACTIVE.getRegistry(Block.class);
+  assertNotEquals("Registry states are distinct",blockActive,blockVanilla);
+  final Block stoneActive=blockActive.getValue(new ResourceLocation("minecraft:stone"));
+  final Block stoneVanilla=blockVanilla.getValue(new ResourceLocation("minecraft:stone"));
+  assertEquals("Stone from active and vanilla are the same",stoneActive,stoneVanilla);
+  int activeId=blockActive.getId(stoneActive);
+  int vanillaId=blockVanilla.getId(stoneVanilla);
+  assertEquals("Stone has correct id",1,activeId);
+  assertEquals("Stone has correct id",1,vanillaId);
+}
