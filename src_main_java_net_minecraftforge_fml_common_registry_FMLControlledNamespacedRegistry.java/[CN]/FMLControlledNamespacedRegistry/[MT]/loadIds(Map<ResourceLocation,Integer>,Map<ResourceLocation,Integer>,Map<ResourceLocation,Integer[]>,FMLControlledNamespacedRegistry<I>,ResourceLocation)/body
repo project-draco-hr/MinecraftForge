@@ -13,6 +13,9 @@
       remappedIds.put(itemName,new Integer[]{currId,newId});
     }
     I obj=currentRegistry.getRaw(itemName);
+    if (currentRegistry.substitutionOriginals.containsKey(itemName)) {
+      obj=currentRegistry.substitutionOriginals.get(itemName);
+    }
     add(newId,itemName,obj);
   }
 }

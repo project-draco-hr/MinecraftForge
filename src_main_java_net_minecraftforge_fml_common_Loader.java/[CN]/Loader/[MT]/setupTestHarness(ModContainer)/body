@@ -1,0 +1,8 @@
+{
+  modController=new LoadController(this);
+  mods=Lists.newArrayList(dummycontainer);
+  modController.transition(LoaderState.LOADING,false);
+  modController.transition(LoaderState.CONSTRUCTING,false);
+  ObjectHolderRegistry.INSTANCE.findObjectHolders(new ASMDataTable());
+  modController.forceActiveContainer(dummycontainer);
+}

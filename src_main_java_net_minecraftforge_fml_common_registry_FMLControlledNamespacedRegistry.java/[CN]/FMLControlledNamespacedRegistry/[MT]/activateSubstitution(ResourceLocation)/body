@@ -4,6 +4,9 @@
     I sub=getPersistentSubstitutions().get(nameToReplace);
     getExistingDelegate(original).changeReference(sub);
     activeSubstitutions.put(nameToReplace,sub);
+    int id=getIDForObjectBypass(original);
+    addObjectRaw(id,nameToReplace,sub);
+    substitutionOriginals.put(nameToReplace,original);
     return original;
   }
   return null;
