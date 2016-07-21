@@ -1,0 +1,10 @@
+{
+  Loader.instance();
+  Bootstrap.register();
+  Loader.instance().setupTestHarness(new DummyModContainer(new ModMetadata(){
+{
+      modId="test";
+    }
+  }
+));
+}
