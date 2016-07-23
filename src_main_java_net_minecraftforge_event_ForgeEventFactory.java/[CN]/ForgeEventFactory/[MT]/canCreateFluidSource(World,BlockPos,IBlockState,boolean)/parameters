@@ -1,0 +1,4 @@
+World world
+BlockPos pos
+IBlockState state
+boolean def
