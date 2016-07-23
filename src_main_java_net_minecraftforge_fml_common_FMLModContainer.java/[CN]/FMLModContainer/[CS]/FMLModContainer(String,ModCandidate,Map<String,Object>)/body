@@ -13,4 +13,5 @@
     this.languageAdapter=null;
     FMLLog.finer("Using custom language adapter %s for %s (modid: %s)",languageAdapterType,this.className,getModId());
   }
+  sanityCheckModId();
 }
