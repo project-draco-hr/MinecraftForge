@@ -1,4 +1,8 @@
 {
+  if (!isSourceBlock(world,pos) && ForgeEventFactory.canCreateFluidSource(world,pos,state,false)) {
+    int adjacentSourceBlocks=(isSourceBlock(world,pos.north()) ? 1 : 0) + (isSourceBlock(world,pos.south()) ? 1 : 0) + (isSourceBlock(world,pos.east()) ? 1 : 0)+ (isSourceBlock(world,pos.west()) ? 1 : 0);
+    if (adjacentSourceBlocks >= 2 && (world.getBlockState(pos.up(densityDir)).getMaterial().isSolid() || isSourceBlock(world,pos.up(densityDir))))     world.setBlockState(pos,state.withProperty(LEVEL,0));
+  }
   int quantaRemaining=quantaPerBlock - state.getValue(LEVEL);
   int expQuanta=-101;
   if (quantaRemaining < quantaPerBlock) {
