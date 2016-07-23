@@ -1,0 +1,8 @@
+{
+  this.hand=hand;
+  this.partialTicks=partialTicks;
+  this.interpolatedPitch=interpolatedPitch;
+  this.swingProgress=swingProgress;
+  this.equipProgress=equipProgress;
+  this.stack=stack;
+}
