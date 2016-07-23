@@ -1,0 +1,3 @@
+{
+  if (ENABLE)   MinecraftForge.EVENT_BUS.register(CreateFluidSourceTest.class);
+}
