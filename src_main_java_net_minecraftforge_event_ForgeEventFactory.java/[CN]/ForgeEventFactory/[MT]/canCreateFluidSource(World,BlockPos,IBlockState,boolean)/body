@@ -1,0 +1,6 @@
+{
+  CreateFluidSourceEvent evt=new CreateFluidSourceEvent(world,pos,state);
+  MinecraftForge.EVENT_BUS.post(evt);
+  Result result=evt.getResult();
+  return result == Result.DEFAULT ? def : result == Result.ALLOW;
+}

@@ -1,0 +1,4 @@
+{
+  if (event.getState().getBlock() == Blocks.FLOWING_WATER)   event.setResult(Result.DENY);
+ else   event.setResult(Result.ALLOW);
+}
