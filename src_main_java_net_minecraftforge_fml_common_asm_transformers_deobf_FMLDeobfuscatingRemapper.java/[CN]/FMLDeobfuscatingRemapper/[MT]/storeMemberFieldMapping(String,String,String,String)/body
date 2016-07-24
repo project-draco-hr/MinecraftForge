@@ -1,0 +1,10 @@
+{
+  Map<String,String> fieldMap=getRawFieldMap(owner);
+  String key=name + ":" + desc;
+  String altKey=name + ":null";
+  if (!fieldMap.containsKey(key)) {
+    fieldMap.put(key,remappedName);
+    fieldMap.put(altKey,remappedName);
+    fieldNameMaps.remove(owner);
+  }
+}

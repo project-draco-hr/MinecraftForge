@@ -1,0 +1,6 @@
+{
+  if (!rawFieldMaps.containsKey(className)) {
+    rawFieldMaps.put(className,Maps.<String,String>newHashMap());
+  }
+  return rawFieldMaps.get(className);
+}

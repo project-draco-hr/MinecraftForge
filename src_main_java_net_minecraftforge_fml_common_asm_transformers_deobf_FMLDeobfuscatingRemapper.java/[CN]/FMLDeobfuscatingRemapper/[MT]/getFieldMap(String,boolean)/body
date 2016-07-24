@@ -1,4 +1,7 @@
 {
+  if (raw) {
+    return getRawFieldMap(className);
+  }
   if (!fieldNameMaps.containsKey(className) && !negativeCacheFields.contains(className)) {
     findAndMergeSuperMaps(className);
     if (!fieldNameMaps.containsKey(className)) {

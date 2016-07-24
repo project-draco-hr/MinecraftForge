@@ -1,0 +1,5 @@
+{
+  String remappedName=mapFieldName(owner,name,desc,true);
+  storeMemberFieldMapping(owner,name,desc,remappedName);
+  return remappedName;
+}
