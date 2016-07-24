@@ -1,0 +1,6 @@
+EnumHand hand
+float partialTicks
+float interpPitch
+float swingProgress
+float equipProgress
+ItemStack stack
