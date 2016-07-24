@@ -1,0 +1,6 @@
+{
+  TextureMap map=e.getMap();
+  String name=map.getBasePath().replace('/','_');
+  int mip=map.getMipmapLevels();
+  saveGlTexture(name,map.getGlTextureId(),mip);
+}
