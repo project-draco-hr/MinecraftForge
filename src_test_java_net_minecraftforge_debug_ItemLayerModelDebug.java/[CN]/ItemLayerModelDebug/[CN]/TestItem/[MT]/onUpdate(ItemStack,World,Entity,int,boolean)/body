@@ -1,0 +1,6 @@
+{
+  NBTTagCompound tag=new NBTTagCompound();
+  tag.setInteger("foo",new Random().nextInt());
+  stack.setTagCompound(tag);
+  stack.setStackDisplayName(String.valueOf(new Random().nextInt()));
+}

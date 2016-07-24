@@ -1,0 +1,5 @@
+ItemStack stack
+World worldIn
+Entity entityIn
+int itemSlot
+boolean isSelected

@@ -1,0 +1,7 @@
+{
+  oldStack=oldStack.copy();
+  oldStack.setTagCompound(null);
+  newStack=newStack.copy();
+  newStack.setTagCompound(null);
+  return !ItemStack.areItemStacksEqual(oldStack,newStack);
+}
