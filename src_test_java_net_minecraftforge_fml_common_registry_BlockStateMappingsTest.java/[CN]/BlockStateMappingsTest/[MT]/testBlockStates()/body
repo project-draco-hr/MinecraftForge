@@ -1,0 +1,12 @@
+{
+  Block bl=Blocks.MELON_STEM;
+  int id=Block.getIdFromBlock(bl);
+  for (int meta=0; meta < 8; meta++) {
+    int realbsm=id << 4 | meta;
+    IBlockState realst=bl.getStateFromMeta(meta);
+    int bsm=GameData.getBlockStateIDMap().get(realst);
+    IBlockState foundst=GameData.getBlockStateIDMap().getByValue(realbsm);
+    assertEquals("Got computed blockstate ids that match",realbsm,bsm);
+    assertEquals("Got equal states",realst,foundst);
+  }
+}

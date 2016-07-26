@@ -1,6 +1,9 @@
 {
   ClearableObjectIntIdentityMap<IBlockState> blockstateMap=(ClearableObjectIntIdentityMap<IBlockState>)slaves.get(BLOCKSTATE_TO_ID);
   for (  IBlockState state : block.getBlockState().getValidStates()) {
-    blockstateMap.put(state,blockId << 4 | block.getMetaFromState(state));
+    final int meta=block.getMetaFromState(state);
+    final int bsmeta=blockId << 4 | meta;
+    final IBlockState blockState=block.getStateFromMeta(meta);
+    blockstateMap.put(blockState,bsmeta);
   }
 }

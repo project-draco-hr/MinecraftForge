@@ -1,0 +1,12 @@
+{
+  System.setProperty("fml.queryResult","confirm");
+  System.setProperty("fml.doNotBackup","true");
+  Loader.instance();
+  Bootstrap.register();
+  Loader.instance().setupTestHarness(new DummyModContainer(new ModMetadata(){
+{
+      modId="test";
+    }
+  }
+));
+}
