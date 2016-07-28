@@ -1,3 +1,4 @@
 {
+  state=state.getBlock().getExtendedState(state,world,pos);
   return (new SimpleBakedModel.Builder(state,ibakedmodel,texture,pos)).makeBakedModel();
 }
