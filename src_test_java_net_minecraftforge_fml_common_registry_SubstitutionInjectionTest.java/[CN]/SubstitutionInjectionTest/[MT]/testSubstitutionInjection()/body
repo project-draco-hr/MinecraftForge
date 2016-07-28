@@ -3,6 +3,7 @@
   GameRegistry.addSubstitutionAlias("minecraft:dirt",GameRegistry.Type.BLOCK,toSub);
   PersistentRegistryManager.freezeData();
   ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  StatList.reinit();
   final FMLControlledNamespacedRegistry<Block> blockRegistry=(FMLControlledNamespacedRegistry<Block>)PersistentRegistryManager.findRegistryByType(Block.class);
   Block fnd=blockRegistry.getValue(myDirt);
   Block currDirt=Blocks.DIRT;
