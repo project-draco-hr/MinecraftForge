@@ -1,0 +1,3 @@
+{
+  MinecraftForge.TERRAIN_GEN_BUS.register(this);
+}
