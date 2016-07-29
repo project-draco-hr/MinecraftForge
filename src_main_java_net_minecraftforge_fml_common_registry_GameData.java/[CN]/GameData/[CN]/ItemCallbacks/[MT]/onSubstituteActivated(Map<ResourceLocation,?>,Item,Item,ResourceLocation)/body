@@ -1,0 +1,3 @@
+{
+  final BiMap<Block,Item> blockItemMap=(BiMap<Block,Item>)slaveset.get(BLOCK_TO_ITEM);
+}

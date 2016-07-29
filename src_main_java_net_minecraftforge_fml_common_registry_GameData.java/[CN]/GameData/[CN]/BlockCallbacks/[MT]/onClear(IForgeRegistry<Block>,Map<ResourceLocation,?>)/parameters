@@ -1,0 +1,2 @@
+IForgeRegistry<Block> registry
+Map<ResourceLocation,?> slaveset

@@ -1,0 +1,2 @@
+IForgeRegistry<Potion> registry
+Map<ResourceLocation,?> slaveset

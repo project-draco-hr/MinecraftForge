@@ -1,8 +1,0 @@
-ResourceLocation registryName
-Class<T> type
-ResourceLocation defaultObjectKey
-int minId
-int maxId
-IForgeRegistry.AddCallback<T> addCallback
-IForgeRegistry.ClearCallback<T> clearCallback
-IForgeRegistry.CreateCallback<T> createCallback

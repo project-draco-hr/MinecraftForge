@@ -1,0 +1,4 @@
+Map<ResourceLocation,?> slaveset
+Block original
+Block replacement
+ResourceLocation name

@@ -1,0 +1,6 @@
+{
+  final ClearableObjectIntIdentityMap<Block> idMap=new ClearableObjectIntIdentityMap<Block>();
+  ((Map<ResourceLocation,Object>)slaveset).put(BLOCKSTATE_TO_ID,idMap);
+  final HashBiMap<Block,Item> map=HashBiMap.create();
+  ((Map<ResourceLocation,Object>)slaveset).put(BLOCK_TO_ITEM,map);
+}

@@ -1,0 +1,2 @@
+Map<ResourceLocation,?> slaveset
+BiMap<ResourceLocation,? extends IForgeRegistry<?>> registries

@@ -1,0 +1,4 @@
+Map<ResourceLocation,?> slaveset
+Item original
+Item replacement
+ResourceLocation name

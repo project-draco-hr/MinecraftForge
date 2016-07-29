@@ -1,0 +1,4 @@
+{
+  Object fieldAccessor=newFieldAccessor.invoke(reflectionFactory,field,false);
+  fieldAccessorSet.invoke(fieldAccessor,instance,thing);
+}

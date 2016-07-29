@@ -1,0 +1,19 @@
+{
+  ClearableObjectIntIdentityMap<IBlockState> blockstateMap=(ClearableObjectIntIdentityMap<IBlockState>)slaveset.get(BLOCKSTATE_TO_ID);
+  blockstateMap.clear();
+  final Map<ResourceLocation,Block> originals=(Map<ResourceLocation,Block>)slaveset.get(PersistentRegistryManager.SUBSTITUTION_ORIGINALS);
+  final BiMap<Block,Item> blockItemMap=(BiMap<Block,Item>)slaveset.get(BLOCK_TO_ITEM);
+  for (  Item it : blockItemMap.values()) {
+    if (it instanceof ItemBlock) {
+      ItemBlock itemBlock=(ItemBlock)it;
+      final ResourceLocation registryKey=registry.getKey(itemBlock.block);
+      if (!originals.containsKey(registryKey))       continue;
+      try {
+        FinalFieldHelper.setField(blockField,itemBlock,originals.get(registryKey));
+      }
+ catch (      Exception e) {
+        throw Throwables.propagate(e);
+      }
+    }
+  }
+}

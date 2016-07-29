@@ -1,0 +1,12 @@
+{
+  Loader.instance();
+  Bootstrap.register();
+  myDirtInstance=new ItemMyDirt();
+  Loader.instance().setupTestHarness(new DummyModContainer(new ModMetadata(){
+{
+      modId="test";
+    }
+  }
+));
+  originalDirt=new ItemStack(Blocks.DIRT).getItem();
+}

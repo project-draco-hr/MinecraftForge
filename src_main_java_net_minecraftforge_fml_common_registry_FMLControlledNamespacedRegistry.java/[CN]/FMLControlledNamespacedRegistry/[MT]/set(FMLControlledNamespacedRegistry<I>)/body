@@ -2,6 +2,9 @@
   if (this.superType != otherRegistry.superType) {
     throw new IllegalArgumentException("incompatible registry");
   }
+  final Map<ResourceLocation,Object> slaves=Maps.newHashMap(this.slaves);
+  slaves.put(PersistentRegistryManager.SUBSTITUTION_ORIGINALS,substitutionOriginals);
+  if (this.clearCallback != null)   this.clearCallback.onClear(this,slaves);
   this.optionalDefaultKey=otherRegistry.optionalDefaultKey;
   this.maxId=otherRegistry.maxId;
   this.minId=otherRegistry.minId;
@@ -17,5 +20,7 @@
   for (  I thing : otherRegistry.typeSafeIterable()) {
     addObjectRaw(otherRegistry.getId(thing),otherRegistry.getNameForObject(thing),thing);
   }
-  this.activeSubstitutions.putAll(otherRegistry.activeSubstitutions);
+  for (  ResourceLocation resloc : otherRegistry.activeSubstitutions.keySet()) {
+    activateSubstitution(resloc);
+  }
 }

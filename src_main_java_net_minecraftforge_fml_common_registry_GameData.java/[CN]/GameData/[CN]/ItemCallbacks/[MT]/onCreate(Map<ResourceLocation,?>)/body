@@ -1,4 +1,0 @@
-{
-  final HashBiMap<Block,Item> map=HashBiMap.create();
-  ((Map<ResourceLocation,Object>)slaveset).put(BLOCK_TO_ITEM,map);
-}

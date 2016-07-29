@@ -1,0 +1,15 @@
+{
+  final BiMap<Block,Item> blockItemMap=(BiMap<Block,Item>)slaveset.get(BLOCK_TO_ITEM);
+  if (blockItemMap.containsKey(original)) {
+    Item i=blockItemMap.get(original);
+    if (i instanceof ItemBlock) {
+      try {
+        FinalFieldHelper.setField(blockField,i,replacement);
+      }
+ catch (      Exception e) {
+        throw Throwables.propagate(e);
+      }
+    }
+    blockItemMap.forcePut(replacement,i);
+  }
+}

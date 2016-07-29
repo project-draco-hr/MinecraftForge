@@ -1,3 +1,0 @@
-{
-  return new FMLControlledNamespacedRegistry<I>(optionalDefaultKey,minId,maxId,superType,addCallback,clearCallback,createCallback);
-}

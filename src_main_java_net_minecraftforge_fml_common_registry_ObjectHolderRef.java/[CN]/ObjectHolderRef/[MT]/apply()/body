@@ -17,8 +17,7 @@
     return;
   }
   try {
-    Object fieldAccessor=newFieldAccessor.invoke(reflectionFactory,field,false);
-    fieldAccessorSet.invoke(fieldAccessor,null,thing);
+    FinalFieldHelper.setField(field,null,thing);
   }
  catch (  Exception e) {
     FMLLog.log(Level.WARN,e,"Unable to set %s with value %s (%s)",this.field,thing,this.injectedObject);

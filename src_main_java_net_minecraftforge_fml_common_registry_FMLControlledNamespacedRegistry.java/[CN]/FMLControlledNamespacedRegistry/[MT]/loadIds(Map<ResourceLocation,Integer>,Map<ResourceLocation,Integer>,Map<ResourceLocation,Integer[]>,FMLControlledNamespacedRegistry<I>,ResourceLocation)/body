@@ -13,9 +13,13 @@
       remappedIds.put(itemName,new Integer[]{currId,newId});
     }
     I obj=currentRegistry.getRaw(itemName);
+    I sub=obj;
     if (currentRegistry.substitutionOriginals.containsKey(itemName)) {
       obj=currentRegistry.substitutionOriginals.get(itemName);
     }
     add(newId,itemName,obj);
+    if (currentRegistry.substitutionOriginals.containsKey(itemName) && substitutionCallback != null) {
+      substitutionCallback.onSubstituteActivated(slaves,sub,obj,itemName);
+    }
   }
 }

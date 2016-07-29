@@ -1,0 +1,8 @@
+{
+  super(Blocks.DIRT,Blocks.DIRT,new Function<ItemStack,String>(){
+    @Nullable public String apply(    @Nullable ItemStack p_apply_1_){
+      return BlockDirt.DirtType.byMetadata(p_apply_1_.getMetadata()).getUnlocalizedName();
+    }
+  }
+);
+}

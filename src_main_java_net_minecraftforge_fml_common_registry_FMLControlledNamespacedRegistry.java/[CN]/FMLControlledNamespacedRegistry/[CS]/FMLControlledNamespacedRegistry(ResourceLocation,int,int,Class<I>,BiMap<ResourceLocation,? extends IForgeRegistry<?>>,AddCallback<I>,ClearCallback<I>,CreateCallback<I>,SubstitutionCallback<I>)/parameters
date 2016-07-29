@@ -1,0 +1,9 @@
+ResourceLocation defaultKey
+int minIdValue
+int maxIdValue
+Class<I> type
+BiMap<ResourceLocation,? extends IForgeRegistry<?>> registries
+AddCallback<I> addCallback
+ClearCallback<I> clearCallback
+CreateCallback<I> createCallback
+SubstitutionCallback<I> substitutionCallback

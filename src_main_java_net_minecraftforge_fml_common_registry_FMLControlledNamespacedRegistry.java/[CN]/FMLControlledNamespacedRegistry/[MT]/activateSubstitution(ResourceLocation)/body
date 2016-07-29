@@ -7,6 +7,7 @@
     int id=getIDForObjectBypass(original);
     addObjectRaw(id,nameToReplace,sub);
     substitutionOriginals.put(nameToReplace,original);
+    if (substitutionCallback != null)     substitutionCallback.onSubstituteActivated(slaves,original,sub,nameToReplace);
     return original;
   }
   return null;

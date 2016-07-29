@@ -1,0 +1,1 @@
+BiMap<ResourceLocation,? extends IForgeRegistry<?>> registries

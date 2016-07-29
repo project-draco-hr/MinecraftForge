@@ -1,0 +1,19 @@
+{
+  GameRegistry.addSubstitutionAlias("minecraft:dirt",GameRegistry.Type.ITEM,myDirtInstance);
+  PersistentRegistryManager.freezeData();
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  final FMLControlledNamespacedRegistry<Item> itemRegistry=(FMLControlledNamespacedRegistry<Item>)PersistentRegistryManager.findRegistryByType(Item.class);
+  ItemBlock dirtitem=(ItemBlock)itemRegistry.getValue(myDirt);
+  assertEquals("ItemBlock points at my block",myDirtInstance,dirtitem);
+  final PersistentRegistryManager.GameDataSnapshot snapshot=PersistentRegistryManager.takeSnapshot();
+  snapshot.entries.get(PersistentRegistryManager.ITEMS).substitutions.clear();
+  PersistentRegistryManager.injectSnapshot(snapshot,false,false);
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  dirtitem=(ItemBlock)itemRegistry.getValue(myDirt);
+  assertEquals("ItemBlock points at vanilla block",originalDirt,dirtitem);
+  assertNotEquals("ItemBlock points at my block",myDirtInstance,dirtitem);
+  PersistentRegistryManager.revertToFrozen();
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  dirtitem=(ItemBlock)itemRegistry.getValue(myDirt);
+  assertEquals("ItemBlock points at my block",myDirtInstance,dirtitem);
+}

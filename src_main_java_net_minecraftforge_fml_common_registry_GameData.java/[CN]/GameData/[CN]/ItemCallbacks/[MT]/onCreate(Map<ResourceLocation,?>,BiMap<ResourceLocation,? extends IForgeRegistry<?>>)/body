@@ -1,0 +1,4 @@
+{
+  final BiMap blockItemMap=(BiMap<Block,Item>)registries.get(PersistentRegistryManager.BLOCKS).getSlaveMap(BLOCK_TO_ITEM,BiMap.class);
+  ((Map<ResourceLocation,Object>)slaveset).put(BLOCK_TO_ITEM,blockItemMap);
+}
