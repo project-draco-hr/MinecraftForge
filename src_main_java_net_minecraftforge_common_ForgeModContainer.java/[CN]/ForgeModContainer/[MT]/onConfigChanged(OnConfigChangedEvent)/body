@@ -1,14 +1,23 @@
 {
-  if (getMetadata().modId.equals(event.getModID()) && !event.isWorldRunning()) {
-    if (Configuration.CATEGORY_GENERAL.equals(event.getConfigID())) {
-      syncConfig(false);
+  if (getMetadata().modId.equals(event.getModID())) {
+    if (!event.isWorldRunning()) {
+      if (Configuration.CATEGORY_GENERAL.equals(event.getConfigID())) {
+        syncConfig(false);
+      }
+ else       if ("chunkLoader".equals(event.getConfigID())) {
+        ForgeChunkManager.syncConfigDefaults();
+        ForgeChunkManager.loadConfiguration();
+      }
+ else       if (VERSION_CHECK_CAT.equals(event.getConfigID())) {
+        syncConfig(false);
+      }
     }
- else     if ("chunkLoader".equals(event.getConfigID())) {
-      ForgeChunkManager.syncConfigDefaults();
-      ForgeChunkManager.loadConfiguration();
-    }
- else     if (VERSION_CHECK_CAT.equals(event.getConfigID())) {
-      syncConfig(false);
+ else {
+      boolean tmp=config.get(Configuration.CATEGORY_CLIENT,"disableStairSlabCulling",disableStairSlabCulling).getBoolean();
+      if (disableStairSlabCulling != tmp) {
+        disableStairSlabCulling=tmp;
+        FMLCommonHandler.instance().reloadRenderers();
+      }
     }
   }
 }
