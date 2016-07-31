@@ -1,5 +1,12 @@
 {
-  final ClearableObjectIntIdentityMap<Block> idMap=new ClearableObjectIntIdentityMap<Block>();
+  final ClearableObjectIntIdentityMap<IBlockState> idMap=new ClearableObjectIntIdentityMap<IBlockState>(){
+    @SuppressWarnings("deprecation") @Override public int get(    IBlockState key){
+      Integer integer=(Integer)this.identityMap.get(key);
+      if (integer == null && key != null)       integer=this.identityMap.get(key.getBlock().getStateFromMeta(key.getBlock().getMetaFromState(key)));
+      return integer == null ? -1 : integer.intValue();
+    }
+  }
+;
   ((Map<ResourceLocation,Object>)slaveset).put(BLOCKSTATE_TO_ID,idMap);
   final HashBiMap<Block,Item> map=HashBiMap.create();
   ((Map<ResourceLocation,Object>)slaveset).put(BLOCK_TO_ITEM,map);
