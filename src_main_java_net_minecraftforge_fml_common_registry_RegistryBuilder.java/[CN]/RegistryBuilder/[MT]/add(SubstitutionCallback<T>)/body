@@ -1,0 +1,4 @@
+{
+  this.substitutionCallback.add(sub);
+  return this;
+}

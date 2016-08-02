@@ -1,0 +1,10 @@
+{
+  if (this.addCallback.isEmpty())   return null;
+  if (this.addCallback.size() == 1)   return this.addCallback.get(0);
+  return new AddCallback<T>(){
+    @Override public void onAdd(    T obj,    int id,    Map<ResourceLocation,?> slaveset){
+      for (      AddCallback<T> cb : RegistryBuilder.this.addCallback)       cb.onAdd(obj,id,slaveset);
+    }
+  }
+;
+}

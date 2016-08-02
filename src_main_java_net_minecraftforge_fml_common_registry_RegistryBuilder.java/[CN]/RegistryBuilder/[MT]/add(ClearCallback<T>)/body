@@ -1,0 +1,4 @@
+{
+  this.clearCallback.add(clear);
+  return this;
+}

@@ -1,0 +1,10 @@
+{
+  if (this.clearCallback.isEmpty())   return null;
+  if (this.clearCallback.size() == 1)   return this.clearCallback.get(0);
+  return new ClearCallback<T>(){
+    @Override public void onClear(    IForgeRegistry<T> is,    Map<ResourceLocation,?> slaveset){
+      for (      ClearCallback<T> cb : RegistryBuilder.this.clearCallback)       cb.onClear(is,slaveset);
+    }
+  }
+;
+}

@@ -1,0 +1,27 @@
+{
+  if (cb == null)   return null;
+  try {
+    final Method mtd=cb.getClass().getMethod("onClear",Map.class);
+    return new IForgeRegistry.ClearCallback<T>(){
+      @Override public void onClear(      IForgeRegistry<T> is,      Map<ResourceLocation,?> slaveset){
+        try {
+          mtd.invoke(cb,slaveset);
+        }
+ catch (        Exception e) {
+          e.printStackTrace();
+          Throwables.propagate(e);
+        }
+      }
+    }
+;
+  }
+ catch (  NoSuchMethodException e) {
+    e.printStackTrace();
+    return cb;
+  }
+catch (  SecurityException e) {
+    e.printStackTrace();
+    Throwables.propagate(e);
+  }
+  return null;
+}

@@ -1,0 +1,10 @@
+{
+  if (this.substitutionCallback.isEmpty())   return null;
+  if (this.substitutionCallback.size() == 1)   return this.substitutionCallback.get(0);
+  return new SubstitutionCallback<T>(){
+    @Override public void onSubstituteActivated(    Map<ResourceLocation,?> slaveset,    T original,    T replacement,    ResourceLocation name){
+      for (      SubstitutionCallback<T> cb : RegistryBuilder.this.substitutionCallback)       cb.onSubstituteActivated(slaveset,original,replacement,name);
+    }
+  }
+;
+}

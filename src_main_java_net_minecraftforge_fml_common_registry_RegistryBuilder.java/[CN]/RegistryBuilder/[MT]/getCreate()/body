@@ -1,0 +1,10 @@
+{
+  if (this.createCallback.isEmpty())   return null;
+  if (this.createCallback.size() == 1)   return this.createCallback.get(0);
+  return new CreateCallback<T>(){
+    @Override public void onCreate(    Map<ResourceLocation,?> slaveset,    BiMap<ResourceLocation,? extends IForgeRegistry<?>> registries){
+      for (      CreateCallback<T> cb : RegistryBuilder.this.createCallback)       cb.onCreate(slaveset,registries);
+    }
+  }
+;
+}

@@ -1,0 +1,3 @@
+{
+  return PersistentRegistryManager.createRegistry(registryName,registryType,optionalDefaultKey,minId,maxId,false,getAdd(),getClear(),getCreate(),getSubstitution());
+}

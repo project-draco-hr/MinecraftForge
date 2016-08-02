@@ -1,0 +1,4 @@
+{
+  this.registryType=type;
+  return this;
+}

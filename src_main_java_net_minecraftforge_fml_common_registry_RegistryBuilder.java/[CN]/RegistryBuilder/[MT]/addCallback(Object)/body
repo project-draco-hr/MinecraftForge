@@ -1,0 +1,7 @@
+{
+  if (inst instanceof AddCallback)   this.add((AddCallback<T>)inst);
+  if (inst instanceof ClearCallback)   this.add((ClearCallback<T>)inst);
+  if (inst instanceof CreateCallback)   this.add((CreateCallback<T>)inst);
+  if (inst instanceof SubstitutionCallback)   this.add((SubstitutionCallback<T>)inst);
+  return this;
+}

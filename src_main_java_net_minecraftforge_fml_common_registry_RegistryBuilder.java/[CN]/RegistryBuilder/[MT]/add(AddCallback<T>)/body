@@ -1,0 +1,4 @@
+{
+  this.addCallback.add(add);
+  return this;
+}

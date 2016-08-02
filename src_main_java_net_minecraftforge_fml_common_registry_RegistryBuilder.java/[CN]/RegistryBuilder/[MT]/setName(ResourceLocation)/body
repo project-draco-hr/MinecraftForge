@@ -1,0 +1,4 @@
+{
+  this.registryName=name;
+  return this;
+}

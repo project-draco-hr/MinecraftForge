@@ -1,0 +1,5 @@
+{
+  this.minId=min;
+  this.maxId=max;
+  return this;
+}
