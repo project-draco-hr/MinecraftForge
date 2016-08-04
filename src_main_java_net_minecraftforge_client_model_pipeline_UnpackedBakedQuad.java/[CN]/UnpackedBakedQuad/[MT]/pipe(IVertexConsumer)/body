@@ -3,6 +3,11 @@
   if (hasTintIndex()) {
     consumer.setQuadTint(getTintIndex());
   }
+  try {
+    consumer.setTexture(sprite);
+  }
+ catch (  AbstractMethodError e) {
+  }
   consumer.setQuadOrientation(getFace());
   for (int v=0; v < 4; v++) {
     for (int e=0; e < consumer.getVertexFormat().getElementCount(); e++) {

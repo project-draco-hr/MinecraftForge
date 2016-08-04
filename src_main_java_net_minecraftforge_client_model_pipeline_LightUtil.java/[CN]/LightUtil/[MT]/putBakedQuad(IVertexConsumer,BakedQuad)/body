@@ -1,4 +1,9 @@
 {
+  try {
+    consumer.setTexture(quad.getSprite());
+  }
+ catch (  AbstractMethodError e) {
+  }
   consumer.setQuadOrientation(quad.getFace());
   if (quad.hasTintIndex()) {
     consumer.setQuadTint(quad.getTintIndex());

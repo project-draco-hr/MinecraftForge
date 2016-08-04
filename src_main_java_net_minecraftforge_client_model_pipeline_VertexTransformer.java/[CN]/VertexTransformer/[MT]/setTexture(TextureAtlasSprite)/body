@@ -1,0 +1,7 @@
+{
+  try {
+    parent.setTexture(texture);
+  }
+ catch (  AbstractMethodError e) {
+  }
+}
