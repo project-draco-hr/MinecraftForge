@@ -1,4 +1,5 @@
 {
+  if (!allowRP)   return mcPack.getInputStream(loc);
   if (miscPack.resourceExists(loc)) {
     return miscPack.getInputStream(loc);
   }

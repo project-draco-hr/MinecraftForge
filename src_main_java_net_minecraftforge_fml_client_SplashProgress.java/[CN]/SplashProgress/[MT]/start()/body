@@ -80,7 +80,7 @@
     public void run(){
       setGL();
       fontTexture=new Texture(fontLoc);
-      logoTexture=new Texture(logoLoc);
+      logoTexture=new Texture(logoLoc,false);
       forgeTexture=new Texture(forgeLoc);
       glEnable(GL_TEXTURE_2D);
       fontRenderer=new SplashFontRenderer();
