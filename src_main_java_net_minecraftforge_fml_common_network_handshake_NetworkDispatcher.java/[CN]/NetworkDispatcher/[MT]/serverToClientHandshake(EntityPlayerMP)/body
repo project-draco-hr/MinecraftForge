@@ -1,8 +1,8 @@
 {
   this.player=player;
-  insertIntoChannel();
   Boolean fml=this.manager.channel().attr(NetworkRegistry.FML_MARKER).get();
   if (fml != null && fml) {
+    insertIntoChannel();
   }
  else {
     serverInitiateHandshake();
