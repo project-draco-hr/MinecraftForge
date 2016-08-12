@@ -8,6 +8,7 @@
   }
  catch (  AbstractMethodError e) {
   }
+  consumer.setApplyDiffuseLighting(applyDiffuseLighting);
   consumer.setQuadOrientation(getFace());
   for (int v=0; v < 4; v++) {
     for (int e=0; e < consumer.getVertexFormat().getElementCount(); e++) {
