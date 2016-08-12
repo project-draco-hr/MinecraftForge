@@ -1,0 +1,8 @@
+ItemStack stack
+List<String> lines
+int x
+int y
+int screenWidth
+int screenHeight
+int maxWidth
+FontRenderer fr

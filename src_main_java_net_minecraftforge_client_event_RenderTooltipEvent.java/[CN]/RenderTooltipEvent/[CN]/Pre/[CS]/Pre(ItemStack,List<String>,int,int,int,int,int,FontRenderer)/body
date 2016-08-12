@@ -1,0 +1,6 @@
+{
+  super(stack,lines,x,y,fr);
+  this.screenWidth=screenWidth;
+  this.screenHeight=screenHeight;
+  this.maxWidth=maxWidth;
+}

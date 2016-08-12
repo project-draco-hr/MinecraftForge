@@ -1,0 +1,8 @@
+ItemStack stack
+List<String> textLines
+int mouseX
+int mouseY
+int screenWidth
+int screenHeight
+int maxTextWidth
+FontRenderer font

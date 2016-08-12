@@ -1,0 +1,5 @@
+{
+  super(stack,textLines,x,y,fr);
+  this.width=width;
+  this.height=height;
+}

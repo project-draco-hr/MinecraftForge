@@ -1,0 +1,5 @@
+ItemStack stack
+List<String> lines
+int x
+int y
+FontRenderer fr

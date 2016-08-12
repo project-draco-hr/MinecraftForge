@@ -1,0 +1,7 @@
+ItemStack stack
+List<String> textLines
+int x
+int y
+FontRenderer fr
+int width
+int height
