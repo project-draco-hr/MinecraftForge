@@ -1,3 +1,4 @@
 {
-  return ImmutableList.of((NetworkDispatcher)args);
+  NetworkManager clientConnection=FMLCommonHandler.instance().getClientToServerNetworkManager();
+  return clientConnection == null || clientConnection.channel().attr(NetworkDispatcher.FML_DISPATCHER).get() == null ? ImmutableList.<NetworkDispatcher>of() : ImmutableList.of(clientConnection.channel().attr(NetworkDispatcher.FML_DISPATCHER).get());
 }
