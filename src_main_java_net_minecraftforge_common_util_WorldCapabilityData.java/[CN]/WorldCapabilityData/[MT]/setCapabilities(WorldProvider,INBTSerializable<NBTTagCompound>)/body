@@ -1,6 +1,6 @@
 {
   this.serializable=capabilities;
-  if (this.capNBT != null) {
+  if (this.capNBT != null && serializable != null) {
     serializable.deserializeNBT(this.capNBT);
     this.capNBT=null;
   }
