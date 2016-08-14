@@ -1,0 +1,3 @@
+{
+  return capability == TIMER_CAP ? TIMER_CAP.<T>cast(this.timer) : null;
+}

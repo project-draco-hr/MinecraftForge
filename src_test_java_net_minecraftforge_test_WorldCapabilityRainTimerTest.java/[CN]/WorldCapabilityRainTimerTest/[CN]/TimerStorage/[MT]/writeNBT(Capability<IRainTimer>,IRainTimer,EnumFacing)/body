@@ -1,0 +1,6 @@
+{
+  NBTTagCompound compound=new NBTTagCompound();
+  compound.setInteger("current",instance.getCurrentTime());
+  compound.setInteger("duration",instance.getDuration());
+  return compound;
+}

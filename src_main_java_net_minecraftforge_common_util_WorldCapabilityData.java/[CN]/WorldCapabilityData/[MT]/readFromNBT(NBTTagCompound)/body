@@ -1,0 +1,7 @@
+{
+  this.capNBT=nbt;
+  if (serializable != null) {
+    serializable.deserializeNBT(this.capNBT);
+    this.capNBT=null;
+  }
+}

@@ -1,0 +1,4 @@
+{
+  NBTTagCompound data=(NBTTagCompound)nbt;
+  instance.refreshTimer(data.getInteger("duration"),data.getInteger("current"));
+}

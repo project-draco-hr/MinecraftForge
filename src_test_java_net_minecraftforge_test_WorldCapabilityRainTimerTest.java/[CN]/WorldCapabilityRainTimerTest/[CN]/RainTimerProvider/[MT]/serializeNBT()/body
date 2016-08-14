@@ -1,0 +1,3 @@
+{
+  return (NBTTagCompound)TIMER_CAP.writeNBT(this.timer,null);
+}

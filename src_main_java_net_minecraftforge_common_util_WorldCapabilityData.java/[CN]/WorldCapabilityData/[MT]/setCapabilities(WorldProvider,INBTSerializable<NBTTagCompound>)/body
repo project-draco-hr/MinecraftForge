@@ -1,0 +1,7 @@
+{
+  this.serializable=capabilities;
+  if (this.capNBT != null) {
+    serializable.deserializeNBT(this.capNBT);
+    this.capNBT=null;
+  }
+}

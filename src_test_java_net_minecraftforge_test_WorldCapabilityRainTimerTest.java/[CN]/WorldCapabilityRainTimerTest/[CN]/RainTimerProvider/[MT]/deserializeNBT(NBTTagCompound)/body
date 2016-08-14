@@ -1,0 +1,3 @@
+{
+  TIMER_CAP.readNBT(this.timer,null,nbt);
+}

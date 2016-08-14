@@ -1,0 +1,3 @@
+Capability<IRainTimer> capability
+IRainTimer instance
+EnumFacing side

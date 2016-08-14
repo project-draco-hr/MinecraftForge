@@ -1,0 +1,3 @@
+{
+  event.addCapability(new ResourceLocation(MODID,"rainTimer"),new RainTimerProvider());
+}

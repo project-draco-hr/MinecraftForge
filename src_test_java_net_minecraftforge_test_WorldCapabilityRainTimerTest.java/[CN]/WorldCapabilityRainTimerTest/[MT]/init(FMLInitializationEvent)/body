@@ -1,0 +1,4 @@
+{
+  CapabilityManager.INSTANCE.register(IRainTimer.class,new TimerStorage(),DefaultTimer.class);
+  MinecraftForge.EVENT_BUS.register(new NormalEventHandler());
+}
