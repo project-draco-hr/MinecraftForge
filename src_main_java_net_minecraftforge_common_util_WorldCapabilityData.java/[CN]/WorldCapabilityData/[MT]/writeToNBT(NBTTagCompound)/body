@@ -1,3 +1,4 @@
 {
-  return nbt=serializable.serializeNBT();
+  if (serializable != null)   nbt=serializable.serializeNBT();
+  return nbt;
 }

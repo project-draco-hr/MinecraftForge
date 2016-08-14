@@ -1,9 +1,10 @@
 {
   if (event.world.isRemote)   return;
   IRainTimer timer=event.world.getCapability(TIMER_CAP,null);
+  if (timer == null)   return;
   if (event.phase == TickEvent.Phase.END)   timer.onTick();
   if (event.phase == TickEvent.Phase.START) {
-    if (!event.world.provider.getHasNoSky() && event.world.isRaining()) {
+    if (event.world.isRaining()) {
       if (timer.getDuration() == 0)       timer.refreshTimer(1000,0);
  else       if (timer.isTimerReachedDuration())       event.world.provider.resetRainAndThunder();
     }

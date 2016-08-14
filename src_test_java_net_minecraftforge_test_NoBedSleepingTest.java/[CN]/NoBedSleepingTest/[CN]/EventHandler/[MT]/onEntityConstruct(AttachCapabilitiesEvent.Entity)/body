@@ -1,4 +1,5 @@
 {
+  if (!(evt.getEntity() instanceof EntityPlayer))   return;
   evt.addCapability(new ResourceLocation(MODID,"IExtraSleeping"),new ICapabilitySerializable<NBTPrimitive>(){
     IExtraSleeping inst=SLEEP_CAP.getDefaultInstance();
     @Override public boolean hasCapability(    Capability<?> capability,    EnumFacing facing){
