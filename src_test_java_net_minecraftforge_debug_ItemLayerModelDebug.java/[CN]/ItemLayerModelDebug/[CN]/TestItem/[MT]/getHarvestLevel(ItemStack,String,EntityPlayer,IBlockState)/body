@@ -1,0 +1,6 @@
+{
+  if ("pickaxe".equals(toolClass) && player != null && player.getItemStackFromSlot(EntityEquipmentSlot.HEAD) != null) {
+    return 5;
+  }
+  return super.getHarvestLevel(stack,toolClass,player,blockState);
+}

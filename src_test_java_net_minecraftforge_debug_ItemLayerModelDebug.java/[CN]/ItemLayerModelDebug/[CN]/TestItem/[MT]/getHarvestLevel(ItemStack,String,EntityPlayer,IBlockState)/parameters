@@ -1,0 +1,4 @@
+ItemStack stack
+String toolClass
+EntityPlayer player
+IBlockState blockState
