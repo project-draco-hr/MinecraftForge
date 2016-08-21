@@ -1,0 +1,27 @@
+{
+  if (cb == null)   return null;
+  try {
+    final Method mtd=cb.getClass().getMethod("onAdd",Object.class,int.class,Map.class);
+    return new IForgeRegistry.AddCallback<T>(){
+      @Override public void onAdd(      T obj,      int id,      Map<ResourceLocation,?> slaveset){
+        try {
+          mtd.invoke(cb,obj,id,slaveset);
+        }
+ catch (        Exception e) {
+          e.printStackTrace();
+          Throwables.propagate(e);
+        }
+      }
+    }
+;
+  }
+ catch (  NoSuchMethodException e) {
+    e.printStackTrace();
+    return cb;
+  }
+catch (  SecurityException e) {
+    e.printStackTrace();
+    Throwables.propagate(e);
+  }
+  return null;
+}
