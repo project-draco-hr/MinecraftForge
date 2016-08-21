@@ -12,6 +12,7 @@
       FMLLog.fine("Fixed %s id mismatch %s: %d (init) -> %d (map).",registryName,itemName,currId,newId);
       remappedIds.put(itemName,new Integer[]{currId,newId});
     }
+    if ("minecraft:stone".equals(itemName.toString()))     System.currentTimeMillis();
     I obj=currentRegistry.getRaw(itemName);
     I sub=obj;
     if (currentRegistry.substitutionOriginals.containsKey(itemName)) {
