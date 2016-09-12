@@ -1,0 +1,6 @@
+{
+  if (!canReceive())   return 0;
+  int energyReceived=Math.min(capacity - energy,Math.min(this.maxReceive,maxReceive));
+  if (!simulate)   energy+=energyReceived;
+  return energyReceived;
+}

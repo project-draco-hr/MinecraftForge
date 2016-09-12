@@ -1,0 +1,3 @@
+{
+  return this.maxExtract > 0;
+}

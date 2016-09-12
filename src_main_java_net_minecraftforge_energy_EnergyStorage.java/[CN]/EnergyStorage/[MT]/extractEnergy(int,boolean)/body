@@ -1,0 +1,6 @@
+{
+  if (!canExtract())   return 0;
+  int energyExtracted=Math.min(energy,Math.min(this.maxExtract,maxExtract));
+  if (!simulate)   energy-=energyExtracted;
+  return energyExtracted;
+}
