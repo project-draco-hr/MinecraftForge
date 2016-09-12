@@ -1,7 +1,6 @@
 {
   super(mc,parent.width,parent.height,parent.titleLine2 != null ? (parent.titleLine3 != null ? 43 : 33) : 23,parent.height - 32,20);
   this.owningGui=parent;
-  this.mc=mc;
   this.configElement=configElement;
   this.beforeValues=beforeValues;
   this.currentValues=currentValues;

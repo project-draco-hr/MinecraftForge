@@ -1,6 +1,6 @@
 {
-  if (this.btnValue.mousePressed(owningEntryList.mc,x,y)) {
-    btnValue.playPressSound(owningEntryList.mc.getSoundHandler());
+  if (this.btnValue.mousePressed(owningEntryList.getMC(),x,y)) {
+    btnValue.playPressSound(owningEntryList.getMC().getSoundHandler());
     value=!value;
     owningEntryList.recalculateState();
     return true;

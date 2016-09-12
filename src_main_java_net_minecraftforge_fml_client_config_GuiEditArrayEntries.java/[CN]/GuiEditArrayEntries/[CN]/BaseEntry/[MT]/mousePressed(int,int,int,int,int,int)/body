@@ -1,12 +1,12 @@
 {
-  if (this.btnAddNewEntryAbove.mousePressed(owningEntryList.mc,x,y)) {
-    btnAddNewEntryAbove.playPressSound(owningEntryList.mc.getSoundHandler());
+  if (this.btnAddNewEntryAbove.mousePressed(owningEntryList.getMC(),x,y)) {
+    btnAddNewEntryAbove.playPressSound(owningEntryList.getMC().getSoundHandler());
     owningEntryList.addNewEntry(index);
     owningEntryList.recalculateState();
     return true;
   }
- else   if (this.btnRemoveEntry.mousePressed(owningEntryList.mc,x,y)) {
-    btnRemoveEntry.playPressSound(owningEntryList.mc.getSoundHandler());
+ else   if (this.btnRemoveEntry.mousePressed(owningEntryList.getMC(),x,y)) {
+    btnRemoveEntry.playPressSound(owningEntryList.getMC().getSoundHandler());
     owningEntryList.removeEntry(index);
     owningEntryList.recalculateState();
     return true;

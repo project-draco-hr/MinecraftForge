@@ -1,18 +1,18 @@
 {
-  if (this.getValue() != null && this.isValidated)   owningEntryList.mc.fontRendererObj.drawString(isValidValue ? TextFormatting.GREEN + VALID : TextFormatting.RED + INVALID,listWidth / 4 - owningEntryList.mc.fontRendererObj.getStringWidth(VALID) - 2,y + slotHeight / 2 - owningEntryList.mc.fontRendererObj.FONT_HEIGHT / 2,16777215);
+  if (this.getValue() != null && this.isValidated)   owningEntryList.getMC().fontRendererObj.drawString(isValidValue ? TextFormatting.GREEN + VALID : TextFormatting.RED + INVALID,listWidth / 4 - owningEntryList.getMC().fontRendererObj.getStringWidth(VALID) - 2,y + slotHeight / 2 - owningEntryList.getMC().fontRendererObj.FONT_HEIGHT / 2,16777215);
   int half=listWidth / 2;
   if (owningEntryList.canAddMoreEntries) {
     this.btnAddNewEntryAbove.visible=true;
     this.btnAddNewEntryAbove.xPosition=half + ((half / 2) - 44);
     this.btnAddNewEntryAbove.yPosition=y;
-    this.btnAddNewEntryAbove.drawButton(owningEntryList.mc,mouseX,mouseY);
+    this.btnAddNewEntryAbove.drawButton(owningEntryList.getMC(),mouseX,mouseY);
   }
  else   this.btnAddNewEntryAbove.visible=false;
   if (!configElement.isListLengthFixed() && slotIndex != owningEntryList.listEntries.size() - 1) {
     this.btnRemoveEntry.visible=true;
     this.btnRemoveEntry.xPosition=half + ((half / 2) - 22);
     this.btnRemoveEntry.yPosition=y;
-    this.btnRemoveEntry.drawButton(owningEntryList.mc,mouseX,mouseY);
+    this.btnRemoveEntry.drawButton(owningEntryList.getMC(),mouseX,mouseY);
   }
  else   this.btnRemoveEntry.visible=false;
 }
