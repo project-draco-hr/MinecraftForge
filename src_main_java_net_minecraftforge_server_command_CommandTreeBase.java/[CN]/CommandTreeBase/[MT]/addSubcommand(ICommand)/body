@@ -1,0 +1,3 @@
+{
+  commandMap.put(c.getCommandName(),c);
+}

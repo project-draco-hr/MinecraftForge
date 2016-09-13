@@ -1,0 +1,4 @@
+{
+  addSubcommand(new CommandSet());
+  addSubcommand(new CommandGet());
+}

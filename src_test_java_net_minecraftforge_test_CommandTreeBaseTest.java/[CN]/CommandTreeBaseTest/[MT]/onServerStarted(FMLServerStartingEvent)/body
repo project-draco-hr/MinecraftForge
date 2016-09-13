@@ -1,0 +1,3 @@
+{
+  event.registerServerCommand(new CommandTreeTest());
+}

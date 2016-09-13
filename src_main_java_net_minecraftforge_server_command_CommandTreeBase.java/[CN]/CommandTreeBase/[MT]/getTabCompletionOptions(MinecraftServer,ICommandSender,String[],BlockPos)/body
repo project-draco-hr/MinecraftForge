@@ -1,0 +1,17 @@
+{
+  if (args.length == 1) {
+    List<String> keys=new ArrayList<String>();
+    for (    ICommand c : commandMap.values()) {
+      if (c.checkPermission(server,sender)) {
+        keys.add(c.getCommandName());
+      }
+    }
+    Collections.sort(keys,null);
+    return getListOfStringsMatchingLastWord(args,keys);
+  }
+  ICommand cmd=commandMap.get(args[0]);
+  if (cmd != null) {
+    return cmd.getTabCompletionOptions(server,sender,shiftArgs(args),pos);
+  }
+  return super.getTabCompletionOptions(server,sender,args,pos);
+}

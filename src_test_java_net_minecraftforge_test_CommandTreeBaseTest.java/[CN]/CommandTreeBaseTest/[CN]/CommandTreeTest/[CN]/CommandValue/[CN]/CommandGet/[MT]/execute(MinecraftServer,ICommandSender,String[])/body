@@ -1,0 +1,3 @@
+{
+  sender.addChatMessage(new TextComponentString("Test value: " + value));
+}

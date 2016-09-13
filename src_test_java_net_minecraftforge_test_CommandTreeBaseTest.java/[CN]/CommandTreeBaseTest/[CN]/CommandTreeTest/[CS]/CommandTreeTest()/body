@@ -1,0 +1,4 @@
+{
+  addSubcommand(new CommandPing());
+  addSubcommand(new CommandValue());
+}

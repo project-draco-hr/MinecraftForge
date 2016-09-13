@@ -1,0 +1,4 @@
+{
+  value=CommandTreeTest.parseInt(args[0]);
+  sender.addChatMessage(new TextComponentString("Test value set to: " + value));
+}
