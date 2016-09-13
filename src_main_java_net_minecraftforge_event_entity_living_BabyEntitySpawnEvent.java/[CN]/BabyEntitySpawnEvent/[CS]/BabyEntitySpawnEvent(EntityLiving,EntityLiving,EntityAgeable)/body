@@ -1,0 +1,13 @@
+{
+  EntityPlayer causedByPlayer=null;
+  if (parentA instanceof EntityAnimal) {
+    causedByPlayer=((EntityAnimal)parentA).getPlayerInLove();
+  }
+  if (causedByPlayer == null && parentB instanceof EntityAnimal) {
+    causedByPlayer=((EntityAnimal)parentB).getPlayerInLove();
+  }
+  this.parentA=parentA;
+  this.parentB=parentB;
+  this.causedByPlayer=causedByPlayer;
+  this.child=proposedChild;
+}

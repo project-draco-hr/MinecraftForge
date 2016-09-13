@@ -1,0 +1,3 @@
+{
+  event.setChild(new EntityCow(event.getChild().worldObj));
+}
