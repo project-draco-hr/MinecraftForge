@@ -8,6 +8,7 @@
   FluidRegistry.addBucketForFluid(FluidRegistry.getFluid(TestFluid.name));
   FluidRegistry.addBucketForFluid(FluidRegistry.getFluid(TestGas.name));
   GameRegistry.register(dynBottle);
+  GameRegistry.addShapelessRecipe(new ItemStack(Items.DIAMOND),UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket,TestFluid.instance));
   int i=0;
   i=0;
   FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluid("milk"),new ItemStack(Items.MILK_BUCKET),FluidContainerRegistry.EMPTY_BUCKET);

@@ -1,0 +1,6 @@
+{
+  if (getEmpty() != null) {
+    return getEmpty().copy();
+  }
+  return super.getContainerItem(itemStack);
+}
