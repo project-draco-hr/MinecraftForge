@@ -3,7 +3,7 @@
     sender.addChatMessage(new TextComponentString(CommandBase.joinNiceStringFromCollection(commandMap.keySet())));
   }
  else {
-    ICommand cmd=commandMap.get(args[0]);
+    ICommand cmd=getCommandMap().get(args[0]);
     if (cmd == null) {
       throw new CommandException("commands.tree_base.invalid_cmd",args[0]);
     }

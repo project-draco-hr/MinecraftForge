@@ -1,0 +1,5 @@
+{
+  List<ICommand> list=new ArrayList<ICommand>(getSubCommands());
+  Collections.sort(list);
+  return list;
+}

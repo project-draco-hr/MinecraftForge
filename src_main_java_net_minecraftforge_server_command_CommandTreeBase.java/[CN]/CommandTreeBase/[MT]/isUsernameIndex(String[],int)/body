@@ -1,6 +1,6 @@
 {
   if (index > 0 && args.length > 1) {
-    ICommand cmd=commandMap.get(args[0]);
+    ICommand cmd=getCommandMap().get(args[0]);
     if (cmd != null) {
       return cmd.isUsernameIndex(shiftArgs(args),index - 1);
     }
