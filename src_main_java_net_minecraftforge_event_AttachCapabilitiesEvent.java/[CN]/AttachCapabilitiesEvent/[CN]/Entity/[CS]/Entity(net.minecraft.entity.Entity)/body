@@ -1,4 +1,4 @@
 {
-  super(entity);
+  super(net.minecraft.entity.Entity.class,entity);
   this.entity=entity;
 }

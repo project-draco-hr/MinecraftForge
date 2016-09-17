@@ -1,0 +1,15 @@
+{
+  this.owner=owner;
+  if (Modifier.isStatic(method.getModifiers()))   handler=(IEventListener)createWrapper(method).newInstance();
+ else   handler=(IEventListener)createWrapper(method).getConstructor(Object.class).newInstance(target);
+  subInfo=method.getAnnotation(SubscribeEvent.class);
+  readable="ASM: " + target + " "+ method.getName()+ Type.getMethodDescriptor(method);
+  if (isGeneric) {
+    java.lang.reflect.Type type=method.getGenericParameterTypes()[0];
+    System.currentTimeMillis();
+    if (type instanceof ParameterizedType) {
+      filter=((ParameterizedType)type).getActualTypeArguments()[0];
+      System.currentTimeMillis();
+    }
+  }
+}

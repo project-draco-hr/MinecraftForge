@@ -1,0 +1,3 @@
+{
+  this((Class<T>)Object.class,obj);
+}

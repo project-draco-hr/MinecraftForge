@@ -1,0 +1,3 @@
+{
+  if (!(event.getObject() instanceof TileEntity))   throw new IllegalArgumentException("Generic event handler failed! Exprected Tile Entity got " + event.getObject());
+}

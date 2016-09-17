@@ -1,4 +1,4 @@
 {
-  super(te);
+  super(net.minecraft.tileentity.TileEntity.class,te);
   this.te=te;
 }

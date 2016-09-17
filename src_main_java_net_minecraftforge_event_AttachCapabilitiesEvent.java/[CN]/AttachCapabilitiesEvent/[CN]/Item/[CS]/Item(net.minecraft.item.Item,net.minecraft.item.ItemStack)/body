@@ -1,5 +1,5 @@
 {
-  super(item);
+  super(net.minecraft.item.Item.class,item);
   this.item=item;
   this.stack=stack;
 }

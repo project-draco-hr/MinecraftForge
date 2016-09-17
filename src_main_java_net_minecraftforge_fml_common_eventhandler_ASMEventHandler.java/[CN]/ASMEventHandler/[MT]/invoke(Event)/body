@@ -2,7 +2,9 @@
   if (GETCONTEXT)   ThreadContext.put("mod",owner == null ? "" : owner.getName());
   if (handler != null) {
     if (!event.isCancelable() || !event.isCanceled() || subInfo.receiveCanceled()) {
-      handler.invoke(event);
+      if (filter == null || filter == ((IGenericEvent)event).getGenericType()) {
+        handler.invoke(event);
+      }
     }
   }
   if (GETCONTEXT)   ThreadContext.remove("mod");
