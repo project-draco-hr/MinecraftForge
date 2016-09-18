@@ -6,10 +6,8 @@
   readable="ASM: " + target + " "+ method.getName()+ Type.getMethodDescriptor(method);
   if (isGeneric) {
     java.lang.reflect.Type type=method.getGenericParameterTypes()[0];
-    System.currentTimeMillis();
     if (type instanceof ParameterizedType) {
       filter=((ParameterizedType)type).getActualTypeArguments()[0];
-      System.currentTimeMillis();
     }
   }
 }

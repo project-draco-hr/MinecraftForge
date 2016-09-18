@@ -1,0 +1,4 @@
+{
+  final RegistryEvent.Register<?> event=registries.get(name).buildRegistryRegisterEvent(name);
+  MinecraftForge.EVENT_BUS.post(event);
+}

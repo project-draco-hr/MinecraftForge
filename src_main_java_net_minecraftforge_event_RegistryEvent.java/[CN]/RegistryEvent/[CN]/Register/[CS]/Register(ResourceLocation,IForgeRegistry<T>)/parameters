@@ -1,0 +1,2 @@
+ResourceLocation location
+IForgeRegistry<T> registry

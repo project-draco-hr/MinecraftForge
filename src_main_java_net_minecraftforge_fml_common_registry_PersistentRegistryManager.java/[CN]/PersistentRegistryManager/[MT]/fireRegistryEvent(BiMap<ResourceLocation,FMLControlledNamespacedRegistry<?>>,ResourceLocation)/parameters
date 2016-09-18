@@ -1,0 +1,2 @@
+BiMap<ResourceLocation,FMLControlledNamespacedRegistry<?>> registries
+ResourceLocation name

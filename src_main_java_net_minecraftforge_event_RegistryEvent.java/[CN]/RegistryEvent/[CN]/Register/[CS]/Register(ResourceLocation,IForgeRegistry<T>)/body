@@ -1,0 +1,5 @@
+{
+  super(registry.getRegistrySuperType());
+  this.location=location;
+  this.registry=registry;
+}

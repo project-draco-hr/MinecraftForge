@@ -1,0 +1,19 @@
+{
+  MinecraftForge.EVENT_BUS.post(new RegistryEvent.NewRegistry());
+  List<ResourceLocation> registryKeys=Lists.newArrayList(PersistentRegistry.ACTIVE.registries.keySet());
+  Collections.sort(registryKeys,new Comparator<ResourceLocation>(){
+    @Override public int compare(    ResourceLocation o1,    ResourceLocation o2){
+      return o1.toString().compareToIgnoreCase(o2.toString());
+    }
+  }
+);
+  fireRegistryEvent(PersistentRegistry.ACTIVE.registries,BLOCKS);
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  fireRegistryEvent(PersistentRegistry.ACTIVE.registries,ITEMS);
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  for (  ResourceLocation rl : registryKeys) {
+    if (rl == BLOCKS || rl == ITEMS)     continue;
+    fireRegistryEvent(PersistentRegistry.ACTIVE.registries,rl);
+  }
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+}

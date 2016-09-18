@@ -1,0 +1,27 @@
+{
+  FMLLog.fine("Attempting to inject @EventBusSubscriber classes into the eventbus for %s",mod.getModId());
+  Set<ASMDataTable.ASMData> targets=data.getAnnotationsFor(mod).get(Mod.EventBusSubscriber.class.getName());
+  ClassLoader mcl=Loader.instance().getModClassLoader();
+  for (  ASMDataTable.ASMData targ : targets) {
+    try {
+      List<ModAnnotation.EnumHolder> sidesEnum=(List<ModAnnotation.EnumHolder>)targ.getAnnotationInfo().get("value");
+      EnumSet<Side> sides=DEFAULT;
+      if (sidesEnum != null) {
+        sides=EnumSet.noneOf(Side.class);
+        for (        ModAnnotation.EnumHolder h : sidesEnum) {
+          sides.add(Side.valueOf(h.getValue()));
+        }
+      }
+      if (sides == DEFAULT || sides.contains(side)) {
+        FMLLog.fine("Found @EventBusSubscriber class %s",targ.getClassName());
+        Class<?> subscriptionTarget=Class.forName(targ.getClassName(),true,mcl);
+        MinecraftForge.EVENT_BUS.register(subscriptionTarget);
+        FMLLog.fine("Injected @EventBusSubscriber class %s",targ.getClassName());
+      }
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.ERROR,e,"An error occurred trying to load an EventBusSubscriber %s for modid %s",targ.getClassName(),mod.getModId());
+      throw new LoaderException(e);
+    }
+  }
+}
