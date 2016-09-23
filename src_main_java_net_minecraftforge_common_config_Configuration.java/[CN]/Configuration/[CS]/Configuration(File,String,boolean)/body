@@ -1,4 +1,4 @@
 {
-  this(file,configVersion);
   this.caseSensitiveCustomCategories=caseSensitiveCustomCategories;
+  runConfiguration(file,configVersion);
 }
