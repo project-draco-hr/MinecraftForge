@@ -1,0 +1,8 @@
+{
+  event.getRegistry().registerAll(new ItemMultiTexture(BLOCKS.custom_wall,BLOCKS.custom_wall,new Function<ItemStack,String>(){
+    @Override public String apply(    ItemStack stack){
+      return BlockWall.EnumType.byMetadata(stack.getMetadata()).getUnlocalizedName();
+    }
+  }
+).setRegistryName(BLOCKS.custom_wall.getRegistryName()));
+}

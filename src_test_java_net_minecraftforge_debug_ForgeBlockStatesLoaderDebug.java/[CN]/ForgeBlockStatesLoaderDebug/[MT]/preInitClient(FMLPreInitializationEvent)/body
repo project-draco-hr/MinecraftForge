@@ -1,5 +1,5 @@
 {
-  ModelLoader.setCustomStateMapper(blockCustomWall,new IStateMapper(){
+  ModelLoader.setCustomStateMapper(BLOCKS.custom_wall,new IStateMapper(){
     StateMap stateMap=new StateMap.Builder().withName(BlockWall.VARIANT).withSuffix("_wall").build();
     @Override public Map<IBlockState,ModelResourceLocation> putStateModelLocations(    Block block){
       Map<IBlockState,ModelResourceLocation> map=(Map<IBlockState,ModelResourceLocation>)stateMap.putStateModelLocations(block);
@@ -12,7 +12,6 @@
     }
   }
 );
-  Item customWallItem=Item.getItemFromBlock(blockCustomWall);
-  ModelLoader.setCustomModelResourceLocation(customWallItem,0,new ModelResourceLocation(ASSETS + "cobblestone_wall","inventory"));
-  ModelLoader.setCustomModelResourceLocation(customWallItem,1,new ModelResourceLocation(ASSETS + "mossy_cobblestone_wall","inventory"));
+  ModelLoader.setCustomModelResourceLocation(ITEMS.custom_wall,0,new ModelResourceLocation(ASSETS + "cobblestone_wall","inventory"));
+  ModelLoader.setCustomModelResourceLocation(ITEMS.custom_wall,1,new ModelResourceLocation(ASSETS + "mossy_cobblestone_wall","inventory"));
 }

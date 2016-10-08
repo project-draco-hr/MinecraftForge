@@ -1,7 +1,3 @@
 {
-  blockCustomWall.setUnlocalizedName(MODID + ".customWall").setRegistryName(nameCustomWall);
-  GameRegistry.register(blockCustomWall);
-  GameRegistry.register(itemCustomWall);
-  GameData.getBlockItemMap().put(blockCustomWall,itemCustomWall);
   if (event.getSide() == Side.CLIENT)   preInitClient(event);
 }

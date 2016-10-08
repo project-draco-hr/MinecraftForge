@@ -1,0 +1,3 @@
+{
+  event.getRegistry().registerAll(new BlockWall(Blocks.COBBLESTONE).setUnlocalizedName(MODID + ".customWall").setRegistryName(MODID,"custom_wall"));
+}
