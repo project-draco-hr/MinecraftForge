@@ -7,14 +7,17 @@
       String modid=(String)targ.getAnnotationInfo().get("modId");
       if (modid == null) {
         for (        ASMData a : data.getAll(Mod.class.getName())) {
-          if (a.getClassName().equals(targ.getClassName())) {
+          if (isProxyFromMod(a.getClassName(),targ.getClassName())) {
             modid=(String)a.getAnnotationInfo().get("modid");
             break;
           }
         }
       }
-      if (modid == null || !modid.equals(mod.getModId())) {
-        FMLLog.fine("Skipping proxy injection for %s.%s since it is not for mod %s",targ.getClassName(),targ.getObjectName(),mod.getModId());
+      if (modid == null) {
+        FMLLog.warning("Unable to determine the associated mod for proxy injection for %s.%s, assuming it's from %s",targ.getClassName(),targ.getObjectName(),mod.getModId());
+      }
+ else       if (!modid.equals(mod.getModId())) {
+        FMLLog.fine("Skipping proxy injection for %s.%s since it is not for mod %s, it should belong to %s",targ.getClassName(),targ.getObjectName(),mod.getModId(),modid);
         continue;
       }
       Class<?> proxyTarget=Class.forName(targ.getClassName(),true,mcl);
