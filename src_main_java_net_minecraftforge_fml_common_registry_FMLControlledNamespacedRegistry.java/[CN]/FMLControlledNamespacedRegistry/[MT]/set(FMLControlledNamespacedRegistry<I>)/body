@@ -13,15 +13,12 @@
   this.persistentSubstitutions.clear();
   this.persistentSubstitutions.putAll(otherRegistry.getPersistentSubstitutions());
   this.activeSubstitutions.clear();
-  this.substitutionOriginals.clear();
   this.dummiedLocations.clear();
   this.dummiedLocations.addAll(otherRegistry.dummiedLocations);
   underlyingIntegerMap.clear();
   registryObjects.clear();
   for (  I thing : otherRegistry.typeSafeIterable()) {
-    ResourceLocation name=otherRegistry.getNameForObject(thing);
-    if (otherRegistry.activeSubstitutions.containsKey(name))     addObjectRaw(otherRegistry.getId(thing),name,otherRegistry.substitutionOriginals.get(name));
- else     addObjectRaw(otherRegistry.getId(thing),name,thing);
+    addObjectRaw(otherRegistry.getId(thing),otherRegistry.getNameForObject(thing),thing);
   }
   for (  ResourceLocation resloc : otherRegistry.activeSubstitutions.keySet()) {
     activateSubstitution(resloc);
