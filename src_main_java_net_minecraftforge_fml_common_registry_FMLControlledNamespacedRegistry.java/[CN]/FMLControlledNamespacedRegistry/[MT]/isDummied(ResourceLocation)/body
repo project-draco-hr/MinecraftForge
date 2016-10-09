@@ -1,0 +1,3 @@
+{
+  return this.dummiedLocations.contains(key);
+}

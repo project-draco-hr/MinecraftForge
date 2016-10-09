@@ -5,7 +5,7 @@
   if (extractFromExistingValues) {
     try {
       Object existing=field.get(null);
-      if (existing == null || existing == GameData.getBlockRegistry().getDefaultValue()) {
+      if (existing == null || existing == registry.getDefaultValue()) {
         this.injectedObject=null;
         this.field=null;
         this.isValid=false;

@@ -1,6 +1,6 @@
 {
   Object thing;
-  if (isValid && registry.containsKey(injectedObject)) {
+  if (isValid && registry.containsKey(injectedObject) && !registry.isDummied(injectedObject)) {
     thing=registry.getValue(injectedObject);
   }
  else {
