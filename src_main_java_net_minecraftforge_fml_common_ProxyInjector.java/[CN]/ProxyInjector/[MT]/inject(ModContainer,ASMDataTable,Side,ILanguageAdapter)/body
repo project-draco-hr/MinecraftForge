@@ -4,22 +4,6 @@
   ClassLoader mcl=Loader.instance().getModClassLoader();
   for (  ASMData targ : targets) {
     try {
-      String modid=(String)targ.getAnnotationInfo().get("modId");
-      if (modid == null) {
-        for (        ASMData a : data.getAll(Mod.class.getName())) {
-          if (isProxyFromMod(a.getClassName(),targ.getClassName())) {
-            modid=(String)a.getAnnotationInfo().get("modid");
-            break;
-          }
-        }
-      }
-      if (modid == null) {
-        FMLLog.warning("Unable to determine the associated mod for proxy injection for %s.%s, assuming it's from %s",targ.getClassName(),targ.getObjectName(),mod.getModId());
-      }
- else       if (!modid.equals(mod.getModId())) {
-        FMLLog.fine("Skipping proxy injection for %s.%s since it is not for mod %s, it should belong to %s",targ.getClassName(),targ.getObjectName(),mod.getModId(),modid);
-        continue;
-      }
       Class<?> proxyTarget=Class.forName(targ.getClassName(),true,mcl);
       Field target=proxyTarget.getDeclaredField(targ.getObjectName());
       if (target == null) {
@@ -28,6 +12,10 @@
       }
       target.setAccessible(true);
       SidedProxy annotation=target.getAnnotation(SidedProxy.class);
+      if (!Strings.isNullOrEmpty(annotation.modId()) && !annotation.modId().equals(mod.getModId())) {
+        FMLLog.fine("Skipping proxy injection for %s.%s since it is not for mod %s",targ.getClassName(),targ.getObjectName(),mod.getModId());
+        continue;
+      }
       String targetType=side.isClient() ? annotation.clientSide() : annotation.serverSide();
       if (targetType.equals("")) {
         targetType=targ.getClassName() + (side.isClient() ? "$ClientProxy" : "$ServerProxy");
