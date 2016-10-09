@@ -1,13 +1,7 @@
 {
   Object thing;
-  if (isBlock) {
-    thing=ForgeRegistries.BLOCKS.getValue(injectedObject);
-    if (thing == Blocks.AIR) {
-      thing=null;
-    }
-  }
- else   if (isItem) {
-    thing=ForgeRegistries.ITEMS.getValue(injectedObject);
+  if (isValid && registry.containsKey(injectedObject)) {
+    thing=registry.getValue(injectedObject);
   }
  else {
     thing=null;

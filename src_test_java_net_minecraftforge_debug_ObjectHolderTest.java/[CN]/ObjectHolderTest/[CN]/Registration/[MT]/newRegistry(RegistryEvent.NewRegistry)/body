@@ -1,0 +1,3 @@
+{
+  new RegistryBuilder().setType(ICustomRegistryEntry.class).setName(new ResourceLocation("ObjectHolderTestCustomRegistry")).setIDRange(0,255).create();
+}

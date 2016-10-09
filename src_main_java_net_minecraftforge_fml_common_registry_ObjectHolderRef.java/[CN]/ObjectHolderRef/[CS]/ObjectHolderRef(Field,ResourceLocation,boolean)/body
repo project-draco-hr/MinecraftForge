@@ -1,19 +1,21 @@
 {
+  registry=getRegistryForType(field);
   this.field=field;
-  this.isBlock=Block.class.isAssignableFrom(field.getType());
-  this.isItem=Item.class.isAssignableFrom(field.getType());
+  this.isValid=registry != null;
   if (extractFromExistingValues) {
     try {
       Object existing=field.get(null);
       if (existing == null || existing == GameData.getBlockRegistry().getDefaultValue()) {
         this.injectedObject=null;
         this.field=null;
-        this.isBlock=false;
-        this.isItem=false;
+        this.isValid=false;
         return;
       }
  else {
-        ResourceLocation tmp=isBlock ? ForgeRegistries.BLOCKS.getKey((Block)existing) : isItem ? ForgeRegistries.ITEMS.getKey((Item)existing) : null;
+        ResourceLocation tmp=null;
+        if (registry != null) {
+          tmp=registry.getKey((IForgeRegistryEntry)existing);
+        }
         this.injectedObject=tmp;
       }
     }
@@ -25,7 +27,7 @@
     this.injectedObject=injectedObject;
   }
   if (this.injectedObject == null || !isValid()) {
-    throw new IllegalStateException(String.format("The ObjectHolder annotation cannot apply to a field that is not an Item or Block (found : %s at %s.%s)",field.getType().getName(),field.getClass().getName(),field.getName()));
+    throw new IllegalStateException(String.format("The ObjectHolder annotation cannot apply to a field that does not map to a registry. Ensure the registry was created during the RegistryEvent.NewRegistry event. (found : %s at %s.%s)",field.getType().getName(),field.getClass().getName(),field.getName()));
   }
   try {
     FinalFieldHelper.makeWritable(field);

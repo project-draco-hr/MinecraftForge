@@ -1,0 +1,5 @@
+{
+  super(badEffect,potionColor);
+  setPotionName("potion." + location.getResourcePath());
+  setRegistryName(location);
+}

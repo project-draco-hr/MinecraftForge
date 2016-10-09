@@ -1,0 +1,4 @@
+{
+  event.getRegistry().register(new CustomRegistryEntry().setRegistryName(new ResourceLocation(MODID,"customEntryByInterface")));
+  event.getRegistry().register(new CustomRegistryEntry().setRegistryName(new ResourceLocation(MODID,"customEntry")));
+}

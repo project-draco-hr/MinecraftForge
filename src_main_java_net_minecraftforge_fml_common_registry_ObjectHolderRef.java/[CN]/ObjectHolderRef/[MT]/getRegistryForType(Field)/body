@@ -1,0 +1,17 @@
+{
+  Queue<Class<?>> typesToExamine=new LinkedList<Class<?>>();
+  typesToExamine.add(field.getType());
+  IForgeRegistry registry=null;
+  while (!typesToExamine.isEmpty() && registry == null) {
+    Class<?> type=typesToExamine.remove();
+    Collections.addAll(typesToExamine,type.getInterfaces());
+    if (IForgeRegistryEntry.class.isAssignableFrom(type)) {
+      registry=PersistentRegistryManager.findRegistryByType((Class<IForgeRegistryEntry>)type);
+      final Class<?> parentType=type.getSuperclass();
+      if (parentType != null) {
+        typesToExamine.add(parentType);
+      }
+    }
+  }
+  return registry;
+}

@@ -1,0 +1,3 @@
+{
+  event.getRegistry().register(new ObjectHolderTest.PotionForge(new ResourceLocation(ObjectHolderTest.MODID,"forgePotion"),false,0xff00ff));
+}
