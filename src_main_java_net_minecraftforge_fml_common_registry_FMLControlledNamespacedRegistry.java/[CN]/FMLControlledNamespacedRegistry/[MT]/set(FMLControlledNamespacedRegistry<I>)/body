@@ -23,4 +23,6 @@
   for (  ResourceLocation resloc : otherRegistry.activeSubstitutions.keySet()) {
     activateSubstitution(resloc);
   }
+  this.substitutionOriginals.clear();
+  this.substitutionOriginals.putAll(otherRegistry.substitutionOriginals);
 }

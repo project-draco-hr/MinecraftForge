@@ -41,4 +41,22 @@
   assertEquals("Got my dirt substitute - registry",toSub,fnd);
   dirtitem=(ItemBlock)itemRegistry.getValue(myDirt);
   assertEquals("ItemBlock points at my block",toSub,dirtitem.block);
+  PersistentRegistryManager.injectSnapshot(snapshot,true,true);
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  fnd=blockRegistry.getValue(myDirt);
+  currDirt=Blocks.DIRT;
+  assertEquals("Got my dirt substitute - Blocks",toSub,currDirt);
+  assertEquals("Got my dirt substitute - Blocks and registry",currDirt,fnd);
+  assertEquals("Got my dirt substitute - registry",toSub,fnd);
+  dirtitem=(ItemBlock)itemRegistry.getValue(myDirt);
+  assertEquals("ItemBlock points at my block",toSub,dirtitem.block);
+  PersistentRegistryManager.revertToFrozen();
+  ObjectHolderRegistry.INSTANCE.applyObjectHolders();
+  fnd=blockRegistry.getValue(myDirt);
+  currDirt=Blocks.DIRT;
+  assertEquals("Got my dirt substitute - Blocks",toSub,currDirt);
+  assertEquals("Got my dirt substitute - Blocks and registry",currDirt,fnd);
+  assertEquals("Got my dirt substitute - registry",toSub,fnd);
+  dirtitem=(ItemBlock)itemRegistry.getValue(myDirt);
+  assertEquals("ItemBlock points at my block",toSub,dirtitem.block);
 }
