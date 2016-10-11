@@ -1,0 +1,9 @@
+{
+  try {
+    return f.getByte(instance);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+  return 0;
+}

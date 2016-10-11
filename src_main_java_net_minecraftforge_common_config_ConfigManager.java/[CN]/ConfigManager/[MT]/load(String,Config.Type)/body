@@ -1,0 +1,27 @@
+{
+  FMLLog.fine("Attempting to inject @Config classes into %s for type %s",modid,type);
+  ClassLoader mcl=Loader.instance().getModClassLoader();
+  File configDir=Loader.instance().getConfigDir();
+  Multimap<Config.Type,ASMData> map=asm_data.get(modid);
+  if (map == null)   return;
+  for (  ASMData targ : map.get(type)) {
+    try {
+      Class<?> cls=Class.forName(targ.getClassName(),true,mcl);
+      String name=(String)targ.getAnnotationInfo().get("name");
+      if (name == null)       name=modid;
+      File file=new File(configDir,name + ".cfg");
+      Configuration cfg=CONFIGS.get(file.getAbsolutePath());
+      if (cfg == null) {
+        cfg=new Configuration(file);
+        cfg.load();
+        CONFIGS.put(file.getAbsolutePath(),cfg);
+      }
+      createConfig(cfg,cls,modid,type == Config.Type.INSTANCE);
+      cfg.save();
+    }
+ catch (    Exception e) {
+      FMLLog.log(Level.ERROR,e,"An error occurred trying to load a config for %s into %s",modid,targ.getClassName());
+      throw new LoaderException(e);
+    }
+  }
+}

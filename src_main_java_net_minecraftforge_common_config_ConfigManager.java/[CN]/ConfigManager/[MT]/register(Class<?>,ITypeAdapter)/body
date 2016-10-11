@@ -1,0 +1,4 @@
+{
+  ADAPTERS.put(cls,adpt);
+  if (adpt instanceof ITypeAdapter.Map)   MAP_ADAPTERS.put(cls,(ITypeAdapter.Map)adpt);
+}

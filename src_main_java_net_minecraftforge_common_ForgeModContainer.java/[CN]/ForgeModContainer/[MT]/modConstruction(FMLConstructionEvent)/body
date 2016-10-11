@@ -20,4 +20,5 @@
   }
   NetworkRegistry.INSTANCE.register(this,this.getClass(),"*",evt.getASMHarvestedData());
   ForgeNetworkHandler.registerChannel(this,evt.getSide());
+  ConfigManager.load(this.getModId(),Config.Type.INSTANCE);
 }

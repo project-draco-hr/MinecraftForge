@@ -1,0 +1,14 @@
+{
+  FMLLog.fine("Loading @Config anotation data");
+  for (  ASMData target : data.getAll(Config.class.getName())) {
+    String modid=(String)target.getAnnotationInfo().get("modid");
+    Multimap<Config.Type,ASMData> map=asm_data.get(modid);
+    if (map == null) {
+      map=ArrayListMultimap.create();
+      asm_data.put(modid,map);
+    }
+    EnumHolder tholder=(EnumHolder)target.getAnnotationInfo().get("type");
+    Config.Type type=tholder == null ? Config.Type.INSTANCE : Config.Type.valueOf(tholder.getValue());
+    map.put(type,target);
+  }
+}

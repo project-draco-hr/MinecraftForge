@@ -1,0 +1,5 @@
+{
+  List<String> lst=Lists.newArrayList();
+  for (  Enum e : cls.getEnumConstants())   lst.add(e.name());
+  return Pattern.compile(PIPE.join(lst));
+}

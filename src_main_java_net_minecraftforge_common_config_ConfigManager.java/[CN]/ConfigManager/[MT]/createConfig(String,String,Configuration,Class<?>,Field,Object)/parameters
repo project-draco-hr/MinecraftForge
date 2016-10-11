@@ -1,0 +1,6 @@
+String modid
+String category
+Configuration cfg
+Class<?> ftype
+Field f
+Object instance

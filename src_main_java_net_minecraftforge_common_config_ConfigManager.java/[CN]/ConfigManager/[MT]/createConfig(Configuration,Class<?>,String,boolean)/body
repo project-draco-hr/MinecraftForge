@@ -1,0 +1,8 @@
+{
+  String category="general";
+  for (  Field f : cls.getDeclaredFields()) {
+    if (!Modifier.isPublic(f.getModifiers()))     continue;
+    if (Modifier.isStatic(f.getModifiers()) != isStatic)     continue;
+    createConfig(modid,category,cfg,f.getType(),f,null);
+  }
+}

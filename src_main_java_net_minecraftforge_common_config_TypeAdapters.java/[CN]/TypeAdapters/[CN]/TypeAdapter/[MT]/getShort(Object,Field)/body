@@ -1,0 +1,9 @@
+{
+  try {
+    return f.getShort(instance);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+  return 0;
+}

@@ -1,0 +1,4 @@
+Configuration cfg
+Class<?> cls
+String modid
+boolean isStatic
