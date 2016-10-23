@@ -9,7 +9,7 @@
   }
   if (displacements.containsKey(block)) {
     if (displacements.get(block)) {
-      block.dropBlockAsItem(world,pos,state,0);
+      if (state.getBlock() != Blocks.SNOW_LAYER)       block.dropBlockAsItem(world,pos,state,0);
       return true;
     }
     return false;
