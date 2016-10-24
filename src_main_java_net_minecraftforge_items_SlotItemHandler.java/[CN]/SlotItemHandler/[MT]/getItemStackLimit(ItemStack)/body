@@ -1,9 +1,20 @@
 {
   ItemStack maxAdd=stack.copy();
-  maxAdd.stackSize=maxAdd.getMaxStackSize();
-  ItemStack currentStack=this.getItemHandler().getStackInSlot(index);
-  ItemStack remainder=this.getItemHandler().insertItem(index,maxAdd,true);
-  int current=currentStack == null ? 0 : currentStack.stackSize;
-  int added=maxAdd.stackSize - (remainder != null ? remainder.stackSize : 0);
-  return current + added;
+  int maxInput=stack.getMaxStackSize();
+  maxAdd.stackSize=maxInput;
+  IItemHandler handler=this.getItemHandler();
+  ItemStack currentStack=handler.getStackInSlot(index);
+  if (handler instanceof IItemHandlerModifiable) {
+    IItemHandlerModifiable handlerModifiable=(IItemHandlerModifiable)handler;
+    handlerModifiable.setStackInSlot(index,null);
+    ItemStack remainder=handlerModifiable.insertItem(index,maxAdd,true);
+    handlerModifiable.setStackInSlot(index,currentStack);
+    return maxInput - (remainder != null ? remainder.stackSize : 0);
+  }
+ else {
+    ItemStack remainder=handler.insertItem(index,maxAdd,true);
+    int current=currentStack == null ? 0 : currentStack.stackSize;
+    int added=maxInput - (remainder != null ? remainder.stackSize : 0);
+    return current + added;
+  }
 }

@@ -1,5 +1,16 @@
 {
   if (stack == null)   return false;
-  ItemStack remainder=this.getItemHandler().insertItem(index,stack,true);
+  IItemHandler handler=this.getItemHandler();
+  ItemStack remainder;
+  if (handler instanceof IItemHandlerModifiable) {
+    IItemHandlerModifiable handlerModifiable=(IItemHandlerModifiable)handler;
+    ItemStack currentStack=handlerModifiable.getStackInSlot(index);
+    handlerModifiable.setStackInSlot(index,null);
+    remainder=handlerModifiable.insertItem(index,stack,true);
+    handlerModifiable.setStackInSlot(index,currentStack);
+  }
+ else {
+    remainder=handler.insertItem(index,stack,true);
+  }
   return remainder == null || remainder.stackSize < stack.stackSize;
 }
